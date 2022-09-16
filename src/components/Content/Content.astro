@@ -1,0 +1,26 @@
+---
+import type { Frontmatter } from '../../config';
+import type { MarkdownHeading } from 'astro';
+
+type Props = {
+	frontmatter: Frontmatter;
+	headings: MarkdownHeading[]; // can be used for TOC (Not yet implemented)
+};
+
+const { frontmatter, headings } = Astro.props as Props;
+const title = frontmatter.title;
+---
+<main id="site-main">
+    <article>
+      <header>
+          <h1>{title}</h1>
+      </header>
+      <div>
+        <slot />
+      </div>
+    </article>
+</main>
+
+<style>
+	
+</style>
