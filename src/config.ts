@@ -3,7 +3,12 @@ export const SITE = {
 	description: 'An Astro boilerplate.',
 	defaultLanguage: 'en',
 	themeColor: '#333',
-    owner: 'Steve Fenton'
+    owner: 'Steve Fenton',
+	search: {
+		fallbackUrl: 'https://www.google.com/search',
+		fallbackSite: 'q',
+		fallbackQuery: 'q',
+	},
 };
 
 export type Frontmatter = {

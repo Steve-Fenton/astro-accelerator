@@ -1,5 +1,7 @@
 ---
 import * as CONFIG from '../config';
+import t from '../components/Language/language.json';
+import { Language } from '../components/Language/language';
 import Head from '../components/head/Head.astro';
 import SkipLinks from '../components/Content/SkipLinks.astro';
 import Breadcrumbs from '../components/Content/Breadcrumbs.astro';
@@ -7,10 +9,18 @@ import Navigation from '../components/Content/Navigation.astro';
 import Header from '../components/Content/Header.astro';
 import Footer from '../components/Content/Footer.astro';
 
+// Properties
 const { frontmatter } = Astro.props;
-
 const lang = frontmatter.lang ?? 'en';
 const textDirection = frontmatter.dir ?? 'ltr';
+
+// Language
+const language = new Language(lang);
+const search = t.search;
+const _ = (entry: { [key: string]: string }) => language.translate(entry);
+
+// Logic
+const siteUrl = Astro.site ? Astro.site.href : '';
 ---
 <html dir={ textDirection } lang={ lang } class="initial">
     <Head frontmatter={ frontmatter } />
@@ -27,6 +37,19 @@ const textDirection = frontmatter.dir ?? 'ltr';
                     </header>
                     <div>
                         <slot />
+    <form method="GET" action={ CONFIG.SITE.search.fallbackUrl ?? 'https://www.google.com/search' } role="search" id="site-search" class="site-search note" autocomplete="off">
+        <fieldset>
+            <input type="hidden" name={ CONFIG.SITE.search.fallbackSite ?? 'q' } value={ siteUrl } />
+            <div>
+              <label for="site-search-query">{ _(search.search_for) }</label>
+              <input type="text" name={ CONFIG.SITE.search.fallbackSite ?? 'q' } id="site-search-query" autofocus="autofocus" />
+              <button id="site-search-button" type="submit">{ _(search.submit) }</button>
+            </div>
+        </fieldset>
+    </form>
+    <div id="site-search-results" data-title={ _(search.results_title) } data-emptytitle={ _(search.no_results_title) }>
+    </div>
+    <script src="/js/search.js" type="module" async></script>
                     </div>
                 </article>
             </main>

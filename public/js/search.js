@@ -1,13 +1,10 @@
----
-layout: null
----
 // @ts-check
 
 import { qs } from './modules/query.js';
 import { raiseEvent } from './modules/events.js';
 import { contains, sanitise, explode } from './modules/string.js';
 
-var dataUrl = '{{ "/search.json" | prepend: site.baseurl }}';
+var dataUrl = '/search.json';
 var haystack = [];
 var needles = [];
 var currentQuery = null;
@@ -125,9 +122,11 @@ function debounceSearch() {
 
 fetch(dataUrl)
     .then(function (response) { 
-        return response.json();
+        return response.text();
     })
-    .then(function (data) { 
+    .then(function (text) { 
+        const data = JSON.parse(text.replace(/<!DOCTYPE(.*)>/, ''));
+        console.log(data);
         haystack = data;
         ready = true;
 
