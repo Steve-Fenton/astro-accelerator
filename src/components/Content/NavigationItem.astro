@@ -26,9 +26,7 @@ const _ = (entry: { [key: string]: string }) => language.translate(entry);
         <a href={ navPage.url } aria-current={ navPage.ariaCurrent }>{ navPage.title }</a>
       </li>
       { navPage.children.sort((a, b) => a.order - b.order).map((page) => (
-      <li>
-        <a href={ page.url } aria-current={ page.ariaCurrent }>{ page.title }</a>
-      </li>
+          <Astro.self lang={lang} navPage={page} />
       ))}
     </ul>
   </details>
