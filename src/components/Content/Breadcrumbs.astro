@@ -2,6 +2,9 @@
 import * as CONFIG from '../../config';
 import t from '../Language/language.json';
 import { Language } from '../Language/language';
+import { mapNavPage } from './NavPage.astro';
+import type { NavPage } from './NavPage.astro';
+import type { MarkdownInstance } from 'astro';
 
 type Props = {
   lang: string;
@@ -12,18 +15,43 @@ const language = new Language(lang);
 const aria = t.aria;
 const _ = (entry: { [key: string]: string }) => language.translate(entry);
 
-// ' aria-current="page"' needs to be added to current page
 const currentUrl = new URL(Astro.request.url);
-const position = 0;
-const aria_current = '';
+const mapWithUrl = (page: MarkdownInstance<Record<string, any>>) => {
+  return mapNavPage(page, currentUrl);
+};
+
+const allPages = await Astro.glob('../../pages/**/*.md');
+
+// ' aria-current="page"' needs to be added to current page
+const parts = currentUrl.pathname.split('/');
+let path = '';
+const items: NavPage[] = [];
+
+for (let i = 0; i < parts.length; i++) {
+  const part = parts[i];
+
+  if (part.length > 0) {
+    path += '/' + parts[i];
+  }
+  
+  const search = path ;
+  const found = allPages.filter((p) => p.url == search);
+  if (found.length > 0) {
+    items.push(mapWithUrl(found[0]))
+  }
+}
+
+console.log(items.length);
 ---
 <nav class="site-breadcrumbs" aria-label={ _(aria.breadcrumbs) }>
   <ol vocab="http://schema.org/" typeof="BreadcrumbList">
-    <li property="itemListElement" typeof="ListItem">
-      <a property="item" typeof="WebPage" href="TODO" data-todo="set aria-current">
-        <span property="name">TODO</span>
-        <meta property="position" content={ position.toString() } />
+    {items.map((page, index) => (
+      <li property="itemListElement" typeof="ListItem">
+      <a property="item" typeof="WebPage" href={ page.url } aria-current={ page.ariaCurrent }>
+        <span property="name">{ page.title }</span>
+        <meta property="position" content={ index.toString() } />
       </a>
     </li>
+    ))}
   </ol>
 </nav>

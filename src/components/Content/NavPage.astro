@@ -1,4 +1,6 @@
 ---
+import type { MarkdownInstance } from 'astro';
+
 export type NavPage = {
   section: string;
   title: string;
@@ -7,5 +9,22 @@ export type NavPage = {
   isOpen: boolean;
   ariaCurrent: 'page' | false;
   children: NavPage[];
+}
+
+export const mapNavPage = (page: MarkdownInstance<Record<string, any>>, currentUrl: URL) => {
+  const url = page.url == null || (page.url ?? '').length == 0 ? '/' : page.url;
+  const isCurrent = url == currentUrl.pathname;
+
+  const entry: NavPage = {
+    section: page.frontmatter.navSection ?? page.frontmatter.navTitle ?? page.frontmatter.title,
+    title: page.frontmatter.navTitle ?? page.frontmatter.title,
+    url: url,
+    order: page.frontmatter.navOrder,
+    isOpen: currentUrl.pathname.startsWith(url),
+    ariaCurrent: isCurrent ? 'page' : false,
+    children: [],
+  }
+
+  return entry;
 }
 ---

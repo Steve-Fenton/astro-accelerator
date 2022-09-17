@@ -2,6 +2,7 @@
 import t from '../Language/language.json';
 import { Language } from '../Language/language';
 import NavigationItem from './NavigationItem.astro';
+import { mapNavPage } from './NavPage.astro';
 import type { NavPage } from './NavPage.astro';
 import type { MarkdownInstance } from 'astro';
 
@@ -16,29 +17,15 @@ const aria = t.aria;
 const _ = (entry: { [key: string]: string }) => language.translate(entry);
 
 const currentUrl = new URL(Astro.request.url);
+const mapWithUrl = (page: MarkdownInstance<Record<string, any>>) => {
+  return mapNavPage(page, currentUrl);
+};
 
 const topLevelPages = await Astro.glob('../../pages/*.md');
 const allPages = await Astro.glob('../../pages/**/*.md');
 
-const mapNavPage = (page: MarkdownInstance<Record<string, any>>) => {
-  const url = page.url == null || (page.url ?? '').length == 0 ? '/' : page.url;
-  const isCurrent = url == currentUrl.pathname;
-
-  const entry: NavPage = {
-    section: page.frontmatter.navSection ?? page.frontmatter.navTitle ?? page.frontmatter.title,
-    title: page.frontmatter.navTitle ?? page.frontmatter.title,
-    url: url,
-    order: page.frontmatter.navOrder,
-    isOpen: currentUrl.pathname.startsWith(url),
-    ariaCurrent: isCurrent ? 'page' : false,
-    children: [],
-  }
-
-  return entry;
-}
-
-const pageHierarchy: NavPage[] = topLevelPages.map(mapNavPage);
-const pageList: NavPage[] = allPages.map(mapNavPage);
+const pageHierarchy: NavPage[] = topLevelPages.map(mapWithUrl);
+const pageList: NavPage[] = allPages.map(mapWithUrl);
 
 for (let i = 0; i < pageHierarchy.length; i++) {
   const page = pageHierarchy[i];
