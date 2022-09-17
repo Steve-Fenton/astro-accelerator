@@ -13,6 +13,7 @@ const aria = t.aria;
 const _ = (entry: { [key: string]: string }) => language.translate(entry);
 
 // ' aria-current="page"' needs to be added to current page
+const currentUrl = new URL(Astro.request.url);
 const position = 0;
 const aria_current = '';
 ---
