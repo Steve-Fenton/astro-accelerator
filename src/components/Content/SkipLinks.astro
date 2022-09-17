@@ -1,0 +1,15 @@
+---
+import t from '../../data/language.json';
+import { Language } from '../Language/language';
+
+const { lang } = Astro.props;
+
+const language = new Language(lang);
+const skiplinks = t.skiplinks;
+const _ = (entry: { [key: string]: string }) => language.translate(entry);
+---
+<nav class="skip-links" aria-label="skiplinks">
+    <a href="#site-nav">{_(skiplinks.skip_to_navigation)}</a>
+    <a href="#site-main">{_(skiplinks.skip_to_content)}</a>
+    <a href="#site-footer">{_(skiplinks.skip_to_footer)}</a>
+  </nav>
