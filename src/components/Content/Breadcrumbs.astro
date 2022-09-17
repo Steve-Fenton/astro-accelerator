@@ -1,0 +1,25 @@
+---
+import * as CONFIG from '../../config';
+import t from '../Language/language.json';
+import { Language } from '../Language/language';
+
+const { lang } = Astro.props;
+
+const language = new Language(lang);
+const aria = t.aria;
+const _ = (entry: { [key: string]: string }) => language.translate(entry);
+
+// ' aria-current="page"' needs to be added to current page
+const position = 0;
+const aria_current = '';
+---
+<nav class="site-breadcrumbs" aria-label={ _(aria.breadcrumbs) }>
+  <ol vocab="http://schema.org/" typeof="BreadcrumbList">
+    <li property="itemListElement" typeof="ListItem">
+      <a property="item" typeof="WebPage" href="TODO" data-todo="set aria-current">
+        <span property="name">TODO</span>
+        <meta property="position" content={ position.toString() } />
+      </a>
+    </li>
+  </ol>
+</nav>

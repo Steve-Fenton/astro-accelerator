@@ -2,33 +2,39 @@
 import * as CONFIG from '../config';
 import Head from '../components/head/Head.astro';
 import SkipLinks from '../components/Content/SkipLinks.astro';
+import Breadcrumbs from '../components/Content/Breadcrumbs.astro';
+import Navigation from '../components/Content/Navigation.astro';
 import Header from '../components/Content/Header.astro';
+import Footer from '../components/Content/Footer.astro';
 import type { MarkdownHeading } from 'astro';
 
-const {frontmatter} = Astro.props;
+const { frontmatter } = Astro.props;
 
-const currentPage = Astro.url.pathname;
-const imageSrc = frontmatter.bannerImage?.src ?? CONFIG.OPEN_GRAPH.image.src;
-const canonicalImageSrc = new URL(imageSrc, Astro.site);
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
-const imageAlt = frontmatter.bannerImage?.alt ?? CONFIG.OPEN_GRAPH.image.alt;
+const lang = frontmatter.lang ?? 'en';
+const textDirection = frontmatter.dir ?? 'dir';
 ---
-<html dir={frontmatter.dir ?? 'ltr'} lang={frontmatter.lang ?? 'en'} class="initial">
-    <Head frontmatter={frontmatter} />
+<html dir={ textDirection } lang={ lang } class="initial">
+    <Head frontmatter={ frontmatter } />
     <body>
-        <SkipLinks lang={frontmatter.lang ?? 'en'} />
-        <Header lang={frontmatter.lang ?? 'en'} />
-        <!-- 
-            {% include header.html %}
-            {% include breadcrumbs.html %}
-            <div class="content-group">
-            {% include navigation.html %}
-            {{ content }}
-            </div>
-            {% include footer.html %}
+        <SkipLinks lang={ lang } />
+        <Header lang={ lang } />
+        <Breadcrumbs lang={ lang } />
+        <div class="content-group">
+            <Navigation lang={ lang } />
+            <main id="site-main">
+                <article>
+                    <header>
+                        <h1>{ frontmatter.title ?? CONFIG.SITE.title }</h1>
+                    </header>
+                    <div>
+                        <slot />
+                    </div>
+                </article>
+            </main>
+        </div>
+        <Footer lang={ lang } />
+        <!--
             {% include javascripts.html %}
         -->
-        <slot />
     </body>
 </html>

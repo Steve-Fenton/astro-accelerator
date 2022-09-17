@@ -471,7 +471,7 @@ code {
     font-weight: bold;
 }
 
-pre.highlight {
+pre.astro-code {
     border-left: 5px solid var(--fore);
     padding: 1rem;
     font-family: var(--code-font);
@@ -479,7 +479,7 @@ pre.highlight {
     margin: 1em 0;
 }
 
-pre.highlight code {
+pre.astro-code code {
     font-weight: unset;
     background-color: unset;
 }

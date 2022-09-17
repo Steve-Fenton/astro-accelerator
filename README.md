@@ -6,3 +6,4 @@
 - Markdown extension for `;::note`
 - Markdown for `{:loading=lazy}`
 - Remaining items in `head.Head.astro`
+- Breadcrumbs.asto

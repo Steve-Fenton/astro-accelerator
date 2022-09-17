@@ -1,0 +1,14 @@
+---
+import * as CONFIG from '../../config';
+import t from '../Language/language.json';
+import { Language } from '../Language/language';
+
+const { lang } = Astro.props;
+
+const language = new Language(lang);
+const footer = t.footer;
+const _ = (entry: { [key: string]: string }) => language.translate(entry);
+---
+<footer id="site-footer">
+  <p>{ _(footer.copyright) } &copy; { new Date().getFullYear() } { CONFIG.SITE.owner }</p>
+</footer>

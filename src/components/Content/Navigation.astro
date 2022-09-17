@@ -1,0 +1,21 @@
+---
+import * as CONFIG from '../../config';
+import t from '../Language/language.json';
+import { Language } from '../Language/language';
+
+const { lang } = Astro.props;
+
+const language = new Language(lang);
+const navigation = t.navigation;
+const _ = (entry: { [key: string]: string }) => language.translate(entry);
+
+const pages = await Astro.glob('../../pages/*.md');
+---
+<nav class="site-nav" id="site-nav" aria-label="{{ 'aria' | t: 'site_navigation' }}">
+  <h2 class="site-nav-title">{ _(navigation.title) }</h2>
+  <ul>
+    {pages.map((page) => (
+      <li><a href={ (page.url ?? '').length > 0 ? page.url : '/' }>{ page.frontmatter.navTitle ?? page.frontmatter.title }</a></li>
+    ))}
+  </ul>
+</nav>

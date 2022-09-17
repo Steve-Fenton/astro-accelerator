@@ -3,10 +3,13 @@ export const SITE = {
 	description: 'An Astro boilerplate.',
 	defaultLanguage: 'en',
 	themeColor: '#333',
+    owner: 'Steve Fenton'
 };
 
 export type Frontmatter = {
 	title: string;
+	navTitle: string;
+	date: Date;
 	keywords: string;
 	description: string;
 	layout: string;
