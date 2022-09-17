@@ -3,14 +3,19 @@ import * as CONFIG from '../../config';
 import t from '../Language/language.json';
 import { Language } from '../Language/language';
 
+// Properties
 type Props = {
   lang: string;
 };
 const { lang } = Astro.props as Props;
 
+// Language
 const language = new Language(lang);
 const header = t.header;
 const _ = (entry: { [key: string]: string }) => language.translate(entry);
+
+// Logic
+// -
 ---
 <header class="site-header">
   <a href="#site-nav" class="navigation-icon" title={ _(header.open_menu) }><svg xmlns="http://www.w3.org/2000/svg" 

@@ -2,14 +2,19 @@
 import t from '../Language/language.json';
 import { Language } from '../Language/language';
 
+// Properties
 type Props = {
   lang: string;
 }
 const { lang } = Astro.props as Props;
 
+// Language
 const language = new Language(lang);
 const skiplinks = t.skiplinks;
 const _ = (entry: { [key: string]: string }) => language.translate(entry);
+
+// Logic
+// -
 ---
 <nav class="skip-links" aria-label="skiplinks">
     <a href="#site-nav">{ _(skiplinks.skip_to_navigation) }</a>

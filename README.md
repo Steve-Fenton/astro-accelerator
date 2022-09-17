@@ -6,6 +6,5 @@
 - Markdown extension for `:::note`
 - Markdown for `{:loading=lazy}`
 - Remaining items in `head.Head.astro`
-- Breadcrumbs.astro (find and display breadcrumbs)
 - Search feature
-- JavaScript (and move it to relevant components)
+- JavaScript (move it to relevant components)

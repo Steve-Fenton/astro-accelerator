@@ -1,20 +1,22 @@
 ---
-import * as CONFIG from '../../config';
 import t from '../Language/language.json';
 import { Language } from '../Language/language';
-import { mapNavPage } from './NavPage.astro';
-import type { NavPage } from './NavPage.astro';
+import { mapNavPage, popMatchingPage } from '../../utilities/NavPage.astro';
+import type { NavPage } from '../../utilities/NavPage.astro';
 import type { MarkdownInstance } from 'astro';
 
+// Properties
 type Props = {
   lang: string;
 };
 const { lang } = Astro.props as Props;
 
+// Language
 const language = new Language(lang);
 const aria = t.aria;
 const _ = (entry: { [key: string]: string }) => language.translate(entry);
 
+// Logic
 const currentUrl = new URL(Astro.request.url);
 const mapWithUrl = (page: MarkdownInstance<Record<string, any>>) => {
   return mapNavPage(page, currentUrl);
@@ -22,24 +24,18 @@ const mapWithUrl = (page: MarkdownInstance<Record<string, any>>) => {
 
 const allPages = await Astro.glob('../../pages/**/*.md');
 
-// ' aria-current="page"' needs to be added to current page
 const parts = currentUrl.pathname.split('/');
-let path = '';
 const items: NavPage[] = [];
+let path = '';
 
-for (let i = 0; i < parts.length; i++) {
-  const part = parts[i];
+parts.forEach((part) => {
+  path += part.length > 0 ? '/' + part : '';
+  const match = popMatchingPage(allPages, path);
 
-  if (part.length > 0) {
-    path += '/' + parts[i];
+  if (match) {
+    items.push(mapWithUrl(match));
   }
-  
-  const search = path ;
-  const found = allPages.filter((p) => p.url == search);
-  if (found.length > 0) {
-    items.push(mapWithUrl(found[0]))
-  }
-}
+});
 ---
 <nav class="site-breadcrumbs" aria-label={ _(aria.breadcrumbs) }>
   <ol vocab="http://schema.org/" typeof="BreadcrumbList">

@@ -1,16 +1,21 @@
 ---
 import t from '../Language/language.json';
 import { Language } from '../Language/language';
-import type { NavPage } from './NavPage.astro';
+import type { NavPage } from '../../utilities/NavPage.astro';
 
+// Properties
 type Props = {
   lang: string;
   navPage: NavPage
 };
 const { lang, navPage } = Astro.props as Props;
 
+// Language
 const language = new Language(lang);
 const _ = (entry: { [key: string]: string }) => language.translate(entry);
+
+// Logic
+// -
 ---
 {(navPage.children.length == 0) && (
 <li>

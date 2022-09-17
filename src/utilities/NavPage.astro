@@ -26,5 +26,24 @@ export const mapNavPage = (page: MarkdownInstance<Record<string, any>>, currentU
   }
 
   return entry;
-}
+};
+
+export const popMatchingPage = (allPages: MarkdownInstance<Record<string, any>>[], search: string) => {
+  const numberToRemove = 1;
+  let indexToRemove = -1;
+  let match = null;
+
+  for (let i = 0; i < allPages.length; i++) {
+    if (allPages[i].url == search) {
+      indexToRemove = i;
+      match = allPages[i];
+    }
+  }
+
+  if (match) {
+    allPages.splice(indexToRemove, numberToRemove);
+  }
+
+  return match;
+};
 ---
