@@ -3,7 +3,10 @@ import * as CONFIG from '../../config';
 import t from '../Language/language.json';
 import { Language } from '../Language/language';
 
-const { lang } = Astro.props;
+type Props = {
+  lang: string;
+};
+const { lang } = Astro.props as Props;
 
 const language = new Language(lang);
 const aria = t.aria;

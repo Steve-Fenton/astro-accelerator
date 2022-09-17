@@ -1,45 +1,44 @@
 ---
-import * as CONFIG from '../../config';
 import t from '../Language/language.json';
 import { Language } from '../Language/language';
 import NavigationItem from './NavigationItem.astro';
+import type { NavPage } from './NavPage.astro';
 import type { MarkdownInstance } from 'astro';
 
-const { lang } = Astro.props;
+type Props = {
+  lang: string;
+};
+const { lang } = Astro.props as Props;
 
 const language = new Language(lang);
 const navigation = t.navigation;
+const aria = t.aria;
 const _ = (entry: { [key: string]: string }) => language.translate(entry);
+
+const currentUrl = new URL(Astro.request.url);
 
 const topLevelPages = await Astro.glob('../../pages/*.md');
 const allPages = await Astro.glob('../../pages/**/*.md');
 
-type NavPage = {
-  section: string;
-  title: string;
-  url: string;
-  order: number;
-  openAttributes: string;
-  selectedAttibutes: string;
-  children: NavPage[];
-}
-
 const mapNavPage = (page: MarkdownInstance<Record<string, any>>) => {
+  const url = page.url == null || (page.url ?? '').length == 0 ? '/' : page.url;
+  const isCurrent = url == currentUrl.pathname;
+
   const entry: NavPage = {
     section: page.frontmatter.navSection ?? page.frontmatter.navTitle ?? page.frontmatter.title,
     title: page.frontmatter.navTitle ?? page.frontmatter.title,
-    url: page.url == null || (page.url ?? '').length == 0 ? '/' : page.url,
+    url: url,
     order: page.frontmatter.navOrder,
-    openAttributes: 'TODO',
-    selectedAttibutes: 'TODO',
+    isOpen: currentUrl.pathname.startsWith(url),
+    ariaCurrent: isCurrent ? 'page' : false,
     children: [],
   }
 
   return entry;
 }
 
-const pageHierarchy = topLevelPages.map(mapNavPage);
-const pageList = allPages.map(mapNavPage);
+const pageHierarchy: NavPage[] = topLevelPages.map(mapNavPage);
+const pageList: NavPage[] = allPages.map(mapNavPage);
 
 for (let i = 0; i < pageHierarchy.length; i++) {
   const page = pageHierarchy[i];
@@ -51,11 +50,11 @@ for (let i = 0; i < pageHierarchy.length; i++) {
     .sort((mp) => mp.order);
 }
 ---
-<nav class="site-nav" id="site-nav" aria-label="{{ 'aria' | t: 'site_navigation' }}">
+<nav class="site-nav" id="site-nav" aria-label={ _(aria.site_navigation) }>
   <h2 class="site-nav-title">{ _(navigation.title) }</h2>
   <ul>
     {pageHierarchy.sort((a, b) => a.order - b.order).map((page) => (
-      <NavigationItem navPage={page} />
+      <NavigationItem lang={lang} navPage={page} />
     ))}
   </ul>
 </nav>
