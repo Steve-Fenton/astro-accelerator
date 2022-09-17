@@ -2,7 +2,7 @@ export const SITE = {
 	title: 'Astro Boilerplate',
 	description: 'An Astro boilerplate.',
 	defaultLanguage: 'en',
-	themeColor: '#333'
+	themeColor: '#333',
 };
 
 export type Frontmatter = {

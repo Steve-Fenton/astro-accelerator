@@ -1,5 +1,6 @@
 ---
 import * as CONFIG from '../config';
+import Head from '../components/head/Head.astro';
 import type { MarkdownHeading } from 'astro';
 
 const {frontmatter} = Astro.props;
@@ -12,37 +13,19 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
 const imageAlt = frontmatter.bannerImage?.alt ?? CONFIG.OPEN_GRAPH.image.alt;
 ---
 <html dir={frontmatter.dir ?? 'ltr'} lang={frontmatter.lang ?? 'en'} class="initial">
-	<head>
-        <meta charset="utf-8" />
-		<title>
-			{frontmatter.title ? `${frontmatter.title} | ${CONFIG.SITE.title}` : CONFIG.SITE.title}
-		</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content={frontmatter.description}>
-        <meta name="keywords" content={frontmatter.keywords}>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content={CONFIG.SITE.themeColor} />
-        <meta name="msapplication-navbutton-color" content={CONFIG.SITE.themeColor} />
-        <meta name="apple-mobile-web-app-status-bar-style" content={CONFIG.SITE.themeColor} />
-        <meta property="og:title" content={frontmatter.title} />
-        <meta property="og:url" content={canonicalURL} />
-        <meta property="og:type" content="website" />
-        <meta property="og:description" content={frontmatter.description} />
-        <meta property="og:image" content={canonicalImageSrc} />
-        <link rel="canonical" href={canonicalURL} />
-        <!--
-        <link rel="alternate" type="application/rss+xml" title="Steve Fenton &raquo; Feed" href="https://www.stevefenton.co.uk{{ site.baseurl }}/feed/" />
-        <link rel="shortcut icon" href="{{ "/assets/icons/favicon.ico" | prepend: site.baseurl }}" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="{{ "/assets/icons/apple-touch-icon.png" | prepend: site.baseurl }}" />
-        <link rel="alternate" href="{{ "/sitemap.xml" | prepend: site.baseurl }}" type="application/rss+xml" />
-        <link rel="stylesheet" href="{{ "/assets/css/vars.css" | prepend: site.baseurl }}" />
-        <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}" />
-        <link rel="stylesheet" href="{{ "/assets/css/code.css" | prepend: site.baseurl }}" media="print" onload="this.media = 'all'" />
-        <noscript><link rel="stylesheet" href="{{ "/assets/css/code.css" | prepend: site.baseurl }}" /></noscript>
-        <Analytics></Analytics>
-        -->
-    </head>
+    <Head frontmatter={frontmatter} />
     <body>
+        <!-- 
+            {% include skiplinks.html %}
+            {% include header.html %}
+            {% include breadcrumbs.html %}
+            <div class="content-group">
+            {% include navigation.html %}
+            {{ content }}
+            </div>
+            {% include footer.html %}
+            {% include javascripts.html %}
+        -->
         <slot />
     </body>
 </html>
