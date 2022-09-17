@@ -1,0 +1,29 @@
+---
+import * as CONFIG from '../../config';
+import t from '../Language/language.json';
+import { Language } from '../Language/language';
+
+const { lang } = Astro.props;
+
+const language = new Language(lang);
+const header = t.header;
+const _ = (entry: { [key: string]: string }) => language.translate(entry);
+---
+<header class="site-header">
+  <a href="#site-nav" class="navigation-icon" title={ _(header.open_menu) }><svg xmlns="http://www.w3.org/2000/svg" 
+    width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" 
+    fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <line x1="4" y1="6" x2="20" y2="6" />
+    <line x1="4" y1="12" x2="20" y2="12" />
+    <line x1="4" y1="18" x2="20" y2="18" />
+  </svg></a>
+  <a href="/" class="site-title">{ CONFIG.SITE.title }</a>
+  <a href="/search/" class="search-icon" title={ _(header.open_search) }><svg xmlns="http://www.w3.org/2000/svg" 
+    width="40" height="40" viewBox="0 0 24 24" stroke-width="1" 
+    fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="10" cy="10" r="7" />
+    <line x1="21" y1="21" x2="15" y2="15" />
+  </svg></a>
+</header>

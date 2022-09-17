@@ -21,6 +21,14 @@
           "en": "Skip to footer"
       }
   },
+  "header": {
+    "open_menu": {
+        "en": "Open menu"
+    },
+    "open_search": {
+        "en": "Open site search"
+    }
+  },
   "navigation": {
       "title": {
           "en": "Navigation"

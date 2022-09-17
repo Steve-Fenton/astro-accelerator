@@ -13,18 +13,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 			{frontmatter.title ? `${frontmatter.title} | ${CONFIG.SITE.title}` : CONFIG.SITE.title}
 		</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content={frontmatter.description}>
-        <meta name="keywords" content={frontmatter.keywords}>
+        <meta name="description" content={ frontmatter.description }>
+        <meta name="keywords" content={ frontmatter.keywords }>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content={CONFIG.SITE.themeColor} />
-        <meta name="msapplication-navbutton-color" content={CONFIG.SITE.themeColor} />
-        <meta name="apple-mobile-web-app-status-bar-style" content={CONFIG.SITE.themeColor} />
-        <meta property="og:title" content={frontmatter.title} />
-        <meta property="og:url" content={canonicalURL} />
+        <meta name="theme-color" content={ CONFIG.SITE.themeColor } />
+        <meta name="msapplication-navbutton-color" content={ CONFIG.SITE.themeColor } />
+        <meta name="apple-mobile-web-app-status-bar-style" content={ CONFIG.SITE.themeColor } />
+        <meta property="og:title" content={ frontmatter.title } />
+        <meta property="og:url" content={ canonicalURL } />
         <meta property="og:type" content="website" />
-        <meta property="og:description" content={frontmatter.description} />
-        <meta property="og:image" content={canonicalImageSrc} />
-        <link rel="canonical" href={canonicalURL} />
+        <meta property="og:description" content={ frontmatter.description } />
+        <meta property="og:image" content={ canonicalImageSrc } />
+        <link rel="canonical" href={ canonicalURL } />
         <!--
         <link rel="alternate" type="application/rss+xml" title="Steve Fenton &raquo; Feed" href="https://www.stevefenton.co.uk{{ site.baseurl }}/feed/" />
         <link rel="alternate" href="{{ "/sitemap.xml" | prepend: site.baseurl }}" type="application/rss+xml" />

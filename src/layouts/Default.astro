@@ -2,6 +2,7 @@
 import * as CONFIG from '../config';
 import Head from '../components/head/Head.astro';
 import SkipLinks from '../components/Content/SkipLinks.astro';
+import Header from '../components/Content/Header.astro';
 import type { MarkdownHeading } from 'astro';
 
 const {frontmatter} = Astro.props;
@@ -17,8 +18,8 @@ const imageAlt = frontmatter.bannerImage?.alt ?? CONFIG.OPEN_GRAPH.image.alt;
     <Head frontmatter={frontmatter} />
     <body>
         <SkipLinks lang={frontmatter.lang ?? 'en'} />
+        <Header lang={frontmatter.lang ?? 'en'} />
         <!-- 
-            {% include skiplinks.html %}
             {% include header.html %}
             {% include breadcrumbs.html %}
             <div class="content-group">
