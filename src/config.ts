@@ -9,6 +9,8 @@ export const SITE = {
 export type Frontmatter = {
 	title: string;
 	navTitle: string;
+	navSection: string;
+	navOrder: number;
 	date: Date;
 	keywords: string;
 	description: string;

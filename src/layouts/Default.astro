@@ -11,7 +11,7 @@ import type { MarkdownHeading } from 'astro';
 const { frontmatter } = Astro.props;
 
 const lang = frontmatter.lang ?? 'en';
-const textDirection = frontmatter.dir ?? 'dir';
+const textDirection = frontmatter.dir ?? 'ltr';
 ---
 <html dir={ textDirection } lang={ lang } class="initial">
     <Head frontmatter={ frontmatter } />

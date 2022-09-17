@@ -1,0 +1,38 @@
+---
+import * as CONFIG from '../../config';
+import t from '../Language/language.json';
+import { Language } from '../Language/language';
+import type { MarkdownInstance } from 'astro';
+
+const { lang, navPage } = Astro.props;
+
+const language = new Language(lang);
+const navigation = t.navigation;
+const _ = (entry: { [key: string]: string }) => language.translate(entry);
+
+const x = 1;
+//{% if item_url == current_url) %} class="current-item" aria-current="page"{% endif %}>{{ item.nav-title | default: item.title }}
+---
+{(navPage.children.length == 0) && (
+<li>
+  <a href={ navPage.url }>{ navPage.title }</a>
+</li>
+)}
+{(navPage.children.length > 0) && (
+<li class="has-children">
+  <details class="sub-nav" {navPage.openAttributes}>
+    <summary><span>{ navPage.section }</span></summary>
+    <ul>
+      <li>
+        <a href={ navPage.url } { navPage.selectedAttibutes}>{ navPage.title }</a>
+      </li>
+      { navPage.children.sort((a, b) => a.order - b.order).map((page) => (
+      <li>
+        <a href={ page.url } { page.selectedAttibutes}>{ page.title }</a>
+      </li>
+      ))}
+    </ul>
+  </details>
+
+</li>
+)}

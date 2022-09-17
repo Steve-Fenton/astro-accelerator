@@ -2,6 +2,8 @@
 import * as CONFIG from '../../config';
 import t from '../Language/language.json';
 import { Language } from '../Language/language';
+import NavigationItem from './NavigationItem.astro';
+import type { MarkdownInstance } from 'astro';
 
 const { lang } = Astro.props;
 
@@ -9,13 +11,51 @@ const language = new Language(lang);
 const navigation = t.navigation;
 const _ = (entry: { [key: string]: string }) => language.translate(entry);
 
-const pages = await Astro.glob('../../pages/*.md');
+const topLevelPages = await Astro.glob('../../pages/*.md');
+const allPages = await Astro.glob('../../pages/**/*.md');
+
+type NavPage = {
+  section: string;
+  title: string;
+  url: string;
+  order: number;
+  openAttributes: string;
+  selectedAttibutes: string;
+  children: NavPage[];
+}
+
+const mapNavPage = (page: MarkdownInstance<Record<string, any>>) => {
+  const entry: NavPage = {
+    section: page.frontmatter.navSection ?? page.frontmatter.navTitle ?? page.frontmatter.title,
+    title: page.frontmatter.navTitle ?? page.frontmatter.title,
+    url: page.url == null || (page.url ?? '').length == 0 ? '/' : page.url,
+    order: page.frontmatter.navOrder,
+    openAttributes: 'TODO',
+    selectedAttibutes: 'TODO',
+    children: [],
+  }
+
+  return entry;
+}
+
+const pageHierarchy = topLevelPages.map(mapNavPage);
+const pageList = allPages.map(mapNavPage);
+
+for (let i = 0; i < pageHierarchy.length; i++) {
+  const page = pageHierarchy[i];
+  page.children = pageList
+    .filter((mp) => 
+      page.url != '/' 
+      && mp.url != page.url
+      && mp.url.startsWith(page.url))
+    .sort((mp) => mp.order);
+}
 ---
 <nav class="site-nav" id="site-nav" aria-label="{{ 'aria' | t: 'site_navigation' }}">
   <h2 class="site-nav-title">{ _(navigation.title) }</h2>
   <ul>
-    {pages.map((page) => (
-      <li><a href={ (page.url ?? '').length > 0 ? page.url : '/' }>{ page.frontmatter.navTitle ?? page.frontmatter.title }</a></li>
+    {pageHierarchy.sort((a, b) => a.order - b.order).map((page) => (
+      <NavigationItem navPage={page} />
     ))}
   </ul>
 </nav>

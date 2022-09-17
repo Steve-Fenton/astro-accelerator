@@ -2,6 +2,7 @@
 layout: ../layouts/Default.astro
 title: Welcome to Astro boilerplate
 navTitle: Home
+navOrder: 0
 date:   2022-09-17
 keywords: astro,boilerplate,site generator
 description: A boilerplate for a very clean version of Astro.
