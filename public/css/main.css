@@ -135,6 +135,10 @@ li::marker {
     color: var(--fore-headings);
 }
 
+main ul, main ol {
+    margin: var(--paragraph-margin) 0 var(--paragraph-margin) 1.2rem;
+}
+
 p {
     margin: var(--paragraph-margin) 0;
 }
