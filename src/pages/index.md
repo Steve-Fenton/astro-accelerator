@@ -16,7 +16,7 @@ I'm experimenting with Jekyll and Astro. This is the Astro version, there is als
 
 Welcome to Astro Boilerplate. A super-lightweight, accessible, SEO friendly starter project for the [Astro](https://astro.build/){:target="_blank"}.
 
-:::note
+:::div{.note}
 The Astro Boilerplate source code is available on [GitHub](https://github.com/Steve-Fenton/astro-boilerplate){:target="_blank"}.
 :::
 
@@ -33,6 +33,6 @@ Astro Boilerplate is built on some strong opinions:
 
 Out of the box, Astro Boilerplate is a "top scores" high-performance website in the Pagespeed lab. [Pagespeed Insights](https://developers.google.com/speed/docs/insights/v5/about?hl=en-US){:target="_blank"} tests website performance on mobile and desktop across a number of measurements.
 
-![Astro Lighthouse Score (100% in all categories)](/astro-lighthouse.webp){:loading=lazy}
+:img{ src="/astro-lighthouse.webp" alt="Astro Lighthouse Score (100% in all categories)" loading="lazy" }
 
 Test scores aren't everything, but Astro Boilerplate is light and fast.

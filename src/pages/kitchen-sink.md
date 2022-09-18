@@ -104,14 +104,14 @@ const elem = document.querySelector('.elem');
 Markdown:
 
 ```markdown
-:::note{.note}
+:::div{.note}
 This is a custom div element with the class `note`
 :::
 ```
 
 Result:
 
-:::note{.note}
+:::div{.note}
 This is a custom div element with the class `note`
 :::
 
@@ -120,22 +120,22 @@ This is a custom div element with the class `note`
 Markdown:
 
 ```markdown
- :::simple-grid
+:::div{.simple-grid}
 
- ![An old book front for Jekyll and Hyde](/jekyll-and-hyde.webp){loading=lazy}
+:img{ src="/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
 
- ![An old book front for Jekyll and Hyde](/jekyll-and-hyde.webp){:loading="lazy"}
+:img{ src="/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
 
- :::
+:::
 ```
 
 Result:
 
-:::simple-grid
+:::div{.simple-grid}
 
-![An old book front for Jekyll and Hyde](/jekyll-and-hyde.webp){:loading="lazy"}
+:img{ src="/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
 
-![An old book front for Jekyll and Hyde](/jekyll-and-hyde.webp){:loading="lazy"}
+:img{ src="/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
 
 :::
 
@@ -144,12 +144,12 @@ Result:
 Markdown:
 
 ```markdown
-![An old book front for Jekyll and Hyde](/jekyll-and-hyde.webp){:loading="lazy"}
+:img{ src="/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
 ```
 
 Result:
 
-![An old book front for Jekyll and Hyde](/jekyll-and-hyde.webp){:loading="lazy"}
+:img{ src="/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
 
 ## Lists
 

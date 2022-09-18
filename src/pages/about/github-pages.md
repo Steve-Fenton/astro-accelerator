@@ -18,7 +18,7 @@ The Astro Deploy Action is really easy to set up and publishes the output direct
 
 That's what we're doing for this site, which runs on GitHub pages with a custom domain.
 
-:::note
+:::div{.note}
 
 The settings for GitHub Pages are:
 
