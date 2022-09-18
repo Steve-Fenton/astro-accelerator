@@ -1,0 +1,58 @@
+---
+import * as CONFIG from '../../config';
+import Navigation from './Navigation.astro';
+
+// Properties
+type Props = {
+  lang: string;
+  frontmatter: CONFIG.Frontmatter;
+};
+const { lang, frontmatter } = Astro.props as Props;
+
+// Language
+// --
+
+// Logic
+// --
+---
+<style>
+.content-group {
+    display: grid;
+    grid-template-columns: var(--navigation-width) auto;
+    gap: var(--grid-gap);
+    max-width: var(--grid-max-width);
+    width: var(--grid-width);
+    margin: var(--block-gap) auto var(--block-gap) auto;
+    min-height: 75vh;
+}
+
+@media (max-width: 860px) {
+  /* Content First on Small Screens */
+  .content-group {
+      grid-template-columns: auto;
+      grid-template-rows: 1fr auto;
+  }
+
+  main {
+      grid-row: 1;
+  }
+
+  main {
+      max-width: unset;
+      width: var(--grid-width);
+  }
+}
+</style>
+<div class="content-group">
+  <Navigation lang={ lang } />
+  <main id="site-main">
+      <article>
+          <header>
+              <h1>{ frontmatter.title ?? CONFIG.SITE.title }</h1>
+          </header>
+          <div>
+              <slot />
+          </div>
+      </article>
+  </main>
+</div>

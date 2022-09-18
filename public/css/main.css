@@ -181,20 +181,6 @@ tbody tr:nth-child(odd) {
 
 
 
-
-
-/* Content Group */
-
-.content-group {
-    display: grid;
-    grid-template-columns: var(--navigation-width) auto;
-    gap: var(--grid-gap);
-    max-width: var(--grid-max-width);
-    width: var(--grid-width);
-    margin: var(--block-gap) auto var(--block-gap) auto;
-    min-height: 75vh;
-}
-
 /* Navigation */
 
 nav.site-nav.sticky {
@@ -430,50 +416,13 @@ form.site-search button {
 
 @media (max-width: 860px) {
 
-    /* Show the Hamburger Icon */
-    .navigation-icon {
+    nav.site-nav h2 {
         display: block;
-    }
-
-
-
-    /* Content First on Small Screens */
-    .content-group {
-        grid-template-columns: auto;
-        grid-template-rows: 1fr auto;
     }
 
     nav.site-nav {
         grid-row: 2;
     }
-    
-    .content-group > main {
-        grid-row: 1;
-    }
-
-    main {
-        max-width: unset;
-        width: var(--grid-width);
-    }
-
-    nav.site-nav h2 {
-        display: block;
-    }
-
-    /* Collapse Paging */
-
-    .post-paging > * {
-        display: none;
-    }
-
-    .post-paging > *:first-child {
-        display: inline-block;
-    }
-    
-    .post-paging > *:last-child {
-        display: inline-block;
-    }
-    
 
     /*  */
     form.site-search div {
