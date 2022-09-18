@@ -104,14 +104,14 @@ const elem = document.querySelector('.elem');
 Markdown:
 
 ```markdown
- :::note
- This is a custom div element with the class `note`
- :::
+:::note{.note}
+This is a custom div element with the class `note`
+:::
 ```
 
 Result:
 
-:::note
+:::note{.note}
 This is a custom div element with the class `note`
 :::
 
@@ -122,7 +122,7 @@ Markdown:
 ```markdown
  :::simple-grid
 
- ![An old book front for Jekyll and Hyde](/jekyll-and-hyde.webp){:loading="lazy"}
+ ![An old book front for Jekyll and Hyde](/jekyll-and-hyde.webp){loading=lazy}
 
  ![An old book front for Jekyll and Hyde](/jekyll-and-hyde.webp){:loading="lazy"}
 
