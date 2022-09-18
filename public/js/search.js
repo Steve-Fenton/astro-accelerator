@@ -139,7 +139,12 @@ fetch(dataUrl)
     })
     .then(function (text) { 
         log('Data text being used');
-        const data = JSON.parse(text.replace(/<!DOCTYPE(.*)>/, ''));
+
+        const data = JSON.parse(text.substring(
+            text.indexOf('[{'),
+            text.indexOf('}]')
+        ));
+        
         console.log(data);
         haystack = data;
         ready = true;
