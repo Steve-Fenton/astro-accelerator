@@ -40,6 +40,31 @@ for (let i = 0; i < pageHierarchy.length; i++) {
     .sort((mp) => mp.order);
 }
 ---
+<style>
+  
+
+/* Navigation */
+
+nav.site-nav.sticky {
+    align-self: start;
+    position: sticky;
+}
+
+nav.site-nav h2 {
+    margin-top: 0.1em;
+    display: none;
+}
+
+@media (max-width: 860px) {
+  nav.site-nav h2 {
+      display: block;
+  }
+
+  nav.site-nav {
+      grid-row: 2;
+  }
+}
+</style>
 <nav class="site-nav" id="site-nav" aria-label={ _(aria.site_navigation) }>
   <h2 class="site-nav-title">{ _(navigation.title) }</h2>
   <ul>

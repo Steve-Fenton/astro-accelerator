@@ -1,3 +1,7 @@
+/*
+    Should only contain global styles
+*/
+
 html {
     box-sizing: border-box;
 }
@@ -45,19 +49,6 @@ summary:focus {
 :focus {
     outline: 2px dashed var(--fore-link-alt);
     border-radius: 5px;
-}
-
-/* General */
-
-@media (prefers-reduced-motion: no-preference) {
-    body, html {
-        scroll-behavior: smooth;
-    }
-
-    .post-list .list-item, main img, main blockquote, main .note {
-        transition: all 0.2s ease-in;
-        scale: calc(0.75 + (var(--shown, 1) * 0.25));
-    }
 }
 
 blockquote {
@@ -114,10 +105,6 @@ h1 {
     font-size: clamp(2em, 4vw, 3em);
 }
 
-main h1 {
-    margin-top: 0.1em;
-}
-
 h2 {
     font-size: 2.6em;
     font-size: clamp(1.8em, 3.5vw, 2.6em);
@@ -142,6 +129,10 @@ hr {
 
 img {
     max-width: 100%;
+}
+
+li::marker {
+    color: var(--fore-headings);
 }
 
 p {
@@ -179,58 +170,6 @@ tbody tr:nth-child(odd) {
     color: var(--fore-table-row-odd);
 }
 
-
-
-/* Navigation */
-
-nav.site-nav.sticky {
-    align-self: start;
-    position: sticky;
-}
-
-nav.site-nav h2 {
-    margin-top: 0.1em;
-    display: none;
-}
-
-nav.site-nav li {
-    list-style: none;
-}
-
-nav.site-nav a {
-    text-indent: var(--marker-size);
-    width: calc(100% - 2rem);
-    display: inline-block;
-    padding: 0.5rem 1rem;
-}
-
-nav.site-nav li.has-children summary span {
-    text-indent: 0;
-    width: calc(100% - 2rem - var(--marker-size));
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    text-decoration: underline;
-}
-
-nav.site-nav li.has-children ul a {
-    width: calc(100% - 2rem);
-    text-indent: calc(var(--marker-size) * 2);
-}
-
-nav.site-nav a[aria-current] {
-    font-weight: bold;
-}
-
-details summary {
-    cursor: pointer;
-}
-
-details summary::-webkit-details-marker,
-details summary::marker {
-    font-size: var(--marker-size);
-    width: 1em;
-}
-
 /* Overlay (Mobile Navigation, Search) */
 
 .overlay {
@@ -246,12 +185,6 @@ details summary::marker {
 
 .overlay a, .overlay summary {
     border-bottom: 1px solid var(--fore-link);
-}
-
-/* Content */
-
-li::marker {
-    color: var(--fore-headings);
 }
 
 /* Code Block */
@@ -297,20 +230,15 @@ pre.astro-code code {
     width: 100%;
 }
 
-/* Smaller Screens */
+/* Animation */
 
-@media (max-width: 860px) {
-
-    nav.site-nav h2 {
-        display: block;
+@media (prefers-reduced-motion: no-preference) {
+    body, html {
+        scroll-behavior: smooth;
     }
 
-    nav.site-nav {
-        grid-row: 2;
+    .post-list .list-item, main img, main blockquote, main .note {
+        transition: all 0.2s ease-in;
+        scale: calc(0.75 + (var(--shown, 1) * 0.25));
     }
-
-    /*  */
-    form.site-search div {
-        grid-template-columns: repeat(1, auto);
-    }    
 }
