@@ -8,7 +8,6 @@
 - Markdown extension for `:::note`
 - Markdown for `{:loading=lazy}`
 - Remaining items in `head.Head.astro`
-- JavaScript (move it to relevant components)
 - Sitemap is at `https://astro.stevefenton.co.uk/sitemap-index.xml`
 
 ## Items to Resolve Later

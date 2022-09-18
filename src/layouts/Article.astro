@@ -1,0 +1,30 @@
+---
+import type { Frontmatter } from '../config';
+import Head from '../components/head/Head.astro';
+import SkipLinks from '../components/Content/SkipLinks.astro';
+import Breadcrumbs from '../components/Content/Breadcrumbs.astro';
+import Header from '../components/Content/Header.astro';
+import Footer from '../components/Content/Footer.astro';
+import ContentGroup from '../components/Content/ContentGroup.astro';
+
+type Props = {
+    frontmatter: Frontmatter
+}
+const { frontmatter } = Astro.props as Props;
+
+const lang = frontmatter.lang ?? 'en';
+const textDirection = frontmatter.dir ?? 'ltr';
+---
+<html dir={ textDirection } lang={ lang } class="initial">
+    <Head frontmatter={ frontmatter } />
+    <body>
+        <SkipLinks lang={ lang } />
+        <Header lang={ lang } />
+        <Breadcrumbs lang={ lang } />
+        <ContentGroup lang={ lang } frontmatter={ frontmatter }>
+            <slot />
+        </ContentGroup>
+        <Footer lang={ lang } />
+        <script src="/js/main.js" type="module" async></script>
+    </body>
+</html>

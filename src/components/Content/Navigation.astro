@@ -4,6 +4,7 @@ import { Language } from '../Language/language';
 import NavigationItem from './NavigationItem.astro';
 import { mapNavPage } from '../../utilities/NavPage.astro';
 import type { NavPage } from '../../utilities/NavPage.astro';
+import { isNotArticle } from '../../utilities/PageTypeFilters.astro'
 import type { MarkdownInstance } from 'astro';
 
 // Properties
@@ -27,8 +28,13 @@ const mapWithUrl = (page: MarkdownInstance<Record<string, any>>) => {
 const topLevelPages = await Astro.glob('../../pages/*.md');
 const allPages = await Astro.glob('../../pages/**/*.md');
 
-const pageHierarchy: NavPage[] = topLevelPages.map(mapWithUrl);
-const pageList: NavPage[] = allPages.map(mapWithUrl);
+const pageHierarchy: NavPage[] = topLevelPages
+  .filter(isNotArticle)
+  .map(mapWithUrl);
+
+const pageList: NavPage[] = allPages
+  .filter(isNotArticle)
+  .map(mapWithUrl);
 
 for (let i = 0; i < pageHierarchy.length; i++) {
   const page = pageHierarchy[i];

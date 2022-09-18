@@ -10,7 +10,10 @@ import Footer from '../components/Content/Footer.astro';
 import ContentGroup from '../components/Content/ContentGroup.astro';
 
 // Properties
-const { frontmatter } = Astro.props;
+type Props = {
+    frontmatter: CONFIG.Frontmatter
+};
+const { frontmatter } = Astro.props as Props;
 const lang = frontmatter.lang ?? 'en';
 const textDirection = frontmatter.dir ?? 'ltr';
 

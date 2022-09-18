@@ -12,8 +12,13 @@ export type NavPage = {
 }
 
 export const mapNavPage = (page: MarkdownInstance<Record<string, any>>, currentUrl: URL) => {
-  const url = page.url == null || (page.url ?? '').length == 0 ? '/' : page.url;
+  let url = page.url == null || (page.url ?? '').length == 0 ? '/' : page.url;
   const isCurrent = url == currentUrl.pathname;
+
+  // Send visitors straight to the first page
+  if (page.frontmatter.paged) {
+    url += '/1';
+  }
 
   const entry: NavPage = {
     section: page.frontmatter.navSection ?? page.frontmatter.navTitle ?? page.frontmatter.title,

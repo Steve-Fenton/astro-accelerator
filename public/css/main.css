@@ -191,6 +191,35 @@ tbody tr:nth-child(odd) {
     border-bottom: 1px solid var(--fore-link);
 }
 
+/* Articles */
+
+.post-list {
+    margin: 0;
+}
+
+.post-list .list-item {
+    list-style: none;
+    color: var(--fore-block);
+    background-color: var(--aft-block);
+    position: relative;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 1.5rem;
+}
+
+.post-list .list-item-content {
+    padding: 1rem;
+}
+
+.post-list .list-item-content h2 {
+    margin: 0.5rem 0;
+}
+
+.post-list .list-item img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
 /* Code Block */
 
 code {
