@@ -16,6 +16,35 @@ const _ = (entry: { [key: string]: string }) => language.translate(entry);
 // Logic
 // -
 ---
+<style>
+  /* Skip Links */
+nav {
+    position: absolute;
+}
+
+a {
+    clip: rect(0 0 0 0);
+    background-color: var(--aft);
+    min-width: 20vw;
+    overflow: hidden;
+    padding: 1rem;
+    position: absolute;
+    z-index: 15;
+    text-align: center;
+    display: inline-block;
+    height: 1px;
+    margin: -1px;
+    width: 1px;
+}
+
+a:focus {
+    clip: auto;
+    height: auto;
+    margin: 0.2em;
+    overflow: visible;
+    width: auto;
+}
+</style>
 <nav class="skip-links" aria-label="skiplinks">
     <a href="#site-nav">{ _(skiplinks.skip_to_navigation) }</a>
     <a href="#site-main">{ _(skiplinks.skip_to_content) }</a>

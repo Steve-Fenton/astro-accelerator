@@ -37,6 +37,34 @@ parts.forEach((part) => {
   }
 });
 ---
+<style>
+  /* Breadcrumbs */
+
+ol {
+    font-size: 0.8rem;
+    background-color: var(--aft-breadcrumb);
+    color: var(--fore-breadcrumb);
+    padding: 0 1em;
+}
+
+li {
+    display: inline-block;
+    padding: 0.2em;
+}
+
+li::before {
+    content: '>'
+}
+
+li:first-child::before {
+    content: ''
+}
+
+a[aria-current] {
+    color: var(--fore);
+    text-decoration: none;
+}
+</style>
 <nav class="site-breadcrumbs" aria-label={ _(aria.breadcrumbs) }>
   <ol vocab="http://schema.org/" typeof="BreadcrumbList">
     {items.map((page, index) => (
