@@ -22,7 +22,36 @@ const _ = (entry: { [key: string]: string }) => language.translate(entry);
 // Logic
 const siteUrl = Astro.site ? Astro.site.href : '';
 ---
-<style>
+<style is:global>
+/* Site Search */
+
+form.site-search {
+    padding: 1em;
+}
+
+form.site-search div {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 1em;
+}
+
+form.site-search label > * {
+    padding: 0.2em;
+}
+
+form.site-search button {
+    display: none;
+}
+
+.site-search-results {
+    font-size: 1.3rem;
+}
+
+.site-search-results a {
+    display: block;
+    padding: 0.2em;
+}
+
 @media (max-width: 860px) {
     form.site-search div {
         grid-template-columns: repeat(1, auto);
@@ -41,9 +70,9 @@ const siteUrl = Astro.site ? Astro.site.href : '';
                 <fieldset>
                     <input type="hidden" name={ CONFIG.SITE.search.fallbackSite ?? 'q' } value={ siteUrl } />
                     <div>
-                    <label for="site-search-query">{ _(search.search_for) }</label>
-                    <input type="text" name={ CONFIG.SITE.search.fallbackSite ?? 'q' } id="site-search-query" autofocus="autofocus" />
-                    <button id="site-search-button" type="submit">{ _(search.submit) }</button>
+                        <label for="site-search-query">{ _(search.search_for) }</label>
+                        <input type="text" name={ CONFIG.SITE.search.fallbackSite ?? 'q' } id="site-search-query" autofocus="autofocus" />
+                        <button id="site-search-button" type="submit">{ _(search.submit) }</button>
                     </div>
                 </fieldset>
             </form>

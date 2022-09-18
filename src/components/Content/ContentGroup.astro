@@ -26,6 +26,19 @@ const { lang, frontmatter } = Astro.props as Props;
     min-height: 75vh;
 }
 
+main {
+    max-width: calc(var(--grid-max-width) - var(--navigation-width) - var(--grid-gap));
+    width: calc(var(--grid-width) - var(--navigation-width) - var(--grid-gap));
+}
+
+main ul, main ol {
+    margin: var(--paragraph-margin) 0 var(--paragraph-margin) 1.2rem;
+}
+
+main ul ol, main ul ul, main ol ol, main ol ul {
+    margin: 0 0 0 1.2rem;
+}
+
 @media (max-width: 860px) {
   /* Content First on Small Screens */
   .content-group {

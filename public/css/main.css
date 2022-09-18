@@ -250,95 +250,9 @@ details summary::marker {
 
 /* Content */
 
-main {
-    max-width: calc(var(--grid-max-width) - var(--navigation-width) - var(--grid-gap));
-    width: calc(var(--grid-width) - var(--navigation-width) - var(--grid-gap));
-}
-
-main ul, main ol {
-    margin: var(--paragraph-margin) 0 var(--paragraph-margin) 1.2rem;
-}
-
-main ul ol, main ul ul, main ol ol, main ol ul {
-    margin: 0 0 0 1.2rem;
-}
-
 li::marker {
     color: var(--fore-headings);
 }
-
-/* Jekyll Post List */
-
-.post-list {
-    margin: 0;
-}
-
-.post-list .list-item {
-    list-style: none;
-    color: var(--fore-block);
-    background-color: var(--aft-block);
-    position: relative;
-    box-shadow: var(--box-shadow);
-    margin-bottom: 1.5rem;
-}
-
-.post-list .list-item-content {
-    padding: 1rem;
-}
-
-.post-list .list-item-content h2 {
-    margin: 0.5rem 0;
-}
-
-.post-list .list-item img {
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-}
-
-.post-paging {
-    margin-top: 2rem;
-    text-align: center;
-}
-
-.post-paging > * {
-    display: inline-block;
-    padding: 0.3rem;
-}
-
-/* Jekyll Post */
-.post-meta {
-    display: flex;
-    align-items: center;
-}
-
-.post-meta .author-image {
-    max-width: 50px;
-    margin-right: 1rem;
-}
-
-.post-meta > .author-info {
-    display: flex;
-    align-items: center;
-}
-
-.post-meta time {
-    display: block;
-}
-
-/* Authors */
-
-.author-image {
-    border-radius: 50%;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    max-width: 150px;
-    float: right
-}
-
-/* .author-profile {
-    display: flex;
-} */
 
 /* Code Block */
 
@@ -360,35 +274,6 @@ pre.astro-code {
 pre.astro-code code {
     font-weight: unset;
     background-color: unset;
-}
-
-/* Site Search */
-
-form.site-search {
-    padding: 1em;
-}
-
-form.site-search div {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    gap: 1em;
-}
-
-form.site-search label > * {
-    padding: 0.2em;
-}
-
-form.site-search button {
-    display: none;
-}
-
-.site-search-results {
-    font-size: 1.3rem;
-}
-
-.site-search-results a {
-    display: block;
-    padding: 0.2em;
 }
 
 /* Custom Divisions */
