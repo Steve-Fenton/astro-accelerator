@@ -4,11 +4,17 @@ import type { MarkdownInstance } from 'astro';
 const allPages: MarkdownInstance<Record<string, any>>[] = await Astro.glob('./**/*.md');
 
 const items = JSON.stringify(allPages.map(page => {
+    let url = page.url ?? '';
+
+    if (page.frontmatter.paged) {
+        url += '/1';
+    }
+
     return {
         title: page.frontmatter.title ?? '',
         category: page.frontmatter.category ?? '',
         tags: page.frontmatter.keywords ?? '',
-        url: page.url ?? '',
+        url: url,
         date: page.date ?? ''
     };
 }));

@@ -5,7 +5,7 @@ date:   2022-09-03
 keywords: sample,post
 description: A sample post
 bannerImage:
-    src: surface-accessories-700.webp
+    src: /surface-accessories-700.webp
     alt: Dummy image
 dir: ltr
 ---

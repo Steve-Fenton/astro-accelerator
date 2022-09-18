@@ -1,15 +1,23 @@
 ---
 import type { Frontmatter } from '../../config';
-import Default from '../../components/head/Head.astro';
+import Head from '../../components/head/Head.astro';
+import SkipLinks from '../../components/Content/SkipLinks.astro';
+import Breadcrumbs from '../../components/Content/Breadcrumbs.astro';
+import Header from '../../components/Content/Header.astro';
+import Footer from '../../components/Content/Footer.astro';
+import ContentGroup from '../../components/Content/ContentGroup.astro';
+
+const lang = 'en';
+const textDirection = 'ltr';
 
 const frontmatter: Frontmatter = {
   layout: '../layouts/Default.astro',
-  title: 'About Astro Boilerplate',
+  title: 'Articles',
   date:   '2022-09-17',
-  keywords: 'about,astro,boilerplate',
-  description: 'Astro boilerplate is an opinionated Astro site.',
+  keywords: 'articles,astro,boilerplate',
+  description: 'Astro boilerplate articles.',
   bannerImage: {
-      src: 'surface-accessories-700.webp',
+      src: '/surface-accessories-700.webp',
       alt: 'Dummy image',
   },
   dir: 'ltr'
@@ -17,36 +25,47 @@ const frontmatter: Frontmatter = {
 
 export async function getStaticPaths({ paginate }) {
   const sourcePosts = await Astro.glob('../articles/**/*.md');
-  const urlPosts = sourcePosts
-    .filter(p => p.url != null && p.url != '');
+  const urlPosts = sourcePosts.filter(p => p.url != null && p.url != '');
 
-  return paginate(urlPosts, { pageSize: 2 });
+  return paginate(urlPosts, { pageSize: 4 });
 }
 
 // All paginated data is passed on the "page" prop
 const { page } = Astro.props;
 
 ---
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet elit sodales, egestas odio eu, interdum nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elit odio, dapibus nec finibus sit amet, aliquam a tortor.
+<html dir={ textDirection } lang={ lang } class="initial">
+    <Head frontmatter={ frontmatter } />
+    <body>
+        <SkipLinks lang={ lang } />
+        <Header lang={ lang } />
+        <Breadcrumbs lang={ lang } />
+        <ContentGroup lang={ lang } frontmatter={ frontmatter }>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet elit sodales, egestas odio eu, interdum nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elit odio, dapibus nec finibus sit amet, aliquam a tortor.
 
-<!--Display the current page number. Astro.params.page can also be used!-->
-<h1>Page {page.currentPage}</h1>
-<ul class="post-list">
-  <!--List the array of astronaut info-->
-  {page.data.map((post) => (
-  <li class="list-item" data-destination={ post.url }>
-    <article>
-      <img src={ post.frontmatter.bannerImage.src } alt={ post.frontmatter.bannerImage.alt } loading="lazy" />
-      <div class="list-item-content">
-      <span class="post-meta">{ post.frontmatter.date }</span>
-      <h2>
-        <a href={ post.url }>{ post.frontmatter.title }</a>
-      </h2>
-    </div>
-    </article>
-  </li>
-  ))}
-</ul>
-
-{page.url.prev ? <a href={page.url.prev}>Previous</a> : null}
-{page.url.next ? <a href={page.url.next}>Next</a> : null}
+          <!--Display the current page number. Astro.params.page can also be used!-->
+          <h1>Page {page.currentPage}</h1>
+          <ul class="post-list">
+            <!--List the array of astronaut info-->
+            {page.data.map((post) => (
+            <li class="list-item" data-destination={ post.url }>
+              <article>
+                <img src={ post.frontmatter.bannerImage.src } alt={ post.frontmatter.bannerImage.alt } loading="lazy" />
+                <div class="list-item-content">
+                <span class="post-meta">{ post.frontmatter.date }</span>
+                <h2>
+                  <a href={ post.url }>{ post.frontmatter.title }</a>
+                </h2>
+              </div>
+              </article>
+            </li>
+            ))}
+          </ul>
+          
+          {page.url.prev ? <a href={page.url.prev}>Previous</a> : null}
+          {page.url.next ? <a href={page.url.next}>Next</a> : null}
+        </ContentGroup>
+        <Footer lang={ lang } />
+        <script src="/js/main.js" type="module" async></script>
+    </body>
+</html>
