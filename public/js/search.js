@@ -4,18 +4,6 @@ import { qs } from './modules/query.js';
 import { raiseEvent } from './modules/events.js';
 import { contains, sanitise, explode } from './modules/string.js';
 
-var debug = document.getElementById('debug');
-
-function log(message) {
-    if (debug) {
-        var p = document.createElement('p');
-        p.innerHTML = new Date().toISOString() + ' ' + message;
-        debug.appendChild(p);
-    }
-}
-
-log('Running');
-
 var dataUrl = '/search.json';
 var haystack = [];
 var needles = [];
@@ -134,18 +122,13 @@ function debounceSearch() {
 
 fetch(dataUrl)
     .then(function (response) { 
-        log('Data response received');
         return response.text();
     })
     .then(function (text) { 
-        log('Data text being used');
-
         const stripped = text.substring(
             text.indexOf('[{'),
             text.indexOf('}]') + 2
         );
-
-        log(stripped);
 
         const data = JSON.parse(stripped);
 
@@ -179,5 +162,5 @@ fetch(dataUrl)
         console.log('Search ready');
     })
     .catch((error) => {
-        log('Error ' + error);
+        console.log(error)
     });
