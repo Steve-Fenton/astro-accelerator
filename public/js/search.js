@@ -140,11 +140,15 @@ fetch(dataUrl)
     .then(function (text) { 
         log('Data text being used');
 
-        const data = JSON.parse(text.substring(
+        const stripped = text.substring(
             text.indexOf('[{'),
-            text.indexOf('}]')
-        ));
-        
+            text.indexOf('}]') + 2
+        );
+
+        log(stripped);
+
+        const data = JSON.parse(stripped);
+
         console.log(data);
         haystack = data;
         ready = true;
