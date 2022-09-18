@@ -7,7 +7,7 @@ date:   2022-09-17
 keywords: astro,boilerplate,site generator
 description: A boilerplate for a very clean version of Astro.
 bannerImage:
-    src: surface-accessories-700.webp
+    src: /surface-accessories-700.webp
     alt: Dummy image
 dir: ltr
 ---

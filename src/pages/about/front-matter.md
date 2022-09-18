@@ -5,7 +5,7 @@ date:   2022-09-17
 keywords: jekyll boilerplate,front matter
 description: A list of all custom front matter features in Jekyll Boilerplate.
 bannerImage:
-    src: surface-accessories-700.webp
+    src: /surface-accessories-700.webp
     alt: Dummy image
 ---
 

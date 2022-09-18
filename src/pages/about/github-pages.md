@@ -6,7 +6,7 @@ date:   2022-09-17
 keywords: jekyll boilerplate,github pages,github action
 description: How to get the most from Jekyll Boilerplate and GitHub Pages.
 bannerImage:
-    src: surface-accessories-700.webp
+    src: /surface-accessories-700.webp
     alt: Dummy image
 ---
 
