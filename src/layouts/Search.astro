@@ -1,7 +1,7 @@
 ---
 import * as CONFIG from '../config';
 import t from '../components/Language/language.json';
-import { Language } from '../components/Language/language';
+import { Lang } from '../components/Language/language';
 import Head from '../components/Head/Head.astro';
 import SkipLinks from '../components/Content/SkipLinks.astro';
 import Breadcrumbs from '../components/Content/Breadcrumbs.astro';
@@ -18,9 +18,8 @@ const lang = frontmatter.lang ?? 'en';
 const textDirection = frontmatter.dir ?? 'ltr';
 
 // Language
-const language = new Language(lang);
+const _ = Lang(lang);
 const search = t.search;
-const _ = (entry: { [key: string]: string }) => language.translate(entry);
 
 // Logic
 const siteUrl = Astro.site ? Astro.site.href : '';

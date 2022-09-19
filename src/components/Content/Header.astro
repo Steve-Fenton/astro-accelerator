@@ -1,7 +1,7 @@
 ---
 import * as CONFIG from '../../config';
 import t from '../Language/language.json';
-import { Language } from '../Language/language';
+import { Lang } from '../Language/language';
 
 // Properties
 type Props = {
@@ -10,9 +10,8 @@ type Props = {
 const { lang } = Astro.props as Props;
 
 // Language
-const language = new Language(lang);
+const _ = Lang(lang);
 const header = t.header;
-const _ = (entry: { [key: string]: string }) => language.translate(entry);
 
 // Logic
 // -

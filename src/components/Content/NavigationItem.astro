@@ -1,6 +1,6 @@
 ---
 import t from '../Language/language.json';
-import { Language } from '../Language/language';
+import { Lang } from '../Language/language';
 import type { NavPage } from '../../utilities/NavPage.astro';
 
 // Properties
@@ -11,8 +11,7 @@ type Props = {
 const { lang, navPage } = Astro.props as Props;
 
 // Language
-const language = new Language(lang);
-const _ = (entry: { [key: string]: string }) => language.translate(entry);
+const _ = Lang(lang);
 
 // Logic
 // -

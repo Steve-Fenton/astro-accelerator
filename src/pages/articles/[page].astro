@@ -1,6 +1,7 @@
 ---
 import type { Frontmatter } from '../../config';
-import Head from '../../components/head/Head.astro';
+import type { Page, MarkdownInstance } from 'astro';
+import Head from '../../components/Head/Head.astro';
 import SkipLinks from '../../components/Content/SkipLinks.astro';
 import Breadcrumbs from '../../components/Content/Breadcrumbs.astro';
 import Header from '../../components/Content/Header.astro';
@@ -13,7 +14,7 @@ const textDirection = 'ltr';
 const frontmatter: Frontmatter = {
   layout: '../layouts/Default.astro',
   title: 'Articles',
-  date:   '2022-09-17',
+  date: new Date(2022, 9, 17),
   keywords: 'articles,astro,boilerplate',
   description: 'Astro boilerplate articles.',
   bannerImage: {
@@ -23,7 +24,7 @@ const frontmatter: Frontmatter = {
   dir: 'ltr'
 };
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({ paginate }: any) {
   const sourcePosts = await Astro.glob('../articles/**/*.md');
   const urlPosts = sourcePosts.filter(p => p.url != null && p.url != '');
 
@@ -31,7 +32,10 @@ export async function getStaticPaths({ paginate }) {
 }
 
 // All paginated data is passed on the "page" prop
-const { page } = Astro.props;
+type Props = {
+  page: Page<MarkdownInstance<Record<string, any>>>
+};
+const { page } = Astro.props as Props;
 
 ---
 <html dir={ textDirection } lang={ lang } class="initial">

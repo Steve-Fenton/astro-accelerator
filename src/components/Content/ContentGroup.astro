@@ -1,5 +1,6 @@
 ---
 import * as CONFIG from '../../config';
+import { Lang } from '../Language/language';
 import Navigation from './Navigation.astro';
 
 // Properties
@@ -10,7 +11,7 @@ type Props = {
 const { lang, frontmatter } = Astro.props as Props;
 
 // Language
-// --
+const _ = Lang(lang);
 
 // Logic
 // --

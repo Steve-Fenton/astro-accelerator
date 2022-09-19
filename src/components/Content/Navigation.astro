@@ -1,6 +1,6 @@
 ---
 import t from '../Language/language.json';
-import { Language } from '../Language/language';
+import { Lang } from '../Language/language';
 import NavigationItem from './NavigationItem.astro';
 import { mapNavPage } from '../../utilities/NavPage.astro';
 import type { NavPage } from '../../utilities/NavPage.astro';
@@ -14,10 +14,9 @@ type Props = {
 const { lang } = Astro.props as Props;
 
 // Language
-const language = new Language(lang);
+const _ = Lang(lang);
 const navigation = t.navigation;
 const aria = t.aria;
-const _ = (entry: { [key: string]: string }) => language.translate(entry);
 
 // Logic
 const currentUrl = new URL(Astro.request.url);

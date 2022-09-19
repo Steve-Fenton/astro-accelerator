@@ -13,13 +13,13 @@ export const SITE = {
 
 export type Frontmatter = {
 	title: string;
-	navTitle: string;
-	navSection: string;
-	navOrder: number;
 	date: Date;
 	keywords: string;
 	description: string;
 	layout: string;
+	navTitle?: string;
+	navSection?: string;
+	navOrder?: number;
 	bannerImage?: { src: string; alt: string };
 	dir?: 'ltr' | 'rtl';
 	ogLocale?: string;
