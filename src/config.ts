@@ -9,6 +9,8 @@ export const SITE = {
 		fallbackSite: 'q',
 		fallbackQuery: 'q',
 	},
+	pageSize: 4,
+	pageLinks: 5
 };
 
 export type Frontmatter = {

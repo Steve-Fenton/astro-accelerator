@@ -1,12 +1,15 @@
 ---
-import type { Frontmatter } from '../../config';
+import { Frontmatter, SITE } from '../../config';
 import type { Page, MarkdownInstance } from 'astro';
+import t from '../../components/Language/language.json';
+import { Lang } from '../../components/Language/language';
 import Head from '../../components/Head/Head.astro';
 import SkipLinks from '../../components/Content/SkipLinks.astro';
 import Breadcrumbs from '../../components/Content/Breadcrumbs.astro';
 import Header from '../../components/Content/Header.astro';
 import Footer from '../../components/Content/Footer.astro';
 import ContentGroup from '../../components/Content/ContentGroup.astro';
+import { getPageLinks } from '../../components/Paging/PageLinks';
 
 const lang = 'en';
 const textDirection = 'ltr';
@@ -24,19 +27,26 @@ const frontmatter: Frontmatter = {
   dir: 'ltr'
 };
 
-export async function getStaticPaths({ paginate }: any) {
-  const sourcePosts = await Astro.glob('../articles/**/*.md');
-  const urlPosts = sourcePosts.filter(p => p.url != null && p.url != '');
-
-  return paginate(urlPosts, { pageSize: 4 });
-}
-
-// All paginated data is passed on the "page" prop
+// Props
 type Props = {
   page: Page<MarkdownInstance<Record<string, any>>>
 };
 const { page } = Astro.props as Props;
 
+// Language
+const _ = Lang(lang);
+const articles = t.articles;
+const aria = t.aria;
+
+export async function getStaticPaths({ paginate }: any) {
+  const sourcePosts = await Astro.glob('../articles/**/*.md');
+  const urlPosts = sourcePosts.filter(p => p.url != null && p.url != '');
+
+  return paginate(urlPosts, { pageSize: SITE.pageSize });
+}
+
+// Page Links
+const pageLinks = getPageLinks(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
 ---
 <html dir={ textDirection } lang={ lang } class="initial">
     <Head frontmatter={ frontmatter } />
@@ -66,8 +76,17 @@ const { page } = Astro.props as Props;
             ))}
           </ul>
           
-          {page.url.prev ? <a href={page.url.prev}>Previous</a> : null}
-          {page.url.next ? <a href={page.url.next}>Next</a> : null}
+          <nav class="post-paging" aria-label={ _(aria.paging) }>
+          {page.url.prev
+            ? <a href={page.url.prev}>{ _(articles.previous) }</a>
+            : <span>{ _(articles.previous) }</span>}
+          {pageLinks.map((link) => (
+              <a href={ link.url } aria-current={link.ariaCurrent}>{ link.title }</a>
+          ))}
+          {page.url.next
+            ? <a href={page.url.next}>{ _(articles.next) }</a>
+            : <span>{ _(articles.next) }</span>}
+          </nav>
         </ContentGroup>
         <Footer lang={ lang } />
         <script src="/js/main.js" type="module" async></script>

@@ -220,6 +220,21 @@ tbody tr:nth-child(odd) {
     object-fit: cover;
 }
 
+.post-paging {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.post-paging > * {
+    display: inline-block;
+    padding: 0.3rem;
+}
+
+.post-paging a[aria-current] {
+    text-decoration: none;
+    color: var(--fore);
+}
+
 /* Code Block */
 
 code {
