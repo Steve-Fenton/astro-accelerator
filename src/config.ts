@@ -4,6 +4,12 @@ export const SITE = {
 	defaultLanguage: 'en',
 	themeColor: '#222255',
     owner: 'Steve Fenton',
+	default: {
+		lang: 'en',
+		locale: 'en-GB',
+		ogLocale: 'en_GB',
+		dir: 'ltr'
+	},
 	search: {
 		fallbackUrl: 'https://www.google.com/search',
 		fallbackSite: 'q',
@@ -29,15 +35,10 @@ export type Frontmatter = {
 	paged?: boolean;
 };
 
-export const KNOWN_LANGUAGES = {
-	English: 'en',
-} as const;
-
-export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
-
+// Default image for OG: Tags
 export const OPEN_GRAPH = {
 	image: {
-		src: 'surface-accessories-700.webp',
+		src: '/surface-accessories-700.webp',
 		alt: 'Alt text for image goes here',
 	}
 };

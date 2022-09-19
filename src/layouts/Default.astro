@@ -1,5 +1,5 @@
 ---
-import type { Frontmatter } from '../config';
+import { SITE, Frontmatter } from '../config';
 import Head from '../components/Head/Head.astro';
 import SkipLinks from '../components/Content/SkipLinks.astro';
 import Breadcrumbs from '../components/Content/Breadcrumbs.astro';
@@ -12,8 +12,8 @@ type Props = {
 }
 const { frontmatter } = Astro.props as Props;
 
-const lang = frontmatter.lang ?? 'en';
-const textDirection = frontmatter.dir ?? 'ltr';
+const lang = frontmatter.lang ?? SITE.default.lang;
+const textDirection = frontmatter.dir ?? SITE.default.dir;
 ---
 <html dir={ textDirection } lang={ lang } class="initial">
     <Head frontmatter={ frontmatter } />

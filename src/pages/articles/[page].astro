@@ -11,8 +11,8 @@ import Footer from '../../components/Content/Footer.astro';
 import ContentGroup from '../../components/Content/ContentGroup.astro';
 import { getPageLinks } from '../../components/Paging/PageLinks';
 
-const lang = 'en';
-const textDirection = 'ltr';
+const lang = SITE.default.lang;
+const textDirection = SITE.default.dir;
 
 const frontmatter: Frontmatter = {
   layout: '../layouts/Default.astro',
@@ -23,8 +23,7 @@ const frontmatter: Frontmatter = {
   bannerImage: {
       src: '/surface-accessories-700.webp',
       alt: 'Dummy image',
-  },
-  dir: 'ltr'
+  }
 };
 
 // Props
