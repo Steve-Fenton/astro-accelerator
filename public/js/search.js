@@ -122,17 +122,9 @@ function debounceSearch() {
 
 fetch(dataUrl)
     .then(function (response) { 
-        return response.text();
+        return response.json();
     })
-    .then(function (text) { 
-        const stripped = text.substring(
-            text.indexOf('[{'),
-            text.indexOf('}]') + 2
-        );
-
-        const data = JSON.parse(stripped);
-
-        console.log(data);
+    .then(function (data) { 
         haystack = data;
         ready = true;
 

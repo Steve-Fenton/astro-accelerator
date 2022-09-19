@@ -3,7 +3,7 @@ layout: ../../layouts/Default.astro
 title: Host Jekyll on GitHub Pages
 navTitle: GitHub Pages
 navOrder: 10000
-date: 2022-09-17
+pubDate: 2022-09-17
 keywords: jekyll boilerplate,github pages,github action
 description: How to get the most from Jekyll Boilerplate and GitHub Pages.
 bannerImage:

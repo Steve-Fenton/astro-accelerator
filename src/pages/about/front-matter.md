@@ -2,7 +2,7 @@
 layout: ../../layouts/Default.astro
 title: Front Matter
 navOrder: 2000
-date: 2022-09-17
+pubDate: 2022-09-17
 keywords: jekyll boilerplate,front matter
 description: A list of all custom front matter features in Jekyll Boilerplate.
 bannerImage:
@@ -18,7 +18,7 @@ export type Frontmatter = {
 	navTitle: string;
 	navSection: string;
 	navOrder: number;
-	date: Date;
+	pubDate: Date;
 	keywords: string;
 	description: string;
 	layout: string;
@@ -68,12 +68,12 @@ navOrder: 5
 
 ### Metadata
 
-Although `date` is only displayed on posts, it may also be used in sitemaps to signal changes.
+Although `pubDate` is only displayed on posts, it may also be used in sitemaps to signal changes.
 
 The `keywords` and `description` are used in meta tags, and `description` may also be used in excerpts and social links.
 
 ```yaml
-date: 2022-09-19
+pubDate: 2022-09-19
 keywords: dogs,canines
 description: A page about dogs and other canines.
 ```
@@ -123,7 +123,7 @@ The following front matter provides the best general experience, including setti
 ---
 layout:      ../layouts/Default.astro
 title:       Page Title
-date:        2022-09-17
+pubDate:        2022-09-17
 keywords:    key,words,here
 description: A description of the page.
 bannerImage:
@@ -143,7 +143,7 @@ title:       Long Page Title
 navTitle:    Short Title
 navSection:  Menu Section
 navOrder:    1000
-date:        2022-09-17
+pubDate:        2022-09-17
 keywords:    key,words,here
 description: A description of the page.
 bannerImage:

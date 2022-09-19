@@ -13,11 +13,12 @@ import { getPageLinks } from '../../components/Paging/PageLinks';
 
 const lang = SITE.default.lang;
 const textDirection = SITE.default.dir;
+const locale = SITE.default.locale;
 
 const frontmatter: Frontmatter = {
   layout: '../layouts/Default.astro',
   title: 'Articles',
-  date: new Date(2022, 9, 17),
+  pubDate: new Date(2022, 9, 17),
   keywords: 'articles,astro,boilerplate',
   description: 'Astro boilerplate articles.',
   bannerImage: {

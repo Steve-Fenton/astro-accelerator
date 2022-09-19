@@ -2,7 +2,7 @@
 layout: ../../layouts/Default.astro
 title: Getting Started
 navOrder: 1000
-date: 2022-09-17
+pubDate: 2022-09-17
 keywords: astro boilerplate,getting started
 description: There are just a couple of tasks to turn the Astro Boilerplate into your own working website.
 bannerImage:

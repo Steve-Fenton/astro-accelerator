@@ -1,7 +1,7 @@
 ---
 layout: ../../../../layouts/Article.astro
 title: Sample Post 5
-date:   2022-09-05
+pubDate:   2022-09-05
 keywords: sample,post
 description: A sample post
 bannerImage:

@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/Search.astro
 title: Search
-date:   2022-09-17
+pubDate:   2022-09-17
 keywords: about,astro,boilerplate
 description: Astro boilerplate is an opinionated Astro site.
 bannerImage:

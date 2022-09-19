@@ -21,7 +21,7 @@ export const SITE = {
 
 export type Frontmatter = {
 	title: string;
-	date: Date;
+	pubDate: Date;
 	keywords: string;
 	description: string;
 	layout: string;

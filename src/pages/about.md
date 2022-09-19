@@ -4,7 +4,7 @@ title: About Astro Boilerplate
 navTitle: Astro Boilerplate
 navSection: About
 navOrder: 1000
-date:   2022-09-17
+pubDate:   2022-09-17
 keywords: about,astro,boilerplate
 description: Astro boilerplate is an opinionated Astro site.
 bannerImage:
