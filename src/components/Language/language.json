@@ -1,80 +1,83 @@
 {
-  "aria": {
-      "breadcrumbs": {
-          "en": "Breadcrumb"
-      },
-      "site_navigation": {
-          "en": "Site Navigation"
-      },
-      "paging": {
-          "en": "Paging"
-      }
-  },
-  "skiplinks": {
-      "skip_to_navigation": {
-          "en": "Skip to navigation"
-      },
-      "skip_to_content": {
-          "en": "Skip to main content"
-      },
-      "skip_to_footer": {
-          "en": "Skip to footer"
-      }
-  },
-  "header": {
-    "open_menu": {
-        "en": "Open menu"
+    "aria": {
+        "breadcrumbs": {
+            "en": "Breadcrumb"
+        },
+        "site_navigation": {
+            "en": "Site Navigation"
+        },
+        "paging": {
+            "en": "Paging"
+        }
     },
-    "open_search": {
-        "en": "Open site search"
+    "skiplinks": {
+        "skip_to_top": {
+            "en": "Back to top"      
+        },
+        "skip_to_navigation": {
+            "en": "Skip to navigation"
+        },
+        "skip_to_content": {
+            "en": "Skip to main content"
+        },
+        "skip_to_footer": {
+            "en": "Skip to footer"
+        }
+    },
+    "header": {
+      "open_menu": {
+          "en": "Open menu"
+      },
+      "open_search": {
+          "en": "Open site search"
+      }
+    },
+    "navigation": {
+        "title": {
+            "en": "Navigation"
+        }
+    },
+    "footer": {
+        "copyright": {
+            "en": "Copyright"
+        }
+    },
+    "post": {
+        "written_by": {
+            "en": "Written by"
+        }
+    },
+    "author": {
+        "recent_articles": {
+            "en": "Recent Articles"
+        },
+        "twitter": {
+            "en": "Twitter"
+        }
+    },
+    "search": {
+        "search_for": {
+            "en": "Search for"
+        },
+        "submit": {
+            "en": "Go"
+        },
+        "results_title": {
+            "en": "Results"
+        },
+        "no_results_title": {
+            "en": "No Results"
+        }
+    },
+    "articles": {
+        "title": {
+            "en": "Articles"
+        },
+        "previous": {
+            "en": "Prev"
+        },
+        "next": {
+            "en": "Next"
+        }
     }
-  },
-  "navigation": {
-      "title": {
-          "en": "Navigation"
-      }
-  },
-  "footer": {
-      "copyright": {
-          "en": "Copyright"
-      }
-  },
-  "post": {
-      "written_by": {
-          "en": "Written by"
-      }
-  },
-  "author": {
-      "recent_articles": {
-          "en": "Recent Articles"
-      },
-      "twitter": {
-          "en": "Twitter"
-      }
-  },
-  "search": {
-      "search_for": {
-          "en": "Search for"
-      },
-      "submit": {
-          "en": "Go"
-      },
-      "results_title": {
-          "en": "Results"
-      },
-      "no_results_title": {
-          "en": "No Results"
-      }
-  },
-  "articles": {
-      "title": {
-          "en": "Articles"
-      },
-      "previous": {
-          "en": "Prev"
-      },
-      "next": {
-          "en": "Next"
-      }
-  }
 }

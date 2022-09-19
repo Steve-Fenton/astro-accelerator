@@ -12,6 +12,7 @@ const { lang } = Astro.props as Props;
 // Language
 const language = new Language(lang);
 const footer = t.footer;
+const skiplinks = t.skiplinks;
 const _ = (entry: { [key: string]: string }) => language.translate(entry);
 
 // Logic
@@ -32,4 +33,7 @@ footer {
 </style>
 <footer id="site-footer">
   <p>{ _(footer.copyright) } &copy; { new Date().getFullYear() } { CONFIG.SITE.owner }</p>
+  <nav class="skip-links" aria-label="skiplinks">
+    <a href="#site-top">{ _(skiplinks.skip_to_top) }</a>
+  </nav>
 </footer>
