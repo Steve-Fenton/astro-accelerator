@@ -1,8 +1,9 @@
 ---
 layout: ../../layouts/Default.astro
-title:  Host Jekyll on GitHub Pages
+title: Host Jekyll on GitHub Pages
 navTitle: GitHub Pages
-date:   2022-09-17
+navOrder: 10000
+date: 2022-09-17
 keywords: jekyll boilerplate,github pages,github action
 description: How to get the most from Jekyll Boilerplate and GitHub Pages.
 bannerImage:
@@ -10,7 +11,7 @@ bannerImage:
     alt: Dummy image
 ---
 
-GitHub can host Astro sites. Use the GitHub [Astro Deploy Action](https://github.com/withastro/action){:target="blank"} to run your own build.
+GitHub can host Astro sites. Use the GitHub [Astro Deploy Action](https://github.com/withastro/action) to run your own build.
 
 You can copy [the Astro Boilerplate GitHub Action configuration](https://github.com/Steve-Fenton/astro-boilerplate/tree/main/.github/workflows) if you want to host your site on GitHub Pages.
 

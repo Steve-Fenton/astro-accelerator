@@ -1,7 +1,8 @@
 ---
 layout: ../../layouts/Default.astro
-title:  Getting Started
-date:   2022-09-17
+title: Getting Started
+navOrder: 1000
+date: 2022-09-17
 keywords: astro boilerplate,getting started
 description: There are just a couple of tasks to turn the Astro Boilerplate into your own working website.
 bannerImage:
@@ -9,4 +10,6 @@ bannerImage:
     alt: Dummy image
 ---
 
-TBC
+- Download the code from [GitHub](https://github.com/Steve-Fenton/astro-boilerplate)
+- Run `npm install` to download the packages
+- Run `npm run dev` to start the site

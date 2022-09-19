@@ -1,7 +1,8 @@
 ---
 layout: ../../layouts/Default.astro
-title:  Front Matter
-date:   2022-09-17
+title: Front Matter
+navOrder: 2000
+date: 2022-09-17
 keywords: jekyll boilerplate,front matter
 description: A list of all custom front matter features in Jekyll Boilerplate.
 bannerImage:
@@ -15,6 +16,8 @@ Front matter is defined in `congig.ts`.
 export type Frontmatter = {
 	title: string;
 	navTitle: string;
+	navSection: string;
+	navOrder: number;
 	date: Date;
 	keywords: string;
 	description: string;
@@ -23,14 +26,13 @@ export type Frontmatter = {
 	dir?: 'ltr' | 'rtl';
 	ogLocale?: string;
 	lang?: string;
+	paged?: boolean;
 };
 ```
-
 
 ## Recommended Front Matter
 
 The following front matter provides the best general experience, including setting SEO features
-
 
 ```markdown
 ---

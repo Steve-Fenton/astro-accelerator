@@ -27,9 +27,9 @@ Astro Boilerplate is built on some strong opinions:
 - The democratising force in the World Wide Web is HTML files
 - Software supply chains should be minimal
 
-> Astro Boilerplate minimises third-party dependencies. There aren't any plugins, jQuery isn't in the picture, and there are no front-end frameworks.
+> Astro is the first framework build on the *majestic HTML* concept, where pages can be largely static but still enhanced with additional stateful behaviour where needed.
 >
-> It's just majestic HTML, simple CSS, and some minor non-essential enhancements in plain JavaScript. <cite>Steve Fenton</cite>
+> It's clean semantic HTML, simple CSS, and some minor non-essential enhancements in plain JavaScript. <cite>Steve Fenton</cite>
 
 Out of the box, Astro Boilerplate is a "top scores" high-performance website in the Pagespeed lab. [Pagespeed Insights](https://developers.google.com/speed/docs/insights/v5/about?hl=en-US) tests website performance on mobile and desktop across a number of measurements.
 

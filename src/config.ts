@@ -2,7 +2,7 @@ export const SITE = {
 	title: 'Astro Boilerplate',
 	description: 'An Astro boilerplate.',
 	defaultLanguage: 'en',
-	themeColor: '#333',
+	themeColor: '#222255',
     owner: 'Steve Fenton',
 	search: {
 		fallbackUrl: 'https://www.google.com/search',
