@@ -14,10 +14,10 @@ dir: ltr
 
 I'm experimenting with Jekyll and Astro. This is the Astro version, there is also a [Jekyll version](https://jekyll.stevefenton.co.uk/).
 
-Welcome to Astro Boilerplate. A super-lightweight, accessible, SEO friendly starter project for the [Astro](https://astro.build/){:target="_blank"}.
+Welcome to Astro Boilerplate. A super-lightweight, accessible, SEO friendly starter project for the [Astro](https://astro.build/).
 
 :::div{.note}
-The Astro Boilerplate source code is available on [GitHub](https://github.com/Steve-Fenton/astro-boilerplate){:target="_blank"}.
+The Astro Boilerplate source code is available on [GitHub](https://github.com/Steve-Fenton/astro-boilerplate).
 :::
 
 Astro Boilerplate is built on some strong opinions:
@@ -31,7 +31,7 @@ Astro Boilerplate is built on some strong opinions:
 >
 > It's just majestic HTML, simple CSS, and some minor non-essential enhancements in plain JavaScript. <cite>Steve Fenton</cite>
 
-Out of the box, Astro Boilerplate is a "top scores" high-performance website in the Pagespeed lab. [Pagespeed Insights](https://developers.google.com/speed/docs/insights/v5/about?hl=en-US){:target="_blank"} tests website performance on mobile and desktop across a number of measurements.
+Out of the box, Astro Boilerplate is a "top scores" high-performance website in the Pagespeed lab. [Pagespeed Insights](https://developers.google.com/speed/docs/insights/v5/about?hl=en-US) tests website performance on mobile and desktop across a number of measurements.
 
 :img{ src="/astro-lighthouse.webp" alt="Astro Lighthouse Score (100% in all categories)" loading="lazy" }
 
