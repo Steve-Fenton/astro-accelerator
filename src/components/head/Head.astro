@@ -27,8 +27,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <link rel="canonical" href={ canonicalURL } />
         <!--
         <link rel="alternate" type="application/rss+xml" title="Steve Fenton &raquo; Feed" href="https://www.stevefenton.co.uk{{ site.baseurl }}/feed/" />
-        <link rel="alternate" href="{{ "/sitemap.xml" | prepend: site.baseurl }}" type="application/rss+xml" />
         -->
+        <link rel="alternate" href="/sitemap-index.xml" type="application/rss+xml" />
         <link rel="shortcut icon" href="/icons/favicon.ico" type="image/x-icon" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <link rel="stylesheet" href="/css/vars.css" />

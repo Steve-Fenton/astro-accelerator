@@ -13,3 +13,8 @@ bannerImage:
 - Download the code from [GitHub](https://github.com/Steve-Fenton/astro-boilerplate)
 - Run `npm install` to download the packages
 - Run `npm run dev` to start the site
+
+## Things to Update
+
+- `astro.config.mjs` the `site` value
+- `/public/robots.txt` update the sitemap address
