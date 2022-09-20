@@ -8,6 +8,12 @@
         },
         "paging": {
             "en": "Paging"
+        },
+        "skiplinks": {
+            "en": "Skip Links"
+        },
+        "back_to_top": {
+            "en": "Skip Back"
         }
     },
     "skiplinks": {

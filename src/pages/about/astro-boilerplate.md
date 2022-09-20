@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/Default.astro
-title: Astro Boilerplate
-navTitle: Astro Boilerplate
+title: About Astro Boilerplate
+navTitle: About Boilerplate
 navOrder: 1
 pubDate:   2022-09-17
 keywords: about,astro,boilerplate
