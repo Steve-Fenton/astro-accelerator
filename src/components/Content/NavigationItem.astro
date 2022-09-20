@@ -65,9 +65,7 @@ details summary::marker {
   <details class="sub-nav" open={ navPage.isOpen }>
     <summary><span>{ navPage.section }</span></summary>
     <ul>
-      <li>
-        <a href={ navPage.url } aria-current={ navPage.ariaCurrent }>{ navPage.title }</a>
-      </li>
+
       { navPage.children.sort((a, b) => a.order - b.order).map((page) => (
           <Astro.self lang={lang} navPage={page} />
       ))}

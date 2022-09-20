@@ -70,9 +70,6 @@
         }
     },
     "articles": {
-        "title": {
-            "en": "Articles"
-        },
         "previous": {
             "en": "Prev"
         },

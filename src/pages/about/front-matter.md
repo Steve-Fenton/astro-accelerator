@@ -3,14 +3,14 @@ layout: ../../layouts/Default.astro
 title: Front Matter
 navOrder: 2000
 pubDate: 2022-09-17
-keywords: jekyll boilerplate,front matter
-description: A list of all custom front matter features in Jekyll Boilerplate.
+keywords: astro boilerplate,front matter
+description: A list of all custom front matter features in Astro Boilerplate.
 bannerImage:
     src: /surface-accessories-700.webp
     alt: Dummy image
 ---
 
-Front matter is defined in `congig.ts`.
+Front matter is defined in `config.ts`.
 
 ```typescript
 export type Frontmatter = {
@@ -32,7 +32,7 @@ export type Frontmatter = {
 
 ### Layout
 
-Specifies the layout for the page.
+Specifies the layout for the page. Astro is pretty particular about this, so if you see an error `Error: failed to load module for ssr: ../layouts/Default.astro` it's because that path is incorrect for the file (usually because of the number of `../../` you need, vs how many you included - but sometimes because you mis-spelled the layout name).
 
 ```yaml
 layout: ../layouts/Default.asto
