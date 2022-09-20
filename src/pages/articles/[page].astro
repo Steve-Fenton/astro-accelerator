@@ -3,12 +3,12 @@ import { Frontmatter, SITE } from '../../config';
 import type { Page, MarkdownInstance } from 'astro';
 import t from '../../components/Language/language.json';
 import { Lang } from '../../components/Language/language';
-import Head from '../../components/Head/Head.astro';
 import SkipLinks from '../../components/Content/SkipLinks.astro';
 import Breadcrumbs from '../../components/Content/Breadcrumbs.astro';
 import Header from '../../components/Content/Header.astro';
 import Footer from '../../components/Content/Footer.astro';
 import ContentGroup from '../../components/Content/ContentGroup.astro';
+import Head from '../../components/Head/Head.astro';
 import { getPageLinks } from '../../components/Paging/PageLinks';
 
 const lang = SITE.default.lang;
