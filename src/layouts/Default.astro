@@ -1,6 +1,6 @@
 ---
 import { SITE, Frontmatter } from '../config';
-import Head from '@head/Head.astro';
+// import Head from '@head/Head.astro';
 import SkipLinks from '@content/SkipLinks.astro';
 import Breadcrumbs from '@content/Breadcrumbs.astro';
 import Header from '@content/Header.astro';
@@ -16,7 +16,7 @@ const lang = frontmatter.lang ?? SITE.default.lang;
 const textDirection = frontmatter.dir ?? SITE.default.dir;
 ---
 <html dir={ textDirection } lang={ lang } class="initial">
-    <Head frontmatter={ frontmatter } />
+    <!-- <Head frontmatter={ frontmatter } /> -->
     <body>
         <SkipLinks lang={ lang } />
         <Header lang={ lang } />
