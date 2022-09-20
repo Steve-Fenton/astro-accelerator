@@ -1,3 +1,12 @@
 {
-  "extends": "astro/tsconfigs/strict"
+  "extends": "astro/tsconfigs/strict",
+  "types": ["astro/client"],
+  "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@head/*": ["src/components/Head/*"],
+        "@content/*": ["src/components/Content/*"],
+        "@language/*": ["src/components/Language/*"]
+      }
+  }
 }
