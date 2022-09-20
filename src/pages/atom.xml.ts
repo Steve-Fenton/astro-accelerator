@@ -2,6 +2,7 @@
 import { SITE } from '../config';
 
 async function getData() {
+  //@ts-ignore
   const allArticles = import.meta.glob('./articles/**/*.md');
   
   let articles = [];

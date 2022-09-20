@@ -1,6 +1,7 @@
 import { showInSearch } from '../utilities/PageTypeFilters';
 
 async function getData() {
+    //@ts-ignore
     const allPages = import.meta.glob('./**/*.md');
     const items = [];
 
