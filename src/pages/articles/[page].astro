@@ -8,7 +8,7 @@ import Breadcrumbs from '@content/Breadcrumbs.astro';
 import Header from '@content/Header.astro';
 import Footer from '@content/Footer.astro';
 import ContentGroup from '@content/ContentGroup.astro';
-//import Head from '@head/Head.astro';
+import Head from '@head/HtmlHead.astro';
 import { getPageLinks } from '@paging/PageLinks';
 
 const lang = SITE.default.lang;
@@ -49,7 +49,7 @@ export async function getStaticPaths({ paginate }: any) {
 const pageLinks = getPageLinks(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
 ---
 <html dir={ textDirection } lang={ lang } class="initial">
-    <!-- <Head frontmatter={ frontmatter } /> -->
+    <Head frontmatter={ frontmatter } />
     <body>
         <SkipLinks lang={ lang } />
         <Header lang={ lang } />
