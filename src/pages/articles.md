@@ -3,6 +3,8 @@ layout: ../layouts/Default.astro
 title: Articles
 paged: true
 navOrder: 10000
+navSearch: false
+navSitemap: false
 pubDate:   2022-09-17
 keywords: articles,astro,boilerplate
 description: Articles

@@ -1,6 +1,11 @@
 ---
+import type { MarkdownInstance } from 'astro';
 import * as CONFIG from '../../config';
 
+// Properties
+type Props = {
+    frontmatter: Record<string, any>;
+}
 const { frontmatter } = Astro.props;
 
 const imageSrc = frontmatter.bannerImage?.src ?? CONFIG.OPEN_GRAPH.image.src;
@@ -25,10 +30,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <meta property="og:description" content={ frontmatter.description } />
         <meta property="og:image" content={ canonicalImageSrc } />
         <link rel="canonical" href={ canonicalURL } />
-        <!--
-        <link rel="alternate" type="application/rss+xml" title="Steve Fenton &raquo; Feed" href="https://www.stevefenton.co.uk{{ site.baseurl }}/feed/" />
-        -->
-        <link rel="alternate" href="/sitemap-index.xml" type="application/rss+xml" />
+        <link rel="alternate" type="application/rss+xml" title={ CONFIG.SITE.title } href="/atom.xml" />
+        <link rel="alternate" href="/sitemap.xml" type="application/rss+xml" />
         <link rel="shortcut icon" href="/icons/favicon.ico" type="image/x-icon" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <link rel="stylesheet" href="/css/vars.css" />

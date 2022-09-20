@@ -1,10 +1,16 @@
+import { showInSearch } from '../utilities/PageTypeFilters';
 
 async function getData() {
     const allPages = import.meta.glob('./**/*.md');
     const items = [];
 
     for (const path in allPages) {
-        const page = await allPages[path]();
+        const page: any = await allPages[path]();
+
+        if (!showInSearch(page)) {
+            continue;
+        }
+
         let url = page.url ?? '';
     
         if (page.frontmatter.paged) {

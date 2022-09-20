@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
 import remarkDirective from 'remark-directive';
 import { attributeMarkdown } from './src/plugins/custom-markdown.mjs'
 
@@ -12,8 +11,5 @@ export default defineConfig({
             attributeMarkdown
         ],
         extendDefaultPlugins: true,
-    },
-    integrations: [
-        sitemap()
-    ],
+    }
 });

@@ -1,4 +1,5 @@
 export const SITE = {
+	url: 'https://astro.stevefenton.co.uk',
 	title: 'Astro Boilerplate',
 	description: 'An Astro boilerplate.',
 	defaultLanguage: 'en',
@@ -16,7 +17,8 @@ export const SITE = {
 		fallbackQuery: 'q',
 	},
 	pageSize: 4,
-	pageLinks: 5
+	pageLinks: 5,
+	rssLimit: 20
 };
 
 export type Frontmatter = {
@@ -33,6 +35,9 @@ export type Frontmatter = {
 	ogLocale?: string;
 	lang?: string;
 	paged?: boolean;
+	navSearch?: boolean;
+	navSitemap?: boolean;
+	navMenu?: boolean;
 };
 
 // Default image for OG: Tags
