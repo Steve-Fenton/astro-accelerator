@@ -1,36 +1,36 @@
 export type Link = {
-    title: string;
-    url: string;
-    ariaCurrent: 'page' | false;
+  title: string;
+  url: string;
+  ariaCurrent: 'page' | false;
 }
 
 export function getPageLinks(limit: number, numberOfPages: number, currentPage: number, url: string) {
-    const pageLinks: Link[] = [];
-  
-    let start = 0;
-    let end = numberOfPages;
-  
-    if (numberOfPages > limit) {
-      start = (currentPage - (limit - 1) / 2) - 1;
-      if (start < 0) {
-        start = 0;
-      }
-  
-      end = (start + limit);
-      if (end > numberOfPages) {
-        end = numberOfPages;
-        start = numberOfPages - limit;
-      }
+  const pageLinks: Link[] = [];
+
+  let start = 0;
+  let end = numberOfPages;
+
+  if (numberOfPages > limit) {
+    start = (currentPage - (limit - 1) / 2) - 1;
+    if (start < 0) {
+      start = 0;
     }
-  
-    for (let i = start; i < end; i++) {
-      const userPage = i + 1;
-      pageLinks.push({
-        title: userPage.toString(),
-        url: url.replace('/' + currentPage, '/' + userPage),
-        ariaCurrent: userPage == currentPage ? 'page' : false
-      });
+
+    end = (start + limit);
+    if (end > numberOfPages) {
+      end = numberOfPages;
+      start = numberOfPages - limit;
     }
-  
-    return pageLinks;
   }
+
+  for (let i = start; i < end; i++) {
+    const userPage = i + 1;
+    pageLinks.push({
+      title: userPage.toString(),
+      url: url.replace('/' + currentPage, '/' + userPage),
+      ariaCurrent: userPage == currentPage ? 'page' : false
+    });
+  }
+
+  return pageLinks;
+}
