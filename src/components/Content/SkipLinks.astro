@@ -10,7 +10,6 @@ const { lang } = Astro.props as Props;
 
 // Language
 const _ = Lang(lang);
-const skiplinks = t.skiplinks;
 
 // Logic
 // -
@@ -48,7 +47,7 @@ a:focus {
 }
 </style>
 <nav class="skip-links" aria-label="skiplinks" id="site-top">
-    <a href="#site-nav">{ _(skiplinks.skip_to_navigation) }</a>
-    <a href="#site-main">{ _(skiplinks.skip_to_content) }</a>
-    <a href="#site-footer">{ _(skiplinks.skip_to_footer) }</a>
+    <a href="#site-nav">{ _(t.skiplinks.skip_to_navigation) }</a>
+    <a href="#site-main">{ _(t.skiplinks.skip_to_content) }</a>
+    <a href="#site-footer">{ _(t.skiplinks.skip_to_footer) }</a>
   </nav>

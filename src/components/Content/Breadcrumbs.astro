@@ -13,7 +13,6 @@ const { lang } = Astro.props as Props;
 
 // Language
 const _ = Lang(lang);
-const aria = t.aria;
 
 // Logic
 const currentUrl = new URL(Astro.request.url);
@@ -70,7 +69,7 @@ a[aria-current] {
   }
 }
 </style>
-<nav class="site-breadcrumbs" aria-label={ _(aria.breadcrumbs) }>
+<nav class="site-breadcrumbs" aria-label={ _(t.aria.breadcrumbs) }>
   <ol vocab="http://schema.org/" typeof="BreadcrumbList">
     {items.map((page, index) => (
       <li property="itemListElement" typeof="ListItem">

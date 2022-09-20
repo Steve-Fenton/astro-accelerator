@@ -15,8 +15,6 @@ const { lang } = Astro.props as Props;
 
 // Language
 const _ = Lang(lang);
-const navigation = t.navigation;
-const aria = t.aria;
 
 // Logic
 const currentUrl = new URL(Astro.request.url);
@@ -70,8 +68,8 @@ nav.site-nav h2 {
   }
 }
 </style>
-<nav class="site-nav" id="site-nav" aria-label={ _(aria.site_navigation) }>
-  <h2 class="site-nav-title">{ _(navigation.title) }</h2>
+<nav class="site-nav" id="site-nav" aria-label={ _(t.aria.site_navigation) }>
+  <h2 class="site-nav-title">{ _(t.navigation.title) }</h2>
   <ul>
     {pageHierarchy.sort((a, b) => a.order - b.order).map((page) => (
       <NavigationItem lang={lang} navPage={page} />

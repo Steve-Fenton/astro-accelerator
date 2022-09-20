@@ -11,7 +11,6 @@ const { lang } = Astro.props as Props;
 
 // Language
 const _ = Lang(lang);
-const header = t.header;
 
 // Logic
 // -
@@ -70,7 +69,7 @@ a:focus {
 }
 </style>
 <header class="site-header">
-  <a href="#site-nav" class="navigation-icon" title={ _(header.open_menu) }><svg xmlns="http://www.w3.org/2000/svg" 
+  <a href="#site-nav" class="navigation-icon" title={ _(t.header.open_menu) }><svg xmlns="http://www.w3.org/2000/svg" 
     width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" 
     fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -79,7 +78,7 @@ a:focus {
     <line x1="4" y1="18" x2="20" y2="18" />
   </svg></a>
   <a href="/" class="site-title">{ CONFIG.SITE.title }</a>
-  <a href="/search/" class="search-icon" title={ _(header.open_search) }><svg xmlns="http://www.w3.org/2000/svg" 
+  <a href="/search/" class="search-icon" title={ _(t.header.open_search) }><svg xmlns="http://www.w3.org/2000/svg" 
     width="40" height="40" viewBox="0 0 24 24" stroke-width="1" 
     fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

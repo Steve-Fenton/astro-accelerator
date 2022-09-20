@@ -9,4 +9,4 @@ export function Lang(lang: string) {
     }
 }
 
-export type Entry = {[key: string]: string};
+export type Entry = { [key: string]: string };
