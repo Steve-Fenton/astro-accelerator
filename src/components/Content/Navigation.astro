@@ -4,7 +4,7 @@ import { Lang } from '../Language/language';
 import NavigationItem from './NavigationItem.astro';
 import { mapNavPage } from '../../utilities/NavPage.astro';
 import type { NavPage } from '../../utilities/NavPage.astro';
-import { isNotArticle, showInMenu } from '../../utilities/PageTypeFilters';
+import { showInMenu } from '../../utilities/PageTypeFilters';
 import type { MarkdownInstance } from 'astro';
 
 // Properties
@@ -28,12 +28,10 @@ const topLevelPages = await Astro.glob('../../pages/*.md');
 const allPages = await Astro.glob('../../pages/**/*.md');
 
 const pageHierarchy: NavPage[] = topLevelPages
-  .filter(isNotArticle)
   .filter(showInMenu)
   .map(mapWithUrl);
 
 const pageList: NavPage[] = allPages
-  .filter(isNotArticle)
   .filter(showInMenu)
   .map(mapWithUrl);
 

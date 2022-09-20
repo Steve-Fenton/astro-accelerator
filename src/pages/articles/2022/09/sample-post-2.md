@@ -1,7 +1,8 @@
 ---
-layout: ../../../../layouts/Article.astro
+layout: ../../../../layouts/Default.astro
 title: Sample Post 2
-pubDate:   2022-09-02
+navMenu: false
+pubDate: 2022-09-02
 keywords: sample,post
 description: A sample post
 bannerImage:

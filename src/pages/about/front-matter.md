@@ -38,12 +38,6 @@ Specifies the layout for the page. Astro is pretty particular about this, so if 
 layout: ../layouts/Default.asto
 ```
 
-Items with an `Article` layout are not added to automatically generated navigation.
-
-```yaml
-layout: ../layouts/Article.astro
-```
-
 ### Title
 
 The `title` is shown in the browser header, the on page heading, and in external titles such as social and search.
