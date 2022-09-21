@@ -8,8 +8,6 @@ description: Navigation menus in Astro Boilerplate
 bannerImage:
     src: /img/surface-accessories-700.webp
     alt: Dummy image
-authors:
-    - steve-fenton
 ---
 
 Using a path-based convention, we can model hierarchies within the Astro site.

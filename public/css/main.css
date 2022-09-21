@@ -298,6 +298,35 @@ form.site-search button {
     color: var(--fore);
 }
 
+.post-meta {
+    display: flex;
+    align-items: center;
+}
+
+.post-meta .author-image {
+    max-width: 50px;
+    margin-right: 1rem;
+}
+
+.post-meta > .author-info {
+    display: flex;
+    align-items: center;
+}
+
+.post-meta time {
+    display: block;
+}
+
+/* Authors */
+
+.author-image {
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    max-width: 150px;
+    float: right
+}
+
 /* Code Block */
 
 code {

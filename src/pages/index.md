@@ -9,8 +9,6 @@ description: A boilerplate for a very clean version of Astro.
 bannerImage:
     src: /img/surface-accessories-700.webp
     alt: Dummy image
-authors:
-    - steve-fenton
 ---
 
 I'm experimenting with Jekyll and Astro. This is the Astro version, there is also a [Jekyll version](https://jekyll.stevefenton.co.uk/).

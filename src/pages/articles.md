@@ -11,6 +11,4 @@ description: Articles
 bannerImage:
     src: /img/surface-accessories-700.webp
     alt: Dummy image
-authors:
-    - steve-fenton
 ---

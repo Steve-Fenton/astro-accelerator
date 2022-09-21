@@ -8,8 +8,6 @@ description: There are just a couple of tasks to turn the Astro Boilerplate into
 bannerImage:
     src: /img/surface-accessories-700.webp
     alt: Dummy image
-authors:
-    - steve-fenton
 ---
 
 - Download the code from [GitHub](https://github.com/Steve-Fenton/astro-boilerplate)

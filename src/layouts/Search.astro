@@ -14,7 +14,6 @@ const textDirection = frontmatter.dir ?? CONFIG.SITE.default.dir;
 
 // Language
 const _ = Lang(lang);
-const search = t.search;
 
 // Logic
 const siteUrl = Astro.site ? Astro.site.href : '';
@@ -25,13 +24,13 @@ const siteUrl = Astro.site ? Astro.site.href : '';
         <fieldset>
             <input type="hidden" name={ CONFIG.SITE.search.fallbackSite ?? 'q' } value={ siteUrl } />
             <div>
-                <label for="site-search-query">{ _(search.search_for) }</label>
+                <label for="site-search-query">{ _(t.search.search_for) }</label>
                 <input type="text" name={ CONFIG.SITE.search.fallbackSite ?? 'q' } id="site-search-query" autofocus="autofocus" />
-                <button id="site-search-button" type="submit">{ _(search.submit) }</button>
+                <button id="site-search-button" type="submit">{ _(t.search.submit) }</button>
             </div>
         </fieldset>
     </form>
-    <div id="site-search-results" data-title={ _(search.results_title) } data-emptytitle={ _(search.no_results_title) }>
+    <div id="site-search-results" data-title={ _(t.search.results_title) } data-emptytitle={ _(t.search.no_results_title) }>
     </div>
     <script src="/js/search.js" type="module" async></script>
 </Default>

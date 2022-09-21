@@ -24,3 +24,11 @@ export const showInMenu = (p) => {
 
   return true;
 }
+
+export const isAuthor = (p) => {
+  if (p?.frontmatter?.layout?.indexOf('/Author.astro') > -1) {
+    return true;
+  }
+
+  return false;
+}

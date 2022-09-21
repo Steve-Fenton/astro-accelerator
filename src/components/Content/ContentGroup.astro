@@ -1,6 +1,8 @@
 ---
 import * as CONFIG from '../../config';
+import t from '@language/language.json';
 import { Lang } from '@language/language';
+import { isAuthor } from '@utilities/PageTypeFilters';
 import Navigation from '@content/Navigation.astro';
 
 // Properties
@@ -14,7 +16,31 @@ const { lang, frontmatter } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-// --
+const allPages = await Astro.glob('/**/*.md');
+const authors = allPages.filter(isAuthor);
+
+let authorImage = null;
+const writers = [];
+(frontmatter.authors ?? []).forEach(a => {
+  const matches = authors.filter(x => x.frontmatter.id == a);
+
+  if (matches.length == 0) {
+    console.warn('Unknown author', a);
+  }
+
+  if (matches.length > 1) {
+    console.warn('Multiple authors with id', a);
+  }
+  
+  if (matches.length == 1) {
+    writers.push(matches[0]);
+    if (authorImage == null) {
+      authorImage = matches[0].frontmatter.bannerImage
+    }
+  }
+});
+
+console.log(authorImage)
 ---
 <style>
 .content-group {
@@ -26,7 +52,6 @@ const _ = Lang(lang);
     margin: var(--block-gap) auto var(--block-gap) auto;
     min-height: 75vh;
 }
-
 
 @media (max-width: 860px) {
   /* Content First on Small Screens */
@@ -43,6 +68,21 @@ const _ = Lang(lang);
           <header>
               <h1>{ frontmatter.title ?? CONFIG.SITE.title }</h1>
           </header>
+          <div class="post-meta">
+            {authorImage?.src && 
+            <img src={ authorImage.src } alt={ authorImage.alt } class="author-image" />
+            }
+            <div class="author-info">
+              <span>{ _(t.post.written_by) }
+                {writers.map((writer) => (
+                  <a href={ writer.url }>{ writer.frontmatter.title }</a>
+                ))}
+                <time class="dt-published" datetime="DATE GOES HERE" itemprop="datePublished"></time>
+                  { frontmatter.pubDate ?? '' }
+                </time>
+              </span>
+            </div>
+          </div>
           <div>
               <slot />
           </div>

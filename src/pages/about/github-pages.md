@@ -9,8 +9,6 @@ description: How to get the most from Jekyll Boilerplate and GitHub Pages.
 bannerImage:
     src: /img/surface-accessories-700.webp
     alt: Dummy image
-authors:
-    - steve-fenton
 ---
 
 GitHub can host Astro sites. Use the GitHub [Astro Deploy Action](https://github.com/withastro/action) to run your own build.

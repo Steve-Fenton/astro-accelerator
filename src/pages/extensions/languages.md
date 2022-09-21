@@ -8,8 +8,6 @@ description: How languages work in Astro Boilerplate.
 bannerImage:
     src: /img/surface-accessories-700.webp
     alt: Dummy image
-authors:
-    - steve-fenton
 ---
 
 Content can be written in the language of your choice. Most translations should be done in-content.

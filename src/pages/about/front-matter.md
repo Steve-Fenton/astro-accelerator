@@ -8,8 +8,6 @@ description: A list of all custom front matter features in Astro Boilerplate.
 bannerImage:
     src: /img/surface-accessories-700.webp
     alt: Dummy image
-authors:
-    - steve-fenton
 ---
 
 Front matter is defined in `config.ts`.

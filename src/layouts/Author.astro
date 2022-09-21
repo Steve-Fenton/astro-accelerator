@@ -1,0 +1,23 @@
+---
+import * as CONFIG from '../config';
+import t from '@language/language.json';
+import { Lang } from '@language/language';
+import Default from '@layouts/Default.astro';
+
+// Properties
+type Props = {
+    frontmatter: CONFIG.Frontmatter
+};
+const { frontmatter } = Astro.props as Props;
+const lang = frontmatter.lang ?? CONFIG.SITE.default.lang;
+const textDirection = frontmatter.dir ?? CONFIG.SITE.default.dir;
+
+// Language
+const _ = Lang(lang);
+
+// Logic
+//--
+---
+<Default frontmatter={frontmatter}>
+    <slot />
+</Default>

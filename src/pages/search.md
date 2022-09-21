@@ -10,8 +10,6 @@ description: Astro boilerplate is an opinionated Astro site.
 bannerImage:
     src: /img/surface-accessories-700.webp
     alt: Dummy image
-authors:
-    - steve-fenton
 ---
 
 Search the site below.
