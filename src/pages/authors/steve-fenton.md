@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/Default.astro
-title: Languages
+title: Steve Fenton
 navOrder: 2000
 pubDate: 2022-09-17
-keywords: astro boilerplate,languages
-description: How languages work in Astro Boilerplate.
+keywords: steve fenton
+description: Steve Fenton's profile on Astro Boilerplate
 bannerImage:
-    src: /img/surface-accessories-700.webp
+    src: /img/authors/steve-fenton.webp
     alt: Dummy image
 authors:
     - steve-fenton

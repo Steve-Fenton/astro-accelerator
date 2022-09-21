@@ -7,7 +7,7 @@ pubDate:   2022-09-17
 keywords: astro,boilerplate,site generator
 description: A boilerplate for a very clean version of Astro.
 bannerImage:
-    src: /surface-accessories-700.webp
+    src: /img/surface-accessories-700.webp
     alt: Dummy image
 authors:
     - steve-fenton
@@ -123,9 +123,9 @@ Markdown:
 ```markdown
 :::div{.simple-grid}
 
-:img{ src="/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
+:img{ src="/img/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
 
-:img{ src="/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
+:img{ src="/img/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
 
 :::
 ```
@@ -134,9 +134,9 @@ Result:
 
 :::div{.simple-grid}
 
-:img{ src="/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
+:img{ src="/img/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
 
-:img{ src="/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
+:img{ src="/img/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
 
 :::
 
@@ -145,12 +145,12 @@ Result:
 Markdown:
 
 ```markdown
-:img{ src="/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
+:img{ src="/img/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
 ```
 
 Result:
 
-:img{ src="/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
+:img{ src="/img/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
 
 ## Lists
 

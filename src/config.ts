@@ -44,7 +44,7 @@ export type Frontmatter = {
 // Default image for OG: Tags
 export const OPEN_GRAPH = {
 	image: {
-		src: '/surface-accessories-700.webp',
+		src: '/img/surface-accessories-700.webp',
 		alt: 'Alt text for image goes here',
 	}
 };

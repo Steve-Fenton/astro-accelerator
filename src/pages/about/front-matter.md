@@ -6,7 +6,7 @@ pubDate: 2022-09-17
 keywords: astro boilerplate,front matter
 description: A list of all custom front matter features in Astro Boilerplate.
 bannerImage:
-    src: /surface-accessories-700.webp
+    src: /img/surface-accessories-700.webp
     alt: Dummy image
 authors:
     - steve-fenton
