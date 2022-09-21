@@ -32,3 +32,11 @@ export const isAuthor = (p) => {
 
   return false;
 }
+
+export const sortByPubDate = (a, b) => {
+  return b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate);
+}
+
+export const sortByPubDateDesc = (a, b) => {
+  return b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate);
+}

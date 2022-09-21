@@ -4,7 +4,7 @@ export const SITE = {
 	description: 'An Astro boilerplate.',
 	defaultLanguage: 'en',
 	themeColor: '#222255',
-    owner: 'Steve Fenton',
+	owner: 'Steve Fenton',
 	default: {
 		lang: 'en',
 		locale: 'en-GB',
@@ -18,8 +18,20 @@ export const SITE = {
 	},
 	pageSize: 4,
 	pageLinks: 5,
-	rssLimit: 20
+	rssLimit: 20,
+	dateOptions: {
+		weekday: 'long',
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	}
 };
+
+type Mapped<T> = {
+    [P in keyof T]?: any
+}
+
+export type Site = Mapped<typeof SITE>;
 
 export type Frontmatter = {
 	layout: string;
