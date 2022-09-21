@@ -9,7 +9,8 @@ description: A boilerplate for a very clean version of Astro.
 bannerImage:
     src: /surface-accessories-700.webp
     alt: Dummy image
-dir: ltr
+authors:
+    - steve-fenton
 ---
 
 This page contains the most common content components, such as:

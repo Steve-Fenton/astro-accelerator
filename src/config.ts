@@ -22,11 +22,12 @@ export const SITE = {
 };
 
 export type Frontmatter = {
+	layout: string;
 	title: string;
-	pubDate: Date;
 	keywords: string;
 	description: string;
-	layout: string;
+	pubDate: Date;
+	authors?: string[];
 	navTitle?: string;
 	navSection?: string;
 	navOrder?: number;

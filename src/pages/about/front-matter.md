@@ -8,25 +8,31 @@ description: A list of all custom front matter features in Astro Boilerplate.
 bannerImage:
     src: /surface-accessories-700.webp
     alt: Dummy image
+authors:
+    - steve-fenton
 ---
 
 Front matter is defined in `config.ts`.
 
 ```typescript
 export type Frontmatter = {
+	layout: string;
 	title: string;
-	navTitle: string;
-	navSection: string;
-	navOrder: number;
-	pubDate: Date;
 	keywords: string;
 	description: string;
-	layout: string;
+	pubDate: Date;
+	authors?: string[];
+	navTitle?: string;
+	navSection?: string;
+	navOrder?: number;
 	bannerImage?: { src: string; alt: string };
 	dir?: 'ltr' | 'rtl';
 	ogLocale?: string;
 	lang?: string;
 	paged?: boolean;
+	navSearch?: boolean;
+	navSitemap?: boolean;
+	navMenu?: boolean;
 };
 ```
 
@@ -52,14 +58,6 @@ navTitle: About Dogs
 navSection: Dogs
 ```
 
-### Ordering and Sorting
-
-Use `navOrder` to control the order menu items are displayed in.
-
-```yaml
-navOrder: 5
-```
-
 ### Metadata
 
 Although `pubDate` is only displayed on posts, it may also be used in sitemaps to signal changes.
@@ -82,7 +80,26 @@ bannerImage?:
 	alt: A whippet running through long grass on a sunny day.
 ```
 
+### Ordering and Sorting
+
+Use `navOrder` to control the order menu items are displayed in.
+
+```yaml
+navOrder: 5
+```
+
+### Authors
+
+Work in progress.
+
+```yaml
+authors:
+    - steve-fenton
+```
+
 ### Language
+
+Usually these would be left out and the site defaults would apply.
 
 ```yaml
 dir: ltr

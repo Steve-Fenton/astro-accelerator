@@ -8,7 +8,8 @@ description: A sample post
 bannerImage:
     src: /surface-accessories-700.webp
     alt: Dummy image
-dir: ltr
+authors:
+    - steve-fenton
 ---
 
 This is an example post with more of the front matter set up, such as except and images.
