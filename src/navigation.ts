@@ -26,16 +26,16 @@ export const menu: (NavPage | 'auto')[] = [
 export const menu: (NavPage | 'auto')[] = [
 	'auto',
 	{
-		title: 'Steve Fenton',
-		url: 'https://www.stevefenton.co.uk/',
+		title: 'Section',
+		url: '/section/',
 		ariaCurrent: false,
 		isOpen: false,
 		order: 1,
-		section: 'Steve Fenton',
+		section: 'Section',
 		children: [
 			{
 				title: 'Blog',
-				url: 'https://www.stevefenton.co.uk/blog/',
+				url: '/section/blog/',
 				ariaCurrent: false,
 				isOpen: false,
 				order: 1,
@@ -44,7 +44,7 @@ export const menu: (NavPage | 'auto')[] = [
 			 },
 			 {
 				title: 'Publications',
-				url: 'https://www.stevefenton.co.uk/publications/',
+				url: '/section/publications/',
 				ariaCurrent: false,
 				isOpen: false,
 				order: 2,
@@ -53,7 +53,7 @@ export const menu: (NavPage | 'auto')[] = [
 			 },
 			 {
 				title: 'About',
-				url: 'https://www.stevefenton.co.uk/about-me/',
+				url: '/section/about/',
 				ariaCurrent: false,
 				isOpen: false,
 				order: 3,
