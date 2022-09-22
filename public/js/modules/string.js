@@ -38,9 +38,9 @@
 }
 
 /**
- * Splits a sentence into individual search terms
+ * 
  * @param {string} string 
- * @returns 
+ * @returns {string[]}
  */
 function explode(string) {
     return string.split(' ').filter(isLongEnough).map(sanitise);

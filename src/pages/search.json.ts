@@ -1,3 +1,4 @@
+import type { MarkdownInstance } from 'astro';
 import { showInSearch } from '../utilities/PageTypeFilters';
 
 async function getData() {
@@ -6,7 +7,7 @@ async function getData() {
     const items = [];
 
     for (const path in allPages) {
-        const page: any = await allPages[path]();
+        const page = await allPages[path]() as  MarkdownInstance<Record<string, any>>;
 
         if (!showInSearch(page)) {
             continue;
@@ -17,10 +18,12 @@ async function getData() {
         if (page.frontmatter.paged) {
             url += '/1';
         }
-      
+
+        const headings = await page.getHeadings();
+              
         items.push({
             title: page.frontmatter.title ?? '',
-            category: page.frontmatter.category ?? '',
+            categories: headings.map(h => h.text),
             tags: page.frontmatter.keywords ?? '',
             url: url,
             date: page.frontmatter.pubDate ?? ''
