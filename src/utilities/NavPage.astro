@@ -1,15 +1,6 @@
 ---
 import type { MarkdownInstance } from 'astro';
-
-export type NavPage = {
-  section: string;
-  title: string;
-  url: string;
-  order: number;
-  isOpen: boolean;
-  ariaCurrent: 'page' | false;
-  children: NavPage[];
-}
+import type { NavPage } from './NavigationTypes';
 
 export const mapNavPage = (page: MarkdownInstance<Record<string, any>>, currentUrl: URL) => {
   let url = page.url == null || (page.url ?? '').length == 0 ? '/' : page.url;

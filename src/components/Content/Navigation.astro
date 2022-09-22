@@ -1,9 +1,10 @@
 ---
+import { menu } from '../../navigation';
 import t from '@language/language.json';
 import { Lang } from '@language/language';
 import NavigationItem from '@content/NavigationItem.astro';
 import { mapNavPage } from '@utilities/NavPage.astro';
-import type { NavPage } from '@utilities/NavPage.astro';
+import { NavPage, isNavPage } from '@utilities/NavigationTypes';
 import { showInMenu } from '@utilities/PageTypeFilters';
 import type { MarkdownInstance } from 'astro';
 
@@ -22,25 +23,52 @@ const mapWithUrl = (page: MarkdownInstance<Record<string, any>>) => {
   return mapNavPage(page, currentUrl);
 };
 
-const topLevelPages = await Astro.glob('../../pages/*.md');
-const allPages = await Astro.glob('../../pages/**/*.md');
+const getPages = async () => {
+  const topLevelPages = await Astro.glob('../../pages/*.md');
+  const allPages = await Astro.glob('../../pages/**/*.md');
 
-const pageHierarchy: NavPage[] = topLevelPages
-  .filter(showInMenu)
-  .map(mapWithUrl);
+  const pageHierarchy: NavPage[] = topLevelPages
+    .filter(showInMenu)
+    .map(mapWithUrl);
 
-const pageList: NavPage[] = allPages
-  .filter(showInMenu)
-  .map(mapWithUrl);
+  const pageList: NavPage[] = allPages
+    .filter(showInMenu)
+    .map(mapWithUrl);
 
-for (let i = 0; i < pageHierarchy.length; i++) {
-  const page = pageHierarchy[i];
-  page.children = pageList
-    .filter((mp) => 
-      page.url != '/' 
-      && mp.url != page.url
-      && mp.url.startsWith(page.url))
-    .sort((mp) => mp.order);
+  for (let i = 0; i < pageHierarchy.length; i++) {
+    const page = pageHierarchy[i];
+    page.children = pageList
+      .filter((mp) => 
+        page.url != '/' 
+        && mp.url != page.url
+        && mp.url.startsWith(page.url))
+      .sort((mp) => mp.order);
+  }
+
+  return pageHierarchy;
+}
+
+const setCurrent = (item: NavPage) => {
+  item.isOpen = currentUrl.pathname.startsWith(item.url);
+  item.ariaCurrent = item.url == currentUrl.pathname
+    ? 'page'
+    : false;
+  item.children.forEach(setCurrent);
+}
+
+let pages: NavPage[] = []
+
+for (let i = 0; i < menu.length; i++) {
+  const item = menu[i];
+  if (isNavPage(item)) {
+      setCurrent(item);
+      pages.push(item);
+  } else {
+    const p = await getPages();
+    for (let j = 0; j < p.length; j++) {
+      pages.push(p[j]);
+    }
+  }
 }
 ---
 <style>
@@ -69,7 +97,7 @@ nav.site-nav h2 {
 <nav class="site-nav" id="site-nav" aria-label={ _(t.aria.site_navigation) }>
   <h2 class="site-nav-title">{ _(t.navigation.title) }</h2>
   <ul>
-    {pageHierarchy.sort((a, b) => a.order - b.order).map((page) => (
+    {pages.sort((a, b) => a.order - b.order).map((page) => (
       <NavigationItem lang={lang} navPage={page} />
     ))}
   </ul>
