@@ -43,6 +43,13 @@ const getPages = async () => {
         && mp.url != page.url
         && mp.url.startsWith(page.url))
       .sort((mp) => mp.order);
+
+    if (page.children.length > 0) {
+      const ownChild = structuredClone(page);
+      ownChild.order = -1;
+      ownChild.children = [];
+      page.children.push(ownChild);
+    }
   }
 
   return pageHierarchy;
