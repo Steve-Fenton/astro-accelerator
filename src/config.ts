@@ -39,7 +39,7 @@ export type Frontmatter = {
 	keywords: string;
 	description: string;
 	pubDate: Date;
-	id: string;
+	id?: string;
 	authors?: string[];
 	navTitle?: string;
 	navSection?: string;

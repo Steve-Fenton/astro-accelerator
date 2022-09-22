@@ -19,6 +19,7 @@ export type Frontmatter = {
 	keywords: string;
 	description: string;
 	pubDate: Date;
+	id?: string;
 	authors?: string[];
 	navTitle?: string;
 	navSection?: string;
@@ -68,6 +69,24 @@ keywords: dogs,canines
 description: A page about dogs and other canines.
 ```
 
+### Id
+
+This is used where an item needs to be found by key. For example, if you specify an author, the author will need a matching id. See also [authors](#authors)
+
+In the author file:
+
+```yaml
+id: steve-fenton
+```
+
+In articles by the author:
+
+```yaml
+authors:
+	- steve-fenton
+```
+authors:
+    - steve-fenton
 ### Banner Image
 
 The banner image is used for social open graph links and is also displayed on list pages.
@@ -88,7 +107,7 @@ navOrder: 5
 
 ### Authors
 
-Work in progress.
+Allows author profiles to be linked to the page or article. See also [ids](#id).
 
 ```yaml
 authors:
@@ -123,6 +142,16 @@ You'll notice that the markdown file must be named after the folder with the Ast
 
 - `/pages/articles.md`
 - `/pages/articles/[page].astro`
+
+## Visibility
+
+You can control whether the page appears in the search, the sitemap, and the menu respectively by setting flags to false. Unless this flag is specified, items are included by default.
+
+```yaml
+	navSearch: false
+	navSitemap: false
+	navMenu: false
+```
 
 ## Recommended Front Matter
 
