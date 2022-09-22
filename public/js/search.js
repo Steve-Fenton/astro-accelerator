@@ -94,14 +94,20 @@ function search(s) {
             queryTerms
         );
 
-        const t = document.createElement('span');
+        const path = document.createElement('div');
+        path.className = 'result-path';
+        path.innerHTML = needle.url;
+
+        const markers = document.createElement('div');
         if (description.length > 0) {
-            t.innerHTML = '...' + description + '...';
+            markers.className = 'result-text';
+            markers.innerHTML = '...' + description + '...';
         }
 
         const li = document.createElement('li');
         li.appendChild(a);
-        li.appendChild(t);
+        li.appendChild(path);
+        li.appendChild(markers);
 
         ol.appendChild(li);
     }

@@ -248,6 +248,15 @@ form.site-search button {
     padding: 0.2em;
 }
 
+.site-search-results .result-text {
+    font-size: 1rem;
+}
+
+.site-search-results .result-path {
+    font-size: 1rem;
+    font-family: var(--code-font);
+}
+
 @media (max-width: 860px) {
     form.site-search div {
         grid-template-columns: repeat(1, auto);
