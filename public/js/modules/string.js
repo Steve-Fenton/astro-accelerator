@@ -11,6 +11,11 @@
     return string.indexOf(search) > -1;
 }
 
+function highlight(string, terms) {
+    terms.forEach(term => {string = string.replaceAll(term, `<mark>${term}</mark>`)});
+    return string;
+}
+
 /**
  * Simplifies a string to plain lower case, removing diacritic characters and hyphens
  * This means a search for "co-op" will be found in "COOP" and "Café" will be found in "cafe"
@@ -46,4 +51,4 @@ function explode(string) {
     return string.split(' ').filter(isLongEnough).map(sanitise);
 }
 
-export { contains, sanitise, explode };
+export { contains, sanitise, explode, highlight };

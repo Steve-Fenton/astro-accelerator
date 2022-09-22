@@ -2,7 +2,7 @@
 
 import { qs } from './modules/query.js';
 import { raiseEvent } from './modules/events.js';
-import { contains, sanitise, explode } from './modules/string.js';
+import { contains, sanitise, explode, highlight } from './modules/string.js';
 
 /**
 type SearchEntry = {
@@ -29,7 +29,8 @@ var scrolled = false;
  * @returns 
  */
 function search(s) {
-    var needles = /** @type {SearchEntry} */ [];
+    const needles = /** @type {SearchEntry} */ [];
+    let summaries = [];
 
     // Clean the input
     const cleanQuery = sanitise(s);
@@ -55,6 +56,7 @@ function search(s) {
             item.categories.forEach(c => {
                 if (contains(c, term)) {
                     item.score = item.score + 5;
+                    summaries.push(c);
                 }
             });
 
@@ -86,8 +88,20 @@ function search(s) {
         a.innerHTML = needle.title;
         a.href = needle.url;
 
+        const uniqueSummaries = [...new Set(summaries)];
+        const description = highlight(
+            uniqueSummaries.join('...'),
+            queryTerms
+        );
+
+        const t = document.createElement('span');
+        if (description.length > 0) {
+            t.innerHTML = '...' + description + '...';
+        }
+
         const li = document.createElement('li');
         li.appendChild(a);
+        li.appendChild(t);
 
         ol.appendChild(li);
     }
