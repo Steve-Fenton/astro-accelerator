@@ -11,8 +11,22 @@
     return string.indexOf(search) > -1;
 }
 
+/**
+ * 
+ * @param {string} string 
+ * @param {string[]} terms 
+ * @returns 
+ */
 function highlight(string, terms) {
-    terms.forEach(term => {string = string.replaceAll(term, `<mark>${term}</mark>`)});
+    terms.forEach(term => {
+        if (term.length > 2) {
+            const regEx = new RegExp(term, "ig");
+            const matches = string.match(regEx);
+            if (matches) {
+                string = string.replace(regEx, `<mark>${matches[0]}</mark>`)
+            }
+        }
+    });
     return string;
 }
 

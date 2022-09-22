@@ -85,7 +85,7 @@ function search(s) {
         const needle = needles[i];
 
         const a = document.createElement('a');
-        a.innerHTML = needle.title;
+        a.innerHTML = highlight(needle.title, queryTerms);
         a.href = needle.url;
 
         const uniqueSummaries = [...new Set(summaries)];

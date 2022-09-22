@@ -1,7 +1,8 @@
-import type { MarkdownInstance } from "astro";
 import type { Site } from '../config';
 
-export const formatDate = (frontmatter: Record<string, any>, lang: string, site: Site) => {
+type FrontMatter = Record<string, any>;
+
+export const formatDate = (frontmatter: FrontMatter, lang: string, site: Site) => {
   const date = frontmatter.pubDate ?? '';
 
   if (date) {
