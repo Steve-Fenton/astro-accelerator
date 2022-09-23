@@ -1,9 +1,10 @@
 ---
 import t from '@util/language.json';
 import { Lang } from '@util/language.astro';
+import { SITE, Frontmatter } from '../config';
 import { sortByPubDateDesc } from '@util/PageTypeFilters';
 import { formatDate } from '@util/DateFormat';
-import { SITE, Frontmatter } from '../config';
+import { addSlashToAddress } from '@util/Url.astro';
 import Default from '@layouts/Default.astro';
 
 // Properties
@@ -12,7 +13,6 @@ type Props = {
 };
 const { frontmatter } = Astro.props as Props;
 const lang = frontmatter.lang ?? SITE.default.lang;
-const textDirection = frontmatter.dir ?? SITE.default.dir;
 
 // Language
 const _ = Lang(lang);
@@ -29,13 +29,13 @@ const authorPages = allPages
     <h2>{ _(t.author.recent_articles) }</h2>
     <ul class="post-list">
     {authorPages.map((post) => (
-    <li class="list-item" data-destination={ post.url }>
+    <li class="list-item" data-destination={ addSlashToAddress(post.url) }>
         <article>
         <img src={ post.frontmatter.bannerImage.src } alt={ post.frontmatter.bannerImage.alt } loading="lazy" />
         <div class="list-item-content">
         <span class="post-meta">{ formatDate(post.frontmatter, lang, SITE) }</span>
         <h2>
-            <a href={ post.url }>{ post.frontmatter.title }</a>
+            <a href={ addSlashToAddress(post.url) }>{ post.frontmatter.title }</a>
         </h2>
         </div>
         </article>
