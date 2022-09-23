@@ -8,7 +8,7 @@ export type NavPage = {
   children: NavPage[];
 }
 
-export function isNavPage(item: NavPage | 'auto') : item is NavPage {
+export function isNavPage (item: NavPage | 'auto') : item is NavPage {
   if (item === 'auto') {
     return false;
   }

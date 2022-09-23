@@ -1,6 +1,6 @@
 ---
-import * as CONFIG from '../../config';
 import t from '@language/language.json';
+import { SITE } from '../../config';
 import { Lang } from '@language/language';
 
 // Properties
@@ -15,59 +15,6 @@ const _ = Lang(lang);
 // Logic
 // -
 ---
-<style>
-/* Header */
-header {
-    color: var(--fore-head);
-    background-color: var(--aft-head);
-    text-align: center;
-    font-size: 2rem;
-    font-size: clamp(1.2em, 4vw, 2em);
-    padding: 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-a {
-    color: var(--link-head);
-    text-decoration: none;
-}
-
-a:hover,
-a:focus {
-    color: var(--link-alt-head);
-    background-color: unset;
-}
-
-.site-title {
-    letter-spacing: -1px;
-    text-transform: uppercase;
-    margin: 0 30px;
-    display: block;
-}
-
-.navigation-icon {
-    display: none;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    stroke: var(--link-head);
-}
-
-.search-icon {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    stroke: var(--link-head);
-}
-
-@media (max-width: 860px) {
-  .navigation-icon {
-    display: block;
-  }
-}
-</style>
 <header class="site-header">
   <a href="#site-nav" class="navigation-icon" title={ _(t.header.open_menu) }><svg xmlns="http://www.w3.org/2000/svg" 
     width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" 
@@ -77,7 +24,7 @@ a:focus {
     <line x1="4" y1="12" x2="20" y2="12" />
     <line x1="4" y1="18" x2="20" y2="18" />
   </svg></a>
-  <a href="/" class="site-title">{ CONFIG.SITE.title }</a>
+  <a href="/" class="site-title">{ SITE.title }</a>
   <a href="/search/" class="search-icon" title={ _(t.header.open_search) }><svg xmlns="http://www.w3.org/2000/svg" 
     width="40" height="40" viewBox="0 0 24 24" stroke-width="1" 
     fill="none" stroke-linecap="round" stroke-linejoin="round">

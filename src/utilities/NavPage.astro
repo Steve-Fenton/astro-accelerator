@@ -3,25 +3,29 @@ import type { MarkdownInstance } from 'astro';
 import type { NavPage } from './NavigationTypes';
 
 export const mapNavPageWithUrl = (currentUrl: URL) => {
-  const mapFunction = (page: MarkdownInstance<Record<string, any>>) => mapNavPage(page, currentUrl) 
+  const mapFunction = (page: MarkdownInstance<Record<string, any>>) => 
+    mapNavPage(page, currentUrl.pathname) 
   return mapFunction;
 };
 
-export const mapNavPage = (page: MarkdownInstance<Record<string, any>>, currentUrl: URL) => {
-  let url = page.url == null || (page.url ?? '').length == 0 ? '/' : page.url;
-  const isCurrent = url == currentUrl.pathname;
+export const mapNavPage = (page: MarkdownInstance<Record<string, any>>, currentPath: string) => {
+  let url = page.url == null || (page.url ?? '').length == 0 
+    ? '/'
+    : page.url;
 
   // Send visitors straight to the first page
   if (page.frontmatter.paged) {
     url += '/1';
   }
 
+  const isCurrent = url == currentPath;
+
   const entry: NavPage = {
     section: page.frontmatter.navSection ?? page.frontmatter.navTitle ?? page.frontmatter.title,
     title: page.frontmatter.navTitle ?? page.frontmatter.title,
     url: url,
     order: page.frontmatter.navOrder,
-    isOpen: currentUrl.pathname.startsWith(url),
+    isOpen: currentPath.startsWith(url),
     ariaCurrent: isCurrent ? 'page' : false,
     children: [],
   }

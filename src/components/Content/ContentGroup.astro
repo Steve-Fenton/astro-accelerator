@@ -1,17 +1,15 @@
 ---
-import * as CONFIG from '../../config';
+import { SITE, Frontmatter } from '../../config';
 import t from '@language/language.json';
 import Navigation from '@content/Navigation.astro';
 import { Lang } from '@language/language';
-import { isAuthor } from '@utilities/PageTypeFilters';
-import { getPages } from '@utilities/PageQueries.astro';
 import { formatDate } from '@utilities/DateFormat';
-import type { MarkdownInstance } from 'astro';
+import { getAuthorList } from '@utilities/Authors.astro';
 
 // Properties
 type Props = {
   lang: string;
-  frontmatter: CONFIG.Frontmatter;
+  frontmatter: Frontmatter;
 };
 const { lang, frontmatter } = Astro.props as Props;
 
@@ -19,69 +17,27 @@ const { lang, frontmatter } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-type BannerImage = { src: string; alt: string; } | null;
-
-const authors = await getPages(isAuthor);
-
-let authorImage: BannerImage = null;
-const writers: MarkdownInstance<Record<string, any>>[] = [];
-(frontmatter.authors ?? []).forEach(a => {
-  const matches = authors.filter(x => x.frontmatter.id == a);
-
-  if (matches.length == 0) {
-    console.warn('Unknown author', a);
-  }
-
-  if (matches.length > 1) {
-    console.warn('Multiple authors with id', a);
-  }
-  
-  if (matches.length == 1) {
-    writers.push(matches[0]);
-    if (authorImage == null) {
-      authorImage = matches[0].frontmatter.bannerImage
-    }
-  }
-});
+const authorList = await getAuthorList(frontmatter);
 ---
-<style>
-.content-group {
-    display: grid;
-    grid-template-columns: var(--navigation-width) auto;
-    gap: var(--grid-gap);
-    max-width: var(--grid-max-width);
-    width: var(--grid-width);
-    margin: var(--block-gap) auto var(--block-gap) auto;
-    min-height: 75vh;
-}
-
-@media (max-width: 860px) {
-  /* Content First on Small Screens */
-  .content-group {
-      grid-template-columns: auto;
-      grid-template-rows: 1fr auto;
-  }
-}
-</style>
 <div class="content-group">
   <Navigation lang={ lang } />
   <main id="site-main">
       <article>
           <header>
-              <h1>{ frontmatter.title ?? CONFIG.SITE.title }</h1>
+              <h1>{ frontmatter.title ?? SITE.title }</h1>
           </header>
-          {writers.length > 0 && 
+          {authorList.writers.length > 0 && 
           <div class="post-meta">
-            {authorImage?.src && 
-            <img src={ authorImage.src } alt={ authorImage.alt } class="author-image" />
+            {authorList.image?.src && 
+            <img src={ authorList.image.src } alt={ authorList.image.alt } class="author-image" />
             }
             <div class="author-info">
               <span>{ _(t.post.written_by) }
-                {writers.map((writer) => (
+                {authorList.writers.map((writer) => (
                   <a href={ writer.url }>{ writer.frontmatter.title }</a>
                 ))}
-                <time class="dt-published" datetime="DATE GOES HERE" itemprop="datePublished"></time>
-                { formatDate(frontmatter, lang, CONFIG.SITE) }
+                <time class="dt-published" datetime={ frontmatter.pubDate.toString() } itemprop="datePublished">
+                { formatDate(frontmatter, lang, SITE) }
                 </time>
               </span>
             </div>

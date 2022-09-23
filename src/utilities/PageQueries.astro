@@ -1,8 +1,5 @@
 ---
 import type { MarkdownInstance } from "astro";
-import type { NavPage } from "@utilities/NavigationTypes";
-import { mapNavPageWithUrl } from "@utilities/NavPage.astro";
-import { showInMenu } from "@utilities/PageTypeFilters";
 
 export type PagePredicate = (value: MarkdownInstance<Record<string, any>>, index: number, array: MarkdownInstance<Record<string, any>>[]) => boolean;
 
@@ -24,36 +21,5 @@ export async function getTopLevelPages (filter?: PagePredicate | null) {
     }
 
     return allPages.filter(filter);
-}
-
-export async function getNavigation (currentUrl: URL) {
-    const mapWithUrl = mapNavPageWithUrl(currentUrl);
-
-    const topLevelPages = await getTopLevelPages(showInMenu);
-    const allPages = await getPages(showInMenu);
-
-    const pageHierarchy: NavPage[] = topLevelPages.map(mapWithUrl);
-    const pageList: NavPage[] = allPages.map(mapWithUrl);
-
-    for (let i = 0; i < pageHierarchy.length; i++) {
-        const page = pageHierarchy[i];
-        page.children = pageList
-            .filter(
-                (mp) =>
-                    page.url != "/" &&
-                    mp.url != page.url &&
-                    mp.url.startsWith(page.url)
-            )
-            .sort((mp) => mp.order);
-
-        if (page.children.length > 0) {
-            const ownChild = structuredClone(page);
-            ownChild.order = -1;
-            ownChild.children = [];
-            page.children.push(ownChild);
-        }
-    }
-
-    return pageHierarchy;
 }
 ---
