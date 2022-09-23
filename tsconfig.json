@@ -5,9 +5,9 @@
       "baseUrl": ".",
       "paths": {
         "@layouts/*": ["src/layouts/*"],
-        "@head/*": ["src/components/Head/*"],
         "@content/*": ["src/components/Content/*"],
-        "@paging/*": ["src/components/Paging/*"],
+        "@head/*": ["src/components/Head/*"],
+        "@lang/*": ["src/components/Language/*"],
         "@util/*": ["src/utilities/*"],
       }
   }

@@ -1,5 +1,5 @@
 // Generates an ATOM feed of recent posts
-import { SITE } from '../config';
+import { SITE } from 'src/config';
 
 async function getData() {
   //@ts-ignore
