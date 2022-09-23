@@ -61,12 +61,16 @@ Features
 - Sitemap
 - Atom
 
+[Find out more about feeds](/features/feeds/)
+
 ## Accessibility
 
 - Skiplinks
 - Use of aria attributes where appropriate
 - All interactive items are keyboard navigable
-- JavaScript not required, progressively enhanced
+- JavaScript not required, features are progressively enhanced
+
+[Find out more about accessibility](/features/accessibility/)
 
 ## SEO
 
