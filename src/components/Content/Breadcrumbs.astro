@@ -21,9 +21,9 @@ const navPages = await getBreadcrumbs(currentUrl);
   <ol vocab="http://schema.org/" typeof="BreadcrumbList">
     {navPages.map((page, index) => (
       <li property="itemListElement" typeof="ListItem">
+      <meta property="position" content={ index.toString() } />
       <a property="item" typeof="WebPage" href={ addSlashToAddress(page.url) } aria-current={ page.ariaCurrent }>
         <span property="name">{ page.title }</span>
-        <meta property="position" content={ index.toString() } />
       </a>
     </li>
     ))}
