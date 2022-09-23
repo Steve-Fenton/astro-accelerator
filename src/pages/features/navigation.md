@@ -2,13 +2,32 @@
 layout: src/layouts/Default.astro
 title: Navigation
 navOrder: 3000
-pubDate: 2022-09-17
-keywords: astro boilerplate,navigation
-description: Navigation menus in Astro Boilerplate
+pubDate: 2022-09-23
+keywords: astro boilerplate,navigation,menu
+description: How the navigation menu works in Astro Boilerplate.
 bannerImage:
     src: /img/surface-accessories-700.webp
     alt: Dummy image
 ---
+
+The navigation menu is designed to provide an accessible way to navigate a hierarchy of pages.
+
+The menu can:
+
+- Be generated automatically from pages (default)
+- Be manually controlled from a data file
+- Use a combination of the automatic pages plus additional manual items
+
+## Automatic Menu Items
+
+By default, the menu uses automatic discovery. You can see the configuration for this in `src/navigation.ts`.
+
+```typescript
+export const menu: (NavPage | 'auto')[] = [
+	'auto'
+];
+
+```
 
 Using a path-based convention, we can model hierarchies within the Astro site.
 
@@ -36,69 +55,9 @@ and
 - /pages/articles.md
 - /pages/articles/
 
-## Menu customisation
+## Additional Manual Menu Items
 
-The file `/src/navigation.ts` can be used to control the navigation on the site.
-
-## Automated links
-
-By default, it simply uses the automatically generated navigation, which is based on pages and frontmatter:
-
-```typescript
-export const menu: (NavPage | 'auto')[] = [
-	'auto'
-];
-```
-
-## Manual links
-
-Tou can replace this with manual defined links:
-
-```typescript
-export const menu: (NavPage | 'auto')[] = [
-	{
-		title: 'Section',
-		url: '/section/',
-		ariaCurrent: false,
-		isOpen: false,
-		order: 1,
-		section: 'Section',
-		children: [
-			{
-				title: 'Blog',
-				url: '/section/blog/',
-				ariaCurrent: false,
-				isOpen: false,
-				order: 1,
-				section: '',
-				children: []
-			 },
-			 {
-				title: 'Publications',
-				url: '/section/publications/',
-				ariaCurrent: false,
-				isOpen: false,
-				order: 2,
-				section: '',
-				children: []
-			 },
-			 {
-				title: 'About',
-				url: '/section/about/',
-				ariaCurrent: false,
-				isOpen: false,
-				order: 3,
-				section: '',
-				children: []
-			 },
-		]
- 	},
-];
-```
-
-## Manual and automated links
-
-You can use both manual and automatic links (note the `'auto'` entry):
+To add menu items to the automatic navigation, add the items to `src/navigation.ts`.
 
 ```typescript
 export const menu: (NavPage | 'auto')[] = [
@@ -141,4 +100,12 @@ export const menu: (NavPage | 'auto')[] = [
 		]
  	},
 ];
+```
+
+## Remove Automatic Menu Items
+
+To remove all automatic menu items, remove the following line:
+
+```typescript
+	'auto',
 ```

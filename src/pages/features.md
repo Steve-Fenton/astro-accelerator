@@ -21,7 +21,7 @@ Features
 - Block elements
 - Attributes
 
-[Find out more about Markdown](/features/markdown/)
+[Find out more about markdown extensions](/features/markdown/)
 
 ## Header
 
@@ -29,6 +29,8 @@ Features
 - Mobile navigation
 - Search icon
 - Breadcrumbs
+
+[Find out more about header features](/features/header/)
 
 ## Navigation
 
@@ -47,7 +49,7 @@ Features
 - Date display
 - Translations
 
-[Find out more about I18n](/features/internationalization/)
+[Find out more about i18n](/features/internationalization/)
 
 ## Feeds
 
