@@ -1,9 +1,7 @@
 ---
 import t from '@language/language.json';
 import { Lang } from '@language/language';
-import { getPages } from '@utilities/PageQueries.astro';
-import { mapNavPageWithUrl, popMatchingPage } from '@utilities/NavPage.astro';
-import type { NavPage } from '@utilities/NavigationTypes';
+import { getBreadcrumbs } from '@utilities/Breadcrumbs.astro';
 
 // Properties
 type Props = {
@@ -16,22 +14,7 @@ const _ = Lang(lang);
 
 // Logic
 const currentUrl = new URL(Astro.request.url);
-const mapWithUrl = mapNavPageWithUrl(currentUrl);
-
-const allPages = await getPages();
-
-const pathParts = currentUrl.pathname.split('/');
-const navPages: NavPage[] = [];
-let path = '';
-
-pathParts.forEach((part) => {
-  path += part.length > 0 ? '/' + part : '';
-  const match = popMatchingPage(allPages, path);
-
-  if (match) {
-    navPages.push(mapWithUrl(match));
-  }
-});
+const navPages = await getBreadcrumbs(currentUrl);
 ---
 <nav class="site-breadcrumbs" aria-label={ _(t.aria.breadcrumbs) }>
   <ol vocab="http://schema.org/" typeof="BreadcrumbList">

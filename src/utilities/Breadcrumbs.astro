@@ -1,0 +1,26 @@
+---
+import { getPages } from '@utilities/PageQueries.astro';
+import { mapNavPageWithUrl, popMatchingPage } from '@utilities/NavPage.astro';
+import type { NavPage } from '@utilities/NavigationTypes';
+
+export async function getBreadcrumbs(currentUrl: URL) {
+    const mapWithUrl = mapNavPageWithUrl(currentUrl);
+
+    const allPages = await getPages();
+
+    const pathParts = currentUrl.pathname.split('/');
+    const navPages: NavPage[] = [];
+    let path = '';
+
+    pathParts.forEach((part) => {
+        path += part.length > 0 ? '/' + part : '';
+        const match = popMatchingPage(allPages, path);
+
+        if (match) {
+            navPages.push(mapWithUrl(match));
+        }
+    });
+
+    return navPages;
+}
+---
