@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/Author.astro
+layout: src/layouts/Author.astro
 id: steve-fenton
 title: Steve Fenton
 navOrder: 2000

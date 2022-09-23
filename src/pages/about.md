@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/Default.astro
+layout: src/layouts/Default.astro
 title: About
 navSection: About
 navOrder: 1000

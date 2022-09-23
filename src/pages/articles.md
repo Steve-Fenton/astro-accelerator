@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/Default.astro
+layout: src/layouts/Default.astro
 title: Articles
 paged: true
 navOrder: 100000

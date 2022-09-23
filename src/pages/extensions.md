@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/Default.astro
+layout: src/layouts/Default.astro
 title: Astro Extensions
 navSection: Extensions
 navOrder: 3000

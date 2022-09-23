@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/Default.astro
+layout: src/layouts/Default.astro
 title: Host Jekyll on GitHub Pages
 navTitle: GitHub Pages
 navOrder: 10000

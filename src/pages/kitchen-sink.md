@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/Default.astro
+layout: src/layouts/Default.astro
 title: Heading 1
 navTitle: Kitchen Sink
 navOrder: 200000
