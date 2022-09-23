@@ -1,7 +1,7 @@
 ---
 import { getPages } from '@util/PageQueries.astro';
 import { mapNavPageWithUrl, popMatchingPage } from '@util/NavPage.astro';
-import type { NavPage } from '@util/NavigationTypes';
+import type { NavPage } from '@util/NavigationTypes.astro';
 
 export async function getBreadcrumbs(currentUrl: URL) {
     const mapWithUrl = mapNavPageWithUrl(currentUrl);

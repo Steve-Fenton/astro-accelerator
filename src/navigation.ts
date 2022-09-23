@@ -1,4 +1,4 @@
-import type { NavPage } from '@util/NavigationTypes';
+import type { NavPage } from '@util/NavigationTypes.astro';
 
 export const menu: (NavPage | 'auto')[] = [
 	'auto'
