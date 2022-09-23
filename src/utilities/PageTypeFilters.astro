@@ -1,3 +1,4 @@
+---
 import type { MarkdownInstance } from "astro";
 
 export const showInSitemap = (p: MarkdownInstance<Record<string, any>>) => {
@@ -42,3 +43,4 @@ export const sortByPubDate = (a: MarkdownInstance<Record<string, any>>, b: Markd
 export const sortByPubDateDesc = (a: MarkdownInstance<Record<string, any>>, b: MarkdownInstance<Record<string, any>>) => {
   return b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate);
 }
+---

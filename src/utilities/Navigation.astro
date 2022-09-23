@@ -2,7 +2,7 @@
 import { menu } from '../navigation';
 import { NavPage, isNavPage } from '@util/NavigationTypes.astro';
 import { mapNavPageWithUrl } from "@util/NavPage.astro";
-import { showInMenu } from "@util/PageTypeFilters";
+import { showInMenu } from "@util/PageTypeFilters.astro";
 import { getTopLevelPages, getPages } from "@util/PageQueries.astro";
 
 export async function getMenu (currentUrl: URL) {

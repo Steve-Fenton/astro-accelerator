@@ -1,5 +1,5 @@
 import type { MarkdownInstance } from 'astro';
-import { showInSearch } from '../utilities/PageTypeFilters';
+import { showInSearch } from '../utilities/PageTypeFilters.astro';
 
 async function getData() {
     //@ts-ignore

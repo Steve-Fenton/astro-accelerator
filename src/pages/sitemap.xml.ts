@@ -1,6 +1,6 @@
 // Generates an ATOM feed of recent posts
 import { SITE } from '../config';
-import { showInSitemap } from '../utilities/PageTypeFilters';
+import { showInSitemap } from '../utilities/PageTypeFilters.astro';
 
 async function getData() {
   //@ts-ignore
