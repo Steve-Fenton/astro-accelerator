@@ -24,7 +24,7 @@ const allPages = await Astro.glob('/**/*.md');
 const authorPages = allPages
     .filter(p => p.frontmatter.authors?.indexOf(frontmatter.id) > -1)
     .sort(sortByPubDateDesc)
-    .slice(0, 5);
+    .slice(0, SITE.pageSize);
 ---
 <Default frontmatter={frontmatter}>
     <slot />

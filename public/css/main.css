@@ -396,7 +396,6 @@ main ul ol, main ul ul, main ol ol, main ol ul {
     width: 100%;
     color: var(--fore-head);
     background-color: var(--aft-head);
-    margin: var(--block-gap) auto 0 auto;
 }
 
 /* Overlay (Mobile Navigation, Search) */

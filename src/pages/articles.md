@@ -2,7 +2,7 @@
 layout: ../layouts/Default.astro
 title: Articles
 paged: true
-navOrder: 10000
+navOrder: 100000
 navSearch: false
 navSitemap: false
 pubDate:   2022-09-17

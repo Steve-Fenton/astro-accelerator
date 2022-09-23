@@ -1,5 +1,7 @@
-# Asro Boilerplate
+# Astro Boilerplate
+
+Review the documentation at [astro.stevefenton.co.uk](https://astro.stevefenton.co.uk/)
 
 ## TODO
 
-- How to make Astro run as a sub-folder. For example the site running via Azure Front Door as www.example.com/news/
+- Test running in a sub-folder... i.e. www.example.com/dev-blog/

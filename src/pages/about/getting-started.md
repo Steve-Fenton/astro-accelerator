@@ -16,8 +16,17 @@ bannerImage:
 
 ## Things to Update
 
-- `astro.config.mjs` the `site` value
-- `/public/robots.txt` update the sitemap address
+In `/astro.config.mjs`\
+Change the value: `https://astro.stevefenton.co.uk`\
+The address of the live site.
+
+In `/public/robots.txt`\
+Change the value: `https://astro.stevefenton.co.uk/sitemap.xml`\
+The address of the sitemap.
+
+In `/src/config.ts`\
+Review the items in `export const SITE`\
+Sitewide defaults.
 
 ## Running in a sub-folder
 
@@ -26,6 +35,10 @@ Some use cases run the site in a sub-folder, in order to front-door the site as 
  - www.example.com - operated by the marketing team, maybe using a big platform...
  - www.example.com/dev-blog/ - operated by the development team, running Astro
 
+:::div{.note}
+This feature will be fully supported soon.
+:::
+
 To do this, start adding you pages to `/pages/dev-blog/` and place your public assets in `/public/dev-blog`. Astro is perfectly happy placing images into the folders created for the pages, and will add both the content and images to the `/dev-blog/` folder it creates during the build.
 
-When you map your front door for `www.example.com/dev-blog/` all your paths will be correct as you've placed all your content in this folder. This avoids issues attempting to load resources from the "root" that would be front doored to your other site running at `www.example.com`.
+When you map your front-door for `www.example.com/dev-blog/` all your paths will be correct as you've placed all your content in this folder. This avoids issues attempting to load resources from the "root" that would be front-doored to your other site running at `www.example.com`.

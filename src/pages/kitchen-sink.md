@@ -2,7 +2,7 @@
 layout: ../layouts/Default.astro
 title: Heading 1
 navTitle: Kitchen Sink
-navOrder: 20000
+navOrder: 200000
 pubDate:   2022-09-17
 keywords: astro,boilerplate,site generator
 description: A boilerplate for a very clean version of Astro.

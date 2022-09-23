@@ -13,17 +13,12 @@ bannerImage:
     alt: Dummy image
 ---
 
-Astro Boilerplate contains some Astro components and Markdown extensions. These provide essential features that are needed by most sites.
+This Astro boilerplate contains layouts, components, and extensions that provide essential features for most websites.
 
-You can adjust the existing theme by changing the CSS variables, or use it as the starting point for your own bespoke design.
+The CSS has been kept separate to the components to make it easier to replace entirely. The HTML is semantic, so applying drastically different styles and layouts should be easy enough.
 
-The customised elements include:
+You can publish Astro sites to [GitHub pages](/about/github-pages/). Alternatively, you can run `npm run build` and push the `/dist/` folder to your preferred hosting infrastructure.
 
-- [Custom front-matter](/about/front-matter/) to power navigation features
-- A number of Astro components
-
-You can use an action to push your site to [GitHub Pages](/about/github-pages/).
-
-## Where Next?
+Where Next?
 
 - Find out how to [get started](/about/getting-started/)

@@ -2,7 +2,7 @@
 layout: ../layouts/Default.astro
 title: Astro Extensions
 navSection: Extensions
-navOrder: 1500
+navOrder: 3000
 pubDate:   2022-09-17
 keywords: extensions,astro,boilerplate
 description: Astro boilerplate is an opinionated Astro site.
