@@ -3,6 +3,7 @@ import { menu } from '../../navigation';
 import t from '@language/language.json';
 import { Lang } from '@language/language';
 import NavigationItem from '@content/NavigationItem.astro';
+import { getNavigation } from '@utilities/PageQueries.astro';
 import { mapNavPage } from '@utilities/NavPage.astro';
 import { NavPage, isNavPage } from '@utilities/NavigationTypes';
 import { showInMenu } from '@utilities/PageTypeFilters';
@@ -19,41 +20,6 @@ const _ = Lang(lang);
 
 // Logic
 const currentUrl = new URL(Astro.request.url);
-const mapWithUrl = (page: MarkdownInstance<Record<string, any>>) => {
-  return mapNavPage(page, currentUrl);
-};
-
-const getPages = async () => {
-  const topLevelPages = await Astro.glob('../../pages/*.md');
-  const allPages = await Astro.glob('../../pages/**/*.md');
-
-  const pageHierarchy: NavPage[] = topLevelPages
-    .filter(showInMenu)
-    .map(mapWithUrl);
-
-  const pageList: NavPage[] = allPages
-    .filter(showInMenu)
-    .map(mapWithUrl);
-
-  for (let i = 0; i < pageHierarchy.length; i++) {
-    const page = pageHierarchy[i];
-    page.children = pageList
-      .filter((mp) => 
-        page.url != '/' 
-        && mp.url != page.url
-        && mp.url.startsWith(page.url))
-      .sort((mp) => mp.order);
-
-    if (page.children.length > 0) {
-      const ownChild = structuredClone(page);
-      ownChild.order = -1;
-      ownChild.children = [];
-      page.children.push(ownChild);
-    }
-  }
-
-  return pageHierarchy;
-}
 
 const setCurrent = (item: NavPage) => {
   item.isOpen = currentUrl.pathname.startsWith(item.url);
@@ -71,7 +37,7 @@ for (let i = 0; i < menu.length; i++) {
       setCurrent(item);
       pages.push(item);
   } else {
-    const p = await getPages();
+    const p = await getNavigation(currentUrl);
     for (let j = 0; j < p.length; j++) {
       pages.push(p[j]);
     }

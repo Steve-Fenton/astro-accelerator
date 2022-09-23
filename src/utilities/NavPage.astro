@@ -2,6 +2,11 @@
 import type { MarkdownInstance } from 'astro';
 import type { NavPage } from './NavigationTypes';
 
+export const mapNavPageWithUrl = (currentUrl: URL) => {
+  const mapFunction = (page: MarkdownInstance<Record<string, any>>) => mapNavPage(page, currentUrl) 
+  return mapFunction;
+};
+
 export const mapNavPage = (page: MarkdownInstance<Record<string, any>>, currentUrl: URL) => {
   let url = page.url == null || (page.url ?? '').length == 0 ? '/' : page.url;
   const isCurrent = url == currentUrl.pathname;

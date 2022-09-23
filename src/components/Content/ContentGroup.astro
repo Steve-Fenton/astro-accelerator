@@ -1,10 +1,12 @@
 ---
 import * as CONFIG from '../../config';
 import t from '@language/language.json';
-import { Lang } from '@language/language';
 import Navigation from '@content/Navigation.astro';
+import { Lang } from '@language/language';
 import { isAuthor } from '@utilities/PageTypeFilters';
+import { getPages } from '@utilities/PageQueries.astro';
 import { formatDate } from '@utilities/DateFormat';
+import type { MarkdownInstance } from 'astro';
 
 // Properties
 type Props = {
@@ -17,11 +19,12 @@ const { lang, frontmatter } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-const allPages = await Astro.glob('/**/*.md');
-const authors = allPages.filter(isAuthor);
+type BannerImage = { src: string; alt: string; } | null;
 
-let authorImage = null;
-const writers = [];
+const authors = await getPages(isAuthor);
+
+let authorImage: BannerImage = null;
+const writers: MarkdownInstance<Record<string, any>>[] = [];
 (frontmatter.authors ?? []).forEach(a => {
   const matches = authors.filter(x => x.frontmatter.id == a);
 

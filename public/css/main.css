@@ -1,7 +1,3 @@
-/*
-    Should only contain global styles
-*/
-
 html {
     box-sizing: border-box;
 }
@@ -172,6 +168,39 @@ tbody tr {
 tbody tr:nth-child(odd) {
     background-color: var(--aft-table-row-odd);
     color: var(--fore-table-row-odd);
+}
+
+ /* Breadcrumbs */
+
+ .site-breadcrumbs ol {
+    font-size: 0.8rem;
+    background-color: var(--aft-breadcrumb);
+    color: var(--fore-breadcrumb);
+    padding: 0 1em;
+}
+
+.site-breadcrumbs li {
+    display: inline-block;
+    padding: 0.2em;
+}
+
+.site-breadcrumbs li::before {
+    content: '>'
+}
+
+.site-breadcrumbs li:first-child::before {
+    content: ''
+}
+
+.site-breadcrumbs a[aria-current] {
+    color: var(--fore);
+    text-decoration: none;
+}
+
+@media (max-width: 860px) {
+  .site-breadcrumbs ol {
+    text-align: center;
+  }
 }
 
 /* Main */

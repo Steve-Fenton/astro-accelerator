@@ -1,9 +1,9 @@
 ---
 import t from '@language/language.json';
 import { Lang } from '@language/language';
-import { mapNavPage, popMatchingPage } from '@utilities/NavPage.astro';
-import type { NavPage } from '@utilities/NavPage.astro';
-import type { MarkdownInstance } from 'astro';
+import { getPages } from '@utilities/PageQueries.astro';
+import { mapNavPageWithUrl, popMatchingPage } from '@utilities/NavPage.astro';
+import type { NavPage } from '@utilities/NavigationTypes';
 
 // Properties
 type Props = {
@@ -16,62 +16,26 @@ const _ = Lang(lang);
 
 // Logic
 const currentUrl = new URL(Astro.request.url);
-const mapWithUrl = (page: MarkdownInstance<Record<string, any>>) => {
-  return mapNavPage(page, currentUrl);
-};
+const mapWithUrl = mapNavPageWithUrl(currentUrl);
 
-const allPages = await Astro.glob('../../pages/**/*.md');
+const allPages = await getPages();
 
-const parts = currentUrl.pathname.split('/');
-const items: NavPage[] = [];
+const pathParts = currentUrl.pathname.split('/');
+const navPages: NavPage[] = [];
 let path = '';
 
-parts.forEach((part) => {
+pathParts.forEach((part) => {
   path += part.length > 0 ? '/' + part : '';
   const match = popMatchingPage(allPages, path);
 
   if (match) {
-    items.push(mapWithUrl(match));
+    navPages.push(mapWithUrl(match));
   }
 });
 ---
-<style>
-  /* Breadcrumbs */
-
-ol {
-    font-size: 0.8rem;
-    background-color: var(--aft-breadcrumb);
-    color: var(--fore-breadcrumb);
-    padding: 0 1em;
-}
-
-li {
-    display: inline-block;
-    padding: 0.2em;
-}
-
-li::before {
-    content: '>'
-}
-
-li:first-child::before {
-    content: ''
-}
-
-a[aria-current] {
-    color: var(--fore);
-    text-decoration: none;
-}
-
-@media (max-width: 860px) {
-  ol {
-    text-align: center;
-  }
-}
-</style>
 <nav class="site-breadcrumbs" aria-label={ _(t.aria.breadcrumbs) }>
   <ol vocab="http://schema.org/" typeof="BreadcrumbList">
-    {items.map((page, index) => (
+    {navPages.map((page, index) => (
       <li property="itemListElement" typeof="ListItem">
       <a property="item" typeof="WebPage" href={ page.url } aria-current={ page.ariaCurrent }>
         <span property="name">{ page.title }</span>
