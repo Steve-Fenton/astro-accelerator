@@ -1,16 +1,16 @@
 ---
-import * as CONFIG from '../config';
-import t from '@language/language.json';
-import { Lang } from '@language/language';
+import t from '@utilities/language.json';
+import { Lang } from '@utilities/language.astro';
+import { SITE, Frontmatter } from '../config';
 import Default from '@layouts/Default.astro';
 
 // Properties
 type Props = {
-    frontmatter: CONFIG.Frontmatter
+    frontmatter: Frontmatter
 };
 const { frontmatter } = Astro.props as Props;
-const lang = frontmatter.lang ?? CONFIG.SITE.default.lang;
-const textDirection = frontmatter.dir ?? CONFIG.SITE.default.dir;
+const lang = frontmatter.lang ?? SITE.default.lang;
+const textDirection = frontmatter.dir ?? SITE.default.dir;
 
 // Language
 const _ = Lang(lang);
@@ -20,12 +20,12 @@ const siteUrl = Astro.site ? Astro.site.href : '';
 ---
 <Default frontmatter={frontmatter}>
     <slot />
-    <form method="GET" action={ CONFIG.SITE.search.fallbackUrl ?? 'https://www.google.com/search' } role="search" id="site-search" class="site-search note" autocomplete="off">
+    <form method="GET" action={ SITE.search.fallbackUrl ?? 'https://www.google.com/search' } role="search" id="site-search" class="site-search note" autocomplete="off">
         <fieldset>
-            <input type="hidden" name={ CONFIG.SITE.search.fallbackSite ?? 'q' } value={ siteUrl } />
+            <input type="hidden" name={ SITE.search.fallbackSite ?? 'q' } value={ siteUrl } />
             <div>
                 <label for="site-search-query">{ _(t.search.search_for) }</label>
-                <input type="text" name={ CONFIG.SITE.search.fallbackSite ?? 'q' } id="site-search-query" autofocus="autofocus" />
+                <input type="text" name={ SITE.search.fallbackSite ?? 'q' } id="site-search-query" autofocus="autofocus" />
                 <button id="site-search-button" type="submit">{ _(t.search.submit) }</button>
             </div>
         </fieldset>

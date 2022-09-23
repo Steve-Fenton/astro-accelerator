@@ -1,17 +1,17 @@
 ---
-import { Frontmatter, SITE } from '../../config';
 import type { Page, MarkdownInstance } from 'astro';
-import t from '@language/language.json';
-import { Lang } from '@language/language';
+import t from '@utilities/language.json';
+import { Lang } from '@utilities/language.astro';
+import { Frontmatter, SITE } from '../../config';
+import { getPageLinks } from '@paging/PageLinks';
+import { sortByPubDateDesc } from '@utilities/PageTypeFilters';
+import { formatDate } from '@utilities/DateFormat';
 import SkipLinks from '@content/SkipLinks.astro';
 import Breadcrumbs from '@content/Breadcrumbs.astro';
 import Header from '@content/Header.astro';
 import Footer from '@content/Footer.astro';
 import ContentGroup from '@content/ContentGroup.astro';
 import Head from '@head/HtmlHead.astro';
-import { getPageLinks } from '@paging/PageLinks';
-import { sortByPubDateDesc } from '@utilities/PageTypeFilters';
-import { formatDate } from '@utilities/DateFormat';
 
 const lang = SITE.default.lang;
 const textDirection = SITE.default.dir;
