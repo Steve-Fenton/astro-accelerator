@@ -1,6 +1,7 @@
 ---
 import type { MarkdownInstance } from 'astro';
 import type { NavPage } from './NavigationTypes';
+import { addSlashToAddress } from './Url.astro';
 
 export const mapNavPageWithUrl = (currentUrl: URL) => {
   const mapFunction = (page: MarkdownInstance<Record<string, any>>) => 
@@ -17,6 +18,8 @@ export const mapNavPage = (page: MarkdownInstance<Record<string, any>>, currentP
   if (page.frontmatter.paged) {
     url += '/1/';
   }
+
+  url = addSlashToAddress(url);
 
   const isCurrent = url == currentPath;
 
