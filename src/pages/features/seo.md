@@ -12,6 +12,8 @@ bannerImage:
 
 Astro Boilerplate intends to be kind to search engines.
 
+A big thank you to the SEO community, especially Petr Vinklarek, for their knowledge.
+
 ## Canonical URLs
 
 We hint the canonical URL for pages to search engines using the `<link rel="canonical" ../>` tag.
