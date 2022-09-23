@@ -1,4 +1,4 @@
-import type { NavPage } from '@utilities/NavigationTypes';
+import type { NavPage } from '@util/NavigationTypes';
 
 export const menu: (NavPage | 'auto')[] = [
 	'auto'

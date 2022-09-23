@@ -1,8 +1,8 @@
 ---
 import type { Frontmatter } from "../config";
 import type { MarkdownInstance } from "astro";
-import { getPages } from "@utilities/PageQueries.astro";
-import { isAuthor } from "@utilities/PageTypeFilters";
+import { getPages } from "@util/PageQueries.astro";
+import { isAuthor } from "@util/PageTypeFilters";
 
 type BannerImage = { src: string; alt: string } | null;
 type AuthorList = {

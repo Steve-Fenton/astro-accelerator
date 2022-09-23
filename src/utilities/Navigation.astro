@@ -1,9 +1,9 @@
 ---
 import { menu } from '../navigation';
-import { NavPage, isNavPage } from '@utilities/NavigationTypes';
-import { mapNavPageWithUrl } from "@utilities/NavPage.astro";
-import { showInMenu } from "@utilities/PageTypeFilters";
-import { getTopLevelPages, getPages } from "@utilities/PageQueries.astro";
+import { NavPage, isNavPage } from '@util/NavigationTypes';
+import { mapNavPageWithUrl } from "@util/NavPage.astro";
+import { showInMenu } from "@util/PageTypeFilters";
+import { getTopLevelPages, getPages } from "@util/PageQueries.astro";
 
 export async function getMenu (currentUrl: URL) {
     const setCurrent = (item: NavPage) => {

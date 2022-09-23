@@ -8,7 +8,7 @@
         "@head/*": ["src/components/Head/*"],
         "@content/*": ["src/components/Content/*"],
         "@paging/*": ["src/components/Paging/*"],
-        "@utilities/*": ["src/utilities/*"],
+        "@util/*": ["src/utilities/*"],
       }
   }
 }
