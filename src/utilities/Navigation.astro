@@ -1,9 +1,11 @@
 ---
+// Data file `navigation.ts`
 import { menu } from '../navigation';
+
+import { showInMenu } from '@util/PageTypeFilters.astro';
+import { mapNavPageWithUrl } from '@util/NavPage.astro';
 import { NavPage, isNavPage } from '@util/NavigationTypes.astro';
-import { mapNavPageWithUrl } from "@util/NavPage.astro";
-import { showInMenu } from "@util/PageTypeFilters.astro";
-import { getTopLevelPages, getPages } from "@util/PageQueries.astro";
+import { getTopLevelPages, getPages } from '@util/PageQueries.astro';
 
 export async function getMenu (currentUrl: URL) {
     const setCurrent = (item: NavPage) => {

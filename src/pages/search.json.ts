@@ -1,7 +1,7 @@
 import type { MarkdownInstance } from 'astro';
 import { showInSearch } from '@util/PageTypeFilters.astro';
 
-async function getData() {
+async function getData () {
     //@ts-ignore
     const allPages = import.meta.glob('./**/*.md');
     const items = [];

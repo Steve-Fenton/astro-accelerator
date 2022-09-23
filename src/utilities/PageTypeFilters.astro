@@ -1,5 +1,5 @@
 ---
-import type { MarkdownInstance } from "astro";
+import type { MarkdownInstance } from 'astro';
 
 export const showInSitemap = (p: MarkdownInstance<Record<string, any>>) => {
   if (typeof p.frontmatter.navSitemap !== 'undefined'

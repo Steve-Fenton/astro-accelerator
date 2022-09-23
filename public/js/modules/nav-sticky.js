@@ -1,6 +1,6 @@
 // @ts-check
 
-import { qs, qsa } from './query.js';
+import { qs } from './query.js';
 
 /**
  * Makes an existing navigation element sticky
