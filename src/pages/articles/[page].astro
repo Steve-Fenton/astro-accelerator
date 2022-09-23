@@ -1,6 +1,6 @@
 ---
 import t from '@lang/language.json';
-import { Lang } from 'src/utilities/Language.astro';
+//import { Lang } from 'src/utilities/Language.astro';
 
 import type { Page, MarkdownInstance } from 'astro';
 
@@ -33,7 +33,8 @@ type Props = {
 const { page } = Astro.props as Props;
 
 // Language
-const _ = Lang(lang);
+//const _ = Lang(lang);
+const _ = (x) => x;
 const articles = t.articles;
 const aria = t.aria;
 
