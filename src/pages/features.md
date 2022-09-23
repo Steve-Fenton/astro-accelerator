@@ -21,11 +21,13 @@ Features
 - Block elements
 - Attributes
 
+[Find out more about Markdown](/features/markdown/)
+
 ## Header
 
 - Skiplinks
 - Mobile navigation
-- Search
+- Search icon
 - Breadcrumbs
 
 ## Navigation
@@ -41,7 +43,11 @@ Features
 
 ## :abbr[I18n]{ title="Internationalization" }
 
+- Language and locale settings
+- Date display
 - Translations
+
+[Find out more about I18n](/features/internationalization/)
 
 ## Feeds
 
