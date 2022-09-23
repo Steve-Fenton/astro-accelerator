@@ -2,6 +2,7 @@
 import t from '@util/language.json';
 import { Lang } from '@util/language.astro';
 import { getBreadcrumbs } from '@util/Breadcrumbs.astro';
+import { addSlashToAddress } from '@util/Url.astro';
 
 // Properties
 type Props = {
@@ -20,7 +21,7 @@ const navPages = await getBreadcrumbs(currentUrl);
   <ol vocab="http://schema.org/" typeof="BreadcrumbList">
     {navPages.map((page, index) => (
       <li property="itemListElement" typeof="ListItem">
-      <a property="item" typeof="WebPage" href={ page.url } aria-current={ page.ariaCurrent }>
+      <a property="item" typeof="WebPage" href={ addSlashToAddress(page.url) } aria-current={ page.ariaCurrent }>
         <span property="name">{ page.title }</span>
         <meta property="position" content={ index.toString() } />
       </a>

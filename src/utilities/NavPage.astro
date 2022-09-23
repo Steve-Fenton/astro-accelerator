@@ -15,7 +15,7 @@ export const mapNavPage = (page: MarkdownInstance<Record<string, any>>, currentP
 
   // Send visitors straight to the first page
   if (page.frontmatter.paged) {
-    url += '/1';
+    url += '/1/';
   }
 
   const isCurrent = url == currentPath;

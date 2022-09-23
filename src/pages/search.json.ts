@@ -16,7 +16,7 @@ async function getData() {
         let url = page.url ?? '';
     
         if (page.frontmatter.paged) {
-            url += '/1';
+            url += '/1/';
         }
 
         const headings = await page.getHeadings();

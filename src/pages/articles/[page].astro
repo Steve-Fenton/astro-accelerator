@@ -3,9 +3,10 @@ import type { Page, MarkdownInstance } from 'astro';
 import t from '@util/language.json';
 import { Lang } from '@util/language.astro';
 import { Frontmatter, SITE } from '../../config';
-import { getPageLinks } from '@paging/PageLinks';
-import { sortByPubDateDesc } from '@util/PageTypeFilters';
 import { formatDate } from '@util/DateFormat';
+import { getPageLinks } from '@util/PageLinks.astro';
+import { sortByPubDateDesc } from '@util/PageTypeFilters';
+import { addSlashToAddress } from '@util/Url.astro';
 import SkipLinks from '@content/SkipLinks.astro';
 import Breadcrumbs from '@content/Breadcrumbs.astro';
 import Header from '@content/Header.astro';
@@ -15,7 +16,6 @@ import Head from '@head/HtmlHead.astro';
 
 const lang = SITE.default.lang;
 const textDirection = SITE.default.dir;
-const locale = SITE.default.locale;
 
 const frontmatter: Frontmatter = {
   layout: '../layouts/Default.astro',
@@ -82,13 +82,13 @@ const pageLinks = getPageLinks(SITE.pageLinks, page.lastPage, page.currentPage, 
           
           <nav class="post-paging" aria-label={ _(aria.paging) }>
           {page.url.prev
-            ? <a href={page.url.prev}>{ _(articles.previous) }</a>
+            ? <a href={ addSlashToAddress(page.url.prev) }>{ _(articles.previous) }</a>
             : <span>{ _(articles.previous) }</span>}
           {pageLinks.map((link) => (
-              <a href={ link.url } aria-current={link.ariaCurrent}>{ link.title }</a>
+              <a href={ addSlashToAddress(link.url) } aria-current={ link.ariaCurrent }>{ link.title }</a>
           ))}
           {page.url.next
-            ? <a href={page.url.next}>{ _(articles.next) }</a>
+            ? <a href={ addSlashToAddress(page.url.next) }>{ _(articles.next) }</a>
             : <span>{ _(articles.next) }</span>}
           </nav>
         </ContentGroup>

@@ -128,11 +128,11 @@ lang: en
 
 When you use Astro paged results, it generates pages with numbered addresses, for example the file `/articles/[page].astro` generates the following pages:
 
-- /articles/1
-- /articles/2
-- /articles/3
+- /articles/1/
+- /articles/2/
+- /articles/3/
 
-You will probably want to pair this with an `articles.md` page, which allows you to specify front-matter and will appear in navigation. By setting `paged` to `true`, the link from the navigation will take visitors directly to `/articles/1`.
+You will probably want to pair this with an `articles.md` page, which allows you to specify front-matter and will appear in navigation. By setting `paged` to `true`, the link from the navigation will take visitors directly to `/articles/1/`.
 
 ```yaml
 paged: true

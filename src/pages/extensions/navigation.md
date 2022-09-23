@@ -24,7 +24,7 @@ Consider the following menu:
 
 `About` is our first special case, an item with children in the `/pages/about/` folder. This means its content is not used, only its frontmatter is used when building the menu. It is important for accessibility that an element doesn't have nested interactivity, so we reserve this item as a marker for expanding / collapsing the menu (in our case as a hierarchy, but also in cases where you use a hover menu or maxi menu).
 
-`Articles` is our second special case, it points to the list pages for items in the `/pages/articles/` folder. The link will takes users to `/pages/articles/1`, which is an auto-generated page. The `article.md` file acts as a pointer to the auto-generated pages and its content is not used.
+`Articles` is our second special case, it points to the list pages for items in the `/pages/articles/` folder. The link will takes users to `/pages/articles/1/`, which is an auto-generated page. The `article.md` file acts as a pointer to the auto-generated pages and its content is not used.
 
 In both special cases, the paths are key, the parent item and the folder containing children must match:
 

@@ -2,6 +2,7 @@
 import t from '@util/language.json';
 import { Lang } from '@util/language.astro';
 import type { NavPage } from '@util/NavigationTypes';
+import { addSlashToAddress } from '@util/Url.astro';
 
 // Properties
 type Props = {
@@ -18,7 +19,7 @@ const _ = Lang(lang);
 ---
 {(page.children.length == 0) && (
 <li>
-  <a href={ page.url } aria-current={ page.ariaCurrent }>{ page.title }</a>
+  <a href={ addSlashToAddress(page.url) } aria-current={ page.ariaCurrent }>{ page.title }</a>
 </li>
 )}
 {(page.children.length > 0) && (

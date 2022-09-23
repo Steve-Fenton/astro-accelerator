@@ -4,6 +4,7 @@ import { Lang } from '@util/language.astro';
 import { SITE, Frontmatter } from '../../config';
 import { formatDate } from '@util/DateFormat';
 import { getAuthorList } from '@util/Authors.astro';
+import { addSlashToAddress } from '@util/Url.astro';
 import Navigation from '@content/Navigation.astro';
 
 // Properties
@@ -34,7 +35,7 @@ const authorList = await getAuthorList(frontmatter);
             <div class="author-info">
               <span>{ _(t.post.written_by) }
                 {authorList.writers.map((writer) => (
-                  <a href={ writer.url }>{ writer.frontmatter.title }</a>
+                  <a href={ addSlashToAddress(writer.url) }>{ writer.frontmatter.title }</a>
                 ))}
                 <time class="dt-published" datetime={ frontmatter.pubDate.toString() } itemprop="datePublished">
                 { formatDate(frontmatter, lang, SITE) }

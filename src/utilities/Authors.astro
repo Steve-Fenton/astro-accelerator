@@ -35,6 +35,7 @@ export async function getAuthorList (frontmatter: Frontmatter) {
         }
 
         if (matches.length == 1) {
+            console.log(matches[0].url);
             result.writers.push(matches[0]);
             if (result.image == null) {
                 result.image = matches[0].frontmatter.bannerImage;
