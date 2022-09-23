@@ -36,6 +36,14 @@ export const isAuthor = (p: MarkdownInstance<Record<string, any>>) => {
   return false;
 }
 
+export const isSearch = (p: MarkdownInstance<Record<string, any>>) => {
+  if (p?.frontmatter?.layout?.indexOf('/Search.astro') > -1) {
+    return true;
+  }
+
+  return false;
+}
+
 export const sortByPubDate = (a: MarkdownInstance<Record<string, any>>, b: MarkdownInstance<Record<string, any>>) => {
   return b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate);
 }
