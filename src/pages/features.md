@@ -34,14 +34,18 @@ Features
 
 ## Navigation
 
-- Automatic
-- Combined
-- Manual
+- Automatic menu items
+- Manual menu items
+- Manual *and* automatic menu items
+
+[Find out more about navigation features](/features/navigation/)
 
 ## Articles
 
 - Article list
 - Author profiles
+
+[Find out more about articles and authors](/features/articles/)
 
 ## :abbr[I18n]{ title="Internationalization" }
 
