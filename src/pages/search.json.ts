@@ -1,10 +1,14 @@
 import type { MarkdownInstance } from 'astro';
+import { SITE } from 'src/config';
 import { showInSearch } from '@util/PageTypeFilters.astro';
+import { addSlashToAddress } from '@util/Url.astro';
 
-async function getData () {
+const getData = async () => {
     //@ts-ignore
     const allPages = import.meta.glob('./**/*.md');
     const items = [];
+
+    console.log('SITE', SITE.url)
 
     for (const path in allPages) {
         const page = await allPages[path]() as  MarkdownInstance<Record<string, any>>;
@@ -23,9 +27,9 @@ async function getData () {
               
         items.push({
             title: page.frontmatter.title ?? '',
-            categories: headings.map(h => h.text),
+            headings: headings.map(h => h.text),
             tags: page.frontmatter.keywords ?? '',
-            url: url,
+            url: SITE.url + addSlashToAddress(url),
             date: page.frontmatter.pubDate ?? ''
         });
     }

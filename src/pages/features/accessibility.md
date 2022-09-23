@@ -14,7 +14,7 @@ We think accessibility is more than important. It's fundamental. The whole point
 
 Quite a lot of effort has gone into making the out-of-the-box Astro Boilerplate accessible, though we're happy to [get your feedback on GitHub](https://github.com/Steve-Fenton/astro-boilerplate/issues).
 
-A huge thank you to the accessibility community, especially Kev Bonett, for their crucial knowledge.
+A huge thank you to the accessibility community, especially Kev Bonett, for sharing their crucial knowledge.
 
 ## Keyboard Users
 

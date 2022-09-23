@@ -78,3 +78,6 @@ Features
 - Normalisation of URLs (i.e. aboid having `/about/` and `/about`)
 - Structured breadcrumbs
 - Open graph tags
+
+[Find out more about SEO](/features/seo/)
+

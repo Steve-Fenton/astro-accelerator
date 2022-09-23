@@ -9,7 +9,7 @@ type SearchEntry = {
     score: number;
     title: string;
     safeTitle: string;
-    categories: string[];
+    headings: string[];
     tags: string;
     url: string;
     date: string;
@@ -53,7 +53,7 @@ function search(s) {
                 item.score = item.score + 10;
             }
 
-            item.categories.forEach(c => {
+            item.headings.forEach(c => {
                 if (contains(c, term)) {
                     item.score = item.score + 5;
                     summaries.push(c);
@@ -153,7 +153,7 @@ fetch(dataUrl)
             const item = haystack[i];
             item.safeTitle = sanitise(item.title);
             item.tags = sanitise(item.tags);
-            item.categories = item.categories.map(c => sanitise(c));
+            item.headings = item.headings.map(c => sanitise(c));
         }
 
         var siteSearch = qs('#site-search');
