@@ -1,8 +1,8 @@
 ---
 import t from '@language/language.json';
 import { Lang } from '@language/language';
-import NavigationItem from '@content/NavigationItem.astro';
 import { getMenu } from '@utilities/Navigation.astro';
+import NavigationItem from '@content/NavigationItem.astro';
 
 // Properties
 type Props = {
@@ -21,7 +21,7 @@ const pages = await getMenu(currentUrl);
   <h2 class="site-nav-title">{ _(t.navigation.title) }</h2>
   <ul>
     {pages.sort((a, b) => a.order - b.order).map((page) => (
-      <NavigationItem lang={lang} navPage={page} />
+      <NavigationItem lang={lang} page={page} />
     ))}
   </ul>
 </nav>

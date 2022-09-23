@@ -170,6 +170,34 @@ tbody tr:nth-child(odd) {
     color: var(--fore-table-row-odd);
 }
 
+/* Skip Links */
+nav.skip-links {
+    position: absolute;
+}
+
+nav.skip-links a {
+    clip: rect(0 0 0 0);
+    background-color: var(--aft);
+    min-width: 20vw;
+    overflow: hidden;
+    padding: 1rem;
+    position: absolute;
+    z-index: 15;
+    text-align: center;
+    display: inline-block;
+    height: 1px;
+    margin: -1px;
+    width: 1px;
+}
+
+nav.skip-links a:focus {
+    clip: auto;
+    height: auto;
+    margin: 0.2em;
+    overflow: visible;
+    width: auto;
+}
+
  /* Breadcrumbs */
 
  .site-breadcrumbs ol {
@@ -275,6 +303,44 @@ nav.site-nav h2 {
   nav.site-nav {
       grid-row: 2;
   }
+}
+
+.site-nav li {
+    list-style: none;
+}
+
+.site-nav a {
+    text-indent: var(--marker-size);
+    width: calc(100% - 2rem);
+    display: inline-block;
+    padding: 0.5rem 1rem;
+}
+
+.site-nav li.has-children summary span {
+    text-indent: 0;
+    width: calc(100% - 2rem - var(--marker-size));
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    text-decoration: underline;
+}
+
+.site-nav li.has-children ul a {
+    width: calc(100% - 2rem);
+    text-indent: calc(var(--marker-size) * 2);
+}
+
+.site-nav a[aria-current] {
+    font-weight: bold;
+}
+
+.site-nav details summary {
+    cursor: pointer;
+}
+
+.site-nav details summary::-webkit-details-marker,
+.site-nav details summary::marker {
+    font-size: var(--marker-size);
+    width: 1em;
 }
 
 /* Main content group */
