@@ -24,7 +24,7 @@ By default, the menu uses automatic discovery. You can see the configuration for
 
 ```typescript
 export const menu: (NavPage | 'auto')[] = [
-	'auto'
+  'auto'
 ];
 
 ```
@@ -61,44 +61,44 @@ To add menu items to the automatic navigation, add the items to `src/navigation.
 
 ```typescript
 export const menu: (NavPage | 'auto')[] = [
-	'auto',
-	{
-		title: 'Section',
-		url: '/section/',
-		ariaCurrent: false,
-		isOpen: false,
-		order: 1,
-		section: 'Section',
-		children: [
-			{
-				title: 'Blog',
-				url: '/section/blog/',
-				ariaCurrent: false,
-				isOpen: false,
-				order: 1,
-				section: '',
-				children: []
-			 },
-			 {
-				title: 'Publications',
-				url: '/section/publications/',
-				ariaCurrent: false,
-				isOpen: false,
-				order: 2,
-				section: '',
-				children: []
-			 },
-			 {
-				title: 'About',
-				url: '/section/about/',
-				ariaCurrent: false,
-				isOpen: false,
-				order: 3,
-				section: '',
-				children: []
-			 },
-		]
- 	},
+  'auto',
+  {
+    title: 'Section',
+    url: '/section/',
+    ariaCurrent: false,
+    isOpen: false,
+    order: 1,
+    section: 'Section',
+    children: [
+      {
+        title: 'Blog',
+        url: '/section/blog/',
+        ariaCurrent: false,
+        isOpen: false,
+        order: 1,
+        section: '',
+        children: []
+       },
+       {
+        title: 'Publications',
+        url: '/section/publications/',
+        ariaCurrent: false,
+        isOpen: false,
+        order: 2,
+        section: '',
+        children: []
+       },
+       {
+        title: 'About',
+        url: '/section/about/',
+        ariaCurrent: false,
+        isOpen: false,
+        order: 3,
+        section: '',
+        children: []
+       },
+    ]
+   },
 ];
 ```
 
@@ -107,5 +107,5 @@ export const menu: (NavPage | 'auto')[] = [
 To remove all automatic menu items, remove the following line:
 
 ```typescript
-	'auto',
+  'auto',
 ```
