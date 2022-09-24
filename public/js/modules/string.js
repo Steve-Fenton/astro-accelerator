@@ -12,6 +12,25 @@
 }
 
 /**
+ * 
+ * @param {string} string 
+ * @param {string[]} terms 
+ * @returns 
+ */
+function highlight(string, terms) {
+    terms.forEach(term => {
+        if (term.length > 2) {
+            const regEx = new RegExp(term, "ig");
+            const matches = string.match(regEx);
+            if (matches) {
+                string = string.replace(regEx, `<mark>${matches[0]}</mark>`)
+            }
+        }
+    });
+    return string;
+}
+
+/**
  * Simplifies a string to plain lower case, removing diacritic characters and hyphens
  * This means a search for "co-op" will be found in "COOP" and "Café" will be found in "cafe"
  * @param {string} string 
@@ -38,12 +57,12 @@
 }
 
 /**
- * Splits a sentence into individual search terms
+ * 
  * @param {string} string 
- * @returns 
+ * @returns {string[]}
  */
 function explode(string) {
     return string.split(' ').filter(isLongEnough).map(sanitise);
 }
 
-export { contains, sanitise, explode };
+export { contains, sanitise, explode, highlight };

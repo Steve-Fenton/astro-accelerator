@@ -1,0 +1,15 @@
+---
+export function addSlashToUrl(url: URL) {
+    url.pathname += url.pathname.endsWith("/") ? "" : "/";
+    return url;
+}
+
+export function addSlashToAddress(address: string | undefined) {
+    if (!address) {
+        address = '/';
+    }
+
+    const url = addSlashToUrl(new URL(address, Astro.site));
+    return url.pathname + url.search;
+}
+---

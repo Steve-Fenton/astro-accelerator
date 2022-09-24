@@ -1,31 +1,35 @@
 ---
 import type { MarkdownInstance } from 'astro';
+import type { NavPage } from './NavigationTypes.astro';
 
-export type NavPage = {
-  section: string;
-  title: string;
-  url: string;
-  order: number;
-  isOpen: boolean;
-  ariaCurrent: 'page' | false;
-  children: NavPage[];
-}
+import { addSlashToAddress } from './Url.astro';
 
-export const mapNavPage = (page: MarkdownInstance<Record<string, any>>, currentUrl: URL) => {
-  let url = page.url == null || (page.url ?? '').length == 0 ? '/' : page.url;
-  const isCurrent = url == currentUrl.pathname;
+export const mapNavPageWithUrl = (currentUrl: URL) => {
+  const mapFunction = (page: MarkdownInstance<Record<string, any>>) => 
+    mapNavPage(page, currentUrl.pathname) 
+  return mapFunction;
+};
+
+export const mapNavPage = (page: MarkdownInstance<Record<string, any>>, currentPath: string) => {
+  let url = page.url == null || (page.url ?? '').length == 0 
+    ? '/'
+    : page.url;
 
   // Send visitors straight to the first page
   if (page.frontmatter.paged) {
-    url += '/1';
+    url += '/1/';
   }
+
+  url = addSlashToAddress(url);
+
+  const isCurrent = url == currentPath;
 
   const entry: NavPage = {
     section: page.frontmatter.navSection ?? page.frontmatter.navTitle ?? page.frontmatter.title,
     title: page.frontmatter.navTitle ?? page.frontmatter.title,
     url: url,
     order: page.frontmatter.navOrder,
-    isOpen: currentUrl.pathname.startsWith(url),
+    isOpen: currentPath.startsWith(url),
     ariaCurrent: isCurrent ? 'page' : false,
     children: [],
   }

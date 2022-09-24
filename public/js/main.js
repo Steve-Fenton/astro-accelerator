@@ -1,11 +1,11 @@
 // @ts-check
 
+import { qsa } from './modules/query.js';
 import { addResizedEvent } from './modules/resizing.js';
 import { setClickableBlocks } from './modules/click-blocks.js';
 import { addStickyNavigation } from './modules/nav-sticky.js';
 import { addMobileNavigation } from './modules/nav-mobile.js';
 import { addIntersectionObserver } from './modules/animation.js';
-import { qsa } from './modules/query.js';
 
 const resizedEventName = addResizedEvent();
 

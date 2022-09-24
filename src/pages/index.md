@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/Default.astro
+layout: src/layouts/Default.astro
 title: Welcome to Astro boilerplate
 navTitle: Home
 navOrder: 0
@@ -11,8 +11,6 @@ bannerImage:
     alt: Dummy image
 ---
 
-I'm experimenting with Jekyll and Astro. This is the Astro version, there is also a [Jekyll version](https://jekyll.stevefenton.co.uk/).
-
 Welcome to Astro Boilerplate. A super-lightweight, accessible, SEO friendly starter project for the [Astro](https://astro.build/).
 
 :::div{.note}
@@ -23,10 +21,10 @@ Astro Boilerplate is built on some strong opinions:
 
 - Accessibility is not just important, it's fundamental
 - Everything should still work without JavaScript
-- The democratising force in the World Wide Web is HTML files
+- The democratizing force in the World Wide Web is HTML files
 - Software supply chains should be minimal
 
-> Astro is the first framework build on the *majestic HTML* concept, where pages can be largely static but still enhanced with additional stateful behaviour where needed.
+> Astro is the first framework build on the *majestic HTML* concept, where pages can be largely static but still enhanced with additional stateful behavior where needed.
 >
 > It's clean semantic HTML, simple CSS, and some minor non-essential enhancements in plain JavaScript. <cite>Steve Fenton</cite>
 

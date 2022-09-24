@@ -5,11 +5,10 @@
       "baseUrl": ".",
       "paths": {
         "@layouts/*": ["src/layouts/*"],
-        "@head/*": ["src/components/Head/*"],
         "@content/*": ["src/components/Content/*"],
-        "@language/*": ["src/components/Language/*"],
-        "@paging/*": ["src/components/Paging/*"],
-        "@utilities/*": ["src/utilities/*"],
+        "@head/*": ["src/components/Head/*"],
+        "@lang/*": ["src/components/Language/*"],
+        "@util/*": ["src/utilities/*"],
       }
   }
 }

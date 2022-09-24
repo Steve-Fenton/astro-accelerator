@@ -1,11 +1,10 @@
 ---
-import t from '@language/language.json';
-import { Lang } from '@language/language';
+import t from '@lang/language.json';
+import { Lang } from '@util/Languages.astro';
+
+import { getMenu } from '@util/Navigation.astro';
+
 import NavigationItem from '@content/NavigationItem.astro';
-import { mapNavPage } from '@utilities/NavPage.astro';
-import type { NavPage } from '@utilities/NavPage.astro';
-import { showInMenu } from '@utilities/PageTypeFilters';
-import type { MarkdownInstance } from 'astro';
 
 // Properties
 type Props = {
@@ -18,59 +17,13 @@ const _ = Lang(lang);
 
 // Logic
 const currentUrl = new URL(Astro.request.url);
-const mapWithUrl = (page: MarkdownInstance<Record<string, any>>) => {
-  return mapNavPage(page, currentUrl);
-};
-
-const topLevelPages = await Astro.glob('../../pages/*.md');
-const allPages = await Astro.glob('../../pages/**/*.md');
-
-const pageHierarchy: NavPage[] = topLevelPages
-  .filter(showInMenu)
-  .map(mapWithUrl);
-
-const pageList: NavPage[] = allPages
-  .filter(showInMenu)
-  .map(mapWithUrl);
-
-for (let i = 0; i < pageHierarchy.length; i++) {
-  const page = pageHierarchy[i];
-  page.children = pageList
-    .filter((mp) => 
-      page.url != '/' 
-      && mp.url != page.url
-      && mp.url.startsWith(page.url))
-    .sort((mp) => mp.order);
-}
+const pages = await getMenu(currentUrl);
 ---
-<style>
-/* Navigation */
-
-nav.site-nav.sticky {
-    align-self: start;
-    position: sticky;
-}
-
-nav.site-nav h2 {
-    margin-top: 0.1em;
-    display: none;
-}
-
-@media (max-width: 860px) {
-  nav.site-nav h2 {
-      display: block;
-  }
-
-  nav.site-nav {
-      grid-row: 2;
-  }
-}
-</style>
 <nav class="site-nav" id="site-nav" aria-label={ _(t.aria.site_navigation) }>
   <h2 class="site-nav-title">{ _(t.navigation.title) }</h2>
   <ul>
-    {pageHierarchy.sort((a, b) => a.order - b.order).map((page) => (
-      <NavigationItem lang={lang} navPage={page} />
+    {pages.sort((a, b) => a.order - b.order).map((page) => (
+      <NavigationItem lang={lang} page={page} />
     ))}
   </ul>
 </nav>

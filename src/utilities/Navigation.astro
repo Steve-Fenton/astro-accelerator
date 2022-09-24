@@ -1,0 +1,64 @@
+---
+// Data file `navigation.ts`
+import { menu } from '../navigation';
+
+import { showInMenu } from '@util/PageTypeFilters.astro';
+import { mapNavPageWithUrl } from '@util/NavPage.astro';
+import { NavPage, isNavPage } from '@util/NavigationTypes.astro';
+import { getTopLevelPages, getPages } from '@util/PageQueries.astro';
+
+export async function getMenu (currentUrl: URL) {
+    const setCurrent = (item: NavPage) => {
+        item.isOpen = currentUrl.pathname.startsWith(item.url);
+        item.ariaCurrent = item.url == currentUrl.pathname ? 'page' : false;
+        item.children.forEach(setCurrent);
+    }
+
+    let pages: NavPage[] = []
+
+    for (let i = 0; i < menu.length; i++) {
+        const item = menu[i];
+        if (isNavPage(item)) {
+            setCurrent(item);
+            pages.push(item);
+        } else {
+            const p = await getNavigation(currentUrl);
+            for (let j = 0; j < p.length; j++) {
+                pages.push(p[j]);
+            }
+        }
+    }
+
+    return pages;
+}
+
+export async function getNavigation (currentUrl: URL) {
+    const mapWithUrl = mapNavPageWithUrl(currentUrl);
+
+    const topLevelPages = await getTopLevelPages(showInMenu);
+    const allPages = await getPages(showInMenu);
+
+    const pageHierarchy: NavPage[] = topLevelPages.map(mapWithUrl);
+    const pageList: NavPage[] = allPages.map(mapWithUrl);
+
+    for (let i = 0; i < pageHierarchy.length; i++) {
+        const page = pageHierarchy[i];
+        page.children = pageList
+            .filter((mp) =>
+                page.url != "/"
+                && mp.url != page.url
+                && mp.url.startsWith(page.url)
+            )
+            .sort((mp) => mp.order);
+
+        if (page.children.length > 0) {
+            const ownChild = structuredClone(page);
+            ownChild.order = -1;
+            ownChild.children = [];
+            page.children.push(ownChild);
+        }
+    }
+
+    return pageHierarchy;
+}
+---

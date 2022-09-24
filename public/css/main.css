@@ -1,7 +1,3 @@
-/*
-    Should only contain global styles
-*/
-
 html {
     box-sizing: border-box;
 }
@@ -98,6 +94,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--heading-font);
     margin: 1.5em 0 0.6em 0;
     color: var(--fore-headings);
+    line-height: 1em;
 }
 
 h1 {
@@ -174,8 +171,198 @@ tbody tr:nth-child(odd) {
     color: var(--fore-table-row-odd);
 }
 
-/* Main */
+/* Skip Links */
+nav.skip-links {
+    position: absolute;
+}
 
+nav.skip-links a {
+    clip: rect(0 0 0 0);
+    background-color: var(--aft);
+    min-width: 20vw;
+    overflow: hidden;
+    padding: 1rem;
+    position: absolute;
+    z-index: 15;
+    text-align: center;
+    display: inline-block;
+    height: 1px;
+    margin: -1px;
+    width: 1px;
+}
+
+nav.skip-links a:focus {
+    clip: auto;
+    height: auto;
+    margin: 0.2em;
+    overflow: visible;
+    width: auto;
+}
+
+ /* Breadcrumbs */
+
+ .site-breadcrumbs ol {
+    font-size: 0.8rem;
+    background-color: var(--aft-breadcrumb);
+    color: var(--fore-breadcrumb);
+    padding: 0 1em;
+}
+
+.site-breadcrumbs li {
+    display: inline-block;
+    padding: 0.2em;
+}
+
+.site-breadcrumbs li::before {
+    content: '>'
+}
+
+.site-breadcrumbs li:first-child::before {
+    content: ''
+}
+
+.site-breadcrumbs a[aria-current] {
+    color: var(--fore);
+    text-decoration: none;
+}
+
+@media (max-width: 860px) {
+  .site-breadcrumbs ol {
+    text-align: center;
+  }
+}
+
+/* Header */
+.site-header {
+    color: var(--fore-head);
+    background-color: var(--aft-head);
+    text-align: center;
+    font-size: 2rem;
+    font-size: clamp(1.2em, 4vw, 2em);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.site-header a {
+    color: var(--link-head);
+    text-decoration: none;
+}
+
+.site-header a:hover,
+.site-header a:focus {
+    color: var(--link-alt-head);
+    background-color: unset;
+}
+
+.site-header .site-title {
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    margin: 0 30px;
+    display: block;
+}
+
+.site-header .navigation-icon {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    stroke: var(--link-head);
+}
+
+.site-header .search-icon {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    stroke: var(--link-head);
+}
+
+@media (max-width: 860px) {
+  .site-header .navigation-icon {
+    display: block;
+  }
+}
+
+/* Navigation */
+
+nav.site-nav.sticky {
+    align-self: start;
+    position: sticky;
+}
+
+nav.site-nav h2 {
+    margin-top: 0.1em;
+    display: none;
+}
+
+@media (max-width: 860px) {
+  nav.site-nav h2 {
+      display: block;
+  }
+
+  nav.site-nav {
+      grid-row: 2;
+  }
+}
+
+.site-nav li {
+    list-style: none;
+}
+
+.site-nav a {
+    text-indent: var(--marker-size);
+    width: calc(100% - 2rem);
+    display: inline-block;
+    padding: 0.5rem 1rem;
+}
+
+.site-nav li.has-children summary span {
+    text-indent: 0;
+    width: calc(100% - 2rem - var(--marker-size));
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    text-decoration: underline;
+}
+
+.site-nav li.has-children ul a {
+    width: calc(100% - 2rem);
+    text-indent: calc(var(--marker-size) * 2);
+}
+
+.site-nav a[aria-current] {
+    font-weight: bold;
+}
+
+.site-nav details summary {
+    cursor: pointer;
+}
+
+.site-nav details summary::-webkit-details-marker,
+.site-nav details summary::marker {
+    font-size: var(--marker-size);
+    width: 1em;
+}
+
+/* Main content group */
+
+.content-group {
+    display: grid;
+    grid-template-columns: var(--navigation-width) auto;
+    gap: var(--grid-gap);
+    max-width: var(--grid-max-width);
+    width: var(--grid-width);
+    margin: var(--block-gap) auto var(--block-gap) auto;
+    min-height: 75vh;
+}
+
+@media (max-width: 860px) {
+  /* Content First on Small Screens */
+  .content-group {
+      grid-template-columns: auto;
+      grid-template-rows: 1fr auto;
+  }
+}
 
 main {
     max-width: calc(var(--grid-max-width) - var(--navigation-width) - var(--grid-gap));
@@ -201,6 +388,16 @@ main ul ol, main ul ul, main ol ol, main ol ul {
         width: var(--grid-width);
     }
   }
+
+/* Footer */
+
+.site-footer {
+    text-align: center;
+    padding: 0.5rem 0;
+    width: 100%;
+    color: var(--fore-head);
+    background-color: var(--aft-head);
+}
 
 /* Overlay (Mobile Navigation, Search) */
 
@@ -246,6 +443,15 @@ form.site-search button {
 .site-search-results a {
     display: block;
     padding: 0.2em;
+}
+
+.site-search-results .result-text {
+    font-size: 1rem;
+}
+
+.site-search-results .result-path {
+    font-size: 1rem;
+    font-family: var(--code-font);
 }
 
 @media (max-width: 860px) {
@@ -336,7 +542,7 @@ code {
 }
 
 pre.astro-code {
-    border-left: 5px solid var(--fore);
+    border-left: 5px solid var(--fore-link-alt);
     border-radius: var(--block-radius);
     font-family: var(--code-font);
     margin: 1em 0;

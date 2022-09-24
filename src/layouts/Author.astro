@@ -1,41 +1,42 @@
 ---
-import * as CONFIG from '../config';
-import t from '@language/language.json';
-import { Lang } from '@language/language';
+import t from '@lang/language.json';
+import { Lang } from '@util/Languages.astro';
+
+import { SITE, Frontmatter } from 'src/config';
+import { sortByPubDateDesc } from '@util/PageTypeFilters.astro';
+import { formatDate } from '@util/DateFormat.astro';
+import { addSlashToAddress } from '@util/Url.astro';
+import { getPages } from '@util/PageQueries.astro';
+
 import Default from '@layouts/Default.astro';
-import { sortByPubDateDesc } from '@utilities/PageTypeFilters';
-import { formatDate } from '@utilities/DateFormat';
 
 // Properties
 type Props = {
-    frontmatter: CONFIG.Frontmatter
+    frontmatter: Frontmatter
 };
 const { frontmatter } = Astro.props as Props;
-const lang = frontmatter.lang ?? CONFIG.SITE.default.lang;
-const textDirection = frontmatter.dir ?? CONFIG.SITE.default.dir;
+const lang = frontmatter.lang ?? SITE.default.lang;
 
 // Language
 const _ = Lang(lang);
 
 // Logic
-const allPages = await Astro.glob('/**/*.md');
-const authorPages = allPages
-    .filter(p => p.frontmatter.authors?.indexOf(frontmatter.id) > -1)
-    .sort(sortByPubDateDesc)
-    .slice(0, 5);
+const authorPages = await getPages(p => p.frontmatter.authors?.indexOf(frontmatter.id) > -1)
 ---
 <Default frontmatter={frontmatter}>
     <slot />
     <h2>{ _(t.author.recent_articles) }</h2>
     <ul class="post-list">
-    {authorPages.map((post) => (
-    <li class="list-item" data-destination={ post.url }>
+    {authorPages
+        .sort(sortByPubDateDesc)
+        .slice(0, SITE.pageSize).map((post) => (
+    <li class="list-item" data-destination={ addSlashToAddress(post.url) }>
         <article>
         <img src={ post.frontmatter.bannerImage.src } alt={ post.frontmatter.bannerImage.alt } loading="lazy" />
         <div class="list-item-content">
-        <span class="post-meta">{ formatDate(post.frontmatter, lang, CONFIG.SITE) }</span>
+        <span class="post-meta">{ formatDate(post.frontmatter, lang, SITE) }</span>
         <h2>
-            <a href={ post.url }>{ post.frontmatter.title }</a>
+            <a href={ addSlashToAddress(post.url) }>{ post.frontmatter.title }</a>
         </h2>
         </div>
         </article>

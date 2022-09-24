@@ -2,26 +2,38 @@
 
 import { qs } from './modules/query.js';
 import { raiseEvent } from './modules/events.js';
-import { contains, sanitise, explode } from './modules/string.js';
+import { contains, sanitise, explode, highlight } from './modules/string.js';
+
+/**
+type SearchEntry = {
+    score: number;
+    title: string;
+    safeTitle: string;
+    headings: string[];
+    tags: string;
+    url: string;
+    date: string;
+}
+ */
 
 var dataUrl = '/search.json';
-var haystack = [];
-var needles = [];
-var currentQuery = null;
+var haystack = /** @type {SearchEntry} */ [];
+var currentQuery = '';
 
 var ready = false;
 var scrolled = false;
 
 /**
- * Performs the search
+ * 
  * @param {string} s 
  * @returns 
  */
 function search(s) {
-    needles = [];
+    const needles = /** @type {SearchEntry} */ [];
+    let summaries = [];
 
     // Clean the input
-    var cleanQuery = sanitise(s);
+    const cleanQuery = sanitise(s);
 
     if (currentQuery === cleanQuery) {
         return;
@@ -30,63 +42,72 @@ function search(s) {
     raiseEvent('searched', { search: s });
 
     currentQuery = cleanQuery;
+    const queryTerms = explode(currentQuery);
 
-    var queryTerms = explode(currentQuery);
-
-    for (var i = 0; i < haystack.length; i++) {
-        var item = haystack[i];
+    haystack.forEach( (item) => {
 
         item.score = 0;
         
-        var title = sanitise(item.title);
-        var category = sanitise(item.category);
-        var tags = sanitise(item.tags);
-
-        for (var j = 0; j < queryTerms.length; j++) {
-            var term = queryTerms[j];
-
-            if (contains(title, term)) {
+        queryTerms.forEach(term => {
+            if (contains(item.safeTitle, term)) {
                 item.score = item.score + 10;
             }
 
-            if (contains(category, term)) {
-                item.score = item.score + 5;
-            }
+            item.headings.forEach(c => {
+                if (contains(c, term)) {
+                    item.score = item.score + 5;
+                    summaries.push(c);
+                }
+            });
 
-            if (contains(tags, term)) {
+            if (contains(item.tags, term)) {
                 item.score = item.score + 5;
             }
-        }
+        })
 
         if (item.score > 0) {
             needles.push(item);
         }
-    }
+    });
 
     needles.sort(function (a, b){
         return b.score - a.score;
     });
 
-    var results = qs('#site-search-results');
+    const results = qs('#site-search-results');
 
-    if (results == null) {
-        throw new Error('Cannot find #site-search-results');
-    }
-
-    var ol = document.createElement('ol');
+    const ol = document.createElement('ol');
     ol.className = 'site-search-results';
 
-    var limit = Math.min(needles.length, 12)
+    const limit = Math.min(needles.length, 12)
 
-    for (var i = 0; i < limit; i++) {
-        var needle = needles[i];
+    for (let i = 0; i < limit; i++) {
+        const needle = needles[i];
 
-        var a = document.createElement('a');
-        a.innerHTML = needle.title;
+        const a = document.createElement('a');
+        a.innerHTML = highlight(needle.title, queryTerms);
         a.href = needle.url;
 
-        var li = document.createElement('li');
+        const uniqueSummaries = [...new Set(summaries)];
+        const description = highlight(
+            uniqueSummaries.join('...'),
+            queryTerms
+        );
+
+        const path = document.createElement('div');
+        path.className = 'result-path';
+        path.innerHTML = needle.url;
+
+        const markers = document.createElement('div');
+        if (description.length > 0) {
+            markers.className = 'result-text';
+            markers.innerHTML = '...' + description + '...';
+        }
+
+        const li = document.createElement('li');
         li.appendChild(a);
+        li.appendChild(path);
+        li.appendChild(markers);
 
         ol.appendChild(li);
     }
@@ -127,6 +148,13 @@ fetch(dataUrl)
     .then(function (data) { 
         haystack = data;
         ready = true;
+
+        for (let i = 0; i < haystack.length; i++) {
+            const item = haystack[i];
+            item.safeTitle = sanitise(item.title);
+            item.tags = sanitise(item.tags);
+            item.headings = item.headings.map(c => sanitise(c));
+        }
 
         var siteSearch = qs('#site-search');
         var siteSearchQuery = qs('#site-search-query');

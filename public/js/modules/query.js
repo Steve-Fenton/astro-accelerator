@@ -1,18 +1,17 @@
 // @ts-check
 
 /**
- * Utility for query selector
  * 
- * @param {string} query
- * @param {HTMLElement | null} [container]
+ * @param {string} query 
+ * @param {HTMLElement} [container]
  * @returns {HTMLElement}
  */
- function qs(query, container) {
+function qs(query, container) {
     const target = (container)
         ? container
         : document;
 
-    /** @type {HTMLElement | null} */
+    /** @type {any} */
     const result = target.querySelector(query);
 
     if (result) {

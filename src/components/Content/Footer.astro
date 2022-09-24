@@ -1,7 +1,8 @@
 ---
-import * as CONFIG from '../../config';
-import t from '@language/language.json';
-import { Lang } from '@language/language';
+import t from '@lang/language.json';
+import { Lang } from '@util/Languages.astro';
+
+import { SITE } from 'src/config';
 
 // Properties
 type Props = {
@@ -15,22 +16,9 @@ const _ = Lang(lang);
 // Logic
 // -
 ---
-<style>
-footer {
-    text-align: center;
-    padding: 0.5rem 0;
-    width: 100%;
-    color: var(--fore-head);
-    background-color: var(--aft-head);
-    margin: var(--block-gap) auto 0 auto;
-}
-
-@media (max-width: 860px) {
-}
-</style>
-<footer id="site-footer">
-  <p>{ _(t.footer.copyright) } &copy; { new Date().getFullYear() } { CONFIG.SITE.owner }</p>
-  <nav class="skip-links" aria-label={ _(t.aria.back_to_top) }>
+<footer class="site-footer" id="site-footer">
+  <p>{ _(t.footer.copyright) } &copy; { new Date().getFullYear() } { SITE.owner }</p>
+  <nav aria-label={ _(t.aria.back_to_top) }>
     <a href="#site-top">{ _(t.skiplinks.skip_to_top) }</a>
   </nav>
 </footer>

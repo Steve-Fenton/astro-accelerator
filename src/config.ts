@@ -27,6 +27,14 @@ export const SITE = {
 	}
 };
 
+// Default image for OG: Tags
+export const OPEN_GRAPH = {
+	image: {
+		src: '/img/surface-accessories-700.webp',
+		alt: 'Alt text for image goes here',
+	}
+};
+
 type Mapped<T> = {
     [P in keyof T]?: any
 }
@@ -39,7 +47,7 @@ export type Frontmatter = {
 	keywords: string;
 	description: string;
 	pubDate: Date;
-	id: string;
+	id?: string;
 	authors?: string[];
 	navTitle?: string;
 	navSection?: string;
@@ -52,12 +60,4 @@ export type Frontmatter = {
 	navSearch?: boolean;
 	navSitemap?: boolean;
 	navMenu?: boolean;
-};
-
-// Default image for OG: Tags
-export const OPEN_GRAPH = {
-	image: {
-		src: '/img/surface-accessories-700.webp',
-		alt: 'Alt text for image goes here',
-	}
 };

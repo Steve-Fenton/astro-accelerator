@@ -1,10 +1,11 @@
 ---
-import { SITE, Frontmatter } from '../config';
+import { SITE, Frontmatter } from 'src/config';
+
 import Head from '@head/HtmlHead.astro';
-import SkipLinks from '@content/SkipLinks.astro';
-import Breadcrumbs from '@content/Breadcrumbs.astro';
 import Header from '@content/Header.astro';
 import Footer from '@content/Footer.astro';
+import SkipLinks from '@content/SkipLinks.astro';
+import Breadcrumbs from '@content/Breadcrumbs.astro';
 import ContentGroup from '@content/ContentGroup.astro';
 
 type Props = {
@@ -24,6 +25,7 @@ const textDirection = frontmatter.dir ?? SITE.default.dir;
         <ContentGroup lang={ lang } frontmatter={ frontmatter }>
             <slot />
         </ContentGroup>
+        <!-- <Breadcrumbs lang={ lang } /> -->
         <Footer lang={ lang } />
         <script src="/js/main.js" type="module" async></script>
     </body>

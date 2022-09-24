@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/Search.astro
+layout: src/layouts/Search.astro
 title: Search
 navSearch: false
 navSitemap: false

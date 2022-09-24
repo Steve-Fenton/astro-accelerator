@@ -1,0 +1,25 @@
+---
+import type { MarkdownInstance } from "astro";
+
+export type PagePredicate = (value: MarkdownInstance<Record<string, any>>, index: number, array: MarkdownInstance<Record<string, any>>[]) => boolean;
+
+export async function getPages (filter?: PagePredicate | null) {
+    const allPages = await Astro.glob("../pages/**/*.md");
+
+    if (filter == null) {
+        return allPages;
+    }
+
+    return allPages.filter(filter);
+}
+
+export async function getTopLevelPages (filter?: PagePredicate | null) {
+    const allPages = await Astro.glob("../pages/*.md");
+
+    if (filter == null) {
+        return allPages;
+    }
+
+    return allPages.filter(filter);
+}
+---

@@ -1,5 +1,6 @@
 // Generates an ATOM feed of recent posts
-import { SITE } from '../config';
+import { SITE } from 'src/config';
+import { addSlashToAddress } from '@util/Url.astro';
 
 async function getData() {
   //@ts-ignore
@@ -24,7 +25,7 @@ async function getData() {
     <entry>
       <title>${a.frontmatter.title ?? ''}</title>
       <link href="${ SITE.url + a.url }" />
-      <id>${ SITE.url + a.url }</id>
+      <id>${ SITE.url + addSlashToAddress(a.url) }</id>
       <published>${ a.frontmatter.pubDate }</published>
       <updated>${ a.frontmatter.pubDate }</updated>
       <summary>${ a.frontmatter.description ?? '' }</summary>
