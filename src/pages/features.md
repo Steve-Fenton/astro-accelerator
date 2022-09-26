@@ -75,7 +75,7 @@ Features
 ## SEO
 
 - Canonical URLs
-- Normalisation of URLs (i.e. aboid having `/about/` and `/about`)
+- Normalisation of URLs (i.e. avoid having `/about/` and `/about`)
 - Structured breadcrumbs
 - Open graph tags
 
