@@ -102,8 +102,10 @@ import { getFocusableElement, trapFocusForward, trapReverseFocus } from './focus
         return false;
     });
 
-    document.addEventListener(resizedEventName, function () {
-        closeMobileMenu();
+    document.addEventListener(resizedEventName, function (/** @type {any} */e) {
+        if (e.detail.change.width > 0) {
+            closeMobileMenu();
+        }
     })
 }
 
