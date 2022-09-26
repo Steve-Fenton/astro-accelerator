@@ -1,7 +1,6 @@
 ---
 layout: src/layouts/Default.astro
-title: Feature Overview
-navSection: Features
+title: Features
 navOrder: 2000
 navSearch: false
 navSitemap: false
