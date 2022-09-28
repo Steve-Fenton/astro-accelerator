@@ -22,6 +22,14 @@ Features
 
 [Find out more about markdown extensions](/features/markdown/)
 
+## Image Automation
+
+- Automatic resizing
+- Auto creation of webp formats
+- Automatic responsive source sets
+
+[Find out more about image automation](/features/image-automation/)
+
 ## Header
 
 - Skiplinks

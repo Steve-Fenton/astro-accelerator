@@ -1,0 +1,68 @@
+---
+layout: src/layouts/Default.astro
+title: Images
+navOrder: 1500
+pubDate: 2022-09-28
+keywords: astro boilerplate,image,automation,conversion,resizing,responsive
+description: How image automation helps with conversion, resizing, and responsive images.
+bannerImage:
+    src: /img/surface-accessories-700.webp
+    alt: Dummy image
+---
+
+When authoring images, use JPEG (`.jpg`) or PNG (`.png`) formats and place images in the `/public/img/` folder.
+
+These will be used to create a set of images to use on your site.
+
+## Conversion and Resizing
+
+Your JPEG and PNG images will be converted to WEBP images using the `node ./src/img.js` utility. By default, this is part of the `npm run dev` script in `package.json` for Astro Boilerplate:
+
+```json
+"dev": "node ./src/img.js && astro dev",
+```
+
+As part of the conversion, a set of sizes will be created to use with responsive images. For example, if you have an image named `/public/img/example.png` the following images will be generated:
+
+- `/public/i/400/example.webp`
+- `/public/i/600/example.webp`
+- `/public/i/1000/example.webp`
+
+You shouldn't create a `/public/i/` folder as this is reserved for automation.
+
+You can reference these images directly in your markdown files, or take advantage of automatic responsive images (see below).
+
+:::div{.note}
+In a later release, the format might be changed from WEBP to a newer format (for example, AVIF), but you can retain existing images, or update in-content references to the newer format and delete the old generated sets.
+:::
+
+## Responsive Images
+
+If you use the markdown extension for images, responsive source sets and sizes will be added for you.
+
+The responsive source sets will load an optimal WEBP image based on the users device size.
+
+```markdown
+:img{
+    src=/img/example.png
+    width=1000
+    height=600
+    alt="An example image"}
+```
+
+Notes:
+- It is optional but best practice to specify a width and height
+- It is optional but best practice to add meaningful alt-text
+
+When this tag is processed, it will rendered HTML *similar* to the following (the implementation may change in minor ways).
+
+```html
+<img
+    src="/img/example.png"
+    width="1000"
+    height="663"
+    alt="A diagram showing web requests routed to different web servers"
+    srcset="/i/400/example.webp 400w, /i/600/example.webp 600w, /i/1000/example.webp, 1000w"
+    sizes="(max-width: 860px) 100vw, 66vw"
+    class="resp-img">
+```
