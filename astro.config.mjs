@@ -1,6 +1,6 @@
 import remarkDirective from 'remark-directive';
 import { defineConfig } from 'astro/config';
-import { attributeMarkdown } from './src/plugins/custom-markdown.mjs'
+import { attributeMarkdown } from './src/plugins/custom-markdown.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,5 +11,5 @@ export default defineConfig({
             attributeMarkdown
         ],
         extendDefaultPlugins: true,
-    }
+    },
 });

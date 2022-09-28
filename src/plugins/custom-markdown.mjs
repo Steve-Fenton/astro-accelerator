@@ -29,11 +29,18 @@ export function attributeMarkdown() {
         node.type === 'leafDirective' ||
         node.type === 'containerDirective'
       ) {
-        const data = node.data || (node.data = {})
-        const hast = h(node.name, node.attributes)
+        const data = node.data || (node.data = {});
+        const hast = h(node.name, node.attributes);
 
-        data.hName = hast.tagName
-        data.hProperties = hast.properties
+        if (hast.properties.src) {
+          let uri = hast.properties.src;
+          uri = uri.replace(/^\/img\//, '/i/600/');
+          uri = uri.replace(/.jpg|.jpeg|.png/, '.webp');
+          hast.properties.src = uri;
+        }
+
+        data.hName = hast.tagName;
+        data.hProperties = hast.properties;
       }
     })
   }

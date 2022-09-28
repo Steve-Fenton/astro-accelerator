@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
+    "dev": "node ./src/img.js && astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "astro": "^1.2.5",
-    "remark-directive": "^2.0.1"
+    "remark-directive": "^2.0.1",
+    "imagemin": "^8.0.1",
+    "imagemin-webp": "^7.0.0"
   }
 }
