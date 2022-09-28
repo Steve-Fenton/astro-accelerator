@@ -128,6 +128,10 @@ img {
     max-width: 100%;
 }
 
+img.resp-img {
+    width: 100%;
+}
+
 li::marker {
     color: var(--fore-headings);
 }
