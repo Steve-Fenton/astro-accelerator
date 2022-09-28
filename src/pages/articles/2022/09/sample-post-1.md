@@ -14,7 +14,7 @@ authors:
 
 This is an example post with more of the front matter set up, such as except and images.
 
-:img{src=/img/surface-accessories-700.webp}
+:img{src=/img/surface-accessories-700.webp alt="Microsoft Surface keyboard and wireless headset"}
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet elit sodales, egestas odio eu, interdum nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elit odio, dapibus nec finibus sit amet, aliquam a tortor.
 
