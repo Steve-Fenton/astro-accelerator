@@ -16,7 +16,11 @@ These will be used to create a set of images to use on your site.
 
 ## Conversion and Resizing
 
-Your JPEG and PNG images will be converted to WEBP images using the `node ./src/img.js` utility. By default, this is part of the `npm run dev` script in `package.json` for Astro Boilerplate:
+JPEG and PNG images in the `/public/img/` folder will be re-saved with compression to `/public/i/x/`.
+
+They will also have WEBP alternatives created at different sizes, for use in responsive images.
+
+You can run this manually using  `node ./src/img.js`. By default, this is part of the `npm run dev` script in `package.json` for Astro Boilerplate:
 
 ```json
 "dev": "node ./src/img.js && astro dev",
@@ -24,9 +28,10 @@ Your JPEG and PNG images will be converted to WEBP images using the `node ./src/
 
 As part of the conversion, a set of sizes will be created to use with responsive images. For example, if you have an image named `/public/img/example.png` the following images will be generated:
 
-- `/public/i/400/example.webp`
-- `/public/i/600/example.webp`
-- `/public/i/1000/example.webp`
+- `/public/i/x/example.png` (smaller file size)
+- `/public/i/400/example.webp` (400px wide WEBP)
+- `/public/i/600/example.webp` (600px wide WEBP)
+- `/public/i/1000/example.webp` (1000px wide WEBP)
 
 You shouldn't create a `/public/i/` folder as this is reserved for automation.
 
