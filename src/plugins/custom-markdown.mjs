@@ -41,7 +41,7 @@ export function attributeMarkdown() {
           const img1000 = uri.replace(/^\/img\//, '/i/1000/');
 
           hast.properties.srcset = `${img400} 400w, ${img600} 500w, ${img1000}, 1000w`;
-          hast.properties.sizes = `(max-width: 860px) 33vw, 100vw`;
+          hast.properties.sizes = `(max-width: 860px) 66vw, 100vw`;
           hast.properties.class = (hast.properties.class ?? '' + ' resp-img').trim();
         }
 
