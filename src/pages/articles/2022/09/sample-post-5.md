@@ -14,7 +14,7 @@ authors:
 
 This is an example post with more of the front matter set up, such as except and images.
 
-:img{src=/img/load-balancing-with-arr.png}
+:img{src=/img/load-balancing-with-arr.png width=1000 height=663}
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet elit sodales, egestas odio eu, interdum nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elit odio, dapibus nec finibus sit amet, aliquam a tortor.
 
