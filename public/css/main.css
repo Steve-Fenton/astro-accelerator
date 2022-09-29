@@ -23,7 +23,7 @@ html {
 body {
     background-color: var(--aft);
     color: var(--fore);
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.8em;
     letter-spacing: 0.016em;
     font-family: var(--content-font);
