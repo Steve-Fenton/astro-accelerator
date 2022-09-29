@@ -10,7 +10,7 @@ bannerImage:
     alt: Dummy image
 ---
 
-The navigation menu is designed to provide an accessible way to navigate a hierarchy of pages.
+The main navigation menu is designed to provide an accessible way to navigate a hierarchy of pages.
 
 The menu can:
 
@@ -109,3 +109,9 @@ To remove all automatic menu items, remove the following line:
 ```typescript
   'auto',
 ```
+
+Without this line, only the manual menu items will be shown.
+
+## Automatic Table of Contents
+
+Where there are sub-headings on a page, an automatic table of contents will be shown. This allows users to skip down the page to the content they are most interested in.

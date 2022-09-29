@@ -44,6 +44,7 @@ Features
 - Automatic menu items
 - Manual menu items
 - Manual *and* automatic menu items
+- Automatic table of contents
 
 [Find out more about navigation features](/features/navigation/)
 
