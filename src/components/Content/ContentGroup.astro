@@ -32,6 +32,7 @@ const authorList = await getAuthorList(frontmatter);
             <details>
               <summary>{ _(t.toc.title) }</summary>
               <ol>
+                <li><a href="#site-content">{ frontmatter.title ?? SITE.title }</a></li>
                 {headings.map((heading) =>(
                   <li><a href={ '#' + heading.slug }>{ heading.text }</a></li>
                 ))}

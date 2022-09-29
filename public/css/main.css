@@ -400,6 +400,7 @@ main ul ol, main ul ul, main ol ol, main ol ul {
     background-color: var(--aft-block);
     padding: 0 1rem;
     margin: 0 0 var(--block-gap) 0;
+    border-radius: var(--block-radius);
 }
 
 .page-toc summary {
