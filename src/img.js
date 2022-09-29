@@ -1,37 +1,82 @@
+import fs from 'fs';
+import path from 'path';
 import imagemin from 'imagemin';
 import imageminWEBP from 'imagemin-webp';
 import imageminJPG from 'imagemin-jpegtran';
 import imageminPNG from 'imagemin-pngquant';
 
-const dir = process.cwd();
-const src = dir + '/public/img/*.{jpg,png,webp}';
+const sizes = [400,700,1000];
+const imagePath = path.join('public', 'img');
+const workingDirectory = process.cwd();
+const imageDirectory = path.join(workingDirectory, imagePath);
 
-let files;
+console.log(imageDirectory);
 
-files = await imagemin([src], {
-    destination: dir + '/public/i/1000/',
-    plugins: [imageminWEBP({ quality: 90, resize: { width: 1000, height: 0 }})],
-});
+const filesToProcess = [];
 
-console.log(files.length + ' images converted');
+function getDestinationFolder(source, size) {
+    let destination = path.join(workingDirectory, 'public', 'i', size.toString(), source);
+    destination = destination.replace(path.basename(destination), '');
+    return destination;
+}
 
-files = await imagemin([src], {
-    destination: dir + '/public/i/600/',
-    plugins: [imageminWEBP({ quality: 90, resize: { width: 600, height: 0 }})],
-});
+async function recurseFiles(directory) {
+    const f = await fs.promises.readdir(path.join(imageDirectory, directory), { withFileTypes: true });
 
-console.log(files.length + ' images converted');
+    for (const file of f) {
+        if (file.isDirectory()) {
+            const nextDirectory = path.join(directory, file.name);
+            await recurseFiles(nextDirectory);
+        } else {
+            const ext = path.parse(file.name).ext;
 
-files = await imagemin([src], {
-    destination: dir + '/public/i/400/',
-    plugins: [imageminWEBP({ quality: 90, resize: { width: 400, height: 0 }})],
-});
+            switch (ext) {
+                case '.jpg':
+                case '.jpeg':
+                case '.png':
+                case '.webp':
+                    const sourcePath = path.join(directory, file.name);
 
-console.log(files.length + ' images converted');
+                    const webP = sourcePath.replace(/.jpg|.jpeg|.png/, '.webp');
+                    const info = {
+                        path: sourcePath,
+                        webP: webP
+                    };
+        
+                    const fullPath = path.join(imageDirectory, info.path);
+                    const fullDestination = path.join(workingDirectory, 'public', 'i', sizes[0].toString(), info.webP);
+        
+                    const modified = fs.statSync(fullPath).mtime;
+        
+                    const destinationModified = fs.existsSync(fullDestination)
+                        ? fs.statSync(fullDestination).mtime
+                        : new Date(0);
+        
+                    if (destinationModified < modified) {
+                        filesToProcess.push(info);
+                    }
+                break;
+            }
+        }
+    }
+}
 
-files = await imagemin([src], {
-	destination: dir + '/public/i/x/',
-	plugins: [imageminJPG(), imageminPNG()]
-});
+await recurseFiles('');
 
-console.log(files.length + ' images reduced');
+console.log(`Found ${filesToProcess.length} files to process`)
+
+for (const file of filesToProcess) {
+    const source = path.join(imageDirectory, file.path);
+
+    await imagemin([source], {
+    	destination: getDestinationFolder(file.path, 'x'),
+    	plugins: [imageminJPG(), imageminPNG()]
+    });
+
+    for (const size of sizes) {
+        await imagemin([source], {
+            destination: getDestinationFolder(file.path, size),
+            plugins: [imageminWEBP({ quality: 90, resize: { width: size, height: 0 }})],
+        });
+    }
+}

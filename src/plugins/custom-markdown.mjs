@@ -36,13 +36,13 @@ export function attributeMarkdown() {
           let uri = hast.properties.src;
           uri = uri.replace(/.jpg|.jpeg|.png/, '.webp');
 
-          const fallback = hast.properties.src.replace(/^\/img\//, '/i/x/');
-          const img400 = uri.replace(/^\/img\//, '/i/400/');
-          const img600 = uri.replace(/^\/img\//, '/i/600/');
-          const img1000 = uri.replace(/^\/img\//, '/i/1000/');
+          const imgFallback = hast.properties.src.replace(/^\/img\//, '/i/x/');
+          const imgSmall = uri.replace(/^\/img\//, '/i/400/');
+          const imgMedium = uri.replace(/^\/img\//, '/i/700/');
+          const imgLarge = uri.replace(/^\/img\//, '/i/1000/');
 
-          hast.properties.src = fallback;
-          hast.properties.srcset = `${img400} 400w, ${img600} 600w, ${img1000}, 1000w`;
+          hast.properties.src = imgFallback;
+          hast.properties.srcset = `${imgSmall} 400w, ${imgMedium} 700w, ${imgLarge}, 1000w`;
           hast.properties.sizes = `(max-width: 860px) 100vw, 66vw`;
           hast.properties.class = (hast.properties.class ?? '' + ' resp-img').trim();
         }
