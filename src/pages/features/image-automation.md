@@ -20,7 +20,9 @@ JPEG and PNG images in the `/public/img/` folder will be re-saved with compressi
 
 They will also have WEBP alternatives created at different sizes, for use in responsive images.
 
-You can run this manually using  `node ./src/img.js`. By default, this is part of the `npm run dev` script in `package.json` for Astro Boilerplate:
+You can run this manually using  `node ./src/img.js`. Only changed images will be processed.
+
+By default, this is part of the `npm run dev` script in `package.json` for Astro Boilerplate:
 
 ```json
 "dev": "node ./src/img.js && astro dev",
@@ -33,7 +35,7 @@ As part of the conversion, a set of sizes will be created to use with responsive
 - `/public/i/700/example.webp` (700px wide WEBP)
 - `/public/i/1000/example.webp` (1000px wide WEBP)
 
-You shouldn't create a `/public/i/` folder as this is reserved for automation.
+You shouldn't create a `/public/i/` folder as this is reserved for image automation.
 
 You can reference these images directly in your markdown files, or take advantage of automatic responsive images (see below).
 
@@ -56,8 +58,8 @@ The responsive source sets will load an optimal WEBP image based on the users de
 ```
 
 Notes:
-- It is optional but best practice to specify a width and height
-- It is optional but best practice to add meaningful alt-text
+- It is optional but best practice to specify a **width** and **height**
+- It is optional but best practice to add meaningful **alt**-text
 
 When this tag is processed, it will rendered HTML *similar* to the following (the implementation may change in minor ways).
 
