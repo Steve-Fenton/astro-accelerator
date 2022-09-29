@@ -30,7 +30,7 @@ There are mechanisms to manage keyboard focus on the mobile navigation overlay.
 
 ## Search icon
 
-The seach icon is shown in the header as long as there is a page with `layout: src/layouts/Search.astro`. The search layout automatically adds the search feature to the search page, so the icon is only shown where a page is available to show the search.
+The search icon is shown in the header as long as there is a page with `layout: src/layouts/Search.astro`. The search layout automatically adds the search feature to the search page, so the icon is only shown where a page is available to show the search.
 
 :img{ src="/img/screens/search-icon.png" alt="The search icon is automatically added" loading="lazy" }
 

@@ -8,8 +8,6 @@ const getData = async () => {
     const allPages = import.meta.glob('./**/*.md');
     const items = [];
 
-    console.log('SITE', SITE.url)
-
     for (const path in allPages) {
         const page = await allPages[path]() as  MarkdownInstance<Record<string, any>>;
 
