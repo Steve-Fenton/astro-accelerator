@@ -7,7 +7,7 @@ pubDate:   2022-09-17
 keywords: astro,boilerplate,site generator
 description: A boilerplate for a very clean version of Astro.
 bannerImage:
-    src: /img/surface-accessories-700.webp
+    src: /img/surface-accessories.png
     alt: Dummy image
 ---
 
@@ -121,9 +121,9 @@ Markdown:
 ```markdown
 :::div{.simple-grid}
 
-:img{ src="/img/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
+:img{ src="/img/jekyll-and-hyde.png" alt="Book cover" loading="lazy" }
 
-:img{ src="/img/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
+:img{ src="/img/jekyll-and-hyde.png" alt="Book cover" loading="lazy" }
 
 :::
 ```
@@ -132,9 +132,9 @@ Result:
 
 :::div{.simple-grid}
 
-:img{ src="/img/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
+:img{ src="/img/jekyll-and-hyde.png" alt="Book cover" loading="lazy" }
 
-:img{ src="/img/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
+:img{ src="/img/jekyll-and-hyde.png" alt="Book cover" loading="lazy" }
 
 :::
 
@@ -143,12 +143,12 @@ Result:
 Markdown:
 
 ```markdown
-:img{ src="/img/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
+:img{ src="/img/jekyll-and-hyde.png" alt="Book cover" loading="lazy" }
 ```
 
 Result:
 
-:img{ src="/img/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
+:img{ src="/img/jekyll-and-hyde.png" alt="Book cover" loading="lazy" }
 
 ## Lists
 

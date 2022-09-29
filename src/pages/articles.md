@@ -9,6 +9,6 @@ pubDate:   2022-09-17
 keywords: articles,astro,boilerplate
 description: Articles
 bannerImage:
-    src: /img/surface-accessories-700.webp
+    src: /img/surface-accessories.png
     alt: Dummy image
 ---

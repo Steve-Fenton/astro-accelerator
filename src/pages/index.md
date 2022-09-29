@@ -7,7 +7,7 @@ pubDate:   2022-09-17
 keywords: astro,boilerplate,site generator
 description: A boilerplate for a very clean version of Astro.
 bannerImage:
-    src: /img/surface-accessories-700.webp
+    src: /img/surface-accessories.png
     alt: Dummy image
 ---
 
@@ -30,6 +30,6 @@ Astro Boilerplate is built on some strong opinions:
 
 Out of the box, Astro Boilerplate is a "top scores" high-performance website in the Pagespeed lab. [Pagespeed Insights](https://developers.google.com/speed/docs/insights/v5/about?hl=en-US) tests website performance on mobile and desktop across a number of measurements.
 
-:img{ src="/img/astro-lighthouse.webp" alt="Astro Lighthouse Score (100% in all categories)" loading="lazy" }
+:img{ src="/img/astro-lighthouse.png" alt="Astro Lighthouse Score (100% in all categories)" loading="lazy" }
 
 Test scores aren't everything, but Astro Boilerplate is light and fast.

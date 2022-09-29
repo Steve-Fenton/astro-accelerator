@@ -6,7 +6,7 @@ pubDate: 2022-09-28
 keywords: astro boilerplate,image,automation,conversion,resizing,responsive
 description: How image automation helps with conversion, resizing, and responsive images.
 bannerImage:
-    src: /img/surface-accessories-700.webp
+    src: /img/surface-accessories.png
     alt: Dummy image
 ---
 
@@ -30,7 +30,7 @@ As part of the conversion, a set of sizes will be created to use with responsive
 
 - `/public/i/x/example.png` (smaller file size)
 - `/public/i/400/example.webp` (400px wide WEBP)
-- `/public/i/600/example.webp` (600px wide WEBP)
+- `/public/i/700/example.webp` (700px wide WEBP)
 - `/public/i/1000/example.webp` (1000px wide WEBP)
 
 You shouldn't create a `/public/i/` folder as this is reserved for automation.

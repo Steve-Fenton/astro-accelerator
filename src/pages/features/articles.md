@@ -6,7 +6,7 @@ pubDate: 2022-09-23
 keywords: astro boilerplate,articles,posts,list
 description: How articles and authors work in Astro Boilerplate.
 bannerImage:
-    src: /img/surface-accessories-700.webp
+    src: /img/surface-accessories.png
     alt: Dummy image
 ---
 

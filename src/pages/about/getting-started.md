@@ -6,7 +6,7 @@ pubDate: 2022-09-17
 keywords: astro boilerplate,getting started
 description: There are just a couple of tasks to turn the Astro Boilerplate into your own working website.
 bannerImage:
-    src: /img/surface-accessories-700.webp
+    src: /img/surface-accessories.png
     alt: Dummy image
 ---
 

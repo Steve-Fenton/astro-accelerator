@@ -7,7 +7,7 @@ pubDate: 2022-09-17
 keywords: steve fenton
 description: Steve Fenton's profile on Astro Boilerplate
 bannerImage:
-    src: /img/authors/steve-fenton.webp
+    src: /i/400/authors/steve-fenton.webp
     alt: Dummy image
 ---
 

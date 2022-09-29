@@ -6,7 +6,7 @@ pubDate:   2022-09-17
 keywords: astro,boilerplate,writing
 description: How to write in Astro.
 bannerImage:
-    src: /img/surface-accessories-700.webp
+    src: /img/surface-accessories.png
     alt: Dummy image
 ---
 
@@ -29,9 +29,9 @@ Hello world!
 
 The page will be added to the menu and you can click on it to see your content.
 
-:img{ src="/img/screens/example-page.webp" alt="The output of the example page markdown" loading="lazy"}
+:img{ src="/img/screens/example-page.png" alt="The output of the example page markdown" loading="lazy"}
 
-You can expand your content using Markdown. You can learn how to use markdown on the [CommonMark tutorial](https://commonmark.org/help/tutorial/). There are also some custom [markdown extensions](/featres/markdown/) that give you markdown super-powers.
+You can expand your content using Markdown. You can learn how to use markdown on the [CommonMark tutorial](https://commonmark.org/help/tutorial/). There are also some custom [markdown extensions](/features/markdown/) that give you markdown super-powers.
 
 ## Child Items
 

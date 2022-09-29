@@ -6,7 +6,7 @@ pubDate: 2022-09-03
 keywords: sample,post
 description: A sample post
 bannerImage:
-    src: /img/surface-accessories-700.webp
+    src: /img/surface-accessories.png
     alt: Dummy image
 authors:
     - steve-fenton

@@ -7,6 +7,7 @@ import imageminPNG from 'imagemin-pngquant';
 
 const sizes = [400,700,1000];
 const imagePath = path.join('public', 'img');
+const outputPath = path.join('public', 'i');
 const workingDirectory = process.cwd();
 const imageDirectory = path.join(workingDirectory, imagePath);
 
@@ -15,7 +16,7 @@ console.log(imageDirectory);
 const filesToProcess = [];
 
 function getDestinationFolder(source, size) {
-    let destination = path.join(workingDirectory, 'public', 'i', size.toString(), source);
+    let destination = path.join(workingDirectory, outputPath, size.toString(), source);
     destination = destination.replace(path.basename(destination), '');
     return destination;
 }
@@ -44,7 +45,7 @@ async function recurseFiles(directory) {
                     };
         
                     const fullPath = path.join(imageDirectory, info.path);
-                    const fullDestination = path.join(workingDirectory, 'public', 'i', sizes[0].toString(), info.webP);
+                    const fullDestination = path.join(workingDirectory, outputPath, sizes[0].toString(), info.webP);
         
                     const modified = fs.statSync(fullPath).mtime;
         

@@ -30,7 +30,7 @@ export const SITE = {
 // Default image for OG: Tags
 export const OPEN_GRAPH = {
 	image: {
-		src: '/img/surface-accessories-700.webp',
+		src: '/img/surface-accessories.png',
 		alt: 'Alt text for image goes here',
 	}
 };
