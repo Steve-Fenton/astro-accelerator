@@ -32,6 +32,15 @@ import { getFocusableElement, trapFocusForward, trapReverseFocus } from './focus
         }
     });
 
+    // Close menu on escape-key press
+    document.addEventListener('keydown', function(e) { 
+        if (icon.getAttribute(dataOpen) === dataOpen) {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        }
+    });
+
     // Opens and closes menu
     function handleIconInteraction() {
         if (icon.dataset.open == dataOpen) {
