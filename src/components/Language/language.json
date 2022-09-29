@@ -6,6 +6,9 @@
         "site_navigation": {
             "en": "Site Navigation"
         },
+        "toc": {
+            "en": "Table of contents"
+        },
         "paging": {
             "en": "Paging"
         },
@@ -41,6 +44,11 @@
     "navigation": {
         "title": {
             "en": "Navigation"
+        }
+    },
+    "toc": {
+        "title":{
+            "en": "Table of contents"
         }
     },
     "footer": {

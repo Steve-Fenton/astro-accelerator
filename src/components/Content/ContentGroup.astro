@@ -13,8 +13,9 @@ import Navigation from '@content/Navigation.astro';
 type Props = {
   lang: string;
   frontmatter: Frontmatter;
+  headings: { depth: number; slug: string; text: string; }[];
 };
-const { lang, frontmatter } = Astro.props as Props;
+const { lang, frontmatter, headings } = Astro.props as Props;
 
 // Language
 const _ = Lang(lang);
@@ -26,6 +27,18 @@ const authorList = await getAuthorList(frontmatter);
   <Navigation lang={ lang } />
   <main id="site-main">
       <article>
+          {headings.length > 0 &&
+          <nav class="page-toc" aria-label={ _(t.aria.toc) }>
+            <details>
+              <summary>{ _(t.toc.title) }</summary>
+              <ol>
+                {headings.map((heading) =>(
+                  <li><a href={ '#' + heading.slug }>{ heading.text }</a></li>
+                ))}
+              </ol>
+            </details>
+          </nav>
+          }
           <header>
               <h1>{ frontmatter.title ?? SITE.title }</h1>
           </header>

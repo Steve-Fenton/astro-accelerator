@@ -13,8 +13,9 @@ import Default from '@layouts/Default.astro';
 // Properties
 type Props = {
     frontmatter: Frontmatter
-};
-const { frontmatter } = Astro.props as Props;
+    headings: { depth: number; slug: string; text: string; }[];
+}
+const { frontmatter, headings } = Astro.props as Props;
 const lang = frontmatter.lang ?? SITE.default.lang;
 
 // Language
@@ -23,7 +24,7 @@ const _ = Lang(lang);
 // Logic
 const authorPages = await getPages(p => p.frontmatter.authors?.indexOf(frontmatter.id) > -1)
 ---
-<Default frontmatter={frontmatter}>
+<Default frontmatter={ frontmatter } headings={ headings }>
     <slot />
     <h2>{ _(t.author.recent_articles) }</h2>
     <ul class="post-list">

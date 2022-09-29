@@ -10,8 +10,9 @@ import ContentGroup from '@content/ContentGroup.astro';
 
 type Props = {
     frontmatter: Frontmatter
+    headings: { depth: number; slug: string; text: string; }[];
 }
-const { frontmatter } = Astro.props as Props;
+const { frontmatter, headings } = Astro.props as Props;
 
 const lang = frontmatter.lang ?? SITE.default.lang;
 const textDirection = frontmatter.dir ?? SITE.default.dir;
@@ -22,7 +23,7 @@ const textDirection = frontmatter.dir ?? SITE.default.dir;
         <SkipLinks lang={ lang } />
         <Header lang={ lang } />
         <Breadcrumbs lang={ lang } />
-        <ContentGroup lang={ lang } frontmatter={ frontmatter }>
+        <ContentGroup lang={ lang } frontmatter={ frontmatter } headings={ headings }>
             <slot />
         </ContentGroup>
         <!-- <Breadcrumbs lang={ lang } /> -->

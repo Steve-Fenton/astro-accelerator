@@ -9,8 +9,9 @@ import Default from '@layouts/Default.astro';
 // Properties
 type Props = {
     frontmatter: Frontmatter
-};
-const { frontmatter } = Astro.props as Props;
+    headings: { depth: number; slug: string; text: string; }[];
+}
+const { frontmatter, headings } = Astro.props as Props;
 const lang = frontmatter.lang ?? SITE.default.lang;
 const textDirection = frontmatter.dir ?? SITE.default.dir;
 
@@ -20,7 +21,7 @@ const _ = Lang(lang);
 // Logic
 const siteUrl = Astro.site ? Astro.site.href : '';
 ---
-<Default frontmatter={frontmatter}>
+<Default frontmatter={ frontmatter } headings={ headings }>
     <slot />
     <form method="GET" action={ SITE.search.fallbackUrl ?? 'https://www.google.com/search' } role="search" id="site-search" class="site-search note" autocomplete="off">
         <fieldset>

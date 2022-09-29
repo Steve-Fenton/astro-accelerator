@@ -394,6 +394,28 @@ main ul ol, main ul ul, main ol ol, main ol ul {
     }
   }
 
+/* Table of Contents (TOC) */
+
+.page-toc {
+    background-color: var(--aft-block);
+    padding: 0 1rem;
+    margin: 0 0 var(--block-gap) 0;
+}
+
+.page-toc summary {
+    text-align: center;
+}
+
+.page-toc ol {
+    list-style: none;
+    padding-bottom: var(--block-gap);
+}
+
+.page-toc li a {
+    display: block;
+    padding: 0.5rem 1rem;
+}
+
 /* Footer */
 
 .site-footer {
