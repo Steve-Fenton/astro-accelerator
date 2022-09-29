@@ -28,9 +28,10 @@ const frontmatter: Frontmatter = {
 
 // Props
 type Props = {
-  page: Page<MarkdownInstance<Record<string, any>>>
+  page: Page<MarkdownInstance<Record<string, any>>>;
+  headings: { depth: number; slug: string; text: string; }[];
 };
-const { page } = Astro.props as Props;
+const { page, headings } = Astro.props as Props;
 
 // Language
 const _ = Lang(lang);
@@ -49,7 +50,7 @@ export async function getStaticPaths({ paginate }: any) {
 // Page Links
 const pageLinks = getPageLinks(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
 ---
-<Default frontmatter={frontmatter}>
+<Default frontmatter={ frontmatter } headings={ headings }>
   <!--Display the current page number. Astro.params.page can also be used!-->
   <h2>Page {page.currentPage}</h2>
   <ul class="post-list">

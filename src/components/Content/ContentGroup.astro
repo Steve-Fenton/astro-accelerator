@@ -27,7 +27,7 @@ const authorList = await getAuthorList(frontmatter);
   <Navigation lang={ lang } />
   <main id="site-main">
       <article>
-          {headings.length > 0 &&
+          {headings && headings.length > 0 &&
           <nav class="page-toc" aria-label={ _(t.aria.toc) }>
             <details>
               <summary>{ _(t.toc.title) }</summary>
