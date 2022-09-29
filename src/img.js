@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import imagemin from 'imagemin';
+import { size } from './plugins/image-size.mjs';
 import imageminWEBP from 'imagemin-webp';
 import imageminJPG from 'imagemin-jpegtran';
 import imageminPNG from 'imagemin-pngquant';
@@ -15,8 +16,8 @@ console.log(imageDirectory);
 
 const filesToProcess = [];
 
-function getDestinationFolder(source, size) {
-    let destination = path.join(workingDirectory, outputPath, size.toString(), source);
+function getDestinationFolder(source, s) {
+    let destination = path.join(workingDirectory, outputPath, s.toString(), source);
     destination = destination.replace(path.basename(destination), '');
     return destination;
 }
@@ -74,10 +75,10 @@ for (const file of filesToProcess) {
     	plugins: [imageminJPG(), imageminPNG()]
     });
 
-    for (const size of sizes) {
+    for (const key in size) {
         await imagemin([source], {
-            destination: getDestinationFolder(file.path, size),
-            plugins: [imageminWEBP({ quality: 90, resize: { width: size, height: 0 }})],
+            destination: getDestinationFolder(file.path, size[key]),
+            plugins: [imageminWEBP({ quality: 90, resize: { width: size[key], height: 0 }})],
         });
     }
 }

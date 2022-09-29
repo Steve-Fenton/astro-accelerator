@@ -1,5 +1,6 @@
 import { h } from 'hastscript';
-import { visit } from 'unist-util-visit'
+import { visit } from 'unist-util-visit';
+import { size } from './image-size.mjs';
 
 /* Based on https://github.com/remarkjs/remark-directive
 * Examples:
@@ -20,6 +21,10 @@ This is a custom div element with the class `note`
 
 */
 
+export function getDestination(uri, s) {
+  return uri.replace(/^\/img\//, '/i/' + s.toString() + '/');
+}
+
 /** @type {import('unified').Plugin<[], import('mdast').Root>} */
 export function attributeMarkdown() {
   return (tree) => {
@@ -37,12 +42,13 @@ export function attributeMarkdown() {
           uri = uri.replace(/.jpg|.jpeg|.png/, '.webp');
 
           const imgFallback = hast.properties.src.replace(/^\/img\//, '/i/x/');
-          const imgSmall = uri.replace(/^\/img\//, '/i/400/');
-          const imgMedium = uri.replace(/^\/img\//, '/i/700/');
-          const imgLarge = uri.replace(/^\/img\//, '/i/1000/');
+
+          const imgSmall = getDestination(uri, size.small);
+          const imgMedium = getDestination(uri, size.medium);
+          const imgLarge = getDestination(uri, size.large);
 
           hast.properties.src = imgFallback;
-          hast.properties.srcset = `${imgSmall} 400w, ${imgMedium} 700w, ${imgLarge}, 1000w`;
+          hast.properties.srcset = `${imgSmall} ${size.small}w, ${imgMedium} ${size.medium}w, ${imgLarge}, ${size.large}w`;
           hast.properties.sizes = `(max-width: 860px) 100vw, 66vw`;
           hast.properties.class = (hast.properties.class ?? '' + ' resp-img').trim();
         }
