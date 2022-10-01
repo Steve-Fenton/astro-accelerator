@@ -31,7 +31,7 @@ To enable a theme, adjust `tsconfig.json`:
 }
 ```
 
-## Authoring themes
+## Authoring Themes
 
 The easiest way to build an alternate theme is to copy the boilerplate to use a starting point.
 
@@ -44,3 +44,7 @@ The only requirement is that you include the three layouts in your `theme-name/l
 You can include whatever components you need to support your theme.
 
 You can use the available shared `@util/*` files in your theme.
+
+## Theme Styles
+
+You can import styles into your theme from the theme directory, or provide an external stylesheet to be added to the `/public/css/` folder.
