@@ -1,4 +1,6 @@
 ---
+import type { Frontmatter } from 'src/config';
+
 import t from '@lang/language.json';
 import { Lang } from '@util/Languages.astro';
 
@@ -7,6 +9,8 @@ import { SITE } from 'src/config';
 // Properties
 type Props = {
   lang: string;
+  frontmatter: Frontmatter
+  headings: { depth: number; slug: string; text: string; }[];
 };
 const { lang } = Astro.props as Props;
 

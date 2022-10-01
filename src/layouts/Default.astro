@@ -18,16 +18,16 @@ const lang = frontmatter.lang ?? SITE.default.lang;
 const textDirection = frontmatter.dir ?? SITE.default.dir;
 ---
 <html dir={ textDirection } lang={ lang } class="initial">
-    <Head frontmatter={ frontmatter } />
+    <Head frontmatter={ frontmatter } headings={ headings } lang={ lang } />
     <body>
-        <SkipLinks lang={ lang } />
-        <Header lang={ lang } />
-        <Breadcrumbs lang={ lang } />
-        <ContentGroup lang={ lang } frontmatter={ frontmatter } headings={ headings }>
+        <SkipLinks frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+        <Header frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+        <Breadcrumbs frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+        <ContentGroup frontmatter={ frontmatter } headings={ headings } lang={ lang }>
             <slot />
         </ContentGroup>
         <!-- <Breadcrumbs lang={ lang } /> -->
-        <Footer lang={ lang } />
+        <Footer frontmatter={ frontmatter } headings={ headings } lang={ lang } />
         <script src="/js/main.js" type="module" async></script>
     </body>
 </html>

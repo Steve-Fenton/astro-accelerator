@@ -1,11 +1,13 @@
 ---
-import { SITE, OPEN_GRAPH } from 'src/config';
+import { SITE, OPEN_GRAPH, Frontmatter } from 'src/config';
 import { addSlashToUrl } from '@util/Url.astro';
 
 // Properties
 type Props = {
-    frontmatter: Record<string, any>;
-}
+  lang: string;
+  frontmatter: Frontmatter
+  headings: { depth: number; slug: string; text: string; }[];
+};
 const { frontmatter } = Astro.props;
 
 // Logic
