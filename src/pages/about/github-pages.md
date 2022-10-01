@@ -4,8 +4,8 @@ title: Host Jekyll on GitHub Pages
 navTitle: GitHub Pages
 navOrder: 10000
 pubDate: 2022-09-17
-keywords: jekyll boilerplate,github pages,github action
-description: How to get the most from Jekyll Boilerplate and GitHub Pages.
+keywords: astro boilerplate,github pages,github action
+description: How to get the most from Astro Boilerplate and GitHub Pages.
 bannerImage:
     src: /img/surface-accessories.png
     alt: Dummy image

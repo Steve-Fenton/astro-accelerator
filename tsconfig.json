@@ -5,9 +5,10 @@
       "baseUrl": ".",
       "paths": {
         "@config": ["src/config"],
+        "@util/*": ["src/utilities/*"],
+        // Layouts and components for the theme
         "@layouts/*": ["src/themes/boilerplate/layouts/*"],
         "@components/*": ["src/themes/boilerplate/components/*"],
-        "@util/*": ["src/utilities/*"],
       }
   }
 }
