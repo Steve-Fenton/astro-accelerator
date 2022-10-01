@@ -4,10 +4,8 @@
   "compilerOptions": {
       "baseUrl": ".",
       "paths": {
-        "@layouts/*": ["src/layouts/*"],
-        "@content/*": ["src/components/Content/*"],
-        "@head/*": ["src/components/Head/*"],
-        "@lang/*": ["src/components/Language/*"],
+        "@layouts/*": ["src/themes/boilerplate/layouts/*"],
+        "@components/*": ["src/themes/boilerplate/components/*"],
         "@util/*": ["src/utilities/*"],
       }
   }

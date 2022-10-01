@@ -1,10 +1,6 @@
 ---
-import t from '@lang/language.json';
-import { Lang } from '@util/Languages.astro';
-
-import { SITE, Frontmatter } from 'src/config';
-
-import Default from '@layouts/Default.astro';
+import type { Frontmatter } from 'src/config';
+import Search from '@layouts/Search.astro';
 
 // Properties
 type Props = {
@@ -12,28 +8,8 @@ type Props = {
     headings: { depth: number; slug: string; text: string; }[];
 }
 const { frontmatter, headings } = Astro.props as Props;
-const lang = frontmatter.lang ?? SITE.default.lang;
-const textDirection = frontmatter.dir ?? SITE.default.dir;
 
-// Language
-const _ = Lang(lang);
-
-// Logic
-const siteUrl = Astro.site ? Astro.site.href : '';
 ---
-<Default frontmatter={ frontmatter } headings={ headings }>
+<Search frontmatter={ frontmatter } headings={ headings }>
     <slot />
-    <form method="GET" action={ SITE.search.fallbackUrl ?? 'https://www.google.com/search' } role="search" id="site-search" class="site-search note" autocomplete="off">
-        <fieldset>
-            <input type="hidden" name={ SITE.search.fallbackSite ?? 'q' } value={ siteUrl } />
-            <div>
-                <label for="site-search-query">{ _(t.search.search_for) }</label>
-                <input type="text" name={ SITE.search.fallbackSite ?? 'q' } id="site-search-query" autofocus="autofocus" />
-                <button id="site-search-button" type="submit">{ _(t.search.submit) }</button>
-            </div>
-        </fieldset>
-    </form>
-    <div id="site-search-results" data-title={ _(t.search.results_title) } data-emptytitle={ _(t.search.no_results_title) }>
-    </div>
-    <script src="/js/search.js" type="module" async></script>
-</Default>
+</Search>

@@ -1,33 +1,15 @@
 ---
-import { SITE, Frontmatter } from 'src/config';
+import type { Frontmatter } from 'src/config';
+import Default from '@layouts/Default.astro';
 
-import Head from '@head/HtmlHead.astro';
-import Header from '@content/Header.astro';
-import Footer from '@content/Footer.astro';
-import SkipLinks from '@content/SkipLinks.astro';
-import Breadcrumbs from '@content/Breadcrumbs.astro';
-import ContentGroup from '@content/ContentGroup.astro';
-
+// Properties
 type Props = {
     frontmatter: Frontmatter
     headings: { depth: number; slug: string; text: string; }[];
 }
 const { frontmatter, headings } = Astro.props as Props;
 
-const lang = frontmatter.lang ?? SITE.default.lang;
-const textDirection = frontmatter.dir ?? SITE.default.dir;
 ---
-<html dir={ textDirection } lang={ lang } class="initial">
-    <Head frontmatter={ frontmatter } headings={ headings } lang={ lang } />
-    <body>
-        <SkipLinks frontmatter={ frontmatter } headings={ headings } lang={ lang } />
-        <Header frontmatter={ frontmatter } headings={ headings } lang={ lang } />
-        <Breadcrumbs frontmatter={ frontmatter } headings={ headings } lang={ lang } />
-        <ContentGroup frontmatter={ frontmatter } headings={ headings } lang={ lang }>
-            <slot />
-        </ContentGroup>
-        <!-- <Breadcrumbs lang={ lang } /> -->
-        <Footer frontmatter={ frontmatter } headings={ headings } lang={ lang } />
-        <script src="/js/main.js" type="module" async></script>
-    </body>
-</html>
+<Default frontmatter={ frontmatter } headings={ headings }>
+    <slot />
+</Default>

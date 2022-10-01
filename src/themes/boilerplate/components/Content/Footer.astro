@@ -1,0 +1,28 @@
+---
+import type { Frontmatter } from 'src/config';
+
+import t from '@components/language/language.json';
+import { Lang } from '@util/Languages.astro';
+
+import { SITE } from 'src/config';
+
+// Properties
+type Props = {
+  lang: string;
+  frontmatter: Frontmatter
+  headings: { depth: number; slug: string; text: string; }[];
+};
+const { lang } = Astro.props as Props;
+
+// Language
+const _ = Lang(lang);
+
+// Logic
+// -
+---
+<footer class="site-footer" id="site-footer">
+  <p>{ _(t.footer.copyright) } &copy; { new Date().getFullYear() } { SITE.owner }</p>
+  <nav aria-label={ _(t.aria.back_to_top) }>
+    <a href="#site-top">{ _(t.skiplinks.skip_to_top) }</a>
+  </nav>
+</footer>

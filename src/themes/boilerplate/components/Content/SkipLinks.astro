@@ -1,10 +1,8 @@
 ---
 import type { Frontmatter } from 'src/config';
 
-import t from '@lang/language.json';
+import t from '@components/language/language.json';
 import { Lang } from '@util/Languages.astro';
-
-import { SITE } from 'src/config';
 
 // Properties
 type Props = {
@@ -20,9 +18,8 @@ const _ = Lang(lang);
 // Logic
 // -
 ---
-<footer class="site-footer" id="site-footer">
-  <p>{ _(t.footer.copyright) } &copy; { new Date().getFullYear() } { SITE.owner }</p>
-  <nav aria-label={ _(t.aria.back_to_top) }>
-    <a href="#site-top">{ _(t.skiplinks.skip_to_top) }</a>
+<nav class="skip-links" aria-label={ _(t.aria.skiplinks) } id="site-top">
+    <a href="#site-nav">{ _(t.skiplinks.skip_to_navigation) }</a>
+    <a href="#site-main">{ _(t.skiplinks.skip_to_content) }</a>
+    <a href="#site-footer">{ _(t.skiplinks.skip_to_footer) }</a>
   </nav>
-</footer>

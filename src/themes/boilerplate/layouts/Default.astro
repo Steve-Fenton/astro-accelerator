@@ -1,0 +1,33 @@
+---
+import { SITE, Frontmatter } from 'src/config';
+
+import Head from '../components/head/HtmlHead.astro';
+import Header from '../components/content/Header.astro';
+import Footer from '../components/content/Footer.astro';
+import SkipLinks from '../components/content/SkipLinks.astro';
+import Breadcrumbs from '../components/content/Breadcrumbs.astro';
+import ContentGroup from '../components/content/ContentGroup.astro';
+
+type Props = {
+    frontmatter: Frontmatter
+    headings: { depth: number; slug: string; text: string; }[];
+}
+const { frontmatter, headings } = Astro.props as Props;
+
+const lang = frontmatter.lang ?? SITE.default.lang;
+const textDirection = frontmatter.dir ?? SITE.default.dir;
+---
+<html dir={ textDirection } lang={ lang } class="initial">
+    <Head frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+    <body>
+        <SkipLinks frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+        <Header frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+        <Breadcrumbs frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+        <ContentGroup frontmatter={ frontmatter } headings={ headings } lang={ lang }>
+            <slot />
+        </ContentGroup>
+        <!-- <Breadcrumbs lang={ lang } /> -->
+        <Footer frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+        <script src="/js/main.js" type="module" async></script>
+    </body>
+</html>

@@ -1,5 +1,5 @@
 ---
-import t from '@lang/language.json';
+import t from '@components/language/language.json';
 import { Lang } from '@util/Languages.astro';
 
 import { SITE, Frontmatter } from 'src/config';
@@ -7,7 +7,7 @@ import { formatDate } from '@util/DateFormat.astro';
 import { getAuthorList } from '@util/Authors.astro';
 import { addSlashToAddress } from '@util/Url.astro';
 
-import Navigation from '@content/Navigation.astro';
+import Navigation from '@components/content/Navigation.astro';
 
 // Properties
 type Props = {
