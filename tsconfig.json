@@ -4,6 +4,7 @@
   "compilerOptions": {
       "baseUrl": ".",
       "paths": {
+        "@config": ["src/config"],
         "@layouts/*": ["src/themes/boilerplate/layouts/*"],
         "@components/*": ["src/themes/boilerplate/components/*"],
         "@util/*": ["src/utilities/*"],

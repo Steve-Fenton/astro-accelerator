@@ -1,5 +1,5 @@
 import type { MarkdownInstance } from 'astro';
-import { SITE } from 'src/config';
+import { SITE } from '@config';
 import { showInSearch } from '@util/PageTypeFilters.astro';
 import { addSlashToAddress } from '@util/Url.astro';
 

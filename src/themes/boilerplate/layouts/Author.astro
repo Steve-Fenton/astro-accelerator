@@ -1,8 +1,9 @@
 ---
+import { SITE, Frontmatter } from '@config';
+
 import t from '@util/language.json';
 import { Lang } from '@util/Languages.astro';
 
-import { SITE, Frontmatter } from 'src/config';
 import { sortByPubDateDesc } from '@util/PageTypeFilters.astro';
 import { formatDate } from '@util/DateFormat.astro';
 import { addSlashToAddress } from '@util/Url.astro';

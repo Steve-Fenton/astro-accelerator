@@ -1,5 +1,5 @@
 // Generates an ATOM feed of recent posts
-import { SITE } from 'src/config';
+import { SITE } from '@config';
 import { addSlashToAddress } from '@util/Url.astro';
 
 async function getData() {
