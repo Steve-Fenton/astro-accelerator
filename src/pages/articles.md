@@ -6,7 +6,7 @@ navOrder: 100000
 navSearch: false
 navSitemap: false
 pubDate:   2022-09-17
-keywords: articles,astro,boilerplate
+keywords: articles,astro,accelerator
 description: Articles
 bannerImage:
     src: /img/surface-accessories.png

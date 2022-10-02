@@ -3,8 +3,8 @@ layout: src/layouts/Default.astro
 title: Markdown
 navOrder: 1000
 pubDate: 2022-09-23
-keywords: astro boilerplate,markdown,custom markdown
-description: How markdown extensions work in Astro Boilerplate.
+keywords: astro accelerator,markdown,custom markdown
+description: How markdown extensions work in Astro Accelerator.
 bannerImage:
     src: /img/surface-accessories.png
     alt: Dummy image
@@ -33,13 +33,13 @@ Attributes can be added to inline elements using curly braces (`{}`). The attrib
 The markdown:
 
 ```markdown
-The :abbr[AB]{ title="Astro Boilerplate" } site.
+The :abbr[AB]{ title="Astro Accelerator" } site.
 ```
 
 Results in the output:
 
 ```html
-<p>The <abbr title="Astro Boilerplate">AB</abbr> site.</p>
+<p>The <abbr title="Astro Accelerator">AB</abbr> site.</p>
 ```
 
 ## Block Element

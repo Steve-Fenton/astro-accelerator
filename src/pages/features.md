@@ -5,8 +5,8 @@ navOrder: 2000
 navSearch: false
 navSitemap: false
 pubDate:   2022-09-23
-keywords: features,astro,boilerplate
-description: Astro boilerplate is an opinionated Astro site.
+keywords: features,astro,accelerator
+description: Astro accelerator is an opinionated Astro site.
 bannerImage:
     src: /img/surface-accessories.png
     alt: Dummy image

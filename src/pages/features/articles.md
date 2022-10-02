@@ -3,14 +3,14 @@ layout: src/layouts/Default.astro
 title: Articles
 navOrder: 4000
 pubDate: 2022-09-23
-keywords: astro boilerplate,articles,posts,list
-description: How articles and authors work in Astro Boilerplate.
+keywords: astro accelerator,articles,posts,list
+description: How articles and authors work in Astro Accelerator.
 bannerImage:
     src: /img/surface-accessories.png
     alt: Dummy image
 ---
 
-In Astro Boilerplate, articles (posts, articles, blogs, news, etc) require a couple of puzzle pieces. In the examples below, the term `articles` is used, but you can call this anything as long as you keep it consistent.
+In Astro Accelerator, articles (posts, articles, blogs, news, etc) require a couple of puzzle pieces. In the examples below, the term `articles` is used, but you can call this anything as long as you keep it consistent.
 
 1. `/pages/articles.md` (used for frontmatter)
 2. `/pages/articles/` folder

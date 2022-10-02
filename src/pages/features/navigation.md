@@ -3,8 +3,8 @@ layout: src/layouts/Default.astro
 title: Navigation
 navOrder: 3000
 pubDate: 2022-09-23
-keywords: astro boilerplate,navigation,menu
-description: How the navigation menu works in Astro Boilerplate.
+keywords: astro accelerator,navigation,menu
+description: How the navigation menu works in Astro Accelerator.
 bannerImage:
     src: /img/surface-accessories.png
     alt: Dummy image
@@ -35,7 +35,7 @@ Consider the following menu:
 
 - Home (PAGE /pages/index.md)
 - About (FRONTMATTER /pages/about.md)
-  - Astro Boilerplate (PAGE /pages/about/astro-boilerplate.md)
+  - Astro Accelerator (PAGE /pages/about/astro-accelerator.md)
   - Getting Started (PAGE /pages/about/getting-started.md)
 - Articles (LIST PAGE /pages/articles.md)
 

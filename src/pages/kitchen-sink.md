@@ -4,8 +4,8 @@ title: Heading 1
 navTitle: Kitchen Sink
 navOrder: 200000
 pubDate:   2022-09-17
-keywords: astro,boilerplate,site generator
-description: A boilerplate for a very clean version of Astro.
+keywords: astro,accelerator,site generator
+description: An accelerator for a very clean version of Astro.
 bannerImage:
     src: /img/surface-accessories.png
     alt: Dummy image
@@ -186,14 +186,14 @@ Markdown:
 ```markdown
 <https://astro.stevefenton.co.uk/kitchen-sink/>
 
-[Astro Boilerplate](https://astro.stevefenton.co.uk/ "The Astro Boilerplate Site")
+[Astro Accelerator](https://astro.stevefenton.co.uk/ "The Astro Accelerator Site")
 ```
 
 Result:
 
 <https://astro.stevefenton.co.uk/kitchen-sink/>
 
-[Astro Boilerplate](https://astro.stevefenton.co.uk/ "The Astro Boilerplate Site")
+[Astro Accelerator](https://astro.stevefenton.co.uk/ "The Astro Accelerator Site")
 
 ## Tables
 

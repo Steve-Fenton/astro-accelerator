@@ -1,4 +1,4 @@
-# Astro Boilerplate
+# Astro Accelerator
 
 Review the documentation at [astro.stevefenton.co.uk](https://astro.stevefenton.co.uk/)
 

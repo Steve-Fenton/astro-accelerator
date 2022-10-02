@@ -3,8 +3,8 @@ layout: src/layouts/Default.astro
 title: Themes
 navOrder: 2000
 pubDate: 2022-09-17
-keywords: astro boilerplate,github pages,github action
-description: How to apply a theme in Astro Boilerplate
+keywords: astro accelerator,github pages,github action
+description: How to apply a theme in Astro Accelerator
 bannerImage:
     src: /img/surface-accessories.png
     alt: Dummy image
@@ -33,7 +33,7 @@ To enable a theme, adjust `tsconfig.json`:
 
 ## Authoring Themes
 
-The easiest way to build an alternate theme is to copy the boilerplate to use a starting point.
+The easiest way to build an alternate theme is to copy the accelerator to use a starting point.
 
 The only requirement is that you include the three layouts in your `theme-name/layouts` folder:
 

@@ -3,14 +3,14 @@ layout: src/layouts/Default.astro
 title: Feeds
 navOrder: 5000
 pubDate: 2022-09-23
-keywords: astro boilerplate,feeds,sitemap,atom,rss
-description: How feeds work in Astro Boilerplate.
+keywords: astro accelerator,feeds,sitemap,atom,rss
+description: How feeds work in Astro Accelerator.
 bannerImage:
     src: /img/surface-accessories.png
     alt: Dummy image
 ---
 
-Astro Boilerplate has built-in feeds for:
+Astro Accelerator has built-in feeds for:
 
 - Sitemap (you can submit this to search engines)
 - Atom (similar to RSS)

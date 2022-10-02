@@ -6,14 +6,14 @@ navOrder: 1000
 navSearch: false
 navSitemap: false
 pubDate:   2022-09-17
-keywords: about,astro,boilerplate
-description: Astro boilerplate is an opinionated Astro site.
+keywords: about,astro,accelerator
+description: Astro accelerator is an opinionated Astro site with features to jump start your use.
 bannerImage:
     src: /img/surface-accessories.png
     alt: Dummy image
 ---
 
-This Astro boilerplate contains layouts, components, and extensions that provide essential features for most websites.
+This Astro accelerator contains layouts, components, and extensions that provide essential features for most websites.
 
 The CSS has been kept separate to the components to make it easier to replace entirely. The HTML is semantic, so applying drastically different styles and layouts should be easy enough.
 

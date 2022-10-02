@@ -3,8 +3,8 @@ layout: src/layouts/Default.astro
 title: I18n
 navOrder: 5000
 pubDate: 2022-09-23
-keywords: astro boilerplate,i18n,internationalization,languages,translations
-description: How languages work in Astro Boilerplate.
+keywords: astro accelerator,i18n,internationalization,languages,translations
+description: How languages work in Astro Accelerator.
 bannerImage:
     src: /img/surface-accessories.png
     alt: Dummy image
@@ -45,7 +45,7 @@ export const SITE = {
 
 ## Language Translations
 
-There are some user interface elements included in Astro Boilerplate that you may wish to adjust or translate.
+There are some user interface elements included in Astro Accelerator that you may wish to adjust or translate.
 
 The language strings can be found in `/src/components/Language/language.json`.
 

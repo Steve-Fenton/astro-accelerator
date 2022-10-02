@@ -3,14 +3,14 @@ layout: src/layouts/Default.astro
 title: SEO
 navOrder: 6000
 pubDate: 2022-09-23
-keywords: astro boilerplate,seo
-description: Astro Boilerplate SEO features.
+keywords: astro accelerator,seo
+description: Astro Accelerator SEO features.
 bannerImage:
     src: /img/surface-accessories.png
     alt: Dummy image
 ---
 
-Astro Boilerplate intends to be kind to search engines.
+Astro Accelerator intends to be kind to search engines.
 
 A big thank you to the SEO community, especially Petr Vinklarek, for their knowledge.
 

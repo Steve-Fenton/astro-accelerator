@@ -3,8 +3,8 @@ layout: src/layouts/Default.astro
 title: Header
 navOrder: 2000
 pubDate: 2022-09-23
-keywords: astro boilerplate,header,skiplinks,mobile navigation,breadcrumbs
-description: How header features work in Astro Boilerplate.
+keywords: astro accelerator,header,skiplinks,mobile navigation,breadcrumbs
+description: How header features work in Astro Accelerator.
 bannerImage:
     src: /img/surface-accessories.png
     alt: Dummy image

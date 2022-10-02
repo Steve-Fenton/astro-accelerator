@@ -3,7 +3,7 @@ layout: src/layouts/Default.astro
 title: Images
 navOrder: 1500
 pubDate: 2022-09-28
-keywords: astro boilerplate,image,automation,conversion,resizing,responsive
+keywords: astro accelerator,image,automation,conversion,resizing,responsive
 description: How image automation helps with conversion, resizing, and responsive images.
 bannerImage:
     src: /img/surface-accessories.png
@@ -22,7 +22,7 @@ They will also have WEBP alternatives created at different sizes, for use in res
 
 You can run this manually using  `node ./src/img.js`. Only changed images will be processed.
 
-By default, this is part of the `npm run dev` script in `package.json` for Astro Boilerplate:
+By default, this is part of the `npm run dev` script in `package.json` for Astro Accelerator:
 
 ```json
 "dev": "node ./src/img.js && astro dev",
