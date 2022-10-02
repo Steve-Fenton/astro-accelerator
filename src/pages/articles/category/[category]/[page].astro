@@ -39,12 +39,22 @@ const articles = t.articles;
 const aria = t.aria;
 
 export async function getStaticPaths({ paginate }: any) {
-  const sourcePosts = await Astro.glob('./**/*.md');
+  const sourcePosts = await Astro.glob('../../**/*.md');
   const urlPosts = sourcePosts
     .filter(p => p.url != null && p.url != '')
     .sort(sortByPubDateDesc);
 
-  return paginate(urlPosts, { pageSize: SITE.pageSize });
+  const categories: string[] = [];
+  urlPosts.forEach(p => p.frontmatter.categories.forEach(c => {
+    if (!categories.includes(c)) {
+      categories.push(c);
+    }
+  }));
+
+  return categories.map(c => {
+    const filtered = urlPosts.filter(p => p.frontmatter.categories.includes(c));
+    return paginate(filtered, { params: { category: c.toLowerCase() }, pageSize: SITE.pageSize })
+  });
 }
 
 // Page Links

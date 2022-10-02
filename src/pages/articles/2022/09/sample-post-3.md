@@ -10,6 +10,9 @@ bannerImage:
     alt: Dummy image
 authors:
     - steve-fenton
+categories:
+    - Example
+    - Sample
 ---
 
 This is an example post with more of the front matter set up, such as except and images.
