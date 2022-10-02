@@ -24,8 +24,8 @@ To enable a theme, adjust `tsconfig.json`:
       "baseUrl": ".",
       "paths": {
         // Layouts and components for the theme
-        "@layouts/*": ["src/themes/boilerplate/layouts/*"],
-        "@components/*": ["src/themes/boilerplate/components/*"],
+        "@layouts/*": ["src/themes/accelerator/layouts/*"],
+        "@components/*": ["src/themes/accelerator/components/*"],
       }
   }
 }
