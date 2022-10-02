@@ -28,6 +28,9 @@ In `/src/config.ts`\
 Review the items in `export const SITE`\
 Sitewide defaults.
 
+In `/src/config.ts`\
+Add any analytics or validation tags to `export const HEADER_SCRIPTS`.
+
 ## Optional Updates
 
 This section is in-progress.
@@ -47,6 +50,8 @@ SITE.themeColor
 OPEN_GRAPH defaults
 
 ## Migrating From WordPress
+
+This section is in-progress.
 
 Export to Jekyll plugin (it just creates markdown files and images).
 

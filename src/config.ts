@@ -35,6 +35,10 @@ export const OPEN_GRAPH = {
 	}
 };
 
+export const HEADER_SCRIPTS = `
+<!-- HEADER SCRIPTS -->
+`.trim();
+
 type Mapped<T> = {
     [P in keyof T]?: any
 }

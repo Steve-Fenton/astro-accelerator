@@ -1,5 +1,5 @@
 ---
-import { SITE, OPEN_GRAPH, Frontmatter } from '@config';
+import { SITE, OPEN_GRAPH, HEADER_SCRIPTS, Frontmatter } from '@config';
 import { addSlashToUrl } from '@util/Url.astro';
 
 // Properties
@@ -39,7 +39,5 @@ const canonicalURL =  addSlashToUrl(new URL(Astro.url.pathname, Astro.site));
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <link rel="stylesheet" href="/css/vars.css" />
         <link rel="stylesheet" href="/css/main.css" />
-        <!--
-        <Analytics></Analytics>
-        -->
+        { HEADER_SCRIPTS }
     </head>
