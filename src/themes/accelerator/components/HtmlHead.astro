@@ -39,5 +39,5 @@ const canonicalURL =  addSlashToUrl(new URL(Astro.url.pathname, Astro.site));
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <link rel="stylesheet" href="/css/vars.css" />
         <link rel="stylesheet" href="/css/main.css" />
-        { HEADER_SCRIPTS }
+        <Fragment set:html={ HEADER_SCRIPTS }></Fragment>
     </head>
