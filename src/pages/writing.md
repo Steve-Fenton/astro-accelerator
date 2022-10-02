@@ -10,7 +10,7 @@ bannerImage:
     alt: Dummy image
 ---
 
-Writing in Astro is super-easy.
+Writing in Astro Accelerator is super-easy. We've tried to make sure the content as separated from theming concerns as much as possible.
 
 The only folder you need to work in is `src/pages/` and the only file type you need to know is markdown (`.md`).
 
@@ -27,11 +27,11 @@ Hello world!
 
 ```
 
-The page will be added to the menu and you can click on it to see your content.
+The page will be automatically added to the menu and you can click on it to see your content.
 
 :img{ src="/img/screens/example-page.png" alt="The output of the example page markdown" loading="lazy"}
 
-You can expand your content using Markdown. You can learn how to use markdown on the [CommonMark tutorial](https://commonmark.org/help/tutorial/). There are also some custom [markdown extensions](/features/markdown/) that give you markdown super-powers.
+You can learn how to use markdown on the [CommonMark tutorial](https://commonmark.org/help/tutorial/). There are also some custom [markdown extensions](/features/markdown/) that give you some markdown super-powers.
 
 ## Child Items
 
@@ -47,7 +47,9 @@ You can put pages into folders. If you wanted to add pages as "child items" of y
 
 ### Child Articles
 
-Add articles to folders, for example a year and month folder as shown below:
+You decide how you want articles to appear in your web addresses. As long as they can be found in the folder named after your articles page, for example `/pages/articles/` you can organize them however you like.
+
+For example, you could arrange them into folder using the year and month of publication:
 
 - Articles (`/pages/articles.md`)
   - Child Page 1 (`/pages/articles/2022/12/article-1.md`)

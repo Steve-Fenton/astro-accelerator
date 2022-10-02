@@ -13,7 +13,7 @@ bannerImage:
 
 You can host Astro sites on GitHub pages. Use the [Astro Deploy Action](https://github.com/withastro/action) to run your own build.
 
-You can copy [the Astro Accelerator GitHub Action configuration](https://github.com/Steve-Fenton/astro-boilerplate/blob/main/.github/workflows/build-astro.yml) if you want to host your site on GitHub Pages. There are no variables to update.
+You can copy [the Astro Accelerator GitHub Action configuration](https://github.com/Steve-Fenton/astro-accelerator/blob/main/.github/workflows/build-astro.yml) if you want to host your site on GitHub Pages. There are no variables to update.
 
 The Astro Deploy Action is really easy to set up and publishes the output directly to GitHub Pages. All you need to do is set up GitHub Pages to serve content from "Actions".
 

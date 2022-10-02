@@ -115,3 +115,5 @@ Without this line, only the manual menu items will be shown.
 ## Automatic Table of Contents
 
 Where there are sub-headings on a page, an automatic table of contents will be shown. This allows users to skip down the page to the content they are most interested in.
+
+:img{src="/img/screens/table-of-contents.png" loading="lazy" alt="An automatic table of contents based on headings in the page"}

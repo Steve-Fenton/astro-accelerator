@@ -11,16 +11,16 @@ bannerImage:
     alt: Dummy image
 ---
 
-Welcome to Astro Accelerator. A super-lightweight, accessible, SEO friendly starter project for the [Astro](https://astro.build/).
+Welcome to Astro Accelerator. A super-lightweight, accessible, SEO friendly starter project for [Astro](https://astro.build/).
 
 :::div{.note}
-The Astro Accelerator source code is available on [GitHub](https://github.com/Steve-Fenton/astro-boilerplate).
+The Astro Accelerator source code is available on [GitHub](https://github.com/Steve-Fenton/astro-accelerator).
 :::
 
 Astro Accelerator is built on some strong opinions:
 
 - Accessibility is not just important, it's fundamental
-- Everything should still work without JavaScript
+- Everything should work without JavaScript
 - The democratizing force in the World Wide Web is HTML files
 - Software supply chains should be minimal
 
@@ -28,7 +28,7 @@ Astro Accelerator is built on some strong opinions:
 >
 > It's clean semantic HTML, simple CSS, and some minor non-essential enhancements in plain JavaScript. <cite>Steve Fenton</cite>
 
-Out of the box, Astro Accelerator is a "top scores" high-performance website in the Pagespeed lab. [Pagespeed Insights](https://developers.google.com/speed/docs/insights/v5/about?hl=en-US) tests website performance on mobile and desktop across a number of measurements.
+Out of the box, Astro Accelerator is a "top scores" high-performance website in the lab. [Pagespeed Insights](https://developers.google.com/speed/docs/insights/v5/about?hl=en-US) tests website performance on mobile and desktop across a number of measurements.
 
 :img{ src="/img/astro-lighthouse.png" alt="Astro Lighthouse Score (100% in all categories)" loading="lazy" }
 

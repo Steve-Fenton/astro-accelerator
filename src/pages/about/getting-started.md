@@ -10,7 +10,7 @@ bannerImage:
     alt: Dummy image
 ---
 
-- Download the code from [GitHub](https://github.com/Steve-Fenton/astro-boilerplate)
+- Download the code from [GitHub](https://github.com/Steve-Fenton/astro-accelerator)
 - Run `npm install` to download the packages
 - Run `npm run dev` to start the site
 

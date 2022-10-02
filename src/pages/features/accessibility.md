@@ -12,7 +12,7 @@ bannerImage:
 
 We think accessibility is more than important. It's fundamental. The whole point of the World Wide Web is to make information *available* to the world. If you exclude people based on how they interact with a computer, that's not a World Wide Web.
 
-Quite a lot of effort has gone into making the out-of-the-box Astro Accelerator accessible, though we're happy to [get your feedback on GitHub](https://github.com/Steve-Fenton/astro-boilerplate/issues).
+Quite a lot of effort has gone into making the out-of-the-box Astro Accelerator accessible, though we're happy to [get your feedback on GitHub](https://github.com/Steve-Fenton/astro-accelerator/issues).
 
 A huge thank you to the accessibility community, especially Kev Bonett, for sharing their crucial knowledge.
 
