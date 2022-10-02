@@ -65,9 +65,10 @@ async function recurseFiles(directory) {
 
 await recurseFiles('');
 
-console.log(`Found ${filesToProcess.length} files to process`)
+console.log(`Found ${filesToProcess.length} files to process`);
 
 for (const file of filesToProcess) {
+    console.log(file.path);
     const source = path.join(imageDirectory, file.path);
 
     await imagemin([source], {
@@ -82,3 +83,5 @@ for (const file of filesToProcess) {
         });
     }
 }
+
+console.log(`Finished`);
