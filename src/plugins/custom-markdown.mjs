@@ -11,7 +11,7 @@ This is an inline :abbr[I18n]{ title="Internationalization" } element
 
 ## Images
 
-:img{ src="/img/jekyll-and-hyde.webp" alt="Book cover" loading="lazy" }
+:img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
 
 ## Block
 

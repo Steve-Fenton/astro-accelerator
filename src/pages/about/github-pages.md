@@ -1,6 +1,6 @@
 ---
 layout: src/layouts/Default.astro
-title: Host Jekyll on GitHub Pages
+title: Host Astro on GitHub Pages
 navTitle: GitHub Pages
 navOrder: 10000
 pubDate: 2022-09-17

@@ -11,24 +11,7 @@ bannerImage:
     alt: Dummy image
 ---
 
-This page contains the most common content components, such as:
-
-- [Heading 2](#heading-2)
-  - [Heading 3](#heading-3)
-    - [Heading 4](#heading-4)
-      - [Heading 5](#heading-5)
-        - [Heading 6](#heading-6)
-- [Block Quote](#block-quote)
-- [Code](#code)
-- [Custom Elements](#custom-elements)
-  - [Note](#note)
-  - [Simple Grid](#simple-grid)
-- [Images](#images)
-- [Lists](#lists)
-- [Horizontal Rule](#horizontal-rule)
-- [Links](#links)
-- [Tables](#tables)
-- [Text](#text)
+This page contains the most common content components.
 
 ## Heading 2
 
@@ -121,9 +104,9 @@ Markdown:
 ```markdown
 :::div{.simple-grid}
 
-:img{ src="/img/jekyll-and-hyde.png" alt="Book cover" loading="lazy" }
+:img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
 
-:img{ src="/img/jekyll-and-hyde.png" alt="Book cover" loading="lazy" }
+:img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
 
 :::
 ```
@@ -132,9 +115,9 @@ Result:
 
 :::div{.simple-grid}
 
-:img{ src="/img/jekyll-and-hyde.png" alt="Book cover" loading="lazy" }
+:img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
 
-:img{ src="/img/jekyll-and-hyde.png" alt="Book cover" loading="lazy" }
+:img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
 
 :::
 
@@ -143,12 +126,24 @@ Result:
 Markdown:
 
 ```markdown
-:img{ src="/img/jekyll-and-hyde.png" alt="Book cover" loading="lazy" }
+:img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
+```
+
+This creates the following HTML (or similar):
+
+```html
+<img
+   src="/i/x/frankenstein.png"
+   alt="Book cover"
+   loading="lazy"
+   srcset="/i/400/frankenstein.webp 400w, /i/700/frankenstein.webp 700w, /i/1000/frankenstein.webp, 1000w"
+   sizes="(max-width: 860px) 100vw, 66vw"
+   class="resp-img">
 ```
 
 Result:
 
-:img{ src="/img/jekyll-and-hyde.png" alt="Book cover" loading="lazy" }
+:img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
 
 ## Lists
 
@@ -189,16 +184,16 @@ Result:
 Markdown:
 
 ```markdown
-<https://jekyll.stevefenton.co.uk/kitchen-sink/>
+<https://astro.stevefenton.co.uk/kitchen-sink/>
 
-[Jekyll Boilerplate](https://jekyll.stevefenton.co.uk/ "The Jekyll Boilerplate Site")
+[Astro Boilerplate](https://astro.stevefenton.co.uk/ "The Astro Boilerplate Site")
 ```
 
 Result:
 
-<https://jekyll.stevefenton.co.uk/kitchen-sink/>
+<https://astro.stevefenton.co.uk/kitchen-sink/>
 
-[Jekyll Boilerplate](https://jekyll.stevefenton.co.uk/ "The Jekyll Boilerplate Site")
+[Astro Boilerplate](https://astro.stevefenton.co.uk/ "The Astro Boilerplate Site")
 
 ## Tables
 

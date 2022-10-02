@@ -5,9 +5,9 @@
   "private": true,
   "scripts": {
     "dev": "node ./src/img.js && astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
+    "start": "node ./src/img.js && astro dev",
+    "build": "node ./src/img.js && astro build",
+    "preview": "node ./src/img.js && astro preview",
     "astro": "astro"
   },
   "dependencies": {
