@@ -16,7 +16,7 @@ async function getData() {
     });
   }
 
-  articles =  articles.sort((a, b) => b.frontmatter.pubDate - a.frontmatter.pubDate);
+  articles =  articles.sort((a, b) => b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate));
 
   const limit = SITE.rssLimit ?? 20;
   const items = articles
