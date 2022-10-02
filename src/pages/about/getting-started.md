@@ -28,6 +28,69 @@ In `/src/config.ts`\
 Review the items in `export const SITE`\
 Sitewide defaults.
 
+## Optional Updates
+
+This section is in-progress.
+
+Clear out
+
+/public/i/
+/public/img/
+
+Replace
+
+/public/img/icons/
+
+Change
+
+SITE.themeColor
+OPEN_GRAPH defaults
+
+## Migrating From WordPress
+
+Export to Jekyll plugin (it just creates markdown files and images).
+
+Re-organise blog from "2022-12-01-article-url" into folder "2022/12/article-url". You can use a script, like this Powershell script, to do this. This script creates copies so you can check before deleting the files. Pop it in the folder containing the blog posts exported from WordPress.
+
+```powershell
+$files = Get-ChildItem
+$loc = Get-Location
+
+foreach($file in $files) {
+    $name = $file.Name
+
+    if ($name -match '.md$') {
+
+        $year = $name.Substring(0,4)
+        $month = $name.Substring(5,2)
+        $folder = "$loc\$year\$month\"
+        $dest = $folder + $name.Substring(11)
+
+        if (Test-Path $folder) {
+            # Already exists
+        } else {
+            New-Item -Path $folder -ItemType Directory
+        }
+
+        Copy-Item -path $name -destination $dest
+    }
+}
+```
+
+Replace
+
+Using your trusty find and replace tools, you can fix up the front-matter.
+
+\ndate:
+\npubDate:
+
+\nlayout: post
+\nlayout: src/layouts/Default.astro
+
+Images can be taken from /wp-content/uploads/... and placed in /public/img/...
+
+A bit more find and replace to sort out image references.
+
 ## Running in a sub-folder
 
 Some use cases run the site in a sub-folder, in order to front-door the site as a microsite that is part of a larger site. For example:

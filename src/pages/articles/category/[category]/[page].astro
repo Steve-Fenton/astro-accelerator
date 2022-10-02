@@ -68,7 +68,9 @@ const pageLinks = getPageLinks(SITE.pageLinks, page.lastPage, page.currentPage, 
     {page.data.map((post) => (
     <li class="list-item" data-destination={ addSlashToAddress(post.url) }>
       <article>
+        {post.frontmatter.bannerImage && (
         <img src={ post.frontmatter.bannerImage.src } alt={ post.frontmatter.bannerImage.alt } loading="lazy" />
+        )}
         <div class="list-item-content">
         <span class="post-meta">{ formatDate(post.frontmatter, lang, SITE) }</span>
         <h3>
