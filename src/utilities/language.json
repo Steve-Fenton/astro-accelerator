@@ -90,6 +90,12 @@
         "next": {
             "en": "Next"
         },
+        "category_title": {
+            "en": "Categories: "
+        },
+        "tag_title": {
+            "en": "Tags: "
+        },
         "category": {
             "_note": "This must match your URL path to category pages, as in /articles/category/example/1/",
             "en": "category"

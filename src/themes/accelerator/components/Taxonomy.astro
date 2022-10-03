@@ -18,22 +18,48 @@ const _ = Lang(lang);
 
 // Logic
 const categories = frontmatter.categories ?? [];
+const tags = frontmatter.tags ?? [];
 
 const category = _(t.articles.category) ?? 'category';
-const currentUrl = new URL(Astro.request.url);
-const categoryLink = `/${currentUrl.pathname.split('/')[1]}/${category}/`;
+const tag = _(t.articles.tag) ?? 'tag';
 
-function getLink(category: string) {
+const currentUrl = new URL(Astro.request.url);
+
+const categoryLink = `/${currentUrl.pathname.split('/')[1]}/${category}/`;
+const tagLink = `/${currentUrl.pathname.split('/')[1]}/${tag}/`;
+
+function getCategoryLink(category: string) {
   return categoryLink + category.toLowerCase() + '/1/';
 }
 
+function getTagLink(tag: string) {
+  return tagLink + tag.toLowerCase() + '/1/';
+}
+
+const hasTaxonomy = (categories.length + tags.length) > 0;
+
 ---
-{categories.length > 0 && (
+{hasTaxonomy && (
   <div class="post-taxonomy">
-    <ul>
-    {categories.map(category => 
-      <li><a href={ addSlashToAddress(getLink(category)) }>{ category }</a></li>
+    {tags.length > 0 && (
+    <div class="post-tag">
+      <h2>{ _(t.articles.tag_title) }</h2>
+      <ul>
+      {tags.map(tag => 
+        <li><a href={ addSlashToAddress(getTagLink(tag)) }>{ tag }</a></li>
+      )}
+      </ul>
+    </div>
     )}
-    </ul>
+    {categories.length > 0 && (
+    <div class="post-cat">
+      <h2>{ _(t.articles.category_title) }</h2>
+      <ul>
+      {categories.map(category => 
+        <li><a href={ addSlashToAddress(getCategoryLink(category)) }>{ category }</a></li>
+      )}
+      </ul>
+    </div>
+    )}
   </div>
 )}

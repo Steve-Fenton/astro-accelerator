@@ -553,31 +553,46 @@ form.site-search button {
     display: block;
 }
 
+.post-taxonomy {
+    padding: 1rem 0;
+    margin: 1.5rem 0;
+    border-top: 1px dashed var(--fore);
+    text-align: right;
+}
+
+.post-taxonomy > div {
+    margin: 1rem 0;
+
+}
+
+.post-taxonomy h2 {
+    font-size: 1rem;
+    font-family: var(--content-font);
+    display: inline;
+}
+
 .post-taxonomy ul {
+    display: inline;
+    margin: 1rem 0;
     list-style: none;
-    margin: 0;
-    text-align: center;
 }
 
 .post-taxonomy li {
-    display: inline-block;
-    margin: 1rem;
+    display: inline;
+    margin-inline-end: 0.3em;
 }
 
 .post-taxonomy a {
     display: inline-block;
-    padding: 0.3rem 1rem;
+    color: var(--link-head);
     background-color: var(--aft-head);
-    color: var(--fore-link-head);
-    border-radius: var(--block-radius);
-    box-shadow: var(--box-shadow-slight);
+    padding: 0.1em 0.7em;
 }
 
-.post-taxonomy a:hover,
+.post-taxonomy a:hover, 
 .post-taxonomy a:focus {
     background-color: var(--fore-link-alt);
-    color: var(--aft-link-alt);
-    box-shadow: var(--box-shadow);
+    color: var(--aft);
 }
 
 /* Authors */
