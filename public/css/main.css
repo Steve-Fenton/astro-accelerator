@@ -412,6 +412,7 @@ main ul ol, main ul ul, main ol ol, main ol ul {
 .page-toc ol {
     list-style: none;
     padding-bottom: var(--block-gap);
+    margin: 1rem;
 }
 
 .page-toc li a {
@@ -562,7 +563,6 @@ form.site-search button {
 
 .post-taxonomy > div {
     margin: 1rem 0;
-
 }
 
 .post-taxonomy h2 {
