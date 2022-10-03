@@ -552,6 +552,33 @@ form.site-search button {
     display: block;
 }
 
+.post-taxonomy ul {
+    list-style: none;
+    margin: 0;
+    text-align: center;
+}
+
+.post-taxonomy li {
+    display: inline-block;
+    margin: 1rem;
+}
+
+.post-taxonomy a {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    background-color: var(--aft-head);
+    color: var(--fore-link-head);
+    border-radius: var(--block-radius);
+    box-shadow: var(--box-shadow-slight);
+}
+
+.post-taxonomy a:hover,
+.post-taxonomy a:focus {
+    background-color: var(--fore-link-alt);
+    color: var(--aft-link-alt);
+    box-shadow: var(--box-shadow);
+}
+
 /* Authors */
 
 .author-image {
@@ -610,6 +637,10 @@ pre.astro-code code {
 @media (prefers-reduced-motion: no-preference) {
     body, html {
         scroll-behavior: smooth;
+    }
+
+    a {
+        transition: all 200ms ease-in-out;
     }
 
     .post-list .list-item, main img, main blockquote, main .note {
