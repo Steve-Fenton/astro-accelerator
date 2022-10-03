@@ -89,6 +89,14 @@
         },
         "next": {
             "en": "Next"
+        },
+        "category": {
+            "_note": "This must match your URL path to category pages, as in /articles/category/example/1/",
+            "en": "category"
+        },
+        "tag": {
+            "_note": "This must match your URL path to tag pages, as in /articles/tag/example/1/",
+            "en": "tag"
         }
     }
 }

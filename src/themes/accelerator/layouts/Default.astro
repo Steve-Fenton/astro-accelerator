@@ -26,7 +26,6 @@ const textDirection = frontmatter.dir ?? SITE.default.dir;
         <ContentGroup frontmatter={ frontmatter } headings={ headings } lang={ lang }>
             <slot />
         </ContentGroup>
-        <!-- <Breadcrumbs lang={ lang } /> -->
         <Footer frontmatter={ frontmatter } headings={ headings } lang={ lang } />
         <script src="/js/main.js" type="module" async></script>
     </body>

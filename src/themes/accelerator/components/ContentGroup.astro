@@ -4,11 +4,10 @@ import { SITE, Frontmatter } from '@config';
 import t from '@util/language.json';
 import { Lang } from '@util/Languages.astro';
 
-import { formatDate } from '@util/DateFormat.astro';
-import { getAuthorList } from '@util/Authors.astro';
-import { addSlashToAddress } from '@util/Url.astro';
-
 import Navigation from '@components/Navigation.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+import Authors from '@components/Authors.astro';
+import Taxonomy from '@components/Taxonomy.astro';
 
 // Properties
 type Props = {
@@ -22,48 +21,21 @@ const { lang, frontmatter, headings } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-const authorList = await getAuthorList(frontmatter);
+// ...
 ---
 <div class="content-group">
   <Navigation lang={ lang } />
   <main id="site-main">
       <article>
-          {headings?.length > 0 &&
-          <nav class="page-toc" aria-label={ _(t.aria.toc) }>
-            <details>
-              <summary>{ _(t.toc.title) }</summary>
-              <ol>
-                <li><a href="#site-content">{ frontmatter.title ?? SITE.title }</a></li>
-                {headings.map((heading) =>(
-                  <li><a href={ '#' + heading.slug }>{ heading.text }</a></li>
-                ))}
-              </ol>
-            </details>
-          </nav>
-          }
+          <TableOfContents frontmatter={ frontmatter } headings={ headings } lang={ lang } />
           <header>
               <h1>{ frontmatter.title ?? SITE.title }</h1>
           </header>
-          {authorList.writers.length > 0 && 
-          <div class="post-meta">
-            {authorList.image?.src && 
-            <img src={ authorList.image.src } alt={ authorList.image.alt } width="50" height="50" class="author-image" />
-            }
-            <div class="author-info">
-              <span>{ _(t.post.written_by) }
-                {authorList.writers.map((writer) => (
-                  <a href={ addSlashToAddress(writer.url) }>{ writer.frontmatter.title }</a>
-                ))}
-                <time class="dt-published" datetime={ frontmatter.pubDate.toString() } itemprop="datePublished">
-                { formatDate(frontmatter, lang, SITE) }
-                </time>
-              </span>
-            </div>
-          </div>
-          }
+          <Authors frontmatter={ frontmatter } lang={ lang } />
           <div>
               <slot />
           </div>
+          <Taxonomy frontmatter={ frontmatter } lang={ lang } />
       </article>
   </main>
 </div>

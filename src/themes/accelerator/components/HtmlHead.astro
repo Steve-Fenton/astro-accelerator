@@ -15,29 +15,29 @@ const imageSrc = frontmatter.bannerImage?.src ?? OPEN_GRAPH.image.src;
 const canonicalImageSrc = new URL(imageSrc, Astro.site);
 const canonicalURL =  addSlashToUrl(new URL(Astro.url.pathname, Astro.site));
 ---
-	<head>
-        <meta charset="utf-8" />
-		<title>
-			{frontmatter.title ? `${frontmatter.title} | ${SITE.title}` : SITE.title}
-		</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content={ frontmatter.description }>
-        <meta name="keywords" content={ frontmatter.keywords }>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content={ SITE.themeColor } />
-        <meta name="msapplication-navbutton-color" content={ SITE.themeColor } />
-        <meta name="apple-mobile-web-app-status-bar-style" content={ SITE.themeColor } />
-        <meta property="og:title" content={ frontmatter.title } />
-        <meta property="og:url" content={ canonicalURL } />
-        <meta property="og:type" content="website" />
-        <meta property="og:description" content={ frontmatter.description } />
-        <meta property="og:image" content={ canonicalImageSrc } />
-        <link rel="canonical" href={ canonicalURL } />
-        <link rel="alternate" type="application/rss+xml" title={ SITE.title } href="/atom.xml" />
-        <link rel="alternate" href="/sitemap.xml" type="application/rss+xml" />
-        <link rel="shortcut icon" href="/icons/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-        <link rel="stylesheet" href="/css/vars.css" />
-        <link rel="stylesheet" href="/css/main.css" />
-        <Fragment set:html={ HEADER_SCRIPTS }></Fragment>
-    </head>
+<head>
+  <meta charset="utf-8" />
+  <title>
+    {frontmatter.title ? `${frontmatter.title} | ${SITE.title}` : SITE.title}
+  </title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content={ frontmatter.description }>
+  <meta name="keywords" content={ frontmatter.keywords }>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content={ SITE.themeColor } />
+  <meta name="msapplication-navbutton-color" content={ SITE.themeColor } />
+  <meta name="apple-mobile-web-app-status-bar-style" content={ SITE.themeColor } />
+  <meta property="og:title" content={ frontmatter.title } />
+  <meta property="og:url" content={ canonicalURL } />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content={ frontmatter.description } />
+  <meta property="og:image" content={ canonicalImageSrc } />
+  <link rel="canonical" href={ canonicalURL } />
+  <link rel="alternate" type="application/rss+xml" title={ SITE.title } href="/atom.xml" />
+  <link rel="alternate" href="/sitemap.xml" type="application/rss+xml" />
+  <link rel="shortcut icon" href="/icons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+  <link rel="stylesheet" href="/css/vars.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <Fragment set:html={ HEADER_SCRIPTS }></Fragment>
+</head>

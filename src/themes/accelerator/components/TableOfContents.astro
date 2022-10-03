@@ -1,0 +1,33 @@
+---
+import { SITE, Frontmatter } from '@config';
+
+import t from '@util/language.json';
+import { Lang } from '@util/Languages.astro';
+
+// Properties
+type Props = {
+  lang: string;
+  frontmatter: Frontmatter;
+  headings: { depth: number; slug: string; text: string; }[];
+};
+const { lang, frontmatter, headings } = Astro.props as Props;
+
+// Language
+const _ = Lang(lang);
+
+// Logic
+// ...
+---
+{headings?.length > 0 &&
+<nav class="page-toc" aria-label={ _(t.aria.toc) }>
+  <details>
+    <summary>{ _(t.toc.title) }</summary>
+    <ol>
+      <li><a href="#site-content">{ frontmatter.title ?? SITE.title }</a></li>
+      {headings.map((heading) =>(
+        <li><a href={ '#' + heading.slug }>{ heading.text }</a></li>
+      ))}
+    </ol>
+  </details>
+</nav>
+}

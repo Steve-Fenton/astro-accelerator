@@ -13,6 +13,8 @@ authors:
 categories:
     - Example
     - Sample
+tags:
+    - Test
 ---
 
 This is an example post with more of the front matter set up, such as except and images.

@@ -1,0 +1,39 @@
+---
+import type { Frontmatter } from '@config';
+
+import t from '@util/language.json';
+import { Lang } from '@util/Languages.astro';
+
+import { addSlashToAddress } from '@util/Url.astro';
+
+// Properties
+type Props = {
+  lang: string;
+  frontmatter: Frontmatter;
+};
+const { lang, frontmatter } = Astro.props as Props;
+
+// Language
+const _ = Lang(lang);
+
+// Logic
+const categories = frontmatter.categories ?? [];
+
+const category = _(t.articles.category) ?? 'category';
+const currentUrl = new URL(Astro.request.url);
+const categoryLink = `/${currentUrl.pathname.split('/')[1]}/${category}/`;
+
+function getLink(category: string) {
+  return categoryLink + category.toLowerCase() + '/1/';
+}
+
+---
+{categories.length > 0 && (
+  <div class="post-taxonomy">
+    <ul>
+    {categories.map(category => 
+      <li><a href={ addSlashToAddress(getLink(category)) }>{ category }</a></li>
+    )}
+    </ul>
+  </div>
+)}

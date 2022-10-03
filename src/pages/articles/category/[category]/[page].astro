@@ -13,17 +13,16 @@ import { addSlashToAddress } from '@util/Url.astro';
 import Default from '@layouts/Default.astro';
 
 const lang = SITE.default.lang;
+const currentUrl = new URL(Astro.request.url);
+const category = currentUrl.pathname.split('/')[3];
+const title = category.charAt(0).toUpperCase() + category.slice(1);
 
 const frontmatter: Frontmatter = {
   layout: 'src/layouts/Default.astro',
-  title: 'Articles',
+  title: title,
   pubDate: new Date(2022, 9, 17),
-  keywords: 'articles,astro,accelerator',
-  description: 'Astro Accelerator articles.',
-  bannerImage: {
-      src: '/img/surface-accessories.png',
-      alt: 'Dummy image',
-  }
+  keywords: `${category},articles,astro,accelerator`,
+  description: `Astro Accelerator ${category} articles.`,
 };
 
 // Props
