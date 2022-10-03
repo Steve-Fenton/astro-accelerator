@@ -13,7 +13,6 @@ type Props = {
 }
 const { frontmatter, headings } = Astro.props as Props;
 const lang = frontmatter.lang ?? SITE.default.lang;
-const textDirection = frontmatter.dir ?? SITE.default.dir;
 
 // Language
 const _ = Lang(lang);
@@ -28,7 +27,13 @@ const siteUrl = Astro.site ? Astro.site.href : '';
             <input type="hidden" name={ SITE.search.fallbackSite ?? 'q' } value={ siteUrl } />
             <div>
                 <label for="site-search-query">{ _(t.search.search_for) }</label>
-                <input type="text" name={ SITE.search.fallbackSite ?? 'q' } id="site-search-query" autofocus="autofocus" />
+                <input 
+                    type="text" 
+                    name={ SITE.search.fallbackSite ?? 'q' } 
+                    id="site-search-query" 
+                    autofocus="autofocus"
+                    spellcheck="true"
+                    autocomplete="off" />
                 <button id="site-search-button" type="submit">{ _(t.search.submit) }</button>
             </div>
         </fieldset>

@@ -33,7 +33,7 @@ const search = (await getPages(isSearch))[0] ?? null;
     <line x1="4" y1="12" x2="20" y2="12" />
     <line x1="4" y1="18" x2="20" y2="18" />
   </svg></a>
-  <a href="/" class="site-title">{ SITE.title }</a>
+  <a href="/" class="site-title" translate="no">{ SITE.title }</a>
   {search != null &&
   <a href={ addSlashToAddress(search.url) } class="search-icon" title={ _(t.header.open_search) }><svg xmlns="http://www.w3.org/2000/svg" 
     width="40" height="40" viewBox="0 0 24 24" stroke-width="1" 
