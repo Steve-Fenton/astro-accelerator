@@ -33,6 +33,7 @@ a, summary {
     color: var(--fore-link);
     text-decoration: underline;
     cursor: pointer;
+    border-radius: var(--block-radius);
 }
 
 a:hover,
@@ -215,7 +216,7 @@ nav.skip-links a:focus {
 }
 
 .site-breadcrumbs li {
-    display: inline-block;
+    display: inline;
     padding: 0.2em;
 }
 
@@ -359,7 +360,7 @@ nav.site-nav h2 {
     max-width: var(--grid-max-width);
     width: var(--grid-width);
     margin: var(--block-gap) auto var(--block-gap) auto;
-    min-height: 75vh;
+    min-height: calc(100vh - 280px);
 }
 
 @media (max-width: 860px) {

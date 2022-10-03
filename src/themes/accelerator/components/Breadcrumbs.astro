@@ -26,9 +26,7 @@ const navPages = await getBreadcrumbs(currentUrl);
     {navPages.map((page, index) => (
     <li property="itemListElement" typeof="ListItem">
       <meta property="position" content={ index.toString() } />
-      <a property="item" typeof="WebPage" href={ addSlashToAddress(page.url) } aria-current={ page.ariaCurrent }>
-        <span property="name">{ page.title }</span>
-      </a>
+      <a property="item" typeof="WebPage" href={ addSlashToAddress(page.url) } aria-current={ page.ariaCurrent }><span property="name">{ page.title }</span></a>
     </li>
     ))}
   </ol>
