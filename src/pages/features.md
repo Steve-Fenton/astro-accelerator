@@ -104,6 +104,7 @@ To help search engines understand your site, there are [SEO features](/features/
 - Normalisation of URLs (i.e. avoid having `/about/` and `/about`)
 - Structured breadcrumbs
 - Open graph tags
+- Page redirects (internal or external)
 
 [Find out more about SEO](/features/seo/)
 

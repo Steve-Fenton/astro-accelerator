@@ -66,4 +66,5 @@ export type Frontmatter = {
 	navSearch?: boolean;
 	navSitemap?: boolean;
 	navMenu?: boolean;
+	redirect?: string;
 };

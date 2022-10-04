@@ -37,9 +37,10 @@ The easiest way to build an alternate theme is to copy the accelerator to use a 
 
 The only requirement is that you include the three layouts in your `theme-name/layouts` folder:
 
-1. Default.astro
 1. Author.astro
-1. Search.astro
+2. Default.astro
+3. Redirect.astro
+4. Search.astro
 
 You can include whatever components you need to support your theme.
 

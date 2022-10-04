@@ -29,3 +29,29 @@ Breadcrumbs contain structured data.
 ## Open Graph Tags
 
 Open Graph tags are included for social sharing.
+
+## Redirects
+
+You can create a redirect by adding a markdown file with the following content:
+
+```
+---
+layout: src/layouts/Redirect.astro
+title: Redirect
+redirect: /articles/feed.xml
+navMenu: false
+pubDate: 2022-09-17
+---
+<div>
+Our article feed can be found <a href="/articles/feed.xml">here</a>
+</div>
+
+```
+
+It uses the `Redirect.astro` layout to perform a meta-redirect to the location of your choice, including external addresses if required.
+
+The above examples is in `/pages/feed.md` and redirects requests from `www.example.com/feed` to `www.example.com/articles/feed.xml`.
+
+The content of this file is optional, as browsers typically respect the meta tag redirect and immediately send the user to the correct location.
+
+You might implement a strategy where instead of renaming a page, you move the content to the new page and turn the existing page into a redirect, to avoid trapping users on a 404 page if they have the old address or follow an old back link.
