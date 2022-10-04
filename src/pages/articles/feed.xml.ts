@@ -4,7 +4,7 @@ import { addSlashToAddress } from '@util/Url.astro';
 
 async function getData() {
   //@ts-ignore
-  const allArticles = import.meta.glob('./articles/**/*.md');
+  const allArticles = import.meta.glob('./**/*.md');
   
   let articles = [];
   
