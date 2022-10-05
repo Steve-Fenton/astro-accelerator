@@ -1,14 +1,10 @@
 ---
-layout: src/layouts/Default.astro
+layout: src/layouts/Redirect.astro
 title: Articles
 paged: true
 navOrder: 100000
 navSearch: false
 navSitemap: false
 pubDate:   2022-09-17
-keywords: articles,astro,accelerator
-description: Articles
-bannerImage:
-    src: /img/surface-accessories.png
-    alt: Dummy image
+redirect: /articles/1/
 ---
