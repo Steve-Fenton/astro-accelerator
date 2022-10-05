@@ -506,6 +506,11 @@ form.site-search button {
     margin-bottom: 1.5rem;
 }
 
+.post-list .list-item > article {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .post-list .list-item-content {
     padding: 1rem;
 }
@@ -516,9 +521,15 @@ form.site-search button {
 
 .post-list .list-item img {
     width: 100%;
-    aspect-ratio: 16/9;
+    height: 100%;
     object-fit: cover;
 }
+
+.post-list .list-item-image[data-image='false'] {
+    background-color: var(--aft-head);
+}
+
+/* Paging */
 
 .post-paging {
     margin-top: 2rem;

@@ -6,6 +6,7 @@
       "paths": {
         "@config": ["src/config"],
         "@util/*": ["src/utilities/*"],
+        "@plugin/*": ["src/plugins/*"],
         // Layouts and components for the theme
         "@layouts/*": ["src/themes/accelerator/layouts/*"],
         "@components/*": ["src/themes/accelerator/components/*"],

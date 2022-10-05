@@ -24,6 +24,10 @@ export const SITE = {
 		year: 'numeric',
 		month: 'long',
 		day: 'numeric',
+	},
+	images: {
+		contentSize: '(max-width: 860px) 100vw, 66vw',
+		listerSize: '(max-width: 860px) 90vw, 350px'
 	}
 };
 

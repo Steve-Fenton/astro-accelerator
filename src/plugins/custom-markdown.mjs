@@ -1,3 +1,4 @@
+import { SITE } from '../config';
 import { h } from 'hastscript';
 import { visit } from 'unist-util-visit';
 import { size } from './image-size.mjs';
@@ -25,6 +26,26 @@ export function getDestination(uri, s) {
   return uri.replace(/^\/img\//, '/i/' + s.toString() + '/');
 }
 
+export function getImageInfo(src, className, sizes) {
+  const info = {};
+
+  let uri = src;
+  uri = uri.replace(/.jpg|.jpeg|.png/, '.webp');
+
+  const imgFallback = src.replace(/^\/img\//, '/i/x/');
+
+  const imgSmall = getDestination(uri, size.small);
+  const imgMedium = getDestination(uri, size.medium);
+  const imgLarge = getDestination(uri, size.large);
+
+  info.src = imgFallback;
+  info.srcset = `${imgSmall} ${size.small}w, ${imgMedium} ${size.medium}w, ${imgLarge}, ${size.large}w`;
+  info.sizes = sizes;
+  info.class = (className ?? '' + ' resp-img').trim();
+
+  return info;
+}
+
 /** @type {import('unified').Plugin<[], import('mdast').Root>} */
 export function attributeMarkdown() {
   return (tree) => {
@@ -38,19 +59,12 @@ export function attributeMarkdown() {
         const hast = h(node.name, node.attributes);
 
         if (hast.properties.src) {
-          let uri = hast.properties.src;
-          uri = uri.replace(/.jpg|.jpeg|.png/, '.webp');
+          const info = getImageInfo(hast.properties.src, hast.properties.class, SITE.images.contentSize);
 
-          const imgFallback = hast.properties.src.replace(/^\/img\//, '/i/x/');
-
-          const imgSmall = getDestination(uri, size.small);
-          const imgMedium = getDestination(uri, size.medium);
-          const imgLarge = getDestination(uri, size.large);
-
-          hast.properties.src = imgFallback;
-          hast.properties.srcset = `${imgSmall} ${size.small}w, ${imgMedium} ${size.medium}w, ${imgLarge}, ${size.large}w`;
-          hast.properties.sizes = `(max-width: 860px) 100vw, 66vw`;
-          hast.properties.class = (hast.properties.class ?? '' + ' resp-img').trim();
+          hast.properties.src = info.src;
+          hast.properties.srcset = info.srcset;
+          hast.properties.sizes = info.sizes;
+          hast.properties.class = info.class;
         }
 
         data.hName = hast.tagName;

@@ -5,6 +5,7 @@ import t from '@util/language.json';
 import { Lang } from '@util/Languages.astro';
 import { formatDate } from '@util/DateFormat.astro';
 import { addSlashToAddress } from '@util/Url.astro';
+import { getImageInfo } from '@plugin/custom-markdown.mjs'
 
 import { SITE } from '@config';
 
@@ -19,23 +20,39 @@ const { lang, posts } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-// -
+const articles = posts.map(p => {
+  return {
+    url: p.url,
+    frontmatter: p.frontmatter,
+    img: p.frontmatter.bannerImage
+      ? getImageInfo(p.frontmatter.bannerImage.src, '', SITE.images.listerSize)
+      : null
+  };
+});
+
+
 ---
 <ul class="post-list">
-  {posts.map((post) => (
+  {articles.map((post) => (
   <li class="list-item" data-destination={ addSlashToAddress(post.url) }>
     <article>
-      {post.frontmatter.bannerImage && (
-      <div class="list-item-image">
-        <img src={ post.frontmatter.bannerImage.src } alt={ post.frontmatter.bannerImage.alt } loading="lazy" />
-      </div>
+      <div class="list-item-image" data-image={ (post.frontmatter.bannerImage?.src.length > 0).toString() }>
+      {post.img && (
+        <img
+          srcset={ post.img.srcset }
+          sizes={ post.img.sizes }
+          src={ post.img.src }
+          alt={ post.frontmatter.bannerImage.alt }
+          class={ post.img.class }
+          loading="lazy" />
       )}
+      </div>
       <div class="list-item-content">
-      <span class="post-meta">{ formatDate(post.frontmatter, lang, SITE) }</span>
-      <h3>
-        <a href={ addSlashToAddress(post.url) }>{ post.frontmatter.title }</a>
-      </h3>
-    </div>
+        <span class="post-meta">{ formatDate(post.frontmatter, lang, SITE) }</span>
+        <h3>
+          <a href={ addSlashToAddress(post.url) }>{ post.frontmatter.title }</a>
+        </h3>
+      </div>
     </article>
   </li>
   ))}
