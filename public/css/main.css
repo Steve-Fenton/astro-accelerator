@@ -506,7 +506,7 @@ form.site-search button {
     margin-bottom: 1.5rem;
 }
 
-.post-list .list-item > article {
+.post-list .list-item[data-image='true'] > article {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -515,7 +515,8 @@ form.site-search button {
     padding: 1rem;
 }
 
-.post-list .list-item-content h2 {
+.post-list .list-item-content h2,
+.post-list .list-item-content h3 {
     margin: 0.5rem 0;
 }
 
@@ -525,8 +526,16 @@ form.site-search button {
     object-fit: cover;
 }
 
-.post-list .list-item-image[data-image='false'] {
-    background-color: var(--aft-head);
+@media (max-width: 680px) {
+    /* This is deliberately 680, not 860 */
+    .post-list .list-item > article {
+        display: unset;
+        grid-template-columns: unset;
+    }
+
+    .post-list .list-item img {
+        max-height: 120px
+    }
 }
 
 /* Paging */
