@@ -26,7 +26,9 @@ const _ = Lang(lang);
   <li class="list-item" data-destination={ addSlashToAddress(post.url) }>
     <article>
       {post.frontmatter.bannerImage && (
-      <img src={ post.frontmatter.bannerImage.src } alt={ post.frontmatter.bannerImage.alt } loading="lazy" />
+      <div class="list-item-image">
+        <img src={ post.frontmatter.bannerImage.src } alt={ post.frontmatter.bannerImage.alt } loading="lazy" />
+      </div>
       )}
       <div class="list-item-content">
       <span class="post-meta">{ formatDate(post.frontmatter, lang, SITE) }</span>
