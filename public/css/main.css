@@ -511,10 +511,21 @@ form.site-search button {
     grid-template-columns: 1fr 1fr;
 }
 
+.post-list .list-item[data-image='false'] > article {
+    text-align: center ;
+}
+
 .post-list .list-item-content {
     padding: 1rem;
     display: grid;
     grid-template-rows: auto 50px;
+    grid-gap: 1rem;
+}
+
+.post-list .list-item-content .post-meta {
+    font-size: 0.8rem;
+    margin: 0 auto;
+    text-align: left;
 }
 
 .post-list .list-item-content h2,
@@ -565,6 +576,8 @@ form.site-search button {
 .post-meta .author-image {
     max-width: 50px;
     margin-right: 1rem;
+    aspect-ratio: 1/1;
+    object-fit: cover;
 }
 
 .post-meta > .author-info {
