@@ -1,0 +1,33 @@
+---
+import type { MarkdownInstance, Page } from 'astro';
+import type { Link } from '@util/PageLinks.astro';
+
+import t from '@util/language.json';
+import { Lang } from '@util/Languages.astro';
+import { addSlashToAddress } from '@util/Url.astro';
+
+// Properties
+type Props = {
+  lang: string;
+  page: Page<MarkdownInstance<Record<string, any>>>,
+  pageLinks: Link[],
+};
+const { lang, page, pageLinks } = Astro.props as Props;
+
+// Language
+const _ = Lang(lang);
+
+// Logic
+// -
+---
+<nav class="post-paging" aria-label={ _(t.aria.paging) }>
+  {page.url.prev
+    ? <a href={ addSlashToAddress(page.url.prev) }>{ _(t.articles.previous) }</a>
+    : <span>{ _(t.articles.previous) }</span>}
+  {pageLinks.map((link) => (
+      <a href={ addSlashToAddress(link.url) } aria-current={ link.ariaCurrent }>{ link.title }</a>
+  ))}
+  {page.url.next
+    ? <a href={ addSlashToAddress(page.url.next) }>{ _(t.articles.next) }</a>
+    : <span>{ _(t.articles.next) }</span>}
+  </nav>

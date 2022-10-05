@@ -1,28 +1,29 @@
 ---
+// For listing by frontmatter.tags
 import t from '@util/language.json';
 import { Lang } from '@util/Languages.astro';
 
 import type { Page, MarkdownInstance } from 'astro';
 
 import { Frontmatter, SITE } from '@config';
-import { formatDate } from '@util/DateFormat.astro';
 import { getPageLinks } from '@util/PageLinks.astro';
 import { sortByPubDateDesc } from '@util/PageTypeFilters.astro';
-import { addSlashToAddress } from '@util/Url.astro';
 
 import Default from '@layouts/Default.astro';
+import ArticleList from '@components/ArticleList.astro';
+import Paging from '@components/Paging.astro';
 
 const lang = SITE.default.lang;
 const currentUrl = new URL(Astro.request.url);
-const tag = currentUrl.pathname.split('/')[3];
-const title = tag.charAt(0).toUpperCase() + tag.slice(1);
+const slug = currentUrl.pathname.split('/')[3];
+const title = slug.charAt(0).toUpperCase() + slug.slice(1);
 
 const frontmatter: Frontmatter = {
   layout: 'src/layouts/Default.astro',
   title: title,
   pubDate: new Date(2022, 9, 17),
-  keywords: `${tag},articles,astro,accelerator`,
-  description: `Astro Accelerator ${tag} articles.`,
+  keywords: `${slug},articles,astro,accelerator`,
+  description: `Astro Accelerator ${slug} articles.`,
 };
 
 // Props
@@ -34,9 +35,8 @@ const { page, headings } = Astro.props as Props;
 
 // Language
 const _ = Lang(lang);
-const articles = t.articles;
-const aria = t.aria;
 
+// Logic
 export async function getStaticPaths({ paginate }: any) {
   const sourcePosts = await Astro.glob('../../**/*.md');
   const urlPosts = sourcePosts
@@ -71,36 +71,7 @@ export async function getStaticPaths({ paginate }: any) {
 const pageLinks = getPageLinks(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
 ---
 <Default frontmatter={ frontmatter } headings={ headings }>
-  <!--Display the current page number. Astro.params.page can also be used!-->
   <h2>Page {page.currentPage}</h2>
-  <ul class="post-list">
-    <!--List the array of astronaut info-->
-    {page.data.map((post) => (
-    <li class="list-item" data-destination={ addSlashToAddress(post.url) }>
-      <article>
-        {post.frontmatter.bannerImage && (
-        <img src={ post.frontmatter.bannerImage.src } alt={ post.frontmatter.bannerImage.alt } loading="lazy" />
-        )}
-        <div class="list-item-content">
-        <span class="post-meta">{ formatDate(post.frontmatter, lang, SITE) }</span>
-        <h3>
-          <a href={ addSlashToAddress(post.url) }>{ post.frontmatter.title }</a>
-        </h3>
-      </div>
-      </article>
-    </li>
-    ))}
-  </ul>
-  
-  <nav class="post-paging" aria-label={ _(aria.paging) }>
-  {page.url.prev
-    ? <a href={ addSlashToAddress(page.url.prev) }>{ _(articles.previous) }</a>
-    : <span>{ _(articles.previous) }</span>}
-  {pageLinks.map((link) => (
-      <a href={ addSlashToAddress(link.url) } aria-current={ link.ariaCurrent }>{ link.title }</a>
-  ))}
-  {page.url.next
-    ? <a href={ addSlashToAddress(page.url.next) }>{ _(articles.next) }</a>
-    : <span>{ _(articles.next) }</span>}
-  </nav>
+  <ArticleList lang={ lang } posts={ page.data } />
+  <Paging lang={ lang } page={ page } pageLinks={ pageLinks } />
 </Default>

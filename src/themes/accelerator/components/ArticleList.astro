@@ -1,0 +1,40 @@
+---
+import type { MarkdownInstance } from 'astro';
+
+import t from '@util/language.json';
+import { Lang } from '@util/Languages.astro';
+import { formatDate } from '@util/DateFormat.astro';
+import { addSlashToAddress } from '@util/Url.astro';
+
+import { SITE } from '@config';
+
+// Properties
+type Props = {
+  lang: string;
+  posts: MarkdownInstance<Record<string, any>>[]
+};
+const { lang, posts } = Astro.props as Props;
+
+// Language
+const _ = Lang(lang);
+
+// Logic
+// -
+---
+<ul class="post-list">
+  {posts.map((post) => (
+  <li class="list-item" data-destination={ addSlashToAddress(post.url) }>
+    <article>
+      {post.frontmatter.bannerImage && (
+      <img src={ post.frontmatter.bannerImage.src } alt={ post.frontmatter.bannerImage.alt } loading="lazy" />
+      )}
+      <div class="list-item-content">
+      <span class="post-meta">{ formatDate(post.frontmatter, lang, SITE) }</span>
+      <h3>
+        <a href={ addSlashToAddress(post.url) }>{ post.frontmatter.title }</a>
+      </h3>
+    </div>
+    </article>
+  </li>
+  ))}
+</ul>
