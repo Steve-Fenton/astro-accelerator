@@ -7,6 +7,8 @@ import { formatDate } from '@util/DateFormat.astro';
 import { addSlashToAddress } from '@util/Url.astro';
 import { getImageInfo } from '@plugin/custom-markdown.mjs'
 
+import Authors from '@components/Authors.astro';
+
 import { SITE } from '@config';
 
 // Properties
@@ -48,10 +50,10 @@ const articles = posts.map(p => {
       )}
       </div>
       <div class="list-item-content">
-        <span class="post-meta">{ formatDate(post.frontmatter, lang, SITE) }</span>
         <h3>
           <a href={ addSlashToAddress(post.url) }>{ post.frontmatter.title }</a>
         </h3>
+        <Authors lang={ lang } frontmatter={ post.frontmatter } />
       </div>
     </article>
   </li>

@@ -513,6 +513,8 @@ form.site-search button {
 
 .post-list .list-item-content {
     padding: 1rem;
+    display: grid;
+    grid-template-rows: auto 50px;
 }
 
 .post-list .list-item-content h2,
