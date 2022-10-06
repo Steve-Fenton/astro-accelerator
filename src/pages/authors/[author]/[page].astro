@@ -1,0 +1,73 @@
+---
+// For listing all articles in this folder
+import t from '@util/language.json';
+import { Lang } from '@util/Languages.astro';
+
+import type { Page, MarkdownInstance } from 'astro';
+
+import { Frontmatter, SITE } from '@config';
+import { getPageLinks } from '@util/PageLinks.astro';
+import { sortByPubDateDesc } from '@util/PageTypeFilters.astro';
+
+import Default from '@layouts/Default.astro';
+import ArticleList from '@components/ArticleList.astro';
+import Paging from '@components/Paging.astro';
+
+const lang = SITE.default.lang;
+const currentUrl = new URL(Astro.request.url);
+const slug = currentUrl.pathname.split('/')[2];
+
+const fmTargets = await Astro.glob('../*.md');
+const author = fmTargets.filter(x => x.url?.split('/')[2] == slug)[0];
+
+const frontmatter = author.frontmatter as Frontmatter;
+
+// Props
+type Props = {
+  page: Page<MarkdownInstance<Record<string, any>>>;
+  headings: { depth: number; slug: string; text: string; }[];
+};
+const { page, headings } = Astro.props as Props;
+
+// Language
+const _ = Lang(lang);
+
+// Logic
+export async function getStaticPaths({ paginate }: any) {
+  const sourcePosts = await Astro.glob('../../**/*.md');
+  
+  const urlPosts = sourcePosts
+    .filter(p => p.url != null && p.url != '')
+    .sort(sortByPubDateDesc);
+
+  const authors: string[] = [];
+  urlPosts.forEach(p => {
+    const auths: string[] = p.frontmatter.authors ?? [];
+    if (auths.length == 0) {
+      console.log('No categories found', p.url);
+    }
+    auths.forEach(a => {
+      if (!authors.includes(a)) {
+        authors.push(a);
+      }
+    });
+  });
+
+  return authors.map(a => {
+    const filtered = urlPosts.filter(p => {
+      const auths: string[] = p.frontmatter.authors ?? [];
+      return auths.includes(a);
+    });
+    return paginate(filtered, { params: { author: a.toLowerCase() }, pageSize: SITE.pageSize })
+  });
+}
+
+// Page Links
+const pageLinks = getPageLinks(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
+---
+<Default frontmatter={ frontmatter } headings={ headings }>
+  <Fragment is:raw set:html={ author.compiledContent() }></Fragment>
+  <h2>Page {page.currentPage}</h2>
+  <ArticleList lang={ lang } posts={ page.data } />
+  <Paging lang={ lang } page={ page } pageLinks={ pageLinks } />
+</Default>

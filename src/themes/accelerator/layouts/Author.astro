@@ -4,12 +4,10 @@ import { SITE, Frontmatter } from '@config';
 import t from '@util/language.json';
 import { Lang } from '@util/Languages.astro';
 
-import { sortByPubDateDesc } from '@util/PageTypeFilters.astro';
-import { formatDate } from '@util/DateFormat.astro';
-import { addSlashToAddress } from '@util/Url.astro';
 import { getPages } from '@util/PageQueries.astro';
 
 import Default from './Default.astro';
+import ArticleList from '@components/ArticleList.astro';
 
 // Properties
 type Props = {
@@ -28,23 +26,5 @@ const authorPages = await getPages(p => p.frontmatter.authors?.indexOf(frontmatt
 <Default frontmatter={ frontmatter } headings={ headings }>
     <slot />
     <h2>{ _(t.author.recent_articles) }</h2>
-    <ul class="post-list">
-    {authorPages
-        .sort(sortByPubDateDesc)
-        .slice(0, SITE.pageSize).map((post) => (
-    <li class="list-item" data-destination={ addSlashToAddress(post.url) }>
-        <article>
-        {post.frontmatter.bannerImage && (
-        <img src={ post.frontmatter.bannerImage.src } alt={ post.frontmatter.bannerImage.alt } loading="lazy" />
-        )}
-        <div class="list-item-content">
-        <span class="post-meta">{ formatDate(post.frontmatter, lang, SITE) }</span>
-        <h2>
-            <a href={ addSlashToAddress(post.url) }>{ post.frontmatter.title }</a>
-        </h2>
-        </div>
-        </article>
-    </li>
-    ))}
-    </ul>
+    <ArticleList lang={ lang } posts={ authorPages } />
 </Default>

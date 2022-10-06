@@ -1,10 +1,11 @@
 ---
 import type { MarkdownInstance } from "astro";
 import { getItem, setItem } from '@util/Cache.astro';
+import { isAuthor } from "@util/PageTypeFilters.astro";
 
 export type PagePredicate = (value: MarkdownInstance<Record<string, any>>, index: number, array: MarkdownInstance<Record<string, any>>[]) => boolean;
 
-export async function getPages (filter?: PagePredicate | null) {
+export async function getPages (filter?: PagePredicate | null): Promise<MarkdownInstance<Record<string,any>>[]> {
     const key = 'PageQueries__getPages';
     let allPages = await getItem(key);
 
@@ -17,11 +18,10 @@ export async function getPages (filter?: PagePredicate | null) {
         return allPages;
     }
 
-
     return allPages.filter(filter);
 }
 
-export async function getTopLevelPages (filter?: PagePredicate | null) {
+export async function getTopLevelPages (filter?: PagePredicate | null): Promise<MarkdownInstance<Record<string,any>>[]> {
     const key = 'PageQueries__getTopLevelPages';
     let allPages = await getItem(key);
 
