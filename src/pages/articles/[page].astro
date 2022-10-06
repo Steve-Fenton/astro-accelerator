@@ -62,7 +62,9 @@ export async function getCacheData() {
 
 export async function getStaticPaths({ paginate }: any) {
   let data = await getCacheData();
-  return paginate(data.posts, { pageSize: SITE.pageSize });
+  return paginate(data.posts, {
+    pageSize: SITE.pageSize
+  });
 }
 
 // Page Links

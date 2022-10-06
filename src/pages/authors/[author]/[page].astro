@@ -79,7 +79,10 @@ export async function getStaticPaths({ paginate }: any) {
       const auths: string[] = p.frontmatter.authors ?? [];
       return auths.includes(a);
     });
-    return paginate(filtered, { params: { author: a.toLowerCase() }, pageSize: SITE.pageSize })
+    return paginate(filtered, { 
+        params: { author: a.toLowerCase() },
+        pageSize: SITE.pageSize 
+    });
   });
 }
 

@@ -88,7 +88,7 @@ export async function getStaticPaths({ paginate }: any) {
       params: { category: c.toLowerCase() },
       props: { title: c },
       pageSize: SITE.pageSize 
-    })
+    });
   });
 }
 
