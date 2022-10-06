@@ -8,6 +8,7 @@ import type { Page, MarkdownInstance } from 'astro';
 import { Frontmatter, SITE } from '@config';
 import { getPageLinks } from '@util/PageLinks.astro';
 import { sortByPubDateDesc } from '@util/PageTypeFilters.astro';
+import { getItem, setItem } from '@util/Cache.astro';
 
 import Default from '@layouts/Default.astro';
 import ArticleList from '@components/ArticleList.astro';
@@ -16,7 +17,14 @@ import Paging from '@components/Paging.astro';
 const lang = SITE.default.lang;
 const currentUrl = new URL(Astro.request.url);
 const slug = currentUrl.pathname.split('/')[3];
-const title = slug.charAt(0).toUpperCase() + slug.slice(1);
+
+// Props
+type Props = {
+  title: string;
+  page: Page<MarkdownInstance<Record<string, any>>>;
+  headings: { depth: number; slug: string; text: string; }[];
+};
+const { title, page, headings } = Astro.props as Props;
 
 const frontmatter: Frontmatter = {
   layout: 'src/layouts/Default.astro',
@@ -26,44 +34,61 @@ const frontmatter: Frontmatter = {
   description: `Astro Accelerator ${slug} articles.`,
 };
 
-// Props
-type Props = {
-  page: Page<MarkdownInstance<Record<string, any>>>;
-  headings: { depth: number; slug: string; text: string; }[];
-};
-const { page, headings } = Astro.props as Props;
-
 // Language
 const _ = Lang(lang);
 
 // Logic
-export async function getStaticPaths({ paginate }: any) {
-  const sourcePosts = await Astro.glob('../../**/*.md');
-  const urlPosts = sourcePosts
-    .filter(p => p.url != null && p.url != '')
-    .sort(sortByPubDateDesc);
+type CacheData = {
+  posts: MarkdownInstance<Record<string, any>>[];
+  tags: string[];
+}
 
-  const tags: string[] = [];
-  urlPosts.forEach(p => {
-    const ptags: string[] = p.frontmatter.tags ?? [];
-    if (ptags.length == 0) {
-      console.log('No tags found', p.url);
-    }
-    ptags.forEach(t => {
-      if (!tags.includes(t)) {
-        tags.push(t);
+export async function getCacheData() {
+  const key = 'pages_articles_[tag]_[page]';
+
+  let cacheData: CacheData = await getItem(key);
+
+  if (cacheData == null) {
+    // This uses a relative glob, so we only look in the current collection
+    const sourcePosts = await Astro.glob('../../**/*.md');
+    
+    cacheData = { posts: [], tags: []};
+
+    cacheData.posts = sourcePosts
+      .filter(p => p.url != null && p.url != '')
+      .sort(sortByPubDateDesc);
+
+    cacheData.posts.forEach(p => {
+      const auths: string[] = p.frontmatter.tags ?? [];
+      if (auths.length == 0) {
+        console.log('No categories found', p.url);
       }
+      auths.forEach(a => {
+        if (!cacheData.tags.includes(a)) {
+          cacheData.tags.push(a);
+        }
+      });
     });
-  });
 
-  console.log(tags);
+    await setItem(key, cacheData);
+  }
 
-  return tags.map(t => {
-    const filtered = urlPosts.filter(p => {
+  return cacheData;
+}
+
+export async function getStaticPaths({ paginate }: any) {
+  let data = await getCacheData();
+
+  return data.tags.map(t => {
+    const filtered = data.posts.filter(p => {
       const tags: string[] = p.frontmatter.tags ?? [];
       return tags.includes(t);
     });
-    return paginate(filtered, { params: { tag: t.toLowerCase() }, pageSize: SITE.pageSize })
+    return paginate(filtered, {
+      params: { tag: t.toLowerCase() },
+      props: { title: t },
+      pageSize: SITE.pageSize 
+    })
   });
 }
 

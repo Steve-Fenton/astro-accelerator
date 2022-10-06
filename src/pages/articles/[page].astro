@@ -8,6 +8,7 @@ import type { Page, MarkdownInstance } from 'astro';
 import { Frontmatter, SITE } from '@config';
 import { getPageLinks } from '@util/PageLinks.astro';
 import { sortByPubDateDesc } from '@util/PageTypeFilters.astro';
+import { getItem, setItem } from '@util/Cache.astro';
 
 import Default from '@layouts/Default.astro';
 import ArticleList from '@components/ArticleList.astro';
@@ -21,10 +22,6 @@ const frontmatter: Frontmatter = {
   pubDate: new Date(2022, 9, 17),
   keywords: 'articles,astro,accelerator',
   description: 'Astro Accelerator articles.',
-  bannerImage: {
-      src: '/img/surface-accessories.png',
-      alt: 'Dummy image',
-  }
 };
 
 // Props
@@ -38,13 +35,34 @@ const { page, headings } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-export async function getStaticPaths({ paginate }: any) {
-  const sourcePosts = await Astro.glob('./**/*.md');
-  const urlPosts = sourcePosts
-    .filter(p => p.url != null && p.url != '')
-    .sort(sortByPubDateDesc);
+type CacheData = {
+  posts: MarkdownInstance<Record<string, any>>[];
+}
 
-  return paginate(urlPosts, { pageSize: SITE.pageSize });
+export async function getCacheData() {
+  const key = 'pages_articles_[page]';
+
+  let cacheData: CacheData = await getItem(key);
+
+  if (cacheData == null) {
+    // This uses a relative glob, so we only look in the current collection
+    const sourcePosts = await Astro.glob('./**/*.md');
+    
+    cacheData = { posts: []};
+
+    cacheData.posts = sourcePosts
+      .filter(p => p.url != null && p.url != '')
+      .sort(sortByPubDateDesc);
+    
+    await setItem(key, cacheData);
+  }
+
+  return cacheData;
+}
+
+export async function getStaticPaths({ paginate }: any) {
+  let data = await getCacheData();
+  return paginate(data.posts, { pageSize: SITE.pageSize });
 }
 
 // Page Links

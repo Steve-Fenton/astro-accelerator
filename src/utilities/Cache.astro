@@ -29,11 +29,9 @@ export async function getItem(key: string) {
             console.log('Cache hit', key);
             return JSON.parse(content);
         }
-    } catch (ex) {
-        console.log(ex)
-    }
+    } catch{}
 
-    console.log('Cache miss', key);
+    console.warn('Cache miss', key);
     return null;
 }
 

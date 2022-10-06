@@ -7,20 +7,21 @@ import type { Page, MarkdownInstance } from 'astro';
 
 import { Frontmatter, SITE } from '@config';
 import { getPageLinks } from '@util/PageLinks.astro';
-import { isAuthor, sortByPubDateDesc } from '@util/PageTypeFilters.astro';
+import { sortByPubDateDesc } from '@util/PageTypeFilters.astro';
+import { getItem, setItem } from '@util/Cache.astro';
 
 import Default from '@layouts/Default.astro';
 import ArticleList from '@components/ArticleList.astro';
 import Paging from '@components/Paging.astro';
+import { getAuthorInfo } from '@util/PageQueries.astro';
 
 const lang = SITE.default.lang;
 const currentUrl = new URL(Astro.request.url);
 const slug = currentUrl.pathname.split('/')[2];
 
-const allAuthors = await Astro.glob('../*.md');
-const author = allAuthors.filter(isAuthor).filter(x => x.url?.split('/')[2] == slug)[0];
+let authorInfo = await getAuthorInfo(slug);
 
-const frontmatter = author.frontmatter as Frontmatter;
+const frontmatter = authorInfo.frontmatter as Frontmatter;
 
 // Props
 type Props = {
@@ -33,28 +34,48 @@ const { page, headings } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-export async function getStaticPaths({ paginate }: any) {
-  const sourcePosts = await Astro.glob('../../**/*.md');
-  
-  const urlPosts = sourcePosts
-    .filter(p => p.url != null && p.url != '')
-    .sort(sortByPubDateDesc);
+type CacheData = {
+  posts: MarkdownInstance<Record<string, any>>[];
+  authors: string[];
+}
 
-  const authors: string[] = [];
-  urlPosts.forEach(p => {
-    const auths: string[] = p.frontmatter.authors ?? [];
-    if (auths.length == 0) {
-      console.log('No categories found', p.url);
-    }
-    auths.forEach(a => {
-      if (!authors.includes(a)) {
-        authors.push(a);
+export async function getCacheData() {
+  const key = 'pages_authors_[author]_[page]';
+
+  let cacheData: CacheData = await getItem(key);
+
+  if (cacheData == null) {
+    const sourcePosts = await Astro.glob('../../**/*.md');
+    
+    cacheData = { posts: [], authors: []};
+
+    cacheData.posts = sourcePosts
+      .filter(p => p.url != null && p.url != '')
+      .sort(sortByPubDateDesc);
+
+    cacheData.posts.forEach(p => {
+      const auths: string[] = p.frontmatter.authors ?? [];
+      if (auths.length == 0) {
+        console.log('No authors found', p.url);
       }
+      auths.forEach(a => {
+        if (!cacheData.authors.includes(a)) {
+          cacheData.authors.push(a);
+        }
+      });
     });
-  });
+    
+    await setItem(key, cacheData);
+  }
 
-  return authors.map(a => {
-    const filtered = urlPosts.filter(p => {
+  return cacheData;
+}
+
+export async function getStaticPaths({ paginate }: any) {
+  let data = await getCacheData();
+
+  return data.authors.map(a => {
+    const filtered = data.posts.filter(p => {
       const auths: string[] = p.frontmatter.authors ?? [];
       return auths.includes(a);
     });
@@ -66,7 +87,7 @@ export async function getStaticPaths({ paginate }: any) {
 const pageLinks = getPageLinks(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
 ---
 <Default frontmatter={ frontmatter } headings={ headings }>
-  <Fragment is:raw set:html={ author.compiledContent() }></Fragment>
+  <Fragment is:raw set:html={ authorInfo.content }></Fragment>
   <h2>Page {page.currentPage}</h2>
   <ArticleList lang={ lang } posts={ page.data } />
   <Paging lang={ lang } page={ page } pageLinks={ pageLinks } />
