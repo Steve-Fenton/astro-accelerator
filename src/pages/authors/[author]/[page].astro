@@ -7,7 +7,7 @@ import type { Page, MarkdownInstance } from 'astro';
 
 import { Frontmatter, SITE } from '@config';
 import { getPageLinks } from '@util/PageLinks.astro';
-import { sortByPubDateDesc } from '@util/PageTypeFilters.astro';
+import { isAuthor, sortByPubDateDesc } from '@util/PageTypeFilters.astro';
 
 import Default from '@layouts/Default.astro';
 import ArticleList from '@components/ArticleList.astro';
@@ -17,8 +17,8 @@ const lang = SITE.default.lang;
 const currentUrl = new URL(Astro.request.url);
 const slug = currentUrl.pathname.split('/')[2];
 
-const fmTargets = await Astro.glob('../*.md');
-const author = fmTargets.filter(x => x.url?.split('/')[2] == slug)[0];
+const allAuthors = await Astro.glob('../*.md');
+const author = allAuthors.filter(isAuthor).filter(x => x.url?.split('/')[2] == slug)[0];
 
 const frontmatter = author.frontmatter as Frontmatter;
 
