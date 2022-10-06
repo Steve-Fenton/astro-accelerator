@@ -2,8 +2,9 @@
 // Data file `navigation.ts`
 import { menu } from '../navigation';
 
+import { getItem, setItem } from '@util/Cache.astro';
 import { showInMenu } from '@util/PageTypeFilters.astro';
-import { mapNavPageWithUrl } from '@util/NavPage.astro';
+import { mapNavPage, setCurrentPage } from '@util/NavPage.astro';
 import { NavPage, isNavPage } from '@util/NavigationTypes.astro';
 import { getTopLevelPages, getPages } from '@util/PageQueries.astro';
 
@@ -33,31 +34,40 @@ export async function getMenu (currentUrl: URL) {
 }
 
 export async function getNavigation (currentUrl: URL) {
-    const mapWithUrl = mapNavPageWithUrl(currentUrl);
 
-    const topLevelPages = await getTopLevelPages(showInMenu);
-    const allPages = await getPages(showInMenu);
+    const key = 'Navigation__getNavigation';
+    let pageHierarchy: NavPage[] = await getItem(key);
 
-    const pageHierarchy: NavPage[] = topLevelPages.map(mapWithUrl);
-    const pageList: NavPage[] = allPages.map(mapWithUrl);
+    if (pageHierarchy == null) {
+        const topLevelPages = await getTopLevelPages(showInMenu);
+        const allPages = await getPages(showInMenu);
 
-    for (let i = 0; i < pageHierarchy.length; i++) {
-        const page = pageHierarchy[i];
-        page.children = pageList
-            .filter((mp) =>
-                page.url != "/"
-                && mp.url != page.url
-                && mp.url.startsWith(page.url)
-            )
-            .sort((mp) => mp.order);
+        pageHierarchy = topLevelPages.map(mapNavPage);
+        const pageList: NavPage[] = allPages.map(mapNavPage);
 
-        if (page.children.length > 0) {
-            const ownChild = structuredClone(page);
-            ownChild.order = -1;
-            ownChild.children = [];
-            page.children.push(ownChild);
+        for (let i = 0; i < pageHierarchy.length; i++) {
+            const page = pageHierarchy[i];
+            page.children = pageList
+                .filter((mp) =>
+                    page.url != '/'
+                    && mp.url != page.url
+                    && mp.url.startsWith(page.url)
+                )
+                .sort((mp) => mp.order);
+
+            if (page.children.length > 0) {
+                const ownChild = structuredClone(page);
+                ownChild.order = -1;
+                ownChild.children = [];
+                page.children.push(ownChild);
+            }
         }
+
+        // Cache the result
+        await setItem(key, pageHierarchy);
     }
+
+    setCurrentPage(pageHierarchy, currentUrl);
 
     return pageHierarchy;
 }

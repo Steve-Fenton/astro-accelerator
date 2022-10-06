@@ -4,13 +4,7 @@ import type { NavPage } from './NavigationTypes.astro';
 
 import { addSlashToAddress } from './Url.astro';
 
-export const mapNavPageWithUrl = (currentUrl: URL) => {
-  const mapFunction = (page: MarkdownInstance<Record<string, any>>) => 
-    mapNavPage(page, currentUrl.pathname) 
-  return mapFunction;
-};
-
-export const mapNavPage = (page: MarkdownInstance<Record<string, any>>, currentPath: string) => {
+export const mapNavPage = (page: MarkdownInstance<Record<string, any>>) => {
   let url = page.url == null || (page.url ?? '').length == 0 
     ? '/'
     : page.url;
@@ -22,20 +16,26 @@ export const mapNavPage = (page: MarkdownInstance<Record<string, any>>, currentP
 
   url = addSlashToAddress(url);
 
-  const isCurrent = url == currentPath;
-
   const entry: NavPage = {
     section: page.frontmatter.navSection ?? page.frontmatter.navTitle ?? page.frontmatter.title,
     title: page.frontmatter.navTitle ?? page.frontmatter.title,
     url: url,
     order: page.frontmatter.navOrder,
-    isOpen: currentPath.startsWith(url),
-    ariaCurrent: isCurrent ? 'page' : false,
     children: [],
+    // These are later set to the correct value, but not now as we want to cache
+    isOpen: false,
+    ariaCurrent: false,
   }
 
   return entry;
 };
+
+export const setCurrentPage = (pages: NavPage[], currentUrl: URL) => {
+  pages.forEach(p => {
+    p.isOpen = currentUrl.pathname.startsWith(p.url),
+    p.ariaCurrent = p.url == currentUrl.pathname ? 'page': false
+  });
+}
 
 export const popMatchingPage = (allPages: MarkdownInstance<Record<string, any>>[], search: string) => {
   const numberToRemove = 1;

@@ -1,20 +1,34 @@
 ---
 import type { MarkdownInstance } from "astro";
+import { getItem, setItem } from '@util/Cache.astro';
 
 export type PagePredicate = (value: MarkdownInstance<Record<string, any>>, index: number, array: MarkdownInstance<Record<string, any>>[]) => boolean;
 
 export async function getPages (filter?: PagePredicate | null) {
-    const allPages = await Astro.glob("../pages/**/*.md");
+    const key = 'PageQueries__getPages';
+    let allPages = await getItem(key);
+
+    if (allPages == null) {
+        allPages = await Astro.glob("../pages/**/*.md");
+        await setItem(key, allPages);
+    }
 
     if (filter == null) {
         return allPages;
     }
 
+
     return allPages.filter(filter);
 }
 
 export async function getTopLevelPages (filter?: PagePredicate | null) {
-    const allPages = await Astro.glob("../pages/*.md");
+    const key = 'PageQueries__getTopLevelPages';
+    let allPages = await getItem(key);
+
+    if (allPages == null) {
+        allPages = await Astro.glob("../pages/*.md");
+        await setItem(key, allPages);
+    }
 
     if (filter == null) {
         return allPages;
