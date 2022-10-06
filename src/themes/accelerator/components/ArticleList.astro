@@ -53,7 +53,7 @@ const articles = posts.map(p => {
         <h3>
           <a href={ addSlashToAddress(post.url) }>{ post.frontmatter.title }</a>
         </h3>
-        <Authors lang={ lang } frontmatter={ post.frontmatter } />
+        <Authors lang={ lang } frontmatter={ post.frontmatter } addLink={ false } />
       </div>
     </article>
   </li>

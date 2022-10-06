@@ -31,7 +31,7 @@ const _ = Lang(lang);
           <header>
               <h1>{ frontmatter.title ?? SITE.title }</h1>
           </header>
-          <Authors frontmatter={ frontmatter } lang={ lang } />
+          <Authors frontmatter={ frontmatter } lang={ lang } addLink={ true } />
           <div>
               <slot />
           </div>
