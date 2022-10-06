@@ -1,15 +1,15 @@
 import fs from 'fs';
 import path from 'path';
 import imagemin from 'imagemin';
-import { size } from './plugins/image-size.mjs';
+import { size } from '../plugins/image-size.mjs';
 import imageminWEBP from 'imagemin-webp';
 import imageminJPG from 'imagemin-jpegtran';
 import imageminPNG from 'imagemin-pngquant';
 
 const sizes = [400,700,1000];
+const workingDirectory = process.cwd();
 const imagePath = path.join('public', 'img');
 const outputPath = path.join('public', 'i');
-const workingDirectory = process.cwd();
 const imageDirectory = path.join(workingDirectory, imagePath);
 
 console.log(imageDirectory);
