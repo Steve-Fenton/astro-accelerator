@@ -23,15 +23,16 @@ type Props = {
   title: string;
   page: Page<MarkdownInstance<Record<string, any>>>;
   headings: { depth: number; slug: string; text: string; }[];
+  pubDate: Date;
 };
-const { title, page, headings } = Astro.props as Props;
+const { title, page, headings, pubDate } = Astro.props as Props;
 
 const frontmatter: Frontmatter = {
   layout: 'src/layouts/Default.astro',
   title: title,
-  pubDate: new Date(2022, 9, 17),
   keywords: `${slug},articles,astro,accelerator`,
   description: `Astro Accelerator ${slug} articles.`,
+  pubDate: pubDate,
 };
 
 // Language
@@ -86,7 +87,7 @@ export async function getStaticPaths({ paginate }: any) {
     });
     return paginate(filtered, {
       params: { tag: t.toLowerCase() },
-      props: { title: t },
+      props: { title: t, pubDate: filtered[0].frontmatter.pubDate },
       pageSize: SITE.pageSize 
     });
   });

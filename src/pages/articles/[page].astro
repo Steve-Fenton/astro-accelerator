@@ -16,20 +16,21 @@ import Paging from '@components/Paging.astro';
 
 const lang = SITE.default.lang;
 
-const frontmatter: Frontmatter = {
-  layout: 'src/layouts/Default.astro',
-  title: 'Articles',
-  pubDate: new Date(2022, 9, 17),
-  keywords: 'articles,astro,accelerator',
-  description: 'Astro Accelerator articles.',
-};
-
 // Props
 type Props = {
   page: Page<MarkdownInstance<Record<string, any>>>;
   headings: { depth: number; slug: string; text: string; }[];
+  pubDate: Date;
 };
-const { page, headings } = Astro.props as Props;
+const { page, headings, pubDate } = Astro.props as Props;
+
+const frontmatter: Frontmatter = {
+  layout: 'src/layouts/Default.astro',
+  title: 'Articles',
+  keywords: 'articles,astro,accelerator',
+  description: 'Astro Accelerator articles.',
+  pubDate: pubDate,
+};
 
 // Language
 const _ = Lang(lang);
@@ -63,6 +64,7 @@ export async function getCacheData() {
 export async function getStaticPaths({ paginate }: any) {
   let data = await getCacheData();
   return paginate(data.posts, {
+    props: { pubDate: data.posts[0].frontmatter.pubDate },
     pageSize: SITE.pageSize
   });
 }

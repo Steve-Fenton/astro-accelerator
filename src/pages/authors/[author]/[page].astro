@@ -27,8 +27,11 @@ const frontmatter = authorInfo.frontmatter as Frontmatter;
 type Props = {
   page: Page<MarkdownInstance<Record<string, any>>>;
   headings: { depth: number; slug: string; text: string; }[];
+  pubDate: Date;
 };
-const { page, headings } = Astro.props as Props;
+const { page, headings, pubDate } = Astro.props as Props;
+
+frontmatter.pubDate = pubDate;
 
 // Language
 const _ = Lang(lang);
@@ -81,6 +84,7 @@ export async function getStaticPaths({ paginate }: any) {
     });
     return paginate(filtered, { 
         params: { author: a.toLowerCase() },
+        props: { pubDate: filtered[0].frontmatter.pubDate },
         pageSize: SITE.pageSize 
     });
   });
