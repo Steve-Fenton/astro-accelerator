@@ -17,7 +17,21 @@ In Astro Accelerator, articles (posts, articles, blogs, news, etc) require a cou
 3. `/pages/articles/[page].astro` (list page)
 4. `/pages/articles/[year]/[month]/your-article.md`
 
-The top-level markdown page only contains front-matter that is used for things like the menu.
+The top-level markdown page only contains front-matter that is used to show the item in the menu and to redirect any stray traffic:
+
+```astro
+---
+layout: src/layouts/Redirect.astro
+title: Articles
+paged: true
+navOrder: 100000
+navSearch: false
+navSitemap: false
+pubDate:   2022-09-17
+redirect: /articles/1/
+---
+
+```
 
 The folder contains the list page logic `[page].astro` and folders containing articles.
 
