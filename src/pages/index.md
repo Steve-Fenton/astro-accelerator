@@ -30,6 +30,9 @@ Astro Accelerator is built on some strong opinions:
 
 Out of the box, Astro Accelerator is a "top scores" high-performance website in the lab. [Pagespeed Insights](https://developers.google.com/speed/docs/insights/v5/about?hl=en-US) tests website performance on mobile and desktop across a number of measurements.
 
+:::figure
 :img{ src="/img/astro-lighthouse.png" alt="Astro Lighthouse Score (100% in all categories)" loading="lazy" }
+:figcaption[Top scores across the board]
+:::
 
 Test scores aren't everything, but Astro Accelerator is light and fast.

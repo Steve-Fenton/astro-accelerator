@@ -102,23 +102,17 @@ This is a custom div element with the class `note`
 Markdown:
 
 ```markdown
-:::div{.simple-grid}
-
+:::figure{.simple-grid}
 :img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
-
 :img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
-
 :::
 ```
 
 Result:
 
-:::div{.simple-grid}
-
+:::figure{.simple-grid}
 :img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
-
 :img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
-
 :::
 
 ## Images
@@ -144,6 +138,15 @@ This creates the following HTML (or similar):
 Result:
 
 :img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
+
+You can also wrap images in figures and optionally add a caption:
+
+```markdown
+:::figure
+:img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
+:figcaption[The modern hardback edition of Frankenstein]
+:::
+```
 
 ## Lists
 

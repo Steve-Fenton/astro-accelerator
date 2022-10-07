@@ -116,4 +116,7 @@ Without this line, only the manual menu items will be shown.
 
 Where there are sub-headings on a page, an automatic table of contents will be shown. This allows users to skip down the page to the content they are most interested in.
 
+:::figure
 :img{src="/img/screens/table-of-contents.png" loading="lazy" alt="An automatic table of contents based on headings in the page"}
+:figcaption[An automatically generated table of contents]
+:::

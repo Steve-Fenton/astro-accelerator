@@ -29,7 +29,10 @@ Hello world!
 
 The page will be automatically added to the menu and you can click on it to see your content.
 
+:::figure
 :img{ src="/img/screens/example-page.png" alt="The output of the example page markdown" loading="lazy"}
+:figcaption[The output of the example markdown]
+:::
 
 You can learn how to use markdown on the [CommonMark tutorial](https://commonmark.org/help/tutorial/). There are also some custom [markdown extensions](/features/markdown/) that give you some markdown super-powers.
 
