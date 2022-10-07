@@ -32,8 +32,9 @@ export const mapNavPage = (page: MarkdownInstance<Record<string, any>>) => {
 
 export const setCurrentPage = (pages: NavPage[], currentUrl: URL) => {
   pages.forEach(p => {
-    p.isOpen = currentUrl.pathname.startsWith(p.url),
-    p.ariaCurrent = p.url == currentUrl.pathname ? 'page': false
+    p.isOpen = currentUrl.pathname.startsWith(p.url);
+    p.ariaCurrent = p.url == currentUrl.pathname ? 'page': false;
+    if (p.children) setCurrentPage(p.children, currentUrl);
   });
 }
 
