@@ -126,6 +126,19 @@ hr {
     margin: var(--paragraph-margin) auto;
 }
 
+figure {
+    border-top: 1px solid var(--icon-block);
+    border-bottom: 1px solid var(--icon-block);
+    background-color: var(--aft-block);
+    padding: 0 1rem;
+}
+
+figcaption {
+    font-style: italic;
+    text-align: center;
+    font-size: 0.8em;
+}
+
 img {
     max-width: 100%;
 }
@@ -133,6 +146,10 @@ img {
 img.resp-img {
     width: 100%;
     height: auto;
+}
+
+figure img {
+    box-shadow: var(--box-shadow);
 }
 
 li::marker {
