@@ -32,7 +32,7 @@ const _ = Lang(lang);
               <h1>{ frontmatter.title ?? SITE.title }</h1>
           </header>
           <Authors frontmatter={ frontmatter } lang={ lang } addLink={ true } />
-          <div>
+          <div class="anim-show-parent">
               <slot />
           </div>
           <Taxonomy frontmatter={ frontmatter } lang={ lang } />

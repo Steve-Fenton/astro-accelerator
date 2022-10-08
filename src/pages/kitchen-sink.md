@@ -104,6 +104,7 @@ Markdown:
 ```markdown
 :::figure{.simple-grid}
 :img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
+
 :img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
 :::
 ```
@@ -112,6 +113,7 @@ Result:
 
 :::figure{.simple-grid}
 :img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
+
 :img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
 :::
 

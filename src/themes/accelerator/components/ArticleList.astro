@@ -34,7 +34,7 @@ const articles = posts.map(p => {
 
 
 ---
-<ul class="post-list">
+<ul class="post-list anim-show-parent">
   {articles.map((post) => (
   <li class="list-item" data-destination={ addSlashToAddress(post.url) } data-image={ (post.frontmatter.bannerImage?.src.length > 0).toString() }>
     <article>

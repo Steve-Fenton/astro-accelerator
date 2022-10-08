@@ -724,6 +724,8 @@ pre.astro-code code {
     margin: 0;
     width: 100%;
     text-align: right;
+    z-index: 1;
+    position: relative;
 }
 
 .copy-button {
@@ -772,7 +774,8 @@ pre.astro-code code {
     }
 
     .copy-button,
-    .post-list .list-item, main img, main blockquote, main .note {
+    .anim-show-parent img,
+    .anim-show-parent > * {
         transition: all 0.2s ease-in;
         scale: calc(0.75 + (var(--shown, 1) * 0.25));
     }
