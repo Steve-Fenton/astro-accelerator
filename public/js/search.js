@@ -100,7 +100,7 @@ function search(s) {
 
         const path = document.createElement('div');
         path.className = 'result-path';
-        path.innerHTML = needle.url;
+        path.innerHTML = new URL(needle.url).pathname;
 
         const markers = document.createElement('div');
         markers.className = 'result-text';
@@ -184,6 +184,7 @@ fetch(dataUrl)
         });
 
         console.log('Search ready');
+        debounceSearch();
     })
     .catch((error) => {
         console.log(error)
