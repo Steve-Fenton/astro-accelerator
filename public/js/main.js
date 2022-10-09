@@ -12,7 +12,7 @@ const resizedEventName = addResizedEvent();
 setClickableBlocks();
 addStickyNavigation('.site-header', '.site-nav', '.site-nav > ul', resizedEventName);
 addMobileNavigation('.navigation-icon', '.site-nav', resizedEventName);
-addIntersectionObserver('.anim-show-parent img, .anim-show-parent > *:not(p, h1, h2, h3, h4, h5, h6)');
+addIntersectionObserver('.anim-show-parent img, .anim-show-parent > *:not(h1, h2, h3, h4, h5, h6)');
 addListImageIntersectionObserver('.post-list img');
 enhanceYoutubeLinks();
 enhanceCodeBlocks();
