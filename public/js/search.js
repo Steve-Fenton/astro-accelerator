@@ -9,6 +9,8 @@ type SearchEntry = {
     score: number;
     title: string;
     safeTitle: string;
+    description: string;
+    safeDescription: string;
     headings: string[];
     tags: string;
     url: string;
@@ -30,7 +32,6 @@ var scrolled = false;
  */
 function search(s) {
     const needles = /** @type {SearchEntry} */ [];
-    let summaries = [];
 
     // Clean the input
     const cleanQuery = sanitise(s);
@@ -50,19 +51,24 @@ function search(s) {
         
         queryTerms.forEach(term => {
             if (contains(item.safeTitle, term)) {
+                item.score = item.score + 40;
+            }
+
+            if (contains(item.description, term)) {
                 item.score = item.score + 10;
             }
 
             item.headings.forEach(c => {
                 if (contains(c, term)) {
-                    item.score = item.score + 5;
-                    summaries.push(c);
+                    item.score = item.score + 15;
                 }
             });
 
-            if (contains(item.tags, term)) {
-                item.score = item.score + 5;
-            }
+            item.tags.forEach(t => {
+                if (contains(t, term)) {
+                    item.score = item.score + 5;
+                }
+            });
         })
 
         if (item.score > 0) {
@@ -73,6 +79,10 @@ function search(s) {
     needles.sort(function (a, b){
         return b.score - a.score;
     });
+
+    const total = needles.reduce(function (accumulator, needle) {
+        return accumulator + needle.score;
+        }, 0);
 
     const results = qs('#site-search-results');
 
@@ -88,26 +98,19 @@ function search(s) {
         a.innerHTML = highlight(needle.title, queryTerms);
         a.href = needle.url;
 
-        const uniqueSummaries = [...new Set(summaries)];
-        const description = highlight(
-            uniqueSummaries.join('...'),
-            queryTerms
-        );
-
         const path = document.createElement('div');
         path.className = 'result-path';
         path.innerHTML = needle.url;
 
         const markers = document.createElement('div');
-        if (description.length > 0) {
-            markers.className = 'result-text';
-            markers.innerHTML = '...' + description + '...';
-        }
+        markers.className = 'result-text';
+        markers.innerHTML = highlight(needle.description, queryTerms);
 
         const li = document.createElement('li');
         li.appendChild(a);
         li.appendChild(path);
         li.appendChild(markers);
+        li.dataset.score = (Math.round((needle.score/ total) * 100)).toString();
 
         ol.appendChild(li);
     }
@@ -152,8 +155,9 @@ fetch(dataUrl)
         for (let i = 0; i < haystack.length; i++) {
             const item = haystack[i];
             item.safeTitle = sanitise(item.title);
-            item.tags = sanitise(item.tags);
+            item.tags = item.tags.map(t => sanitise(t));
             item.headings = item.headings.map(c => sanitise(c));
+            item.safeDescription = sanitise(item.description);
         }
 
         var siteSearch = qs('#site-search');

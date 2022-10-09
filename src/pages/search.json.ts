@@ -26,7 +26,8 @@ const getData = async () => {
         items.push({
             title: page.frontmatter.title ?? '',
             headings: headings.map(h => h.text),
-            tags: page.frontmatter.keywords ?? '',
+            description: page.frontmatter.description ?? '',
+            tags: page.frontmatter.tags ?? [],
             url: SITE.url + addSlashToAddress(url),
             date: page.frontmatter.pubDate ?? ''
         });
