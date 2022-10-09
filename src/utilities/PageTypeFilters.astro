@@ -44,6 +44,12 @@ export const isSearch = (p: MarkdownInstance<Record<string, any>>) => {
   return false;
 }
 
+export const isListable = (p: MarkdownInstance<Record<string, any>>) => {
+  return p.url != null 
+    && p.url != '' 
+    && !p.frontmatter.layout.includes('/Redirect.astro')
+}
+
 export const sortByPubDate = (a: MarkdownInstance<Record<string, any>>, b: MarkdownInstance<Record<string, any>>) => {
   return b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate);
 }
