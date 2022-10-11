@@ -437,6 +437,26 @@ main ul ol, main ul ul, main ol ol, main ol ul {
     padding: 0.5rem 1rem;
 }
 
+.page-toc li.toc-lev-2 {
+    padding-left: 1rem;
+}
+
+.page-toc li.toc-lev-3 a {
+    padding-left: 2rem;
+}
+
+.page-toc li.toc-lev-4 a {
+    padding-left: 3rem;
+}
+
+.page-toc li.toc-lev-5 a {
+    padding-left: 4rem;
+}
+
+.page-toc li.toc-lev-6 a {
+    padding-left: 5rem;
+}
+
 /* Footer */
 
 .site-footer {
