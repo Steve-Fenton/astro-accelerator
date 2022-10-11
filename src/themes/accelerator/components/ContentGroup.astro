@@ -8,6 +8,7 @@ import Navigation from '@components/Navigation.astro';
 import TableOfContents from '@components/TableOfContents.astro';
 import Authors from '@components/Authors.astro';
 import Taxonomy from '@components/Taxonomy.astro';
+import Related from '@components/Related.astro';
 
 // Properties
 type Props = {
@@ -36,6 +37,7 @@ const _ = Lang(lang);
               <slot />
           </div>
           <Taxonomy frontmatter={ frontmatter } lang={ lang } />
+          <Related frontmatter={ frontmatter } headings={ headings } lang={ lang } />
       </article>
   </main>
 </div>

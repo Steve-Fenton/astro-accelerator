@@ -6,6 +6,8 @@ import t from '@util/language.json';
 import { Lang } from '@util/Languages.astro';
 import { addSlashToAddress } from '@util/Url.astro';
 import { getImageInfo } from '@plugin/custom-markdown.mjs'
+import { getPages } from '@util/PageQueries.astro';
+import { isListable, sortByPubDateDesc } from '@util/PageTypeFilters.astro';
 
 import Authors from '@components/Authors.astro';
 
@@ -14,14 +16,25 @@ import { SITE } from '@config';
 // Properties
 type Props = {
   lang: string;
-  posts: MarkdownInstance<Record<string, any>>[]
+  frontmatter: Frontmatter
+  headings: { depth: number; slug: string; text: string; }[];
 };
-const { lang, posts } = Astro.props as Props;
+const { lang, frontmatter, headings } = Astro.props as Props;
 
 // Language
 const _ = Lang(lang);
 
 // Logic
+let posts: MarkdownInstance<Record<string, any>>[] = [];
+const parentCagory = (frontmatter.categories ?? [null])[0];
+
+if (parentCagory != null) {
+  const allPages = await getPages(isListable)
+  posts = allPages.filter(p => p.frontmatter.categories && p.frontmatter.categories.includes(parentCagory))
+    .sort(sortByPubDateDesc)
+    .slice(0, 2);
+}
+
 const articles = posts.map(p => {
   return {
     url: p.url,
@@ -31,9 +44,8 @@ const articles = posts.map(p => {
       : null
   };
 });
-
-
 ---
+{articles.length > 0 &&
 <ul class="post-list anim-show-parent">
   {articles.map((post) => (
   <li class="list-item" data-destination={ addSlashToAddress(post.url) } data-image={ (post.frontmatter.bannerImage?.src.length > 0).toString() }>
@@ -59,3 +71,4 @@ const articles = posts.map(p => {
   </li>
   ))}
 </ul>
+}
