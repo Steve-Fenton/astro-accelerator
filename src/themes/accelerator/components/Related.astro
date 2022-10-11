@@ -30,9 +30,23 @@ const parentCagory = (frontmatter.categories ?? [null])[0];
 
 if (parentCagory != null) {
   const allPages = await getPages(isListable)
-  posts = allPages.filter(p => p.frontmatter.categories && p.frontmatter.categories.includes(parentCagory))
+  const allPosts = allPages
+    .filter(p => p.frontmatter.title != frontmatter.title && p.frontmatter.categories && p.frontmatter.categories.includes(parentCagory))
     .sort(sortByPubDateDesc)
-    .slice(0, 2);
+  
+  // One "Most Recent" Post
+  if (allPosts.length > 0) {
+    posts.push(allPosts[0])
+  }
+
+  const olderPost = allPosts.slice(1).filter(p => p.frontmatter.pubDate < frontmatter.pubDate)
+  
+  // One "Older than current" Post
+  if (olderPost.length > 0) {
+    posts.push(olderPost[0])
+  } else if (allPosts.length > 1) {
+    posts.push(allPosts[1])
+  }
 }
 
 const articles = posts.map(p => {

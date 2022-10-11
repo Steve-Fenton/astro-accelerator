@@ -24,9 +24,15 @@ The sitemap is XML and is located at `/sitemap.xml`.
 
 ## Atom Feed
 
-The Atom feed is XML and should be added to any post collection folders, for example `/pages/articles/feed.xml.ts`. This allows a feed for each collection, for example one for blogs, another for news, another for events... and so on.
+The Atom feed is XML and should be added to any post collection folders, for example: `/pages/articles/feed.xml.ts`. This allows a feed for each collection, for example, for blogs, news, events, and so on.
 
 [View an example Atom feed](/articles/feed.xml).
+
+The main feed for your website should be added to `config.ts`. This will be added to the `alternative` meta tag with a content type of `application/atom+xml`.
+
+```typescript
+feedUrl: '/articles/feed.xml',
+```
 
 The feed looks for markdown files in child folders by default. You can update this within `feed.xml.ts` by changing this code:
 

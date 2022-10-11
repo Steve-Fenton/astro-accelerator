@@ -1,5 +1,6 @@
 export const SITE = {
 	url: 'https://astro.stevefenton.co.uk',
+	feedUrl: '/articles/feed.xml',
 	title: 'Astro Accelerator',
 	description: 'An Astro quick start project.',
 	defaultLanguage: 'en',
