@@ -27,7 +27,7 @@ This is an example post with more of the front matter set up, such as except and
     width=1000
     height=663
     alt="A diagram showing web requests routed to different web servers"}
-:figcaptionp[Routing web requests with ARR]
+:figcaption[Routing web requests with ARR]
 :::
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet elit sodales, egestas odio eu, interdum nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elit odio, dapibus nec finibus sit amet, aliquam a tortor.
