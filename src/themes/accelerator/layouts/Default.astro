@@ -6,7 +6,11 @@ import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import SkipLinks from '@components/SkipLinks.astro';
 import Breadcrumbs from '@components/Breadcrumbs.astro';
-import ContentGroup from '@components/ContentGroup.astro';
+import Navigation from '@components/Navigation.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+import Authors from '@components/Authors.astro';
+import Taxonomy from '@components/Taxonomy.astro';
+import Related from '@components/Related.astro';
 
 type Props = {
     frontmatter: Frontmatter
@@ -23,9 +27,23 @@ const textDirection = frontmatter.dir ?? SITE.default.dir;
         <SkipLinks frontmatter={ frontmatter } headings={ headings } lang={ lang } />
         <Header frontmatter={ frontmatter } headings={ headings } lang={ lang } />
         <Breadcrumbs frontmatter={ frontmatter } headings={ headings } lang={ lang } />
-        <ContentGroup frontmatter={ frontmatter } headings={ headings } lang={ lang }>
-            <slot />
-        </ContentGroup>
+        <div class="content-group">
+            <Navigation lang={ lang } />
+            <main id="site-main">
+                <article>
+                    <TableOfContents frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+                    <header>
+                        <h1>{ frontmatter.title ?? SITE.title }</h1>
+                    </header>
+                    <Authors frontmatter={ frontmatter } lang={ lang } addLink={ true } />
+                    <div class="anim-show-parent">
+                        <slot />
+                    </div>
+                    <Taxonomy frontmatter={ frontmatter } lang={ lang } />
+                    <Related frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+                </article>
+            </main>
+        </div>
         <Footer frontmatter={ frontmatter } headings={ headings } lang={ lang } />
         <script src="/js/main.js" type="module" async></script>
     </body>
