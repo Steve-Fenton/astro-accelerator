@@ -793,6 +793,8 @@ pre.astro-code code {
     background-color: unset;
 }
 
+/* Helper icons */
+
 .copy-container {
     max-height: 0px;
     margin: 0;
@@ -845,6 +847,12 @@ figure:focus .magnify-icon {
     stroke: var(--fore-link);
     transform: rotate(4deg);
     opacity: 1;
+}
+
+@media (max-width: 860px) {
+    .magnify-icon {
+        opacity: 1;
+    }
 }
 
 /* Custom Divisions */
