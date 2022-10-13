@@ -28,16 +28,16 @@ const _ = Lang(lang);
   <Navigation lang={ lang } />
   <main id="site-main">
       <article>
-          <TableOfContents frontmatter={ frontmatter } headings={ headings } lang={ lang } />
-          <header>
-              <h1>{ frontmatter.title ?? SITE.title }</h1>
-          </header>
-          <Authors frontmatter={ frontmatter } lang={ lang } addLink={ true } />
-          <div class="anim-show-parent">
-              <slot />
-          </div>
-          <Taxonomy frontmatter={ frontmatter } lang={ lang } />
-          <Related frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+        <TableOfContents frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+        <header>
+          <h1>{ frontmatter.title ?? SITE.title }</h1>
+        </header>
+        <Authors frontmatter={ frontmatter } lang={ lang } addLink={ true } />
+        <div class="anim-show-parent">
+          <slot />
+        </div>
+        <Taxonomy frontmatter={ frontmatter } lang={ lang } />
       </article>
+      <Related frontmatter={ frontmatter } headings={ headings } lang={ lang } />
   </main>
 </div>

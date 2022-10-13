@@ -23,9 +23,8 @@ const _ = Lang(lang);
   <details>
     <summary>{ _(t.toc.title) }</summary>
     <ol>
-      <li><a href="#site-content">{ frontmatter.title ?? SITE.title }</a></li>
       {headings.map((heading) =>(
-        <li><a href={ '#' + heading.slug }>{ heading.text }</a></li>
+        <li class={ 'toc-lev-' + heading.depth }><a href={ '#' + heading.slug }>{ heading.text }</a></li>
       ))}
     </ol>
   </details>
