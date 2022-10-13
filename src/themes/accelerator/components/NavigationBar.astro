@@ -1,0 +1,31 @@
+---
+import type { Frontmatter } from '@config';
+
+import t from '@util/language.json';
+import { Lang } from '@util/Languages.astro';
+
+import { getMenu } from '@util/Navigation.astro';
+
+import NavigationItem from '@components/NavigationItem.astro';
+
+// Properties
+type Props = {
+  lang: string;
+};
+const { lang } = Astro.props as Props;
+
+// Language
+const _ = Lang(lang);
+
+// Logic
+const currentUrl = new URL(Astro.request.url);
+const pages = await getMenu(currentUrl);
+---
+<nav class="site-nav-bar" id="site-nav" aria-label={ _(t.aria.site_navigation) }>
+  <h2 class="site-nav-title">{ _(t.navigation.title) }</h2>
+  <ul>
+    {pages.sort((a, b) => a.order - b.order).map((page) => (
+      <li><a href={ page.url }>{ page.title }</a></li>
+    ))}
+  </ul>
+</nav>

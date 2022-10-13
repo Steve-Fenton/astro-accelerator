@@ -9,26 +9,28 @@ import { NavPage, isNavPage } from '@util/NavigationTypes.astro';
 import { getTopLevelPages, getPages } from '@util/PageQueries.astro';
 
 export async function getMenu (currentUrl: URL) {
-    const setCurrent = (item: NavPage) => {
-        item.isOpen = currentUrl.pathname.startsWith(item.url);
-        item.ariaCurrent = item.url == currentUrl.pathname ? 'page' : false;
-        item.children.forEach(setCurrent);
-    }
+    const key = 'Navigation__getMenu';
+    let pages: NavPage[] = await getItem(key);
 
-    let pages: NavPage[] = []
-
-    for (let i = 0; i < menu.length; i++) {
-        const item = menu[i];
-        if (isNavPage(item)) {
-            setCurrent(item);
-            pages.push(item);
-        } else {
-            const p = await getNavigation(currentUrl);
-            for (let j = 0; j < p.length; j++) {
-                pages.push(p[j]);
+    if (pages == null) {
+        pages = [];
+        for (let i = 0; i < menu.length; i++) {
+            const item = menu[i];
+            if (isNavPage(item)) {
+                pages.push(item);
+            } else {
+                const p = await getNavigation(currentUrl);
+                for (let j = 0; j < p.length; j++) {
+                    pages.push(p[j]);
+                }
             }
         }
+
+        // Cache the result
+        await setItem(key, pages);
     }
+
+    setCurrentPage(pages, currentUrl);
 
     return pages;
 }
@@ -66,8 +68,6 @@ export async function getNavigation (currentUrl: URL) {
         // Cache the result
         await setItem(key, pageHierarchy);
     }
-
-    setCurrentPage(pageHierarchy, currentUrl);
 
     return pageHierarchy;
 }

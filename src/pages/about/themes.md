@@ -1,5 +1,5 @@
 ---
-layout: src/layouts/Default.astro
+layout: src/layouts/Example.astro
 title: Themes
 navOrder: 2000
 pubDate: 2022-09-17
@@ -9,6 +9,8 @@ bannerImage:
     src: /img/surface-accessories.png
     alt: Dummy image
 ---
+
+Note: this page uses an alternative layout for demonstration purposes.
 
 Themes are made up of layouts and components.
 

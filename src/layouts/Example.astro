@@ -1,0 +1,15 @@
+---
+import type { Frontmatter } from '@config';
+import Example from '@layouts/Example.astro';
+
+// Properties
+type Props = {
+    frontmatter: Frontmatter
+    headings: { depth: number; slug: string; text: string; }[];
+}
+const { frontmatter, headings } = Astro.props as Props;
+
+---
+<Example frontmatter={ frontmatter } headings={ headings }>
+    <slot />
+</Example>
