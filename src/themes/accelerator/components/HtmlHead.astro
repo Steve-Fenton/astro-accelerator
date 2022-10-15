@@ -12,6 +12,7 @@ const { frontmatter } = Astro.props;
 
 // Logic
 const imageSrc = frontmatter.bannerImage?.src ?? OPEN_GRAPH.image.src;
+const imageAlt = frontmatter.bannerImage?.alt ?? OPEN_GRAPH.image.alt;
 const canonicalImageSrc = new URL(imageSrc, Astro.site);
 const canonicalURL =  addSlashToUrl(new URL(Astro.url.pathname, Astro.site));
 ---
@@ -27,11 +28,17 @@ const canonicalURL =  addSlashToUrl(new URL(Astro.url.pathname, Astro.site));
   <meta name="theme-color" content={ SITE.themeColor } />
   <meta name="msapplication-navbutton-color" content={ SITE.themeColor } />
   <meta name="apple-mobile-web-app-status-bar-style" content={ SITE.themeColor } />
-  <meta property="og:title" content={ frontmatter.title } />
-  <meta property="og:url" content={ canonicalURL } />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content={ canonicalURL } />
+  <meta property="og:title" content={ frontmatter.title } />
   <meta property="og:description" content={ frontmatter.description } />
   <meta property="og:image" content={ canonicalImageSrc } />
+  <meta property="og:image:alt" content={ imageAlt } />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={ frontmatter.title }>
+  <meta name="twitter:description" content={ frontmatter.description }>
+  <meta name="twitter:image" content={ canonicalImageSrc }>
+  <meta name="twitter:image:alt" content={ imageAlt }>
   <link rel="canonical" href={ canonicalURL } />
   <link rel="alternate" type="application/atom+xml" title={ SITE.title } href={ SITE.feedUrl } />
   <link rel="alternate" href="/sitemap.xml" type="application/rss+xml" />
