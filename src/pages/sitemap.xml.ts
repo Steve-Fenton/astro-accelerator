@@ -11,16 +11,15 @@ async function getData() {
   
   for (const path in allPages) {
     const article: any = await allPages[path]();
+    const addToSitemap = showInSitemap(article);
 
-    if (!showInSitemap(article)) {
-        continue;
+    if (addToSitemap) {
+      pages.push(`
+        <url>
+          <loc>${ SITE.url + addSlashToAddress(article.url) }</loc>
+          <lastmod>${ article.frontmatter.pubDate }</lastmod>
+        </url>`);
     }
-
-    pages.push(`
-      <url>
-        <loc>${ SITE.url + addSlashToAddress(article.url) }</loc>
-        <lastmod>${ article.frontmatter.pubDate }</lastmod>
-      </url>`);
   }
 
   return {

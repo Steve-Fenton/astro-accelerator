@@ -2,21 +2,23 @@
 import type { MarkdownInstance } from 'astro';
 
 export const showInSitemap = (p: MarkdownInstance<Record<string, any>>) => {
+  // User setting to remove from sitemap
   if (typeof p.frontmatter.navSitemap !== 'undefined'
     && p.frontmatter.navSitemap == false) {
     return false;
   }
 
-  return true;
+  return isListable(p);
 }
 
 export const showInSearch = (p: MarkdownInstance<Record<string, any>>) => {
+  // User setting to remove from search
   if (typeof p.frontmatter.navSearch !== 'undefined'
     && p.frontmatter.navSearch == false) {
     return false;
   }
 
-  return true;
+  return isListable(p);
 }
 
 export const showInMenu = (p: MarkdownInstance<Record<string, any>>) => {
@@ -47,7 +49,7 @@ export const isSearch = (p: MarkdownInstance<Record<string, any>>) => {
 export const isListable = (p: MarkdownInstance<Record<string, any>>) => {
   return p.url != null 
     && p.url != '' 
-    && !p.frontmatter.layout.includes('/Redirect.astro')
+    && p.frontmatter.layout.includes('/Redirect.astro') !== true
 }
 
 export const sortByPubDate = (a: MarkdownInstance<Record<string, any>>, b: MarkdownInstance<Record<string, any>>) => {
