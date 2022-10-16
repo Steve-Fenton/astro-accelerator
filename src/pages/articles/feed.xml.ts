@@ -1,6 +1,7 @@
 // Generates an ATOM feed of recent posts
 import { SITE } from '@config';
 import { addSlashToAddress } from '@util/Url.astro';
+import { isListable } from '@util/PageTypeFilters.astro';
 
 async function getData() {
   //@ts-ignore
@@ -10,10 +11,13 @@ async function getData() {
   
   for (const path in allArticles) {
     const article: any = await allArticles[path]();
-    articles.push({
-      url: article.url,
-      frontmatter: article.frontmatter
-    });
+
+    if (isListable(article)) {
+      articles.push({
+        url: article.url,
+        frontmatter: article.frontmatter
+      });
+    }
   }
 
   articles =  articles.sort((a, b) => b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate));
