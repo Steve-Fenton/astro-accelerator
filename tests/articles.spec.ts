@@ -1,18 +1,21 @@
 import { test, expect } from '@playwright/test';
+import { Model } from './locate-navigation.js';
 
 test('Article paging', async ({ page }) => {
   await page.goto('https://astro.stevefenton.co.uk/articles/');
 
-  const prev = page.locator('.post-paging span', { hasText: 'Prev' });
+  const find = new Model(page);
+
+  const prev = find.pageSpan('Prev');
   await expect(prev).toBeVisible();
 
-  const p1 = page.locator('.post-paging a', { hasText: '1' });
+  const p1 = find.pageLink('1');
   await expect(p1).toHaveAttribute('aria-current', 'page');
 
-  const p2 = page.locator('.post-paging a', { hasText: '2' });
+  const p2 = find.pageLink('2');
   await expect(p2).toBeVisible();
 
-  const next = page.locator('.post-paging a', { hasText: 'Next' });
+  const next = find.pageLink('Next');
   await expect(next).toBeVisible();
 
   await next.click();

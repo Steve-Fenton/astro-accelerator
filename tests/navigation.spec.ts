@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import type { Page } from '@playwright/test';
+import { Model } from './locate-navigation.js';
 
 type Dictionary = { [key: string]: string };
 
@@ -32,6 +33,7 @@ type Dictionary = { [key: string]: string };
   test.describe.configure({ mode: 'serial' });
 
   let page: Page;
+  let find: any;
 
   test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
@@ -43,11 +45,12 @@ type Dictionary = { [key: string]: string };
 
   test('Navigate once', async () => {
     await page.goto('https://astro.stevefenton.co.uk/');
+    find = new Model(page);
   });
 
   Object.keys(expectedLinks).forEach(async key => {
     test(`Menu has ${key}`, async () => {
-      const link = page.locator('#site-nav a', { hasText: key });
+      const link = find.menuItem(key);
       await expect(link).toHaveAttribute('href', expectedLinks[key]);
     });
   });

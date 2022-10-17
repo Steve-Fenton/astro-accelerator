@@ -1,24 +1,24 @@
 import { test, expect } from '@playwright/test';
+import { Model } from './locate-navigation.js';
 
 test('Layout', async ({ page }) => {
   await page.goto('https://astro.stevefenton.co.uk/kitchen-sink/');
 
-  const title = page.locator('.site-title');
-  await expect(title).toHaveText('Astro Accelerator');
+  const find = new Model(page);
 
-  const skipLinks = page.locator('.skip-links');
+  const skipLinks = find.skipLinks();
   await expect(skipLinks).toHaveAttribute('aria-label', 'Skip Links');
 
-  const breadcrumbs = page.locator('.site-breadcrumbs');
+  const breadcrumbs = find.breadcrumbs();
   await expect(breadcrumbs).toHaveAttribute('aria-label', 'Breadcrumb');
 
-  const navigation = page.locator('.site-nav');
+  const navigation = find.menu();
   await expect(navigation).toHaveAttribute('aria-label', 'Site Navigation');
 
-  const toc = page.locator('.page-toc');
+  const toc = find.tableOfContents();
   await expect(toc).toHaveAttribute('aria-label', 'Table of contents');
 
-  const backToTop = page.locator('.site-footer nav');
+  const backToTop = find.backToTop();
   await expect(backToTop).toHaveAttribute('aria-label', 'Skip Back');
   
 });
