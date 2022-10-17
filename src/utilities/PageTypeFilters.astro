@@ -47,7 +47,6 @@ export const isSearch = (p: MarkdownInstance<Record<string, any>>) => {
 }
 
 export const isListable = (p: MarkdownInstance<Record<string, any>>) => {
-  console.log(typeof (p.frontmatter.pubDate));
   return p.url != null 
     && p.url != '' 
     && p.frontmatter.layout.includes('/Redirect.astro') !== true
