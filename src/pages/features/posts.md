@@ -1,6 +1,6 @@
 ---
 layout: src/layouts/Default.astro
-title: Articles
+title: Posts
 navOrder: 4000
 pubDate: 2022-09-23
 keywords: astro accelerator,articles,posts,list
@@ -10,7 +10,7 @@ bannerImage:
     alt: Dummy image
 ---
 
-In Astro Accelerator, articles (posts, articles, blogs, news, etc) require a couple of puzzle pieces. In the examples below, the term `articles` is used, but you can call this anything as long as you keep it consistent.
+In Astro Accelerator, posts (news, articles, blogs, etc) require a couple of puzzle pieces. In the examples below, the term `articles` is used below, but you can call this anything as long as you keep it consistent.
 
 1. `/pages/articles.md` (used for frontmatter)
 2. `/pages/articles/` folder
