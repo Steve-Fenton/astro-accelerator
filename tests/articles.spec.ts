@@ -14,4 +14,8 @@ test('Article paging', async ({ page }) => {
 
   const next = page.locator('.post-paging a', { hasText: 'Next' });
   await expect(next).toBeVisible();
+
+  await next.click();
+
+  await expect(page).toHaveURL(/.*articles\/2\//);
 });
