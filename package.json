@@ -5,11 +5,11 @@
   "private": true,
   "scripts": {
     "dev": "node ./src/utilities/img.js && astro dev",
-    "test": "npx playwright test",
-    "start": "node ./src/utilities/ && astro dev",
-    "build": "astro build",
     "preview": "node ./src/utilities/ && astro preview",
-    "astro": "astro"
+    "build": "astro build",
+    "astro": "astro",
+    "test": "npx playwright test",
+    "dts": "tsc ./tests/locate-content.js ./tests/locate-navigation.js ./tests/locate-search.js --allowJs --declaration --emitDeclarationOnly"
   },
   "dependencies": {
     "astro": "^1.2.5",
