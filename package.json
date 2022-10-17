@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "node ./src/utilities/img.js && astro dev",
+    "test": "npx playwright test",
     "start": "node ./src/utilities/ && astro dev",
     "build": "astro build",
     "preview": "node ./src/utilities/ && astro preview",
@@ -13,9 +14,12 @@
   "dependencies": {
     "astro": "^1.2.5",
     "imagemin": "^8.0.1",
-    "imagemin-webp": "^7.0.0",
     "imagemin-jpegtran": "^7.0.0",
     "imagemin-pngquant": "^9.0.2",
+    "imagemin-webp": "^7.0.0",
     "remark-directive": "^2.0.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.27.1"
   }
 }
