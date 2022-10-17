@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy and Test
 
 on:
   # Trigger the workflow every time you push to the `main` branch
