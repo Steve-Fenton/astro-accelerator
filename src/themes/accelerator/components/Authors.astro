@@ -33,8 +33,7 @@ const contributors = authorList.writers.slice(1);
     <span>{ _(t.post.written_by) }
       {author &&
         <a href={ addSlashToAddress(author.url) + '1/' } itemprop="author">{ author.frontmatter.title }</a>
-      }
-      {contributors.map((writer) => (
+      }{contributors.map((writer) => (
         <a href={ addSlashToAddress(writer.url) + '1/' } itemprop="contributor">{ writer.frontmatter.title }</a>
       ))}.
       <time datetime={ frontmatter.pubDate.toString() } itemprop="datePublished">
