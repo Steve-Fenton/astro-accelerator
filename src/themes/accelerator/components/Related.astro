@@ -9,7 +9,7 @@ import { getImageInfo } from '@plugin/custom-markdown.mjs'
 import { getPages } from '@util/PageQueries.astro';
 import { isListable, sortByPubDateDesc } from '@util/PageTypeFilters.astro';
 
-import Authors from '@components/Authors.astro';
+import AuthorsMini from '@components/AuthorsMini.astro';
 
 import { SITE } from '@config';
 
@@ -79,7 +79,7 @@ const articles = posts.map(p => {
         <h3>
           <a href={ addSlashToAddress(post.url) }>{ post.frontmatter.title }</a>
         </h3>
-        <Authors lang={ lang } frontmatter={ post.frontmatter as Frontmatter } addLink={ false } />
+        <AuthorsMini lang={ lang } frontmatter={ post.frontmatter as Frontmatter } />
       </div>
     </article>
   </li>

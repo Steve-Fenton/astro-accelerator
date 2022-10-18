@@ -34,7 +34,7 @@ const textDirection = frontmatter.dir ?? SITE.default.dir;
                     <header>
                         <h1>{ frontmatter.title ?? SITE.title }</h1>
                     </header>
-                    <Authors frontmatter={ frontmatter } lang={ lang } addLink={ true } />
+                    <Authors frontmatter={ frontmatter } lang={ lang } />
                     <div class="anim-show-parent">
                         <slot />
                     </div>

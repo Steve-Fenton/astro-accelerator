@@ -44,7 +44,7 @@ const hasTaxonomy = (categories.length + tags.length) > 0;
     {tags.length > 0 && (
     <div class="post-tag">
       <h2>{ _(t.articles.tag_title) }</h2>
-      <ul>
+      <ul itemprop="keywords">
       {tags.map(tag => 
         <li><a href={ addSlashToAddress(getTagLink(tag)) }>{ tag }</a></li>
       )}
@@ -56,7 +56,7 @@ const hasTaxonomy = (categories.length + tags.length) > 0;
       <h2>{ _(t.articles.category_title) }</h2>
       <ul>
       {categories.map(category => 
-        <li><a href={ addSlashToAddress(getCategoryLink(category)) }>{ category }</a></li>
+        <li><a href={ addSlashToAddress(getCategoryLink(category)) } itemprop="articleSection">{ category }</a></li>
       )}
       </ul>
     </div>

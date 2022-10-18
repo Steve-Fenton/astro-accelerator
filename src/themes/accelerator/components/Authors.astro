@@ -12,15 +12,17 @@ import { addSlashToAddress } from '@util/Url.astro';
 type Props = {
   lang: string;
   frontmatter: Frontmatter;
-  addLink: boolean;
 };
-const { lang, frontmatter, addLink } = Astro.props as Props;
+const { lang, frontmatter } = Astro.props as Props;
 
 // Language
 const _ = Lang(lang);
 
 // Logic
 const authorList = await getAuthorList(frontmatter);
+
+const author = authorList.writers.slice(0, 1)[0];
+const contributors = authorList.writers.slice(1);
 ---
 {authorList.writers.length > 0 && 
 <div class="post-meta">
@@ -29,15 +31,16 @@ const authorList = await getAuthorList(frontmatter);
   }
   <div class="author-info">
     <span>{ _(t.post.written_by) }
-      {addLink == true && authorList.writers.map((writer) => (
-        <a href={ addSlashToAddress(writer.url) + '1/' } itemprop="author">{ writer.frontmatter.title }</a>
-      ))}{addLink == false && authorList.writers.map((writer) => (
-        <span>{ writer.frontmatter.title }</span>
+      {author &&
+        <a href={ addSlashToAddress(author.url) + '1/' } itemprop="author">{ author.frontmatter.title }</a>
+      }
+      {contributors.map((writer) => (
+        <a href={ addSlashToAddress(writer.url) + '1/' } itemprop="contributor">{ writer.frontmatter.title }</a>
       ))}.
       <time datetime={ frontmatter.pubDate.toString() } itemprop="datePublished">
       { formatDate(frontmatter, lang, SITE) }
       </time>
-      {frontmatter.modDate && 
+      {frontmatter.modDate &&
       <time datetime={ frontmatter.modDate.toString() } itemprop="dateModified">
         { _(t.post.last_modified) } { formatModifiedDate(frontmatter, lang, SITE) }
       </time>

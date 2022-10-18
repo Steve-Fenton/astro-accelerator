@@ -33,9 +33,9 @@ const textDirection = frontmatter.dir ?? SITE.default.dir;
                 <article itemscope itemtype="https://schema.org/Article">
                     <TableOfContents frontmatter={ frontmatter } headings={ headings } lang={ lang } />
                     <header>
-                        <h1 itemprop="name">{ frontmatter.title ?? SITE.title }</h1>
+                        <h1 itemprop="name headline">{ frontmatter.title ?? SITE.title }</h1>
                     </header>
-                    <Authors frontmatter={ frontmatter } lang={ lang } addLink={ true } />
+                    <Authors frontmatter={ frontmatter } lang={ lang } />
                     <div class="anim-show-parent" itemprop="articleBody">
                         <slot />
                     </div>
