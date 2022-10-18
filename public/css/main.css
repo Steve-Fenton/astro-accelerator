@@ -676,7 +676,12 @@ form.site-search button {
     align-items: center;
 }
 
-.post-meta time {
+.post-meta time[itemprop="datePublished"] {
+    display: inline-block;
+}
+
+.post-meta time[itemprop="dateModified"] {
+    font-style: italic;
     display: block;
 }
 

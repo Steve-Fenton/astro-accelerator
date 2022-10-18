@@ -30,13 +30,13 @@ const textDirection = frontmatter.dir ?? SITE.default.dir;
         <div class="content-group">
             <Navigation lang={ lang } />
             <main id="site-main">
-                <article>
+                <article itemscope itemtype="https://schema.org/Article">
                     <TableOfContents frontmatter={ frontmatter } headings={ headings } lang={ lang } />
                     <header>
-                        <h1>{ frontmatter.title ?? SITE.title }</h1>
+                        <h1 itemprop="name">{ frontmatter.title ?? SITE.title }</h1>
                     </header>
                     <Authors frontmatter={ frontmatter } lang={ lang } addLink={ true } />
-                    <div class="anim-show-parent">
+                    <div class="anim-show-parent" itemprop="articleBody">
                         <slot />
                     </div>
                     <Taxonomy frontmatter={ frontmatter } lang={ lang } />

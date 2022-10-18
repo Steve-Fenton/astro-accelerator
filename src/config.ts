@@ -56,6 +56,7 @@ export type Frontmatter = {
 	keywords: string;
 	description: string;
 	pubDate: Date;
+	modDate: Date;
 	categories?: string[];
 	tags?: string[];
 	id?: string;

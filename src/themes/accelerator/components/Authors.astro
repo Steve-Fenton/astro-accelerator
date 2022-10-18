@@ -4,7 +4,7 @@ import { SITE, Frontmatter } from '@config';
 import t from '@util/language.json';
 import { Lang } from '@util/Languages.astro';
 
-import { formatDate } from '@util/DateFormat.astro';
+import { formatDate, formatModifiedDate } from '@util/DateFormat.astro';
 import { getAuthorList } from '@util/Authors.astro';
 import { addSlashToAddress } from '@util/Url.astro';
 
@@ -30,14 +30,18 @@ const authorList = await getAuthorList(frontmatter);
   <div class="author-info">
     <span>{ _(t.post.written_by) }
       {addLink == true && authorList.writers.map((writer) => (
-        <a href={ addSlashToAddress(writer.url) + '1/' }>{ writer.frontmatter.title }</a>
-      ))}
-      {addLink == false && authorList.writers.map((writer) => (
+        <a href={ addSlashToAddress(writer.url) + '1/' } itemprop="author">{ writer.frontmatter.title }</a>
+      ))}{addLink == false && authorList.writers.map((writer) => (
         <span>{ writer.frontmatter.title }</span>
-      ))}
-      <time class="dt-published" datetime={ frontmatter.pubDate.toString() } itemprop="datePublished">
+      ))}.
+      <time datetime={ frontmatter.pubDate.toString() } itemprop="datePublished">
       { formatDate(frontmatter, lang, SITE) }
       </time>
+      {frontmatter.modDate && 
+      <time datetime={ frontmatter.modDate.toString() } itemprop="dateModified">
+        { _(t.post.last_modified) } { formatModifiedDate(frontmatter, lang, SITE) }
+      </time>
+      }
     </span>
   </div>
 </div>

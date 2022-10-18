@@ -12,4 +12,14 @@ export const formatDate = (frontmatter: FrontMatter, lang: string, site: Site) =
   
   return '';
 }
+
+export const formatModifiedDate = (frontmatter: FrontMatter, lang: string, site: Site) => {
+  const date = frontmatter.modDate ?? '';
+
+  if (date) {
+    return new Date(date).toLocaleDateString(lang, site.dateOptions);
+  }
+  
+  return '';
+}
 ---

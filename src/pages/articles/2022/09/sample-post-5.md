@@ -3,6 +3,7 @@ layout: src/layouts/Default.astro
 title: Sample Post 5
 navMenu: false
 pubDate: 2022-09-05
+modDate: 2022-10-18
 keywords: sample,post
 description: A sample post
 bannerImage:

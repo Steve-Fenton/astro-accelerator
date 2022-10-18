@@ -59,6 +59,9 @@
     "post": {
         "written_by": {
             "en": "Written by"
+        },
+        "last_modified": {
+            "en": "Revised"
         }
     },
     "author": {
