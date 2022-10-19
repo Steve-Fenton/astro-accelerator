@@ -3,6 +3,7 @@ import type { Frontmatter } from '@config';
 
 import t from '@util/language.json';
 import { Lang } from '@util/Languages.astro';
+import { getTaxonomy } from '@util/PageQueries.astro';
 
 import { SITE } from '@config';
 
@@ -18,11 +19,20 @@ const { lang } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-// -
+const taxonomy = await getTaxonomy();
+
+const cats = Object.keys(taxonomy.categories);
+const tags = Object.keys(taxonomy.tags);
 ---
 <footer class="site-footer" id="site-footer">
   <p>{ _(t.footer.copyright) } &copy; { new Date().getFullYear() } { SITE.owner }</p>
   <nav aria-label={ _(t.aria.back_to_top) }>
     <a href="#site-top">{ _(t.skiplinks.skip_to_top) }</a>
   </nav>
+  {cats.length > 0 && cats.map((c) =>
+  <span>{ c }</span>
+  )}
+  {tags.length > 0 && tags.map((t) =>
+  <span>{ t }</span>
+  )}
 </footer>

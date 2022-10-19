@@ -43,7 +43,7 @@ export async function getAuthorInfo(slug: string) {
     let authorInfo = await getItem(cacheKey);
 
     if (authorInfo == null) {
-        const allPages = await Astro.glob('../pages/**/*.md');
+        const allPages = await getPages();
         const author = allPages
             .filter(isAuthor)
             .filter(x => x.url?.split('/')[2] == slug)[0];
@@ -57,5 +57,39 @@ export async function getAuthorInfo(slug: string) {
     }
 
     return authorInfo;
+}
+
+export async function getTaxonomy() {
+    const cacheKey = 'Global__taxonomy';
+
+    type Taxonomy = { 
+        tags: { [key: string]: number }, 
+        categories: { [key: string]: number }
+    };
+    
+    let taxonomy: Taxonomy = await getItem(cacheKey);
+
+    if (taxonomy == null) {
+        const allPages = await getPages();
+
+        taxonomy = {
+            tags: {},
+            categories: {}
+        };
+
+        allPages.forEach((p) => {
+            p.frontmatter.tags && p.frontmatter.tags.forEach(t => {
+                taxonomy.tags[t] = (taxonomy.tags[t] ?? 0) + 1;
+            });
+
+            p.frontmatter.categories && p.frontmatter.categories.forEach(c => {
+                taxonomy.categories[c] = (taxonomy.categories[c] ?? 0) + 1;
+            });
+        });
+
+        await setItem(cacheKey, taxonomy);
+    }
+
+    return taxonomy;
 }
 ---
