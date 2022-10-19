@@ -520,6 +520,11 @@ main ul ol, main ul ul, main ol ol, main ol ul {
     background-color: var(--aft-head);
 }
 
+.site-footer a {
+    display: block;
+    padding: 0.5rem 1rem;
+}
+
 /* Overlay (Mobile Navigation, Search) */
 
 .overlay {
@@ -726,6 +731,13 @@ form.site-search button {
     color: var(--aft);
 }
 
+/* Taxonomy */
+
+.taxonomy ul {
+    list-style: none;
+    margin: var(--paragraph-margin) 0;
+}
+
 /* Authors */
 
 .author-image {
@@ -879,6 +891,12 @@ figure:focus .magnify-icon {
 
 .simple-grid > * > * {
     width: 100%;
+}
+
+@media (max-width: 680px) {
+    .simple-grid {
+        display: block;
+    }
 }
 
 /* Animation */

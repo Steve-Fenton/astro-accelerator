@@ -19,20 +19,44 @@ const { lang } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-// const taxonomy = await getTaxonomy();
+const category = _(t.articles.category) ?? 'category';
+const tag = _(t.articles.tag) ?? 'tag';
 
-// const cats = Object.keys(taxonomy.categories);
-// const tags = Object.keys(taxonomy.tags);
+const categoryLink = `/${category}/`;
+const tagLink = `/${tag}/`;
+
+function getCategoryLink(category: string) {
+  return categoryLink + category.toLowerCase() + '/1/';
+}
+
+function getTagLink(tag: string) {
+  return tagLink + tag.toLowerCase() + '/1/';
+}
+
+const taxonomy = await getTaxonomy();
+
+const cats = Object.keys(taxonomy.categories);
+const tags = Object.keys(taxonomy.tags);
 ---
 <footer class="site-footer" id="site-footer">
   <p>{ _(t.footer.copyright) } &copy; { new Date().getFullYear() } { SITE.owner }</p>
   <nav aria-label={ _(t.aria.back_to_top) }>
     <a href="#site-top">{ _(t.skiplinks.skip_to_top) }</a>
   </nav>
-  <!-- {cats.length > 0 && cats.map((c) =>
-  <span>{ c }</span>
-  )}
-  {tags.length > 0 && tags.map((t) =>
-  <span>{ t }</span>
-  )} -->
+  <div class="taxonomy simple-grid">
+    {cats.length > 0 &&
+    <ul>
+    {cats.map(c => 
+      <li><a href={ getCategoryLink(c) }>{ c }</a></li>
+    )}
+    </ul>
+    }
+    {tags.length > 0 &&
+      <ul>
+      {tags.map(t => 
+        <li><a href={ getTagLink(t) }>{ t }</a></li>
+      )}
+      </ul>
+      }
+  </div>
 </footer>
