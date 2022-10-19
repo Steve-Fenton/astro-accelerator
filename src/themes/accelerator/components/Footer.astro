@@ -34,29 +34,32 @@ function getTagLink(tag: string) {
 }
 
 const taxonomy = await getTaxonomy();
-
-const cats = Object.keys(taxonomy.categories);
-const tags = Object.keys(taxonomy.tags);
 ---
 <footer class="site-footer" id="site-footer">
+  <div class="taxonomy simple-grid">
+    {taxonomy.categories.length > 0 &&
+    <div>
+      <h2>{ _(t.articles.category_title) }</h2>
+      <ul>
+      {taxonomy.categories.map(c => 
+        <li><a href={ getCategoryLink(c.title) }>{ c.title }</a></li>
+      )}
+      </ul>
+    </div>
+    }
+    {taxonomy.topTags.length > 0 &&
+    <div>
+      <h2>{ _(t.articles.tag_title) }</h2>
+      <ul>
+      {taxonomy.topTags.map(t => 
+        <li><a href={ getTagLink(t.title) }>{ t.title }</a></li>
+      )}
+      </ul>
+    </div>
+    }
+  </div>
   <p>{ _(t.footer.copyright) } &copy; { new Date().getFullYear() } { SITE.owner }</p>
   <nav aria-label={ _(t.aria.back_to_top) }>
     <a href="#site-top">{ _(t.skiplinks.skip_to_top) }</a>
   </nav>
-  <div class="taxonomy simple-grid">
-    {cats.length > 0 &&
-    <ul>
-    {cats.map(c => 
-      <li><a href={ getCategoryLink(c) }>{ c }</a></li>
-    )}
-    </ul>
-    }
-    {tags.length > 0 &&
-      <ul>
-      {tags.map(t => 
-        <li><a href={ getTagLink(t) }>{ t }</a></li>
-      )}
-      </ul>
-      }
-  </div>
 </footer>

@@ -733,6 +733,10 @@ form.site-search button {
 
 /* Taxonomy */
 
+.taxonomy h2 {
+    margin: var(--paragraph-margin) auto;
+}
+
 .taxonomy ul {
     list-style: none;
     margin: var(--paragraph-margin) 0;
