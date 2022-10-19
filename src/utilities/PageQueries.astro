@@ -111,7 +111,7 @@ export async function getTaxonomy() {
         // Get a list of "top tags" by usage count
         const length = Math.min(taxonomy.categories.length, taxonomy.tags.length);
         taxonomy.topTags = taxonomy.tags
-            .sort((a, b) => a.count - b.count)
+            .sort((a, b) => b.count - a.count)
             .slice(0, length)
             .sort((a, b) => {
                 if ( a.title < b.title ){
