@@ -43,7 +43,7 @@ export async function getAuthorInfo(slug: string) {
     let authorInfo = await getItem(cacheKey);
 
     if (authorInfo == null) {
-        const allPages = await getPages();
+        const allPages = await Astro.glob("../pages/**/*.md");
         const author = allPages
             .filter(isAuthor)
             .filter(x => x.url?.split('/')[2] == slug)[0];
