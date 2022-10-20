@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "img": "node ./src/utilities/img.js",
     "dev": "node ./src/utilities/img.js && astro dev",
     "preview": "node ./src/utilities/ && astro preview",
     "build": "astro build",
@@ -12,11 +13,8 @@
     "dts": "tsc ./tests/locate-content.js ./tests/locate-navigation.js ./tests/locate-search.js --allowJs --declaration --emitDeclarationOnly"
   },
   "dependencies": {
+    "@squoosh/lib": "^0.4.0",
     "astro": "^1.5.0",
-    "imagemin": "^8.0.1",
-    "imagemin-jpegtran": "^7.0.0",
-    "imagemin-pngquant": "^9.0.2",
-    "imagemin-webp": "^7.0.0",
     "remark-directive": "^2.0.1"
   },
   "devDependencies": {
