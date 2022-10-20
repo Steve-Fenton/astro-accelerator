@@ -4,7 +4,7 @@ import type { NavPage } from './NavigationTypes.astro';
 
 import { addSlashToAddress } from './Url.astro';
 
-export const mapNavPage = (page: MarkdownInstance<Record<string, any>>) => {
+export function mapNavPage (page: MarkdownInstance<Record<string, any>>) {
   let url = page.url == null || (page.url ?? '').length == 0 
     ? '/'
     : page.url;
@@ -30,7 +30,7 @@ export const mapNavPage = (page: MarkdownInstance<Record<string, any>>) => {
   return entry;
 };
 
-export const setCurrentPage = (pages: NavPage[], currentUrl: URL) => {
+export function setCurrentPage (pages: NavPage[], currentUrl: URL) {
   pages.forEach(p => {
     p.isOpen = currentUrl.pathname.startsWith(p.url);
     p.ariaCurrent = p.url == currentUrl.pathname ? 'page': false;
@@ -38,7 +38,7 @@ export const setCurrentPage = (pages: NavPage[], currentUrl: URL) => {
   });
 }
 
-export const popMatchingPage = (allPages: MarkdownInstance<Record<string, any>>[], search: string) => {
+export function popMatchingPage (allPages: MarkdownInstance<Record<string, any>>[], search: string) {
   const numberToRemove = 1;
   let indexToRemove = -1;
   let match = null;

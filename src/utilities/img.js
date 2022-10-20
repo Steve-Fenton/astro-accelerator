@@ -16,13 +16,13 @@ console.log(imageDirectory);
 
 const filesToProcess = [];
 
-function getDestinationFolder(source, s) {
+function getDestinationFolder (source, s) {
     let destination = path.join(workingDirectory, outputPath, s.toString(), source);
     destination = destination.replace(path.basename(destination), '');
     return destination;
 }
 
-async function recurseFiles(directory) {
+async function recurseFiles (directory) {
     const f = await fs.promises.readdir(path.join(imageDirectory, directory), { withFileTypes: true });
 
     for (const file of f) {

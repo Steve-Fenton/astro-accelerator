@@ -37,7 +37,7 @@ export async function getTopLevelPages (filter?: PagePredicate | null): Promise<
     return allPages.filter(filter);
 }
 
-export async function getAuthorInfo(slug: string) {
+export async function getAuthorInfo (slug: string) {
     const cacheKey = 'Global__author_info';
     
     let authorInfo = await getItem(cacheKey);
@@ -57,75 +57,5 @@ export async function getAuthorInfo(slug: string) {
     }
 
     return authorInfo;
-}
-
-export async function getTaxonomy() {
-    const cacheKey = 'Global__taxonomy';
-
-    type TaxonomyEntry = {
-        title: string;
-        count: number;
-    };
-
-    type Taxonomy = { 
-        tags: TaxonomyEntry[];
-        topTags: TaxonomyEntry[];
-        categories: TaxonomyEntry[];
-    };
-    
-    let taxonomy: Taxonomy = await getItem(cacheKey);
-
-    if (taxonomy == null) {
-        const allPages = await getPages();
-        const tags: { [key: string]: number } = {};
-        const cats: { [key: string]: number } = {};
-
-        // Get taxonomy and counts
-        allPages.forEach((p) => {
-            p.frontmatter.tags && p.frontmatter.tags.forEach(t => {
-                tags[t] = (tags[t] ?? 0) + 1;
-            });
-
-            p.frontmatter.categories && p.frontmatter.categories.forEach(c => {
-                cats[c] = (cats[c] ?? 0) + 1;
-            });
-        });
-
-        // Map into the taxonomy
-        taxonomy = {
-            tags: Object.keys(tags).sort().map(x => {
-                return {
-                    title: x,
-                    count: tags[x]
-                };
-            }),
-            topTags: [],
-            categories: Object.keys(cats).sort().map(x => {
-                return {
-                    title: x,
-                    count: cats[x]
-                };
-            })
-        };
-
-        // Get a list of "top tags" by usage count
-        const length = Math.min(taxonomy.categories.length, taxonomy.tags.length);
-        taxonomy.topTags = taxonomy.tags
-            .sort((a, b) => b.count - a.count)
-            .slice(0, length)
-            .sort((a, b) => {
-                if ( a.title < b.title ){
-                    return -1;
-                }
-                if ( a.title > b.title ){
-                    return 1;
-                }
-                return 0;
-             });
-
-        await setItem(cacheKey, taxonomy);
-    }
-
-    return taxonomy;
 }
 ---

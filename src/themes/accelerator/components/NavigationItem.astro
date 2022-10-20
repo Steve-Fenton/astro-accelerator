@@ -29,7 +29,7 @@ const _ = Lang(lang);
     <summary><span>{ page.section }</span></summary>
     <ul>
       { page.children.sort((a, b) => a.order - b.order).map((page) => (
-          <Astro.self lang={lang} page={page} />
+          <Astro.self lang={ lang } page={ page } />
       ))}
     </ul>
   </details>

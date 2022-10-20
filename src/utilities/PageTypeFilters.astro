@@ -1,7 +1,7 @@
 ---
 import type { MarkdownInstance } from 'astro';
 
-export const showInSitemap = (p: MarkdownInstance<Record<string, any>>) => {
+export function showInSitemap (p: MarkdownInstance<Record<string, any>>) {
   // User setting to remove from sitemap
   if (typeof p.frontmatter.navSitemap !== 'undefined'
     && p.frontmatter.navSitemap == false) {
@@ -11,7 +11,7 @@ export const showInSitemap = (p: MarkdownInstance<Record<string, any>>) => {
   return isListable(p);
 }
 
-export const showInSearch = (p: MarkdownInstance<Record<string, any>>) => {
+export function showInSearch (p: MarkdownInstance<Record<string, any>>) {
   // User setting to remove from search
   if (typeof p.frontmatter.navSearch !== 'undefined'
     && p.frontmatter.navSearch == false) {
@@ -21,7 +21,7 @@ export const showInSearch = (p: MarkdownInstance<Record<string, any>>) => {
   return isListable(p);
 }
 
-export const showInMenu = (p: MarkdownInstance<Record<string, any>>) => {
+export function showInMenu (p: MarkdownInstance<Record<string, any>>) {
   if (typeof p.frontmatter.navMenu !== 'undefined'
     && p.frontmatter.navMenu == false) {
     return false;
@@ -30,7 +30,7 @@ export const showInMenu = (p: MarkdownInstance<Record<string, any>>) => {
   return true;
 }
 
-export const isAuthor = (p: MarkdownInstance<Record<string, any>>) => {
+export function isAuthor (p: MarkdownInstance<Record<string, any>>) {
   if (p?.frontmatter?.layout?.indexOf('/Author.astro') > -1) {
     return true;
   }
@@ -38,7 +38,7 @@ export const isAuthor = (p: MarkdownInstance<Record<string, any>>) => {
   return false;
 }
 
-export const isSearch = (p: MarkdownInstance<Record<string, any>>) => {
+export function isSearch (p: MarkdownInstance<Record<string, any>>) {
   if (p?.frontmatter?.layout?.indexOf('/Search.astro') > -1) {
     return true;
   }
@@ -46,18 +46,18 @@ export const isSearch = (p: MarkdownInstance<Record<string, any>>) => {
   return false;
 }
 
-export const isListable = (p: MarkdownInstance<Record<string, any>>) => {
+export function isListable (p: MarkdownInstance<Record<string, any>>) {
   return p.url != null 
     && p.url != '' 
     && p.frontmatter.layout.includes('/Redirect.astro') !== true
     && Date.parse(p.frontmatter.pubDate) < Date.now()
 }
 
-export const sortByPubDate = (a: MarkdownInstance<Record<string, any>>, b: MarkdownInstance<Record<string, any>>) => {
+export function sortByPubDate (a: MarkdownInstance<Record<string, any>>, b: MarkdownInstance<Record<string, any>>) {
   return b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate);
 }
 
-export const sortByPubDateDesc = (a: MarkdownInstance<Record<string, any>>, b: MarkdownInstance<Record<string, any>>) => {
+export function sortByPubDateDesc (a: MarkdownInstance<Record<string, any>>, b: MarkdownInstance<Record<string, any>>) {
   return b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate);
 }
 ---

@@ -18,7 +18,7 @@ const canonicalURL =  addSlashToUrl(new URL(Astro.url.pathname, Astro.site));
 ---
 <head>
   <meta charset="utf-8" />
-  <title>{ frontmatter.title ? `${frontmatter.title} | ${SITE.title}` : SITE.title }</title>
+  <title>{ frontmatter.title ? `${ frontmatter.title } | ${ SITE.title }` : SITE.title }</title>
   <meta name="robots" content="max-image-preview:large">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="keywords" content={ frontmatter.keywords }>

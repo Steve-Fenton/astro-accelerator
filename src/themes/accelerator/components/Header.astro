@@ -5,9 +5,9 @@ import t from '@util/language.json';
 import { Lang } from '@util/Languages.astro';
 
 import { SITE } from '@config';
+import { getPages } from '@util/PageQueries.astro';
 import { addSlashToAddress } from '@util/Url.astro';
 import { isSearch } from '@util/PageTypeFilters.astro';
-import { getPages } from '@util/PageQueries.astro';
 
 // Properties
 type Props = {

@@ -4,7 +4,7 @@ import { mapNavPage, setCurrentPage, popMatchingPage } from '@util/NavPage.astro
 
 import type { NavPage } from '@util/NavigationTypes.astro';
 
-export async function getBreadcrumbs(currentUrl: URL) {
+export async function getBreadcrumbs (currentUrl: URL) {
     const allPages = await getPages();
 
     const pathParts = currentUrl.pathname.split('/');

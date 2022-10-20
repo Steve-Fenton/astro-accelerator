@@ -3,7 +3,7 @@ import type { Frontmatter } from '@config';
 
 import t from '@util/language.json';
 import { Lang } from '@util/Languages.astro';
-import { getTaxonomy } from '@util/PageQueries.astro';
+import { getTaxonomy } from '@util/Taxonomy.astro';
 
 import { SITE } from '@config';
 
@@ -36,7 +36,7 @@ function getTagLink(tag: string) {
 const taxonomy = await getTaxonomy();
 ---
 <footer class="site-footer" id="site-footer">
-  <div class="taxonomy simple-grid">
+  <div class="taxonomy">
     {taxonomy.categories.length > 0 &&
     <div>
       <h2>{ _(t.articles.category_title) }</h2>
