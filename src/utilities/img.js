@@ -12,13 +12,13 @@ console.log(imageDirectory);
 
 const filesToProcess = [];
 
-function getDestinationFolder (source, s) {
+function getDestinationFolder(source, s) {
     let destination = path.join(workingDirectory, outputPath, s.toString(), source);
     destination = destination.replace(path.parse(destination).ext, '');
     return destination;
 }
 
-async function recurseFiles (directory) {
+async function recurseFiles(directory) {
     const f = await fs.promises.readdir(path.join(imageDirectory, directory), { withFileTypes: true });
 
     for (const file of f) {
@@ -40,19 +40,19 @@ async function recurseFiles (directory) {
                         path: sourcePath,
                         webP: webP
                     };
-        
+
                     const fullPath = path.join(imageDirectory, info.path);
                     const fullDestination = path.join(workingDirectory, outputPath, 'x', info.path);
                     const modified = fs.statSync(fullPath).mtime;
-        
+
                     const destinationModified = fs.existsSync(fullDestination)
                         ? fs.statSync(fullDestination).mtime
                         : new Date(0);
-        
+
                     if (destinationModified < modified) {
                         filesToProcess.push(info);
                     }
-                break;
+                    break;
             }
         }
     }
@@ -75,14 +75,15 @@ for (const file of filesToProcess) {
     console.log(file.path);
     const source = path.join(imageDirectory, file.path);
     const destination = getDestinationFolder(file.path, 'x');
-    
+
     const ext = path.parse(source).ext;
 
-   let image;
-   let rawEncodedImage;
-    
-   switch (ext) {
-       case '.png':
+    let image;
+    let rawEncodedImage;
+
+    // Create optimised fallback image
+    switch (ext) {
+        case '.png':
             image = await processImage(source, { oxipng: {} });
             rawEncodedImage = (await image.encodedWith.oxipng).binary;
             await fs.promises.writeFile(destination + '.png', rawEncodedImage);
@@ -100,12 +101,13 @@ for (const file of filesToProcess) {
             break;
     }
 
+    // Create resized images
     for (const key in size) {
-        const resizeDestination =  getDestinationFolder(file.path, size[key]);
+        const resizeDestination = getDestinationFolder(file.path, size[key]);
 
         const imgFile = await fs.promises.readFile(source);
         const image = imagePool.ingestImage(imgFile);
-        
+
         const preprocessOptions = {
             resize: {
                 width: size[key]
