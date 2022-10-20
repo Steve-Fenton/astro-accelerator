@@ -18,16 +18,19 @@ const canonicalURL =  addSlashToUrl(new URL(Astro.url.pathname, Astro.site));
 ---
 <head>
   <meta charset="utf-8" />
-  <title>
-    {frontmatter.title ? `${frontmatter.title} | ${SITE.title}` : SITE.title}
-  </title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content={ frontmatter.description }>
-  <meta name="keywords" content={ frontmatter.keywords }>
+  <title>{ frontmatter.title ? `${frontmatter.title} | ${SITE.title}` : SITE.title }</title>
+  <meta name="robots" content="max-image-preview:large">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content={ frontmatter.keywords }>
+  <meta name="description" content={ frontmatter.description }>
   <meta name="theme-color" content={ SITE.themeColor } />
-  <meta name="msapplication-navbutton-color" content={ SITE.themeColor } />
-  <meta name="apple-mobile-web-app-status-bar-style" content={ SITE.themeColor } />
+  <link rel="stylesheet" href="/css/vars.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="canonical" href={ canonicalURL } />
+  <link rel="alternate" type="application/atom+xml" title={ SITE.title } href={ SITE.feedUrl } />
+  <link rel="alternate" href="/sitemap.xml" type="application/rss+xml" />
+  <link rel="shortcut icon" href="/icons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={ canonicalURL } />
   <meta property="og:title" content={ frontmatter.title } />
@@ -39,12 +42,5 @@ const canonicalURL =  addSlashToUrl(new URL(Astro.url.pathname, Astro.site));
   <meta name="twitter:description" content={ frontmatter.description }>
   <meta name="twitter:image" content={ canonicalImageSrc }>
   <meta name="twitter:image:alt" content={ imageAlt }>
-  <link rel="canonical" href={ canonicalURL } />
-  <link rel="alternate" type="application/atom+xml" title={ SITE.title } href={ SITE.feedUrl } />
-  <link rel="alternate" href="/sitemap.xml" type="application/rss+xml" />
-  <link rel="shortcut icon" href="/icons/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-  <link rel="stylesheet" href="/css/vars.css" />
-  <link rel="stylesheet" href="/css/main.css" />
   <Fragment set:html={ HEADER_SCRIPTS }></Fragment>
 </head>
