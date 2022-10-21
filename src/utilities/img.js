@@ -2,7 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import { size } from '../plugins/image-size.mjs';
 import { ImagePool } from '@squoosh/lib';
-import { deepStrictEqual } from 'assert';
 
 const workingDirectory = process.cwd();
 const imagePath = path.join('public', 'img');
@@ -21,6 +20,7 @@ function getDestinationFilePathless(source, s) {
 
 async function createDestinationFolder(destinationFile) {
     const file = path.parse(destinationFile + '.txt');
+    console.log(file.dir);
     await fs.promises.mkdir(file.dir, { recursive: true });
 }
 
@@ -68,9 +68,7 @@ await recurseFiles('');
 
 console.log(`Found ${filesToProcess.length} files to process`);
 
-const imagePool = new ImagePool(1);
-
-async function processImage(src, options) {
+async function processImage(imagePool, src, options) {
     const file = await fs.promises.readFile(src);
     const image = imagePool.ingestImage(file);
     await image.encode(options);
@@ -89,27 +87,30 @@ for (const file of filesToProcess) {
     let rawEncodedImage;
 
     // Create optimised fallback image
+    const imagePool = new ImagePool(1);
     switch (ext) {
         case '.png':
-            image = await processImage(source, { oxipng: {} });
+            image = await processImage(imagePool, source, { oxipng: {} });
             rawEncodedImage = (await image.encodedWith.oxipng).binary;
             await fs.promises.writeFile(destination + '.png', rawEncodedImage);
             break;
         case '.jpg':
         case '.jpeg':
-            image = await processImage(source, { mozjpeg: {} });
+            image = await processImage(imagePool, source, { mozjpeg: {} });
             rawEncodedImage = (await image.encodedWith.mozjpeg).binary;
             await fs.promises.writeFile(destination + '.jpg', rawEncodedImage);
             break;
         case '.webp':
-            image = await processImage(source, { webp: {} });
+            image = await processImage(imagePool, source, { webp: {} });
             rawEncodedImage = (await image.encodedWith.webp).binary;
             await fs.promises.writeFile(destination + '.webp', rawEncodedImage);
             break;
     }
+    await imagePool.close();
 
     // Create resized images
     for (const key in size) {
+        const imagePool = new ImagePool(1);
         const resizeDestination = getDestinationFilePathless(file.path, size[key]);
         await createDestinationFolder(resizeDestination);
 
@@ -127,9 +128,9 @@ for (const file of filesToProcess) {
 
         rawEncodedImage = (await image.encodedWith.webp).binary;
         await fs.promises.writeFile(resizeDestination + '.webp', rawEncodedImage);
+
+        await imagePool.close();
     }
 }
-
-await imagePool.close();
 
 console.log(`Finished`);
