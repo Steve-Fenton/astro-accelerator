@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { size } from '../plugins/image-size.mjs';
 import { ImagePool } from '@squoosh/lib';
+import { deepStrictEqual } from 'assert';
 
 const workingDirectory = process.cwd();
 const imagePath = path.join('public', 'img');
@@ -12,10 +13,15 @@ console.log(imageDirectory);
 
 const filesToProcess = [];
 
-function getDestinationFolder(source, s) {
+function getDestinationFilePathless(source, s) {
     let destination = path.join(workingDirectory, outputPath, s.toString(), source);
     destination = destination.replace(path.parse(destination).ext, '');
     return destination;
+}
+
+async function createDestinationFolder(destinationFile) {
+    const file = path.parse(destinationFile + '.txt');
+    await fs.promises.mkdir(file.dir, { recursive: true });
 }
 
 async function recurseFiles(directory) {
@@ -74,7 +80,8 @@ async function processImage(src, options) {
 for (const file of filesToProcess) {
     console.log(file.path);
     const source = path.join(imageDirectory, file.path);
-    const destination = getDestinationFolder(file.path, 'x');
+    const destination = getDestinationFilePathless(file.path, 'x');
+    await createDestinationFolder(destination);
 
     const ext = path.parse(source).ext;
 
@@ -103,7 +110,8 @@ for (const file of filesToProcess) {
 
     // Create resized images
     for (const key in size) {
-        const resizeDestination = getDestinationFolder(file.path, size[key]);
+        const resizeDestination = getDestinationFilePathless(file.path, size[key]);
+        await createDestinationFolder(resizeDestination);
 
         const imgFile = await fs.promises.readFile(source);
         const image = imagePool.ingestImage(imgFile);
