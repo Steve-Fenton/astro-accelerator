@@ -36,7 +36,7 @@ const textDirection = frontmatter.dir ?? SITE.default.dir;
                         <h1 itemprop="name headline">{ frontmatter.title ?? SITE.title }</h1>
                     </header>
                     <Authors frontmatter={ frontmatter } lang={ lang } />
-                    <div class="anim-show-parent" itemprop="articleBody">
+                    <div class="page-content anim-show-parent" itemprop="articleBody">
                         <slot />
                     </div>
                     <Taxonomy frontmatter={ frontmatter } lang={ lang } />
