@@ -60,4 +60,10 @@ export function sortByPubDate (a: MarkdownInstance<Record<string, any>>, b: Mark
 export function sortByPubDateDesc (a: MarkdownInstance<Record<string, any>>, b: MarkdownInstance<Record<string, any>>) {
   return b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate);
 }
+
+export function sortByModDate (a: MarkdownInstance<Record<string, any>>, b: MarkdownInstance<Record<string, any>>) {
+  const dateA = a.frontmatter.modDate || a.frontmatter.pubDate || '1970-01-01';
+  const dateB = b.frontmatter.modDate || b.frontmatter.pubDate || '1970-01-01';
+  return dateA.localeCompare(dateB);
+}
 ---
