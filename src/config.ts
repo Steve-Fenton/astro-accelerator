@@ -1,5 +1,6 @@
 export const SITE = {
 	url: 'https://astro.stevefenton.co.uk',
+	subfolder: '/',
 	feedUrl: '/articles/feed.xml',
 	title: 'Astro Accelerator',
 	description: 'An Astro quick start project.',
@@ -56,7 +57,7 @@ export type Frontmatter = {
 	keywords: string;
 	description: string;
 	pubDate: Date;
-	modDate: Date;
+	modDate?: Date;
 	categories?: string[];
 	tags?: string[];
 	id?: string;

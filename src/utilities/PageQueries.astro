@@ -1,5 +1,6 @@
 ---
 import type { MarkdownInstance } from "astro";
+import { SITE } from '../config';
 import { getItem, setItem } from '@util/Cache.astro';
 import { isAuthor } from '@util/PageTypeFilters.astro';
 
@@ -7,7 +8,7 @@ export type PagePredicate = (value: MarkdownInstance<Record<string, any>>, index
 
 export async function getPages (filter?: PagePredicate | null): Promise<MarkdownInstance<Record<string,any>>[]> {
     const key = 'PageQueries__getPages';
-    let allPages = await getItem(key);
+    let allPages: MarkdownInstance<Record<string,any>>[] = await getItem(key);
 
     if (allPages == null) {
         allPages = await Astro.glob("../pages/**/*.md");
@@ -26,7 +27,17 @@ export async function getTopLevelPages (filter?: PagePredicate | null): Promise<
     let allPages = await getItem(key);
 
     if (allPages == null) {
-        allPages = await Astro.glob("../pages/*.md");
+        allPages = await getPages();
+
+        const isRoot = SITE.subfolder.length == 1;
+        const expectedDepth = isRoot ? 1 : 2;
+        allPages = allPages.filter(p => {
+            const depth = (p.url ?? '/').split('/').length - 1;
+            console.log(p.file, depth);
+            return depth == expectedDepth
+                || depth == (expectedDepth - 1) && p.file.includes('/src/pages/index.md');
+        });
+
         await setItem(key, allPages);
     }
 
