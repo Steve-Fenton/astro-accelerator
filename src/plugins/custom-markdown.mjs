@@ -38,7 +38,7 @@ export function getImageInfo(src, className, sizes) {
   let uri = src;
   uri = uri.replace(/.jpg|.jpeg|.png/, '.webp');
 
-  const imgFallback = src.replace(/^\/img\//, '/i/x/');
+  const imgFallback = src.replace(/\/img\//, '/i/x/');
 
   const imgSmall = getDestination(uri, size.small);
   const imgMedium = getDestination(uri, size.medium);
