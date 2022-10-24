@@ -20,7 +20,7 @@ JPEG and PNG images in the `/public/img/` folder will be re-saved with compressi
 
 They will also have WEBP alternatives created at different sizes, for use in responsive images.
 
-You can run this manually using  `npm run img`. Only changed images will be processed.
+You can run this manually using `npm run img`. Only changed images will be processed.
 
 By default, this is part of the `npm run dev` script in `package.json` for Astro Accelerator:
 
@@ -37,17 +37,17 @@ As part of the conversion, a set of sizes will be created to use with responsive
 
 You shouldn't create a `/public/i/` folder as this is reserved for image automation.
 
-You can reference these images directly in your markdown files, or take advantage of automatic responsive images (see below).
+You can reference these images directly in your markdown files or take advantage of automatic responsive images (see below).
 
 :::div{.note}
-In a later release, the format might be changed from WEBP to a newer format (for example, AVIF), but you can retain existing images, or update in-content references to the newer format and delete the old generated sets. If you use the automated `:img` markdown helper for images, you won't need to worry about this.
+In a later release, the format might be changed from WEBP to a newer format (for example, AVIF). You can retain existing images or update in-content references to the newer format and delete the old generated sets. If you use the automated `:img` markdown helper for images, you won't need to worry about this.
 :::
 
 ## Responsive Images
 
 If you use the markdown extension for images, responsive source sets and sizes will be added for you.
 
-The responsive source sets will load an optimal WEBP image based on the users device size.
+The responsive source sets will load an optimal WEBP image based on the user's device size.
 
 ```markdown
 :img{
@@ -61,7 +61,7 @@ Notes:
 - It is optional but best practice to specify a **width** and **height**
 - It is optional but best practice to add meaningful **alt**-text
 
-When this tag is processed, it will rendered HTML *similar* to the following (the implementation may change in minor ways).
+When this tag is processed, it will create HTML *similar* to the following (the implementation may change in minor ways).
 
 ```html
 <img
