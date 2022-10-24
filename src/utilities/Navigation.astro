@@ -2,6 +2,7 @@
 // Data file `navigation.ts`
 import { menu } from '../navigation';
 
+import { SITE } from '../config';
 import { getItem, setItem } from '@util/Cache.astro';
 import { showInMenu } from '@util/PageTypeFilters.astro';
 import { mapNavPage, setCurrentPage } from '@util/NavPage.astro';
@@ -49,13 +50,17 @@ export async function getNavigation (currentUrl: URL) {
 
         for (let i = 0; i < pageHierarchy.length; i++) {
             const page = pageHierarchy[i];
-            page.children = pageList
-                .filter((mp) =>
-                    page.url != '/'
-                    && mp.url != page.url
-                    && mp.url.startsWith(page.url)
-                )
-                .sort((mp) => mp.order);
+
+            if (i > 0) {
+                // Don't add children to first link (Home)
+                page.children = pageList
+                    .filter((mp) =>
+                        page.url != '/'
+                        && mp.url != page.url
+                        && mp.url.startsWith(page.url)
+                    )
+                    .sort((mp) => mp.order);
+            }
 
             if (page.children.length > 0) {
                 const ownChild = structuredClone(page);

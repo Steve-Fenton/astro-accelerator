@@ -33,9 +33,8 @@ export async function getTopLevelPages (filter?: PagePredicate | null): Promise<
         const expectedDepth = isRoot ? 1 : 2;
         allPages = allPages.filter(p => {
             const depth = (p.url ?? '/').split('/').length - 1;
-            console.log(p.file, depth);
             return depth == expectedDepth
-                || depth == (expectedDepth - 1) && p.file.includes('/src/pages/index.md');
+                || (depth == (expectedDepth - 1) && p.file.includes(SITE.subfolder.toLowerCase() + '.md'));
         });
 
         await setItem(key, allPages);
