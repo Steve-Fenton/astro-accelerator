@@ -29,7 +29,7 @@ export async function getTopLevelPages (filter?: PagePredicate | null): Promise<
     if (allPages == null) {
         allPages = await getPages();
 
-        const isRoot = SITE.subfolder.length == 1;
+        const isRoot = SITE.subfolder.length == 0;
         const expectedDepth = isRoot ? 1 : 2;
         allPages = allPages.filter(p => {
             const depth = (p.url ?? '/').split('/').length - 1;

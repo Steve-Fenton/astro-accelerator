@@ -4,6 +4,7 @@ import type { Frontmatter } from '@config';
 import t from '@util/language.json';
 import { Lang } from '@util/Languages.astro';
 
+import { SITE } from '@config';
 import { addSlashToAddress } from '@util/Url.astro';
 
 // Properties
@@ -23,8 +24,8 @@ const tags = frontmatter.tags ?? [];
 const category = _(t.articles.category) ?? 'category';
 const tag = _(t.articles.tag) ?? 'tag';
 
-const categoryLink = `/${category}/`;
-const tagLink = `/${tag}/`;
+const categoryLink = `${SITE.subfolder}/${category}/`;
+const tagLink = `${SITE.subfolder}/${tag}/`;
 
 function getCategoryLink(category: string) {
   return categoryLink + category.toLowerCase() + '/1/';

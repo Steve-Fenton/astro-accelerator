@@ -1,6 +1,6 @@
 export const SITE = {
 	url: 'https://astro.stevefenton.co.uk',
-	subfolder: '/',
+	subfolder: '',
 	feedUrl: '/articles/feed.xml',
 	title: 'Astro Accelerator',
 	description: 'An Astro quick start project.',

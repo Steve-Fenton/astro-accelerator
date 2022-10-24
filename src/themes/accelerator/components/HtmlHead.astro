@@ -24,13 +24,15 @@ const canonicalURL =  addSlashToUrl(new URL(Astro.url.pathname, Astro.site + SIT
   <meta name="keywords" content={ frontmatter.keywords }>
   <meta name="description" content={ frontmatter.description }>
   <meta name="theme-color" content={ SITE.themeColor } />
-  <link rel="stylesheet" href={ SITE.subfolder + 'css/vars.css' } />
-  <link rel="stylesheet" href={ SITE.subfolder + 'css/main.css' } />
+  <link rel="stylesheet" href={ SITE.subfolder + '/css/vars.css' } />
+  <link rel="stylesheet" href={ SITE.subfolder + '/css/main.css' } />
   <link rel="canonical" href={ canonicalURL } />
+  {SITE.feedUrl &&
   <link rel="alternate" type="application/atom+xml" title={ SITE.title } href={ SITE.feedUrl } />
-  <link rel="alternate" href={ SITE.subfolder + 'sitemap.xml' } type="application/rss+xml" />
-  <link rel="shortcut icon" href={ SITE.subfolder + 'icons/favicon.ico' } type="image/x-icon" />
-  <link rel="apple-touch-icon" href={ SITE.subfolder + 'icons/apple-touch-icon.png' } />
+  }
+  <link rel="alternate" href={ SITE.subfolder + '/sitemap.xml' } type="application/rss+xml" />
+  <link rel="shortcut icon" href={ SITE.subfolder + '/icons/favicon.ico' } type="image/x-icon" />
+  <link rel="apple-touch-icon" href={ SITE.subfolder + '/icons/apple-touch-icon.png' } />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={ canonicalURL } />
   <meta property="og:title" content={ frontmatter.title } />
