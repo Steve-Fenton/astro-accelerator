@@ -22,7 +22,7 @@ const siteUrl = Astro.site ? Astro.site.href : '';
 ---
 <Default frontmatter={ frontmatter } headings={ headings }>
     <slot />
-    <form method="GET" action={ SITE.search.fallbackUrl ?? 'https://www.google.com/search' } role="search" id="site-search" class="site-search note" autocomplete="off">
+    <form method="GET" action={ SITE.search.fallbackUrl ?? 'https://www.google.com/search' } role="search" id="site-search" class="site-search note" autocomplete="off" data-sourcedata={ SITE.subfolder + '/search.json' }>
         <fieldset>
             <input type="hidden" name={ SITE.search.fallbackSite ?? 'q' } value={ siteUrl } />
             <div>
@@ -40,5 +40,5 @@ const siteUrl = Astro.site ? Astro.site.href : '';
     </form>
     <div id="site-search-results" data-title={ _(t.search.results_title) } data-emptytitle={ _(t.search.no_results_title) }>
     </div>
-    <script src="/js/search.js" type="module" async></script>
+    <script src={ SITE.subfolder + '/js/search.js' } type="module" async></script>
 </Default>

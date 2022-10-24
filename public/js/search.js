@@ -18,7 +18,7 @@ type SearchEntry = {
 }
  */
 
-var dataUrl = '/search.json';
+var dataUrl = qs('#site-search').dataset.sourcedata;
 var haystack = /** @type {SearchEntry} */ [];
 var currentQuery = '';
 

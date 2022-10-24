@@ -45,6 +45,6 @@ const textDirection = frontmatter.dir ?? SITE.default.dir;
             </main>
         </div>
         <Footer frontmatter={ frontmatter } headings={ headings } lang={ lang } />
-        <script src="/js/main.js" type="module" async></script>
+        <script src={ SITE.subfolder + '/js/main.js' } type="module" async></script>
     </body>
 </html>

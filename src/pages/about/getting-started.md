@@ -100,13 +100,25 @@ A bit more find and replace to sort out image references.
 
 Some use cases run the site in a sub-folder, in order to front-door the site as a microsite that is part of a larger site. For example:
 
- - www.example.com - operated by the marketing team, maybe using a big platform...
+ - www.example.com - operated by the marketing team, maybe using a big platform
  - www.example.com/dev-blog/ - operated by the development team, running Astro
 
-:::div{.note}
-This feature will be fully supported soon.
-:::
+```javascript
+export const SITE = {
+    url: 'https://example.com',
+	subfolder: '/dev-blog',
+```
 
-To do this, start adding you pages to `/pages/dev-blog/` and place your public assets in `/public/dev-blog`. Astro is perfectly happy placing images into the folders created for the pages, and will add both the content and images to the `/dev-blog/` folder it creates during the build.
+Place pages in the folder:
 
-When you map your front-door for `www.example.com/dev-blog/` all your paths will be correct as you've placed all your content in this folder. This avoids issues attempting to load resources from the "root" that would be front-doored to your other site running at `www.example.com`.
+```
+src/pages/dev-blog/...
+```
+
+Place assets in the folder
+
+```
+public/dev-blog/...
+```
+
+When you map your front door for `www.example.com/dev-blog/` all your paths will be correct as you've placed all your content in this folder. This avoids issues attempting to load resources from the "root" that would be front-doored to your other site running at `www.example.com`.
