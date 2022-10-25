@@ -31,7 +31,7 @@ async function getData() {
       <link href="${ SITE.url + a.url }" />
       <id>${ SITE.url + addSlashToAddress(a.url) }</id>
       <published>${ a.frontmatter.pubDate }</published>
-      <updated>${ a.frontmatter.pubDate }</updated>
+      <updated>${ a.frontmatter.pubDate ?? a.frontmatter.pubDate }</updated>
       <summary>${ a.frontmatter.description ?? '' }</summary>
     </entry>`);
 
