@@ -10,7 +10,6 @@ export const SITE = {
 	default: {
 		lang: 'en',
 		locale: 'en-GB',
-		ogLocale: 'en_GB',
 		dir: 'ltr'
 	},
 	search: {
@@ -67,11 +66,11 @@ export type Frontmatter = {
 	navOrder?: number;
 	bannerImage?: { src: string; alt: string };
 	dir?: 'ltr' | 'rtl';
-	ogLocale?: string;
 	lang?: string;
 	paged?: boolean;
 	navSearch?: boolean;
 	navSitemap?: boolean;
 	navMenu?: boolean;
+	robots?: string;
 	redirect?: string;
 };

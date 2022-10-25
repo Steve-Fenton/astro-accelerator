@@ -9,48 +9,188 @@ description: An overview of frontmatter in Astro Accelerator.
 
 ## Required frontmatter
 
-`layout: string;`
+The following items are the minimum required frontmatter fields.
 
-`title: string;`
+### layout
 
-`pubDate: Date;`
+String. Specifies the layout for the page.
 
-`keywords: string;`
+```yaml
+layout: src/layouts/Default.astro
+```
 
-`description: string;`
+### title
+
+String. The page title.
+
+```yaml
+title: The importance of being Ernest
+```
+
+### pubDate
+
+Date. YYYY-MM-DD. The date the page was first published. See also: [modDate](#moddate). This is used for sorting some types of content.
+
+```yaml
+pubDate: 2022-10-01
+```
+
+### description
+
+String. Used for the meta description and in the site search.
+
+```yaml
+description: An overview of frontmatter in Astro Accelerator.
+```
 
 ## Optional frontmatter
 
-`modDate?: Date;`
+### keywords
 
-`categories?: string[];`
+String. Allows you to specify the meta keywords value.
 
-`tags?: string[];`
+```yaml
+keywords: astro,frontmatter
+```
 
-`id?: string;`
+### modDate
 
-`authors?: string[];`
+Date. YYYY-MM-DD. The date the content was last changed. This is used to indicate updates via the sitemap and to broadcast a change has been made.
 
-`navTitle?: string;`
+```yaml
+modDate: 2022-10-01
+```
 
-`navSection?: string;`
+### categories
 
-`navOrder?: number;`
+String list. A list of categories to assign to the page. All categories are shown in default taxonomy components.
 
-`bannerImage?: { src: string; alt: string };`
+```yaml
+categories:
+    - Astro
+    - Websites
+```
 
-`dir?: 'ltr' | 'rtl';`
+### tags
 
-`ogLocale?: string;`
+String list. A list of tags to assign to the page. The most used tags are shown in default taxonomy components.
 
-`lang?: string;`
+```yaml
+tags:
+    - JavaScript
+    - TypeScript
+```
 
-`paged?: boolean;`
+### id
 
-`navSearch?: boolean;`
+String. Needed for author profiles. Must be unique.
 
-`navSitemap?: boolean;`
+```
+id: steve-fenton
+```
+###
 
-`navMenu?: boolean;`
+String list. The authors of the content. Uses author ids.
 
-`redirect?: string;`
+```yaml
+authors:
+    - steve-fenton
+```
+
+### navTitle
+
+String. A short title to be used in navigation menus. Only needed where the menu should use different text to `title`.
+
+```yaml
+navTitle: Short title
+```
+
+### navSection
+
+String. A short title to be used for navigation groups, if it needs to be different from `navTitle` or `title`.
+
+```yaml
+navSection: Docs
+```
+
+### navOrder
+
+Number. Recommended where the order of pages in navigation is important.
+
+```yaml
+navOrder: 1000
+```
+
+### bannerImage
+
+An image to use in open graph banners, which are used when your page is shared on social networks and other platforms.
+
+```yaml
+bannerImage:
+    src: '/img/reading.png'
+    alt: A person holding a book
+```
+
+### dir
+
+`ltr` or `rtl`. Sets the direction of the content, for example `rtl` would be used for Arabic content.
+
+```yaml
+dir: rtl
+```
+
+### lang
+
+String. Sets the language of the content, used to select translations from `language.json` for common components.
+
+```yaml
+lang: en-GB
+```
+
+### paged
+
+Bool. Signals that pages will be generated, which means navigation links will be updated to point to the first page.
+
+```yaml
+paged: true
+```
+
+### navSearch
+
+Bool. Can be used to remove the page from the site search.
+
+```yaml
+navSearch: false
+```
+
+### navSitemap
+
+Bool. Can be used to remove the page from the site map.
+
+```yaml
+navSitemap: false
+```
+
+### navMenu
+
+Bool. Can be used to remove the page from the menu.
+
+```yaml
+navMenu: false
+```
+
+### redirect
+
+String. When used with a redirection layout (for example `src/layouts/Redirect.astro`) this specifies the relative or fully qualified address to redirect the user to.
+
+```yaml
+redirect: https://www.stevefenton.co.uk/
+```
+
+### robots
+
+String. Allows control over indexability. By default `index, follow` is used, so only set this when you don't want the default.
+
+```yaml
+robots: noindex, follow
+```

@@ -20,7 +20,6 @@ export const SITE = {
   default: {
     lang: 'en',
     locale: 'en-GB',
-    ogLocale: 'en_GB',
     dir: 'ltr'
   }
 }
