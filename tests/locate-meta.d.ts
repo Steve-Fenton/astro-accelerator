@@ -4,5 +4,5 @@ export class Model {
     constructor(page: any);
     page: any;
 
-    title(): Locator;
+    robots(): Locator;
 }
