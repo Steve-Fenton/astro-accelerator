@@ -23,17 +23,6 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v0
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
-
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
@@ -46,6 +35,8 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Prepare server
+      run: npm run build
     - name: Run Playwright tests
       run: npx playwright test
     - uses: actions/upload-artifact@v3
@@ -54,3 +45,15 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+
