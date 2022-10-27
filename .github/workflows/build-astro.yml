@@ -18,9 +18,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
+      - name: Checkout
         uses: actions/checkout@v2          
-      - name: Install, build, and upload your site
+      - name: Astro Build
         uses: withastro/action@v0
 
   test:
@@ -47,7 +47,9 @@ jobs:
         retention-days: 30
 
   deploy:
-    needs: build
+    needs:
+      - build
+      - test
     runs-on: ubuntu-latest
     environment:
       name: github-pages
