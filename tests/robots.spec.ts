@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { Model } from './locate-meta.js';
 
 test('Robots index on home page', async ({ page }) => {
-  await page.goto('https://astro.stevefenton.co.uk/');
+  await page.goto('/');
 
   const find = new Model(page);
 
@@ -11,7 +11,7 @@ test('Robots index on home page', async ({ page }) => {
 });
 
 test('Robots noindex on list page', async ({ page }) => {
-  await page.goto('https://astro.stevefenton.co.uk/articles/1/');
+  await page.goto('/articles/1/');
 
   const find = new Model(page);
 

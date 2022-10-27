@@ -44,7 +44,7 @@ type Dictionary = { [key: string]: string };
   });
 
   test('Navigate once', async () => {
-    await page.goto('https://astro.stevefenton.co.uk/');
+    await page.goto('/');
     find = new Model(page);
   });
 
