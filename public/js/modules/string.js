@@ -19,12 +19,10 @@
  */
 function highlight(string, terms) {
     terms.forEach(term => {
-        if (term.length > 2) {
-            const regEx = new RegExp(term, "ig");
-            const matches = string.match(regEx);
-            if (matches) {
-                string = string.replace(regEx, `<mark>${matches[0]}</mark>`)
-            }
+        const regEx = new RegExp(term, "ig");
+        const matches = string.match(regEx);
+        if (matches) {
+            string = string.replace(regEx, `<mark>${matches[0]}</mark>`)
         }
     });
     return string;

@@ -5,16 +5,23 @@ import { raiseEvent } from './modules/events.js';
 import { contains, sanitise, explode, highlight } from './modules/string.js';
 
 /**
+type Heading = {
+    text: string;
+    safeText: string;
+    slug: string;
+}
+
 type SearchEntry = {
     score: number;
     title: string;
     safeTitle: string;
     description: string;
     safeDescription: string;
-    headings: string[];
+    headings: Heading[];
     tags: string;
     url: string;
     date: string;
+    matchedHeadings: Heading[];
 }
  */
 
@@ -45,25 +52,54 @@ function search(s) {
     currentQuery = cleanQuery;
     const queryTerms = explode(currentQuery);
 
-    haystack.forEach( (item) => {
+    s.length > 0 && haystack.forEach( (item) => {
 
         item.score = 0;
+        item.matchedHeadings = [];
+
+        // Imagine the user searched for "Kitchen Sink"
+        // The scores are arranged below from highest to lowest relevance
+
+        // If the title contains "Kitchen Sink"
+        if (contains(item.safeTitle, currentQuery)) {
+            item.score = item.score + 60;
+        }
+
+        // If a heading contains "Kitchen Sink"
+        item.headings.forEach(c => {
+            if (contains(c.safeText, currentQuery)) {
+                item.score = item.score + 25;
+                item.matchedHeadings.push(c);
+            }
+        });
+
+        // If the title contains "Kitchen Sink"
+        if (contains(item.description, currentQuery)) {
+            item.score = item.score + 20;
+        }
         
         queryTerms.forEach(term => {
+            // If the title contains "Kitchen" or "Sink"
             if (contains(item.safeTitle, term)) {
                 item.score = item.score + 40;
             }
 
+            // If a heading contains "Kitchen" or "Sink"
+            item.headings.forEach(c => {
+                if (contains(c.safeText, term)) {
+                    item.score = item.score + 15;
+                    if (item.matchedHeadings.filter(h => h.slug == c.slug).length == 0) {
+                        item.matchedHeadings.push(c);
+                    }
+                }
+            });
+
+            // If the description contains "Kitchen" or "Sink"
             if (contains(item.description, term)) {
                 item.score = item.score + 10;
             }
 
-            item.headings.forEach(c => {
-                if (contains(c, term)) {
-                    item.score = item.score + 15;
-                }
-            });
-
+            // If a tag contains "Kitchen" or "Sink"
             item.tags.forEach(t => {
                 if (contains(t, term)) {
                     item.score = item.score + 5;
@@ -106,10 +142,24 @@ function search(s) {
         markers.className = 'result-text';
         markers.innerHTML = highlight(needle.description, queryTerms);
 
+        const headings = document.createElement('ul');
+        markers.className = 'result-headings';
+        console.log(needle.matchedHeadings);
+        needle.matchedHeadings
+            .forEach(h => {
+                const item = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = needle.url + '#' + h.slug;
+                link.innerText = h.text;
+                item.appendChild(link);
+                headings.append(item);
+            });
+
         const li = document.createElement('li');
         li.appendChild(a);
         li.appendChild(path);
         li.appendChild(markers);
+        li.append(headings);
         li.dataset.score = (Math.round((needle.score/ total) * 100)).toString();
 
         ol.appendChild(li);
@@ -156,8 +206,9 @@ fetch(dataUrl)
             const item = haystack[i];
             item.safeTitle = sanitise(item.title);
             item.tags = item.tags.map(t => sanitise(t));
-            item.headings = item.headings.map(c => sanitise(c));
             item.safeDescription = sanitise(item.description);
+
+            item.headings.forEach(h => h.safeText = sanitise(h.text));
         }
 
         var siteSearch = qs('#site-search');

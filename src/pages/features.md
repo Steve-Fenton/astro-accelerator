@@ -2,11 +2,9 @@
 layout: src/layouts/Default.astro
 title: Features
 navOrder: 2000
-navSearch: false
-navSitemap: false
 pubDate:   2022-09-23
 keywords: features,astro,accelerator
-description: Astro accelerator is an opinionated Astro site.
+description: An overview of features in Astro Accelerator.
 bannerImage:
     src: /img/surface-accessories.png
     alt: Dummy image
