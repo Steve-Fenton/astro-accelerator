@@ -25,6 +25,24 @@ Matching text is highlighted using the HTML `<mark>` element.
 :figcaption[Search results]
 :::
 
+## Search page
+
+You should have a page on your site that uses the search layout:
+
+```yaml
+layout: src/layouts/Search.astro
+```
+
+This page will be found and linked from the search icon.
+
+You can place markdown content in your search page that will appear above the search form.
+
+## Search data
+
+The search URLs in `search.json` are fully qualified, which means you can ingest the data into an alternative search technology.
+
+For example, you could read this file into elastic search or a similar technology.
+
 ## Fallback search
 
 In the event of JavaScript being disabled or a transient error, the search falls back to a search engine. This is configurable in `config.ts`.
