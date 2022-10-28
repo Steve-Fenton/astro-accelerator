@@ -1,4 +1,4 @@
-// @ts-checl
+// @ts-check
 
 export class Model {
     constructor(page) {

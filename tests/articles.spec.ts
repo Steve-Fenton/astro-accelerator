@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { Model } from './locate-navigation.js';
 
 test('Article paging', async ({ page }) => {
-  await page.goto('https://astro.stevefenton.co.uk/articles/');
+  await page.goto('/articles/1/');
 
   const find = new Model(page);
 

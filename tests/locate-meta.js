@@ -9,9 +9,9 @@ export class Model {
      * Gets the site title
      * @returns {Locator}
      */
-    title() {
+    robots() {
         return this.page.locator(
-            '.site-title'
+            'meta[name=robots]'
         );
     }
 }

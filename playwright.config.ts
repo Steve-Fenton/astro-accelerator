@@ -17,11 +17,16 @@ const config: PlaywrightTestConfig = {
   // See https://playwright.dev/docs/api/class-testoptions
   use: {
     actionTimeout: 0,
-    // baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:3000',
     // See https://playwright.dev/docs/trace-viewer
     trace: 'on-first-retry',
   },
-
+  webServer: {
+    command: 'astro preview',
+    url: 'http://localhost:3000/',
+    timeout: 240 * 1000,
+    reuseExistingServer: !process.env.CI,
+  },
   projects: [
     {
       name: 'chromium',
@@ -29,30 +34,6 @@ const config: PlaywrightTestConfig = {
         ...devices['Desktop Chrome'],
       },
     },
-    {
-      name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox'],
-      },
-    },
-    {
-      name: 'webkit',
-      use: {
-        ...devices['Desktop Safari'],
-      },
-    },
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: {
-    //     ...devices['Pixel 5'],
-    //   },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: {
-    //     ...devices['iPhone 12'],
-    //   },
-    // },
   ],
 };
 

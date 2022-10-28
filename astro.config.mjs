@@ -11,5 +11,7 @@ export default defineConfig({
             attributeMarkdown
         ],
         extendDefaultPlugins: true,
+        trailingSlash: 'always',
+        server: { port: 3000, host: true},
     },
 });

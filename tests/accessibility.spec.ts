@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { Model } from './locate-navigation.js';
 
 test('Current page is home', async ({ page }) => {
-  await page.goto('https://astro.stevefenton.co.uk/');
+  await page.goto('/');
 
   const find = new Model(page);
 
@@ -27,7 +27,7 @@ test('Current page is home', async ({ page }) => {
 
 
 test('Current page is articles', async ({ page }) => {
-  await page.goto('https://astro.stevefenton.co.uk/articles/1/');
+  await page.goto('/articles/1/');
 
   const find = new Model(page);
 

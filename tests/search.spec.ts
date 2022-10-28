@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { Model } from './locate-search.js';
 
 test('Search', async ({ page }) => {
-  await page.goto('https://astro.stevefenton.co.uk/search/');
+  await page.goto('/search/');
 
   const find = new Model(page);
 
