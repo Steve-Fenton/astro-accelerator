@@ -63,6 +63,12 @@ If you want to publish [articles, blogs, or news](/features/articles/), you can 
 
 [Find out more about articles and authors](/features/articles/)
 
+## Search
+
+The [search feature](/features/search/) provides a serverless search utility that obtains data from a static file to power an instant search feature.
+
+In the event of a problem, it falls back to a configured search engine to perform a site search.
+
 ## :abbr[I18n]{ title="Internationalization" }
 
 The [internationalization feature](/features/internationalization/) lets you change the text items found in layouts and components and control how dates are displayed.

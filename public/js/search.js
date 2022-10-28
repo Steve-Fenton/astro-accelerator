@@ -150,7 +150,7 @@ function search(s) {
                 const item = document.createElement('li');
                 const link = document.createElement('a');
                 link.href = needle.url + '#' + h.slug;
-                link.innerText = h.text;
+                link.innerHTML = highlight(h.text, queryTerms);
                 item.appendChild(link);
                 headings.append(item);
             });

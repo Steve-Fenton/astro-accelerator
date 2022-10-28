@@ -24,7 +24,7 @@ const siteUrl = Astro.site ? Astro.site.href : '';
     <slot />
     <form method="GET" action={ SITE.search.fallbackUrl ?? 'https://www.google.com/search' } role="search" id="site-search" class="site-search note" autocomplete="off" data-sourcedata={ SITE.subfolder + '/search.json' }>
         <fieldset>
-            <input type="hidden" name={ SITE.search.fallbackSite ?? 'q' } value={ siteUrl } />
+            <input type="hidden" name={ SITE.search.fallbackSite ?? 'q' } value={ 'site:' + siteUrl } />
             <div>
                 <label for="site-search-query">{ _(t.search.search_for) }</label>
                 <input 
