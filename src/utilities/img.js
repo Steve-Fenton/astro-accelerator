@@ -119,13 +119,18 @@ for (const file of filesToProcess) {
         const imgFile = await fs.promises.readFile(source);
         const image = imagePool.ingestImage(imgFile);
 
-        const preprocessOptions = {
-            resize: {
-                width: size[key]
-            }
-        };
+        const info = await image.decoded;
+        if (info.width > size[key]) {
+            // Only resize if the image is larger than the target size
+            const preprocessOptions = {
+                resize: {
+                    width: size[key]
+                }
+            };
+    
+            await image.preprocess(preprocessOptions);
+        }
 
-        await image.preprocess(preprocessOptions);
         await image.encode({ webp: {} });
 
         rawEncodedImage = (await image.encodedWith.webp).binary;
