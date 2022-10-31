@@ -188,6 +188,18 @@ This page contains the most common content components.
 
 ***
 
+## Page Links
+
+***
+
+<nav class="post-paging" aria-label="Paging">
+  <a href="#">Prev</a>
+  <a href="#" class="paging-collapse-after">1</a><a href="#" class="">3</a><a href="#" aria-current="page" class="">4</a><a href="#" class="">5</a><a href="#" class="paging-collapse-before">7</a>
+  <a href="#">Next</a>
+</nav>
+
+***
+
 ## Block Quote
 
 Markdown:
