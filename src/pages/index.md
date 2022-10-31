@@ -32,7 +32,7 @@ Out of the box, Astro Accelerator is a "top scores" high-performance website in 
 
 :::figure
 :img{ src="/img/astro-lighthouse.png" alt="Astro Lighthouse Score (100% in all categories)" loading="lazy" }
-:figcaption[Top scores across the board]
+::figcaption[Top scores across the board]
 :::
 
 Test scores aren't everything, but Astro Accelerator is light and fast.

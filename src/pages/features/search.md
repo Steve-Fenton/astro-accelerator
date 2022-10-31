@@ -22,7 +22,7 @@ Matching text is highlighted using the HTML `<mark>` element.
 
 :::figure
 :img{src="/img/screens/search-results.png" loading="lazy"}
-:figcaption[Search results]
+::figcaption[Search results]
 :::
 
 ## Search page

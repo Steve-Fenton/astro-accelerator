@@ -23,7 +23,7 @@ This is a custom div element with the class `note`
 ## Combinations
 :::figure
 :img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
-:figcaption[The modern hardback edition of Frankenstein]
+::figcaption[The modern hardback edition of Frankenstein]
 :::
 
 */

@@ -340,7 +340,7 @@ You can also wrap images in figures and optionally add a caption:
 ```markdown
 :::figure
 :img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
-:figcaption[The modern hardback edition of Frankenstein]
+::figcaption[The modern hardback edition of Frankenstein]
 :::
 ```
 
