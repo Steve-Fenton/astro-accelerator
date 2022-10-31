@@ -4,6 +4,7 @@ import type { Frontmatter } from '@config';
 import t from '@util/language.json';
 import { Lang } from '@util/Languages.astro';
 import { getTaxonomy } from '@util/Taxonomy.astro';
+import { addSlashToAddress } from '@util/Url.astro';
 
 import { SITE } from '@config';
 
@@ -26,11 +27,11 @@ const categoryLink = `${SITE.subfolder}/${category}/`;
 const tagLink = `${SITE.subfolder}/${tag}/`;
 
 function getCategoryLink(category: string) {
-  return categoryLink + category.toLowerCase() + '/1/';
+  return categoryLink + category.toLowerCase().replace(/ /g, '-') + '/1/';
 }
 
 function getTagLink(tag: string) {
-  return tagLink + tag.toLowerCase() + '/1/';
+  return tagLink + tag.toLowerCase().replace(/ /g, '-') + '/1/';
 }
 
 const taxonomy = await getTaxonomy();
@@ -42,7 +43,7 @@ const taxonomy = await getTaxonomy();
       <h2>{ _(t.articles.category_title) }</h2>
       <ul>
       {taxonomy.categories.map(c => 
-        <li><a href={ getCategoryLink(c.title) }>{ c.title }</a></li>
+        <li><a href={ addSlashToAddress(getCategoryLink(c.title)) }>{ c.title }</a></li>
       )}
       </ul>
     </div>
@@ -52,7 +53,7 @@ const taxonomy = await getTaxonomy();
       <h2>{ _(t.articles.tag_title) }</h2>
       <ul>
       {taxonomy.topTags.map(t => 
-        <li><a href={ getTagLink(t.title) }>{ t.title }</a></li>
+        <li><a href={ addSlashToAddress(getTagLink(t.title)) }>{ t.title }</a></li>
       )}
       </ul>
     </div>

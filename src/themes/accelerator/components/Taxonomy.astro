@@ -28,11 +28,11 @@ const categoryLink = `${SITE.subfolder}/${category}/`;
 const tagLink = `${SITE.subfolder}/${tag}/`;
 
 function getCategoryLink(category: string) {
-  return categoryLink + category.toLowerCase() + '/1/';
+  return categoryLink + category.toLowerCase().replace(/ /g, '-') + '/1/';
 }
 
 function getTagLink(tag: string) {
-  return tagLink + tag.toLowerCase() + '/1/';
+  return tagLink + tag.toLowerCase().replace(/ /g, '-') + '/1/';
 }
 
 const hasTaxonomy = (categories.length + tags.length) > 0;

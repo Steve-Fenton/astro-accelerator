@@ -87,7 +87,7 @@ export async function getStaticPaths({ paginate }: any) {
       return tags.includes(t);
     });
     return paginate(filtered, {
-      params: { tag: t.toLowerCase() },
+      params: { tag: t.toLowerCase().replace(/ /g, '-') },
       props: { title: t, pubDate: filtered[0].frontmatter.pubDate },
       pageSize: SITE.pageSize 
     });

@@ -11,8 +11,9 @@ bannerImage:
 authors:
     - steve-fenton
 categories:
-    - Example
-    - Sample
+    - Test Category
+tags:
+    - Test Tag
 ---
 
 This is an example post with more of the front matter set up, such as except and images.
