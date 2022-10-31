@@ -17,8 +17,16 @@ export const SITE = {
 		fallbackSite: 'q',
 		fallbackQuery: 'q',
 	},
-	pageSize: 4,
-	pageLinks: 5,
+	pageSize: 2,
+	/*
+	Refers to "pages in the middle" of the automatically generated links:
+	- Prev
+	- First Page
+	- (A number of links, defined below)
+	- Last Page
+	- Next
+	*/
+	pageLinks: 3,
 	rssLimit: 20,
 	dateOptions: {
 		weekday: 'long',

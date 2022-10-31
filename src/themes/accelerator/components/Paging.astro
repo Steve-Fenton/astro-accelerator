@@ -25,7 +25,7 @@ const _ = Lang(lang);
     ? <a href={ addSlashToAddress(page.url.prev) }>{ _(t.articles.previous) }</a>
     : <span>{ _(t.articles.previous) }</span>}
   {pageLinks.map((link) => (
-      <a href={ addSlashToAddress(link.url) } aria-current={ link.ariaCurrent }>{ link.title }</a>
+      <a href={ addSlashToAddress(link.url) } aria-current={ link.ariaCurrent } class={ link.class }>{ link.title }</a>
   ))}
   {page.url.next
     ? <a href={ addSlashToAddress(page.url.next) }>{ _(t.articles.next) }</a>

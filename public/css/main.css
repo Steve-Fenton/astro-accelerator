@@ -665,6 +665,24 @@ form.site-search button {
     color: var(--fore);
 }
 
+.paging-collapse-before:before,
+.paging-collapse-after:after {
+    top: 0.2em;
+    content: '...';
+    text-decoration: none;
+    color: var(--fore);
+    display: inline-block;
+    position: relative;
+}
+
+.paging-collapse-before:before {
+    padding-right: 0.6rem;
+}
+
+.paging-collapse-after:after {
+    padding-left: 0.6rem;
+}
+
 .post-meta {
     display: flex;
     align-items: center;

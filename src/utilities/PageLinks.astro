@@ -3,6 +3,7 @@ export type Link = {
   title: string;
   url: string;
   ariaCurrent: 'page' | false;
+  class: string;
 }
 
 export function getPageLinks(limit: number, numberOfPages: number, currentPage: number, url: string) {
@@ -24,12 +25,45 @@ export function getPageLinks(limit: number, numberOfPages: number, currentPage: 
     }
   }
 
+  if (start == 1) {
+    pageLinks.push({
+      title: '1',
+      url: url.replace('/' + currentPage, '/' + 1),
+      ariaCurrent: false,
+      class: ''
+    });
+  } else if (start > 1) {
+    pageLinks.push({
+      title: '1',
+      url: url.replace('/' + currentPage, '/' + 1),
+      ariaCurrent: false,
+      class: 'paging-collapse-after'
+    });
+  }
+
   for (let i = start; i < end; i++) {
     const userPage = i + 1;
     pageLinks.push({
       title: userPage.toString(),
       url: url.replace('/' + currentPage, '/' + userPage),
-      ariaCurrent: userPage == currentPage ? 'page' : false
+      ariaCurrent: userPage == currentPage ? 'page' : false,
+      class: ''
+    });
+  }
+
+  if (end < (numberOfPages - 1)) {
+    pageLinks.push({
+      title: numberOfPages.toString(),
+      url: url.replace('/' + currentPage, '/' + numberOfPages),
+      ariaCurrent: false,
+      class: 'paging-collapse-before'
+    });
+  } else if (end < numberOfPages) {
+    pageLinks.push({
+      title: numberOfPages.toString(),
+      url: url.replace('/' + currentPage, '/' + numberOfPages),
+      ariaCurrent: false,
+      class: ''
     });
   }
 
