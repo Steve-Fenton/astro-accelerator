@@ -4,7 +4,7 @@ title: Search
 navSearch: false
 navSitemap: false
 navMenu: false
-pubDate:   2022-09-17
+pubDate:  2022-09-17
 keywords: about,astro,accelerator
 description: Astro Accelerator is an opinionated Astro site.
 bannerImage:

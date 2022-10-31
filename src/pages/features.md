@@ -2,7 +2,7 @@
 layout: src/layouts/Default.astro
 title: Features
 navOrder: 2000
-pubDate:   2022-09-23
+pubDate:  2022-09-23
 keywords: features,astro,accelerator
 description: An overview of features in Astro Accelerator.
 bannerImage:

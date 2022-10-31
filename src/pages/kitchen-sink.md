@@ -1,9 +1,8 @@
 ---
 layout: src/layouts/Default.astro
-title: Heading 1
-navTitle: Kitchen Sink
+title: Kitchen Sink
 navOrder: 200000
-pubDate:   2022-09-17
+pubDate: 2022-09-17
 keywords: astro,accelerator,site generator
 description: An accelerator for a very clean version of Astro.
 bannerImage:

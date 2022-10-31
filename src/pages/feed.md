@@ -2,7 +2,7 @@
 layout: src/layouts/Redirect.astro
 title: Redirect
 navMenu: false
-pubDate:   2022-09-17
+pubDate:  2022-09-17
 redirect: /articles/feed.xml
 ---
 <div>

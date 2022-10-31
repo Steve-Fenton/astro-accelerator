@@ -2,7 +2,7 @@
 layout: src/layouts/Default.astro
 title: Writing
 navOrder: 5000
-pubDate:   2022-09-17
+pubDate:  2022-09-17
 keywords: astro,accelerator,writing
 description: How to write in Astro.
 bannerImage:
