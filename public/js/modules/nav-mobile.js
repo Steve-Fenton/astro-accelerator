@@ -52,9 +52,10 @@ import { getFocusableElement, trapFocusForward, trapReverseFocus } from './focus
 
     function openMobileMenu(){
         document.body.style.overflow = 'hidden';
+        const menuElement = qs(navigationSelector);
         
-        overlay.innerHTML = qs(navigationSelector).outerHTML;
-        overlay.className = 'overlay';
+        overlay.innerHTML = menuElement.outerHTML;
+        overlay.className = 'overlay overlay-menu';
         overlay.style.display = 'block';
 
         qsa('[id]', overlay).forEach((elem) => {

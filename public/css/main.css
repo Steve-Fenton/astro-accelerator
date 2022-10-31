@@ -407,13 +407,18 @@ nav.site-nav h2 {
     padding: 0.3rem 0.5rem;
 }
 
-.overlay .site-nav-bar li {
+.overlay-menu .site-nav-bar li {
     display: block;
     margin: 0.3rem;
 }
 
-.overlay .site-nav-bar {
+.overlay-menu .site-nav-bar {
     display: block;
+}
+
+.overlay-menu a, .overlay-menu summary {
+    border-bottom: 1px solid var(--fore-link);
+    border-radius: var(--block-radius) var(--block-radius) 0 0;
 }
 
 /* Main content group */
@@ -537,10 +542,6 @@ main ul ol, main ul ul, main ol ol, main ol ul {
     padding : 5rem 1em 2rem 1em;
     overflow-y: auto;
     z-index: 1;
-}
-
-.overlay a, .overlay summary {
-    border-bottom: 1px solid var(--fore-link);
 }
 
 /* Site Search */
