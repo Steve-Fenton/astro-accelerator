@@ -284,6 +284,33 @@ Result:
 :img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
 :::
 
+## Nested blocks
+
+Outer blocks must have more `:` characters than inner blocks:
+
+```markdown
+::::div{.simple-grid}
+:::div{.note}
+This is a custom div element with the class `note`
+:::
+:::div{.note}
+This is a custom div element with the class `note`
+:::
+::::
+```
+
+Result:
+
+::::div{.simple-grid}
+:::div{.note}
+This is a custom div element with the class `note`
+:::
+:::div{.note}
+This is a custom div element with the class `note`
+:::
+::::
+
+
 ## Images
 
 Markdown:
