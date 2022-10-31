@@ -126,7 +126,7 @@ This page contains the most common content components.
          <fieldset>
                <div>
                   <label for="site-search-query">Search for</label>
-                  <input type="text" name="q" id="site-search-query" autofocus="autofocus" spellcheck="true" autocomplete="off">
+                  <input type="text" name="q" id="site-search-query" spellcheck="true" autocomplete="off">
                   <button id="site-search-button" type="submit">Go</button>
                </div>
          </fieldset>

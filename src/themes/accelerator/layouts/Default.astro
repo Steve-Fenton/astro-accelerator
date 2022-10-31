@@ -20,6 +20,8 @@ const { frontmatter, headings } = Astro.props as Props;
 
 const lang = frontmatter.lang ?? SITE.default.lang;
 const textDirection = frontmatter.dir ?? SITE.default.dir;
+
+const features = `<script>const site_features = ${JSON.stringify(SITE.featureFlags)}</script>`;
 ---
 <html dir={ textDirection } lang={ lang } class="initial">
     <Head frontmatter={ frontmatter } headings={ headings } lang={ lang } />
@@ -45,6 +47,7 @@ const textDirection = frontmatter.dir ?? SITE.default.dir;
             </main>
         </div>
         <Footer frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+        <Fragment is:html="true" set:html={ features } />
         <script src={ SITE.subfolder + '/js/main.js' } type="module" async></script>
     </body>
 </html>
