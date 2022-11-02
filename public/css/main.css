@@ -959,13 +959,8 @@ figure:focus .magnify-icon {
     .copy-button,
     .anim-show-parent > *,
     .anim-show-parent img {
-        transition: all 0.2s ease-in;
-        scale: calc(0.80 + (var(--shown, 1) * 0.20));
-
-    }
-
-    .anim-show-parent img {
-        transition: all 0.2s ease-in;
-        scale: calc(0.75 + (var(--imgshown, 1) * 0.25));
+        transition: all 0.3s ease-in;
+        transition-delay: 0.1s;
+        opacity: var(--shown, 1);
     }
 }

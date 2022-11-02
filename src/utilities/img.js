@@ -103,7 +103,7 @@ for (const file of filesToProcess) {
             await fs.promises.writeFile(destination + '.jpg', rawEncodedImage);
             break;
         case '.webp':
-            image = await processImage(imagePool, source, { webp: {} });
+            image = await processImage(imagePool, source, { webp: { quality: 85 } });
             rawEncodedImage = (await image.encodedWith.webp).binary;
             await fs.promises.writeFile(destination + '.webp', rawEncodedImage);
             break;
