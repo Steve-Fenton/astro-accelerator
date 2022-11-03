@@ -20,21 +20,19 @@ test('Crawl for bad URIs', async ({ page }) => {
     console.log(url);
     crawled.push(url);
 
-    fetch(url)
-      .then(response => {
-        expect(response.status, `Expected a 200 OK response for page ${url}`).toBe(200);
-        return response.text();
-      })
-      .then(handleHtmlDocument)
-      .then(() => {
-        crawlImages();
-        const links = [...new Set(discoveredLinks)];
-        discoveredLinks = [];
-        const promises = links.map(l => crawl(l));
-        Promise.all(promises)
-          .then(() => {});
-      })
-      .catch(handleCatch);
+    const response = await fetch(url);
+    expect(response.status, `Expected a 200 OK response for page ${url}`).toBe(200);
+
+    const text = await response.text();
+    await handleHtmlDocument(text);
+    await crawlImages();
+
+    const links = [...new Set(discoveredLinks)];
+    discoveredLinks = [];
+
+    for (let i = 0; i < links.length; i++) {
+      await crawl(links[i]);
+    }
   }
 
   // Kick off the crawl
@@ -50,22 +48,14 @@ function handleHtmlDocument(text: string) {
     .process(text)
 }
 
-function crawlImages() {
+async function crawlImages() {
   const images = [...new Set(discoveredImages)];
-  images.forEach(img => {
-    console.log(img);
-    fetch(img)
-      .then(response => {
-        expect(response.status, `Expected a 200 OK response for image ${img}`).toBe(200);
-      })
-      .catch(handleCatch);
-  });
   discoveredImages = [];
-}
 
-function handleCatch(reason: any) {
-  console.error(reason)
-  expect(reason).toBeNull();
+  for (let i = 0; i < images.length; i++) {
+    const response = await fetch(images[i]);
+    expect(response.status, `Expected a 200 OK response for image ${images[i]}`).toBe(200);
+  }
 }
 
 function addUri(collection: string[], uri: string) {
