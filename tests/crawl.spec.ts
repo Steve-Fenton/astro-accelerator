@@ -92,8 +92,8 @@ function findUris(options = {}) {
           addUri(discoveredImages, node.properties.src);
         }
 
-        if (isString(node.properties.srcset)) {
-          (<string[]>node.properties.srcset.split(','))
+        if (isString(node.properties.srcSet)) {
+          (<string[]>node.properties.srcSet.split(','))
             .map(s => s.split(' ')[0])
             .forEach(s => addUri(discoveredImages, s));
         }
