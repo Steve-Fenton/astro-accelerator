@@ -31,7 +31,8 @@ test('Crawl for bad URIs', async ({ page }) => {
         const links = [...new Set(discoveredLinks)];
         discoveredLinks = [];
         const promises = links.map(l => crawl(l));
-        Promise.all(promises);
+        Promise.all(promises)
+          .then(() => {});
       })
       .catch(handleCatch);
   }

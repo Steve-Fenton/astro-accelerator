@@ -6,10 +6,10 @@
   "scripts": {
     "img": "node --no-experimental-fetch ./src/utilities/img.js",
     "dev": "node --no-experimental-fetch ./src/utilities/img.js && astro dev",
-    "preview": "astro preview",
-    "build": "astro build",
-    "astro": "astro",
     "test": "astro build && npx playwright test",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
     "dts": "tsc ./tests/locate-content.js ./tests/locate-navigation.js ./tests/locate-search.js --allowJs --declaration --emitDeclarationOnly"
   },
   "dependencies": {
