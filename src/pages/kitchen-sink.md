@@ -378,20 +378,29 @@ Result:
 Markdown:
 
 ```markdown
-| Item | One | Two | Three |
-| :--  | :-: | :-: | :-:   |
-| A    | 1   | 2   | 3     |
-| B    | 2   | 3   | 4     |
-| C    | 3   | 4   | 5     |
+| Item                         | One | Two | Three |
+|:-----------------------------|:---:|:---:|:-----:|
+| Some description of the item |  1  |  2  |   3   |
+| Some description of the item |  2  |  3  |   4   |
+| Some description of the item |  3  |  4  |   5   |
 ```
 
 Result:
 
-| Item | One | Two | Three |
-| :--  | :-: | :-: | :-:   |
-| A    | 1   | 2   | 3     |
-| B    | 2   | 3   | 4     |
-| C    | 3   | 4   | 5     |
+| Item                         | One | Two | Three |
+|:-----------------------------|:---:|:---:|:-----:|
+| Some description of the item |  1  |  2  |   3   |
+| Some description of the item |  2  |  3  |   4   |
+| Some description of the item |  3  |  4  |   5   |
+
+A large table:
+
+| Performance level | Lead time      | Deployment frequency           | Change failure rate | Mean time to resolve |
+|-------------------|----------------|--------------------------------|---------------------|----------------------|
+| Elite             | < 1 hour       | Multiple times per day         | 0-15%               | < 1 hour             |
+| High              | 1 day - 1 week | Weekly to monthly              | 16-30%              | < 1 day              |
+| Medium            | 1-6 months     | Monthly to biannually          | 16-30%              | 1 day - 1 week       |
+| Low               | > 6 months     | Fewer than once every 6 months | 16-30%              | > 6 months           |
 
 ## Text
 
