@@ -66,6 +66,7 @@ export function attributeMarkdown() {
         const hast = h(node.name, node.attributes);
 
         if (hast.properties.src) {
+          // Process the image
           const info = getImageInfo(hast.properties.src, hast.properties.class, SITE.images.contentSize);
 
           hast.properties.src = info.src;
@@ -86,9 +87,16 @@ export function wrapTables() {
   return (tree) => {
     visit(tree, (node, i, parent) => {
       if (node.type == 'table') {
-        const wrap = fromSelector('div.table-wrap');
-        console.log(JSON.stringify(wrap, null, 4));
+        // Create the wrapping element
+        const wrap = fromSelector('div');
+        const data = wrap.data || (wrap.data = {})
+        const props = data.hProperties || (data.hProperties = {})
+        props.className = 'table-wrap';
+
+        // Add the table to the wrapper
         wrap.children = [node];
+
+        // Replace the table with the wrapper
         parent.children[i] = wrap;
       }
     });
