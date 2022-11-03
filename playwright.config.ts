@@ -4,28 +4,19 @@ import { devices } from '@playwright/test';
 // See https://playwright.dev/docs/test-configuration
 const config: PlaywrightTestConfig = {
   testDir: './tests',
-  timeout: 30 * 1000, // Limit a test to 30 seconds
+  timeout: 30 * 1000,
   expect: {
-    timeout: 5 * 1000 // Limit the wait for a locator to 5 seconds
+    timeout: 5 * 1000
   },
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  // See https://playwright.dev/docs/test-reporters
   reporter: 'list',
-  // See https://playwright.dev/docs/api/class-testoptions
   use: {
     actionTimeout: 0,
     baseURL: 'http://localhost:3000',
-    // See https://playwright.dev/docs/trace-viewer
     trace: 'on-first-retry',
-  },
-  webServer: {
-    command: 'astro preview',
-    url: 'http://localhost:3000/',
-    timeout: 240 * 1000,
-    reuseExistingServer: !process.env.CI,
   },
   projects: [
     {
@@ -35,6 +26,11 @@ const config: PlaywrightTestConfig = {
       },
     },
   ],
+  outputDir: 'test-results/',
+  webServer: {
+    command: 'npm run preview',
+    port: 3000,
+  },
 };
 
 export default config;

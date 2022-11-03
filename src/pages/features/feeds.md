@@ -42,7 +42,7 @@ const allArticles = import.meta.glob('./**/*.md');
 
 For example, you could place a site-wide feed that looks for markdown files in several collection folders.
 
-See [the articles naming instructions](/features/articles/#using-different-article-names) for more on customization requirements.
+See [the articles naming instructions](/features/posts/#using-different-article-names) for more on customization requirements.
 
 ## Site Search Feed
 

@@ -56,12 +56,12 @@ The [primary navigation feature](/features/navigation/) gives you full control o
 
 ## Articles
 
-If you want to publish [articles, blogs, or news](/features/articles/), you can provide paged lists of articles and associated author profiles.
+If you want to publish [articles, blogs, or news](/features/posts/), you can provide paged lists of articles and associated author profiles.
 
 - Article list
 - Author profiles
 
-[Find out more about articles and authors](/features/articles/)
+[Find out more about articles and authors](/features/posts/)
 
 ## Search
 

@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "img": "node ./src/utilities/img.js",
-    "dev": "node ./src/utilities/img.js && astro dev",
+    "img": "node --no-experimental-fetch ./src/utilities/img.js",
+    "dev": "node --no-experimental-fetch ./src/utilities/img.js && astro dev",
     "preview": "astro preview",
     "build": "astro build",
     "astro": "astro",
