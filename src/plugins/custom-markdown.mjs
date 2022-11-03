@@ -1,6 +1,6 @@
 import { SITE } from '../config';
-import { h } from 'hastscript';
 import { visit } from 'unist-util-visit';
+import { h } from 'hastscript';
 import { size } from './image-size.mjs';
 
 /* Based on https://github.com/remarkjs/remark-directive
@@ -57,12 +57,9 @@ export function getImageInfo(src, className, sizes) {
 /** @type {import('unified').Plugin<[], import('mdast').Root>} */
 export function attributeMarkdown() {
   return (tree) => {
+
     visit(tree, (node) => {
-      if (
-        node.type === 'textDirective' ||
-        node.type === 'leafDirective' ||
-        node.type === 'containerDirective'
-      ) {
+      if (['textDirective', 'leafDirective', 'containerDirective'].includes(node.type)) {
         const data = node.data || (node.data = {});
         const hast = h(node.name, node.attributes);
 

@@ -21,7 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2     
       - name: Check Licenses
-        run: npx license-checker --out ./public/downloads/licenses.csv --csv --onlyAllow "0BSD;BSD-2-Clause;BSD-3-Clause;CC-BY-4.0;ISC;MIT;Apache-2.0;UNLICENSED"     
+        run: npx license-checker --out ./public/downloads/licenses.csv --csv --onlyAllow "0BSD;BSD-2-Clause;BSD-3-Clause;CC-BY-4.0;ISC;MIT;Apache-2.0;UNLICENSED"
       - name: Astro Build
         uses: withastro/action@v0
 
