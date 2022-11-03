@@ -53,6 +53,7 @@ async function crawlImages() {
   discoveredImages = [];
 
   for (let i = 0; i < images.length; i++) {
+    console.log(images[i]);
     const response = await fetch(images[i]);
     expect(response.status, `Expected a 200 OK response for image ${images[i]}`).toBe(200);
   }
