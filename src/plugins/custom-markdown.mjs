@@ -2,6 +2,8 @@ import { SITE } from '../config';
 import { visit } from 'unist-util-visit';
 import { h } from 'hastscript';
 import { size } from './image-size.mjs';
+import { fromSelector } from 'hast-util-from-selector'
+
 
 /* Based on https://github.com/remarkjs/remark-directive
 * Examples:
@@ -75,6 +77,20 @@ export function attributeMarkdown() {
         data.hName = hast.tagName;
         data.hProperties = hast.properties;
       }
-    })
+    });
+  }
+}
+
+/** @type {import('unified').Plugin<[], import('mdast').Root>} */
+export function wrapTables() {
+  return (tree) => {
+    visit(tree, (node, i, parent) => {
+      if (node.type == 'table') {
+        const wrap = fromSelector('div.table-wrap');
+        console.log(JSON.stringify(wrap, null, 4));
+        wrap.children = [node];
+        parent.children[i] = wrap;
+      }
+    });
   }
 }
