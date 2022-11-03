@@ -19,9 +19,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2     
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
       - name: Check Licenses
         run: npx license-checker --out ./public/downloads/licenses.csv --csv --onlyAllow "0BSD;BSD-2-Clause;BSD-3-Clause;CC-BY-4.0;ISC;MIT;Apache-2.0;UNLICENSED"
+
       - name: Astro Build
         uses: withastro/action@v0
 
@@ -32,7 +38,7 @@ jobs:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
-        node-version: 16
+        node-version: 18
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
