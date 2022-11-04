@@ -10,7 +10,7 @@ const crawled: string[] = [];
 let discoveredLinks: string[] = [];
 let discoveredImages: string[] = [];
 
-test('Crawl for bad URIs', async ({ page }) => {
+test('Crawl for bad URIs', async () => {
 
   async function crawl(url: string) {
     if (crawled.includes(url)) {
