@@ -29,6 +29,12 @@ export async function getMenu (currentUrl: URL, lang: string) {
                             pages.push(tags[j]);
                         }
                         break;
+                    case 'toptags':
+                        const toptags = await getTopTags(currentUrl, lang);
+                        for (let j = 0; j < toptags.length; j++) {
+                            pages.push(toptags[j]);
+                        }
+                        break;
                     case 'categories':
                         const categories = await getCategories(currentUrl, lang);
                         for (let j = 0; j < categories.length; j++) {
