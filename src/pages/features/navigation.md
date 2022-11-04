@@ -3,6 +3,7 @@ layout: src/layouts/Default.astro
 title: Navigation
 navOrder: 3000
 pubDate: 2022-09-23
+modDate: 2022-11-04
 keywords: astro accelerator,navigation,menu
 description: How the navigation menu works in Astro Accelerator.
 bannerImage:
@@ -20,11 +21,23 @@ The menu can:
 
 ## Automatic Menu Items
 
-By default, the menu uses automatic discovery. You can see the configuration for this in `src/navigation.ts`.
+By default, the menu uses automatic discovery. You can see the configuration for this in `src/navigation.ts` for the main navigation and in `src/footer.ts` for the footer columns.
+
+### Main Menu
 
 ```typescript
 export const menu: (NavPage | 'auto')[] = [
   'auto'
+];
+
+```
+
+### Footer COlumns
+
+```typescript
+export const menu: (NavPage | 'categories' | 'tags')[] = [
+	'categories',
+	'tags'
 ];
 
 ```
@@ -55,7 +68,7 @@ and
 - /pages/articles.md
 - /pages/articles/
 
-## Additional Manual Menu Items
+### Additional Manual Menu Items
 
 To add menu items to the automatic navigation, add the items to `src/navigation.ts`.
 

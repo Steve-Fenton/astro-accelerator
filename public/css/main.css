@@ -757,32 +757,24 @@ form.site-search button {
 
 /* Taxonomy */
 
-.taxonomy {
+.footer-columns {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-    max-width: var(--grid-max-width);
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 22rem));;
+    justify-content: center;
+    gap: var(--block-gap);
 }
 
-.taxonomy > * {
-    width: calc(100% - 1rem);
-    border-left: 1px dashed var(--fore-head);
-    border-right: 1px dashed var(--fore-head);
-    margin: 0 auto;
-}
-
-.taxonomy h2 {
+.footer-columns h2 {
     margin: var(--paragraph-margin) auto;
 }
 
-.taxonomy ul {
+.footer-columns ul {
     list-style: none;
     margin: var(--paragraph-margin) 0;
 }
 
 @media (max-width: 680px) {
-    .taxonomy {
+    .footer-columns {
         display: block;
     }
 }

@@ -9,8 +9,8 @@ export type NavPage = {
   children: NavPage[];
 }
 
-export function isNavPage (item: NavPage | 'auto') : item is NavPage {
-  if (item === 'auto') {
+export function isNavPage (item: NavPage | 'auto' | 'tags' | 'categories') : item is NavPage {
+  if (typeof item === 'string' && ['auto', 'tags', 'categories'].includes(item)) {
     return false;
   }
 

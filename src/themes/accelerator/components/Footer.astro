@@ -3,8 +3,9 @@ import type { Frontmatter } from '@config';
 
 import t from '@util/language.json';
 import { Lang } from '@util/Languages.astro';
-import { getTaxonomy } from '@util/Taxonomy.astro';
-import { addSlashToAddress } from '@util/Url.astro';
+import { getMenu } from '@util/Footer.astro';
+
+import FooterItem from '@components/FooterItem.astro';
 
 import { SITE } from '@config';
 
@@ -20,44 +21,14 @@ const { lang } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-const category = _(t.articles.category) ?? 'category';
-const tag = _(t.articles.tag) ?? 'tag';
-
-const categoryLink = `${SITE.subfolder}/${category}/`;
-const tagLink = `${SITE.subfolder}/${tag}/`;
-
-function getCategoryLink(category: string) {
-  return categoryLink + category.toLowerCase().replace(/ /g, '-') + '/1/';
-}
-
-function getTagLink(tag: string) {
-  return tagLink + tag.toLowerCase().replace(/ /g, '-') + '/1/';
-}
-
-const taxonomy = await getTaxonomy();
+const currentUrl = new URL(Astro.request.url);
+const pages = await getMenu(currentUrl, lang);
 ---
 <footer class="site-footer" id="site-footer">
-  <div class="taxonomy">
-    {taxonomy.categories.length > 0 &&
-    <div>
-      <h2>{ _(t.articles.category_title) }</h2>
-      <ul>
-      {taxonomy.categories.map(c => 
-        <li><a href={ addSlashToAddress(getCategoryLink(c.title)) }>{ c.title }</a></li>
-      )}
-      </ul>
-    </div>
-    }
-    {taxonomy.topTags.length > 0 &&
-    <div>
-      <h2>{ _(t.articles.tag_title) }</h2>
-      <ul>
-      {taxonomy.topTags.map(t => 
-        <li><a href={ addSlashToAddress(getTagLink(t.title)) }>{ t.title }</a></li>
-      )}
-      </ul>
-    </div>
-    }
+  <div class="footer-columns">
+  {pages.map((page) => (
+    <FooterItem lang={ lang } page={ page } />
+  ))}
   </div>
   <p>{ _(t.footer.copyright) } &copy; { new Date().getFullYear() } { SITE.owner }</p>
   <nav aria-label={ _(t.aria.back_to_top) }>
