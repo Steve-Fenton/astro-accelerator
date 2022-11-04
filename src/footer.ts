@@ -1,6 +1,6 @@
 import type { NavPage } from '@util/NavigationTypes.astro';
 
-export const menu: (NavPage | 'categories' | 'tags')[] = [
+export const menu: (NavPage | 'categories' | 'tags' | 'toptags')[] = [
 	'categories',
 	'tags',
 	{

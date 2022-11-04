@@ -139,4 +139,50 @@ export async function getTags (currentUrl: URL, lang: string) {
 
     return pageHierarchy;
 }
+
+export async function getTopTags (currentUrl: URL, lang: string) {
+
+const key = 'Footer__getTopTags_' + lang;
+let pageHierarchy: NavPage[] = await getItem(key);
+
+if (pageHierarchy == null) {
+    const _ = Lang(lang);
+    const tag = _(t.articles.tag) ?? 'tag';
+    const tagTitle = _(t.articles.tag_title) ?? 'Tags';
+    const tagLink = `${SITE.subfolder}/${tag}/`;
+
+    function getTagLink(tag: string) {
+        return addSlashToAddress(tagLink + tag.toLowerCase().replace(/ /g, '-') + '/1/');
+    }
+
+    let order = 0;
+
+    const taxonomy = await getTaxonomy();
+
+    pageHierarchy = [{
+        title: tagTitle,
+        url: tagLink,
+        ariaCurrent: false,
+        isOpen: false,
+        order: 1,
+        section: '',
+        children: taxonomy.topTags.map(item => {
+            return {
+                title: item.title,
+                url: getTagLink(item.title),
+                ariaCurrent: false,
+                isOpen: false,
+                order: ++order,
+                section: '',
+                children: []
+            };
+        })
+    }];
+
+    // Cache the result
+    await setItem(key, pageHierarchy);
+}
+
+return pageHierarchy;
+}
 ---
