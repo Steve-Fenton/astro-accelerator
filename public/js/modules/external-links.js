@@ -6,8 +6,11 @@ function setExternalLinkAttributes() {
         // Open external links in a new tab
         const destination = new URL(link.href);
         if (destination.hostname != window.location.hostname) {
-            link.setAttribute('target', '_blank');
-            link.setAttribute('rel', 'noopener');
+            if (!link.target) {
+                link.setAttribute('target', '_blank');
+            }
+            const rel = (link.rel) ? `${link.rel} noopener` : 'noopener';
+            link.setAttribute('rel', rel);
         }
     });
 }
