@@ -79,7 +79,6 @@ export async function getCategories (currentUrl: URL, lang: string) {
             ariaCurrent: false,
             isOpen: false,
             order: 1,
-            section: '',
             children: taxonomy.categories.map(item => {
                 return {
                     title: item.title,
@@ -87,7 +86,6 @@ export async function getCategories (currentUrl: URL, lang: string) {
                     ariaCurrent: false,
                     isOpen: false,
                     order: ++order,
-                    section: '',
                     children: []
                 };
             })
@@ -125,7 +123,6 @@ export async function getTags (currentUrl: URL, lang: string) {
             ariaCurrent: false,
             isOpen: false,
             order: 1,
-            section: '',
             children: taxonomy.tags.map(item => {
                 return {
                     title: item.title,
@@ -133,7 +130,6 @@ export async function getTags (currentUrl: URL, lang: string) {
                     ariaCurrent: false,
                     isOpen: false,
                     order: ++order,
-                    section: '',
                     children: []
                 };
             })
@@ -171,7 +167,6 @@ if (pageHierarchy == null) {
         ariaCurrent: false,
         isOpen: false,
         order: 1,
-        section: '',
         children: taxonomy.topTags.map(item => {
             return {
                 title: item.title,
@@ -179,7 +174,6 @@ if (pageHierarchy == null) {
                 ariaCurrent: false,
                 isOpen: false,
                 order: ++order,
-                section: '',
                 children: []
             };
         })

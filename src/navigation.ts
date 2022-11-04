@@ -39,7 +39,6 @@ export const menu: (NavPage | 'auto')[] = [
 				ariaCurrent: false,
 				isOpen: false,
 				order: 1,
-				section: '',
 				children: []
 			 },
 			 {
@@ -48,7 +47,6 @@ export const menu: (NavPage | 'auto')[] = [
 				ariaCurrent: false,
 				isOpen: false,
 				order: 2,
-				section: '',
 				children: []
 			 },
 			 {
@@ -57,7 +55,6 @@ export const menu: (NavPage | 'auto')[] = [
 				ariaCurrent: false,
 				isOpen: false,
 				order: 3,
-				section: '',
 				children: []
 			 },
 		]

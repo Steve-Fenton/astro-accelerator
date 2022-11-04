@@ -22,7 +22,7 @@ const _ = Lang(lang);
   <ul>
   { page.children.sort((a, b) => a.order - b.order).map((child) => (
     <li>
-      <a href={ child.url } aria-current={ child.ariaCurrent }>{ child.title }</a>
+      <a href={ child.url } aria-current={ child.ariaCurrent } rel={ child.rel }>{ child.title }</a>
     </li>
   ))}
   </ul>

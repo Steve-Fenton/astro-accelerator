@@ -9,14 +9,12 @@ export const menu: (NavPage | 'categories' | 'tags' | 'toptags')[] = [
 		ariaCurrent: false,
 		isOpen: false,
 		order: 1,
-		section: '',
 		children: [{
 			title: 'Steve Fenton',
 			url: 'https://www.stevefenton.co.uk/',
 			ariaCurrent: false,
 			isOpen: false,
 			order: 1,
-			section: '',
 			children: []
 		},{
 			title: 'Astro',
@@ -24,7 +22,6 @@ export const menu: (NavPage | 'categories' | 'tags' | 'toptags')[] = [
 			ariaCurrent: false,
 			isOpen: false,
 			order: 1,
-			section: '',
 			children: []
 		},{
 			title: 'GitHub',
@@ -32,7 +29,6 @@ export const menu: (NavPage | 'categories' | 'tags' | 'toptags')[] = [
 			ariaCurrent: false,
 			isOpen: false,
 			order: 1,
-			section: '',
 			children: []
 		}]
 }];

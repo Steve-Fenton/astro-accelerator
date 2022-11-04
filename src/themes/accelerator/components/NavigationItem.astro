@@ -20,7 +20,7 @@ const _ = Lang(lang);
 ---
 {(page.children.length == 0) && (
 <li>
-  <a href={ addSlashToAddress(page.url) } aria-current={ page.ariaCurrent }>{ page.title }</a>
+  <a href={ addSlashToAddress(page.url) } aria-current={ page.ariaCurrent } rel={ page.rel }>{ page.title }</a>
 </li>
 )}
 {(page.children.length > 0) && (
