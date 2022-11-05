@@ -9,8 +9,10 @@ function setExternalLinkAttributes() {
             if (!link.target) {
                 link.setAttribute('target', '_blank');
             }
-            const rel = (link.rel) ? `${link.rel} noopener` : 'noopener';
-            link.setAttribute('rel', rel);
+
+            if (!link.rel) {
+                link.setAttribute('rel', 'noopener');
+            }
         }
     });
 }
