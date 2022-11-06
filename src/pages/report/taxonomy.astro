@@ -1,0 +1,42 @@
+---
+import t from '@util/language.json';
+import { Lang } from '@util/Languages.astro';
+
+import { getTaxonomy } from '@util/Taxonomy.astro';
+
+// Logic
+const taxonomy = await getTaxonomy();
+---
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Taxonomy</title>
+    </head>
+    <body>
+        <h2>Report: Taxonomy</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Title</th>
+                    <th>Count</th>
+                </tr>
+            </thead>
+        {taxonomy.categories.map(t => 
+        <tr>
+            <td>Category</td>
+            <td>{ t.title }</td>
+            <td>{ t.count }</td>
+        </tr>
+        )}
+        {taxonomy.tags.map(t => 
+        <tr>
+            <td>Tags</td>
+            <td>{ t.title }</td>
+            <td>{ t.count }</td>
+        </tr>
+        )}
+        </table>
+    </body>
+</html>
