@@ -1,6 +1,12 @@
 ---
+import type { Entry } from '@util/Languages.astro';
+
+import t from '@util/language.json';
+
+import { SITE } from '../config';
 import { getPages } from '@util/PageQueries.astro';
 import { getItem, setItem } from '@util/Cache.astro';
+import { addSlashToAddress } from '@util/Url.astro';
 
 type TaxonomyEntry = {
     title: string;
@@ -12,6 +18,26 @@ type Taxonomy = {
     topTags: TaxonomyEntry[];
     categories: TaxonomyEntry[];
 };
+
+export function taxonomyLinks(lang: (entry: Entry) => string) {
+    const category = lang(t.articles.category) ?? 'category';
+    const categoryLink = `${SITE.subfolder}/${category}/`;
+
+    const tag = lang(t.articles.tag) ?? 'category';
+    const tagLink = `${SITE.subfolder}/${tag}/`;
+
+    return {
+        tag: tag,
+        category: category,
+        getCategoryLink: (category: string) => {
+            return addSlashToAddress(categoryLink + category.toLowerCase().replace(/ /g, '-') + '/1/');
+        },
+        getTagLink: (tag: string) => {
+            return addSlashToAddress(tagLink + tag.toLowerCase().replace(/ /g, '-') + '/1/');
+        }
+    };
+
+}
 
 export async function getTaxonomy (): Promise<Taxonomy> {
     const cacheKey = 'Global__taxonomy';

@@ -6,6 +6,7 @@ import { Lang } from '@util/Languages.astro';
 
 import { SITE } from '@config';
 import { addSlashToAddress } from '@util/Url.astro';
+import { taxonomyLinks } from '@util/Taxonomy.astro';
 
 // Properties
 type Props = {
@@ -21,22 +22,8 @@ const _ = Lang(lang);
 const categories = frontmatter.categories ?? [];
 const tags = frontmatter.tags ?? [];
 
-const category = _(t.articles.category) ?? 'category';
-const tag = _(t.articles.tag) ?? 'tag';
-
-const categoryLink = `${SITE.subfolder}/${category}/`;
-const tagLink = `${SITE.subfolder}/${tag}/`;
-
-function getCategoryLink(category: string) {
-  return categoryLink + category.toLowerCase().replace(/ /g, '-') + '/1/';
-}
-
-function getTagLink(tag: string) {
-  return tagLink + tag.toLowerCase().replace(/ /g, '-') + '/1/';
-}
-
+const links = taxonomyLinks(_);
 const hasTaxonomy = (categories.length + tags.length) > 0;
-
 ---
 {hasTaxonomy && (
   <div class="post-taxonomy">
@@ -45,7 +32,7 @@ const hasTaxonomy = (categories.length + tags.length) > 0;
       <h2>{ _(t.articles.tag_title) }: </h2>
       <ul itemprop="keywords">
       {tags.map(tag => 
-        <li><a href={ addSlashToAddress(getTagLink(tag)) }>{ tag }</a></li>
+        <li><a href={ links.getTagLink(tag) }>{ tag }</a></li>
       )}
       </ul>
     </div>
@@ -55,7 +42,7 @@ const hasTaxonomy = (categories.length + tags.length) > 0;
       <h2>{ _(t.articles.category_title) }: </h2>
       <ul>
       {categories.map(category => 
-        <li><a href={ addSlashToAddress(getCategoryLink(category)) } itemprop="articleSection">{ category }</a></li>
+        <li><a href={ links.getCategoryLink(category) } itemprop="articleSection">{ category }</a></li>
       )}
       </ul>
     </div>

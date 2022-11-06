@@ -2,29 +2,14 @@
 import t from '@util/language.json';
 import { Lang } from '@util/Languages.astro';
 
-import { SITE } from '../../config';
-import { getTaxonomy } from '@util/Taxonomy.astro';
-import { addSlashToAddress } from '@util/Url.astro';
+import { getTaxonomy, taxonomyLinks } from '@util/Taxonomy.astro';
 
 // Lang
 const _ = Lang('en');
 
 // Logic
 
-const category = _(t.articles.category) ?? 'category';
-const categoryLink = `${SITE.subfolder}/${category}/`;
-
-const tag = _(t.articles.tag) ?? 'category';
-const tagLink = `${SITE.subfolder}/${tag}/`;
-
-function getCategoryLink(category: string) {
-    return addSlashToAddress(categoryLink + category.toLowerCase().replace(/ /g, '-') + '/1/');
-}
-
-function getTagLink(tag: string) {
-    return addSlashToAddress(tagLink + tag.toLowerCase().replace(/ /g, '-') + '/1/');
-}
-
+const links = taxonomyLinks(_);
 const taxonomy = await getTaxonomy();
 ---
 <!doctype html>
@@ -45,15 +30,15 @@ const taxonomy = await getTaxonomy();
             </thead>
         {taxonomy.categories.map(t => 
         <tr>
-            <td>{ category }</td>
-            <td><a href={ getCategoryLink(t.title) }>{ t.title }</a></td>
+            <td>{ links.category }</td>
+            <td><a href={ links.getCategoryLink(t.title) }>{ t.title }</a></td>
             <td>{ t.count }</td>
         </tr>
         )}
         {taxonomy.tags.map(t => 
         <tr>
-            <td>{ tag }</td>
-            <td><a href={ getTagLink(t.title) }>{ t.title }</a></td>
+            <td>{ links.tag }</td>
+            <td><a href={ links.getTagLink(t.title) }>{ t.title }</a></td>
             <td>{ t.count }</td>
         </tr>
         )}

@@ -6,13 +6,14 @@ import { SITE } from '../config';
 import { getItem, setItem } from '@util/Cache.astro';
 import { setCurrentPage } from '@util/NavPage.astro';
 import { NavPage, isNavPage } from '@util/NavigationTypes.astro';
-import { getTaxonomy } from '@util/Taxonomy.astro';
+import { getTaxonomy, taxonomyLinks } from '@util/Taxonomy.astro';
 import { Lang } from '@util/Languages.astro';
-import { addSlashToAddress } from '@util/Url.astro';
 import t from '@util/language.json';
 
 export async function getMenu (currentUrl: URL, lang: string) {
     const key = 'Footer__getMenu_' + lang;
+    const _ = Lang(lang);
+    const links = taxonomyLinks(_);
     let pages: NavPage[] = await getItem(key);
 
     if (pages == null) {
@@ -24,19 +25,19 @@ export async function getMenu (currentUrl: URL, lang: string) {
             } else {
                 switch (item) {
                     case 'tags':
-                        const tags = await getTags(currentUrl, lang);
+                        const tags = await getTags(links, _, lang);
                         for (let j = 0; j < tags.length; j++) {
                             pages.push(tags[j]);
                         }
                         break;
                     case 'toptags':
-                        const toptags = await getTopTags(currentUrl, lang);
+                        const toptags = await getTopTags(links, _, lang);
                         for (let j = 0; j < toptags.length; j++) {
                             pages.push(toptags[j]);
                         }
                         break;
                     case 'categories':
-                        const categories = await getCategories(currentUrl, lang);
+                        const categories = await getCategories(links, _, lang);
                         for (let j = 0; j < categories.length; j++) {
                             pages.push(categories[j]);
                         }
@@ -54,20 +55,15 @@ export async function getMenu (currentUrl: URL, lang: string) {
     return pages;
 }
 
-export async function getCategories (currentUrl: URL, lang: string) {
+export async function getCategories (links, _, lang: string) {
 
     const key = 'Footer__getCategories_' + lang;
     let pageHierarchy: NavPage[] = await getItem(key);
 
     if (pageHierarchy == null) {
-        const _ = Lang(lang);
         const category = _(t.articles.category) ?? 'category';
         const categoryTitle = _(t.articles.category_title) ?? 'Categories';
         const categoryLink = `${SITE.subfolder}/${category}/`;
-
-        function getCategoryLink(category: string) {
-            return addSlashToAddress(categoryLink + category.toLowerCase().replace(/ /g, '-') + '/1/');
-        }
 
         let order = 0;
 
@@ -82,7 +78,7 @@ export async function getCategories (currentUrl: URL, lang: string) {
             children: taxonomy.categories.map(item => {
                 return {
                     title: item.title,
-                    url: getCategoryLink(item.title),
+                    url: links.getCategoryLink(item.title),
                     ariaCurrent: false,
                     isOpen: false,
                     order: ++order,
@@ -98,7 +94,7 @@ export async function getCategories (currentUrl: URL, lang: string) {
     return pageHierarchy;
 }
 
-export async function getTags (currentUrl: URL, lang: string) {
+export async function getTags (links, _, lang: string) {
 
     const key = 'Footer__getTags_' + lang;
     let pageHierarchy: NavPage[] = await getItem(key);
@@ -108,10 +104,6 @@ export async function getTags (currentUrl: URL, lang: string) {
         const tag = _(t.articles.tag) ?? 'tag';
         const tagTitle = _(t.articles.tag_title) ?? 'Tags';
         const tagLink = `${SITE.subfolder}/${tag}/`;
-
-        function getTagLink(tag: string) {
-            return addSlashToAddress(tagLink + tag.toLowerCase().replace(/ /g, '-') + '/1/');
-        }
 
         let order = 0;
 
@@ -126,7 +118,7 @@ export async function getTags (currentUrl: URL, lang: string) {
             children: taxonomy.tags.map(item => {
                 return {
                     title: item.title,
-                    url: getTagLink(item.title),
+                    url: links.getTagLink(item.title),
                     ariaCurrent: false,
                     isOpen: false,
                     order: ++order,
@@ -142,7 +134,7 @@ export async function getTags (currentUrl: URL, lang: string) {
     return pageHierarchy;
 }
 
-export async function getTopTags (currentUrl: URL, lang: string) {
+export async function getTopTags (links, _, lang: string) {
 
 const key = 'Footer__getTopTags_' + lang;
 let pageHierarchy: NavPage[] = await getItem(key);
@@ -152,10 +144,6 @@ if (pageHierarchy == null) {
     const tag = _(t.articles.tag) ?? 'tag';
     const tagTitle = _(t.articles.tag_title) ?? 'Tags';
     const tagLink = `${SITE.subfolder}/${tag}/`;
-
-    function getTagLink(tag: string) {
-        return addSlashToAddress(tagLink + tag.toLowerCase().replace(/ /g, '-') + '/1/');
-    }
 
     let order = 0;
 
@@ -170,7 +158,7 @@ if (pageHierarchy == null) {
         children: taxonomy.topTags.map(item => {
             return {
                 title: item.title,
-                url: getTagLink(item.title),
+                url: links.getTagLink(item.title),
                 ariaCurrent: false,
                 isOpen: false,
                 order: ++order,
