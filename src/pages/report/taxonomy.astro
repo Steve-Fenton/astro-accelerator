@@ -2,7 +2,7 @@
 import t from '@util/language.json';
 import { Lang } from '@util/Languages.astro';
 
-import { getTaxonomy, taxonomyLinks } from '@util/Taxonomy.astro';
+import { getTaxonomy, taxonomyLinks, sortByTitle } from '@util/Taxonomy.astro';
 
 // Lang
 const _ = Lang('en');
@@ -28,14 +28,14 @@ const taxonomy = await getTaxonomy();
                     <th>Count</th>
                 </tr>
             </thead>
-        {taxonomy.categories.map(t => 
+        {taxonomy.categories.sort(sortByTitle).map(t => 
         <tr>
             <td>{ links.category }</td>
             <td><a href={ links.getCategoryLink(t.title) }>{ t.title }</a></td>
             <td>{ t.count }</td>
         </tr>
         )}
-        {taxonomy.tags.map(t => 
+        {taxonomy.tags.sort(sortByTitle).map(t => 
         <tr>
             <td>{ links.tag }</td>
             <td><a href={ links.getTagLink(t.title) }>{ t.title }</a></td>
