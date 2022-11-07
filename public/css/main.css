@@ -535,6 +535,30 @@ main ul ol, main ul ul, main ol ol, main ol ul {
     padding: 0.5rem 1rem;
 }
 
+/* Footer columns */
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 22rem));;
+    justify-content: center;
+    gap: var(--block-gap);
+}
+
+.footer-columns h2 {
+    margin: var(--paragraph-margin) auto;
+}
+
+.footer-columns ul {
+    list-style: none;
+    margin: var(--paragraph-margin) 0;
+}
+
+@media (max-width: 680px) {
+    .footer-columns {
+        display: block;
+    }
+}
+
 /* Overlay (Mobile Navigation, Search) */
 
 .overlay {
@@ -754,31 +778,6 @@ form.site-search button {
     background-color: var(--fore-link-alt);
     color: var(--aft);
 }
-
-/* Taxonomy */
-
-.footer-columns {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18rem, 22rem));;
-    justify-content: center;
-    gap: var(--block-gap);
-}
-
-.footer-columns h2 {
-    margin: var(--paragraph-margin) auto;
-}
-
-.footer-columns ul {
-    list-style: none;
-    margin: var(--paragraph-margin) 0;
-}
-
-@media (max-width: 680px) {
-    .footer-columns {
-        display: block;
-    }
-}
-
 
 /* Authors */
 

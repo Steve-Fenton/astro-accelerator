@@ -125,18 +125,25 @@ function search(s) {
     const ol = document.createElement('ol');
     ol.className = 'site-search-results';
 
-    const limit = Math.min(needles.length, 12)
+    const limit = Math.min(needles.length, 12);
+
+    // @ts-ignore
+    const siteUrl = new URL(site_url);
 
     for (let i = 0; i < limit; i++) {
         const needle = needles[i];
 
+        const address = new URL(needle.url);
+        const isSameHost = siteUrl.host == address.host;
+        const url =  isSameHost ? address.pathname : needle.url;
+
         const a = document.createElement('a');
         a.innerHTML = highlight(needle.title, queryTerms);
-        a.href = needle.url;
+        a.href = url;
 
         const path = document.createElement('div');
         path.className = 'result-path';
-        path.innerHTML = new URL(needle.url).pathname;
+        path.innerHTML = address.pathname;
 
         const markers = document.createElement('div');
         markers.className = 'result-text';
@@ -149,7 +156,7 @@ function search(s) {
             .forEach(h => {
                 const item = document.createElement('li');
                 const link = document.createElement('a');
-                link.href = needle.url + '#' + h.slug;
+                link.href = url + '#' + h.slug;
                 link.innerHTML = highlight(h.text, queryTerms);
                 item.appendChild(link);
                 headings.append(item);
