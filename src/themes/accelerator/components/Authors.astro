@@ -34,8 +34,7 @@ const contributors = authorList.writers.slice(1);
     sizes={ authorImage.sizes }
     src={ authorImage.src }
     alt={ authorList?.image?.alt }
-    class={ authorImage.class }
-    loading="lazy" />
+    class={ authorImage.class } />
   }
   <div class="author-info">
     <span>{ _(t.post.written_by) }
@@ -44,11 +43,11 @@ const contributors = authorList.writers.slice(1);
       }{contributors.map((writer) => (
         <a href={ addSlashToAddress(writer.url) + '1/' } itemprop="contributor">{ writer.frontmatter.title }</a>
       ))}.
-      <time datetime={ frontmatter.pubDate.toString() } itemprop="datePublished">
+      <br /><time datetime={ frontmatter.pubDate.toString() } itemprop="datePublished">
       { formatDate(frontmatter, lang, SITE) }
       </time>
       {frontmatter.modDate &&
-      <time datetime={ frontmatter.modDate.toString() } itemprop="dateModified">
+      <br /><time datetime={ frontmatter.modDate.toString() } itemprop="dateModified">
         { _(t.post.last_modified) } { formatModifiedDate(frontmatter, lang, SITE) }
       </time>
       }
