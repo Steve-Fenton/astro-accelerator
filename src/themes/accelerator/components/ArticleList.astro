@@ -31,6 +31,14 @@ const articles = posts.map(p => {
       : null
   };
 });
+
+let articleIndex = 0;
+function getLoadingAttribute() {
+  articleIndex++;
+  return articleIndex > 2
+    ? 'lazy'
+    : 'eager';
+}
 ---
 <ul class="post-list anim-show-parent">
   {articles.map((post) => (
@@ -44,7 +52,7 @@ const articles = posts.map(p => {
           src={ post.img.src }
           alt={ post.frontmatter.bannerImage.alt }
           class={ post.img.class }
-          loading="lazy" />
+          loading={ getLoadingAttribute() } />
       )}
       </div>
       <div class="list-item-content">
