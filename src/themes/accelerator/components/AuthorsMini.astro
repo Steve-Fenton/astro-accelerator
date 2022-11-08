@@ -3,6 +3,7 @@ import { SITE, Frontmatter } from '@config';
 
 import t from '@util/language.json';
 import { Lang } from '@util/Languages.astro';
+import { getImageInfo } from '@plugin/custom-markdown.mjs';
 
 import { formatDate } from '@util/DateFormat.astro';
 import { getAuthorList } from '@util/Authors.astro';
@@ -19,17 +20,24 @@ const _ = Lang(lang);
 
 // Logic
 const authorList = await getAuthorList(frontmatter);
+const authorImage = authorList?.image?.src ? getImageInfo(authorList.image.src, 'author-image', SITE.images.authorSize) : null;
 ---
 {authorList.writers.length > 0 && 
 <div class="post-meta">
-  {authorList.image?.src && 
-  <img src={ authorList.image.src } alt={ authorList.image.alt } width="50" height="50" class="author-image" />
+  {authorImage && 
+  <img
+    srcset={ authorImage.srcset }
+    sizes={ authorImage.sizes }
+    src={ authorImage.src }
+    alt={ authorList?.image?.alt }
+    class={ authorImage.class }
+    loading="lazy" />
   }
   <div class="author-info">
     <span>{ _(t.post.written_by) }
       {authorList.writers.map((writer) => (
         <span>{ writer.frontmatter.title }</span>
-      ))}.
+      ))}.<br />
       <time datetime={ frontmatter.pubDate.toString() }>
       { formatDate(frontmatter, lang, SITE) }
       </time>

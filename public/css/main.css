@@ -659,7 +659,7 @@ form.site-search button {
     margin: 0.5rem 0;
 }
 
-.post-list .list-item img {
+.post-list .list-item-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -718,7 +718,7 @@ form.site-search button {
 }
 
 .post-meta .author-image {
-    max-width: 50px;
+    width: 50px;
     margin-right: 1rem;
     aspect-ratio: 1/1;
     object-fit: cover;

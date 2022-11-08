@@ -7,6 +7,7 @@ import { Lang } from '@util/Languages.astro';
 import { formatDate, formatModifiedDate } from '@util/DateFormat.astro';
 import { getAuthorList } from '@util/Authors.astro';
 import { addSlashToAddress } from '@util/Url.astro';
+import { getImageInfo } from '@plugin/custom-markdown.mjs';
 
 // Properties
 type Props = {
@@ -22,12 +23,19 @@ const _ = Lang(lang);
 const authorList = await getAuthorList(frontmatter);
 
 const author = authorList.writers.slice(0, 1)[0];
+const authorImage = authorList?.image?.src ? getImageInfo(authorList.image.src, 'author-image', SITE.images.authorSize) : null;
 const contributors = authorList.writers.slice(1);
 ---
 {authorList.writers.length > 0 && 
 <div class="post-meta">
-  {authorList.image?.src && 
-  <img src={ authorList.image.src } alt={ authorList.image.alt } width="50" height="50" class="author-image" />
+  {authorImage && 
+  <img
+    srcset={ authorImage.srcset }
+    sizes={ authorImage.sizes }
+    src={ authorImage.src }
+    alt={ authorList?.image?.alt }
+    class={ authorImage.class }
+    loading="lazy" />
   }
   <div class="author-info">
     <span>{ _(t.post.written_by) }
