@@ -49,17 +49,23 @@ async function recurseFiles(directory) {
                         webP: webP
                     };
 
-                    const fullPath = path.join(imageDirectory, info.path);
                     const fullDestination = path.join(workingDirectory, outputPath, 'x', info.path);
-                    const modified = fs.statSync(fullPath).mtime;
-
-                    const destinationModified = fs.existsSync(fullDestination)
-                        ? fs.statSync(fullDestination).mtime
-                        : new Date(0);
-
-                    if (destinationModified < modified) {
+                    
+                    if(!fs.existsSync(fullDestination)) {
                         filesToProcess.push(info);
                     }
+                    
+                    // The code below uses modified dates (and will update more images than the above)
+                    // const fullPath = path.join(imageDirectory, info.path);
+                    // const modified = fs.statSync(fullPath).mtime;
+
+                    // const destinationModified = fs.existsSync(fullDestination)
+                    //     ? fs.statSync(fullDestination).mtime
+                    //     : new Date(0);
+
+                    // if (destinationModified < modified) {
+                    //     filesToProcess.push(info);
+                    // }
                     break;
             }
         }
