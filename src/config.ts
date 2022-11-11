@@ -67,14 +67,15 @@ export type Site = Mapped<typeof SITE>;
 export type Frontmatter = {
 	layout: string;
 	title: string;
-	keywords: string;
-	description: string;
+	subtitle?: string;
 	pubDate: Date;
 	modDate?: Date;
-	categories?: string[];
 	tags?: string[];
 	id?: string;
 	authors?: string[];
+	keywords?: string;
+	description?: string;
+	categories?: string[];
 	navTitle?: string;
 	navSection?: string;
 	navOrder?: number;

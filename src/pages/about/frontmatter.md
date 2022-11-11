@@ -24,7 +24,7 @@ layout: src/layouts/Default.astro
 String. The page title.
 
 ```yaml
-title: The importance of being Ernest
+title: The importance of being earnest
 ```
 
 ### pubDate
@@ -44,6 +44,14 @@ description: An overview of frontmatter in Astro Accelerator.
 ```
 
 ## Optional frontmatter
+
+### subtitle
+
+String. A subtitle for the page.
+
+```yaml
+subtitle: A play by Oscar Wilde.
+```
 
 ### keywords
 

@@ -39,6 +39,9 @@ const site_features = ${JSON.stringify(SITE.featureFlags)};
                     <TableOfContents frontmatter={ frontmatter } headings={ headings } lang={ lang } />
                     <header>
                         <h1 itemprop="name headline">{ frontmatter.title ?? SITE.title }</h1>
+                        {frontmatter.subtitle && (
+                            <p>{ frontmatter.subtitle }</p>
+                        )}
                     </header>
                     <Authors frontmatter={ frontmatter } lang={ lang } />
                     <div class="page-content anim-show-parent" itemprop="articleBody">
