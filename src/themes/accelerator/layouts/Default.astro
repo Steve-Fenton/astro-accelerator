@@ -38,26 +38,26 @@ const site_features = ${JSON.stringify(SITE.featureFlags)};
         <SkipLinks frontmatter={ frontmatter } headings={ headings } lang={ lang } />
         <Header frontmatter={ frontmatter } headings={ headings } lang={ lang } />
         <Breadcrumbs frontmatter={ frontmatter } headings={ headings } lang={ lang } />
-        <main id="site-main">
-            <article class="article-grid" itemscope itemtype="https://schema.org/Article">
-                <header>
-                    <h1 itemprop="name headline"><Fragment set:html={ title } /></h1>
-                    {subtitle && (
-                        <p><Fragment set:html={ subtitle } /></p>
-                    )}
-                </header>
-                <div>
+        <div class="content-group">
+            <Navigation lang={ lang } />
+            <main id="site-main">
+                <article itemscope itemtype="https://schema.org/Article">
                     <TableOfContents frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+                    <header>
+                        <h1 itemprop="name headline"><Fragment set:html={ title } /></h1>
+                        {subtitle && (
+                            <p><Fragment set:html={ subtitle } /></p>
+                        )}
+                    </header>
                     <Authors frontmatter={ frontmatter } lang={ lang } />
                     <div class="page-content anim-show-parent" itemprop="articleBody">
                         <slot />
                     </div>
                     <Taxonomy frontmatter={ frontmatter } lang={ lang } />
                     <Related frontmatter={ frontmatter } headings={ headings } lang={ lang } />
-                </div>
-                <Navigation lang={ lang } />
-            </article>
-        </main>
+                </article>
+            </main>
+        </div>
         <Footer frontmatter={ frontmatter } headings={ headings } lang={ lang } />
         <Fragment is:html="true" set:html={ features } />
         <script src={ SITE.subfolder + '/js/main.js' } type="module" async></script>
