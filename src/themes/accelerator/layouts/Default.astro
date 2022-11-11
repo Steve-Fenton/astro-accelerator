@@ -42,15 +42,15 @@ const site_features = ${JSON.stringify(SITE.featureFlags)};
             <Navigation lang={ lang } />
             <main id="site-main">
                 <article itemscope itemtype="https://schema.org/Article">
-                    <TableOfContents frontmatter={ frontmatter } headings={ headings } lang={ lang } />
                     <header>
                         <h1 itemprop="name headline"><Fragment set:html={ title } /></h1>
                         {subtitle && (
                             <p><Fragment set:html={ subtitle } /></p>
                         )}
                     </header>
-                    <Authors frontmatter={ frontmatter } lang={ lang } />
                     <div class="page-content anim-show-parent" itemprop="articleBody">
+                        <TableOfContents frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+                        <Authors frontmatter={ frontmatter } lang={ lang } />
                         <slot />
                     </div>
                     <Taxonomy frontmatter={ frontmatter } lang={ lang } />

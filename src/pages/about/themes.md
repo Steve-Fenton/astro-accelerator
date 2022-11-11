@@ -1,5 +1,5 @@
 ---
-layout: src/layouts/Example.astro
+layout: src/layouts/Default.astro
 title: Themes
 navOrder: 2000
 pubDate: 2022-09-17
