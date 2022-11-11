@@ -21,7 +21,7 @@ layout: src/layouts/Default.astro
 
 ### title
 
-String. The page title.
+String or Markdown. The page title.
 
 ```yaml
 title: The importance of being earnest
@@ -47,7 +47,7 @@ description: An overview of frontmatter in Astro Accelerator.
 
 ### subtitle
 
-String. A subtitle for the page.
+String or Markdown. A subtitle for the page.
 
 ```yaml
 subtitle: A play by Oscar Wilde.

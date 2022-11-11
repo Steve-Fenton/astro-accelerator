@@ -100,8 +100,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 3em;
-    font-size: clamp(2em, 4vw, 3em);
+    font-size: 3rem;
+    font-size: clamp(2rem, 6vw, 3rem);
 }
 
 h2 {
