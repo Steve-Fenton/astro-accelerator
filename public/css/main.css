@@ -160,6 +160,10 @@ li::marker {
     margin: var(--paragraph-margin) 0 var(--paragraph-margin) 1.2rem;
 }
 
+.page-content > h2:nth-child(1) {
+    margin-top: 0;
+}
+
 p {
     margin: var(--paragraph-margin) 0;
 }
@@ -656,7 +660,6 @@ form.site-search button {
 
 .post-list .list-item-content .post-meta {
     font-size: 0.8rem;
-    margin: 0 auto;
     text-align: left;
 }
 
