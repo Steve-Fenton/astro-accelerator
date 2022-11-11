@@ -11,4 +11,4 @@ bannerImage:
     alt: Dummy image
 ---
 
-Steve Fenton is the creator of Astro Accelerator and writes about it here.
+Steve Fenton is the creator of *Astro Accelerator* and writes about it here.

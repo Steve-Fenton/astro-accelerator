@@ -94,7 +94,7 @@ export async function getStaticPaths({ paginate }: any) {
 const pageLinks = getPageLinks(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
 ---
 <Default frontmatter={ frontmatter } headings={ headings }>
-  <Fragment is:raw set:html={ authorInfo.content }></Fragment>
+  <Fragment set:html={ authorInfo.content }></Fragment>
   <h2>Page {page.currentPage}</h2>
   <ArticleList lang={ lang } posts={ page.data } />
   <Paging lang={ lang } page={ page } pageLinks={ pageLinks } />
