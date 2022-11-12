@@ -28,7 +28,6 @@ const copyRecursiveSync = (src, dest, overwrite) => {
 };
 
 copyRecursiveSync('./node_modules/astro-accelerator/astro.config.mjs', './astro.config.mjs', forcedUpdate);
-copyRecursiveSync('./node_modules/astro-accelerator/.gitignore', './.gitignore', forcedUpdate);
 copyRecursiveSync('./node_modules/astro-accelerator/.npmrc', './.npmrc', forcedUpdate);
 copyRecursiveSync('./node_modules/astro-accelerator/env.d.ts', './env.d.ts', forcedUpdate);
 copyRecursiveSync('./node_modules/astro-accelerator/tsconfig.json', './tsconfig.json', forcedUpdate);
