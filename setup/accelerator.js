@@ -32,6 +32,10 @@ fs.mkdirSync(path.join(workingDirectory, '/src/layouts'), { recursive: true });
 fs.mkdirSync(path.join(workingDirectory, '/src/data'), { recursive: true });
 fs.mkdirSync(path.join(workingDirectory, '/src/pages'), { recursive: true });
 
+// Always Update
+copyRecursiveSync('./node_modules/astro-accelerator/src/themes/', './src/themes/', true);
+
+// More cautious updates
 copyRecursiveSync('./node_modules/astro-accelerator/astro.config.mjs', './astro.config.mjs', forcedUpdate);
 copyRecursiveSync('./node_modules/astro-accelerator/.npmrc', './.npmrc', forcedUpdate);
 copyRecursiveSync('./node_modules/astro-accelerator/env.d.ts', './env.d.ts', forcedUpdate);
@@ -62,5 +66,3 @@ copyRecursiveSync(
   // You can change the destination below from "tag" to something else, like label
   './src/pages/tag/',
   forcedUpdate);
-
-copyRecursiveSync('./node_modules/astro-accelerator/src/themes/', './src/themes/', true);
