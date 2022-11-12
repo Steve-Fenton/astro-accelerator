@@ -5,9 +5,10 @@ import type { NavPage } from './NavigationTypes.astro';
 import { addSlashToAddress } from './Url.astro';
 
 export function mapNavPage (page: MarkdownInstance<Record<string, any>>) {
+
   let url = page.url == null || (page.url ?? '').length == 0 
-    ? '/'
-    : page.url;
+      ? '/'
+      : page.url;
 
   // Send visitors straight to the first page
   if (page.frontmatter.paged) {
@@ -15,6 +16,11 @@ export function mapNavPage (page: MarkdownInstance<Record<string, any>>) {
   }
 
   url = addSlashToAddress(url);
+
+  if (page.frontmatter.layout == 'src/layouts/Redirect.astro') {
+    // Skips past the redirect
+    url = page.frontmatter.redirect;
+  }
 
   const entry: NavPage = {
     section: page.frontmatter.navSection ?? page.frontmatter.navTitle ?? page.frontmatter.title,
