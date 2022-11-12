@@ -10,6 +10,32 @@ bannerImage:
     alt: Dummy image
 ---
 
+## New instructions
+
+Put the two setup files in an empty folder:
+
+- `accelerator.js`
+- `package.json`
+
+Run these three commands:
+
+```
+npm install
+
+node .\accelerator.js
+
+npm run img
+```
+
+Start up your empty site:
+
+```
+npm run dev
+```
+
+
+## Old instructions
+
 - Download the code from [GitHub](https://github.com/Steve-Fenton/astro-accelerator)
 - Run `npm install` to download the packages
 - Run `npm run dev` to start the site
