@@ -42,5 +42,25 @@ copyRecursiveSync('./node_modules/astro-accelerator/src/layouts/', './src/layout
 copyRecursiveSync('./node_modules/astro-accelerator/src/data/', './src/data/', forcedUpdate);
 copyRecursiveSync('./node_modules/astro-accelerator/public/', './public/', forcedUpdate);
 copyRecursiveSync('./node_modules/astro-accelerator/src/pages/index.md', './src/pages/index.md', forcedUpdate);
+copyRecursiveSync('./node_modules/astro-accelerator/src/pages/search.json.ts', './src/pages/search.json.ts', forcedUpdate);
+copyRecursiveSync('./node_modules/astro-accelerator/src/pages/sitemap.xml.ts', './src/pages/sitemap.xml.ts', forcedUpdate);
+
+copyRecursiveSync(
+  './node_modules/astro-accelerator/src/pages/articles/',
+  // You can change the destination below from "articles" to something else, like blog
+  './src/pages/articles/',
+  forcedUpdate);
+
+copyRecursiveSync(
+  './node_modules/astro-accelerator/src/pages/category/',
+  // You can change the destination below from "category" to something else, like interest
+  './src/pages/category/',
+  forcedUpdate);
+
+copyRecursiveSync(
+  './node_modules/astro-accelerator/src/pages/tag/',
+  // You can change the destination below from "tag" to something else, like label
+  './src/pages/tag/',
+  forcedUpdate);
 
 copyRecursiveSync('./node_modules/astro-accelerator/src/themes/', './src/themes/', true);
