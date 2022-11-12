@@ -1,8 +1,33 @@
 {
-  "name": "@example/minimal",
-  "type": "module",
   "version": "0.0.1",
-  "private": true,
+  "author": "Steve Fenton",
+  "name": "astro-accelerator",
+  "description": "A super-lightweight, accessible, SEO-friendly starter project for Astro",
+  "keywords": [
+    "astro",
+    "themes"
+  ],
+  "type": "module",
+  "homepage": "https://astro.stevefenton.co.uk/",
+  "bugs": "https://github.com/Steve-Fenton/astro-accelerator/issues",
+  "license": "(Apache-2.0)",
+  "files": [
+    "src/pages/authors/[author]/[page].astro",
+    "src/pages/articles/[page].astro",
+    "src/pages/articles/feed.xml.ts",
+    "src/pages/category/[category]/[page].astro",
+    "src/pages/tag/[tag]/[page].astro",
+    "src/pages/search.json.ts",
+    "src/pages/sitemap.xml.ts",
+    "src/pages/report/*",
+    "src/layouts/*",
+    "src/themes/**/*",
+    "src/data/*",
+    "public/js/**/*"
+  ],
+  "repository": {
+    "url": "https://github.com/Steve-Fenton/astro-accelerator"
+  },
   "scripts": {
     "img": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs",
     "dev": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs && astro dev",
@@ -20,5 +45,8 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.27.1"
+  },
+  "engines": {
+    "node": "*"
   }
 }
