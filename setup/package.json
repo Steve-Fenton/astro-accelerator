@@ -1,0 +1,19 @@
+{
+  "version": "0.0.1",
+  "author": "Steve Fenton",
+  "name": "your-project",
+  "type": "module",
+  "scripts": {
+    "img": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs",
+    "dev": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs && astro dev",
+    "test": "astro build && npx playwright test",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "dts": "tsc ./tests/locate-content.js ./tests/locate-navigation.js ./tests/locate-search.js --allowJs --declaration --emitDeclarationOnly"
+  },
+  "dependencies": {
+    "astro": "^1.6.7",
+    "astro-accelerator": "^0.0.6"
+  }
+}
