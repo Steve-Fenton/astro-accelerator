@@ -1,5 +1,5 @@
 {
-  "version": "0.0.11",
+  "version": "0.0.12",
   "author": "Steve Fenton",
   "name": "astro-accelerator",
   "description": "A super-lightweight, accessible, SEO-friendly starter project for Astro",
@@ -42,6 +42,7 @@
     "astro.config.mjs",
     "src/config.ts",
     "src/pages/index.md",
+    "src/pages/search.md",
     "src/pages/authors/[[]author[]]/[[]page[]].astro",
     "src/pages/articles/[[]page[]].astro",
     "src/pages/articles/feed.xml.ts",

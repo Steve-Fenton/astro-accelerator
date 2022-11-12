@@ -46,6 +46,7 @@ copyRecursiveSync('./node_modules/astro-accelerator/src/layouts/', './src/layout
 copyRecursiveSync('./node_modules/astro-accelerator/src/data/', './src/data/', forcedUpdate);
 copyRecursiveSync('./node_modules/astro-accelerator/public/', './public/', forcedUpdate);
 copyRecursiveSync('./node_modules/astro-accelerator/src/pages/index.md', './src/pages/index.md', forcedUpdate);
+copyRecursiveSync('./node_modules/astro-accelerator/src/pages/search.md', './src/pages/search.md', forcedUpdate);
 copyRecursiveSync('./node_modules/astro-accelerator/src/pages/search.json.ts', './src/pages/search.json.ts', forcedUpdate);
 copyRecursiveSync('./node_modules/astro-accelerator/src/pages/sitemap.xml.ts', './src/pages/sitemap.xml.ts', forcedUpdate);
 
