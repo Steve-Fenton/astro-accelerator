@@ -603,9 +603,12 @@ form.site-search button {
     display: none;
 }
 
+#site-search-results {
+    padding-bottom: 3rem;
+}
+
 .site-search-results {
     font-size: 1.3rem;
-    padding-bottom: 3rem;
 }
 
 .site-search-results a {
