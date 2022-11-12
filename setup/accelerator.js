@@ -27,6 +27,11 @@ const copyRecursiveSync = (src, dest, overwrite) => {
   }
 };
 
+const workingDirectory = process.cwd();
+fs.mkdirSync(path.join(workingDirectory, '/src/layouts'), { recursive: true });
+fs.mkdirSync(path.join(workingDirectory, '/src/data'), { recursive: true });
+fs.mkdirSync(path.join(workingDirectory, '/src/pages'), { recursive: true });
+
 copyRecursiveSync('./node_modules/astro-accelerator/astro.config.mjs', './astro.config.mjs', forcedUpdate);
 copyRecursiveSync('./node_modules/astro-accelerator/.npmrc', './.npmrc', forcedUpdate);
 copyRecursiveSync('./node_modules/astro-accelerator/env.d.ts', './env.d.ts', forcedUpdate);
