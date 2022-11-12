@@ -27,7 +27,7 @@ type Dictionary = { [key: string]: string };
     'Writing': '/writing/',
     'Articles': '/articles/1/',
     'Kitchen Sink': '/kitchen-sink/',
-    'Main Site': '/redirect/',
+    'Main Site': 'https://www.stevefenton.co.uk/',
   };
 
   test.describe.configure({ mode: 'serial' });
