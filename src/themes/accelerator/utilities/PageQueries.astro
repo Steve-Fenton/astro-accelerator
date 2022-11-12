@@ -1,6 +1,6 @@
 ---
 import type { MarkdownInstance } from "astro";
-import { SITE } from '../config';
+import { SITE } from '@config';
 import { getItem, setItem } from '@util/Cache.astro';
 import { isAuthor } from '@util/PageTypeFilters.astro';
 
@@ -11,7 +11,7 @@ export async function getPages (filter?: PagePredicate | null): Promise<Markdown
     let allPages: MarkdownInstance<Record<string,any>>[] = await getItem(key);
 
     if (allPages == null) {
-        allPages = await Astro.glob("../pages/**/*.md");
+        allPages = await Astro.glob("../../../pages/**/*.md");
         await setItem(key, allPages);
     }
 
@@ -53,7 +53,7 @@ export async function getAuthorInfo (slug: string) {
     let authorInfo = await getItem(cacheKey);
 
     if (authorInfo == null) {
-        const allPages = await Astro.glob("../pages/**/*.md");
+        const allPages = await Astro.glob("../../../pages/**/*.md");
         const author = allPages
             .filter(isAuthor)
             .filter(x => x.url?.split('/')[2] == slug)[0];

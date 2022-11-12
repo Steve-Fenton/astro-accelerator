@@ -1,11 +1,14 @@
 import fs from 'fs';
 import path from 'path';
-import { size } from '../plugins/image-size.mjs';
-import { imagePaths } from '../images.mjs';
 import { ImagePool } from '@squoosh/lib';
 
-
 const workingDirectory = process.cwd();
+
+const imageSize = await import('file://' + path.join(workingDirectory, 'src/data/image-size.mjs'));
+const imageModule = await import('file://' + path.join(workingDirectory, 'src/data/images.mjs'));
+const size = imageSize.size;
+const imagePaths = imageModule.imagePaths;
+
 const imagePath = path.join('public', imagePaths.src);
 const outputPath = path.join('public', imagePaths.dest);
 const imageDirectory = path.join(workingDirectory, imagePath);

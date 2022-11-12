@@ -1,7 +1,7 @@
-import { SITE } from '../config';
+import { SITE } from '/src/config';
 import { visit } from 'unist-util-visit';
 import { h } from 'hastscript';
-import { size } from './image-size.mjs';
+import { size } from '/src/data/image-size.mjs';
 import { fromSelector } from 'hast-util-from-selector'
 
 

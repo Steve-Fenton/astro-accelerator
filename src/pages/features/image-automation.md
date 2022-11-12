@@ -25,7 +25,7 @@ You can run this manually using `npm run img`. Only changed images will be proce
 By default, this is part of the `npm run dev` script in `package.json` for Astro Accelerator:
 
 ```json
-"dev": "node ./src/img.js && astro dev",
+"dev": "node ./src/img.mjs && astro dev",
 ```
 
 As part of the conversion, a set of sizes will be created to use with responsive images. For example, if you have an image named `/public/img/example.png` the following images will be generated:

@@ -21,7 +21,7 @@ The menu can:
 
 ## Automatic Menu Items
 
-By default, the menu uses automatic discovery. You can see the configuration for this in `src/navigation.ts` for the main navigation and in `src/footer.ts` for the footer columns.
+By default, the menu uses automatic discovery. You can see the configuration for this in `src/data/navigation.ts` for the main navigation and in `src/data/footer.ts` for the footer columns.
 
 ### Main Menu
 
