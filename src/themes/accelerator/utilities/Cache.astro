@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import process from 'process';
 
-export const maxAge = 300; //seconds
+export const maxAge = 200; //seconds
 
 export async function getCachePath () {
     const cachePath = path.join(process.cwd(), '.cache/');
