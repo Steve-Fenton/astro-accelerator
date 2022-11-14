@@ -54,16 +54,26 @@ copyRecursiveSync(
   './node_modules/astro-accelerator/src/pages/articles/',
   // You can change the destination below from "articles" to something else, like blog
   './src/pages/articles/',
-  forcedUpdate);
+  forcedUpdate
+);
+
+copyRecursiveSync(
+  './node_modules/astro-accelerator/src/pages/authors/',
+  // You can change the destination below from "articles" to something else, like blog
+  './src/pages/authors/',
+  forcedUpdate
+);
 
 copyRecursiveSync(
   './node_modules/astro-accelerator/src/pages/category/',
   // You can change the destination below from "category" to something else, like interest
   './src/pages/category/',
-  forcedUpdate);
+  forcedUpdate
+);
 
 copyRecursiveSync(
   './node_modules/astro-accelerator/src/pages/tag/',
   // You can change the destination below from "tag" to something else, like label
   './src/pages/tag/',
-  forcedUpdate);
+  forcedUpdate
+);
