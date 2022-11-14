@@ -2,12 +2,12 @@
 import type { Frontmatter } from '@config';
 
 import t from '@util/language.json';
-import { Lang } from '@util/Languages.astro';
+import { Lang } from '@util/Languages';
 
 import { SITE } from '@config';
-import { getPages } from '@util/PageQueries.astro';
-import { addSlashToAddress } from '@util/Url.astro';
-import { isSearch } from '@util/PageTypeFilters.astro';
+import { getPages } from '@util/PageQueries';
+import { addSlashToAddress } from '@util/Url';
+import { isSearch } from '@util/PageTypeFilters';
 
 // Properties
 type Props = {

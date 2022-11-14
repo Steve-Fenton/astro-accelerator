@@ -3,19 +3,19 @@
 
 // For listing all articles in this folder
 import t from '@util/language.json';
-import { Lang } from '@util/Languages.astro';
+import { Lang } from '@util/Languages';
 
 import type { Page, MarkdownInstance } from 'astro';
 
 import { Frontmatter, SITE } from '@config';
-import { getPageLinks } from '@util/PageLinks.astro';
-import { isListable, sortByPubDateDesc } from '@util/PageTypeFilters.astro';
-import { getItem, setItem } from '@util/Cache.astro';
+import { getPageLinks } from '@util/PageLinks';
+import { isListable, sortByPubDateDesc } from '@util/PageTypeFilters';
+import { getItem, setItem } from '@util/Cache';
 
 import Default from '@layouts/Default.astro';
 import ArticleList from '@components/ArticleList.astro';
 import Paging from '@components/Paging.astro';
-import { getAuthorInfo } from '@util/PageQueries.astro';
+import { getAuthorInfo } from '@util/PageQueries';
 
 const lang = SITE.default.lang;
 const currentUrl = new URL(Astro.request.url);
@@ -96,7 +96,6 @@ export async function getStaticPaths({ paginate }: any) {
 const pageLinks = getPageLinks(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
 ---
 <Default frontmatter={ frontmatter } headings={ headings }>
-  <Fragment set:html={ authorInfo.content }></Fragment>
   <h2>Page {page.currentPage}</h2>
   <ArticleList lang={ lang } posts={ page.data } />
   <Paging lang={ lang } page={ page } pageLinks={ pageLinks } />

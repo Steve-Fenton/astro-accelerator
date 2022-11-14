@@ -1,12 +1,12 @@
 ---
 import t from '@util/language.json';
-import { Lang } from '@util/Languages.astro';
+import { Lang } from '@util/Languages';
 
 import type { Page, MarkdownInstance } from 'astro';
 
 import type { Frontmatter } from '@config';
-import { sortByModDate } from '@util/PageTypeFilters.astro';
-import { getPages } from '@util/PageQueries.astro';
+import { sortByModDate } from '@util/PageTypeFilters';
+import { getPages } from '@util/PageQueries';
 
 // Logic
 const allPages = await getPages();

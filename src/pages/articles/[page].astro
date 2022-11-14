@@ -3,14 +3,14 @@
 
 // For listing all articles in this folder
 import t from '@util/language.json';
-import { Lang } from '@util/Languages.astro';
+import { Lang } from '@util/Languages';
 
 import type { Page, MarkdownInstance } from 'astro';
 
 import { Frontmatter, SITE } from '@config';
-import { getPageLinks } from '@util/PageLinks.astro';
-import { isListable, sortByPubDateDesc } from '@util/PageTypeFilters.astro';
-import { getItem, setItem } from '@util/Cache.astro';
+import { getPageLinks } from '@util/PageLinks';
+import { isListable, sortByPubDateDesc } from '@util/PageTypeFilters';
+import { getItem, setItem } from '@util/Cache';
 
 import Default from 'src/layouts/Default.astro';
 import ArticleList from '@components/ArticleList.astro';

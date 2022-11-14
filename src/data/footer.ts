@@ -1,4 +1,4 @@
-import type { NavPage } from '@util/NavigationTypes.astro';
+import type { NavPage } from '@util/NavigationTypes';
 
 export const menu: (NavPage | 'categories' | 'tags' | 'toptags')[] = [
 	'categories',

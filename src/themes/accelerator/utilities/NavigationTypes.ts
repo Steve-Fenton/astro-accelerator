@@ -1,4 +1,3 @@
----
 export type NavPage = {
   section?: string;
   title: string;
@@ -17,4 +16,3 @@ export function isNavPage (item: NavPage | 'auto' | 'tags' | 'toptags' | 'catego
 
   return true;
 }
----

@@ -1,4 +1,3 @@
----
 import fs from 'fs';
 import path from 'path';
 import process from 'process';
@@ -39,4 +38,3 @@ export async function setItem (key: string, value: object) {
     const itemPath = await getItemPath(key);
     await fs.promises.writeFile(itemPath, JSON.stringify(value));
 }
----

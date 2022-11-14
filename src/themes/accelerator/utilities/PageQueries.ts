@@ -1,8 +1,7 @@
----
 import type { MarkdownInstance } from "astro";
 import { SITE } from '@config';
-import { getItem, setItem } from '@util/Cache.astro';
-import { isAuthor } from '@util/PageTypeFilters.astro';
+import { getItem, setItem } from '@util/Cache';
+import { isAuthor } from '@util/PageTypeFilters';
 
 export type PagePredicate = (value: MarkdownInstance<Record<string, any>>, index: number, array: MarkdownInstance<Record<string, any>>[]) => boolean;
 
@@ -11,7 +10,8 @@ export async function getPages (filter?: PagePredicate | null): Promise<Markdown
     let allPages: MarkdownInstance<Record<string,any>>[] = await getItem(key);
 
     if (allPages == null) {
-        allPages = await Astro.glob("../../../pages/**/*.md");
+        const pageImportResult = import.meta.glob("../../../pages/**/*.md", { eager: true });
+        allPages = Object.values(pageImportResult) as MarkdownInstance<Record<string,any>>[];
         await setItem(key, allPages);
     }
 
@@ -53,14 +53,14 @@ export async function getAuthorInfo (slug: string) {
     let authorInfo = await getItem(cacheKey);
 
     if (authorInfo == null) {
-        const allPages = await Astro.glob("../../../pages/**/*.md");
+        const allPages = await getPages();
+
         const author = allPages
             .filter(isAuthor)
             .filter(x => x.url?.split('/')[2] == slug)[0];
 
         authorInfo = {
-            frontmatter: author.frontmatter,
-            content: author.compiledContent()
+            frontmatter: author.frontmatter
         };
   
       await setItem(cacheKey, authorInfo);
@@ -68,4 +68,3 @@ export async function getAuthorInfo (slug: string) {
 
     return authorInfo;
 }
----

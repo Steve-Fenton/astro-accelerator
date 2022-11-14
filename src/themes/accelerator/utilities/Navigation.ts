@@ -1,12 +1,11 @@
----
 // Data file `navigation.ts`
 import { menu } from 'src/data/navigation';
 
-import { getItem, setItem } from '@util/Cache.astro';
-import { showInMenu } from '@util/PageTypeFilters.astro';
-import { mapNavPage, setCurrentPage } from '@util/NavPage.astro';
-import { NavPage, isNavPage } from '@util/NavigationTypes.astro';
-import { getTopLevelPages, getPages } from '@util/PageQueries.astro';
+import { getItem, setItem } from '@util/Cache';
+import { showInMenu } from '@util/PageTypeFilters';
+import { mapNavPage, setCurrentPage } from '@util/NavPage';
+import { NavPage, isNavPage } from '@util/NavigationTypes';
+import { getTopLevelPages, getPages } from '@util/PageQueries';
 
 export async function getMenu (currentUrl: URL) {
     const key = 'Navigation__getMenu';
@@ -78,4 +77,3 @@ export async function getNavigation (currentUrl: URL) {
 
     return pageHierarchy;
 }
----

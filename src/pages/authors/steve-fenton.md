@@ -10,5 +10,3 @@ bannerImage:
     src: /i/400/authors/steve-fenton.webp
     alt: Dummy image
 ---
-
-Steve Fenton is the creator of *Astro Accelerator* and writes about it here.

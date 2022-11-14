@@ -1,4 +1,3 @@
----
 import type { Site } from '@config';
 
 type FrontMatter = Record<string, any>;
@@ -22,4 +21,3 @@ export function formatModifiedDate (frontmatter: FrontMatter, lang: string, site
   
   return '';
 }
----

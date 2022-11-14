@@ -2,8 +2,8 @@
 
 import type { MarkdownInstance } from 'astro';
 import { SITE } from '@config';
-import { showInSearch } from '@util/PageTypeFilters.astro';
-import { addSlashToAddress } from '@util/Url.astro';
+import { showInSearch } from '@util/PageTypeFilters';
+import { addSlashToAddress } from '@util/Url';
 
 const getData = async () => {
     //@ts-ignore

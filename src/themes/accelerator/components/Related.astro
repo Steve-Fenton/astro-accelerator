@@ -3,11 +3,11 @@ import type { Frontmatter } from '@config';
 import type { MarkdownInstance } from 'astro';
 
 import t from '@util/language.json';
-import { Lang } from '@util/Languages.astro';
-import { addSlashToAddress } from '@util/Url.astro';
+import { Lang } from '@util/Languages';
+import { addSlashToAddress } from '@util/Url';
 import { getImageInfo } from '@util/custom-markdown.mjs'
-import { getPages } from '@util/PageQueries.astro';
-import { isListable, sortByPubDateDesc } from '@util/PageTypeFilters.astro';
+import { getPages } from '@util/PageQueries';
+import { isListable, sortByPubDateDesc } from '@util/PageTypeFilters';
 
 import AuthorsMini from '@components/AuthorsMini.astro';
 

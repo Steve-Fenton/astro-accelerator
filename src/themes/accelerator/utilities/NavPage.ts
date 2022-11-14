@@ -1,8 +1,7 @@
----
 import type { MarkdownInstance } from 'astro';
-import type { NavPage } from './NavigationTypes.astro';
+import type { NavPage } from './NavigationTypes';
 
-import { addSlashToAddress } from './Url.astro';
+import { addSlashToAddress } from './Url';
 
 export function mapNavPage (page: MarkdownInstance<Record<string, any>>) {
 
@@ -62,4 +61,3 @@ export function popMatchingPage (allPages: MarkdownInstance<Record<string, any>>
 
   return match;
 };
----

@@ -1,4 +1,3 @@
----
 export function Lang (lang: string): (entry: Entry) => string {
     const altLang = lang.indexOf('-') > -1
         ? lang.split('-')[0]
@@ -11,4 +10,3 @@ export function Lang (lang: string): (entry: Entry) => string {
 }
 
 export type Entry = { [key: string]: string };
----

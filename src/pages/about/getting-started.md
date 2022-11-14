@@ -33,12 +33,7 @@ Start up your empty site:
 npm run dev
 ```
 
-
-## Old instructions
-
-- Download the code from [GitHub](https://github.com/Steve-Fenton/astro-accelerator)
-- Run `npm install` to download the packages
-- Run `npm run dev` to start the site
+Once you're up and running you can adjust the `accelerator.js` script to update the files you want to use from the theme. You can use this script to integrate new versions of the theme after updating the package.
 
 ## Things to Update
 
@@ -56,24 +51,6 @@ Sitewide defaults.
 
 In `/src/config.ts`\
 Add any analytics or validation tags to `export const HEADER_SCRIPTS`.
-
-## Optional Updates
-
-This section is in-progress.
-
-Clear out
-
-/public/i/
-/public/img/
-
-Replace
-
-/public/img/icons/
-
-Change
-
-SITE.themeColor
-OPEN_GRAPH defaults
 
 ## Migrating From WordPress
 

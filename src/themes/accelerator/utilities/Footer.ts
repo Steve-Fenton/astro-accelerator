@@ -1,13 +1,12 @@
----
 // Data file `navigation.ts`
 import { menu } from 'src/data/footer';
 
 import { SITE } from '@config';
-import { getItem, setItem } from '@util/Cache.astro';
-import { setCurrentPage } from '@util/NavPage.astro';
-import { NavPage, isNavPage } from '@util/NavigationTypes.astro';
-import { getTaxonomy, taxonomyLinks } from '@util/Taxonomy.astro';
-import { Lang } from '@util/Languages.astro';
+import { getItem, setItem } from '@util/Cache';
+import { setCurrentPage } from '@util/NavPage';
+import { NavPage, isNavPage } from '@util/NavigationTypes';
+import { getTaxonomy, taxonomyLinks } from '@util/Taxonomy';
+import { Lang } from '@util/Languages';
 import t from '@util/language.json';
 
 export async function getMenu (currentUrl: URL, lang: string) {
@@ -173,4 +172,3 @@ if (pageHierarchy == null) {
 
 return pageHierarchy;
 }
----

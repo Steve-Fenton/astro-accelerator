@@ -1,4 +1,5 @@
----
+import { SITE } from '@config';
+
 export function addSlashToUrl (url: URL) {
     url.pathname += url.pathname.endsWith('/') ? '' : '/';
     return url;
@@ -13,7 +14,6 @@ export function addSlashToAddress (address: string | undefined) {
         return address;
     }
 
-    const url = addSlashToUrl(new URL(address, Astro.site));
+    const url = addSlashToUrl(new URL(address, SITE.url));
     return url.pathname + url.search;
 }
----

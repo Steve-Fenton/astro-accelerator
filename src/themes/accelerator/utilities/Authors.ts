@@ -1,9 +1,8 @@
----
 import type { Frontmatter } from '@config';
 import type { MarkdownInstance } from 'astro';
 
-import { getPages } from "@util/PageQueries.astro";
-import { isAuthor } from "@util/PageTypeFilters.astro";
+import { getPages } from "@util/PageQueries";
+import { isAuthor } from "@util/PageTypeFilters";
 
 type BannerImage = { src: string; alt: string } | null;
 type AuthorList = {
@@ -45,4 +44,3 @@ export async function getAuthorList (frontmatter: Frontmatter) {
 
     return result;
 }
----

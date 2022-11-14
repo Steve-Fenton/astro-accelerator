@@ -1,8 +1,7 @@
----
-import { getPages } from '@util/PageQueries.astro';
-import { mapNavPage, setCurrentPage, popMatchingPage } from '@util/NavPage.astro';
+import { getPages } from '@util/PageQueries';
+import { mapNavPage, setCurrentPage, popMatchingPage } from '@util/NavPage';
 
-import type { NavPage } from '@util/NavigationTypes.astro';
+import type { NavPage } from '@util/NavigationTypes';
 
 export async function getBreadcrumbs (currentUrl: URL) {
     const allPages = await getPages();
@@ -24,4 +23,3 @@ export async function getBreadcrumbs (currentUrl: URL) {
 
     return navPages;
 }
----

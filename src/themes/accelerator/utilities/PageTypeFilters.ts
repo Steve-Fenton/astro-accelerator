@@ -1,4 +1,3 @@
----
 import type { MarkdownInstance } from 'astro';
 
 export function showInSitemap (p: MarkdownInstance<Record<string, any>>) {
@@ -66,4 +65,3 @@ export function sortByModDate (a: MarkdownInstance<Record<string, any>>, b: Mark
   const dateB = b.frontmatter.modDate || b.frontmatter.pubDate || '1970-01-01';
   return dateA.localeCompare(dateB);
 }
----

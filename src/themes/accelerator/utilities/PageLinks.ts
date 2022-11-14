@@ -1,4 +1,3 @@
----
 export type Link = {
   title: string;
   url: string;
@@ -69,4 +68,3 @@ export function getPageLinks(limit: number, numberOfPages: number, currentPage: 
 
   return pageLinks;
 }
----

@@ -2,8 +2,8 @@
 
 // Generates an ATOM feed of recent posts
 import { SITE } from '@config';
-import { addSlashToAddress } from '@util/Url.astro';
-import { isListable } from '@util/PageTypeFilters.astro';
+import { addSlashToAddress } from '@util/Url';
+import { isListable } from '@util/PageTypeFilters';
 
 async function getData() {
   //@ts-ignore

@@ -1,12 +1,11 @@
----
-import type { Entry } from '@util/Languages.astro';
+import type { Entry } from '@util/Languages';
 
 import t from '@util/language.json';
 
 import { SITE } from '@config';
-import { getPages } from '@util/PageQueries.astro';
-import { getItem, setItem } from '@util/Cache.astro';
-import { addSlashToAddress } from '@util/Url.astro';
+import { getPages } from '@util/PageQueries';
+import { getItem, setItem } from '@util/Cache';
+import { addSlashToAddress } from '@util/Url';
 
 type TaxonomyEntry = {
     title: string;
@@ -109,4 +108,3 @@ export async function getTaxonomy (): Promise<Taxonomy> {
 
     return taxonomy;
 }
----
