@@ -1,4 +1,5 @@
 ---
+warning: This file is overwritten by Astro Accelerator
 layout: src/layouts/Search.astro
 title: Search
 navSearch: false
@@ -11,5 +12,3 @@ bannerImage:
     src: /img/surface-accessories.png
     alt: Dummy image
 ---
-
-Search the site below.

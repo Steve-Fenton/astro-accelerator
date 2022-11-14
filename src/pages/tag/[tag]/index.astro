@@ -1,0 +1,20 @@
+---
+// warning: This file is overwritten by Astro Accelerator
+
+import { getCacheData } from './[page].astro';
+import Redirect from 'src/layouts/Redirect.astro'
+
+export async function getStaticPaths() {
+    let data = await getCacheData();
+
+    return data.tags.map(item => {
+        return { params: { tag: item.toLowerCase().replace(' ', '-') }}
+    });
+}
+
+const frontmatter = {
+    redirect: './1/'
+} as any;
+---
+
+<Redirect frontmatter={ frontmatter } headings={ [] } />

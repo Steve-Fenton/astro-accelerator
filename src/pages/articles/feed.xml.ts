@@ -1,3 +1,5 @@
+// warning: This file is overwritten by Astro Accelerator
+
 // Generates an ATOM feed of recent posts
 import { SITE } from '@config';
 import { addSlashToAddress } from '@util/Url.astro';

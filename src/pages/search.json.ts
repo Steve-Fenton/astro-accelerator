@@ -1,3 +1,5 @@
+// warning: This file is overwritten by Astro Accelerator
+
 import type { MarkdownInstance } from 'astro';
 import { SITE } from '@config';
 import { showInSearch } from '@util/PageTypeFilters.astro';
