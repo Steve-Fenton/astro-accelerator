@@ -87,7 +87,7 @@ export async function getStaticPaths({ paginate }: any) {
         props: { pubDate: filtered[0].frontmatter.pubDate },
         pageSize: SITE.pageSize 
     });
-  });
+  }).flat();
 }
 
 // Page Links
