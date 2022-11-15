@@ -6,20 +6,21 @@ pubDate: 2022-09-01
 keywords: sample,post
 description: A sample post
 bannerImage:
-    src: /img/surface-accessories.png
+    src: /img/astro-lighthouse.png
     alt: Dummy image
 authors:
-    - steve-fenton
+    - test-author
 categories:
     - Example
+tags:
     - Sample
 ---
 
 This is an example post with more of the front matter set up, such as except and images.
 
 :::figure
-:img{src=/img/surface-accessories.png alt="Microsoft Surface keyboard and wireless headset"}
-::figcaption[Microsoft accessories]
+:img{src=/img/astro-lighthouse.png alt="Lighthouse score for Astro Accelerator"}
+::figcaption[Lighthouse Score]
 :::
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet elit sodales, egestas odio eu, interdum nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elit odio, dapibus nec finibus sit amet, aliquam a tortor.
