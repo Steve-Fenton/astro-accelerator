@@ -23,3 +23,8 @@ export async function getHtmlFrom(markdown: string): Promise<string> {
 
     return String(vfile);
 }
+
+export async function getTextFrom(markdown: string): Promise<string> {
+    const html = await getInlineHtmlFrom(markdown);
+    return html.replace(/<.*?>/g, '');
+}

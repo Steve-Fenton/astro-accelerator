@@ -1,6 +1,7 @@
 ---
 import { SITE, OPEN_GRAPH, HEADER_SCRIPTS, Frontmatter } from '@config';
 import { addSlashToUrl } from '@util/Url';
+import { getTextFrom } from '@util/Markdown';
 
 // Properties
 type Props = {
@@ -16,10 +17,11 @@ const imageAlt = frontmatter.bannerImage?.alt ?? OPEN_GRAPH.image.alt;
 const robots = frontmatter.robots ?? 'index, follow';
 const canonicalImageSrc = new URL(imageSrc, Astro.site);
 const canonicalURL =  addSlashToUrl(new URL(Astro.url.pathname, Astro.site + SITE.subfolder));
+const title = await getTextFrom( frontmatter.title ? `${ frontmatter.title } | ${ SITE.title }` : SITE.title);
 ---
 <head>
   <meta charset="utf-8" />
-  <title>{ frontmatter.title ? `${ frontmatter.title } | ${ SITE.title }` : SITE.title }</title>
+  <title>{ title }</title>
   <meta name="robots" content={ 'max-image-preview:large, ' + robots }>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="keywords" content={ frontmatter.keywords }>
