@@ -2,20 +2,16 @@
 // warning: This file is overwritten by Astro Accelerator
 
 // For listing all articles in this folder
-import t from '@util/language.json';
-import { Lang } from '@util/Languages';
-
+import { Translations, Lang } from '@util/Languages';
 import type { Page, MarkdownInstance } from 'astro';
-
 import { Frontmatter, SITE } from '@config';
 import { getPageLinks } from '@util/PageLinks';
 import { isListable, sortByPubDateDesc } from '@util/PageTypeFilters';
 import { getItem, setItem } from '@util/Cache';
-
+import { getAuthorInfo } from '@util/PageQueries';
 import Default from '@layouts/Default.astro';
 import ArticleList from '@components/ArticleList.astro';
 import Paging from '@components/Paging.astro';
-import { getAuthorInfo } from '@util/PageQueries';
 
 const lang = SITE.default.lang;
 const currentUrl = new URL(Astro.request.url);
@@ -96,7 +92,7 @@ export async function getStaticPaths({ paginate }: any) {
 const pageLinks = getPageLinks(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
 ---
 <Default frontmatter={ frontmatter } headings={ headings }>
-  <h2>Page {page.currentPage}</h2>
+  <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString())}</h2>
   <ArticleList lang={ lang } posts={ page.data } />
   <Paging lang={ lang } page={ page } pageLinks={ pageLinks } />
 </Default>

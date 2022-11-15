@@ -1,7 +1,4 @@
 ---
-import t from '@util/language.json';
-import { Lang } from '@util/Languages';
-
 import type { NavPage } from '@util/NavigationTypes';
 import { addSlashToAddress } from '@util/Url';
 
@@ -11,12 +8,6 @@ type Props = {
   page: NavPage
 };
 const { lang, page } = Astro.props as Props;
-
-// Language
-const _ = Lang(lang);
-
-// Logic
-// -
 ---
 {(page.children.length == 0) && (
 <li>

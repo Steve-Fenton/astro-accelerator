@@ -1,8 +1,6 @@
 ---
-import { SITE, Frontmatter } from '@config';
-
-import t from '@util/language.json';
-import { Lang } from '@util/Languages';
+import type { Frontmatter } from '@config';
+import { Translations, Lang } from '@util/Languages';
 
 // Properties
 type Props = {
@@ -19,9 +17,9 @@ const _ = Lang(lang);
 // ...
 ---
 {headings?.length > 0 &&
-<nav class="page-toc" aria-label={ _(t.aria.toc) }>
+<nav class="page-toc" aria-label={ _(Translations.aria.toc) }>
   <details>
-    <summary>{ _(t.toc.title) }</summary>
+    <summary>{ _(Translations.toc.title) }</summary>
     <ol>
       {headings.map((heading) =>(
         <li class={ 'toc-lev-' + heading.depth }><a href={ '#' + heading.slug }>{ heading.text }</a></li>

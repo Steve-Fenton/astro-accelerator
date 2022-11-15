@@ -1,15 +1,10 @@
 ---
-import type { Frontmatter } from '@config';
 import type { MarkdownInstance } from 'astro';
-
-import t from '@util/language.json';
-import { Lang } from '@util/Languages';
+import { SITE, Frontmatter } from '@config';
 import { addSlashToAddress } from '@util/Url';
 import { getImageInfo } from '@util/custom-markdown.mjs';
-
 import AuthorsMini from '@components/AuthorsMini.astro';
 
-import { SITE } from '@config';
 
 // Properties
 type Props = {
@@ -17,9 +12,6 @@ type Props = {
   posts: MarkdownInstance<Record<string, any>>[]
 };
 const { lang, posts } = Astro.props as Props;
-
-// Language
-const _ = Lang(lang);
 
 // Logic
 const articles = posts.map(p => {

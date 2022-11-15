@@ -1,7 +1,5 @@
 import type { Entry } from '@util/Languages';
-
-import t from '@util/language.json';
-
+import { Translations } from '@util/Languages';
 import { SITE } from '@config';
 import { getPages } from '@util/PageQueries';
 import { getItem, setItem } from '@util/Cache';
@@ -31,10 +29,10 @@ export function sortByTitle (a: TaxonomyEntry, b: TaxonomyEntry) {
 }
 
 export function taxonomyLinks(lang: (entry: Entry) => string) {
-    const category = lang(t.articles.category) ?? 'category';
+    const category = lang(Translations.articles.category) ?? 'category';
     const categoryLink = `${SITE.subfolder}/${category}/`;
 
-    const tag = lang(t.articles.tag) ?? 'category';
+    const tag = lang(Translations.articles.tag) ?? 'category';
     const tagLink = `${SITE.subfolder}/${tag}/`;
 
     return {

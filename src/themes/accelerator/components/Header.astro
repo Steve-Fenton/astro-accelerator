@@ -1,10 +1,6 @@
 ---
-import type { Frontmatter } from '@config';
-
-import t from '@util/language.json';
-import { Lang } from '@util/Languages';
-
-import { SITE } from '@config';
+import { SITE, Frontmatter } from '@config';
+import { Translations, Lang } from '@util/Languages';
 import { getPages } from '@util/PageQueries';
 import { addSlashToAddress } from '@util/Url';
 import { isSearch } from '@util/PageTypeFilters';
@@ -25,7 +21,7 @@ const search = (await getPages(isSearch))[0] ?? null;
 
 ---
 <header class="site-header">
-  <a href="#site-nav" class="navigation-icon" title={ _(t.header.open_menu) }><svg xmlns="http://www.w3.org/2000/svg" 
+  <a href="#site-nav" class="navigation-icon" title={ _(Translations.header.open_menu) }><svg xmlns="http://www.w3.org/2000/svg" 
     width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" 
     fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -35,7 +31,7 @@ const search = (await getPages(isSearch))[0] ?? null;
   </svg></a>
   <a href={ (SITE.subfolder ?? '') + '/' } class="site-title" translate="no">{ SITE.title }</a>
   {search != null &&
-  <a href={ addSlashToAddress(search.url) } class="search-icon" title={ _(t.header.open_search) }><svg xmlns="http://www.w3.org/2000/svg" 
+  <a href={ addSlashToAddress(search.url) } class="search-icon" title={ _(Translations.header.open_search) }><svg xmlns="http://www.w3.org/2000/svg" 
     width="40" height="40" viewBox="0 0 24 24" stroke-width="1" 
     fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

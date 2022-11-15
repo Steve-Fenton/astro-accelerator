@@ -1,9 +1,7 @@
 ---
-import type { MarkdownInstance, Page } from 'astro';
 import type { Link } from '@util/PageLinks';
-
-import t from '@util/language.json';
-import { Lang } from '@util/Languages';
+import type { MarkdownInstance, Page } from 'astro';
+import { Translations, Lang } from '@util/Languages';
 import { addSlashToAddress } from '@util/Url';
 
 // Properties
@@ -20,14 +18,14 @@ const _ = Lang(lang);
 // Logic
 // -
 ---
-<nav class="post-paging" aria-label={ _(t.aria.paging) }>
+<nav class="post-paging" aria-label={ _(Translations.aria.paging) }>
   {page.url.prev
-    ? <a href={ addSlashToAddress(page.url.prev) }>{ _(t.articles.previous) }</a>
-    : <span>{ _(t.articles.previous) }</span>}
+    ? <a href={ addSlashToAddress(page.url.prev) }>{ _(Translations.articles.previous) }</a>
+    : <span>{ _(Translations.articles.previous) }</span>}
   {pageLinks.map((link) => (
       <a href={ addSlashToAddress(link.url) } aria-current={ link.ariaCurrent } class={ link.class }>{ link.title }</a>
   ))}
   {page.url.next
-    ? <a href={ addSlashToAddress(page.url.next) }>{ _(t.articles.next) }</a>
-    : <span>{ _(t.articles.next) }</span>}
+    ? <a href={ addSlashToAddress(page.url.next) }>{ _(Translations.articles.next) }</a>
+    : <span>{ _(Translations.articles.next) }</span>}
   </nav>

@@ -1,9 +1,6 @@
 ---
 import { SITE, Frontmatter } from '@config';
-
-import t from '@util/language.json';
-import { Lang } from '@util/Languages';
-
+import { Translations, Lang } from '@util/Languages';
 import { formatDate, formatModifiedDate } from '@util/DateFormat';
 import { getAuthorList } from '@util/Authors';
 import { addSlashToAddress } from '@util/Url';
@@ -37,7 +34,7 @@ const contributors = authorList.writers.slice(1);
     class={ authorImage.class } />
   }
   <div class="author-info">
-    <span>{ _(t.post.written_by) }
+    <span>{ _(Translations.post.written_by) }
       {author &&
         <a href={ addSlashToAddress(author.url) + '1/' } itemprop="author">{ author.frontmatter.title }</a>
       }{contributors.map((writer) => (
@@ -48,7 +45,7 @@ const contributors = authorList.writers.slice(1);
       </time>
       {frontmatter.modDate &&
       <br /><time datetime={ frontmatter.modDate.toString() } itemprop="dateModified">
-        { _(t.post.last_modified) } { formatModifiedDate(frontmatter, lang, SITE) }
+        { _(Translations.post.last_modified) } { formatModifiedDate(frontmatter, lang, SITE) }
       </time>
       }
     </span>

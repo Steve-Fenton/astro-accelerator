@@ -44,11 +44,9 @@ export const SITE = {
 
 ## Language Translations
 
-There are some user interface elements included in Astro Accelerator that you may wish to adjust or translate.
+There are some user interface elements included in Astro Accelerator that you may wish to adjust or translate. There are built-in fallback translations, but you can create your own translations in the file: `/src/data/language.json`.
 
-The language strings can be found in `/src/components/Language/language.json`.
-
-To add translations, specify additional language strings. A before and after example will help to illustrate this.
+To add translations or specify additional language strings. A before and after example will help to illustrate this.
 
 **Before:**
 

@@ -1,9 +1,6 @@
 ---
 import { SITE, Frontmatter } from '@config';
-
-import t from '@util/language.json';
-import { Lang } from '@util/Languages';
-
+import { Translations, Lang } from '@util/Languages';;
 import { formatDate } from '@util/DateFormat';
 import { getAuthorList } from '@util/Authors';
 
@@ -23,7 +20,7 @@ const authorList = await getAuthorList(frontmatter);
 {authorList.writers.length > 0 && 
 <div class="post-meta">
   <div class="author-info">
-    <span>{ _(t.post.written_by) }
+    <span>{ _(Translations.post.written_by) }
       {authorList.writers.map((writer) => (
         <span>{ writer.frontmatter.title }</span>
       ))}.<br />

@@ -1,8 +1,6 @@
 ---
 import type { Frontmatter } from '@config';
-
-import t from '@util/language.json';
-import { Lang } from '@util/Languages';
+import { Translations, Lang } from '@util/Languages';
 
 // Properties
 type Props = {
@@ -14,12 +12,9 @@ const { lang } = Astro.props as Props;
 
 // Language
 const _ = Lang(lang);
-
-// Logic
-// -
 ---
-<nav class="skip-links" aria-label={ _(t.aria.skiplinks) } id="site-top">
-  <a href="#site-nav">{ _(t.skiplinks.skip_to_navigation) }</a>
-  <a href="#site-main">{ _(t.skiplinks.skip_to_content) }</a>
-  <a href="#site-footer">{ _(t.skiplinks.skip_to_footer) }</a>
+<nav class="skip-links" aria-label={ _(Translations.aria.skiplinks) } id="site-top">
+  <a href="#site-nav">{ _(Translations.skiplinks.skip_to_navigation) }</a>
+  <a href="#site-main">{ _(Translations.skiplinks.skip_to_content) }</a>
+  <a href="#site-footer">{ _(Translations.skiplinks.skip_to_footer) }</a>
 </nav>

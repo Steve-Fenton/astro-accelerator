@@ -1,8 +1,6 @@
 ---
 import type { Frontmatter } from '@config';
-
-import t from '@util/language.json';
-import { Lang } from '@util/Languages';
+import { Translations, Lang } from '@util/Languages';
 import { getBreadcrumbs } from '@util/Breadcrumbs';
 import { addSlashToAddress } from '@util/Url';
 
@@ -21,7 +19,7 @@ const _ = Lang(lang);
 const currentUrl = new URL(Astro.request.url);
 const navPages = await getBreadcrumbs(currentUrl);
 ---
-<nav class="site-breadcrumbs" aria-label={ _(t.aria.breadcrumbs) }>
+<nav class="site-breadcrumbs" aria-label={ _(Translations.aria.breadcrumbs) }>
   <ol vocab="http://schema.org/" typeof="BreadcrumbList">
     {navPages.map((page, index) => (
     <li property="itemListElement" typeof="ListItem">

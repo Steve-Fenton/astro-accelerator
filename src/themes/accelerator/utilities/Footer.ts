@@ -1,13 +1,12 @@
 // Data file `navigation.ts`
 import { menu } from 'src/data/footer';
-
+import { Translations, Lang } from '@util/Languages';
 import { SITE } from '@config';
 import { getItem, setItem } from '@util/Cache';
 import { setCurrentPage } from '@util/NavPage';
 import { NavPage, isNavPage } from '@util/NavigationTypes';
 import { getTaxonomy, taxonomyLinks } from '@util/Taxonomy';
-import { Lang } from '@util/Languages';
-import t from '@util/language.json';
+
 
 export async function getMenu (currentUrl: URL, lang: string) {
     const key = 'Footer__getMenu_' + lang;
@@ -60,8 +59,8 @@ export async function getCategories (links, _, lang: string) {
     let pageHierarchy: NavPage[] = await getItem(key);
 
     if (pageHierarchy == null) {
-        const category = _(t.articles.category) ?? 'category';
-        const categoryTitle = _(t.articles.category_title) ?? 'Categories';
+        const category = _(Translations.articles.category) ?? 'category';
+        const categoryTitle = _(Translations.articles.category_title) ?? 'Categories';
         const categoryLink = `${SITE.subfolder}/${category}/`;
 
         let order = 0;
@@ -100,8 +99,8 @@ export async function getTags (links, _, lang: string) {
 
     if (pageHierarchy == null) {
         const _ = Lang(lang);
-        const tag = _(t.articles.tag) ?? 'tag';
-        const tagTitle = _(t.articles.tag_title) ?? 'Tags';
+        const tag = _(Translations.articles.tag) ?? 'tag';
+        const tagTitle = _(Translations.articles.tag_title) ?? 'Tags';
         const tagLink = `${SITE.subfolder}/${tag}/`;
 
         let order = 0;
@@ -140,8 +139,8 @@ let pageHierarchy: NavPage[] = await getItem(key);
 
 if (pageHierarchy == null) {
     const _ = Lang(lang);
-    const tag = _(t.articles.tag) ?? 'tag';
-    const tagTitle = _(t.articles.tag_title) ?? 'Tags';
+    const tag = _(Translations.articles.tag) ?? 'tag';
+    const tagTitle = _(Translations.articles.tag_title) ?? 'Tags';
     const tagLink = `${SITE.subfolder}/${tag}/`;
 
     let order = 0;

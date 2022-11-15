@@ -1,9 +1,6 @@
 ---
 import type { Frontmatter } from '@config';
-
-import t from '@util/language.json';
-import { Lang } from '@util/Languages';
-
+import { Translations, Lang } from '@util/Languages';
 import { taxonomyLinks } from '@util/Taxonomy';
 
 // Properties
@@ -27,7 +24,7 @@ const hasTaxonomy = (categories.length + tags.length) > 0;
   <div class="post-taxonomy">
     {tags.length > 0 && (
     <div class="post-tag">
-      <h2>{ _(t.articles.tag_title) }: </h2>
+      <h2>{ _(Translations.articles.tag_title) }: </h2>
       <ul itemprop="keywords">
       {tags.map(tag => 
         <li><a href={ links.getTagLink(tag) }>{ tag }</a></li>
@@ -37,7 +34,7 @@ const hasTaxonomy = (categories.length + tags.length) > 0;
     )}
     {categories.length > 0 && (
     <div class="post-cat">
-      <h2>{ _(t.articles.category_title) }: </h2>
+      <h2>{ _(Translations.articles.category_title) }: </h2>
       <ul>
       {categories.map(category => 
         <li><a href={ links.getCategoryLink(category) } itemprop="articleSection">{ category }</a></li>

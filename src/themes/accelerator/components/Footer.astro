@@ -1,13 +1,8 @@
 ---
-import type { Frontmatter } from '@config';
-
-import t from '@util/language.json';
-import { Lang } from '@util/Languages';
+import { SITE, Frontmatter } from '@config';
+import { Translations, Lang } from '@util/Languages';
 import { getMenu } from '@util/Footer';
-
 import FooterItem from '@components/FooterItem.astro';
-
-import { SITE } from '@config';
 
 // Properties
 type Props = {
@@ -30,8 +25,8 @@ const pages = await getMenu(currentUrl, lang);
     <FooterItem lang={ lang } page={ page } />
   ))}
   </div>
-  <p>{ _(t.footer.copyright) } &copy; { new Date().getFullYear() } { SITE.owner }</p>
-  <nav aria-label={ _(t.aria.back_to_top) }>
-    <a href="#site-top">{ _(t.skiplinks.skip_to_top) }</a>
+  <p>{ _(Translations.footer.copyright) } &copy; { new Date().getFullYear() } { SITE.owner }</p>
+  <nav aria-label={ _(Translations.aria.back_to_top) }>
+    <a href="#site-top">{ _(Translations.skiplinks.skip_to_top) }</a>
   </nav>
 </footer>

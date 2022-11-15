@@ -1,11 +1,7 @@
 ---
 import { SITE, Frontmatter } from '@config';
-
-import t from '@util/language.json';
-import { Lang } from '@util/Languages';
-
+import { Translations, Lang } from '@util/Languages';
 import { getPages } from '@util/PageQueries';
-
 import Default from './Default.astro';
 import ArticleList from '@components/ArticleList.astro';
 
@@ -25,6 +21,6 @@ const authorPages = await getPages(p => p.frontmatter.authors?.indexOf(frontmatt
 ---
 <Default frontmatter={ frontmatter } headings={ headings }>
     <slot />
-    <h2>{ _(t.author.recent_articles) }</h2>
+    <h2>{ _(Translations.author.recent_articles) }</h2>
     <ArticleList lang={ lang } posts={ authorPages } />
 </Default>

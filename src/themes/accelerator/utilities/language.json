@@ -87,6 +87,9 @@
         }
     },
     "articles": {
+        "page_title": {
+            "en": "Page {n}"
+        },
         "previous": {
             "en": "Prev"
         },

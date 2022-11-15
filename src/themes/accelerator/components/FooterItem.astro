@@ -1,7 +1,4 @@
 ---
-import t from '@util/language.json';
-import { Lang } from '@util/Languages';
-
 import type { NavPage } from '@util/NavigationTypes';
 
 // Properties
@@ -10,12 +7,6 @@ type Props = {
   page: NavPage
 };
 const { lang, page } = Astro.props as Props;
-
-// Language
-const _ = Lang(lang);
-
-// Logic
-// -
 ---
 <div class="footer-column">
   <h2>{ page.title }</h2>

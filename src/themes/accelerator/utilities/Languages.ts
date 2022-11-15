@@ -1,3 +1,8 @@
+import bundled from './language.json';
+import user from '@data/language.json';
+
+export const Translations = {...bundled, ...user};
+
 export function Lang (lang: string): (entry: Entry) => string {
     const altLang = lang.indexOf('-') > -1
         ? lang.split('-')[0]
