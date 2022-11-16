@@ -1,7 +1,8 @@
 ---
 import { SITE, Frontmatter } from '@config';
+import { getPages } from 'astro-accelerator-utils';
 import { Translations, Lang } from '@util/Languages';
-import { getPages } from '@util/PageQueries';
+import { fetchPages } from '@util/PageQueries';
 import Default from './Default.astro';
 import ArticleList from '@components/ArticleList.astro';
 
@@ -17,7 +18,7 @@ const lang = frontmatter.lang ?? SITE.default.lang;
 const _ = Lang(lang);
 
 // Logic
-const authorPages = await getPages(p => p.frontmatter.authors?.indexOf(frontmatter.id) > -1)
+const authorPages = await getPages(fetchPages, p => p.frontmatter.authors?.indexOf(frontmatter.id) > -1)
 ---
 <Default frontmatter={ frontmatter } headings={ headings }>
     <slot />

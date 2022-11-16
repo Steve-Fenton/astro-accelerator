@@ -1,9 +1,9 @@
 ---
-import { sortByModDate } from 'astro-accelerator-utils';
-import { getPages } from '@util/PageQueries';
+import { sortByModDate, getPages } from 'astro-accelerator-utils';
+import { fetchPages } from '@util/PageQueries';
 
 // Logic
-const allPages = await getPages();
+const allPages = await getPages(fetchPages);
 const pageCount = allPages.length;
 const pages = allPages.sort(sortByModDate).slice(0, Math.min(50, pageCount));
 ---

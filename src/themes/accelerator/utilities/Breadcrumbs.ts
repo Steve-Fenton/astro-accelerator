@@ -1,10 +1,11 @@
-import { getPages } from '@util/PageQueries';
+import { getPages } from 'astro-accelerator-utils';
+import { fetchPages } from '@util/PageQueries';
 import { mapNavPage, setCurrentPage, popMatchingPage } from '@util/NavPage';
 
 import type { NavPage } from '@util/NavigationTypes';
 
 export async function getBreadcrumbs (currentUrl: URL) {
-    const allPages = await getPages();
+    const allPages = await getPages(fetchPages);
 
     const pathParts = currentUrl.pathname.split('/');
     const navPages: NavPage[] = [];

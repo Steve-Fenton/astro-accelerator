@@ -1,33 +1,36 @@
 import type { MarkdownInstance } from "astro";
 import { SITE } from '@config';
-import { getItem, setItem } from '@util/Cache';
-import { isAuthor } from 'astro-accelerator-utils';
+import { isAuthor, getItem, setItem, PagePredicate, getPages } from 'astro-accelerator-utils';
 
-export type PagePredicate = (value: MarkdownInstance<Record<string, any>>, index: number, array: MarkdownInstance<Record<string, any>>[]) => boolean;
-
-export async function getPages (filter?: PagePredicate | null): Promise<MarkdownInstance<Record<string,any>>[]> {
-    const key = 'PageQueries__getPages';
-    let allPages: MarkdownInstance<Record<string,any>>[] = await getItem(key);
-
-    if (allPages == null) {
-        const pageImportResult = import.meta.glob("../../../pages/**/*.md", { eager: true });
-        allPages = Object.values(pageImportResult) as MarkdownInstance<Record<string,any>>[];
-        await setItem(key, allPages);
-    }
-
-    if (filter == null) {
-        return allPages;
-    }
-
-    return allPages.filter(filter);
+export function fetchPages(): Record<string, any> {
+    return import.meta.glob("../../../pages/**/*.md", { eager: true });
 }
+
+// export type PagePredicate = (value: MarkdownInstance<Record<string, any>>, index: number, array: MarkdownInstance<Record<string, any>>[]) => boolean;
+
+// export async function getPages (fetchPages: () => Record<string, any>, filter?: PagePredicate | null): Promise<MarkdownInstance<Record<string,any>>[]> {
+//     const key = 'PageQueries__getPages';
+//     let allPages: MarkdownInstance<Record<string,any>>[] = await getItem(key);
+
+//     if (allPages == null) {
+//         const pageImportResult = fetchPages();
+//         allPages = Object.values(pageImportResult) as MarkdownInstance<Record<string,any>>[];
+//         await setItem(key, allPages);
+//     }
+
+//     if (filter == null) {
+//         return allPages;
+//     }
+
+//     return allPages.filter(filter);
+// }
 
 export async function getTopLevelPages (filter?: PagePredicate | null): Promise<MarkdownInstance<Record<string,any>>[]> {
     const key = 'PageQueries__getTopLevelPages';
     let allPages = await getItem(key);
 
     if (allPages == null) {
-        allPages = await getPages();
+        allPages = await getPages(fetchPages);
 
         const isRoot = SITE.subfolder.length == 0;
         const expectedDepth = isRoot ? 1 : 2;
@@ -53,7 +56,7 @@ export async function getAuthorInfo (slug: string) {
     let authorInfo = await getItem(cacheKey);
 
     if (authorInfo == null) {
-        const allPages = await getPages();
+        const allPages = await getPages(fetchPages);
 
         const author = allPages
             .filter(isAuthor)

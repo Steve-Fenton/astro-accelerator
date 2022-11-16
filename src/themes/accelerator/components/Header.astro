@@ -1,8 +1,8 @@
 ---
 import { SITE, Frontmatter } from '@config';
 import { Translations, Lang } from '@util/Languages';
-import { getPages } from '@util/PageQueries';
-import { addSlashToAddress, isSearch } from 'astro-accelerator-utils';
+import { fetchPages } from '@util/PageQueries';
+import { addSlashToAddress, isSearch, getPages } from 'astro-accelerator-utils';
 
 // Properties
 type Props = {
@@ -16,7 +16,7 @@ const { lang } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-const search = (await getPages(isSearch))[0] ?? null;
+const search = (await getPages(fetchPages, isSearch))[0] ?? null;
 
 ---
 <header class="site-header">

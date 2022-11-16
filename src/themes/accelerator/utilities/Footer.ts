@@ -2,7 +2,7 @@
 import { menu } from 'src/data/footer';
 import { Translations, Lang } from '@util/Languages';
 import { SITE } from '@config';
-import { getItem, setItem } from '@util/Cache';
+import { getItem, setItem } from 'astro-accelerator-utils';
 import { setCurrentPage } from '@util/NavPage';
 import { NavPage, isNavPage } from '@util/NavigationTypes';
 import { getTaxonomy, taxonomyLinks } from '@util/Taxonomy';

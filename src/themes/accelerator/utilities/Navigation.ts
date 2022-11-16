@@ -1,11 +1,10 @@
 // Data file `navigation.ts`
 import { menu } from 'src/data/navigation';
 
-import { getItem, setItem } from '@util/Cache';
-import { showInMenu } from 'astro-accelerator-utils';
+import { showInMenu, getItem, setItem, getPages } from 'astro-accelerator-utils';
 import { mapNavPage, setCurrentPage } from '@util/NavPage';
 import { NavPage, isNavPage } from '@util/NavigationTypes';
-import { getTopLevelPages, getPages } from '@util/PageQueries';
+import { getTopLevelPages, fetchPages } from '@util/PageQueries';
 
 export async function getMenu (currentUrl: URL) {
     const key = 'Navigation__getMenu';
@@ -41,7 +40,7 @@ export async function getNavigation (currentUrl: URL) {
 
     if (pageHierarchy == null) {
         const topLevelPages = await getTopLevelPages(showInMenu);
-        const allPages = await getPages(showInMenu);
+        const allPages = await getPages(fetchPages, showInMenu);
 
         pageHierarchy = topLevelPages
             .map(mapNavPage)

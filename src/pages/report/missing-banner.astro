@@ -1,9 +1,9 @@
 ---
-import { sortByPubDateDesc } from 'astro-accelerator-utils';
-import { getPages } from '@util/PageQueries';
+import { sortByPubDateDesc, getPages } from 'astro-accelerator-utils';
+import { fetchPages } from '@util/PageQueries';
 
 // Logic
-const allPages = await getPages();
+const allPages = await getPages(fetchPages);
 const missingBanner = allPages.filter(p => p.frontmatter.bannerImage == null && p.frontmatter.layout != 'src/layouts/Redirect.astro');
 const pageCount = missingBanner.length;
 const pages = missingBanner.sort(sortByPubDateDesc).slice(0, Math.min(50, pageCount));

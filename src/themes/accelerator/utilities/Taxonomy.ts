@@ -1,9 +1,8 @@
 import type { Entry } from '@util/Languages';
 import { Translations } from '@util/Languages';
 import { SITE } from '@config';
-import { getPages } from '@util/PageQueries';
-import { getItem, setItem } from '@util/Cache';
-import { addSlashToAddress } from 'astro-accelerator-utils';
+import { fetchPages } from '@util/PageQueries';
+import { addSlashToAddress, getItem, setItem, getPages } from 'astro-accelerator-utils';
 
 type TaxonomyEntry = {
     title: string;
@@ -54,7 +53,7 @@ export async function getTaxonomy (): Promise<Taxonomy> {
     let taxonomy: Taxonomy = await getItem(cacheKey);
 
     if (taxonomy == null) {
-        const allPages = await getPages();
+        const allPages = await getPages(fetchPages);
         const tags: { [key: string]: number } = {};
         const cats: { [key: string]: number } = {};
 
