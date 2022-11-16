@@ -3,7 +3,7 @@ import { Translations } from '@util/Languages';
 import { SITE } from '@config';
 import { getPages } from '@util/PageQueries';
 import { getItem, setItem } from '@util/Cache';
-import { addSlashToAddress } from '@util/Url';
+import { addSlashToAddress } from 'astro-accelerator-utils';
 
 type TaxonomyEntry = {
     title: string;
@@ -39,10 +39,10 @@ export function taxonomyLinks(lang: (entry: Entry) => string) {
         tag: tag,
         category: category,
         getCategoryLink: (category: string) => {
-            return addSlashToAddress(categoryLink + category.toLowerCase().replace(/ /g, '-') + '/1/');
+            return addSlashToAddress(categoryLink + category.toLowerCase().replace(/ /g, '-') + '/1/', SITE);
         },
         getTagLink: (tag: string) => {
-            return addSlashToAddress(tagLink + tag.toLowerCase().replace(/ /g, '-') + '/1/');
+            return addSlashToAddress(tagLink + tag.toLowerCase().replace(/ /g, '-') + '/1/', SITE);
         }
     };
 

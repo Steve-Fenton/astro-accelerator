@@ -2,7 +2,7 @@
 import { menu } from 'src/data/navigation';
 
 import { getItem, setItem } from '@util/Cache';
-import { showInMenu } from '@util/PageTypeFilters';
+import { showInMenu } from 'astro-accelerator-utils';
 import { mapNavPage, setCurrentPage } from '@util/NavPage';
 import { NavPage, isNavPage } from '@util/NavigationTypes';
 import { getTopLevelPages, getPages } from '@util/PageQueries';

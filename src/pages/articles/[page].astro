@@ -6,7 +6,7 @@ import { Translations, Lang } from '@util/Languages';
 import type { Page, MarkdownInstance } from 'astro';
 import { Frontmatter, SITE } from '@config';
 import { getPageLinks } from '@util/PageLinks';
-import { isListable, sortByPubDateDesc } from '@util/PageTypeFilters';
+import { isListable, sortByPubDateDesc } from 'astro-accelerator-utils';
 import { getItem, setItem } from '@util/Cache';
 import Default from 'src/layouts/Default.astro';
 import ArticleList from '@components/ArticleList.astro';

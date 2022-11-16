@@ -2,8 +2,7 @@
 
 // Generates an ATOM feed of recent posts
 import { SITE } from '@config';
-import { showInSitemap } from '@util/PageTypeFilters';
-import { addSlashToAddress } from '@util/Url';
+import { addSlashToAddress, showInSitemap } from 'astro-accelerator-utils';
 
 async function getData() {
   //@ts-ignore
@@ -18,7 +17,7 @@ async function getData() {
     if (addToSitemap) {
       pages.push(`
         <url>
-          <loc>${ SITE.url + addSlashToAddress(article.url) }</loc>
+          <loc>${ SITE.url + addSlashToAddress(article.url, SITE) }</loc>
           <lastmod>${ article.frontmatter.pubDate }</lastmod>
         </url>`);
     }

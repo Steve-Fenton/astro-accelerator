@@ -1,4 +1,6 @@
-export const SITE = {
+import type { Site } from 'astro-accelerator-utils';
+
+export const SITE: Site = {
 	url: 'https://astro.stevefenton.co.uk',
 	subfolder: '',
 	feedUrl: '/articles/feed.xml',
@@ -61,8 +63,6 @@ export const HEADER_SCRIPTS = `
 type Mapped<T> = {
     [P in keyof T]?: any
 }
-
-export type Site = Mapped<typeof SITE>;
 
 export type Frontmatter = {
 	layout: string;

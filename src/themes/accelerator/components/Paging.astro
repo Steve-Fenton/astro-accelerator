@@ -1,8 +1,9 @@
 ---
+import { SITE } from '@config';
 import type { Link } from '@util/PageLinks';
 import type { MarkdownInstance, Page } from 'astro';
 import { Translations, Lang } from '@util/Languages';
-import { addSlashToAddress } from '@util/Url';
+import { addSlashToAddress } from 'astro-accelerator-utils';
 
 // Properties
 type Props = {
@@ -20,12 +21,12 @@ const _ = Lang(lang);
 ---
 <nav class="post-paging" aria-label={ _(Translations.aria.paging) }>
   {page.url.prev
-    ? <a href={ addSlashToAddress(page.url.prev) }>{ _(Translations.articles.previous) }</a>
+    ? <a href={ addSlashToAddress(page.url.prev, SITE) }>{ _(Translations.articles.previous) }</a>
     : <span>{ _(Translations.articles.previous) }</span>}
   {pageLinks.map((link) => (
-      <a href={ addSlashToAddress(link.url) } aria-current={ link.ariaCurrent } class={ link.class }>{ link.title }</a>
+      <a href={ addSlashToAddress(link.url, SITE) } aria-current={ link.ariaCurrent } class={ link.class }>{ link.title }</a>
   ))}
   {page.url.next
-    ? <a href={ addSlashToAddress(page.url.next) }>{ _(Translations.articles.next) }</a>
+    ? <a href={ addSlashToAddress(page.url.next, SITE) }>{ _(Translations.articles.next) }</a>
     : <span>{ _(Translations.articles.next) }</span>}
   </nav>

@@ -1,7 +1,7 @@
 import type { MarkdownInstance } from "astro";
 import { SITE } from '@config';
 import { getItem, setItem } from '@util/Cache';
-import { isAuthor } from '@util/PageTypeFilters';
+import { isAuthor } from 'astro-accelerator-utils';
 
 export type PagePredicate = (value: MarkdownInstance<Record<string, any>>, index: number, array: MarkdownInstance<Record<string, any>>[]) => boolean;
 

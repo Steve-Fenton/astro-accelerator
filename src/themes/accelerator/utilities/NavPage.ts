@@ -1,7 +1,8 @@
+import { SITE } from '@config';
 import type { MarkdownInstance } from 'astro';
 import type { NavPage } from './NavigationTypes';
 
-import { addSlashToAddress } from './Url';
+import { addSlashToAddress } from 'astro-accelerator-utils';
 
 export function mapNavPage (page: MarkdownInstance<Record<string, any>>) {
 
@@ -14,7 +15,7 @@ export function mapNavPage (page: MarkdownInstance<Record<string, any>>) {
     url += '/1/';
   }
 
-  url = addSlashToAddress(url);
+  url = addSlashToAddress(url, SITE);
 
   if (page.frontmatter.layout == 'src/layouts/Redirect.astro') {
     // Skips past the redirect

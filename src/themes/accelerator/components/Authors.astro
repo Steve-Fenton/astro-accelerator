@@ -1,9 +1,8 @@
 ---
 import { SITE, Frontmatter } from '@config';
 import { Translations, Lang } from '@util/Languages';
-import { formatDate, formatModifiedDate } from '@util/DateFormat';
+import { formatDate, formatModifiedDate, addSlashToAddress } from 'astro-accelerator-utils';
 import { getAuthorList } from '@util/Authors';
-import { addSlashToAddress } from '@util/Url';
 import { getImageInfo } from '@util/custom-markdown.mjs';
 
 // Properties
@@ -36,9 +35,9 @@ const contributors = authorList.writers.slice(1);
   <div class="author-info">
     <span>{ _(Translations.post.written_by) }
       {author &&
-        <a href={ addSlashToAddress(author.url) + '1/' } itemprop="author">{ author.frontmatter.title }</a>
+        <a href={ addSlashToAddress(author.url, SITE) + '1/' } itemprop="author">{ author.frontmatter.title }</a>
       }{contributors.map((writer) => (
-        <a href={ addSlashToAddress(writer.url) + '1/' } itemprop="contributor">{ writer.frontmatter.title }</a>
+        <a href={ addSlashToAddress(writer.url, SITE) + '1/' } itemprop="contributor">{ writer.frontmatter.title }</a>
       ))}.
       <br /><time datetime={ frontmatter.pubDate.toString() } itemprop="datePublished">
       { formatDate(frontmatter, lang, SITE) }

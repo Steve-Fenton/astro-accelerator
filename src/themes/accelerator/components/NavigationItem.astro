@@ -1,6 +1,7 @@
 ---
+import { SITE } from '@config';
 import type { NavPage } from '@util/NavigationTypes';
-import { addSlashToAddress } from '@util/Url';
+import { addSlashToAddress } from 'astro-accelerator-utils';
 
 // Properties
 type Props = {
@@ -11,7 +12,7 @@ const { lang, page } = Astro.props as Props;
 ---
 {(page.children.length == 0) && (
 <li>
-  <a href={ addSlashToAddress(page.url) } aria-current={ page.ariaCurrent } rel={ page.rel }>{ page.title }</a>
+  <a href={ addSlashToAddress(page.url, SITE) } aria-current={ page.ariaCurrent } rel={ page.rel }>{ page.title }</a>
 </li>
 )}
 {(page.children.length > 0) && (

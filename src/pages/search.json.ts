@@ -2,8 +2,7 @@
 
 import type { MarkdownInstance } from 'astro';
 import { SITE } from '@config';
-import { showInSearch } from '@util/PageTypeFilters';
-import { addSlashToAddress } from '@util/Url';
+import { addSlashToAddress, showInSearch } from 'astro-accelerator-utils';
 
 const getData = async () => {
     //@ts-ignore
@@ -32,7 +31,7 @@ const getData = async () => {
             }),
             description: page.frontmatter.description ?? '',
             tags: page.frontmatter.tags ?? [],
-            url: SITE.url + addSlashToAddress(url),
+            url: SITE.url + addSlashToAddress(url, SITE),
             date: page.frontmatter.pubDate ?? ''
         });
     }
