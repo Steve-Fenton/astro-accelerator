@@ -15,7 +15,7 @@ async function getData() {
     const article: any = await allArticles[path]();
 
     if (isListable(article)) {
-      article.title = await getTextFrom(article.title ?? '');
+      article.frontmatter.title = await getTextFrom(article.frontmatter.title ?? '');
 
       articles.push({
         url: article.url,

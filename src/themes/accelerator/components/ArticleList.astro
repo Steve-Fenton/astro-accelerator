@@ -3,6 +3,7 @@ import type { MarkdownInstance } from 'astro';
 import { SITE, Frontmatter } from '@config';
 import { addSlashToAddress } from 'astro-accelerator-utils';
 import { getImageInfo } from '@util/custom-markdown.mjs';
+import { getTextFrom } from '@util/Markdown';
 import AuthorsMini from '@components/AuthorsMini.astro';
 
 
@@ -14,15 +15,35 @@ type Props = {
 const { lang, posts } = Astro.props as Props;
 
 // Logic
-const articles = posts.map(p => {
-  return {
-    url: p.url,
+type ImageInfo = {
+  src: string;
+  srcset: string;
+  sizes: string;
+  class: string;
+};
+
+type Article = {
+  url: string;
+  frontmatter: Record<string, any>;
+  img: ImageInfo | null;
+};
+
+
+const articles: Article[] = [];
+
+for (let p of posts) {
+  const item = {
+    url: p.url ?? '',
     frontmatter: p.frontmatter,
     img: p.frontmatter.bannerImage
-      ? getImageInfo(p.frontmatter.bannerImage.src, '', SITE.images.listerSize)
-      : null
+    ? getImageInfo(p.frontmatter.bannerImage.src, '', SITE.images.listerSize)
+    : null
   };
-});
+  
+  item.frontmatter.title = await getTextFrom(p.frontmatter.title);
+
+  articles.push(item)
+}
 
 let articleIndex = 0;
 function getLoadingAttribute() {
