@@ -27,7 +27,8 @@ const subtitle = frontmatter.subtitle
     ? await getInlineHtmlFrom(frontmatter.subtitle)
     : null;
 
-const features = "<script>const site_url = '" + SITE.url + "'; const site_features = '" + JSON.stringify(SITE.featureFlags) + "';</script>";
+const site_url = SITE.url;
+const site_features = SITE.featureFlags;
 ---
 <html dir={ textDirection } lang={ lang } class="initial">
     <Head frontmatter={ frontmatter } headings={ headings } lang={ lang } />
@@ -56,7 +57,10 @@ const features = "<script>const site_url = '" + SITE.url + "'; const site_featur
             </main>
         </div>
         <Footer frontmatter={ frontmatter } headings={ headings } lang={ lang } />
-        <Fragment is:html="true" set:html={ features } />
+        <script define:vars={{ site_url, site_features }}>
+            window.site_url = site_url;
+            window.site_features = site_features;
+        </script>
         <script src={ SITE.subfolder + '/js/main.js' } type="module" async></script>
     </body>
 </html>
