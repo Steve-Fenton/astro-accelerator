@@ -10,12 +10,6 @@ type Props = {
     headings: { depth: number; slug: string; text: string; }[];
 }
 const { frontmatter, headings } = Astro.props as Props;
-
-import { globTest } from 'astro-accelerator-utils';
-
-const x = globTest;
-console.log('globtest', x);
-
 ---
 <Default frontmatter={ frontmatter } headings={ headings }>
     <slot />
