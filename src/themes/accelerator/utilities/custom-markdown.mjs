@@ -3,7 +3,8 @@ import { visit } from 'unist-util-visit';
 import { h } from 'hastscript';
 import { size } from '/src/data/image-size.mjs';
 import { fromSelector } from 'hast-util-from-selector'
-
+import path from 'path';
+import fs from 'fs';
 
 /* Based on https://github.com/remarkjs/remark-directive
 * Examples:
@@ -29,6 +30,8 @@ This is a custom div element with the class `note`
 :::
 
 */
+
+const workingDirectory = process.cwd();
 
 export function getDestination(uri, s) {
   const fromRegEx = new RegExp('^' + SITE.subfolder + '/img/');
@@ -66,6 +69,13 @@ export function attributeMarkdown() {
         const hast = h(node.name, node.attributes);
 
         if (hast.properties.src) {
+          let metadata = null;
+          let metaAddress = path.join(workingDirectory, 'public', hast.properties.src + '.json');
+          
+          if (fs.existsSync(metaAddress)) {
+            metadata = JSON.parse(fs.readFileSync(metaAddress));
+          }
+
           // Process the image
           const info = getImageInfo(hast.properties.src, hast.properties.class, SITE.images.contentSize);
 
@@ -73,6 +83,11 @@ export function attributeMarkdown() {
           hast.properties.srcset = info.srcset;
           hast.properties.sizes = info.sizes;
           hast.properties.class = info.class;
+
+          if (metadata) {
+            hast.properties.width = metadata.width;
+            hast.properties.height = metadata.height;
+          }
         }
 
         data.hName = hast.tagName;
