@@ -1,8 +1,8 @@
 ---
+import { Urls } from 'astro-accelerator-utils';
 import { SITE, Frontmatter } from '@config';
 import { Translations, Lang } from '@util/Languages';
 import { getBreadcrumbs } from '@util/Breadcrumbs';
-import { addSlashToAddress } from 'astro-accelerator-utils';
 
 // Properties
 type Props = {
@@ -24,7 +24,7 @@ const navPages = await getBreadcrumbs(currentUrl);
     {navPages.map((page, index) => (
     <li property="itemListElement" typeof="ListItem">
       <meta property="position" content={ index.toString() } />
-      <a property="item" typeof="WebPage" href={ addSlashToAddress(page.url, SITE) } aria-current={ page.ariaCurrent } rel={ page.rel }><span property="name">{ page.title }</span></a>
+      <a property="item" typeof="WebPage" href={ Urls.addSlashToAddress(page.url, SITE) } aria-current={ page.ariaCurrent } rel={ page.rel }><span property="name">{ page.title }</span></a>
     </li>
     ))}
   </ol>

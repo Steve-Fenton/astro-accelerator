@@ -1,8 +1,8 @@
+import { Cache, Urls, PostQueries } from 'astro-accelerator-utils';
 import type { Entry } from '@util/Languages';
 import { Translations } from '@util/Languages';
 import { SITE } from '@config';
 import { fetchPages } from '@util/PageQueries';
-import { addSlashToAddress, getItem, setItem, getPages } from 'astro-accelerator-utils';
 
 type TaxonomyEntry = {
     title: string;
@@ -38,10 +38,10 @@ export function taxonomyLinks(lang: (entry: Entry) => string) {
         tag: tag,
         category: category,
         getCategoryLink: (category: string) => {
-            return addSlashToAddress(categoryLink + category.toLowerCase().replace(/ /g, '-') + '/1/', SITE);
+            return Urls.addSlashToAddress(categoryLink + category.toLowerCase().replace(/ /g, '-') + '/1/', SITE);
         },
         getTagLink: (tag: string) => {
-            return addSlashToAddress(tagLink + tag.toLowerCase().replace(/ /g, '-') + '/1/', SITE);
+            return Urls.addSlashToAddress(tagLink + tag.toLowerCase().replace(/ /g, '-') + '/1/', SITE);
         }
     };
 
@@ -50,10 +50,10 @@ export function taxonomyLinks(lang: (entry: Entry) => string) {
 export async function getTaxonomy (): Promise<Taxonomy> {
     const cacheKey = 'Global__taxonomy';
 
-    let taxonomy: Taxonomy = await getItem(cacheKey);
+    let taxonomy: Taxonomy = await Cache.getItem(cacheKey);
 
     if (taxonomy == null) {
-        const allPages = await getPages(fetchPages);
+        const allPages = await PostQueries.getPages(fetchPages);
         const tags: { [key: string]: number } = {};
         const cats: { [key: string]: number } = {};
 
@@ -100,7 +100,7 @@ export async function getTaxonomy (): Promise<Taxonomy> {
                 return 0;
              });
 
-        await setItem(cacheKey, taxonomy);
+        await Cache.setItem(cacheKey, taxonomy);
     }
 
     return taxonomy;

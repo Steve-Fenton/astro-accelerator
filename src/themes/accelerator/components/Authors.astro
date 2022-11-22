@@ -1,7 +1,7 @@
 ---
+import { Dates, Urls } from 'astro-accelerator-utils';
 import { SITE, Frontmatter } from '@config';
 import { Translations, Lang } from '@util/Languages';
-import { formatDate, formatModifiedDate, addSlashToAddress } from 'astro-accelerator-utils';
 import { getAuthorList } from '@util/Authors';
 import { getImageInfo } from '@util/custom-markdown.mjs';
 
@@ -35,16 +35,16 @@ const contributors = authorList.writers.slice(1);
   <div class="author-info">
     <span>{ _(Translations.post.written_by) }
       {author &&
-        <a href={ addSlashToAddress(author.url, SITE) + '1/' } itemprop="author">{ author.frontmatter.title }</a>
+        <a href={ Urls.addSlashToAddress(author.url, SITE) + '1/' } itemprop="author">{ author.frontmatter.title }</a>
       }{contributors.map((writer) => (
-        <a href={ addSlashToAddress(writer.url, SITE) + '1/' } itemprop="contributor">{ writer.frontmatter.title }</a>
+        <a href={ Urls.addSlashToAddress(writer.url, SITE) + '1/' } itemprop="contributor">{ writer.frontmatter.title }</a>
       ))}.
       <br /><time datetime={ frontmatter.pubDate.toString() } itemprop="datePublished">
-      { formatDate(frontmatter, lang, SITE) }
+      { Dates.formatDate(frontmatter, lang, SITE) }
       </time>
       {frontmatter.modDate &&
       <br /><time datetime={ frontmatter.modDate.toString() } itemprop="dateModified">
-        { _(Translations.post.last_modified) } { formatModifiedDate(frontmatter, lang, SITE) }
+        { _(Translations.post.last_modified) } { Dates.formatModifiedDate(frontmatter, lang, SITE) }
       </time>
       }
     </span>

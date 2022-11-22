@@ -1,12 +1,12 @@
 ---
-import { sortByPubDateDesc, getPages } from 'astro-accelerator-utils';
+import { PostQueries, PostOrdering } from 'astro-accelerator-utils';
 import { fetchPages } from '@util/PageQueries';
 
 // Logic
-const allPages = await getPages(fetchPages);
+const allPages = await PostQueries.getPages(fetchPages);
 const missingMeta = allPages.filter(p => (p.frontmatter.keywords == null || p.frontmatter.description == null) && p.frontmatter.layout != 'src/layouts/Redirect.astro');
 const pageCount = missingMeta.length;
-const pages = missingMeta.sort(sortByPubDateDesc).slice(0, Math.min(50, pageCount));
+const pages = missingMeta.sort(PostOrdering.sortByPubDateDesc).slice(0, Math.min(50, pageCount));
 ---
 <!doctype html>
 <html>

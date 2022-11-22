@@ -2,7 +2,7 @@
 
 import type { MarkdownInstance } from 'astro';
 import { SITE } from '@config';
-import { addSlashToAddress, showInSearch } from 'astro-accelerator-utils';
+import { PostFiltering, Urls } from 'astro-accelerator-utils';
 import { getTextFrom } from '@util/Markdown';
 
 const getData = async () => {
@@ -13,7 +13,7 @@ const getData = async () => {
     for (const path in allPages) {
         const page = await allPages[path]() as  MarkdownInstance<Record<string, any>>;
 
-        if (!showInSearch(page)) {
+        if (!PostFiltering.showInSearch(page)) {
             continue;
         }
 
@@ -33,7 +33,7 @@ const getData = async () => {
             }),
             description: page.frontmatter.description ?? '',
             tags: page.frontmatter.tags ?? [],
-            url: SITE.url + addSlashToAddress(url, SITE),
+            url: SITE.url + Urls.addSlashToAddress(url, SITE),
             date: page.frontmatter.pubDate ?? ''
         });
     }

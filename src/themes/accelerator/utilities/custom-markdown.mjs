@@ -1,8 +1,8 @@
-import { SITE } from '/src/config';
-import { visit } from 'unist-util-visit';
 import { h } from 'hastscript';
-import { size } from '/src/data/image-size.mjs';
+import { visit } from 'unist-util-visit';
 import { fromSelector } from 'hast-util-from-selector'
+import { SITE } from '/src/config';
+import { size } from '/src/data/image-size.mjs';
 
 
 /* Based on https://github.com/remarkjs/remark-directive

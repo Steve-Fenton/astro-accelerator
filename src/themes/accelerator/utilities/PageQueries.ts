@@ -1,6 +1,6 @@
 import type { MarkdownInstance } from "astro";
 import { SITE } from '@config';
-import { isAuthor, getItem, setItem, PagePredicate, getPages } from 'astro-accelerator-utils';
+import { Cache, PostQueries, PostFiltering } from 'astro-accelerator-utils';
 
 export function fetchPages(): Record<string, any> {
     return import.meta.glob("../../../pages/**/*.md", { eager: true });
@@ -25,12 +25,12 @@ export function fetchPages(): Record<string, any> {
 //     return allPages.filter(filter);
 // }
 
-export async function getTopLevelPages (filter?: PagePredicate | null): Promise<MarkdownInstance<Record<string,any>>[]> {
+export async function getTopLevelPages (filter?: Function): Promise<MarkdownInstance<Record<string,any>>[]> {
     const key = 'PageQueries__getTopLevelPages';
-    let allPages = await getItem(key);
+    let allPages = await Cache.getItem(key);
 
     if (allPages == null) {
-        allPages = await getPages(fetchPages);
+        allPages = await PostQueries.getPages(fetchPages);
 
         const isRoot = SITE.subfolder.length == 0;
         const expectedDepth = isRoot ? 1 : 2;
@@ -40,7 +40,7 @@ export async function getTopLevelPages (filter?: PagePredicate | null): Promise<
                 || (depth == (expectedDepth - 1) && p.file.includes(SITE.subfolder.toLowerCase() + '.md'));
         });
 
-        await setItem(key, allPages);
+        await Cache.setItem(key, allPages);
     }
 
     if (filter == null) {
@@ -53,20 +53,20 @@ export async function getTopLevelPages (filter?: PagePredicate | null): Promise<
 export async function getAuthorInfo (slug: string) {
     const cacheKey = 'Global__author_info';
     
-    let authorInfo = await getItem(cacheKey);
+    let authorInfo = await Cache.getItem(cacheKey);
 
     if (authorInfo == null) {
-        const allPages = await getPages(fetchPages);
+        const allPages = await PostQueries.getPages(fetchPages);
 
         const author = allPages
-            .filter(isAuthor)
+            .filter(PostFiltering.isAuthor)
             .filter(x => x.url?.split('/')[2] == slug)[0];
 
         authorInfo = {
             frontmatter: author.frontmatter
         };
   
-      await setItem(cacheKey, authorInfo);
+      await Cache.setItem(cacheKey, authorInfo);
     }
 
     return authorInfo;

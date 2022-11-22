@@ -1,8 +1,8 @@
 // Data file `navigation.ts`
+import { Cache } from 'astro-accelerator-utils';
 import { menu } from 'src/data/footer';
 import { Translations, Lang } from '@util/Languages';
 import { SITE } from '@config';
-import { getItem, setItem } from 'astro-accelerator-utils';
 import { setCurrentPage } from '@util/NavPage';
 import { NavPage, isNavPage } from '@util/NavigationTypes';
 import { getTaxonomy, taxonomyLinks } from '@util/Taxonomy';
@@ -12,7 +12,7 @@ export async function getMenu (currentUrl: URL, lang: string) {
     const key = 'Footer__getMenu_' + lang;
     const _ = Lang(lang);
     const links = taxonomyLinks(_);
-    let pages: NavPage[] = await getItem(key);
+    let pages: NavPage[] = await Cache.getItem(key);
 
     if (pages == null) {
         pages = [];
@@ -45,7 +45,7 @@ export async function getMenu (currentUrl: URL, lang: string) {
         }
 
         // Cache the result
-        await setItem(key, pages);
+        await Cache.setItem(key, pages);
     }
 
     setCurrentPage(pages, currentUrl);
@@ -56,7 +56,7 @@ export async function getMenu (currentUrl: URL, lang: string) {
 export async function getCategories (links, _, lang: string) {
 
     const key = 'Footer__getCategories_' + lang;
-    let pageHierarchy: NavPage[] = await getItem(key);
+    let pageHierarchy: NavPage[] = await Cache.getItem(key);
 
     if (pageHierarchy == null) {
         const category = _(Translations.articles.category) ?? 'category';
@@ -86,7 +86,7 @@ export async function getCategories (links, _, lang: string) {
         }];
        
         // Cache the result
-        await setItem(key, pageHierarchy);
+        await Cache.setItem(key, pageHierarchy);
     }
 
     return pageHierarchy;
@@ -95,7 +95,7 @@ export async function getCategories (links, _, lang: string) {
 export async function getTags (links, _, lang: string) {
 
     const key = 'Footer__getTags_' + lang;
-    let pageHierarchy: NavPage[] = await getItem(key);
+    let pageHierarchy: NavPage[] = await Cache.getItem(key);
 
     if (pageHierarchy == null) {
         const _ = Lang(lang);
@@ -126,7 +126,7 @@ export async function getTags (links, _, lang: string) {
         }];
     
         // Cache the result
-        await setItem(key, pageHierarchy);
+        await Cache.setItem(key, pageHierarchy);
     }
 
     return pageHierarchy;
@@ -135,7 +135,7 @@ export async function getTags (links, _, lang: string) {
 export async function getTopTags (links, _, lang: string) {
 
 const key = 'Footer__getTopTags_' + lang;
-let pageHierarchy: NavPage[] = await getItem(key);
+let pageHierarchy: NavPage[] = await Cache.getItem(key);
 
 if (pageHierarchy == null) {
     const _ = Lang(lang);
@@ -166,7 +166,7 @@ if (pageHierarchy == null) {
     }];
 
     // Cache the result
-    await setItem(key, pageHierarchy);
+    await Cache.setItem(key, pageHierarchy);
 }
 
 return pageHierarchy;

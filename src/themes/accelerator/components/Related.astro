@@ -1,7 +1,7 @@
 ---
 import { SITE, Frontmatter } from '@config';
 import type { MarkdownInstance } from 'astro';
-import { addSlashToAddress, isListable, sortByPubDateDesc, getPages } from 'astro-accelerator-utils';
+import { Urls, PostQueries, PostFiltering, PostOrdering } from 'astro-accelerator-utils';
 import { getImageInfo } from '@util/custom-markdown.mjs'
 import { fetchPages } from '@util/PageQueries';
 
@@ -20,10 +20,10 @@ let posts: MarkdownInstance<Record<string, any>>[] = [];
 const parentCagory = (frontmatter.categories ?? [null])[0];
 
 if (parentCagory != null) {
-  const allPages = await getPages(fetchPages, isListable)
+  const allPages = await PostQueries.getPages(fetchPages, PostFiltering.isListable)
   const allPosts = allPages
     .filter(p => p.frontmatter.title != frontmatter.title && p.frontmatter.categories && p.frontmatter.categories.includes(parentCagory))
-    .sort(sortByPubDateDesc)
+    .sort(PostOrdering.sortByPubDateDesc)
   
   // One "Most Recent" Post
   if (allPosts.length > 0) {
@@ -53,7 +53,7 @@ const articles = posts.map(p => {
 {articles.length > 0 &&
 <ul class="post-list anim-show-parent">
   {articles.map((post) => (
-  <li class="list-item" data-destination={ addSlashToAddress(post.url, SITE) } data-image={ (post.frontmatter.bannerImage?.src.length > 0).toString() }>
+  <li class="list-item" data-destination={ Urls.addSlashToAddress(post.url, SITE) } data-image={ (post.frontmatter.bannerImage?.src.length > 0).toString() }>
     <article>
       <div class="list-item-image">
       {post.img && (
@@ -68,7 +68,7 @@ const articles = posts.map(p => {
       </div>
       <div class="list-item-content">
         <h3>
-          <a href={ addSlashToAddress(post.url, SITE) }>{ post.frontmatter.title }</a>
+          <a href={ Urls.addSlashToAddress(post.url, SITE) }>{ post.frontmatter.title }</a>
         </h3>
         <AuthorsMini lang={ lang } frontmatter={ post.frontmatter as Frontmatter } />
       </div>
