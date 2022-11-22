@@ -6,28 +6,11 @@ export function fetchPages(): Record<string, any> {
     return import.meta.glob("../../../pages/**/*.md", { eager: true });
 }
 
-// export type PagePredicate = (value: MarkdownInstance<Record<string, any>>, index: number, array: MarkdownInstance<Record<string, any>>[]) => boolean;
+export type PagePredicate = (value: MarkdownInstance<Record<string, any>>, index: number, array: MarkdownInstance<Record<string, any>>[]) => boolean;
 
-// export async function getPages (fetchPages: () => Record<string, any>, filter?: PagePredicate | null): Promise<MarkdownInstance<Record<string,any>>[]> {
-//     const key = 'PageQueries__getPages';
-//     let allPages: MarkdownInstance<Record<string,any>>[] = await getItem(key);
-
-//     if (allPages == null) {
-//         const pageImportResult = fetchPages();
-//         allPages = Object.values(pageImportResult) as MarkdownInstance<Record<string,any>>[];
-//         await setItem(key, allPages);
-//     }
-
-//     if (filter == null) {
-//         return allPages;
-//     }
-
-//     return allPages.filter(filter);
-// }
-
-export async function getTopLevelPages (filter?: Function): Promise<MarkdownInstance<Record<string,any>>[]> {
+export async function getTopLevelPages (filter?: PagePredicate | null): Promise<MarkdownInstance<Record<string,any>>[]> {
     const key = 'PageQueries__getTopLevelPages';
-    let allPages = await Cache.getItem(key);
+    let allPages: MarkdownInstance<Record<string, any>>[] = await Cache.getItem(key);
 
     if (allPages == null) {
         allPages = await PostQueries.getPages(fetchPages);
