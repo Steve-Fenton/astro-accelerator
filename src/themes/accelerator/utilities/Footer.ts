@@ -1,12 +1,11 @@
 // Data file `navigation.ts`
 import { Cache } from 'astro-accelerator-utils';
 import { menu } from 'src/data/footer';
-import { Translations, Lang } from '@util/Languages';
+import { Translations, Lang, TranslationProvider } from '@util/Languages';
 import { SITE } from '@config';
 import { setCurrentPage } from '@util/NavPage';
 import { NavPage, isNavPage } from '@util/NavigationTypes';
-import { getTaxonomy, taxonomyLinks } from '@util/Taxonomy';
-
+import { getTaxonomy, taxonomyLinks, TaxonomyLinks } from '@util/Taxonomy';
 
 export async function getMenu (currentUrl: URL, lang: string) {
     const key = 'Footer__getMenu_' + lang;
@@ -53,7 +52,7 @@ export async function getMenu (currentUrl: URL, lang: string) {
     return pages;
 }
 
-export async function getCategories (links, _, lang: string) {
+export async function getCategories (links: TaxonomyLinks, _: TranslationProvider, lang: string) {
 
     const key = 'Footer__getCategories_' + lang;
     let pageHierarchy: NavPage[] = await Cache.getItem(key);
@@ -92,7 +91,7 @@ export async function getCategories (links, _, lang: string) {
     return pageHierarchy;
 }
 
-export async function getTags (links, _, lang: string) {
+export async function getTags (links: TaxonomyLinks, _: TranslationProvider, lang: string) {
 
     const key = 'Footer__getTags_' + lang;
     let pageHierarchy: NavPage[] = await Cache.getItem(key);
@@ -132,7 +131,7 @@ export async function getTags (links, _, lang: string) {
     return pageHierarchy;
 }
 
-export async function getTopTags (links, _, lang: string) {
+export async function getTopTags (links: TaxonomyLinks, _: TranslationProvider, lang: string) {
 
 const key = 'Footer__getTopTags_' + lang;
 let pageHierarchy: NavPage[] = await Cache.getItem(key);

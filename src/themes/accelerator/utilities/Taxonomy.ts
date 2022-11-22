@@ -3,6 +3,7 @@ import type { Entry } from '@util/Languages';
 import { Translations } from '@util/Languages';
 import { SITE } from '@config';
 import { fetchPages } from '@util/PageQueries';
+import type { MarkdownInstance } from 'astro-accelerator-utils/types/Astro';
 
 type TaxonomyEntry = {
     title: string;
@@ -27,7 +28,14 @@ export function sortByTitle (a: TaxonomyEntry, b: TaxonomyEntry) {
   return 0;
 }
 
-export function taxonomyLinks(lang: (entry: Entry) => string) {
+export type TaxonomyLinks = {
+    tag: string;
+    category: string;
+    getCategoryLink: (category: string) => string;
+    getTagLink: (tag: string) => string;
+}
+
+export function taxonomyLinks(lang: (entry: Entry) => string): TaxonomyLinks {
     const category = lang(Translations.articles.category) ?? 'category';
     const categoryLink = `${SITE.subfolder}/${category}/`;
 
@@ -53,17 +61,17 @@ export async function getTaxonomy (): Promise<Taxonomy> {
     let taxonomy: Taxonomy = await Cache.getItem(cacheKey);
 
     if (taxonomy == null) {
-        const allPages = await PostQueries.getPages(fetchPages);
+        const allPages: MarkdownInstance<Record<string, any>>[] = await PostQueries.getPages(fetchPages);
         const tags: { [key: string]: number } = {};
         const cats: { [key: string]: number } = {};
 
         // Get taxonomy and counts
         allPages.forEach((p) => {
-            p.frontmatter.tags && p.frontmatter.tags.forEach(t => {
+            p.frontmatter.tags && (p.frontmatter.tags as string[]).forEach(t => {
                 tags[t] = (tags[t] ?? 0) + 1;
             });
 
-            p.frontmatter.categories && p.frontmatter.categories.forEach(c => {
+            p.frontmatter.categories && (p.frontmatter.categories as string[]).forEach(c => {
                 cats[c] = (cats[c] ?? 0) + 1;
             });
         });

@@ -3,7 +3,11 @@ import user from '@data/language.json';
 
 export const Translations = {...bundled, ...user};
 
-export function Lang (lang: string): (entry: Entry) => string {
+export type TranslationProvider = {
+    (entry: Entry): string;
+}
+
+export function Lang (lang: string): TranslationProvider {
     const altLang = lang.indexOf('-') > -1
         ? lang.split('-')[0]
         : lang;
