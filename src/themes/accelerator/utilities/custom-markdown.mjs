@@ -1,3 +1,5 @@
+import { SITE } from '/src/config';
+import { size } from '/src/data/image-size.mjs';
 import { h } from 'hastscript';
 import { visit } from 'unist-util-visit';
 import { fromSelector } from 'hast-util-from-selector'
