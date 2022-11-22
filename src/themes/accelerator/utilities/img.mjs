@@ -94,7 +94,7 @@ for (const file of filesToProcess) {
 
     const ext = path.parse(source).ext;
 
-    let image;
+    let image = null;
     let rawEncodedImage;
 
     // Create optimised fallback image
@@ -117,6 +117,19 @@ for (const file of filesToProcess) {
             await fs.promises.writeFile(destination + '.webp', rawEncodedImage);
             break;
     }
+
+    if (image) {
+        const info = await image.decoded;
+        const metadata = {
+            width: info.bitmap.width,
+            height: info.bitmap.height,
+            sizeInBytes: info.size
+        };
+
+        const metaFile = source + '.json';
+        await fs.promises.writeFile(metaFile, JSON.stringify(metadata));
+    }
+
     await imagePool.close();
 
     // Create resized images
