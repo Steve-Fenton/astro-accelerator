@@ -156,7 +156,7 @@ li::marker {
     color: var(--fore-headings);
 }
 
-.page-content ul, .page-content ol {
+.page-content ul:not(.post-list), .page-content ol {
     margin: var(--paragraph-margin) 0 var(--paragraph-margin) 1.2rem;
 }
 
@@ -477,7 +477,7 @@ nav.site-nav h2 {
 @media (max-width: 860px) {
     .content-group {
         grid-template-columns: auto; 
-        grid-template-rows: repeat(auto); 
+        grid-template-rows: auto auto auto; 
         gap: var(--grid-gap);
         grid-template-areas: 
           "top"
@@ -487,6 +487,8 @@ nav.site-nav h2 {
 
     .content-group article > .page-content {
         margin: 0 20px;
+        width: calc(100% - 40px);
+        max-width: calc(100vw - 40px);
     }
 }
 
