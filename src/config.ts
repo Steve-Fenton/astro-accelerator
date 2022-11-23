@@ -60,10 +60,6 @@ export const HEADER_SCRIPTS = `
 <!-- HEADER SCRIPTS -->
 `.trim();
 
-type Mapped<T> = {
-    [P in keyof T]?: any
-}
-
 export type Frontmatter = {
 	layout: string;
 	title: string;

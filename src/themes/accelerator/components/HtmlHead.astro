@@ -22,10 +22,10 @@ const title = await getTextFrom( frontmatter.title ? `${ frontmatter.title } | $
 <head>
   <meta charset="utf-8" />
   <title>{ title }</title>
-  <meta name="robots" content={ 'max-image-preview:large, ' + robots }>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content={ frontmatter.keywords }>
-  <meta name="description" content={ frontmatter.description }>
+  <meta name="robots" content={ 'max-image-preview:large, ' + robots } />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content={ frontmatter.keywords } />
+  <meta name="description" content={ frontmatter.description } />
   <meta name="theme-color" content={ SITE.themeColor } />
   <link rel="stylesheet" href={ SITE.subfolder + '/css/vars.css' } />
   <link rel="stylesheet" href={ SITE.subfolder + '/css/main.css' } />
@@ -42,10 +42,11 @@ const title = await getTextFrom( frontmatter.title ? `${ frontmatter.title } | $
   <meta property="og:description" content={ frontmatter.description } />
   <meta property="og:image" content={ canonicalImageSrc } />
   <meta property="og:image:alt" content={ imageAlt } />
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content={ frontmatter.title }>
-  <meta name="twitter:description" content={ frontmatter.description }>
-  <meta name="twitter:image" content={ canonicalImageSrc }>
-  <meta name="twitter:image:alt" content={ imageAlt }>
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={ frontmatter.title } />
+  <meta name="twitter:description" content={ frontmatter.description } />
+  <meta name="twitter:image" content={ canonicalImageSrc } />
+  <meta name="twitter:image:alt" content={ imageAlt } />
+  <meta name="view-transition" content="same-origin" />
   <Fragment set:html={ HEADER_SCRIPTS }></Fragment>
 </head>

@@ -460,7 +460,7 @@ nav.site-nav h2 {
 
 .content-group nav {
     grid-area: menu;
-    width: 100%;
+    width: calc(100% - 40px);
 }
 
 .content-group main,
@@ -483,6 +483,10 @@ nav.site-nav h2 {
           "top"
           "content"
           "menu";
+    }
+
+    .content-group article > .page-content {
+        margin: 0 20px;
     }
 }
 
