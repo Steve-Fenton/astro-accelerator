@@ -1,14 +1,14 @@
 // Data file `navigation.ts`
 import { menu } from 'src/data/navigation';
 
-import { showInMenu, getItem, setItem, getPages } from 'astro-accelerator-utils';
+import { PostQueries, PostFiltering, Cache } from 'astro-accelerator-utils';
 import { mapNavPage, setCurrentPage } from '@util/NavPage';
 import { NavPage, isNavPage } from '@util/NavigationTypes';
 import { getTopLevelPages, fetchPages } from '@util/PageQueries';
 
 export async function getMenu (currentUrl: URL) {
     const key = 'Navigation__getMenu';
-    let pages: NavPage[] = await getItem(key);
+    let pages: NavPage[] = await Cache.getItem(key);
 
     if (pages == null) {
         pages = [];
@@ -25,7 +25,7 @@ export async function getMenu (currentUrl: URL) {
         }
 
         // Cache the result
-        await setItem(key, pages);
+        await Cache.setItem(key, pages);
     }
 
     setCurrentPage(pages, currentUrl);
@@ -36,11 +36,11 @@ export async function getMenu (currentUrl: URL) {
 export async function getNavigation (currentUrl: URL) {
 
     const key = 'Navigation__getNavigation';
-    let pageHierarchy: NavPage[] = await getItem(key);
+    let pageHierarchy: NavPage[] = await Cache.getItem(key);
 
     if (pageHierarchy == null) {
-        const topLevelPages = await getTopLevelPages(showInMenu);
-        const allPages = await getPages(fetchPages, showInMenu);
+        const topLevelPages = await getTopLevelPages(PostFiltering.showInMenu);
+        const allPages = await PostQueries.getPages(fetchPages, PostFiltering.showInMenu);
 
         pageHierarchy = topLevelPages
             .map(mapNavPage)
@@ -71,7 +71,7 @@ export async function getNavigation (currentUrl: URL) {
         }
 
         // Cache the result
-        await setItem(key, pageHierarchy);
+        await Cache.setItem(key, pageHierarchy);
     }
 
     return pageHierarchy;

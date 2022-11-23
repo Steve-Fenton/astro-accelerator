@@ -6,7 +6,7 @@ import { Translations, Lang } from '@util/Languages';
 import type { Page, MarkdownInstance } from 'astro';
 import { SITE, Frontmatter } from '@config';
 import { getPageLinks } from '@util/PageLinks';
-import { isListable, sortByPubDateDesc, getItem, setItem } from 'astro-accelerator-utils';
+import { Cache, PostFiltering, PostOrdering } from 'astro-accelerator-utils';
 import { getAuthorInfo } from '@util/PageQueries';
 import Default from '@layouts/Default.astro';
 import ArticleList from '@components/ArticleList.astro';
@@ -42,7 +42,7 @@ type CacheData = {
 export async function getCacheData() {
   const key = 'pages_authors_[author]_[page]';
 
-  let cacheData: CacheData = await getItem(key);
+  let cacheData: CacheData = await Cache.getItem(key);
 
   if (cacheData == null) {
     const sourcePosts = await Astro.glob('../../**/*.md');
@@ -50,8 +50,8 @@ export async function getCacheData() {
     cacheData = { posts: [], authors: []};
 
     cacheData.posts = sourcePosts
-      .filter(isListable)
-      .sort(sortByPubDateDesc);
+      .filter(PostFiltering.isListable)
+      .sort(PostOrdering.sortByPubDateDesc);
 
     cacheData.posts.forEach(p => {
       const auths: string[] = p.frontmatter.authors ?? [];
@@ -65,7 +65,7 @@ export async function getCacheData() {
       });
     });
     
-    await setItem(key, cacheData);
+    await Cache.setItem(key, cacheData);
   }
 
   return cacheData;

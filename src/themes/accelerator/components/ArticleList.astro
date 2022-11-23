@@ -1,7 +1,7 @@
 ---
 import type { MarkdownInstance } from 'astro';
+import { Urls } from 'astro-accelerator-utils';
 import { SITE, Frontmatter } from '@config';
-import { addSlashToAddress } from 'astro-accelerator-utils';
 import { getImageInfo } from '@util/custom-markdown.mjs';
 import { getTextFrom } from '@util/Markdown';
 import AuthorsMini from '@components/AuthorsMini.astro';
@@ -55,7 +55,7 @@ function getLoadingAttribute() {
 ---
 <ul class="post-list anim-show-parent">
   {articles.map((post) => (
-  <li class="list-item" data-destination={ addSlashToAddress(post.url, SITE) } data-image={ (post.frontmatter.bannerImage?.src.length > 0).toString() }>
+  <li class="list-item" data-destination={ Urls.addSlashToAddress(post.url, SITE) } data-image={ (post.frontmatter.bannerImage?.src.length > 0).toString() }>
     <article>
       <div class="list-item-image">
       {post.img && (
@@ -70,7 +70,7 @@ function getLoadingAttribute() {
       </div>
       <div class="list-item-content">
         <h3>
-          <a href={ addSlashToAddress(post.url, SITE) }>{ post.frontmatter.title }</a>
+          <a href={ Urls.addSlashToAddress(post.url, SITE) }>{ post.frontmatter.title }</a>
         </h3>
         <AuthorsMini lang={ lang } frontmatter={ post.frontmatter as Frontmatter } />
       </div>

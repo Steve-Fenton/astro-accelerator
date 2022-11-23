@@ -1,8 +1,7 @@
-import type { Frontmatter } from '@config';
 import type { MarkdownInstance } from 'astro';
-
+import { PostQueries, PostFiltering } from "astro-accelerator-utils";
+import type { Frontmatter } from '@config';
 import { fetchPages } from "@util/PageQueries";
-import { isAuthor, getPages } from "astro-accelerator-utils";
 
 type BannerImage = { src: string; alt: string } | null;
 type AuthorList = {
@@ -11,7 +10,7 @@ type AuthorList = {
 };
 
 export async function getAuthors () {
-    const authors = await getPages(fetchPages, isAuthor);
+    const authors = await PostQueries.getPages(fetchPages, PostFiltering.isAuthor);
     return authors;
 }
 

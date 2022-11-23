@@ -1,7 +1,7 @@
 ---
 import { SITE, Frontmatter } from '@config';
 import { Translations, Lang } from '@util/Languages';;
-import { formatDate } from 'astro-accelerator-utils';
+import { Dates } from 'astro-accelerator-utils';
 import { getAuthorList } from '@util/Authors';
 
 // Properties
@@ -25,7 +25,7 @@ const authorList = await getAuthorList(frontmatter);
         <span>{ writer.frontmatter.title }</span>
       ))}.<br />
       <time datetime={ frontmatter.pubDate.toString() }>
-      { formatDate(frontmatter, lang, SITE) }
+      { Dates.formatDate(frontmatter, lang, SITE) }
       </time>
     </span>
   </div>

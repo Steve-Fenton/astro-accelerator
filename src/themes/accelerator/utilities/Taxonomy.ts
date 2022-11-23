@@ -1,8 +1,9 @@
+import { Cache, Urls, PostQueries } from 'astro-accelerator-utils';
 import type { Entry } from '@util/Languages';
 import { Translations } from '@util/Languages';
 import { SITE } from '@config';
 import { fetchPages } from '@util/PageQueries';
-import { addSlashToAddress, getItem, setItem, getPages } from 'astro-accelerator-utils';
+import type { MarkdownInstance } from 'astro-accelerator-utils/types/Astro';
 
 type TaxonomyEntry = {
     title: string;
@@ -27,7 +28,14 @@ export function sortByTitle (a: TaxonomyEntry, b: TaxonomyEntry) {
   return 0;
 }
 
-export function taxonomyLinks(lang: (entry: Entry) => string) {
+export type TaxonomyLinks = {
+    tag: string;
+    category: string;
+    getCategoryLink: (category: string) => string;
+    getTagLink: (tag: string) => string;
+}
+
+export function taxonomyLinks(lang: (entry: Entry) => string): TaxonomyLinks {
     const category = lang(Translations.articles.category) ?? 'category';
     const categoryLink = `${SITE.subfolder}/${category}/`;
 
@@ -38,10 +46,10 @@ export function taxonomyLinks(lang: (entry: Entry) => string) {
         tag: tag,
         category: category,
         getCategoryLink: (category: string) => {
-            return addSlashToAddress(categoryLink + category.toLowerCase().replace(/ /g, '-') + '/1/', SITE);
+            return Urls.addSlashToAddress(categoryLink + category.toLowerCase().replace(/ /g, '-') + '/1/', SITE);
         },
         getTagLink: (tag: string) => {
-            return addSlashToAddress(tagLink + tag.toLowerCase().replace(/ /g, '-') + '/1/', SITE);
+            return Urls.addSlashToAddress(tagLink + tag.toLowerCase().replace(/ /g, '-') + '/1/', SITE);
         }
     };
 
@@ -50,20 +58,20 @@ export function taxonomyLinks(lang: (entry: Entry) => string) {
 export async function getTaxonomy (): Promise<Taxonomy> {
     const cacheKey = 'Global__taxonomy';
 
-    let taxonomy: Taxonomy = await getItem(cacheKey);
+    let taxonomy: Taxonomy = await Cache.getItem(cacheKey);
 
     if (taxonomy == null) {
-        const allPages = await getPages(fetchPages);
+        const allPages: MarkdownInstance<Record<string, any>>[] = await PostQueries.getPages(fetchPages);
         const tags: { [key: string]: number } = {};
         const cats: { [key: string]: number } = {};
 
         // Get taxonomy and counts
         allPages.forEach((p) => {
-            p.frontmatter.tags && p.frontmatter.tags.forEach(t => {
+            p.frontmatter.tags && (p.frontmatter.tags as string[]).forEach(t => {
                 tags[t] = (tags[t] ?? 0) + 1;
             });
 
-            p.frontmatter.categories && p.frontmatter.categories.forEach(c => {
+            p.frontmatter.categories && (p.frontmatter.categories as string[]).forEach(c => {
                 cats[c] = (cats[c] ?? 0) + 1;
             });
         });
@@ -100,7 +108,7 @@ export async function getTaxonomy (): Promise<Taxonomy> {
                 return 0;
              });
 
-        await setItem(cacheKey, taxonomy);
+        await Cache.setItem(cacheKey, taxonomy);
     }
 
     return taxonomy;
