@@ -3,7 +3,6 @@ import { PostQueries, PostFiltering, Cache } from 'astro-accelerator-utils';
 import { menu } from 'src/data/navigation';
 import { SITE } from '@config';
 import { NavPage, isNavPage } from '@util/NavigationTypes';
-import { getTopLevelPages } from '@util/PageQueries';
 
 export async function getMenu (currentUrl: URL) {
     const key = 'Navigation__getMenu';
@@ -38,7 +37,7 @@ export async function getNavigation (currentUrl: URL) {
     let pageHierarchy: NavPage[] = await Cache.getItem(key);
 
     if (pageHierarchy == null) {
-        const topLevelPages = await getTopLevelPages(PostFiltering.showInMenu);
+        const topLevelPages = await PostQueries.getTopLevelPages(SITE, PostFiltering.showInMenu);
         const allPages = await PostQueries.getPages(PostFiltering.showInMenu);
 
         pageHierarchy = topLevelPages
