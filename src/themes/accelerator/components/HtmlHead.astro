@@ -17,7 +17,8 @@ const imageAlt = frontmatter.bannerImage?.alt ?? OPEN_GRAPH.image.alt;
 const robots = frontmatter.robots ?? 'index, follow';
 const canonicalImageSrc = new URL(imageSrc, Astro.site);
 const canonicalURL =  Urls.addSlashToUrl(new URL(Astro.url.pathname, Astro.site + SITE.subfolder));
-const title = await getTextFrom( frontmatter.title ? `${ frontmatter.title } | ${ SITE.title }` : SITE.title);
+const socialTitle = await getTextFrom(frontmatter.title);
+const title = `${ socialTitle } | ${ SITE.title }`;
 ---
 <head>
   <meta charset="utf-8" />
@@ -38,12 +39,12 @@ const title = await getTextFrom( frontmatter.title ? `${ frontmatter.title } | $
   <link rel="apple-touch-icon" href={ SITE.subfolder + '/icons/apple-touch-icon.png' } />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={ canonicalURL } />
-  <meta property="og:title" content={ frontmatter.title } />
+  <meta property="og:title" content={ socialTitle } />
   <meta property="og:description" content={ frontmatter.description } />
   <meta property="og:image" content={ canonicalImageSrc } />
   <meta property="og:image:alt" content={ imageAlt } />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={ frontmatter.title } />
+  <meta name="twitter:title" content={ socialTitle } />
   <meta name="twitter:description" content={ frontmatter.description } />
   <meta name="twitter:image" content={ canonicalImageSrc } />
   <meta name="twitter:image:alt" content={ imageAlt } />
