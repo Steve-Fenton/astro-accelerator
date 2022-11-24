@@ -1,7 +1,8 @@
 ---
+import { Taxonomy } from 'astro-accelerator-utils';
 import type { Frontmatter } from '@config';
 import { Translations, Lang } from '@util/Languages';
-import { taxonomyLinks } from '@util/Taxonomy';
+import { SITE } from '@config';
 
 // Properties
 type Props = {
@@ -17,7 +18,7 @@ const _ = Lang(lang);
 const categories = frontmatter.categories ?? [];
 const tags = frontmatter.tags ?? [];
 
-const links = taxonomyLinks(_);
+const links = Taxonomy.taxonomyLinks(Translations, _, SITE);
 const hasTaxonomy = (categories.length + tags.length) > 0;
 ---
 {hasTaxonomy && (

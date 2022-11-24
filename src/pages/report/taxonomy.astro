@@ -1,15 +1,16 @@
 ---
+import { Taxonomy } from 'astro-accelerator-utils';
 import { Lang } from '@util/Languages';
-
-import { getTaxonomy, taxonomyLinks, sortByTitle } from '@util/Taxonomy';
+import { Translations } from '@util/Languages';
+import { SITE } from '@config';
 
 // Lang
 const _ = Lang('en');
 
 // Logic
 
-const links = taxonomyLinks(_);
-const taxonomy = await getTaxonomy();
+const links = Taxonomy.taxonomyLinks(Translations, _, SITE);
+const taxonomy = await Taxonomy.getTaxonomy();
 ---
 <!doctype html>
 <html>
@@ -27,14 +28,14 @@ const taxonomy = await getTaxonomy();
                     <th>Count</th>
                 </tr>
             </thead>
-        {taxonomy.categories.sort(sortByTitle).map(t => 
+        {taxonomy.categories.sort(Taxonomy.sortByTitle).map(t => 
         <tr>
             <td>{ links.category }</td>
             <td><a href={ links.getCategoryLink(t.title) }>{ t.title }</a></td>
             <td>{ t.count }</td>
         </tr>
         )}
-        {taxonomy.tags.sort(sortByTitle).map(t => 
+        {taxonomy.tags.sort(Taxonomy.sortByTitle).map(t => 
         <tr>
             <td>{ links.tag }</td>
             <td><a href={ links.getTagLink(t.title) }>{ t.title }</a></td>

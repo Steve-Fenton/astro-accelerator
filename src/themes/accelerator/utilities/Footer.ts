@@ -1,15 +1,15 @@
 // Data file `navigation.ts`
-import { Cache, PostQueries, Navigation } from 'astro-accelerator-utils';
-import { menu } from 'src/data/footer';
-import { Translations, Lang, TranslationProvider } from '@util/Languages';
+import { Cache, PostQueries, Navigation, Taxonomy } from 'astro-accelerator-utils';
+import type { TaxonomyLinks } from 'astro-accelerator-utils/lib/taxonomy.mjs';
 import { SITE } from '@config';
 import type { NavPage } from '@util/TempNavPage';
-import { getTaxonomy, taxonomyLinks, TaxonomyLinks } from '@util/Taxonomy';
+import { menu } from 'src/data/footer';
+import { Translations, Lang, TranslationProvider } from '@util/Languages';
 
 export async function getMenu (currentUrl: URL, lang: string) {
     const key = 'Footer__getMenu_' + lang;
     const _ = Lang(lang);
-    const links = taxonomyLinks(_);
+    const links = Taxonomy.taxonomyLinks(Translations, _, SITE);
     let pages: NavPage[] = await Cache.getItem(key);
 
     if (pages == null) {
@@ -63,7 +63,7 @@ export async function getCategories (links: TaxonomyLinks, _: TranslationProvide
 
         let order = 0;
 
-        const taxonomy = await getTaxonomy();
+        const taxonomy = await Taxonomy.getTaxonomy();
 
         pageHierarchy = [{
             title: categoryTitle,
@@ -103,7 +103,7 @@ export async function getTags (links: TaxonomyLinks, _: TranslationProvider, lan
 
         let order = 0;
 
-        const taxonomy = await getTaxonomy();
+        const taxonomy = await Taxonomy.getTaxonomy();
 
         pageHierarchy = [{
             title: tagTitle,
@@ -143,7 +143,7 @@ if (pageHierarchy == null) {
 
     let order = 0;
 
-    const taxonomy = await getTaxonomy();
+    const taxonomy = await Taxonomy.getTaxonomy();
 
     pageHierarchy = [{
         title: tagTitle,
