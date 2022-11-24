@@ -1,8 +1,8 @@
 ---
+import { Dates, PostQueries } from 'astro-accelerator-utils';
 import { SITE, Frontmatter } from '@config';
 import { Translations, Lang } from '@util/Languages';;
-import { Dates } from 'astro-accelerator-utils';
-import { getAuthorList } from '@util/Authors';
+import { fetchPages } from '@util/PageQueries';
 
 // Properties
 type Props = {
@@ -15,7 +15,7 @@ const { lang, frontmatter } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-const authorList = await getAuthorList(frontmatter);
+const authorList = await PostQueries.getAuthors(fetchPages, frontmatter);
 ---
 {authorList.writers.length > 0 && 
 <div class="post-meta">

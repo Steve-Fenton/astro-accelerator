@@ -2,8 +2,8 @@ import type { MarkdownInstance } from "astro";
 import { SITE } from '@config';
 import { Cache, PostQueries, PostFiltering } from 'astro-accelerator-utils';
 
-export function fetchPages(): Record<string, any> {
-    return import.meta.glob("../../../pages/**/*.md", { eager: true });
+export function fetchPages(): MarkdownInstance<Record<string, any>>[] {
+    return import.meta.glob<any>("../../../pages/**/*.md", { eager: true }) as MarkdownInstance<Record<string, any>>[];
 }
 
 export type PagePredicate = (value: MarkdownInstance<Record<string, any>>, index: number, array: MarkdownInstance<Record<string, any>>[]) => boolean;
