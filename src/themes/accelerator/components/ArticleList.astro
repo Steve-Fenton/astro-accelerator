@@ -1,9 +1,8 @@
 ---
+import { Markdown, Urls } from 'astro-accelerator-utils';
 import type { MarkdownInstance } from 'astro';
-import { Urls } from 'astro-accelerator-utils';
 import { SITE, Frontmatter } from '@config';
 import { getImageInfo } from '@util/custom-markdown.mjs';
-import { getTextFrom } from '@util/Markdown';
 import AuthorsMini from '@components/AuthorsMini.astro';
 
 
@@ -40,7 +39,7 @@ for (let p of posts) {
     : null
   };
   
-  item.frontmatter.title = await getTextFrom(p.frontmatter.title);
+  item.frontmatter.title = await Markdown.getTextFrom(p.frontmatter.title);
 
   articles.push(item)
 }

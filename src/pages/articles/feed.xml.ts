@@ -2,8 +2,7 @@
 
 // Generates an ATOM feed of recent posts
 import { SITE } from '@config';
-import { PostFiltering, Urls } from 'astro-accelerator-utils';
-import { getTextFrom } from '@util/Markdown';
+import { Markdown, PostFiltering, Urls } from 'astro-accelerator-utils';
 
 async function getData() {
   //@ts-ignore
@@ -15,7 +14,7 @@ async function getData() {
     const article: any = await allArticles[path]();
 
     if (PostFiltering.isListable(article)) {
-      article.frontmatter.title = await getTextFrom(article.frontmatter.title ?? '');
+      article.frontmatter.title = await Markdown.getTextFrom(article.frontmatter.title ?? '');
 
       articles.push({
         url: article.url,

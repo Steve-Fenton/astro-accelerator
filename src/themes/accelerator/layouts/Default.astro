@@ -1,7 +1,7 @@
 ---
-import { SITE, Frontmatter } from '@config';
-import { getInlineHtmlFrom } from '@util/Markdown';
+import { Markdown } from 'astro-accelerator-utils';
 
+import { SITE, Frontmatter } from '@config';
 import Head from '@components/HtmlHead.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
@@ -22,9 +22,9 @@ const { frontmatter, headings } = Astro.props as Props;
 const lang = frontmatter.lang ?? SITE.default.lang;
 const textDirection = frontmatter.dir ?? SITE.default.dir;
 
-const title = await getInlineHtmlFrom(frontmatter.title ?? SITE.title);
+const title = await Markdown.getInlineHtmlFrom(frontmatter.title ?? SITE.title);
 const subtitle = frontmatter.subtitle
-    ? await getInlineHtmlFrom(frontmatter.subtitle)
+    ? await Markdown.getInlineHtmlFrom(frontmatter.subtitle)
     : null;
 
 const site_url = SITE.url;

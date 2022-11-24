@@ -2,8 +2,7 @@
 
 import type { MarkdownInstance } from 'astro';
 import { SITE } from '@config';
-import { PostFiltering, Urls } from 'astro-accelerator-utils';
-import { getTextFrom } from '@util/Markdown';
+import { Markdown, PostFiltering, Urls } from 'astro-accelerator-utils';
 
 const getData = async () => {
     //@ts-ignore
@@ -24,7 +23,7 @@ const getData = async () => {
         }
 
         const headings = await page.getHeadings();
-        const title = await getTextFrom(page.frontmatter.title ?? '');
+        const title = await Markdown.getTextFrom(page.frontmatter.title ?? '');
               
         items.push({
             title: title,

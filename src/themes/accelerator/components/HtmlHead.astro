@@ -1,7 +1,6 @@
 ---
-import { Urls } from 'astro-accelerator-utils';
+import { Markdown, Urls } from 'astro-accelerator-utils';
 import { SITE, OPEN_GRAPH, HEADER_SCRIPTS, Frontmatter } from '@config';
-import { getTextFrom } from '@util/Markdown';
 
 // Properties
 type Props = {
@@ -17,7 +16,7 @@ const imageAlt = frontmatter.bannerImage?.alt ?? OPEN_GRAPH.image.alt;
 const robots = frontmatter.robots ?? 'index, follow';
 const canonicalImageSrc = new URL(imageSrc, Astro.site);
 const canonicalURL =  Urls.addSlashToUrl(new URL(Astro.url.pathname, Astro.site + SITE.subfolder));
-const socialTitle = await getTextFrom(frontmatter.title);
+const socialTitle = await Markdown.getTextFrom(frontmatter.title);
 const title = `${ socialTitle } | ${ SITE.title }`;
 ---
 <head>
