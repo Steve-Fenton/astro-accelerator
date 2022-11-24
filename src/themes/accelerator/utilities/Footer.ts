@@ -1,9 +1,9 @@
 // Data file `navigation.ts`
-import { Cache, PostQueries } from 'astro-accelerator-utils';
+import { Cache, PostQueries, Navigation } from 'astro-accelerator-utils';
 import { menu } from 'src/data/footer';
 import { Translations, Lang, TranslationProvider } from '@util/Languages';
 import { SITE } from '@config';
-import { NavPage, isNavPage } from '@util/NavigationTypes';
+import type { NavPage } from '@util/TempNavPage';
 import { getTaxonomy, taxonomyLinks, TaxonomyLinks } from '@util/Taxonomy';
 
 export async function getMenu (currentUrl: URL, lang: string) {
@@ -16,7 +16,7 @@ export async function getMenu (currentUrl: URL, lang: string) {
         pages = [];
         for (let i = 0; i < menu.length; i++) {
             const item = menu[i];
-            if (isNavPage(item)) {
+            if (Navigation.isNavPage(item)) {
                 pages.push(item);
             } else {
                 switch (item) {

@@ -1,4 +1,4 @@
-import type { NavPage } from '@util/NavigationTypes';
+import type { NavPage } from '@util/TempNavPage';
 
 export const menu: (NavPage | 'categories' | 'tags' | 'toptags')[] = [
 	'categories',
