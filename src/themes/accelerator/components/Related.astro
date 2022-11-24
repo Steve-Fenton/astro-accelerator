@@ -3,7 +3,6 @@ import { SITE, Frontmatter } from '@config';
 import type { MarkdownInstance } from 'astro';
 import { Urls, PostQueries, PostFiltering, PostOrdering } from 'astro-accelerator-utils';
 import { getImageInfo } from '@util/custom-markdown.mjs'
-import { fetchPages } from '@util/PageQueries';
 
 import AuthorsMini from '@components/AuthorsMini.astro';
 
@@ -20,7 +19,7 @@ let posts: MarkdownInstance<Record<string, any>>[] = [];
 const parentCagory = (frontmatter.categories ?? [null])[0];
 
 if (parentCagory != null) {
-  const allPages = await PostQueries.getPages(fetchPages, PostFiltering.isListable)
+  const allPages = await PostQueries.getPages(PostFiltering.isListable)
   const allPosts = allPages
     .filter(p => p.frontmatter.title != frontmatter.title && p.frontmatter.categories && p.frontmatter.categories.includes(parentCagory))
     .sort(PostOrdering.sortByPubDateDesc)

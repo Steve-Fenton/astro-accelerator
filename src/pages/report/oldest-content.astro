@@ -1,9 +1,8 @@
 ---
 import { PostQueries, PostOrdering } from 'astro-accelerator-utils';
-import { fetchPages } from '@util/PageQueries';
 
 // Logic
-const allPages = await PostQueries.getPages(fetchPages);
+const allPages = await PostQueries.getPages();
 const pageCount = allPages.length;
 const pages = allPages.sort(PostOrdering.sortByModDate).slice(0, Math.min(50, pageCount));
 ---

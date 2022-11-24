@@ -2,7 +2,6 @@
 import { Urls, PostQueries, PostFiltering } from 'astro-accelerator-utils';
 import { SITE, Frontmatter } from '@config';
 import { Translations, Lang } from '@util/Languages';
-import { fetchPages } from '@util/PageQueries';
 
 // Properties
 type Props = {
@@ -16,7 +15,7 @@ const { lang } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-const search = (await PostQueries.getPages(fetchPages, PostFiltering.isSearch))[0] ?? null;
+const search = (await PostQueries.getPages(PostFiltering.isSearch))[0] ?? null;
 
 ---
 <header class="site-header">

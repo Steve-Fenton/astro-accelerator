@@ -3,7 +3,6 @@ import { Dates, Urls, PostQueries } from 'astro-accelerator-utils';
 import { SITE, Frontmatter } from '@config';
 import { Translations, Lang } from '@util/Languages';
 import { getImageInfo } from '@util/custom-markdown.mjs';
-import { fetchPages } from '@util/PageQueries';
 
 // Properties
 type Props = {
@@ -16,7 +15,7 @@ const { lang, frontmatter } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-const authorList = await PostQueries.getAuthors(fetchPages, frontmatter);
+const authorList = await PostQueries.getAuthors(frontmatter);
 
 // Get image info
 const authorImage = authorList?.image?.src 

@@ -2,10 +2,6 @@ import type { MarkdownInstance } from "astro";
 import { SITE } from '@config';
 import { Cache, PostQueries, PostFiltering } from 'astro-accelerator-utils';
 
-export function fetchPages(): MarkdownInstance<Record<string, any>>[] {
-    return import.meta.glob<any>("../../../pages/**/*.md", { eager: true }) as MarkdownInstance<Record<string, any>>[];
-}
-
 export type PagePredicate = (value: MarkdownInstance<Record<string, any>>, index: number, array: MarkdownInstance<Record<string, any>>[]) => boolean;
 
 export async function getTopLevelPages (filter?: PagePredicate | null): Promise<MarkdownInstance<Record<string,any>>[]> {
@@ -13,7 +9,7 @@ export async function getTopLevelPages (filter?: PagePredicate | null): Promise<
     let allPages: MarkdownInstance<Record<string, any>>[] = await Cache.getItem(key);
 
     if (allPages == null) {
-        allPages = await PostQueries.getPages(fetchPages);
+        allPages = await PostQueries.getPages();
 
         const isRoot = SITE.subfolder.length == 0;
         const expectedDepth = isRoot ? 1 : 2;
@@ -39,7 +35,7 @@ export async function getAuthorInfo (slug: string) {
     let authorInfo = await Cache.getItem(cacheKey);
 
     if (authorInfo == null) {
-        const allPages = await PostQueries.getPages(fetchPages);
+        const allPages = await PostQueries.getPages();
 
         const author = allPages
             .filter(PostFiltering.isAuthor)

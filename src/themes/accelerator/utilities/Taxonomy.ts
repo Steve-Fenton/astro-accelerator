@@ -2,7 +2,6 @@ import { Cache, Urls, PostQueries } from 'astro-accelerator-utils';
 import type { Entry } from '@util/Languages';
 import { Translations } from '@util/Languages';
 import { SITE } from '@config';
-import { fetchPages } from '@util/PageQueries';
 import type { MarkdownInstance } from 'astro-accelerator-utils/types/Astro';
 
 type TaxonomyEntry = {
@@ -61,7 +60,7 @@ export async function getTaxonomy (): Promise<Taxonomy> {
     let taxonomy: Taxonomy = await Cache.getItem(cacheKey);
 
     if (taxonomy == null) {
-        const allPages: MarkdownInstance<Record<string, any>>[] = await PostQueries.getPages(fetchPages);
+        const allPages: MarkdownInstance<Record<string, any>>[] = await PostQueries.getPages();
         const tags: { [key: string]: number } = {};
         const cats: { [key: string]: number } = {};
 
