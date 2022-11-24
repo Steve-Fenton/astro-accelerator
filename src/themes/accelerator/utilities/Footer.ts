@@ -1,9 +1,8 @@
 // Data file `navigation.ts`
-import { Cache } from 'astro-accelerator-utils';
+import { Cache, PostQueries } from 'astro-accelerator-utils';
 import { menu } from 'src/data/footer';
 import { Translations, Lang, TranslationProvider } from '@util/Languages';
 import { SITE } from '@config';
-import { setCurrentPage } from '@util/NavPage';
 import { NavPage, isNavPage } from '@util/NavigationTypes';
 import { getTaxonomy, taxonomyLinks, TaxonomyLinks } from '@util/Taxonomy';
 
@@ -47,7 +46,7 @@ export async function getMenu (currentUrl: URL, lang: string) {
         await Cache.setItem(key, pages);
     }
 
-    setCurrentPage(pages, currentUrl);
+    PostQueries.setCurrentPage(pages, currentUrl);
 
     return pages;
 }

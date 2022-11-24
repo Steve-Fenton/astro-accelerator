@@ -1,8 +1,7 @@
 ---
-import { Urls } from 'astro-accelerator-utils';
+import { Urls, PostQueries } from 'astro-accelerator-utils';
 import { SITE, Frontmatter } from '@config';
 import { Translations, Lang } from '@util/Languages';
-import { getBreadcrumbs } from '@util/Breadcrumbs';
 
 // Properties
 type Props = {
@@ -17,7 +16,7 @@ const _ = Lang(lang);
 
 // Logic
 const currentUrl = new URL(Astro.request.url);
-const navPages = await getBreadcrumbs(currentUrl);
+const navPages = await PostQueries.getBreadcrumbs(currentUrl, SITE);
 ---
 <nav class="site-breadcrumbs" aria-label={ _(Translations.aria.breadcrumbs) }>
   <ol vocab="http://schema.org/" typeof="BreadcrumbList">

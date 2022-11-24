@@ -1,8 +1,7 @@
 // Data file `navigation.ts`
-import { menu } from 'src/data/navigation';
-
 import { PostQueries, PostFiltering, Cache } from 'astro-accelerator-utils';
-import { mapNavPage, setCurrentPage } from '@util/NavPage';
+import { menu } from 'src/data/navigation';
+import { SITE } from '@config';
 import { NavPage, isNavPage } from '@util/NavigationTypes';
 import { getTopLevelPages } from '@util/PageQueries';
 
@@ -28,7 +27,7 @@ export async function getMenu (currentUrl: URL) {
         await Cache.setItem(key, pages);
     }
 
-    setCurrentPage(pages, currentUrl);
+    PostQueries.setCurrentPage(pages, currentUrl);
 
     return pages;
 }
@@ -43,10 +42,10 @@ export async function getNavigation (currentUrl: URL) {
         const allPages = await PostQueries.getPages(PostFiltering.showInMenu);
 
         pageHierarchy = topLevelPages
-            .map(mapNavPage)
+            .map(p => PostQueries.mapNavPage(p, SITE))
             .sort((a, b) => a.order - b.order);
             
-        const pageList: NavPage[] = allPages.map(mapNavPage);
+        const pageList: NavPage[] = allPages.map(p => PostQueries.mapNavPage(p, SITE));
 
         for (let i = 0; i < pageHierarchy.length; i++) {
             const page = pageHierarchy[i];
