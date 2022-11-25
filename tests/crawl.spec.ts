@@ -12,31 +12,31 @@ let discoveredImages: string[] = [];
 
 test('Crawl for bad URIs', async () => {
 
-  async function crawl(url: string) {
+  async function crawl(url: string, foundOn: string = '') {
     if (crawled.includes(url)) {
       return;
     }
 
-    console.log(url);
+    console.log(url, foundOn);
     crawled.push(url);
 
     const response = await fetch(url);
-    expect(response.status, `Expected a 200 OK response for page ${url}`).toBe(200);
+    expect(response.status, `Expected a 200 OK response for page ${url} found on ${foundOn}`).toBe(200);
 
     const text = await response.text();
     await handleHtmlDocument(text);
-    await crawlImages();
+    await crawlImages(url);
 
     const links = [...new Set(discoveredLinks)];
     discoveredLinks = [];
 
     for (let i = 0; i < links.length; i++) {
-      await crawl(links[i]);
+      await crawl(links[i], url);
     }
   }
 
   // Kick off the crawl
-  await crawl(baseUrl + startPath);
+  await crawl(baseUrl + startPath, 'First Page');
   console.log('Crawl checked', crawled.length)
 });
 
@@ -48,14 +48,14 @@ function handleHtmlDocument(text: string) {
     .process(text)
 }
 
-async function crawlImages() {
+async function crawlImages(foundOn: string) {
   const images = [...new Set(discoveredImages)];
   discoveredImages = [];
 
   for (let i = 0; i < images.length; i++) {
     console.log(images[i]);
     const response = await fetch(images[i]);
-    expect(response.status, `Expected a 200 OK response for image ${images[i]}`).toBe(200);
+    expect(response.status, `Expected a 200 OK response for image ${images[i]} found on ${foundOn}`).toBe(200);
   }
 }
 
