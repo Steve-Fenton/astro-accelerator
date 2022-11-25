@@ -1,5 +1,5 @@
 ---
-import { PostQueries, PostOrdering } from 'astro-accelerator-utils';
+import { PostQueries, PostOrdering, PostFiltering } from 'astro-accelerator-utils';
 
 // Logic
 const allPages = await PostQueries.getPages();
@@ -24,7 +24,14 @@ const pages = allPages.sort(PostOrdering.sortByModDate).slice(0, Math.min(50, pa
             </thead>
         {pages.map(p => 
         <tr>
-            <td><a href={ p.url }>{ p.frontmatter.title }</a></td>
+            <td>
+                {PostFiltering.isListable(p) && (
+                    <a href={ p.url }>{ p.frontmatter.title }</a>
+                )}
+                {PostFiltering.isListable(p) == false && (
+                    <span>{ p.frontmatter.title }</span>
+                )}
+            </td>
             <td>{ p.frontmatter.pubDate }</td>
             <td>{ p.frontmatter.modDate }</td>
         </tr>
