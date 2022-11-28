@@ -2,13 +2,14 @@
 
 // Generates an ATOM feed of recent posts
 import { SITE } from '@config';
-import { PostFiltering, Urls } from 'astro-accelerator-utils';
+import { PostFiltering, UrlFormatter } from 'astro-accelerator-utils';
 
 async function getData() {
   //@ts-ignore
   const allPages = import.meta.glob('./**/*.md');
   
   let pages = [];
+  const urlFormatter = new UrlFormatter(SITE.url);
   
   for (const path in allPages) {
     const article: any = await allPages[path]();
@@ -17,7 +18,7 @@ async function getData() {
     if (addToSitemap) {
       pages.push(`
         <url>
-          <loc>${ SITE.url + Urls.addSlashToAddress(article.url, SITE) }</loc>
+          <loc>${ SITE.url + urlFormatter.addSlashToAddress(article.url) }</loc>
           <lastmod>${ article.frontmatter.pubDate }</lastmod>
         </url>`);
     }

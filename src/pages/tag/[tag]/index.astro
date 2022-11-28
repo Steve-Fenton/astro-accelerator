@@ -1,11 +1,11 @@
 ---
 // warning: This file is overwritten by Astro Accelerator
 
-import { getCacheData } from './[page].astro';
+import { getData } from './[page].astro';
 import Redirect from 'src/layouts/Redirect.astro'
 
 export async function getStaticPaths() {
-    let data = await getCacheData();
+    let data = await getData();
 
     return data.tags.map(item => {
         return { params: { tag: item.toLowerCase().replace(' ', '-') }}

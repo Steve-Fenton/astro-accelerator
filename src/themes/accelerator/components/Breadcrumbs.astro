@@ -1,5 +1,5 @@
 ---
-import { Urls, PostQueries } from 'astro-accelerator-utils';
+import { PostQueries, UrlFormatter } from 'astro-accelerator-utils';
 import { SITE, Frontmatter } from '@config';
 import { Translations, Lang } from '@util/Languages';
 
@@ -15,6 +15,7 @@ const { lang } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
+const urlFormatter = new UrlFormatter(SITE.url);
 const currentUrl = new URL(Astro.request.url);
 const navPages = await PostQueries.getBreadcrumbs(currentUrl, SITE);
 ---
@@ -23,7 +24,7 @@ const navPages = await PostQueries.getBreadcrumbs(currentUrl, SITE);
     {navPages.map((page, index) => (
     <li property="itemListElement" typeof="ListItem">
       <meta property="position" content={ index.toString() } />
-      <a property="item" typeof="WebPage" href={ Urls.addSlashToAddress(page.url, SITE) } aria-current={ page.ariaCurrent } rel={ page.rel }><span property="name">{ page.title }</span></a>
+      <a property="item" typeof="WebPage" href={ urlFormatter.addSlashToAddress(page.url) } aria-current={ page.ariaCurrent } rel={ page.rel }><span property="name">{ page.title }</span></a>
     </li>
     ))}
   </ol>

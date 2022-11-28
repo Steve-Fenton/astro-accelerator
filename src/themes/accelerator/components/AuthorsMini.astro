@@ -1,5 +1,5 @@
 ---
-import { Dates, PostQueries } from 'astro-accelerator-utils';
+import { PostQueries, DateFormatter } from 'astro-accelerator-utils';
 import { SITE, Frontmatter } from '@config';
 import { Translations, Lang } from '@util/Languages';;
 
@@ -14,6 +14,7 @@ const { lang, frontmatter } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
+const dateFormatter = new DateFormatter(SITE.dateOptions);
 const authorList = await PostQueries.getAuthors(frontmatter);
 ---
 {authorList.writers.length > 0 && 
@@ -24,7 +25,7 @@ const authorList = await PostQueries.getAuthors(frontmatter);
         <span>{ writer.frontmatter.title }</span>
       ))}.<br />
       <time datetime={ frontmatter.pubDate.toString() }>
-      { Dates.formatDate(frontmatter, lang, SITE) }
+      { dateFormatter.formatDate(frontmatter, lang) }
       </time>
     </span>
   </div>

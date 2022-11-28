@@ -1,4 +1,6 @@
-const SITE = {
+import type { Site } from "astro-accelerator-utils/types/Site";
+
+const SITE: Site = {
 	owner: 'Steve Fenton',
 	url: 'https://astro.stevefenton.co.uk',
 	feedUrl: '/articles/feed.xml',

@@ -2,11 +2,12 @@
 
 // Generates an ATOM feed of recent posts
 import { SITE } from '@config';
-import { Markdown, PostFiltering, Urls } from 'astro-accelerator-utils';
+import { Markdown, PostFiltering, UrlFormatter } from 'astro-accelerator-utils';
 
 async function getData() {
   //@ts-ignore
   const allArticles = import.meta.glob('./**/*.md');
+  const urlFormatter = new UrlFormatter(SITE.url);
   
   let articles = [];
   
@@ -32,7 +33,7 @@ async function getData() {
     <entry>
       <title>${a.frontmatter.title ?? ''}</title>
       <link href="${ SITE.url + a.url }" />
-      <id>${ SITE.url + Urls.addSlashToAddress(a.url, SITE) }</id>
+      <id>${ SITE.url + urlFormatter.addSlashToAddress(a.url) }</id>
       <published>${ a.frontmatter.pubDate }</published>
       <updated>${ a.frontmatter.pubDate ?? a.frontmatter.pubDate }</updated>
       <summary>${ a.frontmatter.description ?? '' }</summary>

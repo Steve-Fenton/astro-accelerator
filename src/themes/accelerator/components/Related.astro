@@ -1,7 +1,7 @@
 ---
 import { SITE, Frontmatter } from '@config';
 import type { MarkdownInstance } from 'astro';
-import { Urls, PostQueries, PostFiltering, PostOrdering } from 'astro-accelerator-utils';
+import { PostQueries, PostFiltering, PostOrdering, UrlFormatter } from 'astro-accelerator-utils';
 import { getImageInfo } from '@util/custom-markdown.mjs'
 
 import AuthorsMini from '@components/AuthorsMini.astro';
@@ -15,6 +15,7 @@ type Props = {
 const { lang, frontmatter, headings } = Astro.props as Props;
 
 // Logic
+const urlFormatter = new UrlFormatter(SITE.url);
 let posts: MarkdownInstance<Record<string, any>>[] = [];
 const parentCagory = (frontmatter.categories ?? [null])[0];
 
@@ -52,7 +53,7 @@ const articles = posts.map(p => {
 {articles.length > 0 &&
 <ul class="post-list anim-show-parent">
   {articles.map((post) => (
-  <li class="list-item" data-destination={ Urls.addSlashToAddress(post.url, SITE) } data-image={ (post.frontmatter.bannerImage?.src.length > 0).toString() }>
+  <li class="list-item" data-destination={ urlFormatter.addSlashToAddress(post.url) } data-image={ (post.frontmatter.bannerImage?.src.length > 0).toString() }>
     <article>
       <div class="list-item-image">
       {post.img && (
@@ -67,7 +68,7 @@ const articles = posts.map(p => {
       </div>
       <div class="list-item-content">
         <h3>
-          <a href={ Urls.addSlashToAddress(post.url, SITE) }>{ post.frontmatter.title }</a>
+          <a href={ urlFormatter.addSlashToAddress(post.url) }>{ post.frontmatter.title }</a>
         </h3>
         <AuthorsMini lang={ lang } frontmatter={ post.frontmatter as Frontmatter } />
       </div>

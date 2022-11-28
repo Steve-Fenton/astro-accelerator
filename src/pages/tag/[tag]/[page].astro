@@ -2,7 +2,7 @@
 // warning: This file is overwritten by Astro Accelerator
 
 // For listing by frontmatter.tags
-import {Cache, PostFiltering, PostOrdering, PostPaging } from 'astro-accelerator-utils';
+import { PostFiltering, PostOrdering, PostPaging } from 'astro-accelerator-utils';
 import { Translations, Lang } from '@util/Languages';
 import type { Page, MarkdownInstance } from 'astro';
 import { SITE, Frontmatter } from '@config';
@@ -41,41 +41,32 @@ type CacheData = {
   tags: string[];
 }
 
-export async function getCacheData() {
-  const key = 'pages_articles_[tag]_[page]';
-
-  let cacheData: CacheData = await Cache.getItem(key);
-
-  if (cacheData == null) {
-    // This uses a relative glob, so we only look in the current collection
-    const sourcePosts = await Astro.glob('../../**/*.md');
+export async function getData() {
+  const sourcePosts = await Astro.glob('../../**/*.md');
     
-    cacheData = { posts: [], tags: []};
+  const data: CacheData = { posts: [], tags: []};
 
-    cacheData.posts = sourcePosts
-      .filter(PostFiltering.isListable)
-      .sort(PostOrdering.sortByPubDateDesc);
+  data.posts = sourcePosts
+    .filter(PostFiltering.isListable)
+    .sort(PostOrdering.sortByPubDateDesc);
 
-    cacheData.posts.forEach(p => {
-      const auths: string[] = p.frontmatter.tags ?? [];
-      if (auths.length == 0) {
-        console.log('No categories found', p.url);
+    data.posts.forEach(p => {
+    const auths: string[] = p.frontmatter.tags ?? [];
+    if (auths.length == 0) {
+      console.log('No categories found', p.url);
+    }
+    auths.forEach(a => {
+      if (!data.tags.includes(a)) {
+        data.tags.push(a);
       }
-      auths.forEach(a => {
-        if (!cacheData.tags.includes(a)) {
-          cacheData.tags.push(a);
-        }
-      });
     });
+  });
 
-    await Cache.setItem(key, cacheData);
-  }
-
-  return cacheData;
+  return data;
 }
 
 export async function getStaticPaths({ paginate }: any) {
-  let data = await getCacheData();
+  let data = await getData();
 
   return data.tags.map(t => {
     const filtered = data.posts.filter(p => {

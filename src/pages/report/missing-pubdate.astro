@@ -1,7 +1,9 @@
 ---
-import { PostQueries } from 'astro-accelerator-utils';
+import { PostQueries, UrlFormatter } from 'astro-accelerator-utils';
+import { SITE } from '@config';
 
 // Logic
+const urlFormatter = new UrlFormatter(SITE.url);
 const allPages = await PostQueries.getPages();
 const missingMeta = allPages.filter(p => (p.frontmatter.pubDate == null && p.frontmatter.layout != 'src/layouts/Redirect.astro'));
 const pageCount = missingMeta.length;
@@ -25,7 +27,7 @@ const pages = missingMeta.slice(0, Math.min(50, pageCount));
             </thead>
         {pages.map(p => 
         <tr>
-            <td><a href={ p.url }>{ p.frontmatter.title }</a></td>
+            <td><a href={ urlFormatter.addSlashToAddress(p.url) }>{ p.frontmatter.title }</a></td>
             <td>{ p.frontmatter.pubDate }</td>
             <td>{ p.frontmatter.modDate }</td>
         </tr>

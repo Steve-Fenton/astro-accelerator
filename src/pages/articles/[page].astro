@@ -2,7 +2,7 @@
 // warning: This file is overwritten by Astro Accelerator
 
 // For listing all articles in this folder
-import { Cache, PostFiltering, PostOrdering, PostPaging } from 'astro-accelerator-utils';
+import { PostFiltering, PostOrdering, PostPaging } from 'astro-accelerator-utils';
 import { Translations, Lang } from '@util/Languages';
 import type { Page, MarkdownInstance } from 'astro';
 import { Frontmatter, SITE } from '@config';
@@ -33,35 +33,19 @@ const frontmatter: Frontmatter = {
 const _ = Lang(lang);
 
 // Logic
-type CacheData = {
-  posts: MarkdownInstance<Record<string, any>>[];
-}
+export async function getData() {
+  const sourcePosts = await Astro.glob('./**/*.md');
+  const posts = sourcePosts
+    .filter(PostFiltering.isListable)
+    .sort(PostOrdering.sortByPubDateDesc);
 
-export async function getCacheData() {
-  const key = 'pages_articles_[page]';
-
-  let cacheData: CacheData = await Cache.getItem(key);
-
-  if (cacheData == null) {
-    // This uses a relative glob, so we only look in the current collection
-    const sourcePosts = await Astro.glob('./**/*.md');
-    
-    cacheData = { posts: []};
-
-    cacheData.posts = sourcePosts
-      .filter(PostFiltering.isListable)
-      .sort(PostOrdering.sortByPubDateDesc);
-    
-    await Cache.setItem(key, cacheData);
-  }
-
-  return cacheData;
+  return posts;
 }
 
 export async function getStaticPaths({ paginate }: any) {
-  let data = await getCacheData();
-  return paginate(data.posts, {
-    props: { pubDate: data.posts[0].frontmatter.pubDate },
+  let data = await getData();
+  return paginate(data, {
+    props: { pubDate: data[0].frontmatter.pubDate },
     pageSize: SITE.pageSize
   });
 }

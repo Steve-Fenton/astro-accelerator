@@ -1,5 +1,5 @@
 ---
-import { Urls, PostQueries, PostFiltering } from 'astro-accelerator-utils';
+import { PostQueries, PostFiltering, UrlFormatter } from 'astro-accelerator-utils';
 import { SITE, Frontmatter } from '@config';
 import { Translations, Lang } from '@util/Languages';
 
@@ -15,6 +15,7 @@ const { lang } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
+const urlFormatter = new UrlFormatter(SITE.url);
 const search = (await PostQueries.getPages(PostFiltering.isSearch))[0] ?? null;
 
 ---
@@ -29,7 +30,7 @@ const search = (await PostQueries.getPages(PostFiltering.isSearch))[0] ?? null;
   </svg></a>
   <a href={ (SITE.subfolder ?? '') + '/' } class="site-title" translate="no">{ SITE.title }</a>
   {search != null &&
-  <a href={ Urls.addSlashToAddress(search.url, SITE) } class="search-icon" title={ _(Translations.header.open_search) }><svg xmlns="http://www.w3.org/2000/svg" 
+  <a href={ urlFormatter.addSlashToAddress(search.url) } class="search-icon" title={ _(Translations.header.open_search) }><svg xmlns="http://www.w3.org/2000/svg" 
     width="40" height="40" viewBox="0 0 24 24" stroke-width="1" 
     fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
