@@ -55,6 +55,17 @@ export function getImageInfo(src, className, sizes) {
   info.srcset = `${imgSmall} ${size.small}w, ${imgMedium} ${size.medium}w, ${imgLarge}`;
   info.sizes = sizes;
   info.class = (className ?? '' + ' resp-img').trim();
+  info.metadata = null;
+
+  try {
+    let metaAddress = path.join(workingDirectory, 'public', src + '.json');
+          
+    if (fs.existsSync(metaAddress)) {
+      info.metadata = JSON.parse(fs.readFileSync(metaAddress));
+    }
+  } catch (e) {
+    console.warn(e);
+  }
 
   return info;
 }
@@ -69,13 +80,6 @@ export function attributeMarkdown() {
         const hast = h(node.name, node.attributes);
 
         if (hast.properties.src) {
-          let metadata = null;
-          let metaAddress = path.join(workingDirectory, 'public', hast.properties.src + '.json');
-          
-          if (fs.existsSync(metaAddress)) {
-            metadata = JSON.parse(fs.readFileSync(metaAddress));
-          }
-
           // Process the image
           const info = getImageInfo(hast.properties.src, hast.properties.class, SITE.images.contentSize);
 
@@ -84,9 +88,9 @@ export function attributeMarkdown() {
           hast.properties.sizes = info.sizes;
           hast.properties.class = info.class;
 
-          if (metadata) {
-            hast.properties.width = metadata.width;
-            hast.properties.height = metadata.height;
+          if (info.metadata) {
+            hast.properties.width = info.metadata.width;
+            hast.properties.height = info.metadata.height;
           }
         }
 

@@ -19,6 +19,10 @@ type ImageInfo = {
   srcset: string;
   sizes: string;
   class: string;
+  metadata: {
+    width: number;
+    height: number;
+  }
 };
 
 type Article = {
@@ -35,8 +39,8 @@ for (let p of posts) {
     url: p.url ?? '',
     frontmatter: p.frontmatter,
     img: p.frontmatter.bannerImage
-    ? getImageInfo(p.frontmatter.bannerImage.src, '', SITE.images.listerSize)
-    : null
+      ? getImageInfo(p.frontmatter.bannerImage.src, '', SITE.images.listerSize)
+      : null
   };
   
   item.frontmatter.title = await Markdown.getTextFrom(p.frontmatter.title);
@@ -64,6 +68,8 @@ function getLoadingAttribute() {
           src={ post.img.src }
           alt={ post.frontmatter.bannerImage.alt }
           class={ post.img.class }
+          width={ post.img.metadata?.width }
+          height={ post.img.metadata?.height }
           loading={ getLoadingAttribute() } />
       )}
       </div>
