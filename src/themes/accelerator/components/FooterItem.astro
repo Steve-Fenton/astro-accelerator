@@ -9,7 +9,7 @@ type Props = {
 const { lang, page } = Astro.props as Props;
 ---
 <div class="footer-column">
-  <h2>{ page.title }</h2>
+  <h2><Fragment set:html={page.title} /></h2>
   <ul>
   { page.children.sort((a, b) => a.order - b.order).map((child) => (
     <li>

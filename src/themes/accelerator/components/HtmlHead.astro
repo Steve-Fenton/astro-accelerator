@@ -12,12 +12,14 @@ const { frontmatter } = Astro.props;
 
 // Logic
 const urlFormatter = new UrlFormatter(SITE.url);
+const markdown = new Markdown();
+
 const imageSrc = frontmatter.bannerImage?.src ?? OPEN_GRAPH.image.src;
 const imageAlt = frontmatter.bannerImage?.alt ?? OPEN_GRAPH.image.alt;
 const robots = frontmatter.robots ?? 'index, follow';
 const canonicalImageSrc = new URL(imageSrc, Astro.site);
 const canonicalURL =  urlFormatter.addSlashToUrl(new URL(Astro.url.pathname, Astro.site + SITE.subfolder));
-const socialTitle = await Markdown.getTextFrom(frontmatter.title);
+const socialTitle = await markdown.getTextFrom(frontmatter.title);
 const title = `${ socialTitle } | ${ SITE.title }`;
 ---
 <head>

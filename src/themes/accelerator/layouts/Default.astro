@@ -22,9 +22,12 @@ const { frontmatter, headings } = Astro.props as Props;
 const lang = frontmatter.lang ?? SITE.default.lang;
 const textDirection = frontmatter.dir ?? SITE.default.dir;
 
-const title = await Markdown.getInlineHtmlFrom(frontmatter.title ?? SITE.title);
+// Logic
+const markdown = new Markdown();
+
+const title = await markdown.getInlineHtmlFrom(frontmatter.title ?? SITE.title);
 const subtitle = frontmatter.subtitle
-    ? await Markdown.getInlineHtmlFrom(frontmatter.subtitle)
+    ? await markdown.getInlineHtmlFrom(frontmatter.subtitle)
     : null;
 
 const site_url = SITE.url;

@@ -14,6 +14,7 @@ const { lang, posts } = Astro.props as Props;
 
 // Logic
 const urlFormatter = new UrlFormatter(SITE.url);
+const markdown = new Markdown();
 
 type ImageInfo = {
   src: string;
@@ -44,7 +45,7 @@ for (let p of posts) {
       : null
   };
   
-  item.frontmatter.title = await Markdown.getTextFrom(p.frontmatter.title);
+  item.frontmatter.title = await markdown.getTextFrom(p.frontmatter.title);
 
   articles.push(item)
 }

@@ -8,6 +8,7 @@ async function getData() {
   //@ts-ignore
   const allArticles = import.meta.glob('./**/*.md');
   const urlFormatter = new UrlFormatter(SITE.url);
+  const markdown = new Markdown();
   
   let articles = [];
   
@@ -15,7 +16,7 @@ async function getData() {
     const article: any = await allArticles[path]();
 
     if (PostFiltering.isListable(article)) {
-      article.frontmatter.title = await Markdown.getTextFrom(article.frontmatter.title ?? '');
+      article.frontmatter.title = await markdown.getTextFrom(article.frontmatter.title ?? '');
 
       articles.push({
         url: article.url,

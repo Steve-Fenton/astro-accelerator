@@ -10,6 +10,8 @@ const getData = async () => {
     const items = [];
 
     const urlFormatter = new UrlFormatter(SITE.url);
+    const markdown = new Markdown();
+
     for (const path in allPages) {
         const page = await allPages[path]() as  MarkdownInstance<Record<string, any>>;
 
@@ -24,7 +26,7 @@ const getData = async () => {
         }
 
         const headings = await page.getHeadings();
-        const title = await Markdown.getTextFrom(page.frontmatter.title ?? '');
+        const title = await markdown.getTextFrom(page.frontmatter.title ?? '');
               
         items.push({
             title: title,
