@@ -180,6 +180,9 @@ function search(s) {
     results.innerHTML = '';
     results.appendChild(h2);
     results.appendChild(ol);
+
+    const address = window.location.href.split('?')[0];
+    window.history.pushState({}, '', address + '?q=' + encodeURIComponent(cleanQuery));
 }
 
 var debounceTimer;
@@ -219,6 +222,7 @@ fetch(dataUrl)
         }
 
         var siteSearch = qs('#site-search');
+
         var siteSearchQuery = qs('#site-search-query');
 
         if (siteSearch == null || siteSearchQuery == null) {
@@ -242,6 +246,12 @@ fetch(dataUrl)
         });
 
         console.log('Search ready');
+
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('q')) {
+            siteSearchQuery.value = params.get('q');
+        }
+
         debounceSearch();
     })
     .catch((error) => {
