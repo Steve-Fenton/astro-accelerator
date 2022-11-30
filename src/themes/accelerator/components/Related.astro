@@ -1,7 +1,7 @@
 ---
+import { PostQueries, PostFiltering, PostOrdering, Posts, UrlFormatter } from 'astro-accelerator-utils';
 import { SITE, Frontmatter } from '@config';
 import type { MarkdownInstance } from 'astro';
-import { PostQueries, PostFiltering, PostOrdering, UrlFormatter } from 'astro-accelerator-utils';
 import { getImageInfo } from '@util/custom-markdown.mjs'
 
 import AuthorsMini from '@components/AuthorsMini.astro';
@@ -15,32 +15,34 @@ type Props = {
 const { lang, frontmatter, headings } = Astro.props as Props;
 
 // Logic
+const posts = new Posts();
 const urlFormatter = new UrlFormatter(SITE.url);
-let posts: MarkdownInstance<Record<string, any>>[] = [];
+
+let relatedPosts: MarkdownInstance<Record<string, any>>[] = [];
 const parentCagory = (frontmatter.categories ?? [null])[0];
 
 if (parentCagory != null) {
-  const allPages = await PostQueries.getPages(PostFiltering.isListable)
+  const allPages = posts.all().filter(PostFiltering.isListable);
   const allPosts = allPages
     .filter(p => p.frontmatter.title != frontmatter.title && p.frontmatter.categories && p.frontmatter.categories.includes(parentCagory))
     .sort(PostOrdering.sortByPubDateDesc)
   
   // One "Most Recent" Post
   if (allPosts.length > 0) {
-    posts.push(allPosts[0])
+    relatedPosts.push(allPosts[0])
   }
 
   const olderPost = allPosts.slice(1).filter(p => p.frontmatter.pubDate < frontmatter.pubDate)
   
   // One "Older than current" Post
   if (olderPost.length > 0) {
-    posts.push(olderPost[0])
+    relatedPosts.push(olderPost[0])
   } else if (allPosts.length > 1) {
-    posts.push(allPosts[1])
+    relatedPosts.push(allPosts[1])
   }
 }
 
-const articles = posts.map(p => {
+const articles = relatedPosts.map(p => {
   return {
     url: p.url,
     frontmatter: p.frontmatter,

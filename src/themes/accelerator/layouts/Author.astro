@@ -1,5 +1,5 @@
 ---
-import { PostQueries, PostFiltering } from 'astro-accelerator-utils';
+import { PostQueries, PostFiltering, Posts } from 'astro-accelerator-utils';
 import { SITE, Frontmatter } from '@config';
 import { Translations, Lang } from '@util/Languages';
 import Default from './Default.astro';
@@ -17,8 +17,9 @@ const lang = frontmatter.lang ?? SITE.default.lang;
 const _ = Lang(lang);
 
 // Logic
-const allPages = await PostQueries.getPages()
-const authorPages = allPages
+const posts = new Posts();
+
+const authorPages = posts.all()
     .filter(PostFiltering.isListable)
     .filter(p => p.frontmatter.authors?.indexOf(frontmatter.id) > -1)
 ---

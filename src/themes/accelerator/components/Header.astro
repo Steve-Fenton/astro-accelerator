@@ -1,5 +1,5 @@
 ---
-import { PostQueries, PostFiltering, UrlFormatter } from 'astro-accelerator-utils';
+import { PostQueries, PostFiltering, Posts, UrlFormatter } from 'astro-accelerator-utils';
 import { SITE, Frontmatter } from '@config';
 import { Translations, Lang } from '@util/Languages';
 
@@ -15,9 +15,10 @@ const { lang } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
+const posts = new Posts();
 const urlFormatter = new UrlFormatter(SITE.url);
-const search = (await PostQueries.getPages(PostFiltering.isSearch))[0] ?? null;
 
+const search = posts.all().filter(PostFiltering.isSearch)[0] ?? null;
 ---
 <header class="site-header">
   <a href="#site-nav" class="navigation-icon" title={ _(Translations.header.open_menu) }><svg xmlns="http://www.w3.org/2000/svg" 

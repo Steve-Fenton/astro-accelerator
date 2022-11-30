@@ -29,23 +29,22 @@ type ImageInfo = {
 
 type Article = {
   url: string;
+  title: string;
   frontmatter: Record<string, any>;
   img: ImageInfo | null;
 };
-
 
 const articles: Article[] = [];
 
 for (let p of posts) {
   const item = {
     url: p.url ?? '',
+    title: await markdown.getTextFrom(p.frontmatter.title),
     frontmatter: p.frontmatter,
     img: p.frontmatter.bannerImage
       ? getImageInfo(p.frontmatter.bannerImage.src, '', SITE.images.listerSize)
       : null
   };
-  
-  item.frontmatter.title = await markdown.getTextFrom(p.frontmatter.title);
 
   articles.push(item)
 }
@@ -77,7 +76,7 @@ function getLoadingAttribute() {
       </div>
       <div class="list-item-content">
         <h3>
-          <a href={ urlFormatter.addSlashToAddress(post.url) }>{ post.frontmatter.title }</a>
+          <a href={ urlFormatter.addSlashToAddress(post.url) }>{ post.title }</a>
         </h3>
         <AuthorsMini lang={ lang } frontmatter={ post.frontmatter as Frontmatter } />
       </div>

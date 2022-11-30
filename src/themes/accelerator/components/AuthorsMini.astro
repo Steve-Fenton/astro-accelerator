@@ -25,7 +25,7 @@ const authorList = await PostQueries.getAuthors(frontmatter);
         <span>{ writer.frontmatter.title }</span>
       ))}.<br />
       <time datetime={ frontmatter.pubDate.toString() }>
-      { dateFormatter.formatDate(frontmatter, lang) }
+      { dateFormatter.formatDate(frontmatter.pubDate, lang) }
       </time>
     </span>
   </div>
