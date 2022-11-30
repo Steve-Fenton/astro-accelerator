@@ -18,7 +18,7 @@ const _ = Lang(lang);
 const posts = new Posts();
 const urlFormatter = new UrlFormatter(SITE.url);
 
-const search = posts.all().filter(PostFiltering.isSearch)[0] ?? null;
+const search = posts.all().filter(PostFiltering.isSearch).shift() ?? null;
 ---
 <header class="site-header">
   <a href="#site-nav" class="navigation-icon" title={ _(Translations.header.open_menu) }><svg xmlns="http://www.w3.org/2000/svg" 
