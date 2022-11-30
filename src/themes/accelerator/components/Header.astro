@@ -1,6 +1,7 @@
 ---
-import { PostQueries, PostFiltering, Posts, UrlFormatter } from 'astro-accelerator-utils';
-import { SITE, Frontmatter } from '@config';
+import { PostFiltering, Cache, Posts, UrlFormatter } from 'astro-accelerator-utils';
+import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
+import { SITE } from '@config';
 import { Translations, Lang } from '@util/Languages';
 
 // Properties
@@ -15,7 +16,8 @@ const { lang } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-const posts = new Posts();
+const cache = new Cache(SITE.cacheMaxAge);
+const posts = new Posts(cache);
 const urlFormatter = new UrlFormatter(SITE.url);
 
 const search = posts.all().filter(PostFiltering.isSearch).shift() ?? null;

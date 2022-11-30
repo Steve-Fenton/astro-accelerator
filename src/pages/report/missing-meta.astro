@@ -1,9 +1,10 @@
 ---
-import { PostOrdering, Posts, UrlFormatter } from 'astro-accelerator-utils';
+import { PostOrdering, Cache, Posts, UrlFormatter } from 'astro-accelerator-utils';
 import { SITE } from '@config';
 
 // Logic
-const posts = new Posts();
+const cache = new Cache(SITE.cacheMaxAge);
+const posts = new Posts(cache);
 const urlFormatter = new UrlFormatter(SITE.url);
 
 const allPages = posts.all();

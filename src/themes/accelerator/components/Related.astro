@@ -1,6 +1,7 @@
 ---
-import { PostQueries, PostFiltering, PostOrdering, Posts, UrlFormatter } from 'astro-accelerator-utils';
-import { SITE, Frontmatter } from '@config';
+import { PostFiltering, PostOrdering, Cache, Posts, UrlFormatter } from 'astro-accelerator-utils';
+import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
+import { SITE } from '@config';
 import type { MarkdownInstance } from 'astro';
 import { getImageInfo } from '@util/custom-markdown.mjs'
 
@@ -15,7 +16,8 @@ type Props = {
 const { lang, frontmatter, headings } = Astro.props as Props;
 
 // Logic
-const posts = new Posts();
+const cache = new Cache(SITE.cacheMaxAge);
+const posts = new Posts(cache);
 const urlFormatter = new UrlFormatter(SITE.url);
 
 let relatedPosts: MarkdownInstance<Record<string, any>>[] = [];

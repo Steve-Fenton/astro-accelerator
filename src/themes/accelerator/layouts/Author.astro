@@ -1,9 +1,8 @@
 ---
-import { PostQueries, PostFiltering, Posts } from 'astro-accelerator-utils';
-import { SITE, Frontmatter } from '@config';
-import { Translations, Lang } from '@util/Languages';
-import Default from './Default.astro';
-import ArticleList from '@components/ArticleList.astro';
+import { UrlFormatter } from 'astro-accelerator-utils';
+import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
+import { SITE } from '@config';
+import Redirect from './Redirect.astro';
 
 // Properties
 type Props = {
@@ -13,18 +12,11 @@ type Props = {
 const { frontmatter, headings } = Astro.props as Props;
 const lang = frontmatter.lang ?? SITE.default.lang;
 
-// Language
-const _ = Lang(lang);
-
 // Logic
-const posts = new Posts();
-
-const authorPages = posts.all()
-    .filter(PostFiltering.isListable)
-    .filter(p => p.frontmatter.authors?.indexOf(frontmatter.id) > -1)
+const urlFormatter = new UrlFormatter(SITE.url);
+const redirectFrontmatter = { 
+    ...frontmatter,
+    redirect: urlFormatter.addSlashToAddress(Astro.request.url) + '1/'
+};
 ---
-<Default frontmatter={ frontmatter } headings={ headings }>
-    <slot />
-    <h2>{ _(Translations.author.recent_articles) }</h2>
-    <ArticleList lang={ lang } posts={ authorPages } />
-</Default>
+<Redirect frontmatter={ redirectFrontmatter } headings={ headings } />

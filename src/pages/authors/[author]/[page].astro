@@ -2,10 +2,11 @@
 // warning: This file is overwritten by Astro Accelerator
 
 // For listing all articles in this folder
-import { PostFiltering, PostOrdering, PostQueries, PostPaging } from 'astro-accelerator-utils';
+import { PostFiltering, PostOrdering, PostPaging, Cache, Markdown, Posts } from 'astro-accelerator-utils';
+import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
 import { Translations, Lang } from '@util/Languages';
 import type { Page, MarkdownInstance } from 'astro';
-import { SITE, Frontmatter } from '@config';
+import { SITE } from '@config';
 import Default from '@layouts/Default.astro';
 import ArticleList from '@components/ArticleList.astro';
 import Paging from '@components/Paging.astro';
@@ -14,9 +15,14 @@ const lang = SITE.default.lang;
 const currentUrl = new URL(Astro.request.url);
 const slug = currentUrl.pathname.split('/')[2];
 
-let authorInfo = await PostQueries.getAuthorInfo(slug);
+const markdown = new Markdown();
+const cache = new Cache(SITE.cacheMaxAge);
+const posts = new Posts(cache);
 
-const frontmatter = authorInfo.frontmatter as Frontmatter;
+const author = posts.all()
+  .filter(PostFiltering.isAuthor)
+  .filter(x => x.url?.split('/')[2] == slug)[0];
+
 
 // Props
 type Props = {
@@ -26,7 +32,13 @@ type Props = {
 };
 const { page, headings, pubDate } = Astro.props as Props;
 
-frontmatter.pubDate = pubDate;
+const authorFrontmatter = {
+  ...author.frontmatter,
+  pubDate: pubDate
+} as Frontmatter;
+
+const text = author.frontmatter.summary.replace('\n', '\n\n');
+const authorText = markdown.getHtmlFrom(text);
 
 // Language
 const _ = Lang(lang);
@@ -79,7 +91,8 @@ export async function getStaticPaths({ paginate }: any) {
 // Page Links
 const pageLinks = PostPaging.getPageLinks(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
 ---
-<Default frontmatter={ frontmatter } headings={ headings }>
+<Default frontmatter={ authorFrontmatter } headings={ headings }>
+  <Fragment set:html={ authorText } />
   <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString())}</h2>
   <ArticleList lang={ lang } posts={ page.data } />
   <Paging lang={ lang } page={ page } pageLinks={ pageLinks } />

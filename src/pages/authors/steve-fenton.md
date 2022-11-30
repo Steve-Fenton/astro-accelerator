@@ -9,4 +9,12 @@ description: Steve Fenton's profile on Astro Accelerator
 bannerImage:
     src: /i/400/authors/steve-fenton.webp
     alt: Dummy image
+summary: >-
+    Steve Fenton's profile is basically a block of markdown.
+
+    It can have limited _markdown_ in it.
+
+    - List
+
+    - List
 ---

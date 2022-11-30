@@ -3,9 +3,10 @@
 
 // For listing all articles in this folder
 import { PostFiltering, PostOrdering, PostPaging } from 'astro-accelerator-utils';
+import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
 import { Translations, Lang } from '@util/Languages';
 import type { Page, MarkdownInstance } from 'astro';
-import { Frontmatter, SITE } from '@config';
+import { SITE } from '@config';
 import Default from 'src/layouts/Default.astro';
 import ArticleList from '@components/ArticleList.astro';
 import Paging from '@components/Paging.astro';

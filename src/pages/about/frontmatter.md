@@ -61,6 +61,19 @@ String. Allows you to specify the meta keywords value.
 keywords: astro,frontmatter
 ```
 
+### summary
+
+String or Markdown. A summary of an item.
+
+```yaml
+summary: >-
+    A summary can contain a description with _markdown_.
+
+    This content is often used at the top of list pages, for example, to describe an author.
+
+    YAML requires this content to be indented.
+```
+
 ### modDate
 
 Date. YYYY-MM-DD. The date the content was last changed. This is used to indicate updates via the sitemap and to broadcast a change has been made.
