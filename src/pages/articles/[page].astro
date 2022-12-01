@@ -2,20 +2,21 @@
 // warning: This file is overwritten by Astro Accelerator
 
 // For listing all articles in this folder
-import { PostFiltering, PostOrdering, PostPaging } from 'astro-accelerator-utils';
+import { PostFiltering, PostOrdering, Paging } from 'astro-accelerator-utils';
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
-import { Translations, Lang } from '@util/Languages';
-import type { Page, MarkdownInstance } from 'astro';
+import type { MarkdownInstance } from 'astro-accelerator-utils/types/Astro';
+import type { Page } from 'astro';
 import { SITE } from '@config';
+import { Translations, Lang } from '@util/Languages';
 import Default from 'src/layouts/Default.astro';
 import ArticleList from '@components/ArticleList.astro';
-import Paging from '@components/Paging.astro';
+import PagingLinks from '@components/PagingLinks.astro';
 
 const lang = SITE.default.lang;
 
 // Props
 type Props = {
-  page: Page<MarkdownInstance<Record<string, any>>>;
+  page: Page<MarkdownInstance>;
   headings: { depth: number; slug: string; text: string; }[];
   pubDate: Date;
 };
@@ -34,8 +35,10 @@ const frontmatter: Frontmatter = {
 const _ = Lang(lang);
 
 // Logic
+const paging = new Paging();
+
 export async function getData() {
-  const sourcePosts = await Astro.glob('./**/*.md');
+  const sourcePosts = await Astro.glob('./**/*.md') as MarkdownInstance[];
   const posts = sourcePosts
     .filter(PostFiltering.isListable)
     .sort(PostOrdering.sortByPubDateDesc);
@@ -52,10 +55,10 @@ export async function getStaticPaths({ paginate }: any) {
 }
 
 // Page Links
-const pageLinks = PostPaging.getPageLinks(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
+const pageLinks = paging.links(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
 ---
 <Default frontmatter={ frontmatter } headings={ headings }>
   <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString())}</h2>
   <ArticleList lang={ lang } posts={ page.data } />
-  <Paging lang={ lang } page={ page } pageLinks={ pageLinks } />
+  <PagingLinks lang={ lang } page={ page } pageLinks={ pageLinks } />
 </Default>

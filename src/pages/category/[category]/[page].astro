@@ -2,14 +2,15 @@
 // warning: This file is overwritten by Astro Accelerator
 
 // For listing by frontmatter.categories
-import { PostFiltering, PostOrdering, PostPaging } from 'astro-accelerator-utils';
+import { PostFiltering, PostOrdering, Paging } from 'astro-accelerator-utils';
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
+import type { MarkdownInstance } from 'astro-accelerator-utils/types/Astro';
+import type { Page } from 'astro';
 import { Translations, Lang } from '@util/Languages';
-import type { Page, MarkdownInstance } from 'astro';
 import { SITE } from '@config';
 import Default from 'src/layouts/Default.astro';
 import ArticleList from '@components/ArticleList.astro';
-import Paging from '@components/Paging.astro';
+import PagingLinks from '@components/PagingLinks.astro';
 
 const lang = SITE.default.lang;
 const currentUrl = new URL(Astro.request.url);
@@ -18,7 +19,7 @@ const slug = currentUrl.pathname.split('/')[3];
 // Props
 type Props = {
   title: string;
-  page: Page<MarkdownInstance<Record<string, any>>>;
+  page: Page<MarkdownInstance>;
   headings: { depth: number; slug: string; text: string; }[];
   pubDate: Date;
 };
@@ -37,14 +38,16 @@ const frontmatter: Frontmatter = {
 const _ = Lang(lang);
 
 // Logic
+const paging = new Paging();
+
 type CategoryData = {
-  posts: MarkdownInstance<Record<string, any>>[];
+  posts: MarkdownInstance[];
   categories: string[];
 }
 
 export async function getData() {
   // TODO: Replace with call to Posts.all()
-  const sourcePosts = await Astro.glob('../../**/*.md');
+  const sourcePosts = await Astro.glob('../../**/*.md') as MarkdownInstance[];
   
   const data: CategoryData = { posts: [], categories: []};
 
@@ -84,10 +87,10 @@ export async function getStaticPaths({ paginate }: any) {
 }
 
 // Page Links
-const pageLinks = PostPaging.getPageLinks(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
+const pageLinks = paging.links(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
 ---
 <Default frontmatter={ frontmatter } headings={ headings }>
   <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString())}</h2>
   <ArticleList lang={ lang } posts={ page.data } />
-  <Paging lang={ lang } page={ page } pageLinks={ pageLinks } />
+  <PagingLinks lang={ lang } page={ page } pageLinks={ pageLinks } />
 </Default>
