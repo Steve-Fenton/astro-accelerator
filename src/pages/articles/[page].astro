@@ -24,8 +24,8 @@ const { page, headings, pubDate } = Astro.props as Props;
 const frontmatter: Frontmatter = {
   layout: 'src/layouts/Default.astro',
   title: 'Articles',
-  keywords: 'articles,astro,accelerator',
-  description: 'Astro Accelerator articles.',
+  keywords: `articles`,
+  description: `${SITE.title} articles.`,
   pubDate: pubDate,
   robots: 'noindex, follow'
 };

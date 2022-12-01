@@ -10,9 +10,9 @@ bannerImage:
     src: /i/400/authors/steve-fenton.webp
     alt: Dummy image
 summary: >-
-    Steve Fenton's profile is basically a block of markdown.
+    Steve Fenton's profile is a block of markdown.
 
-    It can have limited _markdown_ in it.
+    It can have standard _markdown_ in it.
 
     - List
 

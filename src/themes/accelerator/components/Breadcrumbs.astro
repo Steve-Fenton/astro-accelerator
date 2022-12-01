@@ -1,5 +1,5 @@
 ---
-import { PostQueries, UrlFormatter } from 'astro-accelerator-utils';
+import { Cache, Navigation, Posts, UrlFormatter } from 'astro-accelerator-utils';
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
 import { SITE } from '@config';
 import { Translations, Lang } from '@util/Languages';
@@ -16,9 +16,13 @@ const { lang } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
+const cache = new Cache(SITE.cacheMaxAge);
+const posts = new Posts(cache);
 const urlFormatter = new UrlFormatter(SITE.url);
+const navigation = new Navigation(posts, urlFormatter);
+
 const currentUrl = new URL(Astro.request.url);
-const navPages = await PostQueries.getBreadcrumbs(currentUrl, SITE);
+const navPages = navigation.breadcrumbs(currentUrl, SITE.subfolder);
 ---
 <nav class="site-breadcrumbs" aria-label={ _(Translations.aria.breadcrumbs) }>
   <ol vocab="http://schema.org/" typeof="BreadcrumbList">

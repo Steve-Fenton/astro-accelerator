@@ -1,5 +1,5 @@
 ---
-import { Navigation } from 'astro-accelerator-utils';
+import { Cache, Navigation, Posts, UrlFormatter } from 'astro-accelerator-utils';
 import { Translations, Lang } from '@util/Languages';
 import { SITE } from '@config';
 import { menu } from '@data/navigation';
@@ -14,8 +14,13 @@ const { lang } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
+const cache = new Cache(SITE.cacheMaxAge);
+const posts = new Posts(cache);
+const urlFormatter = new UrlFormatter(SITE.url);
+const navigation = new Navigation(posts, urlFormatter);
+
 const currentUrl = new URL(Astro.request.url);
-const pages = await Navigation.getMenu(currentUrl, SITE, menu);
+const pages = navigation.menu(currentUrl, SITE.subfolder, menu);
 ---
 <nav class="site-nav-bar" id="site-nav" aria-label={ _(Translations.aria.site_navigation) }>
   <h2 class="site-nav-title">{ _(Translations.navigation.title) }</h2>

@@ -1,5 +1,5 @@
 ---
-import { PostQueries, DateFormatter, UrlFormatter } from 'astro-accelerator-utils';
+import { Authors, Cache, DateFormatter, Posts, UrlFormatter } from 'astro-accelerator-utils';
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
 import { SITE } from '@config';
 import { Translations, Lang } from '@util/Languages';
@@ -16,9 +16,13 @@ const { lang, frontmatter } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
+const cache = new Cache(SITE.cacheMaxAge);
+const posts = new Posts(cache);
+const authors = new Authors(posts);
 const dateFormatter = new DateFormatter(SITE.dateOptions);
 const urlFormatter = new UrlFormatter(SITE.url);
-const authorList = await PostQueries.getAuthors(frontmatter);
+
+const authorList = authors.forPost(frontmatter);
 
 // Get image info
 const authorImage = authorList?.image?.src 
