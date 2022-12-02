@@ -1,5 +1,5 @@
 ---
-import { Taxonomy } from 'astro-accelerator-utils';
+import { Cache, Posts, Taxonomy, UrlFormatter } from 'astro-accelerator-utils';
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
 import { Translations, Lang } from '@util/Languages';
 import { SITE } from '@config';
@@ -15,10 +15,15 @@ const { lang, frontmatter } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
+const cache = new Cache(SITE.cacheMaxAge);
+const posts = new Posts(cache);
+const urlFormatter = new UrlFormatter(SITE.url);
+const taxonomy = new Taxonomy(cache, posts, urlFormatter);
+
 const categories = frontmatter.categories ?? [];
 const tags = frontmatter.tags ?? [];
 
-const links = Taxonomy.taxonomyLinks(Translations, _, SITE);
+const links = taxonomy.links(Translations, _, SITE.subfolder);
 const hasTaxonomy = (categories.length + tags.length) > 0;
 ---
 {hasTaxonomy && (

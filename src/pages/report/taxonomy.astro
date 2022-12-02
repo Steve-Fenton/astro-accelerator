@@ -1,5 +1,5 @@
 ---
-import { Taxonomy } from 'astro-accelerator-utils';
+import { Cache, Posts, Taxonomy, UrlFormatter } from 'astro-accelerator-utils';
 import { Lang } from '@util/Languages';
 import { Translations } from '@util/Languages';
 import { SITE } from '@config';
@@ -8,9 +8,13 @@ import { SITE } from '@config';
 const _ = Lang('en');
 
 // Logic
+const cache = new Cache(SITE.cacheMaxAge);
+const posts = new Posts(cache);
+const urlFormatter = new UrlFormatter(SITE.url);
+const taxonomy = new Taxonomy(cache, posts, urlFormatter);
 
-const links = Taxonomy.taxonomyLinks(Translations, _, SITE);
-const taxonomy = await Taxonomy.getTaxonomy();
+const links = taxonomy.links(Translations, _, SITE.subfolder);
+const entries = taxonomy.all();
 ---
 <!doctype html>
 <html>
@@ -28,14 +32,14 @@ const taxonomy = await Taxonomy.getTaxonomy();
                     <th>Count</th>
                 </tr>
             </thead>
-        {taxonomy.categories.sort(Taxonomy.sortByTitle).map(t => 
+        {entries.categories.map(t => 
         <tr>
             <td>{ links.category }</td>
             <td><a href={ links.getCategoryLink(t.title) }>{ t.title }</a></td>
             <td>{ t.count }</td>
         </tr>
         )}
-        {taxonomy.tags.sort(Taxonomy.sortByTitle).map(t => 
+        {entries.tags.map(t => 
         <tr>
             <td>{ links.tag }</td>
             <td><a href={ links.getTagLink(t.title) }>{ t.title }</a></td>
