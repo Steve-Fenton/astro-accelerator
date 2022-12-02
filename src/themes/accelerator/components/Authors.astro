@@ -1,5 +1,5 @@
 ---
-import { Authors, Cache, DateFormatter, Posts, UrlFormatter } from 'astro-accelerator-utils';
+import { Accelerator } from 'astro-accelerator-utils';
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
 import { SITE } from '@config';
 import { Translations, Lang } from '@util/Languages';
@@ -16,13 +16,9 @@ const { lang, frontmatter } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-const cache = new Cache(SITE.cacheMaxAge);
-const posts = new Posts(cache);
-const authors = new Authors(posts);
-const dateFormatter = new DateFormatter(SITE.dateOptions);
-const urlFormatter = new UrlFormatter(SITE.url);
+const accelerator = new Accelerator(SITE);
 
-const authorList = authors.forPost(frontmatter);
+const authorList = accelerator.authors.forPost(frontmatter);
 
 // Get image info
 const authorImage = authorList?.image?.src 
@@ -42,16 +38,16 @@ const authorImage = authorList?.image?.src
   <div class="author-info">
     <span>{ _(Translations.post.written_by) }
       {authorList.mainAuthor &&
-        <a href={ urlFormatter.addSlashToAddress(authorList.mainAuthor.url) + '1/' } itemprop="author">{ authorList.mainAuthor.frontmatter.title }</a>
+        <a href={ accelerator.urlFormatter.addSlashToAddress(authorList.mainAuthor.url) + '1/' } itemprop="author">{ authorList.mainAuthor.frontmatter.title }</a>
       }{authorList.contributors.map((writer) => (
-        <a href={ urlFormatter.addSlashToAddress(writer.url) + '1/' } itemprop="contributor">{ writer.frontmatter.title }</a>
+        <a href={ accelerator.urlFormatter.addSlashToAddress(writer.url) + '1/' } itemprop="contributor">{ writer.frontmatter.title }</a>
       ))}.
       <br /><time datetime={ frontmatter.pubDate.toString() } itemprop="datePublished">
-      { dateFormatter.formatDate(frontmatter.pubDate, lang) }
+      { accelerator.dateFormatter.formatDate(frontmatter.pubDate, lang) }
       </time>
       {frontmatter.modDate &&
       <br /><time datetime={ frontmatter.modDate.toString() } itemprop="dateModified">
-        { _(Translations.post.last_modified) } { dateFormatter.formatDate(frontmatter.modDate, lang) }
+        { _(Translations.post.last_modified) } { accelerator.dateFormatter.formatDate(frontmatter.modDate, lang) }
       </time>
       }
     </span>

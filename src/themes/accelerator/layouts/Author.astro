@@ -1,5 +1,5 @@
 ---
-import { UrlFormatter } from 'astro-accelerator-utils';
+import { Accelerator } from 'astro-accelerator-utils';
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
 import { SITE } from '@config';
 import Redirect from './Redirect.astro';
@@ -13,10 +13,10 @@ const { frontmatter, headings } = Astro.props as Props;
 const lang = frontmatter.lang ?? SITE.default.lang;
 
 // Logic
-const urlFormatter = new UrlFormatter(SITE.url);
+const accelerator = new Accelerator(SITE);
 const redirectFrontmatter = { 
     ...frontmatter,
-    redirect: urlFormatter.addSlashToAddress(Astro.request.url) + '1/'
+    redirect: accelerator.urlFormatter.addSlashToAddress(Astro.request.url) + '1/'
 };
 ---
 <Redirect frontmatter={ redirectFrontmatter } headings={ headings } />

@@ -2,7 +2,7 @@
 // warning: This file is overwritten by Astro Accelerator
 
 // For listing by frontmatter.categories
-import { PostFiltering, PostOrdering, Paging } from 'astro-accelerator-utils';
+import { PostFiltering, PostOrdering, Accelerator } from 'astro-accelerator-utils';
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
 import type { MarkdownInstance } from 'astro-accelerator-utils/types/Astro';
 import type { Page } from 'astro';
@@ -38,7 +38,7 @@ const frontmatter: Frontmatter = {
 const _ = Lang(lang);
 
 // Logic
-const paging = new Paging();
+const accelerator = new Accelerator(SITE);
 
 type CategoryData = {
   posts: MarkdownInstance[];
@@ -87,7 +87,7 @@ export async function getStaticPaths({ paginate }: any) {
 }
 
 // Page Links
-const pageLinks = paging.links(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
+const pageLinks = accelerator.paging.links(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
 ---
 <Default frontmatter={ frontmatter } headings={ headings }>
   <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString())}</h2>

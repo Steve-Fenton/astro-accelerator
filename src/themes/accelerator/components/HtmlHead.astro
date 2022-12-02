@@ -1,5 +1,5 @@
 ---
-import { Markdown, UrlFormatter } from 'astro-accelerator-utils';
+import { Accelerator } from 'astro-accelerator-utils';
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
 import { SITE, OPEN_GRAPH, HEADER_SCRIPTS } from '@config';
 
@@ -12,15 +12,14 @@ type Props = {
 const { frontmatter } = Astro.props;
 
 // Logic
-const urlFormatter = new UrlFormatter(SITE.url);
-const markdown = new Markdown();
+const accelerator = new Accelerator(SITE);
 
 const imageSrc = frontmatter.bannerImage?.src ?? OPEN_GRAPH.image.src;
 const imageAlt = frontmatter.bannerImage?.alt ?? OPEN_GRAPH.image.alt;
 const robots = frontmatter.robots ?? 'index, follow';
 const canonicalImageSrc = new URL(imageSrc, Astro.site);
-const canonicalURL =  urlFormatter.addSlashToUrl(new URL(Astro.url.pathname, Astro.site + SITE.subfolder));
-const socialTitle = await markdown.getTextFrom(frontmatter.title);
+const canonicalURL =  accelerator.urlFormatter.addSlashToUrl(new URL(Astro.url.pathname, Astro.site + SITE.subfolder));
+const socialTitle = await accelerator.markdown.getTextFrom(frontmatter.title);
 const title = `${ socialTitle } | ${ SITE.title }`;
 ---
 <head>

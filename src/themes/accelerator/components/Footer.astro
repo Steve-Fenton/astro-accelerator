@@ -1,5 +1,5 @@
 ---
-import { FooterMenu } from 'astro-accelerator-utils';
+import { Accelerator } from 'astro-accelerator-utils';
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
 import { SITE } from '@config';
 import { Translations, Lang } from '@util/Languages';
@@ -18,8 +18,10 @@ const { lang } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
+const accelerator = new Accelerator(SITE);
+
 const currentUrl = new URL(Astro.request.url);
-const pages = await FooterMenu.getMenu(currentUrl, _, Translations, SITE, menu);
+const pages = accelerator.navigation.footer(currentUrl, _, Translations, SITE.subfolder, menu);
 ---
 <footer class="site-footer" id="site-footer">
   <div class="footer-columns">

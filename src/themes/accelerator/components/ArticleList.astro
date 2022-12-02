@@ -1,5 +1,5 @@
 ---
-import { Markdown, UrlFormatter } from 'astro-accelerator-utils';
+import { Accelerator } from 'astro-accelerator-utils';
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
 import type { MarkdownInstance } from 'astro';
 import { SITE } from '@config';
@@ -14,8 +14,7 @@ type Props = {
 const { lang, posts } = Astro.props as Props;
 
 // Logic
-const urlFormatter = new UrlFormatter(SITE.url);
-const markdown = new Markdown();
+const accelerator = new Accelerator(SITE);
 
 type ImageInfo = {
   src: string;
@@ -40,7 +39,7 @@ const articles: Article[] = [];
 for (let p of posts) {
   const item = {
     url: p.url ?? '',
-    title: await markdown.getTextFrom(p.frontmatter.title),
+    title: await accelerator.markdown.getTextFrom(p.frontmatter.title),
     frontmatter: p.frontmatter,
     img: p.frontmatter.bannerImage
       ? getImageInfo(p.frontmatter.bannerImage.src, '', SITE.images.listerSize)
@@ -60,7 +59,7 @@ function getLoadingAttribute() {
 ---
 <ul class="post-list anim-show-parent">
   {articles.map((post) => (
-  <li class="list-item" data-destination={ urlFormatter.addSlashToAddress(post.url) } data-image={ (post.frontmatter.bannerImage?.src.length > 0).toString() }>
+  <li class="list-item" data-destination={ accelerator.urlFormatter.addSlashToAddress(post.url) } data-image={ (post.frontmatter.bannerImage?.src.length > 0).toString() }>
     <article>
       <div class="list-item-image">
       {post.img && (
@@ -77,7 +76,7 @@ function getLoadingAttribute() {
       </div>
       <div class="list-item-content">
         <h3>
-          <a href={ urlFormatter.addSlashToAddress(post.url) }>{ post.title }</a>
+          <a href={ accelerator.urlFormatter.addSlashToAddress(post.url) }>{ post.title }</a>
         </h3>
         <AuthorsMini lang={ lang } frontmatter={ post.frontmatter as Frontmatter } />
       </div>

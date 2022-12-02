@@ -2,7 +2,7 @@
 // warning: This file is overwritten by Astro Accelerator
 
 // For listing all articles in this folder
-import { PostFiltering, PostOrdering, Cache, Markdown, Paging, Posts } from 'astro-accelerator-utils';
+import { PostFiltering, PostOrdering, Accelerator } from 'astro-accelerator-utils';
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
 import type { MarkdownInstance } from 'astro-accelerator-utils/types/Astro';
 import type { Page } from 'astro';
@@ -16,11 +16,9 @@ const lang = SITE.default.lang;
 const currentUrl = new URL(Astro.request.url);
 const slug = currentUrl.pathname.split('/')[2];
 
-const markdown = new Markdown();
-const cache = new Cache(SITE.cacheMaxAge);
-const posts = new Posts(cache);
+const accelerator = new Accelerator(SITE);
 
-const author = posts.all()
+const author = accelerator.posts.all()
   .filter(PostFiltering.isAuthor)
   .filter(x => x.url?.split('/')[2] == slug)[0];
 
@@ -39,14 +37,12 @@ const authorFrontmatter = {
 } as Frontmatter;
 
 const text = (author.frontmatter.summary ?? '').replace('\n', '\n\n');
-const authorText = markdown.getHtmlFrom(text);
+const authorText = accelerator.markdown.getHtmlFrom(text);
 
 // Language
 const _ = Lang(lang);
 
 // Logic
-const paging = new Paging();
-
 type AuthorData = {
   posts: MarkdownInstance[];
   authors: string[];
@@ -92,7 +88,7 @@ export async function getStaticPaths({ paginate }: any) {
 }
 
 // Page Links
-const pageLinks = paging.links(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
+const pageLinks = accelerator.paging.links(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
 ---
 <Default frontmatter={ authorFrontmatter } headings={ headings }>
   <Fragment set:html={ authorText } />

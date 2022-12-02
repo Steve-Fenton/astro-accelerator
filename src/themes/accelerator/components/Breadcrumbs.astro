@@ -1,5 +1,5 @@
 ---
-import { Cache, Navigation, Posts, UrlFormatter } from 'astro-accelerator-utils';
+import { Accelerator } from 'astro-accelerator-utils';
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
 import { SITE } from '@config';
 import { Translations, Lang } from '@util/Languages';
@@ -16,20 +16,17 @@ const { lang } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-const cache = new Cache(SITE.cacheMaxAge);
-const posts = new Posts(cache);
-const urlFormatter = new UrlFormatter(SITE.url);
-const navigation = new Navigation(posts, urlFormatter);
+const accelerator = new Accelerator(SITE);
 
 const currentUrl = new URL(Astro.request.url);
-const navPages = navigation.breadcrumbs(currentUrl, SITE.subfolder);
+const navPages = accelerator.navigation.breadcrumbs(currentUrl, SITE.subfolder);
 ---
 <nav class="site-breadcrumbs" aria-label={ _(Translations.aria.breadcrumbs) }>
   <ol vocab="http://schema.org/" typeof="BreadcrumbList">
     {navPages.map((page, index) => (
     <li property="itemListElement" typeof="ListItem">
       <meta property="position" content={ index.toString() } />
-      <a property="item" typeof="WebPage" href={ urlFormatter.addSlashToAddress(page.url) } aria-current={ page.ariaCurrent } rel={ page.rel }><span property="name">{ page.title }</span></a>
+      <a property="item" typeof="WebPage" href={ accelerator.urlFormatter.addSlashToAddress(page.url) } aria-current={ page.ariaCurrent } rel={ page.rel }><span property="name">{ page.title }</span></a>
     </li>
     ))}
   </ol>

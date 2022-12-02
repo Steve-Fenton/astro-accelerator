@@ -1,5 +1,5 @@
 ---
-import { PostFiltering, Cache, Posts, UrlFormatter } from 'astro-accelerator-utils';
+import { PostFiltering, Accelerator } from 'astro-accelerator-utils';
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
 import { SITE } from '@config';
 import { Translations, Lang } from '@util/Languages';
@@ -16,11 +16,9 @@ const { lang } = Astro.props as Props;
 const _ = Lang(lang);
 
 // Logic
-const cache = new Cache(SITE.cacheMaxAge);
-const posts = new Posts(cache);
-const urlFormatter = new UrlFormatter(SITE.url);
+const accelerator = new Accelerator(SITE);
 
-const search = posts.all().filter(PostFiltering.isSearch).shift() ?? null;
+const search = accelerator.posts.all().filter(PostFiltering.isSearch).shift() ?? null;
 ---
 <header class="site-header">
   <a href="#site-nav" class="navigation-icon" title={ _(Translations.header.open_menu) }><svg xmlns="http://www.w3.org/2000/svg" 
@@ -33,7 +31,7 @@ const search = posts.all().filter(PostFiltering.isSearch).shift() ?? null;
   </svg></a>
   <a href={ (SITE.subfolder ?? '') + '/' } class="site-title" translate="no">{ SITE.title }</a>
   {search != null &&
-  <a href={ urlFormatter.addSlashToAddress(search.url) } class="search-icon" title={ _(Translations.header.open_search) }><svg xmlns="http://www.w3.org/2000/svg" 
+  <a href={ accelerator.urlFormatter.addSlashToAddress(search.url) } class="search-icon" title={ _(Translations.header.open_search) }><svg xmlns="http://www.w3.org/2000/svg" 
     width="40" height="40" viewBox="0 0 24 24" stroke-width="1" 
     fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

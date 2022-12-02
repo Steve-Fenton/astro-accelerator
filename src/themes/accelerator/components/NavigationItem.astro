@@ -1,5 +1,5 @@
 ---
-import { UrlFormatter } from 'astro-accelerator-utils';
+import { Accelerator } from 'astro-accelerator-utils';
 import type { NavPage } from 'astro-accelerator-utils/types/NavPage';
 import { SITE } from '@config';
 
@@ -11,11 +11,11 @@ type Props = {
 const { lang, page } = Astro.props as Props;
 
 // Logic
-const urlFormatter = new UrlFormatter(SITE.url);
+const accelerator = new Accelerator(SITE);
 ---
 {(page.children.length == 0) && (
 <li>
-  <a href={ urlFormatter.addSlashToAddress(page.url) } aria-current={ page.ariaCurrent } rel={ page.rel }>{ page.title }</a>
+  <a href={ accelerator.urlFormatter.addSlashToAddress(page.url) } aria-current={ page.ariaCurrent } rel={ page.rel }>{ page.title }</a>
 </li>
 )}
 {(page.children.length > 0) && (

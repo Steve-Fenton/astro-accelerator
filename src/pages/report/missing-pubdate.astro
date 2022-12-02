@@ -1,13 +1,11 @@
 ---
-import { Cache, Posts, UrlFormatter } from 'astro-accelerator-utils';
+import { Accelerator } from 'astro-accelerator-utils';
 import { SITE } from '@config';
 
 // Logic
-const cache = new Cache(SITE.cacheMaxAge);
-const posts = new Posts(cache);
-const urlFormatter = new UrlFormatter(SITE.url);
+const accelerator = new Accelerator(SITE);
 
-const allPages = posts.all();
+const allPages = accelerator.posts.all();
 const missingMeta = allPages.filter(p => (p.frontmatter.pubDate == null && p.frontmatter.layout != 'src/layouts/Redirect.astro'));
 const pageCount = missingMeta.length;
 const pages = missingMeta.slice(0, Math.min(50, pageCount));
@@ -30,7 +28,7 @@ const pages = missingMeta.slice(0, Math.min(50, pageCount));
             </thead>
         {pages.map(p => 
         <tr>
-            <td><a href={ urlFormatter.addSlashToAddress(p.url) }>{ p.frontmatter.title }</a></td>
+            <td><a href={ accelerator.urlFormatter.addSlashToAddress(p.url) }>{ p.frontmatter.title }</a></td>
             <td>{ p.frontmatter.pubDate }</td>
             <td>{ p.frontmatter.modDate }</td>
         </tr>
