@@ -12,16 +12,22 @@ import Default from 'src/layouts/Default.astro';
 import ArticleList from '@components/ArticleList.astro';
 import PagingLinks from '@components/PagingLinks.astro';
 
+const accelerator = new Accelerator(SITE);
+
 const lang = SITE.default.lang;
 const currentUrl = new URL(Astro.request.url);
-const slug = currentUrl.pathname.split('/')[2];
-
-const accelerator = new Accelerator(SITE);
+const slug = accelerator.urlFormatter.getAuthorId(currentUrl);
 
 const author = accelerator.posts.all()
   .filter(PostFiltering.isAuthor)
-  .filter(x => x.url?.split('/')[2] == slug)[0];
+  .filter(x => {
+    if (!x.url) {
+      return false;
+    }
 
+    const url = new URL(x.url, SITE.url);
+    return accelerator.urlFormatter.getAuthorId(url) == slug;
+  })[0];
 
 // Props
 type Props = {
