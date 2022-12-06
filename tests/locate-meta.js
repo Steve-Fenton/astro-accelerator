@@ -1,12 +1,19 @@
 // @ts-check
 
+/**
+ * @typedef { import("@playwright/test").Locator } Locator
+ * @typedef { import("@playwright/test").Page } Page
+ */
+
 export class Model {
+    /**
+     * @param {Page} page 
+     */
     constructor(page) {
         this.page = page;
      }
 
     /**
-     * Gets the site title
      * @returns {Locator}
      */
     robots() {
