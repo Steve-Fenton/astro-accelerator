@@ -10,6 +10,7 @@ bannerImage:
     alt: Dummy image
 authors:
     - steve-fenton
+    - jane-doe
 categories:
     - Test Category
 tags:

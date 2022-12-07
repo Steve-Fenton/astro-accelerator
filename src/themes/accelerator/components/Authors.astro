@@ -36,11 +36,11 @@ const authorImage = authorList?.image?.src
     class={ authorImage.class } />
   }
   <div class="author-info">
-    <span>{ _(Translations.post.written_by) }
+    <span class="author-list">{ _(Translations.post.written_by) }
       {authorList.mainAuthor &&
         <a href={ accelerator.urlFormatter.addSlashToAddress(authorList.mainAuthor.url) + '1/' } itemprop="author">{ authorList.mainAuthor.frontmatter.title }</a>
       }{authorList.contributors.map((writer) => (
-        <a href={ accelerator.urlFormatter.addSlashToAddress(writer.url) + '1/' } itemprop="contributor">{ writer.frontmatter.title }</a>
+        <span>, </span><a href={ accelerator.urlFormatter.addSlashToAddress(writer.url) + '1/' } itemprop="contributor">{ writer.frontmatter.title }</a>
       ))}
       <br /><time datetime={ frontmatter.pubDate.toString() } itemprop="datePublished">
       { accelerator.dateFormatter.formatDate(frontmatter.pubDate, lang) }
