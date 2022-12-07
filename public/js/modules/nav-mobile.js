@@ -33,8 +33,6 @@ function addMobileNav(resizedEventName) {
         ? 'svg'
         : 'element';
 
-    console.log(iconType);
-
     const originalIcon = icon.innerHTML;
     const overlay = document.createElement('div');
     const dataOpen = 'data-open';
