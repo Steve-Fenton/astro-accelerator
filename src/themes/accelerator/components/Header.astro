@@ -21,7 +21,7 @@ const accelerator = new Accelerator(SITE);
 const search = accelerator.posts.all().filter(PostFiltering.isSearch).shift() ?? null;
 ---
 <header class="site-header">
-  <a href="#site-nav" class="navigation-icon" title={ _(Translations.header.open_menu) }><svg xmlns="http://www.w3.org/2000/svg" 
+  <a href="#site-nav" data-navigationid="site-nav" class="navigation-icon" title={ _(Translations.header.open_menu) }><svg xmlns="http://www.w3.org/2000/svg" 
     width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" 
     fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

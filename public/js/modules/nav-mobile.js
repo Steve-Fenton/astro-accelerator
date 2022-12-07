@@ -13,12 +13,28 @@ import { getFocusableElement, trapFocusForward, trapReverseFocus } from './focus
  * The mobile navigation intercepts the bookmark link and opens the navigation in a modal
  * overlay, trapping keyboard focus until the overlay is closed.
  * 
- * @param {string} iconSelector 
- * @param {string} navigationSelector 
  * @param {string} resizedEventName
  */
- function addMobileNavigation(iconSelector, navigationSelector, resizedEventName) {
-    const icon = qs(iconSelector);
+function addMobileNav(resizedEventName) {
+    const icons = qsa('[data-navigationid');
+    for (let icon of icons) {
+        addMobileNavigation(icon, resizedEventName);
+    }
+}
+
+/**
+ * @param {HTMLElement} icon 
+ * @param {string} resizedEventName
+ */
+ function addMobileNavigation(icon, resizedEventName) {
+    icon.tabIndex = 0;
+    const navigationSelector = icon.dataset.navigationid;
+    const iconType = icon.firstElementChild && icon.firstElementChild.tagName == 'svg'
+        ? 'svg'
+        : 'element';
+
+    console.log(iconType);
+
     const originalIcon = icon.innerHTML;
     const overlay = document.createElement('div');
     const dataOpen = 'data-open';
@@ -52,7 +68,7 @@ import { getFocusableElement, trapFocusForward, trapReverseFocus } from './focus
 
     function openMobileMenu(){
         document.body.style.overflow = 'hidden';
-        const menuElement = qs(navigationSelector);
+        const menuElement = qs('#' + navigationSelector);
         
         overlay.innerHTML = menuElement.outerHTML;
         overlay.className = 'overlay overlay-menu';
@@ -63,12 +79,10 @@ import { getFocusableElement, trapFocusForward, trapReverseFocus } from './focus
         });
 
         // Modal Accessibility
-        const title = qs('.site-nav-title', overlay);
-        title.setAttribute('id', 'modal-title');
-        title.setAttribute('tabindex', '-1');
+        const title = menuElement.getAttribute('aria-label') ?? '';
         overlay.setAttribute('role', 'dialog');
         overlay.setAttribute('aria-modal', 'true');
-        overlay.setAttribute('aria-labelledby', 'modal-title');
+        overlay.setAttribute('aria-label', title);
 
         // Trap Focus to Visible Overlay
         const focusElements = getFocusableElement(overlay);
@@ -80,13 +94,15 @@ import { getFocusableElement, trapFocusForward, trapReverseFocus } from './focus
             trapFocusForward(e, icon); 
         });
 
-        icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" 
-            width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" 
-            fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>`;
+        if (iconType === 'svg') {
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" 
+                width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" 
+                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>`;
+        }
 
         document.body.appendChild(overlay);
         icon.setAttribute(dataOpen, dataOpen);
@@ -119,4 +135,4 @@ import { getFocusableElement, trapFocusForward, trapReverseFocus } from './focus
     })
 }
 
-export { addMobileNavigation };
+export { addMobileNav };
