@@ -34,8 +34,9 @@ function addStickyNavigation(headerSelector, navigationSelector, navigationListS
         if (dimensions.navigationHeight < ((dimensions.browserHeight - dimensions.headerHeight) - buffer)
             && dimensions.browserWidth > 860) {
             console.log('Navigation: Sticky Mode');
-            navigation.classList.add(className)
-            navigation.style.top = dimensions.headerHeight.toString() + 'px';
+            navigation.classList.add(className);
+            const top = navigation.parentElement?.offsetTop ?? 220;
+            navigation.style.top = top + 'px';
         } else {
             console.log('Navigation: Fixed Mode');
             navigation.classList.remove(className);
