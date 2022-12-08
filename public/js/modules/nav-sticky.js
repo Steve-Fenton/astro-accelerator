@@ -31,11 +31,11 @@ function addStickyNavigation(headerSelector, navigationSelector, navigationListS
 
         // Only enable sticky mode if the menu will fit vertically
         // && where the browser is more than 860px wide
-        if (dimensions.navigationHeight < ((dimensions.browserHeight - dimensions.headerHeight) - buffer)
+        if (dimensions.navigationHeight < ((dimensions.browserHeight - Math.max(dimensions.headerHeight, site_features.stickyNav.top)) - buffer)
             && dimensions.browserWidth > 860) {
             console.log('Navigation: Sticky Mode');
             navigation.classList.add(className);
-            const top = navigation.parentElement?.offsetTop ?? 220;
+            const top = site_features.stickyNav.top ?? 220;
             navigation.style.top = top + 'px';
         } else {
             console.log('Navigation: Fixed Mode');
