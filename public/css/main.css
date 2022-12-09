@@ -597,7 +597,7 @@ form.site-search {
 
 form.site-search div {
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: fit-content(400px) auto 30px;
     gap: 1em;
 }
 
