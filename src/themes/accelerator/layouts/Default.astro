@@ -51,8 +51,8 @@ const site_features = SITE.featureFlags;
                     </header>
                     <div class="page-content anim-show-parent" itemprop="articleBody">
                         <TableOfContents frontmatter={ frontmatter } headings={ headings } lang={ lang } />
-                        <Authors frontmatter={ frontmatter } lang={ lang } />
                         <slot />
+                        <Authors frontmatter={ frontmatter } lang={ lang } />
                         <Taxonomy frontmatter={ frontmatter } lang={ lang } />
                         <Related frontmatter={ frontmatter } headings={ headings } lang={ lang } />
                     </div>
