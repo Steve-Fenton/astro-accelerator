@@ -35,6 +35,9 @@ const SITE: Site = {
 		figures: ['enlarge'],
 		youTubeLinks: ['embed'],
 	},
+	layouts: {
+		default: 'src/layouts/Default.astro'
+	},
 	images: {
 		contentSize: '(max-width: 860px) 100vw, 620px',
 		listerSize: '(max-width: 860px) 90vw, 350px',
