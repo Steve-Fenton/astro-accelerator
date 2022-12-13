@@ -44,7 +44,7 @@ summary:focus {
     background-color: var(--aft-link-alt);
 }
 
-:focus {
+.input-keyboard :focus {
     outline: 2px dashed var(--fore-link-alt);
     border-radius: 5px;
 }
