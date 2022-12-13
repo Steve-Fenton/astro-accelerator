@@ -733,13 +733,13 @@ form.site-search button {
 
 .post-meta {
     display: flex;
-    align-items: center;
+    align-items: top;
 }
 
 .post-meta .author-image {
-    width: 50px;
+    width: 80px;
+    height: 80px;
     margin-right: 1rem;
-    aspect-ratio: 1/1;
     object-fit: cover;
 }
 

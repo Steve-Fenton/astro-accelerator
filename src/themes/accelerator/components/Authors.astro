@@ -49,6 +49,8 @@ const authorImage = authorList?.image?.src
       <br /><time datetime={ frontmatter.modDate.toString() } itemprop="dateModified">
         { _(Translations.post.last_modified) } { accelerator.dateFormatter.formatDate(frontmatter.modDate, lang) }
       </time>
+      }{authorList.mainAuthor &&
+        <p>{ authorList.mainAuthor.frontmatter.description }</p>
       }
     </span>
   </div>
