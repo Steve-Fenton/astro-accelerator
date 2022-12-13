@@ -25,13 +25,13 @@
   },
   "dependencies": {
     "@squoosh/lib": "^0.4.0",
-    "astro": "^1.6.13",
-    "astro-accelerator-utils": "^0.2.10",
+    "astro": "^1.6.14",
+    "astro-accelerator-utils": "^0.2.12",
     "hast-util-from-selector": "^2.0.0",
     "remark-directive": "^2.0.1"
   },
   "devDependencies": {
-    "@playwright/test": "^1.27.1"
+    "@playwright/test": "^1.28.1"
   },
   "engines": {
     "node": "*"
