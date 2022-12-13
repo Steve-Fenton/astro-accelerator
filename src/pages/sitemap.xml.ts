@@ -15,10 +15,16 @@ async function getData() {
     const article: any = await allPages[path]();
     const addToSitemap = PostFiltering.showInSitemap(article);
 
+    let url = accelerator.urlFormatter.addSlashToAddress(article.url);
+
+    if (article.frontmatter.layout == 'src/layouts/Author.astro') {
+      url += '1/';
+    }
+
     if (addToSitemap) {
       pages.push(`
         <url>
-          <loc>${ SITE.url + accelerator.urlFormatter.addSlashToAddress(article.url) }</loc>
+          <loc>${ SITE.url + url }</loc>
           <lastmod>${ article.frontmatter.pubDate }</lastmod>
         </url>`);
     }
