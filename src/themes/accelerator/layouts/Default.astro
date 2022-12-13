@@ -55,12 +55,12 @@ const site_features = SITE.featureFlags;
                         )}
                     </header>
                     <div class="page-content anim-show-parent" itemprop="articleBody">
-                        {metaImage && <meta itemprop="image" content={ metaImage.src } />}
                         <TableOfContents frontmatter={ frontmatter } headings={ headings } lang={ lang } />
                         <slot />
                         <Authors frontmatter={ frontmatter } lang={ lang } />
                         <Taxonomy frontmatter={ frontmatter } lang={ lang } />
                         <Related frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+                        {metaImage && <meta itemprop="image" content={ metaImage.src } />}
                     </div>
                 </article>
             </main>
