@@ -972,10 +972,14 @@ figure:focus .magnify-icon {
 
     .magnify-icon,
     .copy-button,
-    .anim-show-parent > *,
+    .anim-show-parent .list-item,
     .anim-show-parent img {
-        transition: all 0.3s ease-in;
+        transition: all 0.2s ease-in;
         transition-delay: 0.1s;
-        opacity: var(--shown, 1);
+        scale: calc(0.75 + (var(--shown, 1) * 0.25));
+    }
+
+    .anim-show-parent .list-item img {
+        scale: 1;
     }
 }

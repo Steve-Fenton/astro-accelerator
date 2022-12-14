@@ -13,7 +13,7 @@ setClickableBlocks();
 setExternalLinkAttributes();
 addStickyNavigation('.site-header', '#site-nav', '#site-nav > ul', resizedEventName);
 addMobileNav(resizedEventName);
-addIntersectionObserver('.anim-show-parent img, .anim-show-parent > *:not(h1, h2, h3, h4, h5, h6)');
+addIntersectionObserver('.anim-show-parent img, .anim-show-parent .list-item');
 addListImageIntersectionObserver('.post-list img');
 monitorInputType();
 
