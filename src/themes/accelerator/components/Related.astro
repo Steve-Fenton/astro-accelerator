@@ -65,6 +65,8 @@ const articles = relatedPosts.map(p => {
           src={ post.img.src }
           alt={ post.frontmatter.bannerImage.alt }
           class={ post.img.class }
+          width={ post.img.metadata?.width }
+          height={ post.img.metadata?.height }
           loading="lazy" />
       )}
       </div>

@@ -33,7 +33,10 @@ const authorImage = authorList?.image?.src
     sizes={ authorImage.sizes }
     src={ authorImage.src }
     alt={ authorList?.image?.alt }
-    class={ authorImage.class } />
+    class={ authorImage.class }
+    width={ authorImage.metadata?.width }
+    height={ authorImage.metadata?.height }
+    />
   }
   <div class="author-info">
     <span class="author-list">{ _(Translations.post.written_by) }
