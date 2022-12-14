@@ -6,6 +6,7 @@ import { addMobileNav } from './modules/nav-mobile.js';
 import { setClickableBlocks } from './modules/click-blocks.js';
 import { setExternalLinkAttributes } from './modules/external-links.js';
 import { monitorInputType } from './modules/input-type.js';
+import { enableSharing } from './modules/share.js';
 
 const resizedEventName = addResizedEvent();
 
@@ -16,6 +17,7 @@ addMobileNav(resizedEventName);
 addIntersectionObserver('.anim-show-parent img, .anim-show-parent .list-item');
 addListImageIntersectionObserver('.post-list img');
 monitorInputType();
+enableSharing();
 
 // @ts-ignore
 const f = site_features ?? {};

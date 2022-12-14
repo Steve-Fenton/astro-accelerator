@@ -959,6 +959,19 @@ figure:focus .magnify-icon {
     }
 }
 
+button[data-share] {
+    background-color: unset;
+    cursor: pointer;
+    color: var(--fore-link);
+    stroke: var(--fore-link);
+}
+
+button[data-share]:hover, 
+button[data-share]:focus {
+    color: var(--fore-link-alt);
+    stroke: var(--fore-link-alt);
+}
+
 /* Animation */
 
 @media (prefers-reduced-motion: no-preference) {
