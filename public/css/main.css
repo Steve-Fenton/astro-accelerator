@@ -433,16 +433,15 @@ nav.site-nav h2 {
 /* Main content group */
 
 .content-group {
+    width: 100%;
+    max-width: 100%;
     display: grid; 
-    grid-template-columns: var(--navigation-width) auto; 
-    grid-template-rows: auto 1fr; 
-    gap: var(--grid-gap);
+    grid-template-columns: minmax(5vw, 50vw) var(--navigation-width) min-content minmax(5vw, 50vw);
     grid-template-areas: 
-      "top top"
-      "menu content";
-    max-width: var(--grid-max-width);
-    justify-items: center;
-    margin: 0 auto;
+        "top top top top"
+        "left menu content right";
+    gap: var(--grid-gap);
+    padding-top: 0;
 }
 
 .content-group header {
@@ -460,7 +459,7 @@ nav.site-nav h2 {
 
 .content-group nav {
     grid-area: menu;
-    width: calc(100% - 40px);
+    padding: 0 1rem 0 0;
 }
 
 .content-group main,
@@ -470,25 +469,24 @@ nav.site-nav h2 {
 
 .content-group article > .page-content {
     grid-area: content;
-    margin: 0;
-    max-width: calc(var(--grid-max-width) - var(--grid-gap) - var(--navigation-width));
+    width: calc(var(--content-width) - var(--navigation-width));
+    max-width: calc(var(--grid-max-width) - var(--navigation-width));
 }
 
 @media (max-width: 860px) {
     .content-group {
-        grid-template-columns: auto; 
-        grid-template-rows: auto auto auto; 
+        grid-template-columns: 1rem auto 1rem;
+        grid-template-rows: auto auto auto;
         gap: var(--grid-gap);
         grid-template-areas: 
-          "top"
-          "content"
-          "menu";
+          "top top top"
+          "left content right"
+          "left menu right";
     }
 
     .content-group article > .page-content {
-        margin: 0 20px;
-        width: calc(100% - 40px);
-        max-width: calc(100vw - 40px);
+        width: unset;
+        max-width: var(--content-width-mobile);
     }
 }
 
