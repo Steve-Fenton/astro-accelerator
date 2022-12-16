@@ -477,7 +477,7 @@ nav.site-nav h2 {
     .content-group {
         grid-template-columns: 1rem auto 1rem;
         grid-template-rows: auto auto auto;
-        gap: var(--grid-gap);
+        gap: 0;
         grid-template-areas: 
           "top top top"
           "left content right"

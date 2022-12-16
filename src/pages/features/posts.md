@@ -12,10 +12,12 @@ bannerImage:
 
 In Astro Accelerator, posts (news, articles, blogs, etc) require a couple of puzzle pieces. In the examples below, the term `articles` is used below, but you can call this anything as long as you keep it consistent.
 
-1. `/pages/articles.md` (used for frontmatter)
-2. `/pages/articles/` folder
-3. `/pages/articles/[page].astro` (list page)
-4. `/pages/articles/[year]/[month]/your-article.md`
+All the below items are in the `/src/pages/` directory:
+
+1. `/articles.md` (used for frontmatter)
+2. `/articles/` folder
+3. `/articles/[page].astro` (list page)
+4. `/articles/[year]/[month]/your-article.md`
 
 The top-level markdown page only contains front-matter that is used to show the item in the menu and to redirect any stray traffic:
 

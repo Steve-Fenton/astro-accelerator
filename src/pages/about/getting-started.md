@@ -37,20 +37,22 @@ Once you're up and running you can adjust the `accelerator.js` script to update 
 
 ## Things to Update
 
-In `/astro.config.mjs`\
-Change the value: `https://astro.stevefenton.co.uk`\
-The address of the live site.
+In `/astro.config.mjs` change the value for `site:`: 
 
-In `/public/robots.txt`\
-Change the value: `https://astro.stevefenton.co.uk/sitemap.xml`\
-The address of the sitemap.
+```
+https://astro.stevefenton.co.uk
+```
 
-In `/src/config.ts`\
-Review the items in `export const SITE`\
-Sitewide defaults.
+In `/public/robots.txt` change the `Sitemap:` address:
 
-In `/src/config.ts`\
-Add any analytics or validation tags to `export const HEADER_SCRIPTS`.
+```
+https://astro.stevefenton.co.uk/sitemap.xml
+```
+
+In `/src/config.ts` change the sitewide defaults in the `SITE` variable.
+```
+
+In `/src/config.ts` add any analytics or validation tags to `HEADER_SCRIPTS`.
 
 ## Migrating From WordPress
 
@@ -89,11 +91,15 @@ Replace
 
 Using your trusty find and replace tools, you can fix up the front-matter.
 
+```
 \ndate:
 \npubDate:
+```
 
+```
 \nlayout: post
 \nlayout: src/layouts/Default.astro
+```
 
 Images can be taken from /wp-content/uploads/... and placed in /public/img/...
 

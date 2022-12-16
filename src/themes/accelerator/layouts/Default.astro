@@ -6,6 +6,7 @@ import { SITE } from '@config';
 import Head from '@components/HtmlHead.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
+import Copyright from '@components/Copyright.astro';
 import SkipLinks from '@components/SkipLinks.astro';
 import Breadcrumbs from '@components/Breadcrumbs.astro';
 import Navigation from '@components/Navigation.astro';
@@ -65,7 +66,9 @@ const site_features = SITE.featureFlags;
                 </article>
             </main>
         </div>
-        <Footer frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+        <Footer frontmatter={ frontmatter } headings={ headings } lang={ lang }>
+            <Copyright frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+        </Footer>
         <script define:vars={{ site_url, site_features }}>
             window.site_url = site_url;
             window.site_features = site_features;

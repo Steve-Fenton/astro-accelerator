@@ -17,7 +17,6 @@ test('Crawl for bad URIs', async () => {
       return;
     }
 
-    console.log(url, foundOn);
     crawled.push(url);
 
     const response = await fetch(url);
@@ -53,8 +52,12 @@ async function crawlImages(foundOn: string) {
   discoveredImages = [];
 
   for (let i = 0; i < images.length; i++) {
-    console.log(images[i]);
     const response = await fetch(images[i]);
+    
+    if (response.status != 200) {
+      console.log(images[i]);
+    }
+    
     expect(response.status, `Expected a 200 OK response for image ${images[i]} found on ${foundOn}`).toBe(200);
   }
 }

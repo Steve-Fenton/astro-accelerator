@@ -52,7 +52,7 @@
     --grid-width: 90vw;
 
     /* Calculate the mobile width by removing l/r columns and grid gap */
-    --content-width-mobile: calc(100vw - (0.5rem * 2) - (var(--grid-gap) * 2));
+    --content-width-mobile: calc(100vw - (1rem * 2));
 }
 
 @media (prefers-color-scheme: dark) {

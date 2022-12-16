@@ -19,6 +19,7 @@ const dataAttributeName = 'data-destination';
     qsa('[' + dataAttributeName + ']').forEach((listItem) => {
         listItem.style.cursor = 'pointer';
         listItem.addEventListener('click', handleClick);
+        listItem.addEventListener('touch', handleClick);
     });
 }
 
