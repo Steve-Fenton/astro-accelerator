@@ -9,8 +9,7 @@
     "test": "astro build && npx playwright test",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "dts": "tsc ./tests/locate-content.js ./tests/locate-navigation.js ./tests/locate-search.js --allowJs --declaration --emitDeclarationOnly"
+    "theme": "npm install --save astro-accelerator@latest && npm install --save astro-accelerator-utils@latest && node ./accelerator.js"
   },
   "dependencies": {
     "astro": "^1.6.7",
