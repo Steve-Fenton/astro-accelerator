@@ -10,7 +10,7 @@ bannerImage:
     alt: Dummy image
 ---
 
-Writing in Astro Accelerator is super-easy. We've tried to make sure the content as separated from theming concerns as much as possible.
+Writing in Astro Accelerator is super-easy. We've tried to make sure the content is separated from theming concerns as much as possible.
 
 The only folder you need to work in is `src/pages/` and the only file type you need to know is markdown (`.md`).
 
@@ -42,11 +42,14 @@ You can add child pages and articles by naming folders after their parent page. 
 
 ### Child Pages
 
-You can put pages into folders. If you wanted to add pages as "child items" of your "Example" page, put them in a folder named `/examples/`. If the folder matches the page, they become linked. Simple.
+You can put pages into folders. If you wanted to add pages as "child items" of your "Example" page, put them in a folder named `/examples/`.
 
-- Example (`/pages/example.md`)
-  - Child Page 1 (`/pages/example/child-page-1.md`)
-  - Child Page 2 (`/pages/example/child-page-2.md`)
+If the folder matches the page, they become linked. Simple.
+
+`/pages/example.md`
+
+- `/pages/example/child-page-1.md`
+- `/pages/example/child-page-2.md`
 
 ### Child Articles
 
@@ -54,6 +57,3 @@ You decide how you want articles to appear in your web addresses. As long as the
 
 For example, you could arrange them into folder using the year and month of publication:
 
-- Articles (`/pages/articles.md`)
-  - Child Page 1 (`/pages/articles/2022/12/article-1.md`)
-  - Child Page 2 (`/pages/articles/2022/12/article-2.md`)
