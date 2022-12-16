@@ -3,8 +3,6 @@ import { Accelerator } from 'astro-accelerator-utils';
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
 import { SITE } from '@config';
 import { Translations, Lang } from '@util/Languages';
-import { menu } from 'src/data/footer';
-import FooterItem from '@components/FooterItem.astro';
 
 // Properties
 type Props = {
@@ -19,9 +17,6 @@ const _ = Lang(lang);
 
 // Logic
 const accelerator = new Accelerator(SITE);
-
-const currentUrl = new URL(Astro.request.url);
-const pages = accelerator.navigation.footer(currentUrl, _, Translations, SITE.subfolder, menu);
 ---
 <p>{ _(Translations.footer.copyright) } &copy; { new Date().getFullYear() } { SITE.owner }</p>
 <nav aria-label={ _(Translations.aria.back_to_top) }>
