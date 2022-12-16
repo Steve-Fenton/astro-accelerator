@@ -64,7 +64,7 @@ function getIssues() {
 
   function checkElement(el: Element) {
     const elem = el as HTMLElement;
-    const hasScrollingAncestor = checkScrollingAncestor(el);
+    const hasScrollingAncestor = checkScrollingAncestor(elem);
     if (hasScrollingAncestor) {
       return;
     }
@@ -72,7 +72,7 @@ function getIssues() {
     // Find elements that overflow the document width
     if (elem.offsetWidth > document.documentElement.offsetWidth) {
       warn(elem);
-      issues.push(getSelector(elem));
+      issues.push(`${elem.offsetWidth}>${document.documentElement.offsetWidth} (Document) ${getSelector(elem)}`);
     }
 
     const ancestor = getSizedAncestor(elem);
@@ -86,7 +86,7 @@ function getIssues() {
 
     if (ancestor && (elem.offsetWidth - adjustment) > ancestor.offsetWidth) {
       warn(elem);
-      issues.push(getSelector(elem));
+      issues.push(`${elem.offsetWidth - adjustment}>${ancestor.offsetWidth} (Ancestor) ${getSelector(elem)}`);
     }
   }
 
