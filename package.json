@@ -1,5 +1,5 @@
 {
-  "version": "0.0.51",
+  "version": "0.0.52",
   "author": "Steve Fenton",
   "name": "astro-accelerator",
   "description": "A super-lightweight, accessible, SEO-friendly starter project for Astro",
@@ -17,7 +17,7 @@
   "scripts": {
     "img": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs",
     "dev": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs && astro dev",
-    "test": "astro build && npx playwright test",
+    "test": "astro build && npx playwright install --with-deps && npx playwright test",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -25,13 +25,13 @@
   },
   "dependencies": {
     "@squoosh/lib": "^0.4.0",
-    "astro": "^1.6.14",
-    "astro-accelerator-utils": "^0.2.12",
+    "astro": "^1.8.0",
+    "astro-accelerator-utils": "^0.2.14",
     "hast-util-from-selector": "^2.0.0",
     "remark-directive": "^2.0.1"
   },
   "devDependencies": {
-    "@playwright/test": "^1.28.1"
+    "@playwright/test": "^1.29.1"
   },
   "engines": {
     "node": "*"
