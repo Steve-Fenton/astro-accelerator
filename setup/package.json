@@ -12,7 +12,7 @@
     "theme": "npm install --save astro-accelerator@latest && npm install --save astro-accelerator-utils@latest && node ./accelerator.js"
   },
   "dependencies": {
-    "astro": "^1.6.7",
-    "astro-accelerator": "^0.0.24"
+    "astro": "^1.8.0",
+    "astro-accelerator": "^0.0.53"
   }
 }

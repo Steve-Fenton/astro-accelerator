@@ -13,7 +13,7 @@ type Props = {
   frontmatter: Frontmatter
   headings: { depth: number; slug: string; text: string; }[];
 };
-const { lang, frontmatter, headings } = Astro.props as Props;
+const { lang, frontmatter, headings } = Astro.props satisfies Props;
 
 // Logic
 const accelerator = new Accelerator(SITE);
@@ -74,7 +74,7 @@ const articles = relatedPosts.map(p => {
         <h3>
           <a href={ accelerator.urlFormatter.addSlashToAddress(post.url) }>{ post.frontmatter.title }</a>
         </h3>
-        <AuthorsMini lang={ lang } frontmatter={ post.frontmatter as Frontmatter } />
+        <AuthorsMini lang={ lang } frontmatter={ post.frontmatter satisfies Frontmatter } />
       </div>
     </article>
   </li>

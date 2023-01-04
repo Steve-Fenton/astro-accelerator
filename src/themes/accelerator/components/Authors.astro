@@ -10,7 +10,7 @@ type Props = {
   lang: string;
   frontmatter: Frontmatter;
 };
-const { lang, frontmatter } = Astro.props as Props;
+const { lang, frontmatter } = Astro.props satisfies Props;
 
 // Language
 const _ = Lang(lang);

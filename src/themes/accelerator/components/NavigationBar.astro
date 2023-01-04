@@ -8,7 +8,7 @@ import { menu } from '@data/navigation';
 type Props = {
   lang: string;
 };
-const { lang } = Astro.props as Props;
+const { lang } = Astro.props satisfies Props;
 
 // Language
 const _ = Lang(lang);

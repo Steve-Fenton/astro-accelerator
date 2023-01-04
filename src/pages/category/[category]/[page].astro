@@ -23,7 +23,7 @@ type Props = {
   headings: { depth: number; slug: string; text: string; }[];
   pubDate: Date;
 };
-const { title, page, headings, pubDate } = Astro.props as Props;
+const { title, page, headings, pubDate } = Astro.props satisfies Props;
 
 const frontmatter: Frontmatter = {
   layout: 'src/layouts/Default.astro',
@@ -47,7 +47,7 @@ type CategoryData = {
 
 export async function getData() {
   // TODO: Replace with call to Posts.all()
-  const sourcePosts = await Astro.glob('../../**/*.md') as MarkdownInstance[];
+  const sourcePosts = await Astro.glob('../../**/*.md') satisfies MarkdownInstance[];
   
   const data: CategoryData = { posts: [], categories: []};
 

@@ -11,7 +11,7 @@ type Props = {
   page: Page<MarkdownInstance<Record<string, any>>>,
   pageLinks: Link[],
 };
-const { lang, page, pageLinks } = Astro.props as Props;
+const { lang, page, pageLinks } = Astro.props satisfies Props;
 
 // Language
 const _ = Lang(lang);

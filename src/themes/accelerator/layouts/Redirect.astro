@@ -6,7 +6,7 @@ type Props = {
     frontmatter: Frontmatter
     headings: { depth: number; slug: string; text: string; }[];
 }
-const { frontmatter, headings } = Astro.props as Props;
+const { frontmatter, headings } = Astro.props satisfies Props;
 
 const destination = frontmatter.redirect;
 const metaContent = `0; URL=${ destination }`;

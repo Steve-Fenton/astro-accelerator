@@ -8,7 +8,7 @@ type Props = {
   lang: string;
   page: NavPage
 };
-const { lang, page } = Astro.props as Props;
+const { lang, page } = Astro.props satisfies Props;
 
 // Logic
 const accelerator = new Accelerator(SITE);

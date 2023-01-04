@@ -8,7 +8,7 @@ type Props = {
   frontmatter: Frontmatter
   headings: { depth: number; slug: string; text: string; }[];
 };
-const { lang } = Astro.props as Props;
+const { lang } = Astro.props satisfies Props;
 
 // Language
 const _ = Lang(lang);

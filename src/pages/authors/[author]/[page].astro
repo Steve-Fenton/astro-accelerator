@@ -35,7 +35,7 @@ type Props = {
   headings: { depth: number; slug: string; text: string; }[];
   pubDate: Date;
 };
-const { page, headings, pubDate } = Astro.props as Props;
+const { page, headings, pubDate } = Astro.props satisfies Props;
 
 const authorFrontmatter = {
   ...author.frontmatter,
@@ -55,7 +55,7 @@ type AuthorData = {
 }
 
 export async function getData() {
-  const sourcePosts = await Astro.glob('../../**/*.md') as MarkdownInstance[];
+  const sourcePosts = await Astro.glob('../../**/*.md') satisfies MarkdownInstance[];
   const data: AuthorData = { posts: [], authors: []};
 
   data.posts = sourcePosts

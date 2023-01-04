@@ -11,7 +11,7 @@ type Props = {
   lang: string;
   posts: MarkdownInstance<Record<string, any>>[]
 };
-const { lang, posts } = Astro.props as Props;
+const { lang, posts } = Astro.props satisfies Props;
 
 // Logic
 const accelerator = new Accelerator(SITE);
@@ -78,7 +78,7 @@ function getLoadingAttribute() {
         <h3>
           <a href={ accelerator.urlFormatter.addSlashToAddress(post.url) }>{ post.title }</a>
         </h3>
-        <AuthorsMini lang={ lang } frontmatter={ post.frontmatter as Frontmatter } />
+        <AuthorsMini lang={ lang } frontmatter={ post.frontmatter satisfies Frontmatter } />
       </div>
     </article>
   </li>

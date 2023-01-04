@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 function getLinks(): string[] {
-  return [...document.querySelectorAll('.site-nav a') as NodeListOf<HTMLAnchorElement>]
+  return [...document.querySelectorAll('.site-nav a') satisfies NodeListOf<HTMLAnchorElement>]
     .map(a => a.href);
 }
 
