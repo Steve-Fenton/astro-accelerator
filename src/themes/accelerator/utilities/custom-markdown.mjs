@@ -57,7 +57,7 @@ export function getImageInfo(src, className, sizes) {
   info.class = (className ?? '' + ' resp-img').trim();
   info.metadata = null;
 
-  if ([imgSmall, imgMedium, imgLarge].includes(info.src)) {
+  if ([imgSmall, imgMedium, imgLarge].includes(src)) {
     info.srcset = null;
     info.sizes = null;
   }
