@@ -142,7 +142,7 @@ for (const file of filesToProcess) {
         const image = imagePool.ingestImage(imgFile);
 
         const info = await image.decoded;
-        if (info.width > size[key]) {
+        if (info.bitmap.width > size[key]) {
             // Only resize if the image is larger than the target size
             const preprocessOptions = {
                 resize: {
@@ -153,7 +153,7 @@ for (const file of filesToProcess) {
             await image.preprocess(preprocessOptions);
         }
 
-        await image.encode({ webp: {} });
+        await image.encode({ webp: { quality: 90 } });
 
         rawEncodedImage = (await image.encodedWith.webp).binary;
         await fs.promises.writeFile(resizeDestination + '.webp', rawEncodedImage);
