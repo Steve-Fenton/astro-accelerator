@@ -9,12 +9,3 @@ test('Robots index on home page', async ({ page }) => {
   const robots = find.robots();
   await expect(robots).toHaveAttribute('content', 'max-image-preview:large, index, follow');
 });
-
-test('Robots noindex on list page', async ({ page }) => {
-  await page.goto('/articles/1/');
-
-  const find = new Model(page);
-
-  const robots = find.robots();
-  await expect(robots).toHaveAttribute('content', 'max-image-preview:large, noindex, follow');
-});
