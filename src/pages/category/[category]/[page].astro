@@ -87,9 +87,22 @@ export async function getStaticPaths({ paginate }: any) {
 
 // Page Links
 const pageLinks = accelerator.paging.links(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
+
+// Breadcrumbs
+const breadcrumbs = [
+  {
+    url: pageLinks[0].url as string,
+    title: title,
+  },
+  {
+    url: page.url.current,
+    title: _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()),
+    ariaCurrent: 'page',
+  }
+];
 ---
-<Default frontmatter={ frontmatter } headings={ headings }>
-  <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString())}</h2>
+<Default frontmatter={ frontmatter } headings={ headings } breadcrumbs={ breadcrumbs }>
+  <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()) }</h2>
   <ArticleList lang={ lang } posts={ page.data } />
   <PagingLinks lang={ lang } page={ page } pageLinks={ pageLinks } />
 </Default>

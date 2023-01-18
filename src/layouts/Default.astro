@@ -8,9 +8,10 @@ import Default from '@layouts/Default.astro';
 type Props = {
     frontmatter: Frontmatter
     headings: { depth: number; slug: string; text: string; }[];
+    breadcrumbs?: { url: string; title: string; ariaCurrent?: string; }[] | null;
 }
-const { frontmatter, headings } = Astro.props satisfies Props;
+const { frontmatter, headings, breadcrumbs } = Astro.props satisfies Props;
 ---
-<Default frontmatter={ frontmatter } headings={ headings }>
+<Default frontmatter={ frontmatter } headings={ headings } breadcrumbs={ breadcrumbs }>
     <slot />
 </Default>

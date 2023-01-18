@@ -18,8 +18,9 @@ import Related from '@components/Related.astro';
 type Props = {
     frontmatter: Frontmatter
     headings: { depth: number; slug: string; text: string; }[];
+    breadcrumbs?: { url: string; title: string; ariaCurrent?: string; }[] | null;
 }
-const { frontmatter, headings } = Astro.props satisfies Props;
+const { frontmatter, headings, breadcrumbs } = Astro.props satisfies Props;
 
 const lang = frontmatter.lang ?? SITE.default.lang;
 const textDirection = frontmatter.dir ?? SITE.default.dir;
@@ -44,7 +45,7 @@ const site_features = SITE.featureFlags;
     <body>
         <SkipLinks frontmatter={ frontmatter } headings={ headings } lang={ lang } />
         <Header frontmatter={ frontmatter } headings={ headings } lang={ lang } />
-        <Breadcrumbs frontmatter={ frontmatter } headings={ headings } lang={ lang } />
+        <Breadcrumbs frontmatter={ frontmatter } headings={ headings } lang={ lang } breadcrumbs={ breadcrumbs } />
         <div class="content-group">
             <Navigation lang={ lang } />
             <main id="site-main">

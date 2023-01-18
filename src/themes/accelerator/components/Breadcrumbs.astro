@@ -9,8 +9,9 @@ type Props = {
   lang: string;
   frontmatter: Frontmatter
   headings: { depth: number; slug: string; text: string; }[];
+  breadcrumbs?: { url: string; title: string; ariaCurrent?: string; }[] | null;
 };
-const { lang } = Astro.props satisfies Props;
+const { lang, breadcrumbs } = Astro.props satisfies Props;
 
 // Language
 const _ = Lang(lang);
@@ -20,6 +21,7 @@ const accelerator = new Accelerator(SITE);
 
 const currentUrl = new URL(Astro.request.url);
 const navPages = accelerator.navigation.breadcrumbs(currentUrl, SITE.subfolder);
+let metaIndex = navPages.length;
 ---
 <nav class="site-breadcrumbs" aria-label={ _(Translations.aria.breadcrumbs) }>
   <ol vocab="http://schema.org/" typeof="BreadcrumbList">
@@ -27,6 +29,12 @@ const navPages = accelerator.navigation.breadcrumbs(currentUrl, SITE.subfolder);
     <li property="itemListElement" typeof="ListItem">
       <meta property="position" content={ index.toString() } />
       <a property="item" typeof="WebPage" href={ accelerator.urlFormatter.addSlashToAddress(page.url) } aria-current={ page.ariaCurrent } rel={ page.rel }><span property="name">{ page.title }</span></a>
+    </li>
+    ))}
+    {breadcrumbs && breadcrumbs.map( (crumb) => (
+    <li property="itemListElement" typeof="ListItem">
+      <meta property="position" content={ (metaIndex++).toString() } />
+      <a property="item" typeof="WebPage" href={ accelerator.urlFormatter.addSlashToAddress(crumb.url) } aria-current={ crumb.ariaCurrent }><span property="name">{ crumb.title }</span></a>
     </li>
     ))}
   </ol>
