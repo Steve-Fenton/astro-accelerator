@@ -51,25 +51,39 @@ export function getImageInfo(src, className, sizes) {
   const imgMedium = getDestination(uri, size.medium);
   const imgLarge = getDestination(uri, size.large);
 
+  let nativeSize = size.large;
+  info.metadata = null;
+
+  try {
+    let metaAddress = path.join(workingDirectory, 'public', src + '.json');
+    
+    if (fs.existsSync(metaAddress)) {
+      info.metadata = JSON.parse(fs.readFileSync(metaAddress));
+      nativeSize = info.metadata.width;
+    }
+  } catch (e) {
+    console.warn(e);
+  }
+
   info.src = imgFallback;
-  info.srcset = `${imgSmall} ${size.small}w, ${imgMedium} ${size.medium}w, ${imgLarge} ${size.large}w`;
+  // use info.metadata to limit the {}w size to the image size if it's smaller
+  let srcset = `${imgSmall} ${Math.min(size.small, nativeSize)}w`;
+
+  if (nativeSize >= size.small) {
+    srcset += `, ${imgMedium} ${Math.min(size.medium, nativeSize)}w`;
+
+    if (nativeSize >= size.medium) {
+      srcset += `, ${imgLarge} ${Math.min(size.large, nativeSize)}w`;
+    }
+  }
+
+  info.srcset = srcset;
   info.sizes = sizes;
   info.class = (className ?? '' + ' resp-img').trim();
-  info.metadata = null;
 
   if ([imgSmall, imgMedium, imgLarge].includes(src)) {
     info.srcset = null;
     info.sizes = null;
-  }
-
-  try {
-    let metaAddress = path.join(workingDirectory, 'public', src + '.json');
-          
-    if (fs.existsSync(metaAddress)) {
-      info.metadata = JSON.parse(fs.readFileSync(metaAddress));
-    }
-  } catch (e) {
-    console.warn(e);
   }
 
   return info;
