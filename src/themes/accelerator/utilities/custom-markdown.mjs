@@ -52,7 +52,7 @@ export function getImageInfo(src, className, sizes) {
   const imgLarge = getDestination(uri, size.large);
 
   info.src = imgFallback;
-  info.srcset = `${imgSmall} ${size.small}w, ${imgMedium} ${size.medium}w, ${imgLarge}`;
+  info.srcset = `${imgSmall} ${size.small}w, ${imgMedium} ${size.medium}w, ${imgLarge} ${size.large}w`;
   info.sizes = sizes;
   info.class = (className ?? '' + ' resp-img').trim();
   info.metadata = null;

@@ -36,8 +36,9 @@ const SITE: Site = {
 		youTubeLinks: ['embed'],
 	},
 	images: {
-		contentSize: '(max-width: 860px) 100vw, 620px',
-		listerSize: '(max-width: 860px) 90vw, 350px',
+		// Generated using https://ausi.github.io/respimagelint/
+		contentSize: '(min-width: 1280px) 668px, (min-width: 880px) calc(72.11vw - 241px), calc(100vw - 64px)',
+		listerSize: '(min-width: 1300px) 350px, (min-width: 880px) calc(34.25vw - 88px), (min-width: 700px) 50vw, calc(100vw - 32px)',
 		authorSize: '50px',
 	}
 };
