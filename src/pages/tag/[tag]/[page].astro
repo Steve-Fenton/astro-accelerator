@@ -88,17 +88,28 @@ export async function getStaticPaths({ paginate }: any) {
 const pageLinks = accelerator.paging.links(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
 
 // Breadcrumbs
-const breadcrumbs = [
-  {
+const breadcrumbs: { url: string; title: string; ariaCurrent?: string; }[] = []
+
+if (page.url.current == pageLinks[0].url) {
+  breadcrumbs.push({
     url: pageLinks[0].url as string,
     title: title,
-  },
-  {
+    ariaCurrent: 'page'
+  });
+}
+
+if (page.url.current != pageLinks[0].url) {
+  breadcrumbs.push({
+    url: pageLinks[0].url as string,
+    title: title,
+  });
+
+  breadcrumbs.push({
     url: page.url.current,
     title: _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()),
     ariaCurrent: 'page',
-  }
-];
+  });
+}
 ---
 <Default frontmatter={ frontmatter } headings={ headings } breadcrumbs={ breadcrumbs }>
   <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString())}</h2>
