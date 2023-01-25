@@ -4,7 +4,7 @@ import { visit } from 'unist-util-visit'
 import rehypeParse from 'rehype-parse';
 import rehypeStringify from 'rehype-stringify';
 
-const baseUrl = 'http://127.0.0.1:3000';
+const baseUrl = 'http://[::1]:3000';
 const startPath = '/';
 const crawled: string[] = [];
 let discoveredLinks: string[] = [];
@@ -19,18 +19,23 @@ test('Crawl for bad URIs', async () => {
 
     crawled.push(url);
 
-    const response = await fetch(url);
-    expect(response.status, `Expected a 200 OK response for page ${url} found on ${foundOn}`).toBe(200);
+    try {
+      const response = await fetch(new URL(url));
+      expect(response.status, `Expected a 200 OK response for page ${url} found on ${foundOn}`).toBe(200);
 
-    const text = await response.text();
-    await handleHtmlDocument(text);
-    await crawlImages(url);
+      const text = await response.text();
+      await handleHtmlDocument(text);
+      await crawlImages(url);
 
-    const links = [...new Set(discoveredLinks)];
-    discoveredLinks = [];
+      const links = [...new Set(discoveredLinks)];
+      discoveredLinks = [];
 
-    for (let i = 0; i < links.length; i++) {
-      await crawl(links[i], url);
+      for (let i = 0; i < links.length; i++) {
+        await crawl(links[i], url);
+      }
+    } catch (ex) {
+      console.error(url, ex);
+      expect(ex).toBeNull();
     }
   }
 
