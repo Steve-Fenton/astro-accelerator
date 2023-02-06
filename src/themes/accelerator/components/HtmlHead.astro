@@ -20,7 +20,7 @@ const robots = frontmatter.robots ?? 'index, follow';
 const canonicalImageSrc = new URL(imageSrc, Astro.site);
 const canonicalURL =  accelerator.urlFormatter.addSlashToUrl(new URL(Astro.url.pathname, Astro.site + SITE.subfolder));
 const socialTitle = await accelerator.markdown.getTextFrom(frontmatter.title);
-const title = `${ socialTitle } | ${ SITE.title }`;
+const title = `${ socialTitle } ${ ((frontmatter.titleAdditional) ? ` ${frontmatter.titleAdditional}` : '') } | ${ SITE.title }`;
 ---
 <head>
   <meta charset="utf-8" />

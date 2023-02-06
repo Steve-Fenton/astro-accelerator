@@ -16,6 +16,9 @@ const lang = SITE.default.lang;
 const currentUrl = new URL(Astro.request.url);
 const slug = currentUrl.pathname.split('/')[3];
 
+// Language
+const _ = Lang(lang);
+
 // Props
 type Props = {
   title: string;
@@ -28,13 +31,11 @@ const { title, page, headings, pubDate } = Astro.props satisfies Props;
 const frontmatter: Frontmatter = {
   layout: 'src/layouts/Default.astro',
   title: title,
+  titleAdditional: `(${ _(Translations.articles.category) }) ` + _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()),
   keywords: `${slug},articles`,
   description: `${SITE.title} ${slug} articles.`,
   pubDate: pubDate
 };
-
-// Language
-const _ = Lang(lang);
 
 // Logic
 const accelerator = new Accelerator(SITE);
@@ -46,7 +47,7 @@ type CategoryData = {
 
 export async function getData() {
   // TODO: Replace with call to Posts.all()
-  const sourcePosts = await Astro.glob('../../**/*.md') satisfies MarkdownInstance[];
+  const sourcePosts = await Astro.glob('../../**/*.md') as MarkdownInstance[];
   
   const data: CategoryData = { posts: [], categories: []};
 
