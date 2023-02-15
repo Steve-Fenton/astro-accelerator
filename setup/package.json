@@ -9,7 +9,7 @@
     "test": "astro build && npx playwright test",
     "build": "astro build",
     "preview": "astro preview",
-    "theme": "npm install --save astro-accelerator@latest && npm install --save astro-accelerator-utils@latest && node ./accelerator.js"
+    "theme": "npm install --save astro-accelerator@latest && node ./accelerator.js"
   },
   "dependencies": {
     "astro": "^1.8.0",

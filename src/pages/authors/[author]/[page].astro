@@ -98,7 +98,7 @@ const pageLinks = accelerator.paging.links(SITE.pageLinks, page.lastPage, page.c
 ---
 <Default frontmatter={ authorFrontmatter } headings={ headings }>
   <Fragment set:html={ authorText } />
-  <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString())}</h2>
+  <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()) }</h2>
   <ArticleList lang={ lang } posts={ page.data } />
   <PagingLinks lang={ lang } page={ page } pageLinks={ pageLinks } />
 </Default>

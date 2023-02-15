@@ -113,7 +113,7 @@ if (page.url.current != pageLinks[0].url) {
 }
 ---
 <Default frontmatter={ frontmatter } headings={ headings } breadcrumbs={ breadcrumbs }>
-  <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString())}</h2>
+  <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()) }</h2>
   <ArticleList lang={ lang } posts={ page.data } />
   <PagingLinks lang={ lang } page={ page } pageLinks={ pageLinks } />
 </Default>

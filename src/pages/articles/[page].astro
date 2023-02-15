@@ -57,7 +57,7 @@ export async function getStaticPaths({ paginate }: any) {
 const pageLinks = accelerator.paging.links(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
 ---
 <Default frontmatter={ frontmatter } headings={ headings }>
-  <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString())}</h2>
+  <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()) }</h2>
   <ArticleList lang={ lang } posts={ page.data } />
   <PagingLinks lang={ lang } page={ page } pageLinks={ pageLinks } />
 </Default>

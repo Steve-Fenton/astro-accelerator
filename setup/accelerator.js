@@ -83,7 +83,7 @@ copyRecursiveSync('./node_modules/astro-accelerator/tsconfig.json', './tsconfig.
  * @param {string} src  The path to the thing to copy.
  * @param {string} dest The path to the new copy.
  */
- const copyRecursiveSync = (src, dest, overwrite) => {
+function copyRecursiveSync(src, dest, overwrite) {
   const exists = fs.existsSync(src);
   const stats = exists && fs.statSync(src);
   const isDirectory = exists && stats.isDirectory();
@@ -100,4 +100,4 @@ copyRecursiveSync('./node_modules/astro-accelerator/tsconfig.json', './tsconfig.
       console.log('Skipping', dest);
     }
   }
-};
+}
