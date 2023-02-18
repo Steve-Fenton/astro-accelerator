@@ -51,7 +51,7 @@ https://astro.stevefenton.co.uk/sitemap.xml
 
 In `/src/config.ts` change the sitewide defaults in the `SITE` variable.
 
-## Trailing Slashes
+## Trailing slashes
 
 Decide whether you want trailing slashes...
 
