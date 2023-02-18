@@ -28,13 +28,13 @@ let metaIndex = navPages.length;
     {navPages.map((page, index) => (
     <li property="itemListElement" typeof="ListItem">
       <meta property="position" content={ index.toString() } />
-      <a property="item" typeof="WebPage" href={ accelerator.urlFormatter.addSlashToAddress(page.url) } aria-current={ page.ariaCurrent } rel={ page.rel }><span property="name">{ page.title }</span></a>
+      <a property="item" typeof="WebPage" href={ accelerator.urlFormatter.formatAddress(page.url) } aria-current={ page.ariaCurrent } rel={ page.rel }><span property="name">{ page.title }</span></a>
     </li>
     ))}
     {breadcrumbs && breadcrumbs.map( (crumb) => (
     <li property="itemListElement" typeof="ListItem">
       <meta property="position" content={ (metaIndex++).toString() } />
-      <a property="item" typeof="WebPage" href={ accelerator.urlFormatter.addSlashToAddress(crumb.url) } aria-current={ crumb.ariaCurrent }><span property="name">{ crumb.title }</span></a>
+      <a property="item" typeof="WebPage" href={ accelerator.urlFormatter.formatAddress(crumb.url) } aria-current={ crumb.ariaCurrent }><span property="name">{ crumb.title }</span></a>
     </li>
     ))}
   </ol>

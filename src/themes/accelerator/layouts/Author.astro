@@ -16,7 +16,7 @@ const lang = frontmatter.lang ?? SITE.default.lang;
 const accelerator = new Accelerator(SITE);
 const redirectFrontmatter = { 
     ...frontmatter,
-    redirect: accelerator.urlFormatter.addSlashToAddress(Astro.request.url) + '1/'
+    redirect: accelerator.urlFormatter.formatAddress(Astro.request.url) + '1/'
 };
 ---
 <Redirect frontmatter={ redirectFrontmatter } headings={ headings } />

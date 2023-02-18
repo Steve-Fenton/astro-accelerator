@@ -29,7 +29,7 @@ const pages = allPages.sort(PostOrdering.sortByModDate).slice(0, Math.min(50, pa
         <tr>
             <td>
                 {PostFiltering.isListable(p) && (
-                    <a href={ accelerator.urlFormatter.addSlashToAddress(p.url) }>{ p.frontmatter.title }</a>
+                    <a href={ accelerator.urlFormatter.formatAddress(p.url) }>{ p.frontmatter.title }</a>
                 )}
                 {PostFiltering.isListable(p) == false && (
                     <span>{ p.frontmatter.title }</span>

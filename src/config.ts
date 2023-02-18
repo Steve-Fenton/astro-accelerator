@@ -3,6 +3,7 @@ import type { Site } from "astro-accelerator-utils/types/Site";
 const SITE: Site = {
 	owner: 'Steve Fenton',
 	url: 'https://astro.stevefenton.co.uk',
+	useTrailingUrlSlash: true,
 	feedUrl: '/articles/feed.xml',
 	title: 'Astro Accelerator',
 	description: 'An Astro quick start project.',

@@ -34,7 +34,7 @@ async function getData() {
     <entry>
       <title>${a.frontmatter.title ?? ''}</title>
       <link href="${ SITE.url + a.url }" />
-      <id>${ SITE.url + accelerator.urlFormatter.addSlashToAddress(a.url) }</id>
+      <id>${ SITE.url + accelerator.urlFormatter.formatAddress(a.url) }</id>
       <published>${ a.frontmatter.pubDate }</published>
       <updated>${ a.frontmatter.pubDate ?? a.frontmatter.pubDate }</updated>
       <summary>${ a.frontmatter.description ?? '' }</summary>

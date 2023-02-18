@@ -15,7 +15,7 @@ const accelerator = new Accelerator(SITE);
 ---
 {(page.children.length == 0) && (
 <li>
-  <a href={ accelerator.urlFormatter.addSlashToAddress(page.url) } aria-current={ page.ariaCurrent } rel={ page.rel }>{ page.title }</a>
+  <a href={ accelerator.urlFormatter.formatAddress(page.url) } aria-current={ page.ariaCurrent } rel={ page.rel }>{ page.title }</a>
 </li>
 )}
 {(page.children.length > 0) && (

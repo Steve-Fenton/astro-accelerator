@@ -41,9 +41,9 @@ const authorImage = authorList?.image?.src
   <div class="author-info">
     <span class="author-list">{ _(Translations.post.written_by) }
       {authorList.mainAuthor &&
-        <span itemprop="author" itemscope itemtype="https://schema.org/Person"><a href={ accelerator.urlFormatter.addSlashToAddress(authorList.mainAuthor.url) + '1/' } itemprop="url"><span itemprop="name">{ authorList.mainAuthor.frontmatter.title }</span></a></span>
+        <span itemprop="author" itemscope itemtype="https://schema.org/Person"><a href={ accelerator.urlFormatter.formatAddress(authorList.mainAuthor.url) + '1/' } itemprop="url"><span itemprop="name">{ authorList.mainAuthor.frontmatter.title }</span></a></span>
       }{authorList.contributors.map((writer) => (
-        <span>, </span><span itemprop="contributor" itemscope itemtype="https://schema.org/Person"><a href={ accelerator.urlFormatter.addSlashToAddress(writer.url) + '1/' } itemprop="url"><span itemprop="name">{ writer.frontmatter.title }</span></a></span>
+        <span>, </span><span itemprop="contributor" itemscope itemtype="https://schema.org/Person"><a href={ accelerator.urlFormatter.formatAddress(writer.url) + '1/' } itemprop="url"><span itemprop="name">{ writer.frontmatter.title }</span></a></span>
       ))}
       <br /><time datetime={ frontmatter.pubDate.toString() } itemprop="datePublished">
       { accelerator.dateFormatter.formatDate(frontmatter.pubDate, lang) }

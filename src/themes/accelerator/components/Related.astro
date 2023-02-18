@@ -55,7 +55,7 @@ const articles = relatedPosts.map(p => {
 {articles.length > 0 &&
 <ul class="post-list anim-show-parent">
   {articles.map((post) => (
-  <li class="list-item" data-destination={ accelerator.urlFormatter.addSlashToAddress(post.url) } data-image={ (post.frontmatter.bannerImage?.src.length > 0).toString() }>
+  <li class="list-item" data-destination={ accelerator.urlFormatter.formatAddress(post.url) } data-image={ (post.frontmatter.bannerImage?.src.length > 0).toString() }>
     <article>
       <div class="list-item-image">
       {post.img && (
@@ -72,7 +72,7 @@ const articles = relatedPosts.map(p => {
       </div>
       <div class="list-item-content">
         <h3>
-          <a href={ accelerator.urlFormatter.addSlashToAddress(post.url) }>{ post.frontmatter.title }</a>
+          <a href={ accelerator.urlFormatter.formatAddress(post.url) }>{ post.frontmatter.title }</a>
         </h3>
         <AuthorsMini lang={ lang } frontmatter={ post.frontmatter satisfies Frontmatter } />
       </div>

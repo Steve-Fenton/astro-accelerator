@@ -21,12 +21,12 @@ const accelerator = new Accelerator(SITE);
 ---
 <nav class="post-paging" aria-label={ _(Translations.aria.paging) }>
   {page.url.prev
-    ? <a href={ accelerator.urlFormatter.addSlashToAddress(page.url.prev) }>{ _(Translations.articles.previous) }</a>
+    ? <a href={ accelerator.urlFormatter.formatAddress(page.url.prev) }>{ _(Translations.articles.previous) }</a>
     : <span>{ _(Translations.articles.previous) }</span>}
   {pageLinks.map((link) => (
-      <a href={ accelerator.urlFormatter.addSlashToAddress(link.url) } aria-current={ link.ariaCurrent } class={ link.class }>{ link.title }</a>
+      <a href={ accelerator.urlFormatter.formatAddress(link.url) } aria-current={ link.ariaCurrent } class={ link.class }>{ link.title }</a>
   ))}
   {page.url.next
-    ? <a href={ accelerator.urlFormatter.addSlashToAddress(page.url.next) }>{ _(Translations.articles.next) }</a>
+    ? <a href={ accelerator.urlFormatter.formatAddress(page.url.next) }>{ _(Translations.articles.next) }</a>
     : <span>{ _(Translations.articles.next) }</span>}
   </nav>

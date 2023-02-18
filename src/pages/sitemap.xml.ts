@@ -15,7 +15,7 @@ async function getData() {
     const article: any = await allPages[path]();
     const addToSitemap = PostFiltering.showInSitemap(article);
 
-    let url = accelerator.urlFormatter.addSlashToAddress(article.url);
+    let url = accelerator.urlFormatter.formatAddress(article.url);
 
     if (article.frontmatter.layout == 'src/layouts/Author.astro') {
       url += '1/';

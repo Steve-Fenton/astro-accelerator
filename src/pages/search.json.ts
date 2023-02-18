@@ -34,7 +34,7 @@ const getData = async () => {
             }),
             description: page.frontmatter.description ?? '',
             tags: page.frontmatter.tags ?? [],
-            url: SITE.url + accelerator.urlFormatter.addSlashToAddress(url),
+            url: SITE.url + accelerator.urlFormatter.formatAddress(url),
             date: page.frontmatter.pubDate ?? ''
         });
     }

@@ -50,13 +50,65 @@ https://astro.stevefenton.co.uk/sitemap.xml
 ```
 
 In `/src/config.ts` change the sitewide defaults in the `SITE` variable.
+
+## Trailing Slashes
+
+Decide whether you want trailing slashes...
+
+There are two items to update for this as the Accelerator doesn't access your Astro config file.
+
+In **astro.config.mjs** set the trailing slash to "always" or "never".
+
+```javascript
+export default defineConfig({
+    site: '...',
+    markdown: {
+        trailingSlash: 'always',
+    },
+});
+```
+
+In **src/config.ts** set `useTrailingUrlSlash` to `true` or `false`.
+
+```typescript
+const SITE: Site = {
+	url: '...',
+	useTrailingUrlSlash: true,
+}
 ```
 
 In `/src/config.ts` add any analytics or validation tags to `HEADER_SCRIPTS`.
 
+## Running in a sub-folder
+
+Some use cases run the site in a sub-folder, in order to front-door the site as a microsite that is part of a larger site. For example:
+
+ - www.example.com - operated by the marketing team, maybe using a big platform
+ - www.example.com/dev-blog/ - operated by the development team, running Astro
+
+```javascript
+export const SITE = {
+    url: 'https://example.com',
+	subfolder: '/dev-blog',
+```
+
+Place pages in the folder:
+
+```
+src/pages/dev-blog/...
+```
+
+Place assets in the folder
+
+```
+public/dev-blog/...
+```
+
+When you map your front door for `www.example.com/dev-blog/` all your paths will be correct as you've placed all your content in this folder. This avoids issues attempting to load resources from the "root" that would be front-doored to your other site running at `www.example.com`.
+
 ## Migrating From WordPress
 
-This section is in-progress.
+This section is a work in progress.
 
 Export to Jekyll plugin (it just creates markdown files and images).
 
@@ -104,30 +156,3 @@ Using your trusty find and replace tools, you can fix up the front-matter.
 Images can be taken from /wp-content/uploads/... and placed in /public/img/...
 
 A bit more find and replace to sort out image references.
-
-## Running in a sub-folder
-
-Some use cases run the site in a sub-folder, in order to front-door the site as a microsite that is part of a larger site. For example:
-
- - www.example.com - operated by the marketing team, maybe using a big platform
- - www.example.com/dev-blog/ - operated by the development team, running Astro
-
-```javascript
-export const SITE = {
-    url: 'https://example.com',
-	subfolder: '/dev-blog',
-```
-
-Place pages in the folder:
-
-```
-src/pages/dev-blog/...
-```
-
-Place assets in the folder
-
-```
-public/dev-blog/...
-```
-
-When you map your front door for `www.example.com/dev-blog/` all your paths will be correct as you've placed all your content in this folder. This avoids issues attempting to load resources from the "root" that would be front-doored to your other site running at `www.example.com`.

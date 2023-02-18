@@ -59,7 +59,7 @@ function getLoadingAttribute() {
 ---
 <ul class="post-list anim-show-parent">
   {articles.map((post) => (
-  <li class="list-item" data-destination={ accelerator.urlFormatter.addSlashToAddress(post.url) } data-image={ (post.frontmatter.bannerImage?.src.length > 0).toString() }>
+  <li class="list-item" data-destination={ accelerator.urlFormatter.formatAddress(post.url) } data-image={ (post.frontmatter.bannerImage?.src.length > 0).toString() }>
     <article>
       <div class="list-item-image">
       {post.img && (
@@ -76,7 +76,7 @@ function getLoadingAttribute() {
       </div>
       <div class="list-item-content">
         <h3>
-          <a href={ accelerator.urlFormatter.addSlashToAddress(post.url) }>{ post.title }</a>
+          <a href={ accelerator.urlFormatter.formatAddress(post.url) }>{ post.title }</a>
         </h3>
         <AuthorsMini lang={ lang } frontmatter={ post.frontmatter satisfies Frontmatter } />
       </div>

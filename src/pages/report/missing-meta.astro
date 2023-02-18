@@ -28,7 +28,7 @@ const pages = missingMeta.sort(PostOrdering.sortByPubDateDesc).slice(0, Math.min
             </thead>
         {pages.map(p => 
         <tr>
-            <td><a href={ accelerator.urlFormatter.addSlashToAddress(p.url) }>{ p.frontmatter.title }</a></td>
+            <td><a href={ accelerator.urlFormatter.formatAddress(p.url) }>{ p.frontmatter.title }</a></td>
             <td>{ p.frontmatter.pubDate }</td>
             <td>{ p.frontmatter.modDate }</td>
         </tr>
