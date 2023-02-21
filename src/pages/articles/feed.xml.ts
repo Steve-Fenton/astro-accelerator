@@ -6,7 +6,7 @@ import { Accelerator, PostFiltering } from 'astro-accelerator-utils';
 
 async function getData() {
   //@ts-ignore
-  const allArticles = import.meta.glob('./**/*.md');
+  const allArticles = import.meta.glob('./**/*.md', './**/*.mdx');
 
   const accelerator = new Accelerator(SITE);
   

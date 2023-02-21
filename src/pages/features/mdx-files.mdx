@@ -1,0 +1,47 @@
+---
+layout: 'src/layouts/Default.astro'
+title: 'MDX Files'
+navOrder: 1000
+pubDate: 2022-09-23
+keywords: astro accelerator,markdown,custom markdown
+description: How markdown extensions work in Astro Accelerator.
+bannerImage:
+    src: /img/surface-accessories.png
+    alt: Dummy image
+---
+export const example = 'This text originates from a variable in the .mdx file';
+
+We are experimenting with `.mdx` file support. In general, these files work with Astro Accelerator just like normal markdown files, except you can use MDX syntax inside them. This page has been authored as an `.mdx` page as an example.
+
+The text below is an example of MDX variables:
+
+{example}
+
+You can use varaibles using `{variableName}` syntax.
+
+## Adding MDX to Astro
+
+Install the extension:
+
+```
+npm install @astrojs/mdx
+```
+
+Update your `astro.config.mjs` file:
+
+```javascript
+import mdx from '@astrojs/mdx';
+
+export default defineConfig({
+    integrations: [mdx()],
+    // ...
+});
+```
+
+## Known issues
+
+If you use variables in headings, the table of contents and bookmark address reflect the variable name rather than the text that will be displayed on the page
+
+## Unknown issues
+
+Please [let me know on GitHub](https://github.com/Steve-Fenton/astro-accelerator/issues).

@@ -46,7 +46,7 @@ type CacheData = {
 }
 
 export async function getData() {
-  const sourcePosts = await Astro.glob('../../**/*.md') satisfies MarkdownInstance[];
+  const sourcePosts = await Astro.glob(['../../**/*.md', '../../**/*.mdx']) satisfies MarkdownInstance[];
     
   const data: CacheData = { posts: [], tags: []};
 

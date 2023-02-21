@@ -22,6 +22,8 @@ type Props = {
 }
 const { frontmatter, headings, breadcrumbs } = Astro.props satisfies Props;
 
+console.log(headings);
+
 const lang = frontmatter.lang ?? SITE.default.lang;
 const textDirection = frontmatter.dir ?? SITE.default.dir;
 

@@ -1,3 +1,4 @@
+import mdx from '@astrojs/mdx';
 import remarkDirective from 'remark-directive';
 import { defineConfig } from 'astro/config';
 import { attributeMarkdown, wrapTables } from '/src/themes/accelerator/utilities/custom-markdown.mjs';
@@ -5,6 +6,7 @@ import { attributeMarkdown, wrapTables } from '/src/themes/accelerator/utilities
 // https://astro.build/config
 export default defineConfig({
     site: 'https://astro.stevefenton.co.uk',
+    integrations: [mdx()],
     markdown: {
         remarkPlugins: [
             remarkDirective,
