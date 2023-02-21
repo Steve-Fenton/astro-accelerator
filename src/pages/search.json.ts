@@ -6,7 +6,7 @@ import { SITE } from '@config';
 
 const getData = async () => {
     //@ts-ignore
-    const allPages = import.meta.glob(['./**/*.md'), './**/*.mdx')]);
+    const allPages = import.meta.glob(['./**/*.md', './**/*.mdx']);
     const items = [];
 
     const accelerator = new Accelerator(SITE);
