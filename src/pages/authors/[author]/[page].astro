@@ -29,24 +29,25 @@ const author = accelerator.posts.all()
     return accelerator.urlFormatter.getAuthorId(url) == slug;
   })[0];
 
+// Language
+const _ = Lang(lang);
+
 // Props
 type Props = {
   page: Page<MarkdownInstance>;
   headings: { depth: number; slug: string; text: string; }[];
   pubDate: Date;
 };
-const { page, headings, pubDate } = Astro.props satisfies Props;
+const { title, page, headings, pubDate } = Astro.props satisfies Props;
 
 const authorFrontmatter = {
   ...author.frontmatter,
+  titleAdditional: `(${ _(Translations.articles.author) }) ` + _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()),
   pubDate: pubDate
 } as Frontmatter;
 
 const text = (author.frontmatter.summary ?? '').replace('\n', '\n\n');
 const authorText = accelerator.markdown.getHtmlFrom(text);
-
-// Language
-const _ = Lang(lang);
 
 // Logic
 type AuthorData = {
@@ -95,8 +96,19 @@ export async function getStaticPaths({ paginate }: any) {
 
 // Page Links
 const pageLinks = accelerator.paging.links(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
+
+// Breadcrumbs
+const breadcrumbs: { url: string; title: string; ariaCurrent?: string; }[] = []
+
+if (page.url.current != pageLinks[0].url) {
+  breadcrumbs.push({
+    url: page.url.current,
+    title: _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()),
+    ariaCurrent: 'page',
+  });
+}
 ---
-<Default frontmatter={ authorFrontmatter } headings={ headings }>
+<Default frontmatter={ authorFrontmatter } headings={ headings } breadcrumbs={ breadcrumbs }>
   <Fragment set:html={ authorText } />
   <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()) }</h2>
   <ArticleList lang={ lang } posts={ page.data } />

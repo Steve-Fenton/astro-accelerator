@@ -109,6 +109,9 @@
         "tag": {
             "_note": "This must match your URL path to tag pages, as in /tag/example/1/",
             "en": "tag"
+        },
+        "author": {
+            "en": "author"
         }
     }
 }
