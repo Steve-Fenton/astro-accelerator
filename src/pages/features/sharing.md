@@ -10,7 +10,11 @@ bannerImage:
     alt: Dummy image
 ---
 
-The sharing feature works for elements with the `data-share` attribute.
+The sharing feature works for elements with the `data-share` attribute within browsers that support the `navigator.share` API.
+
+:::div{.hint}
+Some browsers don't support the share API (though most plan to add support). In these cases, the share links will be hidden. Users can copy the address or use the share feature built into the browser to trigger the share.
+:::
 
 ```html
 <button data-share>Share Me!</button>
