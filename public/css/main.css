@@ -345,14 +345,14 @@ nav.site-nav h2 {
 
 .site-nav a {
     text-indent: var(--marker-size);
-    width: calc(100% - 2rem);
+    width: calc(100% - 2.07rem);
     display: inline-block;
     padding: 0.5rem 1rem;
 }
 
 .site-nav li.has-children summary span {
     text-indent: 0;
-    width: calc(100% - 2rem - var(--marker-size));
+    width: calc(100% - 2.07rem - var(--marker-size));
     display: inline-block;
     padding: 0.5rem 1rem;
     text-decoration: underline;
