@@ -12,7 +12,14 @@ function handleClick() {
         url: url
     };
 
-    navigator.share(share);
+    if (navigator.share) {
+        navigator.share(share);
+    } else {
+        navigator.clipboard.writeText(url).then(
+            () => { console.log('Copy OK'); },
+            () => { console.log('Copy Failed'); }
+        );
+    }
 }
 
 function enableSharing() {
