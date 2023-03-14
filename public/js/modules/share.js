@@ -14,17 +14,17 @@ function handleClick() {
 
     if (navigator.share) {
         navigator.share(share);
-    } else {
-        navigator.clipboard.writeText(url).then(
-            () => { console.log('Copy OK'); },
-            () => { console.log('Copy Failed'); }
-        );
     }
 }
 
 function enableSharing() {
+    const canShare = !!navigator.share;
     qsa('[data-share]').forEach((elem) => {
-        elem.addEventListener('click', handleClick);
+        if (canShare) {
+            elem.addEventListener('click', handleClick);
+        } else {
+            elem.style.display = 'none';
+        }
     });
 }
 

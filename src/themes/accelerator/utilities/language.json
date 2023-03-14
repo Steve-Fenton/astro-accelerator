@@ -113,10 +113,5 @@
         "author": {
             "en": "author"
         }
-    },
-    "share": {
-        "copy_fallback": {
-            "en": "The address has been copied to the clipboard"
-        }
     }
 }
