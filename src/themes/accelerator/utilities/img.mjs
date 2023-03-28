@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { ImagePool } from '@squoosh/lib';
+import sharp from 'sharp';
 
 const workingDirectory = process.cwd();
 
@@ -79,13 +79,6 @@ await recurseFiles('');
 
 console.log(`Found ${filesToProcess.length} files to process`);
 
-async function processImage(imagePool, src, options) {
-    const file = await fs.promises.readFile(src);
-    const image = imagePool.ingestImage(file);
-    await image.encode(options);
-    return image;
-}
-
 for (const file of filesToProcess) {
     console.log(file.path);
     const source = path.join(imageDirectory, file.path);
@@ -94,71 +87,55 @@ for (const file of filesToProcess) {
 
     const ext = path.parse(source).ext;
 
-    let image = null;
-    let rawEncodedImage;
-
-    // Create optimised fallback image
-    const imagePool = new ImagePool(1);
     switch (ext) {
         case '.png':
-            image = await processImage(imagePool, source, { oxipng: {} });
-            rawEncodedImage = (await image.encodedWith.oxipng).binary;
-            await fs.promises.writeFile(destination + '.png', rawEncodedImage);
+            sharp(source)
+                .png()
+                .toFile(destination + '.png');
             break;
         case '.jpg':
         case '.jpeg':
-            image = await processImage(imagePool, source, { mozjpeg: {} });
-            rawEncodedImage = (await image.encodedWith.mozjpeg).binary;
-            await fs.promises.writeFile(destination + '.jpg', rawEncodedImage);
+            sharp(source)
+                .jpeg({ mozjpeg: true })
+                .toFile(destination + '.jpg');
             break;
         case '.webp':
-            image = await processImage(imagePool, source, { webp: { quality: 90 } });
-            rawEncodedImage = (await image.encodedWith.webp).binary;
-            await fs.promises.writeFile(destination + '.webp', rawEncodedImage);
+            sharp(source)
+                .webp({ quality: 80 })
+                .toFile(destination + '.webp');
             break;
     }
 
-    if (image) {
-        const info = await image.decoded;
-        const metadata = {
-            width: info.bitmap.width,
-            height: info.bitmap.height,
-            sizeInBytes: info.size
-        };
+    const info = await sharp(source).metadata();
 
-        const metaFile = source + '.json';
-        await fs.promises.writeFile(metaFile, JSON.stringify(metadata));
-    }
+    const metadata = {
+        width: info.width,
+        height: info.height,
+        sizeInBytes: info.size
+    };
 
-    await imagePool.close();
+    const metaFile = source + '.json';
+    await fs.promises.writeFile(metaFile, JSON.stringify(metadata));
 
     // Create resized images
     for (const key in size) {
-        const imagePool = new ImagePool(1);
         const resizeDestination = getDestinationFilePathless(file.path, size[key]);
         await createDestinationFolder(resizeDestination);
 
-        const imgFile = await fs.promises.readFile(source);
-        const image = imagePool.ingestImage(imgFile);
+        const metadata = await sharp(source).metadata();
 
-        const info = await image.decoded;
-        if (info.bitmap.width > size[key]) {
+        if (metadata.width  > size[key]) {
             // Only resize if the image is larger than the target size
-            const preprocessOptions = {
-                resize: {
-                    width: size[key]
-                }
-            };
-    
-            await image.preprocess(preprocessOptions);
+            sharp(source)
+                .resize(size[key], null)
+                .webp({ quality: 80 })
+                .toFile(resizeDestination + '.webp');
+        } else {
+            // Don't resize as it's smaller than target size
+            sharp(source)
+                .webp({ quality: 80 })
+                .toFile(resizeDestination + '.webp');
         }
-
-        await image.encode({ webp: { quality: 90 } });
-
-        rawEncodedImage = (await image.encodedWith.webp).binary;
-        await fs.promises.writeFile(resizeDestination + '.webp', rawEncodedImage);
-
-        await imagePool.close();
     }
 }
 
