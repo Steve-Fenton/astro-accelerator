@@ -892,6 +892,22 @@ pre.astro-code code {
     transform: rotate(4deg);
 }
 
+.bookmark-link {
+    stroke: var(--fore-link);
+    opacity: 0;
+    margin-inline-start: 0.2em;
+    padding-inline-start: 0.3em;
+    padding-inline-end: 0.3em;
+    border-radius: var(--block-radius);
+}
+
+h2:hover .bookmark-link,
+h3:hover .bookmark-link,
+h4:hover .bookmark-link,
+h5:hover .bookmark-link,
+h6:hover .bookmark-link {
+    opacity: 1;
+}
 
 .magnify-container {
     max-height: 0px;
@@ -992,5 +1008,9 @@ button[data-share]:focus {
 
     .anim-show-parent .list-item img {
         scale: 1;
+    }
+
+    .bookmark-link {
+        transition: opacity 200ms ease-in-out;
     }
 }

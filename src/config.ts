@@ -35,6 +35,7 @@ const SITE: Site = {
 		codeBlocks: ['copy'],
 		figures: ['enlarge'],
 		youTubeLinks: ['embed'],
+		headers: ['link'],
 	},
 	images: {
 		// Generated using https://ausi.github.io/respimagelint/

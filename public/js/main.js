@@ -47,3 +47,8 @@ if (enabled(f.figures, 'enlarge')) {
     const figures = await import('./modules/figures.js');
     figures.enhanceFigures();
 }
+
+if (enabled(f.headers, 'link')) {
+    const headers = await import('./modules/headers.js');
+    headers.enhanceHeaders();
+}

@@ -29,6 +29,10 @@ featureFlags: {
 
 When you remove a feature, the associated JavaScript file is not loaded.
 
+## Headers
+
+- 'link': adds a "link" icon to each heading with an id attribute to provide the bookmark link for the header.
+
 ## Code Blocks
 
 - 'copy': adds a "copy" icon to code blocks to help users copy the examples.
