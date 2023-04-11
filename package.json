@@ -1,5 +1,5 @@
 {
-  "version": "0.0.76",
+  "version": "0.0.78",
   "author": "Steve Fenton",
   "name": "astro-accelerator",
   "description": "A super-lightweight, accessible, SEO-friendly starter project for Astro",
@@ -25,8 +25,8 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^0.18.2",
-    "astro": "^2.1.7",
-    "astro-accelerator-utils": "^0.2.24",
+    "astro": "^2.2.1",
+    "astro-accelerator-utils": "^0.2.25",
     "hast-util-from-selector": "^2.0.1",
     "remark-directive": "^2.0.1",
     "sharp": "^0.31.3"
