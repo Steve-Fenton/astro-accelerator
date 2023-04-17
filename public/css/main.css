@@ -363,6 +363,11 @@ nav.site-nav h2 {
     text-indent: calc(var(--marker-size) * 2);
 }
 
+.site-nav li.has-children ul details {
+    width: calc(100% - var(--marker-size));
+    margin-inline-start: var(--marker-size);
+}
+
 .site-nav a[aria-current] {
     font-weight: bold;
 }
