@@ -519,6 +519,10 @@ nav.site-nav h2 {
     padding: 0.5rem 1rem;
 }
 
+.page-toc li a.highlight {
+    font-weight: bold;
+}
+
 .page-toc li.toc-lev-2 {
     padding-left: 1rem;
 }
