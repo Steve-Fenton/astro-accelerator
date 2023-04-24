@@ -22,21 +22,30 @@ function highlightCurrentHeading(tocSelector) {
     links = qsa(tocSelector);
 
     links.forEach((link) => {
-        const linkParts = link.href.split('#');
-        if (linkParts.length === 2) {
-            const id = linkParts[1];
-            headings.push(document.getElementById(id));
+        const bookmarkLink = getBookmarkLink(link.href);
+        if (bookmarkLink) {
+            headings.push(document.getElementById(bookmarkLink));
         }
     });
 
     recheck();
 }
 
+function getBookmarkLink(link) {
+    const linkParts = link.split('#');
+    if (linkParts.length === 2) {
+        return linkParts[1];
+    }
+
+    return '';
+}
+
 function highlight(id) {
     links.forEach((link) => {
         link.classList.remove(highlightClass);
 
-        if (link.href.indexOf(`#${id}`) > -1) {
+        const bookmarkLink = getBookmarkLink(link.href);
+        if (bookmarkLink === id) {
             link.classList.add(highlightClass);
         }
     });
@@ -50,7 +59,10 @@ function recheck() {
 
     headings.forEach((elem) => {
         
-        const isValid = (docTop + vh) - elem.offsetTop > (vh / 3);
+        const hasPassed = (elem.offsetTop < docTop);
+        const inView = (elem.offsetTop > docTop) && (elem.offsetTop < (docTop + vh));
+        const isValid = (docTop + vh) - elem.offsetTop > (vh / 1.5);
+
         if (isValid) {
             validItems.push(elem);
         }
