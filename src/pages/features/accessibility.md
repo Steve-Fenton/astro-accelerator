@@ -46,3 +46,19 @@ For example:
 - Mobile Menu: The overlay navigation for small screens uses JavaScript, but without JavaScript it is a simple bookmark link to the navigation at the end of the page.
 - Site Search: The site search uses JavaScript, but without it will perform a fallback search (using Google Search by default, but this is configurable)
 - Clickable Boxes: Links are "expanded" to make an entire box clickable, but a default link is available if JavaScript doesn't run.
+
+## Supplemental link information
+
+The main navigation detects scenarios where supplemental information is valuable and adds it.
+
+For example, if you have the frontmatter:
+
+```yaml
+title: About Astro Accelerator
+navTitle: Overview
+navSection: About
+```
+
+It is possible that the title "Overview" has insufficient context when used in the menu.
+
+Where a navigation title is supplied, the full title is added as supplemental information to assist users.
