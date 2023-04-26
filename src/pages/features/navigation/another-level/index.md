@@ -1,6 +1,8 @@
 ---
 layout: src/layouts/Default.astro
 title: Another Level
+navTitle: Overview
+navSection: Another Level
 navOrder: 1000
 pubDate: 2022-09-23
 keywords: astro accelerator,accessibility

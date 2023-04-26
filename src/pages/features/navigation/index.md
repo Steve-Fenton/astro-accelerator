@@ -1,6 +1,8 @@
 ---
 layout: src/layouts/Default.astro
-title: Navigation
+title: Navigation in Astro Accelerator
+navTitle: Overview
+navSection: Navigation
 navOrder: 3000
 pubDate: 2022-09-23
 modDate: 2022-11-04

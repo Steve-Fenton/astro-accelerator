@@ -1,6 +1,7 @@
 ---
 layout: src/layouts/Default.astro
-title: About
+title: About Astro Accelerator
+navTitle: Overview
 navSection: About
 navOrder: 1000
 pubDate:  2022-09-17
