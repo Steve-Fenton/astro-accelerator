@@ -931,18 +931,35 @@ pre.astro-code code {
     max-height: 0px;
     margin: 0;
     width: 100%;
-    text-align: right;
+    text-align: end;
     z-index: 1;
     position: relative;
     top: -1rem;
 }
 
 .magnify-icon {
-    border-radius: 0.2rem;
-    stroke: var(--fore-link-alt);
-    fill: var(--aft);
-    background-color: transparent;
     opacity: 0;
+    border-radius: 0.2rem;
+    border: 1px solid var(--fore-link);
+    color: var(--fore-link);
+    width: 2rem;
+    height: 2rem;
+    overflow: hidden;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.input-touch .magnify-icon {
+    opacity: 1;
+}
+
+.magnify-icon:before {
+    content: '↗';
+    font-family: var(--unicode-font);
+    font-size: 2rem;
+    line-height: 2rem;
+    top: -0.15em;
+    position: relative;
 }
 
 figure:hover .magnify-icon,
@@ -956,12 +973,6 @@ figure:focus .magnify-icon {
     stroke: var(--fore-link);
     transform: rotate(4deg);
     opacity: 1;
-}
-
-@media (max-width: 860px) {
-    .magnify-icon {
-        opacity: 1;
-    }
 }
 
 /* Custom Divisions */
