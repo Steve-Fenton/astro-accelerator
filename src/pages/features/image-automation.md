@@ -1,6 +1,7 @@
 ---
 layout: src/layouts/Default.astro
-title: Images
+title: Image Automation
+navTitle: Images
 navOrder: 1500
 pubDate: 2022-09-28
 keywords: astro accelerator,image,automation,conversion,resizing,responsive
