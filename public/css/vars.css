@@ -35,7 +35,7 @@
     --heading-font: Georgia, 'Times New Roman', Times, serif;
     --content-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --code-font: Consolas, 'Courier New', Courier, monospace;
-    --unicode-font: font-family: "Segoe UI Symbol", "Arial Unicode MS", "DejaVu Sans", "Meiryo UI", "MS UI Gothic", "Everson Mono Unicode", Meiryo, "MS Gothic", "MS Mincho", "MS PGothic", "MS PMincho", "Meslo LG L", "Meslo LG L DZ", "Meslo M L", "Meslo M L DZ", "Meslo S L", "Meslo S L DZ", "Symbola", "DejaVu Sans Condensed", "DejaVu Sans Mono", Code2000, "Everson Mono", Quivira, sans-serif;
+    --unicode-font: "Segoe UI Symbol", "Arial Unicode MS", sans-serif;
 
     --block-gap: 2rem;
     --block-radius: 0.3rem;
