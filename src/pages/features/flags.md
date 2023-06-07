@@ -44,3 +44,7 @@ When you remove a feature, the associated JavaScript file is not loaded.
 ## YouTube Links
 
 - 'embed': transforms YouTube links into embedded videos, lazy loaded when the user clicks
+
+## Details
+
+- 'tabs': converts details elements into a tabbed interface based on the `data-group` name

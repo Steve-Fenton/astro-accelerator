@@ -36,6 +36,7 @@ const SITE: Site = {
 		figures: ['enlarge'],
 		youTubeLinks: ['embed'],
 		headers: ['link'],
+		details: ['tabs'],
 	},
 	images: {
 		// Generated using https://ausi.github.io/respimagelint/

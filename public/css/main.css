@@ -1015,6 +1015,76 @@ button[data-share]:focus {
     stroke: var(--fore-link-alt);
 }
 
+/* Detail tabs */
+  
+.tablist [role="tablist"] {
+    min-width: 100%;
+}
+
+.tablist [role="tab"],
+.tablist [role="tab"]:focus,
+.tablist [role="tab"]:hover {
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    top: 2px;
+    margin: 0;
+    margin-top: 4px;
+    border: 2px solid var(--aft-block);
+    border-radius: var(--block-radius) var(--block-radius) 0 0;
+    background: var(--aft-block);
+    outline: none;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+}
+
+.tablist [role="tab"][aria-selected="true"] {
+    margin-top: 0;
+    border-width: 2px;
+    border-top-width: 6px;
+    border-top-color: var(--fore-link);
+    border-inline-color: var(--fore-link);
+    border-bottom-color: var(--aft);
+    background-color: var(--aft);
+}
+
+.tablist [role="tab"][aria-selected="false"] {
+    top: 0px;
+}
+
+.tablist [role="tab"] span.focus {
+    display: inline-block;
+    margin: 2px;
+    padding: 4px 6px;
+    outline: none;
+}
+
+.input-keyboard .tablist [role="tab"]:hover span.focus,
+.input-keyboard .tablist [role="tab"]:focus span.focus,
+.input-keyboard .tablist [role="tab"]:active span.focus {
+    outline: 2px solid var(--fore-link);
+}
+
+[role="tabpanel"] {
+    position:relative;
+    padding: 1rem;
+    border: 2px solid var(--fore-link);
+    border-radius: 0 var(--block-radius) var(--block-radius);
+    background: var(--aft);
+    min-height: 10em;
+    width: 100%;
+    overflow: auto;
+}
+
+[role="tabpanel"].is-hidden {
+    display: none;
+}
+
+[role="tabpanel"] p {
+    margin: 0;
+}
+
 /* Animation */
 
 @media (prefers-reduced-motion: no-preference) {
