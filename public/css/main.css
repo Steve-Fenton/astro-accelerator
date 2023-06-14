@@ -1073,7 +1073,6 @@ button[data-share]:focus {
     border-radius: 0 var(--block-radius) var(--block-radius);
     background: var(--aft);
     min-height: 10em;
-    width: 100%;
     overflow: auto;
 }
 
