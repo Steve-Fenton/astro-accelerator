@@ -36,7 +36,7 @@ a, summary {
     border-radius: var(--block-radius);
 }
 
-summary::marker {
+summary {
     text-decoration: none;
 }
 
