@@ -36,6 +36,10 @@ a, summary {
     border-radius: var(--block-radius);
 }
 
+summary::marker {
+    text-decoration: none;
+}
+
 a:hover,
 a:focus,
 summary:hover,
