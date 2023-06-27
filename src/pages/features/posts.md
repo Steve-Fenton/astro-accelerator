@@ -1,5 +1,4 @@
 ---
-layout: src/layouts/Default.astro
 title: Posts
 navOrder: 4000
 pubDate: 2022-09-23

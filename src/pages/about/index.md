@@ -1,5 +1,4 @@
 ---
-layout: src/layouts/Default.astro
 title: About Astro Accelerator
 navTitle: Overview
 navSection: About

@@ -1,5 +1,4 @@
 ---
-layout: src/layouts/Default.astro
 title: Getting Started
 navOrder: 1000
 pubDate: 2022-09-17

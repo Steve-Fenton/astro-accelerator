@@ -1,5 +1,4 @@
 ---
-layout: src/layouts/Default.astro
 title: Tabs
 navOrder: 6500
 pubDate: 2023-06-07

@@ -1,5 +1,4 @@
 ---
-layout: src/layouts/Default.astro
 title: Image Automation
 navTitle: Images
 navOrder: 1500

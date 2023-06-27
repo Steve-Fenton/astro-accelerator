@@ -1,5 +1,4 @@
 ---
-layout: src/layouts/Default.astro
 title: Sharing
 navOrder: 5000
 pubDate: 2022-09-23

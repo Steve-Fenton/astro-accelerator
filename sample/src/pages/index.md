@@ -1,5 +1,4 @@
 ---
-layout: src/layouts/Default.astro
 title: Welcome to Astro Accelerator
 subtitle: A *super-lightweight*, accessible, SEO-friendly starter project for Astro
 navTitle: Home

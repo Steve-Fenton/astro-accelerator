@@ -1,5 +1,4 @@
 ---
-layout: src/layouts/Default.astro
 title: SEO
 navOrder: 6000
 pubDate: 2022-09-23

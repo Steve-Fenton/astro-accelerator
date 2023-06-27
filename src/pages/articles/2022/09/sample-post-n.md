@@ -1,5 +1,4 @@
 ---
-layout: src/layouts/Default.astro
 title: Sample Post n (Future Dated)
 navMenu: false
 pubDate: 2525-12-31

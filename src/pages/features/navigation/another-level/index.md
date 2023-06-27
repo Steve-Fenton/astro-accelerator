@@ -1,5 +1,4 @@
 ---
-layout: src/layouts/Default.astro
 title: Another Level
 navTitle: Overview
 navSection: Another Level

@@ -1,5 +1,4 @@
 ---
-layout: src/layouts/Default.astro
 title: Flags
 navOrder: 500
 pubDate: 2022-10-31

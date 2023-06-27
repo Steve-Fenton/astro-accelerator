@@ -1,5 +1,4 @@
 ---
-layout: src/layouts/Default.astro
 title: Frontmatter
 navOrder: 3000
 pubDate: 2022-10-24
@@ -10,14 +9,6 @@ description: An overview of frontmatter in Astro Accelerator.
 ## Required frontmatter
 
 The following items are the minimum required frontmatter fields.
-
-### layout
-
-String. Specifies the layout for the page.
-
-```yaml
-layout: src/layouts/Default.astro
-```
 
 ### title
 
@@ -44,6 +35,14 @@ description: An overview of frontmatter in Astro Accelerator.
 ```
 
 ## Optional frontmatter
+
+### layout
+
+String. Specifies the layout for the page. Defaults to `src/layouts/Default.astro` if missing.
+
+```yaml
+layout: src/layouts/Default.astro
+```
 
 ### subtitle
 

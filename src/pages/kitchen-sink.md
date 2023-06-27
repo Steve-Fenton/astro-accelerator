@@ -1,5 +1,4 @@
 ---
-layout: src/layouts/Default.astro
 title: Kitchen Sink
 navOrder: 200000
 pubDate: 2022-09-17

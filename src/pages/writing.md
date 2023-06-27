@@ -1,5 +1,4 @@
 ---
-layout: src/layouts/Default.astro
 title: Writing
 navOrder: 5000
 pubDate:  2022-09-17
@@ -18,7 +17,6 @@ Add a file called "example.md" to the `src/pages/` folder with the following con
 
 ```markdown
 ---
-layout: src/layouts/Default.astro
 title: Example
 navOrder: 9000
 ---

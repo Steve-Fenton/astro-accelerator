@@ -1,5 +1,4 @@
 ---
-layout: src/layouts/Default.astro
 title: Host Astro on GitHub Pages
 navTitle: GitHub Pages
 navOrder: 10000
