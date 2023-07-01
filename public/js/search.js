@@ -109,19 +109,19 @@ function search(s) {
 
             // If the description contains "Kitchen" or "Sink"
             if (contains(item.description, term)) {
-                item.score = item.score + 10;
+                item.score = item.score + 15;
             }
 
             // If a tag contains "Kitchen" or "Sink"
             item.tags.forEach(t => {
                 if (contains(t, term)) {
-                    item.score = item.score + 5;
+                    item.score = item.score + 15;
                 }
             });
 
             // The detected keywords contain "kitchen" or "sink"
             if (contains(item.keywords, term)) {
-                item.score = item.score + 5;
+                item.score = item.score + 15;
             }
         })
 
