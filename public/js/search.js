@@ -60,7 +60,7 @@ function search(s) {
         // Imagine the user searched for "Kitchen Sink"
         // The scores are arranged below from highest to lowest relevance
 
-        // If the title contains a whole word match
+        // If the title contains a whole word match for "kitchen" or "sink"
         queryTerms.forEach(t => {
             if (containsWord(item.safeTitle, t)) {
                 item.score = item.score + 120;
@@ -86,7 +86,7 @@ function search(s) {
             }
         });
 
-        // If the title contains "Kitchen Sink"
+        // If the description contains "Kitchen Sink"
         if (contains(item.description, currentQuery)) {
             item.score = item.score + 20;
         }
@@ -118,6 +118,11 @@ function search(s) {
                     item.score = item.score + 5;
                 }
             });
+
+            // The detected keywords contain "kitchen" or "sink"
+            if (contains(item.keywords, term)) {
+                item.score = item.score + 5;
+            }
         })
 
         if (item.score > 0) {
