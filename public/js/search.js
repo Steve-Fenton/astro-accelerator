@@ -57,47 +57,37 @@ function search(s) {
         item.score = 0;
         item.matchedHeadings = [];
 
-        // Imagine the user searched for "Kitchen Sink"
-        // The scores are arranged below from highest to lowest relevance
+        // The user searches for "Kitchen Sink"
 
-        // If the title contains a whole word match for "kitchen" or "sink"
-        queryTerms.forEach(t => {
-            if (containsWord(item.safeTitle, t)) {
-                item.score = item.score + 120;
-            }
-        });
+        // Part 1 - Phrase Matches, i.e. "Kitchen Sink"
 
-        // If the title contains "Kitchen Sink"
+        // Title
         if (contains(item.safeTitle, currentQuery)) {
             item.score = item.score + 60;
         }
 
-        // If a heading contains "Kitchen Sink"
+        // Headings
         item.headings.forEach(c => {
-            queryTerms.forEach(t => {
-                if (containsWord(c.safeText, t)) {
-                    item.score = item.score + 40;
-                }
-            });
-
             if (contains(c.safeText, currentQuery)) {
                 item.score = item.score + 20;
                 item.matchedHeadings.push(c);
             }
         });
 
-        // If the description contains "Kitchen Sink"
+        // Description
         if (contains(item.description, currentQuery)) {
             item.score = item.score + 20;
         }
+
+        // Part 2 - Term Matches, i.e. "Kitchen" or "Sink"
         
         queryTerms.forEach(term => {
-            // If the title contains "Kitchen" or "Sink"
+            // Title
             if (contains(item.safeTitle, term)) {
                 item.score = item.score + 40;
             }
 
-            // If a heading contains "Kitchen" or "Sink"
+            // Headings
             item.headings.forEach(c => {
                 if (contains(c.safeText, term)) {
                     item.score = item.score + 15;
@@ -107,19 +97,19 @@ function search(s) {
                 }
             });
 
-            // If the description contains "Kitchen" or "Sink"
+            // Description
             if (contains(item.description, term)) {
                 item.score = item.score + 15;
             }
 
-            // If a tag contains "Kitchen" or "Sink"
+            // Tags
             item.tags.forEach(t => {
                 if (contains(t, term)) {
                     item.score = item.score + 15;
                 }
             });
 
-            // The detected keywords contain "kitchen" or "sink"
+            // Keywords
             if (contains(item.keywords, term)) {
                 item.score = item.score + 15;
             }
