@@ -14,11 +14,11 @@ html {
     outline: 0;
     padding: 0;
     vertical-align: baseline;
- }
+}
 
- html {
+html {
     scroll-padding-top: 5em;
- }
+}
 
 body {
     background-color: var(--aft);
@@ -640,6 +640,28 @@ form.site-search button {
 .site-search-results .result-path {
     font-size: 1rem;
     font-family: var(--code-font);
+}
+
+.result-headings li {
+    display: none;
+}
+
+.result-headings li:nth-child(-n+3) {
+    display: block;
+}
+
+.result-headings:has(li:nth-child(n+4))::after {
+    content: 'See more >';
+    color: var(--fore-link);
+    text-decoration: underline;
+  }
+
+.result-headings:focus-within li {
+    display: block;
+}
+
+.result-headings:focus-within::after {
+    display: none;
 }
 
 .show-more {

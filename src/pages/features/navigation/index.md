@@ -33,7 +33,7 @@ export const menu: (NavPage | 'auto')[] = [
 
 ```
 
-### Footer COlumns
+### Footer Columns
 
 ```typescript
 export const menu: (NavPage | 'categories' | 'tags')[] = [
