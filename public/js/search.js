@@ -54,6 +54,7 @@ function search(s) {
 
     s.length > 0 && haystack.forEach( (item) => {
 
+        let foundWords = 0;
         item.score = 0;
         item.matchedHeadings = [];
 
@@ -82,15 +83,20 @@ function search(s) {
         // Part 2 - Term Matches, i.e. "Kitchen" or "Sink"
         
         queryTerms.forEach(term => {
+            let isTermFound = false;
+
             // Title
             if (contains(item.safeTitle, term)) {
                 item.score = item.score + 40;
+                isTermFound = true;
             }
 
             // Headings
             item.headings.forEach(c => {
                 if (contains(c.safeText, term)) {
                     item.score = item.score + 15;
+                    isTermFound = true;
+
                     if (item.matchedHeadings.filter(h => h.slug == c.slug).length == 0) {
                         item.matchedHeadings.push(c);
                     }
@@ -99,21 +105,30 @@ function search(s) {
 
             // Description
             if (contains(item.description, term)) {
+                isTermFound = true;
                 item.score = item.score + 15;
             }
 
             // Tags
             item.tags.forEach(t => {
                 if (contains(t, term)) {
+                    isTermFound = true;
                     item.score = item.score + 15;
                 }
             });
 
             // Keywords
             if (contains(item.keywords, term)) {
+                isTermFound = true;
                 item.score = item.score + 15;
             }
-        })
+
+            if (isTermFound) {
+                foundWords++;
+            }
+        });
+
+        item.foundWords = foundWords / queryTerms.length;
 
         if (item.score > 0) {
             needles.push(item);
@@ -121,7 +136,11 @@ function search(s) {
     });
 
     needles.sort(function (a, b){
-        return b.score - a.score;
+        if (b.foundWords === a.foundWords) {
+            return b.score - a.score;
+        }
+
+        return b.foundWords - a.foundWords;
     });
 
     const total = needles.reduce(function (accumulator, needle) {
