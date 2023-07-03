@@ -5,40 +5,52 @@ import { raiseEvent } from './modules/events.js';
 import { contains, containsWord, sanitise, explode, highlight } from './modules/string.js';
 
 /**
-type Heading = {
-    text: string;
-    safeText: string;
-    slug: string;
-}
+@typedef {
+    {
+        text: string;
+        safeText: string;
+        slug: string;
+    }
+} Heading
 
-type SearchEntry = {
-    score: number;
-    title: string;
-    safeTitle: string;
-    description: string;
-    safeDescription: string;
-    headings: Heading[];
-    tags: string;
-    url: string;
-    date: string;
-    matchedHeadings: Heading[];
-}
+@typedef {
+    {
+        foundWords: number;
+        score: number;
+        title: string;
+        keywords: string;
+        safeTitle: string;
+        description: string;
+        safeDescription: string;
+        headings: Heading[];
+        tags: string[];
+        url: string;
+        date: string;
+        matchedHeadings: Heading[];
+    }
+}  SearchEntry
  */
 
-var dataUrl = qs('#site-search').dataset.sourcedata;
-var haystack = /** @type {SearchEntry} */ [];
+/** @type {SearchEntry[]} */
+var haystack = [];
 var currentQuery = '';
+var dataUrl = qs('#site-search').dataset.sourcedata;
 
 var ready = false;
 var scrolled = false;
 
 /**
- * 
+ * Search term `s` and number of results `r`
  * @param {string} s 
+ * @param {number|null} [r=12]
  * @returns 
  */
-function search(s) {
-    const needles = /** @type {SearchEntry} */ [];
+function search(s, r) {
+    const numberOfResults = r ?? 12;
+    console.log('search', s, numberOfResults);
+
+    /** @type {SearchEntry[]} */
+    const needles =  [];
 
     // Clean the input
     const cleanQuery = sanitise(s);
@@ -52,7 +64,7 @@ function search(s) {
     currentQuery = cleanQuery;
     const queryTerms = explode(currentQuery);
 
-    s.length > 0 && haystack.forEach( (item) => {
+    cleanQuery.length > 0 && haystack.forEach( (item) => {
 
         let foundWords = 0;
         item.score = 0;
@@ -152,7 +164,7 @@ function search(s) {
     const ol = document.createElement('ol');
     ol.className = 'site-search-results';
 
-    const limit = Math.min(needles.length, 12);
+    const limit = Math.min(needles.length, numberOfResults);
 
     // @ts-ignore
     const siteUrl = new URL(site_url);
@@ -178,7 +190,7 @@ function search(s) {
 
         const headings = document.createElement('ul');
         markers.className = 'result-headings';
-        console.log(needle.matchedHeadings);
+
         needle.matchedHeadings
             .forEach(h => {
                 const item = document.createElement('li');
@@ -204,14 +216,30 @@ function search(s) {
         ? results.dataset.emptytitle || 'No Results'
         : results.dataset.title || 'Results';
 
+    const more = document.createElement('button');
+    more.className = 'show-more';
+    more.type = 'button';
+    more.innerHTML = 'See more';
+    more.addEventListener('click', function() {
+        currentQuery = '';
+        const newTotal = numberOfResults + 12;
+        console.log('More', newTotal);
+        search(s, newTotal);
+    })
+
     results.innerHTML = '';
     results.appendChild(h2);
     results.appendChild(ol);
+
+    if (needles.length > numberOfResults) {
+        results.appendChild(more);
+    }
 
     const address = window.location.href.split('?')[0];
     window.history.pushState({}, '', address + '?q=' + encodeURIComponent(cleanQuery));
 }
 
+/** @type {Number} */
 var debounceTimer;
 
 function debounceSearch() {
@@ -248,9 +276,11 @@ fetch(dataUrl)
             item.headings.forEach(h => h.safeText = sanitise(h.text));
         }
 
-        var siteSearch = qs('#site-search');
+        /** @type {HTMLFormElement} */
+        const siteSearch = qs('#site-search');
 
-        var siteSearchQuery = qs('#site-search-query');
+        /** @type {HTMLInputElement} */
+        const siteSearchQuery = qs('#site-search-query');
 
         if (siteSearch == null || siteSearchQuery == null) {
             throw new Error('Cannot find #site-search or #site-search-query');
@@ -276,7 +306,7 @@ fetch(dataUrl)
 
         const params = new URLSearchParams(window.location.search);
         if (params.has('q')) {
-            siteSearchQuery.value = params.get('q');
+            siteSearchQuery.value = params.get('q') ?? '';
         }
 
         debounceSearch();

@@ -642,6 +642,12 @@ form.site-search button {
     font-family: var(--code-font);
 }
 
+.show-more {
+    padding: 0.5em 1em;
+    background-color: var(--fore-link);
+    color: var(--aft-link-alt);
+}
+
 @media (max-width: 860px) {
     form.site-search div {
         grid-template-columns: repeat(1, auto);
