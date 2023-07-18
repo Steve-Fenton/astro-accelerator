@@ -13,6 +13,10 @@ export const example = 'This text originates from a variable in the .mdx file';
 
 We are experimenting with `.mdx` file support. In general, these files work with Astro Accelerator just like normal markdown files, except you can use MDX syntax inside them. This page has been authored as an `.mdx` page as an example.
 
+:::div{.note}
+Don't use default layouts *if you import markdown files into `.mdx` files*. Astro will process your layout for all includes, which wil result in unexpected additional components rendered throughout the page.
+:::
+
 The text below is an example of MDX variables:
 
 {example}
