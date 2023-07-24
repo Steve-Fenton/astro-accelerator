@@ -13,6 +13,8 @@ import ArticleList from '@components/ArticleList.astro';
 import PagingLinks from '@components/PagingLinks.astro';
 
 const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('pages/authors/[author]/[page].astro');
+stats.start();
 
 const lang = SITE.default.lang;
 const currentUrl = new URL(Astro.request.url);
@@ -107,6 +109,8 @@ if (page.url.current != pageLinks[0].url) {
     ariaCurrent: 'page',
   });
 }
+
+stats.stop();
 ---
 <Default frontmatter={ authorFrontmatter } headings={ headings } breadcrumbs={ breadcrumbs }>
   <Fragment set:html={ authorText } />

@@ -39,6 +39,8 @@ const frontmatter: Frontmatter = {
 
 // Logic
 const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('pages/authors/[tag]/[page].astro');
+stats.start();
 
 type CacheData = {
   posts: MarkdownInstance[];
@@ -111,6 +113,8 @@ if (page.url.current != pageLinks[0].url) {
     ariaCurrent: 'page',
   });
 }
+
+stats.stop();
 ---
 <Default frontmatter={ frontmatter } headings={ headings } breadcrumbs={ breadcrumbs }>
   <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()) }</h2>

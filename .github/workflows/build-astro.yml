@@ -56,6 +56,14 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
 
+  stats:
+      needs:
+          - build
+      runs-on: ubuntu-latest
+      steps:
+          - name: Check stats
+            run: npm run stats
+
   deploy:
     needs:
       - build

@@ -35,6 +35,8 @@ const _ = Lang(lang);
 
 // Logic
 const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('pages/articles/[page].astro');
+stats.start();
 
 export async function getData() {
   const sourcePosts = await Astro.glob('./**/*.md', './**/*.mdx') as MarkdownInstance[];
@@ -55,6 +57,8 @@ export async function getStaticPaths({ paginate }: any) {
 
 // Page Links
 const pageLinks = accelerator.paging.links(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
+
+stats.stop();
 ---
 <Default frontmatter={ frontmatter } headings={ headings }>
   <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()) }</h2>

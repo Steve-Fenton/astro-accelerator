@@ -9,6 +9,8 @@ async function getData() {
   const allArticles = import.meta.glob(['./**/*.md', './**/*.mdx']);
 
   const accelerator = new Accelerator(SITE);
+  const stats = new accelerator.statistics('pages/articles/feed.xml');
+  stats.start();
   
   let articles = [];
   
@@ -40,6 +42,8 @@ async function getData() {
       <summary>${ a.frontmatter.description ?? '' }</summary>
     </entry>`);
 
+  stats.stop();
+  
   return {
       body: `<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
