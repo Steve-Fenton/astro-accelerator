@@ -16,12 +16,16 @@ const _ = Lang(lang);
 
 // Logic
 const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('accelerator/components/Taxonomy.astro');
+stats.start();
 
 const categories = frontmatter.categories ?? [];
 const tags = frontmatter.tags ?? [];
 
 const links = accelerator.taxonomy.links(Translations, _, SITE.subfolder);
 const hasTaxonomy = (categories.length + tags.length) > 0;
+
+stats.stop();
 ---
 {hasTaxonomy && (
   <div class="post-taxonomy">

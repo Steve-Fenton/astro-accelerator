@@ -17,6 +17,10 @@ const _ = Lang(lang);
 
 // Logic
 const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('accelerator/components/Copyright.astro');
+stats.start();
+
+stats.stop();
 ---
 <p>{ _(Translations.footer.copyright) } &copy; { new Date().getFullYear() } { SITE.owner }</p>
 <nav aria-label={ _(Translations.aria.back_to_top) }>

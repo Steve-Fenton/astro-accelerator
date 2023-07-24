@@ -14,9 +14,14 @@ const lang = frontmatter.lang ?? SITE.default.lang;
 
 // Logic
 const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('accelerator/layouts/Author.astro');
+stats.start();
+
 const redirectFrontmatter = { 
     ...frontmatter,
     redirect: accelerator.urlFormatter.formatAddress(Astro.request.url) + '1/'
 };
+
+stats.stop();
 ---
 <Redirect frontmatter={ redirectFrontmatter } headings={ headings } />

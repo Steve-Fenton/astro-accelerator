@@ -18,6 +18,10 @@ const _ = Lang(lang);
 
 // Logic
 const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('accelerator/components/PagingLinks.astro');
+stats.start();
+
+stats.stop();
 ---
 <nav class="post-paging" aria-label={ _(Translations.aria.paging) }>
   {page.url.prev

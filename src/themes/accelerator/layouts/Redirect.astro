@@ -1,5 +1,8 @@
 ---
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
+import { Accelerator } from 'astro-accelerator-utils';
+import { SITE } from '@config';
+import { StatisticsStub } from 'astro-accelerator-utils/lib/v1/statistics-stub.mjs';
 
 // Properties
 type Props = {
@@ -8,8 +11,16 @@ type Props = {
 }
 const { frontmatter, headings } = Astro.props satisfies Props;
 
+
+// Logic
+const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('accelerator/layouts/Redirect.astro');
+stats.start();
+
 const destination = frontmatter.redirect;
 const metaContent = `0; URL=${ destination }`;
+
+stats.stop();
 ---
 <html>
     <meta charset="utf-8">

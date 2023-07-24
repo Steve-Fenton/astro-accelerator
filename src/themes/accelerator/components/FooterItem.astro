@@ -1,5 +1,7 @@
 ---
 import type { NavPage } from 'astro-accelerator-utils/types/NavPage';
+import { Accelerator } from 'astro-accelerator-utils';
+import { SITE } from '@config';
 
 // Properties
 type Props = {
@@ -7,6 +9,12 @@ type Props = {
   page: NavPage
 };
 const { lang, page } = Astro.props satisfies Props;
+
+const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('accelerator/components/FooterItem.astro');
+stats.start();
+
+stats.stop();
 ---
 {page.children.length > 0 && (
 <div class="footer-column">

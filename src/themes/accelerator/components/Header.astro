@@ -17,8 +17,12 @@ const _ = Lang(lang);
 
 // Logic
 const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('accelerator/components/Header.astro');
+stats.start();
 
 const search = accelerator.posts.all().filter(PostFiltering.isSearch).shift() ?? null;
+
+stats.stop();
 ---
 <header class="site-header">
   <a href="#site-nav" data-navigationid="site-nav" class="navigation-icon" title={ _(Translations.header.open_menu) }><svg xmlns="http://www.w3.org/2000/svg" 

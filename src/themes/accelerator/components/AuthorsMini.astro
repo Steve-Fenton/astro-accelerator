@@ -16,8 +16,12 @@ const _ = Lang(lang);
 
 // Logic
 const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('accelerator/components/AuthorsMini.astro');
+stats.start();
 
 const authorList = accelerator.authors.forPost(frontmatter);
+
+stats.stop();
 ---
 {authorList.writers.length > 0 && 
 <div class="post-meta">

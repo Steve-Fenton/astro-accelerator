@@ -4,6 +4,7 @@ const SITE: Site = {
 	owner: 'Steve Fenton',
 	url: 'https://astro.stevefenton.co.uk',
 	useTrailingUrlSlash: true,
+	captureStatistics: true,
 	feedUrl: '/articles/feed.xml',
 	title: 'Astro Accelerator',
 	description: 'An Astro quick start project.',

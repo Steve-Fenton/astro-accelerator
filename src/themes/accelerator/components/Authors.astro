@@ -17,6 +17,8 @@ const _ = Lang(lang);
 
 // Logic
 const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('accelerator/components/Authors.astro');
+stats.start();
 
 const authorList = accelerator.authors.forPost(frontmatter);
 
@@ -24,6 +26,8 @@ const authorList = accelerator.authors.forPost(frontmatter);
 const authorImage = authorList?.image?.src 
   ? getImageInfo(authorList.image.src, 'author-image', SITE.images.authorSize)
   : null;
+
+stats.stop();
 ---
 {authorList.writers.length > 0 && 
 <div class="post-meta">
