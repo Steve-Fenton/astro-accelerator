@@ -36,7 +36,11 @@ const SITE: Site = {
 
 The statistics process writes a CSV to `.log/statistics.csv` with information about individual calls made.
 
-You can summarize the statistics using `node .\src\themes\accelerator\utilities\stats.mjs`.
+You can summarize the statistics using:
+
+```bash
+node .\src\themes\accelerator\utilities\stats.mjs
+```
 
 The results can be adjusted as follows:
 
