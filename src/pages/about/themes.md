@@ -9,8 +9,6 @@ bannerImage:
     alt: Dummy image
 ---
 
-Note: this page uses an alternative layout for demonstration purposes.
-
 Themes are made up of layouts and components.
 
 They should be installed in `src/themes/[theme-name]`.
@@ -36,7 +34,7 @@ To enable a theme, adjust `tsconfig.json`:
 
 The easiest way to build an alternate theme is to copy the accelerator to use a starting point.
 
-The only requirement is that you include the three layouts in your `theme-name/layouts` folder:
+The only requirement is that you include the standard layouts in your `theme-name/layouts` folder:
 
 1. Author.astro
 2. Default.astro
@@ -46,6 +44,10 @@ The only requirement is that you include the three layouts in your `theme-name/l
 You can include whatever components you need to support your theme.
 
 You can use the available shared `@util/*` files in your theme.
+
+## Multiple / Child Themes
+
+You can install many themes side-by-side and use components from them to create layouts and components of your own. Use the top-level layours and components folders to coordinate this and reference the appropriate theme files to use them.
 
 ## Theme Styles
 

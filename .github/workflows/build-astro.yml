@@ -56,9 +56,6 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
 
-      - name: Check stats
-        run: npm run stats
-
   deploy:
     needs:
       - build

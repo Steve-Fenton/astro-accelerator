@@ -113,3 +113,8 @@ To help search engines understand your site, there are [SEO features](/features/
 
 [Find out more about SEO](/features/seo/)
 
+## Tabs
+
+If you need an accessible tab control, you can use standard disclosure widgets in your pages and have them converted into tabs in the browser.
+
+[Find out more about tabs](/features/tabs/)

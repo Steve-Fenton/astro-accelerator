@@ -22,3 +22,41 @@ Where Next?
 - Find out how to [get started](/about/getting-started/)
 - Read more about [themes](/about/themes/)
 - See how to [run on GitHub pages](/about/github-pages/)
+
+## Statistic and performance
+
+In general, you don't need to run statistics and performance. You can enable it in your `config.ts` file:
+
+```typescript
+const SITE: Site = {
+    //...
+    captureStatistics: true
+}
+```
+
+The statistics process writes a CSV to `.log/statistics.csv` with information about individual calls made.
+
+You can summarize the statistics using `node .\src\themes\accelerator\utilities\stats.mjs`.
+
+The results can be adjusted as follows:
+
+### Changing the results
+
+The default settings report only total processing time over 2,000ms, or an average of over 20 ms.
+
+```javascript
+const records = (await processFile(false))
+    .filter(record => record.ms > 2000 || record.avg > 20)
+    .sort((a,b) => {
+        return b.ms - a.ms;
+    });
+```
+
+Output:
+
+```
+Performance: For "accelerator/components/HtmlHead.astro", 75 calls took 4022ms (an average of 53.6267ms)
+Performance: For "accelerator/components/ArticleList.astro", 34 calls took 1537ms (an average of 45.2059ms)
+```
+
+You can remove the `filter` line entirely, or change the values to adjust the two thresholds.
