@@ -280,6 +280,10 @@ nav.skip-links a:focus {
     position: sticky;
     top: 0;
     z-index: 10;
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    gap: 1rem;
+    justify-content: center;
 }
 
 .site-header a {
@@ -296,22 +300,13 @@ nav.skip-links a:focus {
 .site-header .site-title {
     letter-spacing: -1px;
     text-transform: uppercase;
-    margin: 0 30px;
-    display: block;
 }
 
 .site-header .navigation-icon {
-    display: none;
-    position: fixed;
-    top: 10px;
-    left: 10px;
     stroke: var(--link-head);
 }
 
 .site-header .search-icon {
-    position: fixed;
-    top: 10px;
-    right: 10px;
     stroke: var(--link-head);
 }
 
@@ -331,6 +326,11 @@ nav.site-nav.sticky {
 nav.site-nav h2 {
     margin-top: 0.1em;
     display: none;
+}
+
+#overlay__site-nav {
+    width: 90%;
+    margin-inline: auto;
 }
 
 @media (max-width: 860px) {
