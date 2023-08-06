@@ -40,5 +40,5 @@ const records = (await processFile(false))
     });
 
 for (let record of records) {
-    console.warn('Performance:', `For "${record.name}", ${record.calls} calls took ${record.ms}ms (an average of ${Math.round(record.avg * 10000) / 10000}ms)`);
+    console.warn('Performance:', `For "${record.name}", ${record.calls} calls took ${record.ms/1000} seconds (an average of ${Math.round(record.avg * 10000) / 10000} ms)`);
 }
