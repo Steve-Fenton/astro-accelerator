@@ -4,6 +4,10 @@ import { Translations, Lang } from '@util/Languages';
 import { Accelerator } from 'astro-accelerator-utils';
 import { SITE } from '@config';
 
+const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('accelerator/components/SkipLinks.astro');
+stats.start();
+
 // Properties
 type Props = {
   lang: string;
@@ -15,10 +19,7 @@ const { lang } = Astro.props satisfies Props;
 // Language
 const _ = Lang(lang);
 
-const accelerator = new Accelerator(SITE);
-const stats = new accelerator.statistics('accelerator/components/SkipLinks.astro');
-stats.start();
-
+// Logic
 stats.stop();
 ---
 <nav class="skip-links" aria-label={ _(Translations.aria.skiplinks) } id="site-top">

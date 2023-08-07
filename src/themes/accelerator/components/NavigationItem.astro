@@ -3,6 +3,10 @@ import { Accelerator } from 'astro-accelerator-utils';
 import type { NavPage } from 'astro-accelerator-utils/types/NavPage';
 import { SITE } from '@config';
 
+const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('accelerator/components/NavigationItem.astro');
+stats.start();
+
 // Properties
 type Props = {
   lang: string;
@@ -11,10 +15,6 @@ type Props = {
 const { lang, page } = Astro.props satisfies Props;
 
 // Logic
-const accelerator = new Accelerator(SITE);
-const stats = new accelerator.statistics('accelerator/components/NavigationItem.astro');
-stats.start();
-
 const linkTitle = (page.title === page.fullTitle)
   ? null
   : page.fullTitle;

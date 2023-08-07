@@ -12,6 +12,10 @@ import Default from 'src/layouts/Default.astro';
 import ArticleList from '@components/ArticleList.astro';
 import PagingLinks from '@components/PagingLinks.astro';
 
+const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('pages/articles/[page].astro');
+stats.start();
+
 const lang = SITE.default.lang;
 
 // Props
@@ -34,10 +38,6 @@ const frontmatter: Frontmatter = {
 const _ = Lang(lang);
 
 // Logic
-const accelerator = new Accelerator(SITE);
-const stats = new accelerator.statistics('pages/articles/[page].astro');
-stats.start();
-
 export async function getData() {
   const sourcePosts = await Astro.glob('./**/*.md', './**/*.mdx') as MarkdownInstance[];
   const posts = sourcePosts

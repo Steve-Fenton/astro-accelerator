@@ -15,6 +15,10 @@ import Authors from '@components/Authors.astro';
 import Taxonomy from '@components/Taxonomy.astro';
 import Related from '@components/Related.astro';
 
+const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('accelerator/layouts/Default.astro');
+stats.start();
+
 type Props = {
     frontmatter: Frontmatter
     headings: { depth: number; slug: string; text: string; }[];
@@ -26,10 +30,6 @@ const lang = frontmatter.lang ?? SITE.default.lang;
 const textDirection = frontmatter.dir ?? SITE.default.dir;
 
 // Logic
-const accelerator = new Accelerator(SITE);
-const stats = new accelerator.statistics('accelerator/layouts/Default.astro');
-stats.start();
-
 const metaImage = frontmatter.bannerImage
       ? getImageInfo(frontmatter.bannerImage.src, '', SITE.images.contentSize)
       : null

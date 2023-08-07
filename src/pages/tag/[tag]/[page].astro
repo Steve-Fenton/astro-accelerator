@@ -12,6 +12,10 @@ import Default from 'src/layouts/Default.astro';
 import ArticleList from '@components/ArticleList.astro';
 import PagingLinks from '@components/PagingLinks.astro';
 
+const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('pages/authors/[tag]/[page].astro');
+stats.start();
+
 const lang = SITE.default.lang;
 const currentUrl = new URL(Astro.request.url);
 const slug = currentUrl.pathname.split('/')[3];
@@ -38,10 +42,6 @@ const frontmatter: Frontmatter = {
 };
 
 // Logic
-const accelerator = new Accelerator(SITE);
-const stats = new accelerator.statistics('pages/authors/[tag]/[page].astro');
-stats.start();
-
 type CacheData = {
   posts: MarkdownInstance[];
   tags: string[];
