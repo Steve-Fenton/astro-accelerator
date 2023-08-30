@@ -36,6 +36,12 @@ This page will be found and linked from the search icon.
 
 You can place markdown content in your search page that will appear above the search form.
 
+## Search dialog
+
+You can enable a search dialog, which will open a modal dialog to perform the search without leaving the page.
+
+This is enabled with the [search feature flag](/features/flags/#search).
+
 ## Search data
 
 The search URLs in `search.json` are fully qualified, which means you can ingest the data into an alternative search technology.

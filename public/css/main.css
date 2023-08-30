@@ -616,7 +616,7 @@ form.site-search label > * {
     padding: 0.2em;
 }
 
-form.site-search button {
+form.site-search #site-search-button {
     display: none;
 }
 
@@ -674,6 +674,39 @@ form.site-search button {
     form.site-search div {
         grid-template-columns: repeat(1, auto);
     }    
+}
+
+/* Search dialog */
+
+.search-dialog {
+    margin: auto;
+    padding: 2rem 3rem;
+    border-radius: var(--block-radius);
+    box-shadow: var(--box-shadow);
+    height: calc(90vh - 4em);
+    width: calc(80vw - 6em);
+}
+
+.search-dialog form {
+    margin-top: 2rem;
+}
+
+#site-search-close {
+    float: right;
+    position: relative;
+    top: -1rem;
+    left: 2.5rem;
+    background: none;
+    cursor: pointer;
+    font-size: 2rem;
+    stroke: var(--link-head);
+}
+
+@media (max-width: 860px) {
+    .search-dialog {
+        height: calc(100vh - 4em);
+        width: calc(100vw - 6em);
+    }
 }
 
 /* Articles */
