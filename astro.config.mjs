@@ -17,6 +17,6 @@ export default defineConfig({
         ],
         extendDefaultPlugins: true,
         trailingSlash: 'always',
-        server: { port: 3000, host: true},
     },
+    server: { port: 3000, host: true},
 });
