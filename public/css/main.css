@@ -685,6 +685,7 @@ form.site-search #site-search-button {
     box-shadow: var(--box-shadow);
     height: calc(90vh - 4em);
     width: calc(80vw - 6em);
+    max-width: 860px;
 }
 
 .search-dialog form {
@@ -704,8 +705,12 @@ form.site-search #site-search-button {
 
 @media (max-width: 860px) {
     .search-dialog {
-        height: calc(100vh - 4em);
-        width: calc(100vw - 6em);
+        /* Fallback */
+        height: calc(100vh - 4rem);
+        width: calc(100vw - 6rem);
+        /* Ideal units */
+        height: calc(100dvh - 4rem);
+        width: calc(100dvw - 6rem);
     }
 }
 
