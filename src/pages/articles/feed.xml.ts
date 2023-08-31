@@ -44,8 +44,7 @@ async function getData() {
 
   stats.stop();
   
-  return {
-      body: `<?xml version="1.0" encoding="utf-8"?>
+  return new Response(`<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>${ SITE.title }</title>
   <subtitle>${ SITE.description }</subtitle>
@@ -54,8 +53,12 @@ async function getData() {
   <id>${ SITE.url }/atom.xml</id>
   <updated>${  articles[0].frontmatter.pubDate }</updated>
 ${items.join('')}
-</feed>`
-  }
+</feed>`, {
+    status: 200,
+    headers: {
+    'Content-Type': "application/xml"
+    }
+  });
 }
 
-export const get = getData;
+export const GET = getData;
