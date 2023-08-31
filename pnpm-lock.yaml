@@ -9,7 +9,7 @@ dependencies:
     specifier: ^1.0.0
     version: 1.0.0(astro@3.0.3)
   astro:
-    specifier: ^3.0.0
+    specifier: ^3.0.3
     version: 3.0.3
   astro-accelerator-utils:
     specifier: ^0.2.39
@@ -35,7 +35,7 @@ dependencies:
 
 devDependencies:
   '@playwright/test':
-    specifier: ^1.36.2
+    specifier: ^1.37.1
     version: 1.37.1
 
 packages:
