@@ -3,12 +3,13 @@
   "author": "Steve Fenton",
   "name": "astro-accelerator",
   "description": "A super-lightweight, accessible, SEO-friendly starter project for Astro",
-  "keywords": [
-    "astro",
-    "themes"
-  ],
+  "keywords": ["astro","themes"],
   "type": "module",
   "packageManager": "pnpm@8.7.0",
+  "engines": {
+    "node": ">=18.14.1",
+    "pnpm": ">=8.6.12"
+  },
   "homepage": "https://astro.stevefenton.co.uk/",
   "bugs": "https://github.com/Steve-Fenton/astro-accelerator/issues",
   "license": "(Apache-2.0)",
@@ -38,9 +39,6 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.36.2"
-  },
-  "engines": {
-    "node": "*"
   },
   "files": [
     ".npmrc",
