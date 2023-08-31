@@ -688,6 +688,11 @@ form.site-search #site-search-button {
     max-width: 860px;
 }
 
+.search-dialog::backdrop {
+    background-color: #000;
+    opacity: 0.5;
+}
+
 .search-dialog form {
     margin-top: 2rem;
 }
