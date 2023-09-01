@@ -27,7 +27,7 @@ By default, the menu uses automatic discovery. You can see the configuration for
 ### Main Menu
 
 ```typescript
-export const menu: (NavPage | 'auto')[] = [
+export const menu: (MenuItem | 'auto')[] = [
   'auto'
 ];
 
@@ -36,7 +36,7 @@ export const menu: (NavPage | 'auto')[] = [
 ### Footer Columns
 
 ```typescript
-export const menu: (NavPage | 'categories' | 'tags')[] = [
+export const menu: (MenuItem | 'categories' | 'tags')[] = [
 	'categories',
 	'tags'
 ];
@@ -74,7 +74,7 @@ and
 To add menu items to the automatic navigation, add the items to `src/navigation.ts`.
 
 ```typescript
-export const menu: (NavPage | 'auto')[] = [
+export const menu: (MenuItem | 'auto')[] = [
   'auto',
   {
     title: 'Section',
