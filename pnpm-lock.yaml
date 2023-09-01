@@ -12,8 +12,8 @@ dependencies:
     specifier: ^3.0.5
     version: 3.0.5
   astro-accelerator-utils:
-    specifier: ^0.2.40
-    version: 0.2.40
+    specifier: ^0.3.0
+    version: 0.3.0
   csv:
     specifier: ^6.3.3
     version: 6.3.3
@@ -1027,8 +1027,8 @@ packages:
     hasBin: true
     dev: false
 
-  /astro-accelerator-utils@0.2.40:
-    resolution: {integrity: sha512-vZCz1tE6ypieoM2GdAmlg1lQYamw7Gq2eBGZQiyI/LrUVTIxgFoDNaA4XUZjTkxTHfR1qZZV3sH3hEVfcoPCGA==}
+  /astro-accelerator-utils@0.3.0:
+    resolution: {integrity: sha512-qN1EiESBi4GXBO5hvNINtNaOBbPMIYrFUhq7ouFXfCxJ01+WYy0FyST3p+JclB3AxhaFTCs1zzLuTA4IFKlo/Q==}
     dev: false
 
   /astro@3.0.5:
