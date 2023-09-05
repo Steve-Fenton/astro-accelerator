@@ -37,7 +37,7 @@ This page contains the most common content components.
 ***
 
 <div class="overlay-menu">
-   <nav class="site-nav" id="overlay__site-nav" aria-label="Demo site navigation">
+   <nav class="site-nav" id="overlay__site-nav" aria-label="Demo site">
    <h2 class="site-nav-title" id="modal-title" tabindex="-1">Navigation</h2>
    <ul>
       <li>

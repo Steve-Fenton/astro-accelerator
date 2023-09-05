@@ -13,7 +13,7 @@ test('Layout', async ({ page }) => {
   await expect(breadcrumbs).toHaveAttribute('aria-label', 'Breadcrumb');
 
   const navigation = find.menu();
-  await expect(navigation).toHaveAttribute('aria-label', 'Site Navigation');
+  await expect(navigation).toHaveAttribute('aria-label', 'Site');
 
   const toc = find.tableOfContents();
   await expect(toc).toHaveAttribute('aria-label', 'Table of contents');
