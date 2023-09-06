@@ -36,7 +36,6 @@ function addMobileNav(resizedEventName) {
  * @param {string} resizedEventName
  */
  function addMobileNavigation(icon, resizedEventName) {
-    icon.tabIndex = 0;
     const navigationSelector = icon.dataset.navigationid || '';
     const iconType = icon.firstElementChild && icon.firstElementChild.tagName == 'svg'
         ? 'svg'

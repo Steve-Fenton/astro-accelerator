@@ -1093,14 +1093,14 @@ button[data-share]:focus {
 }
 
 /* Detail tabs */
-  
-.tablist [role="tablist"] {
-    min-width: 100%;
+
+.tab-list {
+    padding-inline: 10px;
 }
 
-.tablist [role="tab"],
-.tablist [role="tab"]:focus,
-.tablist [role="tab"]:hover {
+.tab-list button,
+.tab-list button:focus,
+.tab-list button:hover {
     display: inline-block;
     position: relative;
     z-index: 2;
@@ -1116,7 +1116,7 @@ button[data-share]:focus {
     cursor: pointer;
 }
 
-.tablist [role="tab"][aria-selected="true"] {
+.tab-list button[aria-selected="true"] {
     margin-top: 0;
     border-width: 2px;
     border-top-width: 6px;
@@ -1126,28 +1126,22 @@ button[data-share]:focus {
     background-color: var(--aft);
 }
 
-.tablist [role="tab"][aria-selected="false"] {
+.tab-list button[aria-selected="false"] {
     top: 0px;
 }
 
-.tablist [role="tab"] span.focus {
+.tab-list button span.focus {
     display: inline-block;
     margin: 2px;
     padding: 4px 6px;
     outline: none;
 }
 
-.input-keyboard .tablist [role="tab"]:hover span.focus,
-.input-keyboard .tablist [role="tab"]:focus span.focus,
-.input-keyboard .tablist [role="tab"]:active span.focus {
-    outline: 2px solid var(--fore-link);
-}
-
 [role="tabpanel"] {
     position:relative;
     padding: 1rem;
     border: 2px solid var(--fore-link);
-    border-radius: 0 var(--block-radius) var(--block-radius);
+    border-radius: var(--block-radius);
     background: var(--aft);
     min-height: 10em;
     overflow: auto;
