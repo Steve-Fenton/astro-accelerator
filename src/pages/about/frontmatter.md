@@ -12,7 +12,7 @@ The following items are the minimum required frontmatter fields.
 
 ### title
 
-String or Markdown. The page title.
+String or [Limited Markdown](#limited-markdown). The page title.
 
 ```yaml
 title: The importance of being earnest
@@ -46,7 +46,7 @@ layout: src/layouts/Default.astro
 
 ### subtitle
 
-String or Markdown. A subtitle for the page.
+String or [Limited Markdown](#limited-markdown). A subtitle for the page.
 
 ```yaml
 subtitle: A play by Oscar Wilde.
@@ -62,7 +62,7 @@ keywords: astro,frontmatter
 
 ### summary
 
-String or Markdown. A summary of an item.
+String or [Limited Markdown](#limited-markdown). A summary of an item.
 
 ```yaml
 summary: >-
@@ -214,3 +214,9 @@ String. Allows control over indexability. By default `index, follow` is used, so
 ```yaml
 robots: noindex, follow
 ```
+
+## Limited Markdown
+
+Limited Markdown refers to subset of markdown allowing paragraphs and block quotes with inline styling with `*emphasis*`, `**strong**`, `~strikeout~`, and `line breaks\`.
+
+Please open a GitHub issue to discuss extending this feature, which is limited to improve performance on large sites.
