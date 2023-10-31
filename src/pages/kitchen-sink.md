@@ -322,6 +322,12 @@ You can also wrap images in figures and optionally add a caption:
 :::
 ```
 
+## Videos
+
+[A YT video alone will auto-embed behind a click](https://www.youtube.com/watch?v=FjPO1k0Y-xA)
+
+When a [YT video](https://www.youtube.com/watch?v=FjPO1k0Y-xA) is within a paragraph, it doesn't auto-embed.
+
 ## Lists
 
 Markdown:
