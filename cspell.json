@@ -1,0 +1,30 @@
+{
+    "version": "0.2",
+    "language": "en-GB",
+    "words": [
+        "anim",
+        "astro",
+        "datetime",
+        "elem",
+        "emptytitle",
+        "figcaption",
+        "frontmatter",
+        "resp",
+        "sourcedata",
+        "srcset",
+        "typeof",
+        "vocab",
+        "webp"
+    ],
+    "flagWords": [
+        "hte"
+    ],
+    "ignorePaths": [
+        "cspell.json",
+        "package.json",
+        "package-lock.yaml",
+        "pnpm-lock.yaml",
+        "docs/credits.md",
+        "node_modules/**"
+    ]
+}

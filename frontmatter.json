@@ -1,0 +1,117 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "astro",
+  "frontMatter.preview.host": "http://localhost:3000",
+  "frontMatter.content.publicFolder": "public/img",
+  "frontMatter.content.supportedFileTypes": [
+    "md",
+    "mdx"
+  ],
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "pages",
+      "path": "[[workspace]]/src/pages"
+    }
+  ],
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "default",
+      "pageBundle": false,
+      "previewPath": "",
+      "filePrefix": null,
+      "clearEmpty": true,
+      "fields": [
+        {
+          "title": "layout",
+          "name": "layout",
+          "type": "string"
+        },
+        {
+          "title": "title",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "title": "subtitle",
+          "name": "subtitle",
+          "type": "string"
+        },
+        {
+          "title": "description",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "title": "pubDate",
+          "name": "pubDate",
+          "type": "datetime",
+          "isPublishDate": true
+        },
+        {
+          "title": "modDate",
+          "name": "modDate",
+          "type": "datetime",
+          "isModifiedDate": true
+        },
+        {
+          "title": "navTitle",
+          "name": "navTitle",
+          "type": "string"
+        },
+        {
+          "title": "navSection",
+          "name": "navSection",
+          "type": "string"
+        },
+        {
+          "title": "navOrder",
+          "name": "navOrder",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "frontMatter.framework.startCommand": "pnpm dev",
+  "frontMatter.snippets.wrapper.enabled": false,
+  "frontMatter.content.snippets": {
+    "Image": {
+      "description": "Standard image",
+      "body": [
+        ":::figure",
+        "![{{alt}}]({{&mediaUrl}})",
+        "::figcaption[{{caption}}]",
+        ":::"
+      ],
+      "openingTags": "{{",
+      "closingTags": "}}",
+      "isMediaSnippet": true
+    },
+    "Information box": {
+      "description": "Highlighted boxes.",
+      "body": [
+        ":::div{.[[type]]}",
+        "[[message]]",
+        ":::"
+      ],
+      "fields": [
+        {
+          "name": "type",
+          "title": "type",
+          "type": "choice",
+          "choices": [
+            "note"
+          ],
+          "single": true,
+          "default": ""
+        },
+        {
+          "name": "message",
+          "title": "message",
+          "type": "string",
+          "single": true,
+          "default": ""
+        }
+      ]
+    }
+  }
+}
