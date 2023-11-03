@@ -65,6 +65,8 @@ const synonyms = {
 export { synonyms };
 ```
 
+Synonyms are added to the search, rather than replaced.
+
 If the file is empty or does not exist, no action will be taken.
 
 ## Fallback search
