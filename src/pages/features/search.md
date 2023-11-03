@@ -48,6 +48,25 @@ The search URLs in `search.json` are fully qualified, which means you can ingest
 
 For example, you could read this file into elastic search or a similar technology.
 
+## Synonyms
+
+You can catch typos, alternate spellings, initialisms, differences between British and American English using the synonyms file.
+
+Add a JavaScript file called `/public/js/synonyms.js` (next to the `search.js` file) to switch search terms where necessary. For example, to change "licence" to "license", or "cod" to "call of duty".
+
+The file uses a simple dictionary:
+
+```javascript
+const synonyms = {
+    "cod": "call of duty",
+    "licence": "license"
+};
+
+export { synonyms };
+```
+
+If the file is empty or does not exist, no action will be taken.
+
 ## Fallback search
 
 In the event of JavaScript being disabled or a transient error, the search falls back to a search engine. This is configurable in `config.ts`.
