@@ -10,7 +10,8 @@
   "frontMatter.content.pageFolders": [
     {
       "title": "pages",
-      "path": "[[workspace]]/src/pages"
+      "path": "[[workspace]]/src/pages",
+      "previewPath": "{{pathToken.3}}"
     }
   ],
   "frontMatter.taxonomy.contentTypes": [
@@ -24,7 +25,8 @@
         {
           "title": "layout",
           "name": "layout",
-          "type": "string"
+          "type": "string",
+          "required": false
         },
         {
           "title": "title",
@@ -34,7 +36,8 @@
         {
           "title": "subtitle",
           "name": "subtitle",
-          "type": "string"
+          "type": "string",
+          "required": false
         },
         {
           "title": "description",
@@ -51,22 +54,26 @@
           "title": "modDate",
           "name": "modDate",
           "type": "datetime",
-          "isModifiedDate": true
+          "isModifiedDate": true,
+          "required": false
         },
         {
           "title": "navTitle",
           "name": "navTitle",
-          "type": "string"
+          "type": "string",
+          "required": false
         },
         {
           "title": "navSection",
           "name": "navSection",
-          "type": "string"
+          "type": "string",
+          "required": false
         },
         {
           "title": "navOrder",
           "name": "navOrder",
-          "type": "number"
+          "type": "number",
+          "required": false
         }
       ]
     }
@@ -78,7 +85,7 @@
       "description": "Standard image",
       "body": [
         ":::figure",
-        "![{{alt}}]({{&mediaUrl}})",
+        "![{{alt}}](/img{{&mediaUrl}})",
         "::figcaption[{{caption}}]",
         ":::"
       ],
