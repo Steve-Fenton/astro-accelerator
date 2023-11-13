@@ -2,6 +2,7 @@
 title: Accessibility
 navOrder: 6000
 pubDate: 2022-09-23
+modDate: 2023-11-13
 keywords: astro accelerator,accessibility
 description: Astro Accelerator accessibility features.
 bannerImage:

@@ -768,6 +768,14 @@ form.site-search #site-search-button {
     object-fit: cover;
 }
 
+.recent-updates li {
+    margin-block-end: 1em;
+}
+
+.recent-updates time {
+    display: block;
+}
+
 @media (max-width: 680px) {
     /* This is deliberately 680, not 860 */
     .post-list .list-item[data-image='true'] > article {
