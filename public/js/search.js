@@ -405,15 +405,15 @@ async function search(s, r) {
         }
     });
 
-    const maxDepth = needles
-        .reduce(function (previous, current) {
-            return (current.depth > previous.depth) ? current : previous
-        })
-        .depth;
-
     needles.forEach(n => {
         // Bonus points for shallow results, i.e. /features over /features/something/something
-        n.score += (maxDepth - n.depth) * scoring.depth;
+        if (n.depth < 2) {
+            n.score += scoring.depth;
+        }
+
+        if (n.depth < 1) {
+            n.score += scoring.depth;
+        }
     });
 
     needles.sort(function (a, b){
