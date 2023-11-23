@@ -324,6 +324,7 @@ async function search(s, r) {
     cleanQuery.length > 0 && haystack.forEach( (item) => {
 
         let foundWords = 0;
+        let isPhraseFound = false;
         item.score = 0;
         item.matchedHeadings = [];
 
@@ -334,6 +335,7 @@ async function search(s, r) {
         // Title
         if (contains(item.safeTitle, currentQuery)) {
             item.score = item.score + scoring.phraseTitle;
+            isPhraseFound = true;
         }
 
         // Headings
@@ -341,19 +343,24 @@ async function search(s, r) {
             if (contains(c.safeText, currentQuery)) {
                 item.score = item.score + scoring.phraseHeading;
                 item.matchedHeadings.push(c);
+                isPhraseFound = true;
             }
         });
 
         // Description
         if (contains(item.description, currentQuery)) {
             item.score = item.score + scoring.phraseDescription;
+            isPhraseFound = true;
+        }
+
+        if (isPhraseFound) {
+            foundWords++;
         }
 
         // Part 2 - Term Matches, i.e. "Kitchen" or "Sink"
         
         allTerms.forEach(term => {
             let isTermFound = false;
-            const isUserTerm = queryTerms.includes(term);
 
             // Title
             if (contains(item.safeTitle, term)) {
@@ -398,7 +405,7 @@ async function search(s, r) {
             }
         });
 
-        item.foundWords = foundWords / allTerms.length;
+        item.foundWords = foundWords;
 
         if (item.score > 0) {
             needles.push(item);
@@ -407,12 +414,15 @@ async function search(s, r) {
 
     needles.forEach(n => {
         // Bonus points for shallow results, i.e. /features over /features/something/something
-        if (n.depth < 2) {
+
+        if (n.depth < 5) {
             n.score += scoring.depth;
+            n.foundWords++;
         }
 
-        if (n.depth < 1) {
+        if (n.depth < 4) {
             n.score += scoring.depth;
+            n.foundWords++;
         }
     });
 
@@ -460,7 +470,8 @@ async function search(s, r) {
         markers.innerHTML = highlight(needle.description, queryTerms);
 
         const li = document.createElement('li');
-        li.dataset.score = (Math.round((needle.score/ total) * 100)).toString();
+        li.dataset.words = needle.foundWords.toString();
+        li.dataset.score = (Math.round((needle.score/ total) * 1000) / 1000).toString();
         li.appendChild(a);
         li.appendChild(path);
         li.appendChild(markers);
