@@ -86,4 +86,26 @@ For example, the search will fallback to Google with the query:
 ```
 site:https://astro.stevefenton.co.uk/ image
 ```
+## Trying out different scoring systems
 
+The scoring system is currently part of the search script:
+
+```javascript
+var scoring = {
+    depth: 5,
+    phraseTitle: 60,
+    phraseHeading: 20,
+    phraseDescription: 20,
+    termTitle: 40,
+    termHeading: 15,
+    termDescription: 15,
+    termTags: 15,
+    termKeywords: 15
+};
+```
+
+This is likely to be made customizable in the future.
+
+You can test out different scoring weights by overriding entries with a query string.
+
+For example, to overide the `depth` score (currently `5` points per level bonus to shallower paths) you can pass the querystring `?s_depth=10`. You can pass any of the `scoring` items, by prefixing them with `s_`, such as `s_depth`, `s_phraseTitle`, or `s_termTags`.

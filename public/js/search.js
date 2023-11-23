@@ -232,7 +232,7 @@ var currentQuery = '';
 var dataUrl = qs('#site-search').dataset.sourcedata;
 
 var scoring = {
-    depth: 2,
+    depth: 5,
     phraseTitle: 60,
     phraseHeading: 20,
     phraseDescription: 20,
@@ -587,6 +587,14 @@ fetch(dataUrl)
         if (params.has('q')) {
             siteSearchQuery.value = params.get('q') ?? '';
         }
+
+        for (let key of Object.keys(scoring)) {
+            if (params.has(`s_${key}`)) {
+                scoring[key] = parseInt(params.get(`s_${key}`) ?? scoring[key].toString(), 10)  ;
+            }
+        }
+
+        console.log(scoring);
 
         debounceSearch();
     })
