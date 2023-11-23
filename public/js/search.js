@@ -413,7 +413,7 @@ async function search(s, r) {
 
     needles.forEach(n => {
         // Bonus points for shallow results, i.e. /features over /features/something/something
-        n.score += (n.depth - maxDepth) * scoring.depth;
+        n.score += (maxDepth - n.depth) * scoring.depth;
     });
 
     needles.sort(function (a, b){
