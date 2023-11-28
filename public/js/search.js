@@ -332,10 +332,13 @@ async function search(s, r) {
         // Part 1 - Phrase Matches, i.e. "Kitchen Sink"
 
         // Title
+        if (item.safeTitle === currentQuery) {
+            item.foundWords += 2;
+        }
+        
         if (contains(item.safeTitle, currentQuery)) {
             item.score = item.score + scoring.phraseTitle;
-            item.foundWords++;
-            item.foundWords++;
+            item.foundWords += 2;
         }
 
         // Headings

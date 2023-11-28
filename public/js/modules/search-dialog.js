@@ -53,7 +53,6 @@ function enhanceSearchIcon() {
                         if (e.ctrlKey && e.key == ' ') {
                             return openSearch(e);
                         }
-                        if (e.ctrlKey) return false;
                     };
 
                     // Open search on click
