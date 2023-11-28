@@ -42,6 +42,8 @@ You can enable a search dialog, which will open a modal dialog to perform the se
 
 This is enabled with the [search feature flag](/features/flags/#search).
 
+When enabled, the search can be opened by clicking on the element with the class "search-icon" or using `CTRL` + `SPACE`.
+
 ## Search data
 
 The search URLs in `search.json` are fully qualified, which means you can ingest the data into an alternative search technology.

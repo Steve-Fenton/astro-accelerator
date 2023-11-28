@@ -15,6 +15,6 @@ test('Search', async ({ page }) => {
   const results = find.searchResults();
   expect(await results.count()).toBeGreaterThan(0);
 
-  const firstResult = results.nth(1);
+  const firstResult = results.first();
   await expect(firstResult).toHaveText(/.*\/features\/image-automation\/.*/);
 });
