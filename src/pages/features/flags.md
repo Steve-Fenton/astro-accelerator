@@ -47,6 +47,7 @@ When you remove a feature, the associated JavaScript file is not loaded.
 ## Search
 
 - 'dialog': enables the on-page search dialog, rather than navigating to the search page (you still need an active search page on the site).
+- 'headings': shows quick links to matching headings in the search results.
 
 ## YouTube Links
 

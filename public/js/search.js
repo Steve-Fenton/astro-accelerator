@@ -5,6 +5,20 @@ import { raiseEvent } from './modules/events.js';
 import { contains, sanitise, explode, highlight } from './modules/string.js';
 import { stemmer } from './modules/stemmer.js';
 
+// @ts-ignore
+const f = site_features ?? {};
+
+/**
+ * 
+ * @param {string[]} settings 
+ * @param {string} option 
+ * @returns 
+ */
+function enabled(settings, option) {
+    return settings
+        && settings.includes(option);
+}
+
 /**
 @typedef {
     {
@@ -287,7 +301,7 @@ async function search(s, r) {
         li.appendChild(path);
         li.appendChild(markers);
 
-        if (needle.matchedHeadings.length > 0) {
+        if (enabled(f.search, 'headings') && needle.matchedHeadings.length > 0) {
             const headings = document.createElement('ul');
             headings.className = 'result-headings';
 

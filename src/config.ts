@@ -38,7 +38,7 @@ const SITE: Site = {
 		youTubeLinks: ['embed'],
 		headers: ['link'],
 		details: ['tabs'],
-		search: ['dialog'],
+		search: ['dialog','headings'],
 	},
 	images: {
 		// Generated using https://ausi.github.io/respimagelint/
