@@ -24,7 +24,7 @@
     --fore-block: #333;
     --aft-block: #F3F5FF;
     --icon-block: #4D71FF;
-    
+
     --fore-table-head: #FDFDFE;
     --aft-table-head: #2F3141;
     --fore-table-row-odd: #333;
@@ -54,6 +54,16 @@
 
     /* Calculate the mobile width by removing l/r columns and grid gap */
     --content-width-mobile: calc(100vw - (1rem * 2));
+
+    /* Search variables */
+    --white: #fff;
+    --search-height: 3rem;
+    --search-border-radius: calc(var(--search-height)/2);
+    --search-results-padding: 1rem;
+    --search-border: 0.0625rem solid #76A1C2;
+    --search-dropdown-height: 65vh;
+    --search-dropdown-duration: 0.3s;
+    --search-item-border-color: #DAE2E9;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -61,11 +71,11 @@
         --fore: #CCC;
         --fore-headings: #CCE;
         --aft: #333;
-    
+
         --fore-link: #abb9ef;
         --fore-link-alt: #abb9ef;
         --aft-link-alt: #232323;
-        
+
         --fore-head: #CCC;
         --aft-head: #222;
 
@@ -80,10 +90,16 @@
         --icon-block: #abb9ef;
 
         --fore-table-head: #CCC;
-        --aft-table-head: #222; 
+        --aft-table-head: #222;
         --fore-table-row-odd: #CCC;
         --aft-table-row-odd: #333;
         --fore-table-row-even: #CCC;
         --aft-table-row-even: #444;
+
+
+        /* Search variables */
+        --white: var(--aft);
+        --search-border: 0.0625rem solid var(--link-alt-head);
+        --search-item-border-color: var(--link-head);
     }
 }

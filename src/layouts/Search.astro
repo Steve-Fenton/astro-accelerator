@@ -1,8 +1,9 @@
 ---
-// warning: This file is overwritten by Astro Accelerator
-
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
-import Search from '@layouts/Search.astro';
+import { SITE } from '@config';
+import { Lang } from '@util/Languages';
+import Default from './Default.astro';
+import Search from '../themes/accelerator/components/Search.astro';
 
 // Properties
 type Props = {
@@ -10,7 +11,12 @@ type Props = {
     headings: { depth: number; slug: string; text: string; }[];
 }
 const { frontmatter, headings } = Astro.props satisfies Props;
+const lang = frontmatter.lang ?? SITE.default.lang;
+
+// Language
+const _ = Lang(lang);
 ---
-<Search frontmatter={ frontmatter } headings={ headings }>
+<Default frontmatter={ frontmatter } headings={ headings }>
     <slot />
-</Search>
+    <Search lang={ lang }/>
+</Default>
