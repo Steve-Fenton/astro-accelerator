@@ -7,6 +7,15 @@ Review the documentation at [astro.stevefenton.co.uk](https://astro.stevefenton.
 [![npm](https://img.shields.io/npm/v/astro-accelerator?color=blue&style=plastic)](https://www.npmjs.com/package/astro-accelerator/)
 [![npm](https://img.shields.io/npm/dm/astro-accelerator?style=plastic)](https://www.npmjs.com/package/astro-accelerator/)
 
+## Image optimization on Linux
+
+Currently, to run the image optimization on Linux, you need to force a compatible version of Sharp to be installed. Any suggestions for a better approach would be appreciated:
+
+```bash
+pnpm install --include=optional sharp
+pnpm install --force @img/sharp-linux-x64
+```
+
 ## Publish to NPM
 
 Update the `package.json` with the new version number, and commit the change with the message "Release n.n.n", for example, if the new version is `4.0.9` commit with: "Release 4.0.9".
