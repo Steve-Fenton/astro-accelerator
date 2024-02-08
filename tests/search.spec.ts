@@ -7,14 +7,10 @@ test('Search', async ({ page }) => {
   const find = new Model(page);
 
   const searchBox = find.searchBox();
-  await searchBox.type('image automation');
-  
-  const resultsTitle = find.searchResultsTitle();
-  await expect(resultsTitle).toHaveText('Results');
+  await searchBox.first().pressSequentially('image automation', { delay: 50 });
 
   const results = find.searchResults();
-  expect(await results.count()).toBeGreaterThan(0);
 
   const firstResult = results.first();
-  await expect(firstResult).toHaveText(/.*\/features\/image-automation\/.*/);
+  await expect(firstResult).toHaveAttribute('href', '/features/image-automation/');
 });

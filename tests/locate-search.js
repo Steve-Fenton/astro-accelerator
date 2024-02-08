@@ -19,7 +19,7 @@ export class Model {
      */
     searchBox() {
         return this.page.locator(
-            '#site-search-query'
+            'input.site-search-query'
         );
     }
 
@@ -29,7 +29,7 @@ export class Model {
      */
     searchResultsTitle() {
         return this.page.locator(
-            '#site-search-results h2',
+            '[data-site-search-results] h2',
             { hasText: 'Results' }
         );
     }
@@ -40,7 +40,7 @@ export class Model {
      */
     searchResults() {
         return this.page.locator(
-            '#site-search-results ol > li'
+            'a.result-wrapper'
         );
     }
 }

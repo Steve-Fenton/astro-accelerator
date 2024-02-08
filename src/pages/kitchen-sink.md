@@ -130,11 +130,6 @@ This page contains the most common content components.
                </div>
          </fieldset>
       </form>
-      <div id="site-search-results" data-title="Results" data-emptytitle="No Results">
-         <h2>Results</h2>
-         <ol class="site-search-results"><li data-score="52"><a href="https://astro.stevefenton.co.uk/features/image-automation/"><mark>Image</mark>s</a><div class="result-path">/features/image-automation/</div><div class="result-headings">How <mark>image</mark> automation helps with conversion, resizing, and responsive <mark>image</mark>s.</div><ul><li><a href="https://astro.stevefenton.co.uk/features/image-automation/#responsive-images">Responsive <mark>Image</mark>s</a></li></ul></li><li data-score="12"><a href="https://astro.stevefenton.co.uk/about/frontmatter/">Frontmatter</a><div class="result-path">/about/frontmatter/</div><div class="result-headings">An overview of frontmatter in Astro Accelerator.</div><ul><li><a href="https://astro.stevefenton.co.uk/about/frontmatter/#bannerimage">banner<mark>Image</mark></a></li></ul></li><li data-score="12"><a href="https://astro.stevefenton.co.uk/features/">Features</a><div class="result-path">/features/</div><div class="result-headings">An overview of features in Astro Accelerator.</div><ul><li><a href="https://astro.stevefenton.co.uk/features/#image-automation"><mark>Image</mark> Automation</a></li></ul></li><li data-score="12"><a href="https://astro.stevefenton.co.uk/features/markdown/">Markdown</a><div class="result-path">/features/markdown/</div><div class="result-headings">How markdown extensions work in Astro Accelerator.</div><ul><li><a href="https://astro.stevefenton.co.uk/features/markdown/#image-attributes-and-lazy-loading"><mark>Image</mark> Attributes and Lazy Loading</a></li></ul></li><li data-score="12"><a href="https://astro.stevefenton.co.uk/kitchen-sink/">Heading 1</a><div class="result-path">/kitchen-sink/</div><div class="result-headings">An accelerator for a very clean version of Astro.</div><ul><li><a href="https://astro.stevefenton.co.uk/kitchen-sink/#images"><mark>Image</mark>s</a></li></ul></li></ol>
-      </div>
-   </div>
 </article>
 
 ***

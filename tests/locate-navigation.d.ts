@@ -7,7 +7,7 @@ export class Model {
      * @param {Page} page
      */
     constructor(page: Page);
-    page: import("playwright-core").Page;
+    page: import("@playwright/test").Page;
     /**
      * Gets the main menu nav
      * @returns {Locator}
