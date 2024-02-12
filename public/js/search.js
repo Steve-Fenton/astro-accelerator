@@ -8,7 +8,6 @@ import { qs } from './modules/query.js';
 import { raiseEvent } from './modules/events.js';
 import { contains, sanitise, explode, highlight } from './modules/string.js';
 import { stemmer } from './modules/stemmer.js';
-import { getFocusableElement, trapFocusForward, trapReverseFocus } from './modules/focus.js';
 
 // @ts-ignore
 const f = site_features ?? {};
