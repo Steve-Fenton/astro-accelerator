@@ -113,30 +113,7 @@ siteSearchInput.addEventListener('click', () => {
 removeSearchButton.addEventListener('click', () => clearInput());
 
 // Dropdown accessibility controls
-document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && siteSearchWrapper.classList.contains('is-active')) {
-        closeDropdown();
-        deactivateInput();
-    }
-
-    // Only proceed if search is active
-    if (!siteSearchWrapper.classList.contains('is-active')) return;
-
-    const firstElement = siteSearchInput;
-    const lastElement = siteSearchResults.querySelector('button');
-
-    if (e.key === 'Tab') {
-        if (e.shiftKey && document.activeElement === firstElement) {
-            // If shift+tab is pressed on the first focusable element, move to the last
-            e.preventDefault();
-            if (lastElement) lastElement.focus();
-        } else if (!e.shiftKey && document.activeElement === lastElement) {
-            // If tab is pressed on the last focusable element, move to the first
-            e.preventDefault();
-            firstElement.focus();
-        }
-    }
-});
+document.addEventListener('keydown', handleDropdownKeyboardNavigation);
   
 function activateInput() {
     siteSearchWrapper.classList.add('is-active');
@@ -181,6 +158,33 @@ function clearInput() {
     closeDropdown();
     siteSearchInput.value = '';
     siteSearchInput.focus();
+}
+
+function handleDropdownKeyboardNavigation(e) {
+    // Proceed only if search dropdown is active
+    if (!siteSearchWrapper.classList.contains('is-active')) return;
+
+    if (e.key === 'Escape') {
+        closeDropdown();
+        deactivateInput();
+
+        return;
+    }
+
+    if (e.key === 'Tab') {
+        const firstElement = siteSearchInput;
+        const lastElement = siteSearchResults.querySelector('button') || siteSearchResults.querySelector('.site-search-results__item:last-child .result-wrapper');
+
+        if (e.shiftKey && document.activeElement === firstElement) {
+            // Shift + Tab: Move focus to the last element if the first element is currently focused
+            e.preventDefault();
+            if (lastElement) lastElement.focus();
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+            // Tab: Move focus to the first element if the last element is currently focused
+            e.preventDefault();
+            firstElement.focus();
+        }
+    }
 }
 
 /** @type{Synonyms | null} */
