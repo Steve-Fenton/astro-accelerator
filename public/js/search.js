@@ -112,6 +112,32 @@ siteSearchInput.addEventListener('click', () => {
 // Clear the search input
 removeSearchButton.addEventListener('click', () => clearInput());
 
+// Dropdown accessibility controls
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && siteSearchWrapper.classList.contains('is-active')) {
+        closeDropdown();
+        deactivateInput();
+    }
+
+    // Only proceed if search is active
+    if (!siteSearchWrapper.classList.contains('is-active')) return;
+
+    const firstElement = siteSearchInput;
+    const lastElement = siteSearchResults.querySelector('button');
+
+    if (e.key === 'Tab') {
+        if (e.shiftKey && document.activeElement === firstElement) {
+            // If shift+tab is pressed on the first focusable element, move to the last
+            e.preventDefault();
+            if (lastElement) lastElement.focus();
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+            // If tab is pressed on the last focusable element, move to the first
+            e.preventDefault();
+            firstElement.focus();
+        }
+    }
+});
+  
 function activateInput() {
     siteSearchWrapper.classList.add('is-active');
 }
@@ -148,6 +174,7 @@ function openDropdown() {
 function closeDropdown() {
     siteSearchElement.classList.remove('is-active');
     document.body.style.overflow = '';
+    siteSearchInput.blur();
 }
 
 function clearInput() {
