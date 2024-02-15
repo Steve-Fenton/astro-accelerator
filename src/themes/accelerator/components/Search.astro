@@ -1,4 +1,6 @@
 ---
+// warning: This file is overwritten by Astro Accelerator
+
 import { Accelerator, PostFiltering } from "astro-accelerator-utils";
 import { Translations, Lang } from "@util/Languages";
 import { SITE } from "@config";
@@ -59,7 +61,7 @@ const searchUrl =
         autocomplete="off"
         data-site-search-query
       />
-      <button class="site-search__remove-btn" data-site-search-remove>
+      <button class="site-search__remove-btn" type="button" data-site-search-remove>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="11"
