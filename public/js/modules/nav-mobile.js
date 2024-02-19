@@ -5,6 +5,7 @@
  * Edits will be overwritten if you change the file locally
  */
 import { qs, qsa } from './query.js';
+import { removeScroll, resetScroll } from './scrollbar.js';
 import { getFocusableElement, trapFocusForward, trapReverseFocus } from './focus.js';
 
 /**
@@ -80,11 +81,7 @@ function addMobileNav(resizedEventName) {
     }
 
     function openMobileMenu(){
-        const w1 = document.body.getBoundingClientRect().width;
-        document.body.style.overflow = 'hidden';
-        const w2 = document.body.getBoundingClientRect().width;
-        document.documentElement.style.color = 'red';
-        document.documentElement.style.paddingInlineEnd = (w2 - w1) + 'px';
+        removeScroll();
         
         const menuElement = qs('#' + navigationSelector);
         
@@ -132,8 +129,7 @@ function addMobileNav(resizedEventName) {
     function closeMobileMenu() {
         const menuElement = qs('#' + navigationSelector);
         menuElement.style.display = '';
-        document.body.style.overflow = 'auto';
-        document.documentElement.style.paddingInlineEnd = '0';
+        resetScroll();
 
         if (icon.getAttribute(dataOpen) === dataOpen) {
             overlay.innerHTML = '';

@@ -2,6 +2,7 @@
 
 import { qs } from "./modules/query.js";
 import { raiseEvent } from "./modules/events.js";
+import { removeScroll, resetScroll } from './modules/scrollbar.js';
 import { contains, sanitise, explode, highlight } from "./modules/string.js";
 import { stemmer } from "./modules/stemmer.js";
 
@@ -120,14 +121,14 @@ function initializeSearch() {
   function activateInput() {
     if (siteSearchWrapper.classList.contains("is-active")) return;
     siteSearchWrapper.classList.add("is-active");
-    document.body.style.overflow = "hidden";
+    removeScroll();
   }
 
   function deactivateInput() {
     if (!siteSearchWrapper.classList.contains("is-active")) return;
     siteSearchWrapper.classList.remove("is-active");
     siteSearchInput.blur();
-    document.body.style.overflow = "";
+    resetScroll();
   }
 
   function openDropdown() {
