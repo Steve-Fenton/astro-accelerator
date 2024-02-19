@@ -69,6 +69,11 @@ function getIssues() {
       return;
     }
 
+    const isHidden = (elem.offsetParent === null);
+    if (isHidden) {
+      return;
+    }
+
     // Find elements that overflow the document width
     if (elem.offsetWidth > document.documentElement.offsetWidth) {
       warn(elem);
