@@ -8,8 +8,9 @@ import { SITE } from "@config";
 // Properties
 type Props = {
   lang: string;
+  showSearch: boolean;
 };
-const { lang } = Astro.props satisfies Props;
+const { lang, showSearch = true } = Astro.props satisfies Props;
 
 // Language
 const _ = Lang(lang);
@@ -23,8 +24,8 @@ const searchUrl =
   (search && accelerator.urlFormatter.formatAddress(search.url)) ||
   SITE.search.fallbackUrl;
 ---
-
 <div class="site-search__wrapper" data-site-search-wrapper>
+{showSearch &&
   <div class="site-search__overlay"></div>
   <form
     method="GET"
@@ -87,6 +88,8 @@ const searchUrl =
     data-site-search-results
   >
   </div>
+  <script src={SITE.subfolder + "/js/search.js"} type="module" defer></script>
+}
   <a href={searchUrl} class="site-search__mobile">
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -101,5 +104,3 @@ const searchUrl =
     </svg>
   </a>
 </div>
-
-<script src={SITE.subfolder + "/js/search.js"} type="module" defer></script>
