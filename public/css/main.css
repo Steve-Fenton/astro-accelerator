@@ -282,10 +282,10 @@ nav.skip-links a:focus {
     position: sticky;
     top: 0;
     z-index: 10;
-    display: grid;
-    grid-template-columns: 40px 1fr 40px;
     gap: 1rem;
-    justify-content: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .site-header a {
@@ -693,6 +693,8 @@ nav.site-nav h2 {
     height: 100%;
     padding: 0 1rem;
     width: calc(100% - 2rem);
+    font-size: 1.25rem;
+    color: var(--link-head);
 }
 
 .search-results__heading {
@@ -754,6 +756,7 @@ nav.site-nav h2 {
     text-decoration: none;
     flex-direction: column;
     gap: 0.56rem;
+    text-align: left;
 }
 
 .result-wrapper:hover {
@@ -768,6 +771,7 @@ nav.site-nav h2 {
 
 .site-search-results__item:hover .result-wrapper {
     color: initial;
+    color: #fff;
 }
 
 .result-wrapper mark {
@@ -776,7 +780,7 @@ nav.site-nav h2 {
 
 .result-path {
     color:  var(--blue-grey-lighter);
-    font-size: var(--font-size-small);
+    font-size: 0.875rem;
     font-weight: 400;
     display: flex;
     gap: 0.5rem;
@@ -789,13 +793,13 @@ nav.site-nav h2 {
 
 .result-title {
     color: var(--blue-midnight);
-    font-size: var(--font-size-large);
+    font-size: 1.25rem;
     font-weight: 700;
 }
 
 .result-description {
     color: var(--blue-grey-dark);
-    font-size: var(--font-size-medium);
+    font-size: 1rem;
     font-weight: 400;
 }
 
@@ -813,6 +817,9 @@ nav.site-nav h2 {
     cursor: pointer;
     visibility: hidden;
     transition: transform var(--search-dropdown-duration) ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .site-search__remove-btn:hover {
@@ -850,7 +857,7 @@ nav.site-nav h2 {
 
 .site-search .show-more {
     display: inline-block;
-    font-size: var(--font-size-small);
+    font-size: 0.875rem;
     border-radius: 100px;
     text-decoration: none;
     text-align: center;
