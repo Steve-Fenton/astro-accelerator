@@ -304,6 +304,12 @@ nav.skip-links a:focus {
     text-transform: uppercase;
 }
 
+@media (min-width: 338px) {
+    .site-header .site-title {
+        flex-shrink: 0;
+    }
+}
+
 .site-header .navigation-icon {
     stroke: var(--link-head);
 }
