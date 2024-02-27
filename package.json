@@ -1,86 +1,86 @@
 {
-  "version": "4.0.20",
-  "author": "Steve Fenton",
-  "name": "astro-accelerator",
-  "description": "A super-lightweight, accessible, SEO-friendly starter project for Astro",
-  "keywords": [
-    "astro",
-    "themes"
-  ],
-  "type": "module",
-  "packageManager": "pnpm@8.7.0",
-  "engines": {
-    "node": ">=18.14.1",
-    "pnpm": ">=8.6.12"
-  },
-  "homepage": "https://astro.stevefenton.co.uk/",
-  "bugs": "https://github.com/Steve-Fenton/astro-accelerator/issues",
-  "license": "(Apache-2.0)",
-  "repository": {
-    "url": "https://github.com/Steve-Fenton/astro-accelerator"
-  },
-  "scripts": {
-    "img": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs",
-    "dev": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs && astro dev",
-    "stats": "node --no-experimental-fetch ./src/themes/accelerator/utilities/stats.mjs",
-    "spellcheck": "git fetch origin main:refs/remotes/origin/main && git diff origin/main --name-only --diff-filter=ACMRTUXB | cspell --no-must-find-files --file-list stdin",
-    "test": "astro build && npx playwright install --with-deps && npx playwright test",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "dts": "tsc ./tests/locate-content.js ./tests/locate-navigation.js ./tests/locate-search.js --allowJs --declaration --emitDeclarationOnly"
-  },
-  "dependencies": {
-    "@astrojs/mdx": "^2.1.1",
-    "astro": "^4.4.3",
-    "astro-accelerator-utils": "^0.3.7",
-    "cspell": "^8.4.1",
-    "csv": "^6.3.6",
-    "hast-util-from-selector": "^3.0.0",
-    "html-to-text": "^9.0.5",
-    "keyword-extractor": "^0.0.28",
-    "optional": "^0.1.4",
-    "remark-directive": "^3.0.0",
-    "sharp": "^0.33.2"
-  },
-  "devDependencies": {
-    "@playwright/test": "^1.41.2"
-  },
-  "files": [
-    ".npmrc",
-    "env.d.ts",
-    "tsconfig.json",
-    "astro.config.mjs",
-    "sample/*",
-    "sample/**/*",
-    "src/config.ts",
-    "src/pages/index.md",
-    "src/pages/search.md",
-    "src/pages/articles/*.astro",
-    "src/pages/articles/*.ts",
-    "src/pages/authors/**/*.astro",
-    "src/pages/category/**/*.astro",
-    "src/pages/category/**/*.astro",
-    "src/pages/tag/**/*.astro",
-    "src/pages/tag/**/*.astro",
-    "src/pages/search.json.ts",
-    "src/pages/sitemap.xml.ts",
-    "src/pages/report/*",
-    "src/layouts/*",
-    "src/themes/accelerator/components/*",
-    "src/themes/accelerator/layouts/*",
-    "src/themes/accelerator/utilities/*",
-    "src/data/*",
-    "public/img/astro-lighthouse.png",
-    "public/icons/**/*",
-    "public/css/*",
-    "public/js/*"
-  ],
-  "pnpm": {
-    "overrides": {
-      "postcss@<8.4.31": ">=8.4.31",
-      "vite@<=5.0.11": ">=5.0.12",
-      "zod@<=3.22.2": ">=3.22.3"
+    "version": "4.0.21",
+    "author": "Steve Fenton",
+    "name": "astro-accelerator",
+    "description": "A super-lightweight, accessible, SEO-friendly starter project for Astro",
+    "keywords": [
+        "astro",
+        "themes"
+    ],
+    "type": "module",
+    "packageManager": "pnpm@8.7.0",
+    "engines": {
+        "node": ">=18.14.1",
+        "pnpm": ">=8.6.12"
+    },
+    "homepage": "https://astro.stevefenton.co.uk/",
+    "bugs": "https://github.com/Steve-Fenton/astro-accelerator/issues",
+    "license": "(Apache-2.0)",
+    "repository": {
+        "url": "https://github.com/Steve-Fenton/astro-accelerator"
+    },
+    "scripts": {
+        "img": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs",
+        "dev": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs && astro dev",
+        "stats": "node --no-experimental-fetch ./src/themes/accelerator/utilities/stats.mjs",
+        "spellcheck": "git fetch origin main:refs/remotes/origin/main && git diff origin/main --name-only --diff-filter=ACMRTUXB | cspell --no-must-find-files --file-list stdin",
+        "test": "astro build && npx playwright install --with-deps && npx playwright test",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro",
+        "dts": "tsc ./tests/locate-content.js ./tests/locate-navigation.js ./tests/locate-search.js --allowJs --declaration --emitDeclarationOnly"
+    },
+    "dependencies": {
+        "@astrojs/mdx": "^2.1.1",
+        "astro": "^4.4.3",
+        "astro-accelerator-utils": "^0.3.7",
+        "cspell": "^8.4.1",
+        "csv": "^6.3.6",
+        "hast-util-from-selector": "^3.0.0",
+        "html-to-text": "^9.0.5",
+        "keyword-extractor": "^0.0.28",
+        "optional": "^0.1.4",
+        "remark-directive": "^3.0.0",
+        "sharp": "^0.33.2"
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.41.2"
+    },
+    "files": [
+        ".npmrc",
+        "env.d.ts",
+        "tsconfig.json",
+        "astro.config.mjs",
+        "sample/*",
+        "sample/**/*",
+        "src/config.ts",
+        "src/pages/index.md",
+        "src/pages/search.md",
+        "src/pages/articles/*.astro",
+        "src/pages/articles/*.ts",
+        "src/pages/authors/**/*.astro",
+        "src/pages/category/**/*.astro",
+        "src/pages/category/**/*.astro",
+        "src/pages/tag/**/*.astro",
+        "src/pages/tag/**/*.astro",
+        "src/pages/search.json.ts",
+        "src/pages/sitemap.xml.ts",
+        "src/pages/report/*",
+        "src/layouts/*",
+        "src/themes/accelerator/components/*",
+        "src/themes/accelerator/layouts/*",
+        "src/themes/accelerator/utilities/*",
+        "src/data/*",
+        "public/img/astro-lighthouse.png",
+        "public/icons/**/*",
+        "public/css/*",
+        "public/js/*"
+    ],
+    "pnpm": {
+        "overrides": {
+            "postcss@<8.4.31": ">=8.4.31",
+            "vite@<=5.0.11": ">=5.0.12",
+            "zod@<=3.22.2": ">=3.22.3"
+        }
     }
-  }
 }
