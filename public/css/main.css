@@ -806,6 +806,10 @@ nav.site-nav h2 {
     flex-wrap: wrap;
 }
 
+.result-path__icon {
+    stroke: var(--fore-breadcrumb);
+}
+
 .result-path__segment:last-child {
     color: var(--link-head);
 }
