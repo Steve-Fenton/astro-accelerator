@@ -325,7 +325,12 @@ nav.skip-links a:focus {
 }
 
 .site-header .navigation-icon {
+    --icon-width: 40px;
     stroke: var(--link-head);
+    border: 1px solid var(--link-head);
+    border-radius: calc(var(--icon-width) / 2);
+    width: var(--icon-width);
+    height: var(--icon-width);
 }
 
 .site-header .search-icon {
@@ -640,7 +645,7 @@ nav.site-nav h2 {
 .site-search {
     height: var(--search-height);
     border-radius: var(--search-border-radius);
-    border: var(--search-border);
+    border: 1px solid var(--link-head);
     background-color: var(--white);
     position: relative;
     z-index: 1;
@@ -859,14 +864,15 @@ nav.site-nav h2 {
     }
 
     .site-header .site-search__mobile {
-        --search-mobile-size: 3rem;
+        --search-mobile-size: 40px;
         display: flex;
         width: var(--search-mobile-size);
         height: var(--search-mobile-size);
+        border: 1px solid var(--link-head);
         border-radius: calc(var(--search-mobile-size) / 2);
         justify-content: center;
         align-items: center;
-        border: var(--search-border);
+        fill: var(--link-head);
     }
 }
 
