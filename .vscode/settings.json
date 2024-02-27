@@ -3,5 +3,6 @@
     "prettier.configPath": ".prettierrc.json",
     "prettier.useEditorConfig": false,
     "prettier.bracketSameLine": true,
-    "prettier.insertPragma": true
+    "prettier.insertPragma": true,
+    "editor.formatOnSave": true
 }
