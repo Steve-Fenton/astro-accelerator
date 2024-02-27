@@ -87,10 +87,7 @@ function initializeSearch() {
     var ready = false;
     var scrolled = false;
 
-    siteSearchInput.addEventListener('focus', () => activateInput());
-
-    // Close the dropdown upon clicking outside the search
-    document.addEventListener('click', function (e) {
+    function deactivate(e) {
         if (
             !siteSearchElement.contains(e.target) &&
             !siteSearchResults.contains(e.target)
@@ -109,10 +106,14 @@ function initializeSearch() {
                 deactivateInput();
             }, durationMs);
         }
-    });
+    }
+
+    // Close the dropdown upon activity outside the search
+    document.addEventListener('click', deactivate);
+    document.addEventListener('keyup', deactivate);
 
     // Reopen the dropdown upon clicking the input after it has been closed
-    siteSearchInput.addEventListener('click', () => {
+    siteSearchInput.addEventListener('change', () => {
         if (siteSearchInput.value.trim() !== '') {
             activateInput();
             openDropdown();
