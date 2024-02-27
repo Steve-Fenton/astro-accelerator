@@ -221,6 +221,7 @@ tbody tr:nth-child(odd) {
 }
 
 /* Skip Links */
+
 nav.skip-links {
     position: absolute;
 }
@@ -284,6 +285,7 @@ nav.skip-links a:focus {
 }
 
 /* Header */
+
 .site-header {
     color: var(--fore-head);
     background-color: var(--aft-head);
