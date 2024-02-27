@@ -1,7 +1,11 @@
 /**
  * This javascript file comes from Astro Accelerator
  * Edits will be overwritten if you change the file locally
+ *
+ * @format
  */
+
+// @ts-check
 
 /**
  * Removes "morphological and inflexional endings" from words
@@ -9,48 +13,47 @@
  */
 export const stemmer = (function () {
     const step2list = {
-        "ational": "ate",
-        "tional": "tion",
-        "enci": "ence",
-        "anci": "ance",
-        "izer": "ize",
-        "bli": "ble",
-        "alli": "al",
-        "entli": "ent",
-        "eli": "e",
-        "ousli": "ous",
-        "ization": "ize",
-        "ation": "ate",
-        "ator": "ate",
-        "alism": "al",
-        "iveness": "ive",
-        "fulness": "ful",
-        "ousness": "ous",
-        "aliti": "al",
-        "iviti": "ive",
-        "biliti": "ble",
-        "logi": "log"
+        ational: 'ate',
+        tional: 'tion',
+        enci: 'ence',
+        anci: 'ance',
+        izer: 'ize',
+        bli: 'ble',
+        alli: 'al',
+        entli: 'ent',
+        eli: 'e',
+        ousli: 'ous',
+        ization: 'ize',
+        ation: 'ate',
+        ator: 'ate',
+        alism: 'al',
+        iveness: 'ive',
+        fulness: 'ful',
+        ousness: 'ous',
+        aliti: 'al',
+        iviti: 'ive',
+        biliti: 'ble',
+        logi: 'log',
     };
 
     const step3list = {
-        "icate": "ic",
-        "ative": "",
-        "alize": "al",
-        "iciti": "ic",
-        "ical": "ic",
-        "ful": "",
-        "ness": ""
+        icate: 'ic',
+        ative: '',
+        alize: 'al',
+        iciti: 'ic',
+        ical: 'ic',
+        ful: '',
+        ness: '',
     };
 
-    const c = "[^aeiou]", // consonant
-    v = "[aeiouy]",       // vowel
-    C = c + "[^aeiouy]*", // consonant sequence
-    V = v + "[aeiou]*",   // vowel sequence
-
-    mgr0 = "^(" + C + ")?" + V + C,                   // [C]VC... is m>0
-    meq1 = "^(" + C + ")?" + V + C + "(" + V + ")?$", // [C]VC[V] is m=1
-    mgr1 = "^(" + C + ")?" + V + C + V + C,           // [C]VCVC... is m>1
-    s_v = "^(" + C + ")?" + v;                        // vowel in stem
+    const c = '[^aeiou]', // consonant
+        v = '[aeiouy]', // vowel
+        C = c + '[^aeiouy]*', // consonant sequence
+        V = v + '[aeiou]*', // vowel sequence
+        mgr0 = '^(' + C + ')?' + V + C, // [C]VC... is m>0
+        meq1 = '^(' + C + ')?' + V + C + '(' + V + ')?$', // [C]VC[V] is m=1
+        mgr1 = '^(' + C + ')?' + V + C + V + C, // [C]VCVC... is m>1
+        s_v = '^(' + C + ')?' + v; // vowel in stem
 
     /**
      * @param {string} w
@@ -66,11 +69,13 @@ export const stemmer = (function () {
             re4,
             origword = w;
 
-        if (w.length < 3) { return w; }
+        if (w.length < 3) {
+            return w;
+        }
 
         firstch = w.substring(0, 1);
 
-        if (firstch == "y") {
+        if (firstch == 'y') {
             w = firstch.toUpperCase() + w.substring(1, w.length);
         }
 
@@ -78,10 +83,10 @@ export const stemmer = (function () {
         re = /^(.+?)(ss|i)es$/;
         re2 = /^(.+?)([^s])s$/;
 
-        if (re.test(w)) { 
-            w = w.replace(re, "$1$2"); 
+        if (re.test(w)) {
+            w = w.replace(re, '$1$2');
         } else if (re2.test(w)) {
-            w = w.replace(re2, "$1$2"); 
+            w = w.replace(re2, '$1$2');
         }
 
         // Step 1b
@@ -92,7 +97,7 @@ export const stemmer = (function () {
             re = new RegExp(mgr0);
             if (re.test(fp[1])) {
                 re = /.$/;
-                w = w.replace(re, "");
+                w = w.replace(re, '');
             }
         } else if (re2.test(w)) {
             var fp = re2.exec(w);
@@ -101,11 +106,16 @@ export const stemmer = (function () {
             if (re2.test(stem)) {
                 w = stem;
                 re2 = /(at|bl|iz)$/;
-                re3 = new RegExp("([^aeiouylsz])\\1$");
-                re4 = new RegExp("^" + C + v + "[^aeiouwxy]$");
-                if (re2.test(w)) { w = w + "e"; }
-                else if (re3.test(w)) { re = /.$/; w = w.replace(re, ""); }
-                else if (re4.test(w)) { w = w + "e"; }
+                re3 = new RegExp('([^aeiouylsz])\\1$');
+                re4 = new RegExp('^' + C + v + '[^aeiouwxy]$');
+                if (re2.test(w)) {
+                    w = w + 'e';
+                } else if (re3.test(w)) {
+                    re = /.$/;
+                    w = w.replace(re, '');
+                } else if (re4.test(w)) {
+                    w = w + 'e';
+                }
             }
         }
 
@@ -115,11 +125,14 @@ export const stemmer = (function () {
             var fp = re.exec(w);
             stem = fp[1];
             re = new RegExp(s_v);
-            if (re.test(stem)) { w = stem + "i"; }
+            if (re.test(stem)) {
+                w = stem + 'i';
+            }
         }
 
         // Step 2
-        re = /^(.+?)(ational|tional|enci|anci|izer|bli|alli|entli|eli|ousli|ization|ation|ator|alism|iveness|fulness|ousness|aliti|iviti|biliti|logi)$/;
+        re =
+            /^(.+?)(ational|tional|enci|anci|izer|bli|alli|entli|eli|ousli|ization|ation|ator|alism|iveness|fulness|ousness|aliti|iviti|biliti|logi)$/;
         if (re.test(w)) {
             var fp = re.exec(w);
             stem = fp[1];
@@ -143,7 +156,8 @@ export const stemmer = (function () {
         }
 
         // Step 4
-        re = /^(.+?)(al|ance|ence|er|ic|able|ible|ant|ement|ment|ent|ou|ism|ate|iti|ous|ive|ize)$/;
+        re =
+            /^(.+?)(al|ance|ence|er|ic|able|ible|ant|ement|ment|ent|ou|ism|ate|iti|ous|ive|ize)$/;
         re2 = /^(.+?)(s|t)(ion)$/;
         if (re.test(w)) {
             var fp = re.exec(w);
@@ -168,8 +182,8 @@ export const stemmer = (function () {
             stem = fp[1];
             re = new RegExp(mgr1);
             re2 = new RegExp(meq1);
-            re3 = new RegExp("^" + C + v + "[^aeiouwxy]$");
-            if (re.test(stem) || (re2.test(stem) && !(re3.test(stem)))) {
+            re3 = new RegExp('^' + C + v + '[^aeiouwxy]$');
+            if (re.test(stem) || (re2.test(stem) && !re3.test(stem))) {
                 w = stem;
             }
         }
@@ -178,15 +192,15 @@ export const stemmer = (function () {
         re2 = new RegExp(mgr1);
         if (re.test(w) && re2.test(w)) {
             re = /.$/;
-            w = w.replace(re, "");
+            w = w.replace(re, '');
         }
 
         // and turn initial Y back to y
 
-        if (firstch == "y") {
+        if (firstch == 'y') {
             w = firstch.toLowerCase() + w.substr(1);
         }
 
         return w;
-    }
+    };
 })();

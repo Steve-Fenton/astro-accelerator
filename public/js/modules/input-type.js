@@ -1,26 +1,29 @@
-// @ts-check
-
 /**
  * This javascript file comes from Astro Accelerator
  * Edits will be overwritten if you change the file locally
+ *
+ * @format
  */
+
+// @ts-check
+
 let inputType = 'unknown';
 
 /**
  * Sets the user input mode as a class
  */
 function monitorInputType() {
-    window.addEventListener('keydown', event => {
+    window.addEventListener('keydown', (event) => {
         const eventType = 'input-keyboard';
         processInput(eventType);
     });
 
-    window.addEventListener('mousemove', event => {
+    window.addEventListener('mousemove', (event) => {
         const eventType = 'input-mouse';
         processInput(eventType);
     });
 
-    window.addEventListener('touchstart', event => {
+    window.addEventListener('touchstart', (event) => {
         const eventType = 'input-touch';
         processInput(eventType);
     });
@@ -28,7 +31,7 @@ function monitorInputType() {
 
 /**
  * Processes the keyboard, mouse, or touch event
- * @param {string} eventType 
+ * @param {string} eventType
  */
 function processInput(eventType) {
     if (inputType !== eventType) {
@@ -40,7 +43,7 @@ function processInput(eventType) {
 
 /**
  * Removes an input type class from the body
- * @param {string} inputType 
+ * @param {string} inputType
  */
 function removeClass(inputType) {
     document.body.classList.remove(inputType);
@@ -48,7 +51,7 @@ function removeClass(inputType) {
 
 /**
  * Adds an input type class to the body
- * @param {string} inputType 
+ * @param {string} inputType
  */
 function addClass(inputType) {
     document.body.classList.add(inputType);

@@ -1,20 +1,20 @@
-// @ts-check
-
 /**
  * This javascript file comes from Astro Accelerator
  * Edits will be overwritten if you change the file locally
+ *
+ * @format
  */
 
+// @ts-check
+
 /**
- * 
- * @param {string} query 
+ *
+ * @param {string} query
  * @param {HTMLElement} [container]
  * @returns {HTMLElement}
  */
 function qs(query, container) {
-    const target = (container)
-        ? container
-        : document;
+    const target = container ? container : document;
 
     /** @type {any} */
     const result = target.querySelector(query);
@@ -28,15 +28,13 @@ function qs(query, container) {
 
 /**
  * Utility for query selector all
- * 
+ *
  * @param {string} query
  * @param {HTMLElement | null} [container]
  * @returns {NodeListOf<any>}
  */
- function qsa(query, container) {
-    const target = (container)
-        ? container
-        : document;
+function qsa(query, container) {
+    const target = container ? container : document;
 
     /** @type {NodeListOf<HTMLElement>} */
     const result = target.querySelectorAll(query);

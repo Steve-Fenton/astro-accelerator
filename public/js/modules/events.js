@@ -1,14 +1,16 @@
-// @ts-check
-
 /**
  * This javascript file comes from Astro Accelerator
  * Edits will be overwritten if you change the file locally
+ *
+ * @format
  */
 
+// @ts-check
+
 /**
- * 
- * @param {string} name 
- * @param {{[key: string]: any}} detail 
+ *
+ * @param {string} name
+ * @param {{[key: string]: any}} detail
  * @param {Document | HTMLElement} [target]
  */
 function raiseEvent(name, detail, target) {
@@ -16,7 +18,7 @@ function raiseEvent(name, detail, target) {
         target = document;
     }
 
-    const event = new CustomEvent(name, { detail: detail});
+    const event = new CustomEvent(name, { detail: detail });
     document.dispatchEvent(event);
     console.log('Event Raised', name, detail);
 }

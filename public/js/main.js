@@ -1,10 +1,16 @@
-// @ts-check
-
 /**
  * This javascript file comes from Astro Accelerator
  * Edits will be overwritten if you change the file locally
+ *
+ * @format
  */
-import { addIntersectionObserver, addListImageIntersectionObserver } from './modules/animation.js';
+
+// @ts-check
+
+import {
+    addIntersectionObserver,
+    addListImageIntersectionObserver,
+} from './modules/animation.js';
 import { addResizedEvent } from './modules/resizing.js';
 import { addStickyNavigation } from './modules/nav-sticky.js';
 import { addMobileNav } from './modules/nav-mobile.js';
@@ -18,7 +24,12 @@ const resizedEventName = addResizedEvent();
 
 setClickableBlocks();
 setExternalLinkAttributes();
-addStickyNavigation('.site-header', '#site-nav', '#site-nav > ul', resizedEventName);
+addStickyNavigation(
+    '.site-header',
+    '#site-nav',
+    '#site-nav > ul',
+    resizedEventName
+);
 addMobileNav(resizedEventName);
 addIntersectionObserver('.anim-show-parent img, .anim-show-parent .list-item');
 addListImageIntersectionObserver('.post-list img');
@@ -30,14 +41,13 @@ highlightCurrentHeading('.page-toc a');
 const f = site_features ?? {};
 
 /**
- * 
- * @param {string[]} settings 
- * @param {string} option 
- * @returns 
+ *
+ * @param {string[]} settings
+ * @param {string} option
+ * @returns
  */
 function enabled(settings, option) {
-    return settings
-        && settings.includes(option);
+    return settings && settings.includes(option);
 }
 
 if (enabled(f.details, 'tabs')) {
@@ -66,6 +76,6 @@ if (enabled(f.headers, 'link')) {
 }
 
 if (enabled(f.search, 'dialog')) {
-    const searchDialog = await import ('./modules/search-dialog.js');
+    const searchDialog = await import('./modules/search-dialog.js');
     searchDialog.enhanceSearchIcon();
 }

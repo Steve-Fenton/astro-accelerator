@@ -1,9 +1,12 @@
-// @ts-check
-
 /**
  * This javascript file comes from Astro Accelerator
  * Edits will be overwritten if you change the file locally
+ *
+ * @format
  */
+
+// @ts-check
+
 import { qsa } from './query.js';
 
 let links = [];
@@ -13,14 +16,14 @@ const highlightClass = 'highlight';
 
 /**
  * Makes an entire block clickable based on a data-attribute, usually "data-destination"
- * 
+ *
  * Example: You have a list of blog posts, including featured images. If you make the title
  * clickable, clicks on the image won't open the blog. Adding links to the images means
  * keyboard users have to tab twice as much to get through the list.
- * 
+ *
  * Use clickable blocks to allow keyboard users to tab through the real links, but still
  * capture clicks elsewhere on the block.
- * 
+ *
  */
 function highlightCurrentHeading(tocSelector) {
     links = qsa(tocSelector);
@@ -57,15 +60,17 @@ function highlight(id) {
 
 function recheck() {
     const docTop = Math.floor(document.documentElement.scrollTop);
-    const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+    const vh = Math.max(
+        document.documentElement.clientHeight || 0,
+        window.innerHeight || 0
+    );
 
     const validItems = [];
 
     headings.forEach((elem) => {
-        
-        const hasPassed = (elem.offsetTop < docTop);
-        const inView = (elem.offsetTop > docTop) && (elem.offsetTop < (docTop + vh));
-        const isValid = (docTop + vh) - elem.offsetTop > (vh / 1.5);
+        const hasPassed = elem.offsetTop < docTop;
+        const inView = elem.offsetTop > docTop && elem.offsetTop < docTop + vh;
+        const isValid = docTop + vh - elem.offsetTop > vh / 1.5;
 
         if (isValid) {
             validItems.push(elem);

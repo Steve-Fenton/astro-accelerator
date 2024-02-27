@@ -1,9 +1,12 @@
-// @ts-check
-
 /**
  * This javascript file comes from Astro Accelerator
  * Edits will be overwritten if you change the file locally
+ *
+ * @format
  */
+
+// @ts-check
+
 import { raiseEvent } from './events.js';
 
 var resizeEventName = 'resize';
@@ -15,10 +18,10 @@ var height = window.innerHeight;
 /**
  * Adds a de-bounced "resized" event, so you can listen to:
  * document.addEventListener('resized', <handler>);
- * 
+ *
  * @returns {string}
  */
- function addResizedEvent() {
+function addResizedEvent() {
     let debounce = null;
 
     function resizeEnd(e) {
@@ -29,12 +32,11 @@ var height = window.innerHeight;
     function raiseResizeEvent() {
         const change = {
             width: window.innerWidth - width,
-            height: window.innerHeight - height
+            height: window.innerHeight - height,
         };
 
         width = window.innerWidth;
         height = window.innerHeight;
-        
 
         raiseEvent(resizedEventName, { change: change });
     }

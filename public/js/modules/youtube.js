@@ -1,9 +1,12 @@
-// @ts-check
-
 /**
  * This javascript file comes from Astro Accelerator
  * Edits will be overwritten if you change the file locally
+ *
+ * @format
  */
+
+// @ts-check
+
 import { qsa } from './query.js';
 
 function enhanceYoutubeLinks() {
@@ -26,7 +29,7 @@ function enhanceYoutubeLinks() {
         </div>`;
     }
 
-    function clickHandler (event) {
+    function clickHandler(event) {
         var link = event.target.closest('[data-youtube]');
 
         if (!link) {
@@ -45,4 +48,4 @@ function enhanceYoutubeLinks() {
     document.addEventListener('click', clickHandler);
 }
 
-export { enhanceYoutubeLinks }
+export { enhanceYoutubeLinks };

@@ -1,7 +1,12 @@
 /**
  * This javascript file comes from Astro Accelerator
  * Edits will be overwritten if you change the file locally
+ *
+ * @format
  */
+
+// @ts-check
+
 import { qsa } from './query.js';
 
 function setExternalLinkAttributes() {
@@ -21,4 +26,4 @@ function setExternalLinkAttributes() {
     });
 }
 
-export { setExternalLinkAttributes }
+export { setExternalLinkAttributes };

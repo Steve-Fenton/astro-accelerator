@@ -1,43 +1,46 @@
-/* Recommended Tools
-    Check accessibility for colour combinations
-    https://toolness.github.io/accessible-color-matrix/
-*/
+/**
+ * Recommended Tools
+ *     Check accessibility for colour combinations
+ *     https://toolness.github.io/accessible-color-matrix/
+ *
+ * @format
+ */
 
 :root {
     --fore: #333;
     --fore-headings: #225;
-    --aft: #FBFBFC;
+    --aft: #fbfbfc;
 
     --fore-link: #2d4295;
-    --fore-link-alt: #4D71FF;
-    --aft-link-alt: #F3F5FF;
+    --fore-link-alt: #4d71ff;
+    --aft-link-alt: #f3f5ff;
 
     --fore-head: #333;
-    --aft-head: #E6E8F1;
+    --aft-head: #e6e8f1;
 
     --fore-breadcrumb: #333;
-    --aft-breadcrumb: #F3F5FF;
+    --aft-breadcrumb: #f3f5ff;
 
     --link-head: #2d4295;
     --link-alt-head: #2a4dd8;
 
     --fore-block: #333;
-    --aft-block: #F3F5FF;
-    --icon-block: #4D71FF;
+    --aft-block: #f3f5ff;
+    --icon-block: #4d71ff;
 
-    --aft-mark: #EEF;
+    --aft-mark: #eef;
 
-    --fore-table-head: #FDFDFE;
-    --aft-table-head: #2F3141;
+    --fore-table-head: #fdfdfe;
+    --aft-table-head: #2f3141;
     --fore-table-row-odd: #333;
-    --aft-table-row-odd: #FDFDFE;
+    --aft-table-row-odd: #fdfdfe;
     --fore-table-row-even: #333;
-    --aft-table-row-even: #F3F5FF;
+    --aft-table-row-even: #f3f5ff;
 
     --heading-font: Georgia, 'Times New Roman', Times, serif;
     --content-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --code-font: Consolas, 'Courier New', Courier, monospace;
-    --unicode-font: "Segoe UI Symbol", "Arial Unicode MS", sans-serif;
+    --unicode-font: 'Segoe UI Symbol', 'Arial Unicode MS', sans-serif;
 
     --block-gap: 2rem;
     --block-radius: 0.3rem;
@@ -60,44 +63,43 @@
     /* Search variables */
     --white: #fff;
     --search-height: 3rem;
-    --search-border-radius: calc(var(--search-height)/2);
+    --search-border-radius: calc(var(--search-height) / 2);
     --search-results-padding: 1rem;
-    --search-border: 0.0625rem solid #76A1C2;
+    --search-border: 0.0625rem solid #76a1c2;
     --search-dropdown-height: 65vh;
     --search-dropdown-duration: 0.3s;
-    --search-item-border-color: #DAE2E9;
+    --search-item-border-color: #dae2e9;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --fore: #CCC;
-        --fore-headings: #CCE;
+        --fore: #ccc;
+        --fore-headings: #cce;
         --aft: #333;
 
         --fore-link: #abb9ef;
         --fore-link-alt: #abb9ef;
         --aft-link-alt: #232323;
 
-        --fore-head: #CCC;
+        --fore-head: #ccc;
         --aft-head: #222;
 
-        --fore-breadcrumb: #CCC;
-        --aft-breadcrumb: #2C2C2C;
+        --fore-breadcrumb: #ccc;
+        --aft-breadcrumb: #2c2c2c;
 
         --link-head: #abb9ef;
         --link-alt-head: #6580ed;
 
-        --fore-block: #CCC;
+        --fore-block: #ccc;
         --aft-block: #111;
         --icon-block: #abb9ef;
 
-        --fore-table-head: #CCC;
+        --fore-table-head: #ccc;
         --aft-table-head: #222;
-        --fore-table-row-odd: #CCC;
+        --fore-table-row-odd: #ccc;
         --aft-table-row-odd: #333;
-        --fore-table-row-even: #CCC;
+        --fore-table-row-even: #ccc;
         --aft-table-row-even: #444;
-
 
         /* Search variables */
         --white: var(--aft);

@@ -5,17 +5,22 @@
         "anim",
         "astro",
         "datetime",
+        "debounce",
         "elem",
         "emptytitle",
         "figcaption",
         "frontmatter",
+        "noopener",
         "resp",
+        "sharetitle",
         "sourcedata",
         "srcset",
         "stemmer",
+        "tabpanel",
         "typeof",
         "vocab",
-        "webp"
+        "webp",
+        "youtube"
     ],
     "flagWords": [
         "hte"
