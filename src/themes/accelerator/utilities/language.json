@@ -21,7 +21,7 @@
     },
     "skiplinks": {
         "skip_to_top": {
-            "en": "Back to top"      
+            "en": "Back to top"
         },
         "skip_to_navigation": {
             "en": "Skip to navigation"
@@ -34,12 +34,12 @@
         }
     },
     "header": {
-      "toggle_menu": {
-          "en": "Toggle menu"
-      },
-      "toggle_search": {
-          "en": "Toggle site search"
-      }
+        "toggle_menu": {
+            "en": "Toggle menu"
+        },
+        "toggle_search": {
+            "en": "Toggle site search"
+        }
     },
     "navigation": {
         "title": {
@@ -47,7 +47,7 @@
         }
     },
     "toc": {
-        "title":{
+        "title": {
             "en": "Table of contents"
         }
     },

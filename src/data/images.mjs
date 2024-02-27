@@ -1,4 +1,6 @@
+/** @format */
+
 export const imagePaths = {
     src: 'img',
-    dest: 'i'
-}
+    dest: 'i',
+};

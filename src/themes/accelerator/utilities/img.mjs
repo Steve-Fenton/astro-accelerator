@@ -1,6 +1,8 @@
 /**
  * This javascript file comes from Astro Accelerator
  * Edits will be overwritten if you change the file locally
+ *
+ * @format
  */
 
 import fs from 'fs';
@@ -9,8 +11,12 @@ import sharp from 'sharp';
 
 const workingDirectory = process.cwd();
 
-const imageSize = await import('file://' + path.join(workingDirectory, 'src/data/image-size.mjs'));
-const imageModule = await import('file://' + path.join(workingDirectory, 'src/data/images.mjs'));
+const imageSize = await import(
+    'file://' + path.join(workingDirectory, 'src/data/image-size.mjs')
+);
+const imageModule = await import(
+    'file://' + path.join(workingDirectory, 'src/data/images.mjs')
+);
 const size = imageSize.size;
 const imagePaths = imageModule.imagePaths;
 
@@ -21,19 +27,26 @@ const imageDirectory = path.join(workingDirectory, imagePath);
 const filesToProcess = [];
 
 function getDestinationFilePathless(source, s) {
-    let destination = path.join(workingDirectory, outputPath, s.toString(), source);
+    let destination = path.join(
+        workingDirectory,
+        outputPath,
+        s.toString(),
+        source
+    );
     destination = destination.replace(path.parse(destination).ext, '');
     return destination;
 }
 
 async function createDestinationFolder(destinationFile) {
     const file = path.parse(destinationFile + '.txt');
-    
+
     await fs.promises.mkdir(file.dir, { recursive: true });
 }
 
 async function recurseFiles(directory) {
-    const f = await fs.promises.readdir(path.join(imageDirectory, directory), { withFileTypes: true });
+    const f = await fs.promises.readdir(path.join(imageDirectory, directory), {
+        withFileTypes: true,
+    });
 
     for (const file of f) {
         if (file.isDirectory()) {
@@ -49,18 +62,26 @@ async function recurseFiles(directory) {
                 case '.webp':
                     const sourcePath = path.join(directory, file.name);
 
-                    const webP = sourcePath.replace(/.jpg$|.jpeg$|.png$/, '.webp');
+                    const webP = sourcePath.replace(
+                        /.jpg$|.jpeg$|.png$/,
+                        '.webp'
+                    );
                     const info = {
                         path: sourcePath,
-                        webP: webP
+                        webP: webP,
                     };
 
-                    const fullDestination = path.join(workingDirectory, outputPath, 'x', info.path);
-                    
-                    if(!fs.existsSync(fullDestination)) {
+                    const fullDestination = path.join(
+                        workingDirectory,
+                        outputPath,
+                        'x',
+                        info.path
+                    );
+
+                    if (!fs.existsSync(fullDestination)) {
                         filesToProcess.push(info);
                     }
-                    
+
                     // The code below uses modified dates (and will update more images than the above)
                     // const fullPath = path.join(imageDirectory, info.path);
                     // const modified = fs.statSync(fullPath).mtime;
@@ -111,7 +132,7 @@ for (const file of filesToProcess) {
     const metadata = {
         width: info.width,
         height: info.height,
-        sizeInBytes: info.size
+        sizeInBytes: info.size,
     };
 
     const metaFile = source + '.json';
@@ -119,12 +140,15 @@ for (const file of filesToProcess) {
 
     // Create resized images
     for (const key in size) {
-        const resizeDestination = getDestinationFilePathless(file.path, size[key]);
+        const resizeDestination = getDestinationFilePathless(
+            file.path,
+            size[key]
+        );
         await createDestinationFolder(resizeDestination);
 
         const metadata = await sharp(source).metadata();
 
-        if (metadata.width  > size[key]) {
+        if (metadata.width > size[key]) {
             // Only resize if the image is larger than the target size
             sharp(source)
                 .resize(size[key], null)

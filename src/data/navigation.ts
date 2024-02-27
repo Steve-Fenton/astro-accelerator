@@ -1,8 +1,8 @@
+/** @format */
+
 import type { MenuItem } from 'astro-accelerator-utils/types/NavPage';
 
-export const menu: (MenuItem | 'auto')[] = [
-	'auto'
-];
+export const menu: (MenuItem | 'auto')[] = ['auto'];
 
 /*
 * DEFAULT USAGE NOTES

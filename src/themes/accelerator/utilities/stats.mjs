@@ -1,6 +1,8 @@
 /**
  * This javascript file comes from Astro Accelerator
  * Edits will be overwritten if you change the file locally
+ *
+ * @format
  */
 
 import fs from 'fs';
@@ -11,7 +13,7 @@ const processFile = async (verbose) => {
     const parser = fs
         .createReadStream(`.log/statistics.csv`)
         .pipe(parse({ delimiter: ',', fromLine: 2 }));
-    
+
     for await (const record of parser) {
         // Work with each record
         const operation = record[0];
@@ -28,7 +30,8 @@ const processFile = async (verbose) => {
 
         operations[operation].ms = operations[operation].ms + ms;
         operations[operation].calls++;
-        operations[operation].avg = operations[operation].ms / operations[operation].calls;
+        operations[operation].avg =
+            operations[operation].ms / operations[operation].calls;
 
         if (verbose) {
             operations[operation].times.push(date);
@@ -39,11 +42,16 @@ const processFile = async (verbose) => {
 };
 
 const records = (await processFile(false))
-    .filter(record => record.ms > 2000 || record.avg > 20)
-    .sort((a,b) => {
+    .filter((record) => record.ms > 2000 || record.avg > 20)
+    .sort((a, b) => {
         return b.ms - a.ms;
     });
 
 for (let record of records) {
-    console.warn('Performance:', `For "${record.name}", ${record.calls} calls took ${record.ms/1000} seconds (an average of ${Math.round(record.avg * 10000) / 10000} ms)`);
+    console.warn(
+        'Performance:',
+        `For "${record.name}", ${record.calls} calls took ${
+            record.ms / 1000
+        } seconds (an average of ${Math.round(record.avg * 10000) / 10000} ms)`
+    );
 }
