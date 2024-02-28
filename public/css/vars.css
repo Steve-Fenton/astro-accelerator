@@ -69,6 +69,13 @@
     --search-dropdown-height: 65vh;
     --search-dropdown-duration: 0.3s;
     --search-item-border-color: #dae2e9;
+
+    /* Hamburger menu */
+    --navbar-icon-size: 3rem;
+    --hamburger-line-width: 1.5rem;
+    --hamburger-line-height: 0.2rem;
+    --hamburger-line-margin: 0.2rem;
+    --hamburger-translate-y: calc(var(--hamburger-line-height) + var(--hamburger-line-margin));
 }
 
 @media (prefers-color-scheme: dark) {

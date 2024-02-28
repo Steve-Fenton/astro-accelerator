@@ -29,6 +29,11 @@ body {
     line-height: 1.8em;
     letter-spacing: 0.016em;
     font-family: var(--content-font);
+    overflow-x: hidden;
+}
+
+body.no-scroll {
+    overflow: hidden;
 }
 
 a,
@@ -465,6 +470,93 @@ nav.site-nav h2 {
     border-radius: var(--block-radius) var(--block-radius) 0 0;
 }
 
+.mobile-menu {
+    display: none;
+}
+
+@media (max-width: 930px) {
+    .mobile-menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: var(--navbar-icon-size);
+        height: var(--navbar-icon-size);
+    }
+}
+.site-nav__list {
+    height: calc(100vh - 7rem);
+    overflow-y: scroll;
+    padding: 1rem;
+}
+
+.site-nav__mobile {
+    position: absolute;
+    width: 100%;
+    right: -100%;
+    transition: right 500ms ease-in-out;
+    margin: 0;
+    top: 5.125rem;
+    background-color: var(--aft);
+}
+
+.mobile-menu.is-active .site-nav__mobile {
+    right: 0;
+}
+
+/* Burger menu */
+.hamburger {
+    position: relative;
+}
+
+.hamburger:hover {
+    cursor: pointer;
+}
+
+.hamburger .line {
+    width: var(--hamburger-line-width);
+    height: var(--hamburger-line-height);
+    background-color: var(--link-head);
+    display: block;
+    margin: var(--hamburger-line-margin) auto;
+    transition-property: opacity, transform;
+    transition-duration: 500ms;
+    border-radius: 0.1rem;
+}
+
+.hamburger .circle {
+    display: block;
+    width: var(--navbar-icon-size);
+    height: var(--navbar-icon-size);
+    border: solid var(--link-head);
+    border-radius: 50%;
+    border-width: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition-property: opacity, border-width;
+    transition-duration: 500ms;
+}
+
+.mobile-menu.is-active .hamburger .line:nth-child(1) {
+    transform: translateY(var(--hamburger-translate-y)) rotate(45deg);
+}
+
+.mobile-menu.is-active .hamburger .line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu.is-active .hamburger .line:nth-child(3) {
+    transform: translateY(calc(-1 * var(--hamburger-translate-y))) rotate(-45deg);
+}
+
+.mobile-menu.is-active .hamburger .circle {
+    opacity: 1;
+    border-width: 0.0625rem;
+}
+
 /* Main content group */
 
 .content-group {
@@ -636,6 +728,13 @@ nav.site-nav h2 {
     width: 100%;
     max-width: 34.75rem;
     transition: max-width var(--search-dropdown-duration) ease-in-out;
+    margin: 0 auto;
+}
+
+@media (max-width: 930px) {
+    .site-search__wrapper {
+        margin: 0 0 0 auto;
+    }
 }
 
 .site-search__wrapper.is-active {

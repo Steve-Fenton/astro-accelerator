@@ -1,13 +1,6 @@
-/**
- * This javascript file comes from Astro Accelerator
- * Edits will be overwritten if you change the file locally
- *
- * @format
- */
-
 // @ts-check
 
-import { qs } from './query.js';
+import { qs } from "./query.js";
 
 /**
  * Makes an existing navigation element sticky
@@ -22,57 +15,69 @@ import { qs } from './query.js';
  * @param {string} resizedEventName
  */
 function addStickyNavigation(
-    headerSelector,
-    navigationSelector,
-    navigationListSelector,
-    resizedEventName
+  headerSelector,
+  navigationSelector,
+  navigationListSelector,
+  resizedEventName
 ) {
-    function setNavigationMode() {
-        const header = qs(headerSelector);
-        const navigation = qs(navigationSelector);
-        const navigationList = qs(navigationListSelector);
+  function setNavigationMode() {
+    const header = qs(headerSelector);
+    const navigation = qs(navigationSelector);
+    const navigationList = qs(navigationListSelector);
 
-        const buffer = 50;
-        const className = 'sticky';
+    const buffer = 50;
+    const className = "sticky";
 
-        const dimensions = {
-            browserHeight: window.innerHeight,
-            browserWidth: window.innerWidth,
-            headerHeight: header.clientHeight,
-            navigationHeight: navigationList.clientHeight,
-        };
+    const dimensions = {
+      browserHeight: window.innerHeight,
+      browserWidth: window.innerWidth,
+      headerHeight: header.clientHeight,
+      navigationHeight: navigationList.clientHeight,
+    };
 
-        // Only enable sticky mode if the menu will fit vertically
-        // && where the browser is more than 860px wide
-        if (
-            dimensions.navigationHeight <
-                dimensions.browserHeight -
-                    Math.max(
-                        dimensions.headerHeight,
-                        site_features.stickyNav.top
-                    ) -
-                    buffer &&
-            dimensions.browserWidth > 860
-        ) {
-            // Navigation: Sticky Mode
+    // Only enable sticky mode if the menu will fit vertically
+    // && where the browser is more than 860px wide
+    if (
+      dimensions.navigationHeight <
+        dimensions.browserHeight -
+          Math.max(dimensions.headerHeight, site_features.stickyNav.top) -
+          buffer &&
+      dimensions.browserWidth > 860
+    ) {
+      // Navigation: Sticky Mode
 
-            navigation.classList.add(className);
-            const top = site_features.stickyNav.top ?? 220;
-            navigation.style.top = top + 'px';
-        } else {
-            // Navigation: Fixed Mode
+      navigation.classList.add(className);
+      const top = site_features.stickyNav.top ?? 220;
+      navigation.style.top = top + "px";
+    } else {
+      // Navigation: Fixed Mode
 
-            navigation.classList.remove(className);
-        }
+      navigation.classList.remove(className);
+    }
+  }
+
+  function hideNavigation() {
+    const navigation = qs(navigationSelector);
+    console.log(navigation);
+    if (window.innerWidth <= 930) {
+      navigation.style.display = "none";
+    } else {
+      navigation.style.display = "block";
+    }
+  }
+
+  setNavigationMode();
+  hideNavigation();
+
+  document.addEventListener(resizedEventName, function (e) {
+    if (e.detail && e.detail.change && e.detail.change.height != 0) {
+      setNavigationMode();
     }
 
-    setNavigationMode();
-
-    document.addEventListener(resizedEventName, function (e) {
-        if (e.detail && e.detail.change && e.detail.change.height != 0) {
-            setNavigationMode();
-        }
-    });
+    if (e.detail.change.width != 0) {
+      hideNavigation();
+    }
+  });
 }
 
 export { addStickyNavigation };
