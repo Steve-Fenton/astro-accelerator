@@ -860,6 +860,7 @@ nav.site-nav h2 {
 
 @media (max-width: 930px) {
     .site-header .site-search__wrapper {
+        max-width: -moz-fit-content;
         max-width: fit-content;
     }
 
