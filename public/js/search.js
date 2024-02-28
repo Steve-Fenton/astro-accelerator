@@ -554,13 +554,15 @@ function initializeSearch() {
             }, 10);
         });
 
+        if (needles.length > numberOfResults) {
+            const moreLi = document.createElement('li');
+            moreLi.appendChild(more);
+            ul.appendChild(moreLi);
+        }
+
         results.innerHTML = '';
         results.appendChild(ul);
         h4 && results.appendChild(h4);
-
-        if (needles.length > numberOfResults) {
-            results.appendChild(more);
-        }
 
         const address = window.location.href.split('?')[0];
         window.history.pushState(

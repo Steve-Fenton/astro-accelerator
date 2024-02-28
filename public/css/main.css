@@ -660,14 +660,12 @@ nav.site-nav h2 {
     border-radius: var(--search-border-radius);
     border-radius: 0.9375rem;
     list-style-type: none;
-    overflow-y: scroll;
     transition-property: padding, transform, visibility;
     transition-duration: var(--search-dropdown-duration);
     transition-timing-function: ease-in-out;
     visibility: hidden;
     transform: translateY(0) scaleY(0);
     z-index: 1;
-    max-height: var(--search-dropdown-height);
     transform-origin: top;
     will-change: transform;
 }
@@ -683,8 +681,10 @@ nav.site-nav h2 {
     margin-inline-start: 0;
 }
 
-.site-search-results ul:not(.post-list) {
+.site-search-results ul:not(.post-list):not(.result-headings) {
     margin: 0;
+    max-height: var(--search-dropdown-height);
+    overflow-y: scroll;
 }
 
 .site-search__overlay {
