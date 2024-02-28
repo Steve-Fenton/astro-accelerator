@@ -79,3 +79,6 @@ if (enabled(f.search, 'dialog')) {
     const searchDialog = await import('./modules/search-dialog.js');
     searchDialog.enhanceSearchIcon();
 }
+
+// Tag the body that the JavaScript all loaded
+document.body.classList.add('js-loaded');
