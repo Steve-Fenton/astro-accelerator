@@ -1,6 +1,6 @@
 {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "prettier.configPath": ".prettierrc.json",
+    "prettier.configPath": "./.prettierrc.json",
     "prettier.useEditorConfig": false,
     "prettier.bracketSameLine": true,
     "prettier.insertPragma": true,

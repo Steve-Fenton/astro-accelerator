@@ -37,3 +37,25 @@ stats.stop();
   </div>
   <slot />
 </footer>
+<style>
+footer {
+    text-align: center;
+    padding: 0.5rem 0;
+    width: 100%;
+    color: var(--fore-head);
+    background-color: var(--aft-head);
+}
+
+div.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 22rem));
+    justify-content: center;
+    gap: var(--block-gap);
+}
+
+@media (max-width: 680px) {
+    div.footer-columns {
+        display: block;
+    }
+}
+</style>
