@@ -234,7 +234,6 @@ nav.site-nav h2 {
 
 #overlay__site-nav {
     width: 90%;
-    max-width: 30em;
     margin-inline: auto;
 }
 
@@ -832,6 +831,118 @@ nav.site-nav h2 {
     .post-list .list-item img {
         max-height: 120px;
     }
+}
+
+/* Paging */
+
+.post-paging {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.post-paging > * {
+    display: inline-block;
+    padding: 0.3rem;
+}
+
+.post-paging a[aria-current] {
+    text-decoration: none;
+    color: var(--fore);
+}
+
+.paging-collapse-before:before,
+.paging-collapse-after:after {
+    top: 0.2em;
+    content: '...';
+    text-decoration: none;
+    color: var(--fore);
+    display: inline-block;
+    position: relative;
+}
+
+.paging-collapse-before:before {
+    padding-right: 0.6rem;
+}
+
+.paging-collapse-after:after {
+    padding-left: 0.6rem;
+}
+
+.post-meta {
+    display: flex;
+    align-items: top;
+}
+
+.post-meta .author-image {
+    width: 80px;
+    height: 80px;
+    margin-right: 1rem;
+    object-fit: cover;
+}
+
+.post-meta > .author-info {
+    display: flex;
+    align-items: center;
+}
+
+.post-meta time[itemprop='datePublished'] {
+    display: inline-block;
+}
+
+.post-meta time[itemprop='dateModified'] {
+    font-style: italic;
+    display: block;
+}
+
+.post-taxonomy {
+    padding: 1rem 0;
+    margin: 1.5rem 0;
+    border-top: 1px dashed var(--fore);
+    text-align: right;
+}
+
+.post-taxonomy > div {
+    margin: 1rem 0;
+}
+
+.post-taxonomy h2 {
+    font-size: 1rem;
+    font-family: var(--content-font);
+    display: inline;
+}
+
+.post-taxonomy ul {
+    display: inline;
+    margin: 1rem 0;
+    list-style: none;
+}
+
+.post-taxonomy li {
+    display: inline;
+    margin-inline-end: 0.3em;
+}
+
+.post-taxonomy a {
+    display: inline-block;
+    color: var(--link-head);
+    background-color: var(--aft-head);
+    padding: 0.1em 0.7em;
+}
+
+.post-taxonomy a:hover,
+.post-taxonomy a:focus {
+    background-color: var(--fore-link-alt);
+    color: var(--aft);
+}
+
+/* Authors */
+
+.author-image {
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    max-width: 150px;
+    float: right;
 }
 
 /* Video */
