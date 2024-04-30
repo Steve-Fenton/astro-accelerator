@@ -9,11 +9,13 @@ bannerImage:
     alt: Dummy image
 ---
 
+<!-- @format -->
+
 This page contains the most common content components.
 
 ## Breadcrumbs
 
-***
+---
 
 <nav class="site-breadcrumbs" aria-label="Demo of breadcrumbs">
   <ol vocab="http://schema.org/" typeof="BreadcrumbList">
@@ -30,14 +32,14 @@ This page contains the most common content components.
   </ol>
 </nav>
 
-***
+---
 
 ## Mobile Menu
 
-***
+---
 
 <div class="overlay-menu">
-   <nav class="site-nav" id="overlay__site-nav" aria-label="Demo site">
+   <nav class="site-nav" aria-label="Demo site">
    <h2 class="site-nav-title" id="modal-title" tabindex="-1">Navigation</h2>
    <ul>
       <li>
@@ -109,11 +111,11 @@ This page contains the most common content components.
    </nav>
 </div>
 
-***
+---
 
 ## Search Page
 
-***
+---
 
 <article itemscope="" itemtype="https://schema.org/Article">
    <header>
@@ -132,11 +134,11 @@ This page contains the most common content components.
       </form>
 </article>
 
-***
+---
 
 ## Footer
 
-***
+---
 
 <footer class="site-footer" id="site-footer">
   <div class="taxonomy">
@@ -159,11 +161,11 @@ This page contains the most common content components.
   </nav>
 </footer>
 
-***
+---
 
 ## Page Links
 
-***
+---
 
 <nav class="post-paging" aria-label="Paging">
   <a href="#">Prev</a>
@@ -171,31 +173,31 @@ This page contains the most common content components.
   <a href="#">Next</a>
 </nav>
 
-***
+---
 
 ## Block Quote
 
 Markdown:
 
 ```markdown
-> Quiet minds cannot be perplexed or frightened 
-but go on in fortune or misfortune at their own 
-private pace, like a clock during a thunderstorm. 
-<cite>Robert Louis Stevenson</cite>
+> Quiet minds cannot be perplexed or frightened
+> but go on in fortune or misfortune at their own
+> private pace, like a clock during a thunderstorm.
+> <cite>Robert Louis Stevenson</cite>
 ```
 
 Result:
 
-> Quiet minds cannot be perplexed or frightened 
-but go on in fortune or misfortune at their own 
-private pace, like a clock during a thunderstorm. 
-<cite>Robert Louis Stevenson</cite>
+> Quiet minds cannot be perplexed or frightened
+> but go on in fortune or misfortune at their own
+> private pace, like a clock during a thunderstorm.
+> <cite>Robert Louis Stevenson</cite>
 
 ## Code
 
 Markdown:
 
-`````markdown
+````markdown
 Inline `code` and a code block.
 
     const elem = document.querySelector('.elem');
@@ -205,7 +207,7 @@ A code block with a language set.
 ```javascript
 const elem = document.querySelector('.elem');
 ```
-`````
+````
 
 Result:
 
@@ -283,7 +285,6 @@ This is a custom div element with the class `note`
 :::
 ::::
 
-
 ## Images
 
 Markdown:
@@ -296,12 +297,18 @@ This creates the following HTML (or similar):
 
 ```html
 <img
-   src="/i/x/frankenstein.png"
-   alt="Book cover"
-   loading="lazy"
-   srcset="/i/400/frankenstein.webp 400w, /i/700/frankenstein.webp 700w, /i/1000/frankenstein.webp, 1000w"
-   sizes="(max-width: 860px) 100vw, 66vw"
-   class="resp-img">
+    src="/i/x/frankenstein.png"
+    alt="Book cover"
+    loading="lazy"
+    srcset="
+        /i/400/frankenstein.webp  400w,
+        /i/700/frankenstein.webp  700w,
+        /i/1000/frankenstein.webp,
+        1000w
+    "
+    sizes="(max-width: 860px) 100vw, 66vw"
+    class="resp-img"
+/>
 ```
 
 Result:
@@ -330,32 +337,32 @@ Markdown:
 ```markdown
 1. Item
 1. Item
-   - Nested Item
+    - Nested Item
 1. Item
 
-   Item additional paragraph.
+    Item additional paragraph.
 ```
 
 Result:
 
 1. Item
 1. Item
-   - Nested Item
+    - Nested Item
 1. Item
 
-   Item additional paragraph.
+    Item additional paragraph.
 
 ## Horizontal Rule
 
 Markdown:
 
 ```markdown
-***
+---
 ```
 
 Result:
 
-***
+---
 
 ## Links
 
@@ -364,14 +371,14 @@ Markdown:
 ```markdown
 <https://astro.stevefenton.co.uk/kitchen-sink/>
 
-[Astro Accelerator](https://astro.stevefenton.co.uk/ "The Astro Accelerator Site")
+[Astro Accelerator](https://astro.stevefenton.co.uk/ 'The Astro Accelerator Site')
 ```
 
 Result:
 
 <https://astro.stevefenton.co.uk/kitchen-sink/>
 
-[Astro Accelerator](https://astro.stevefenton.co.uk/ "The Astro Accelerator Site")
+[Astro Accelerator](https://astro.stevefenton.co.uk/ 'The Astro Accelerator Site')
 
 ## Tables
 
@@ -379,7 +386,7 @@ Markdown:
 
 ```markdown
 | Item                         | One | Two | Three |
-|:-----------------------------|:---:|:---:|:-----:|
+| :--------------------------- | :-: | :-: | :---: |
 | Some description of the item |  1  |  2  |   3   |
 | Some description of the item |  2  |  3  |   4   |
 | Some description of the item |  3  |  4  |   5   |
@@ -388,7 +395,7 @@ Markdown:
 Result:
 
 | Item                         | One | Two | Three |
-|:-----------------------------|:---:|:---:|:-----:|
+| :--------------------------- | :-: | :-: | :---: |
 | Some description of the item |  1  |  2  |   3   |
 | Some description of the item |  2  |  3  |   4   |
 | Some description of the item |  3  |  4  |   5   |
@@ -396,7 +403,7 @@ Result:
 A large table:
 
 | Performance level | Lead time      | Deployment frequency           | Change failure rate | Mean time to resolve |
-|-------------------|----------------|--------------------------------|---------------------|----------------------|
+| ----------------- | -------------- | ------------------------------ | ------------------- | -------------------- |
 | Elite             | < 1 hour       | Multiple times per day         | 0-15%               | < 1 hour             |
 | High              | 1 day - 1 week | Weekly to monthly              | 16-30%              | < 1 day              |
 | Medium            | 1-6 months     | Monthly to biannually          | 16-30%              | 1 day - 1 week       |
@@ -407,13 +414,13 @@ A large table:
 Markdown:
 
 ```markdown
-Text can use *emphasis* or **strong**. You can create\
+Text can use _emphasis_ or **strong**. You can create\
 line breaks.
 ```
 
 Result:
 
-Text can use *emphasis* or **strong**. You can create\
+Text can use _emphasis_ or **strong**. You can create\
 line breaks.
 
 # Headings

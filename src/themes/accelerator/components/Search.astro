@@ -24,9 +24,9 @@ const searchUrl =
   (search && accelerator.urlFormatter.formatAddress(search.url)) ||
   SITE.search.fallbackUrl;
 ---
-<div class="site-search__wrapper" data-site-search-wrapper>
+<div class="site-search-wrapper" data-site-search-wrapper>
 {showSearch &&
-  <div class="site-search__overlay"></div>
+  <div class="site-search-overlay"></div>
   <form
     method="GET"
     action={SITE.search.fallbackUrl ?? "https://www.google.com/search"}
@@ -62,7 +62,7 @@ const searchUrl =
         data-site-search-query
       />
       <button
-        class="site-search__remove-btn"
+        class="site-search-remove"
         type="button"
         data-site-search-remove
       >
@@ -88,7 +88,7 @@ const searchUrl =
   </div>
   <script src={SITE.subfolder + "/js/search.js"} type="module" defer></script>
 }
-  <a href={searchUrl} class="site-search__mobile">
+  <a href={searchUrl} class="site-search-mobile">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="20"

@@ -206,7 +206,7 @@ function initializeSearch() {
             const lastElement =
                 siteSearchResults.querySelector('button') ||
                 siteSearchResults.querySelector(
-                    '.site-search-results__item:last-child .result-wrapper'
+                    '.site-search-results-item:last-child .result-wrapper'
                 );
 
             if (e.shiftKey && document.activeElement === firstElement) {
@@ -468,13 +468,13 @@ function initializeSearch() {
                     .join(' ');
 
                 const segmentSpan = document.createElement('span');
-                segmentSpan.className = 'result-path__segment';
+                segmentSpan.className = 'result-path-segment';
                 segmentSpan.textContent = processedSegment;
                 path.appendChild(segmentSpan);
 
                 if (index < segments.length - 1) {
                     const svgIcon = document.createElement('span');
-                    svgIcon.className = 'result-path__icon';
+                    svgIcon.className = 'result-path-icon';
                     svgIcon.innerHTML = `
                       <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10">
                           <path d="M1 9L5 5L1 1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -493,7 +493,7 @@ function initializeSearch() {
             );
 
             const li = document.createElement('li');
-            li.classList.add('site-search-results__item');
+            li.classList.add('site-search-results-item');
             li.dataset.words = needle.foundWords.toString();
             li.dataset.score = (
                 Math.round((needle.score / total) * 1000) / 1000
@@ -531,7 +531,7 @@ function initializeSearch() {
         let h4;
         if (needles.length === 0) {
             h4 = document.createElement('h4');
-            h4.classList.add('search-results__heading');
+            h4.classList.add('search-results-heading');
             h4.innerHTML = results.dataset.emptytitle || 'No Results';
         }
 
