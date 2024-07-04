@@ -32,8 +32,7 @@ export async function getData() {
   const pageCount = allPages.length;
   const pages = allPages
     .filter(PostFiltering.isListable)
-    .sort(PostOrdering.sortByModDate)
-    .slice(0, Math.min(50, pageCount));
+    .sort(PostOrdering.sortByModDate);
 
   return pages;
 }

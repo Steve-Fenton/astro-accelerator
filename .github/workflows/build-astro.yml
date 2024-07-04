@@ -34,8 +34,7 @@ jobs:
             - name: Astro Build
               uses: withastro/action@v2
               with:
-                  package-manager: pnpm
-                  pnpm-version: 8.7.0
+                  package-manager: pnpm@8.7.0
 
     test:
         timeout-minutes: 20
