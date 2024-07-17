@@ -31,7 +31,7 @@ pnpm install --force @img/sharp-linux-x64
 
 ## Publish to NPM
 
-Update the `package.json` with the new version number, and commit the change with the message "Release n.n.n", for example, if the new version is `4.0.9` commit with: "Release 4.0.9".
+Update the `package.json` with the new version number, and commit the change.
 
 The NPM token expires periodically and must be updated in GitHub settings -> Secrets -> Actions.
 

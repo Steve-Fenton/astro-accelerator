@@ -67,11 +67,11 @@ export async function getData() {
     .sort(PostOrdering.sortByPubDateDesc);
 
     data.posts.forEach(p => {
-    const auths: string[] = p.frontmatter.authors ?? [];
-    if (auths.length == 0) {
+    const authorList: string[] = p.frontmatter.authors ?? [];
+    if (authorList.length == 0) {
       console.log('No authors found', p.url);
     }
-    auths.forEach(a => {
+    authorList.forEach(a => {
       if (!data.authors.includes(a)) {
         data.authors.push(a);
       }
@@ -86,8 +86,8 @@ export async function getStaticPaths({ paginate }: any) {
 
   return data.authors.map(a => {
     const filtered = data.posts.filter(p => {
-      const auths: string[] = p.frontmatter.authors ?? [];
-      return auths.includes(a);
+      const authorList: string[] = p.frontmatter.authors ?? [];
+      return authorList.includes(a);
     });
     return paginate(filtered, { 
         params: { author: a.toLowerCase() },
