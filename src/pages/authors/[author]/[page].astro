@@ -11,6 +11,7 @@ import { SITE } from '@config';
 import Default from 'src/layouts/Default.astro';
 import ArticleList from '@components/ArticleList.astro';
 import PagingLinks from '@components/PagingLinks.astro';
+import { getImageInfo } from '@util/custom-markdown.mjs';
 
 const accelerator = new Accelerator(SITE);
 const stats = new accelerator.statistics('pages/authors/[author]/[page].astro');
@@ -96,6 +97,11 @@ export async function getStaticPaths({ paginate }: any) {
   }).flat();
 }
 
+// Get image info
+const authorImage = author.frontmatter.bannerImage?.src 
+  ? getImageInfo(author.frontmatter.bannerImage.src, 'author-image', SITE.images.authorSize)
+  : null;
+
 // Page Links
 const pageLinks = accelerator.paging.links(SITE.pageLinks, page.lastPage, page.currentPage, page.url.current);
 
@@ -113,7 +119,29 @@ if (page.url.current != pageLinks[0].url) {
 stats.stop();
 ---
 <Default frontmatter={ authorFrontmatter } headings={ headings } breadcrumbs={ breadcrumbs }>
-  <Fragment set:html={ authorText } />
+  <div class="author-page">
+    {authorImage && 
+      <img
+        srcset={ authorImage.srcset }
+        sizes={ authorImage.sizes }
+        src={ authorImage.src }
+        alt={ author.frontmatter.bannerImage?.alt }
+        class={ authorImage.class }
+        width={ authorImage.metadata?.width }
+        height={ authorImage.metadata?.height }
+        />
+    }
+    <div class="author-info">
+      <Fragment set:html={ authorText } />
+      {author.frontmatter.links && 
+      <ul>
+      {author.frontmatter.links.map((link) => (
+        <li><a href={ link.url } rel={ link.rel }><Fragment set:html={ link.text } /></a></li>
+      ))}
+      </ul>
+      }
+    </div>
+  </div>
   <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()) }</h2>
   <ArticleList lang={ lang } posts={ page.data } />
   <PagingLinks lang={ lang } page={ page } pageLinks={ pageLinks } />
