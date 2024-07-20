@@ -18,7 +18,7 @@ function enhanceHeaders() {
         const linkContainer = document.createElement('a');
         linkContainer.href = `#${elem.id}`;
         linkContainer.className = 'bookmark-link';
-        linkContainer.innerHTML = 'Bookmark';
+        linkContainer.title = 'Bookmark';
 
         elem.appendChild(linkContainer);
     });
