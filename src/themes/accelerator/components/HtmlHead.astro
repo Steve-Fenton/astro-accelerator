@@ -18,8 +18,6 @@ type Props = {
 const { frontmatter } = Astro.props;
 
 // Logic
-const markdown = accelerator.markdown;
-
 const imageSrc = frontmatter.bannerImage?.src ?? OPEN_GRAPH.image.src;
 const imageAlt = frontmatter.bannerImage?.alt ?? OPEN_GRAPH.image.alt;
 const robots = frontmatter.robots ?? 'index, follow';
