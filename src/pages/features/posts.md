@@ -80,11 +80,11 @@ const frontmatter: Frontmatter = {
 Adjust the filter in `[page].astro` in your new folder to change the listed items.
 
 ```typescript
-const sourcePosts = await Astro.glob('../blog/**/*.md');
+const sourcePosts = await Astro.glob('../blog/**/*.md*');
 ```
 
 Add a new feed by copying `atom.xml.ts` and changing the path for articles:
 
 ```typescript
-const allArticles = import.meta.glob('./blog/**/*.md');
+const allArticles = import.meta.glob('./blog/**/*.md*');
 ```

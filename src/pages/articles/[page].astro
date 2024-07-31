@@ -39,7 +39,7 @@ const _ = Lang(lang);
 
 // Logic
 export async function getData() {
-  const sourcePosts = await Astro.glob('./**/*.md', './**/*.mdx') as MarkdownInstance[];
+  const sourcePosts = await Astro.glob('./**/*.md*') as MarkdownInstance[];
   const posts = sourcePosts
     .filter(PostFiltering.isListable)
     .sort(PostOrdering.sortByPubDateDesc);
