@@ -1,5 +1,5 @@
 {
-    "version": "4.0.40",
+    "version": "4.0.41",
     "author": "Steve Fenton",
     "name": "astro-accelerator",
     "description": "A super-lightweight, accessible, SEO-friendly starter project for Astro",
@@ -32,9 +32,9 @@
     },
     "dependencies": {
         "@astrojs/mdx": "^2.3.1",
-        "astro": "^4.12.3",
-        "astro-accelerator-utils": "^0.3.11",
-        "cspell": "^8.13.0",
+        "astro": "^4.13.0",
+        "astro-accelerator-utils": "^0.3.12",
+        "cspell": "^8.13.1",
         "csv": "^6.3.10",
         "hast-util-from-selector": "^3.0.0",
         "html-to-text": "^9.0.5",
