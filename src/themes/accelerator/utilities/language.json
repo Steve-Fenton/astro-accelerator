@@ -87,6 +87,9 @@
         }
     },
     "articles": {
+        "archive_title": {
+            "en": "Archive - {name}"
+        },
         "page_title": {
             "en": "Page {n}"
         },

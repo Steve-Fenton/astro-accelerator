@@ -32,9 +32,12 @@ type Props = {
 };
 const { title, page, headings, pubDate } = Astro.props satisfies Props;
 
+// Enhance the title
+const pageTitle = `${_(Translations.articles.archive_title).replace('{name}', title)} - ${_(Translations.articles.page_title).replace('{n}', page.currentPage.toString())}`;
+
 const frontmatter: Frontmatter = {
   layout: 'src/layouts/Default.astro',
-  title: title,
+  title: pageTitle,
   titleAdditional: `(${ _(Translations.articles.category) }) ` + _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()),
   keywords: `${slug},articles`,
   description: `${SITE.title} ${slug} articles.`,
@@ -118,7 +121,6 @@ if (page.url.current != pageLinks[0].url) {
 stats.stop();
 ---
 <Default frontmatter={ frontmatter } headings={ headings } breadcrumbs={ breadcrumbs }>
-  <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()) }</h2>
   <ArticleList lang={ lang } posts={ page.data } />
   <PagingLinks lang={ lang } page={ page } pageLinks={ pageLinks } />
 </Default>
