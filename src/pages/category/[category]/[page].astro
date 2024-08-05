@@ -38,7 +38,6 @@ const pageTitle = `${_(Translations.articles.archive_title).replace('{name}', ti
 const frontmatter: Frontmatter = {
   layout: 'src/layouts/Default.astro',
   title: pageTitle,
-  titleAdditional: `(${ _(Translations.articles.category) }) ` + _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()),
   keywords: `${slug},articles`,
   description: `${SITE.title} ${slug} articles.`,
   pubDate: pubDate
