@@ -15,9 +15,10 @@ type Props = {
   lang: string;
   frontmatter: Frontmatter;
   headings: { depth: number; slug: string; text: string; }[];
+  maxLevel?: number;
   expanded?: boolean | number;
 };
-const { lang, frontmatter, headings, expanded } = Astro.props satisfies Props;
+let { lang, frontmatter, headings, maxLevel, expanded } = Astro.props satisfies Props;
 
 // Language
 const _ = Lang(lang);
@@ -25,6 +26,10 @@ const _ = Lang(lang);
 // Logic
 let openAttribute = null; 
 let openInteraction = null;
+
+if (maxLevel == null){
+  maxLevel = 3;
+}
 
 if (typeof expanded === 'number') {
   openInteraction = expanded;
@@ -39,7 +44,7 @@ stats.stop();
   <details open={ openAttribute } data-openon={ openInteraction }>
     <summary>{ _(Translations.toc.title) }</summary>
     <ol>
-      {headings.map((heading) =>(
+      {headings.filter(h => h.depth <= maxLevel).map((heading) =>(
         <li class={ 'toc-lev-' + heading.depth }><a href={ '#' + heading.slug }>{ heading.text }</a></li>
       ))}
     </ol>
