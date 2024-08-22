@@ -12,6 +12,7 @@
         "frontmatter",
         "itemprop",
         "noopener",
+        "rehype",
         "resp",
         "sharetitle",
         "sourcedata",
@@ -23,7 +24,9 @@
         "webp",
         "youtube"
     ],
-    "flagWords": ["hte"],
+    "flagWords": [
+        "hte"
+    ],
     "ignorePaths": [
         "cspell.json",
         "package.json",
