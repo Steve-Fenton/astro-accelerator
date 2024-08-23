@@ -469,7 +469,7 @@ nav.site-nav h2 {
     padding-top: 0;
 
     @media (max-width: 860px) {
-        grid-template-columns: 1rem auto 1rem;
+        grid-template-columns: 1.5rem auto 1.5rem;
         grid-template-rows: auto auto auto;
         gap: 0;
         grid-template-areas:
@@ -1203,23 +1203,19 @@ pre.astro-code code {
 }
 
 .bookmark-link {
-    margin-inline-start: 0.2em;
     border-radius: var(--block-radius);
     font-size: 0.5em;
     text-decoration: none;
-    position: relative;
-    top: -0.5em;
     color: var(--fore-link);
-    float: right;
-    overflow: hidden;
     display: block;
-    width: 1.3em;
-    height: 1.6em;
     opacity: 0.5;
+    position: absolute;
 }
 
 .bookmark-link::before {
     content: '🔗 ';
+    position: relative;
+    left: -1.5em;
 }
 
 .bookmark-link:hover,

@@ -20,7 +20,7 @@ function enhanceHeaders() {
         linkContainer.className = 'bookmark-link';
         linkContainer.title = 'Bookmark';
 
-        elem.appendChild(linkContainer);
+        elem.prepend(linkContainer);
     });
 }
 
