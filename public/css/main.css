@@ -114,6 +114,8 @@ h6 {
 h1 {
     font-size: 3rem;
     font-size: clamp(2rem, 6vw, 3rem);
+    max-width: 90%;
+    margin-inline: auto;
 }
 
 h2 {
@@ -483,6 +485,7 @@ nav.site-nav h2 {
     grid-area: top;
     text-align: center;
     padding-bottom: var(--block-gap);
+    max-width: 100%;
 }
 
 .content-group header p {
@@ -1204,18 +1207,17 @@ pre.astro-code code {
 
 .bookmark-link {
     border-radius: var(--block-radius);
-    font-size: 0.5em;
     text-decoration: none;
     color: var(--fore-link);
     display: block;
     opacity: 0.5;
     position: absolute;
+    font-size: 0.8em;
 }
 
 .bookmark-link::before {
-    content: '🔗 ';
-    position: relative;
-    left: -1.5em;
+    content: '#';
+    margin-left: -0.8em;
 }
 
 .bookmark-link:hover,
