@@ -18,6 +18,9 @@ stats.start();
 
 const lang = SITE.default.lang;
 
+// Language
+const _ = Lang(lang);
+
 // Props
 type Props = {
   page: Page<MarkdownInstance>;
@@ -26,16 +29,16 @@ type Props = {
 };
 const { page, headings, pubDate } = Astro.props satisfies Props;
 
+// Enhance the title
+const pageTitle = `${_(Translations.articles.articles_title)} - ${_(Translations.articles.page_title).replace('{n}', page.currentPage.toString())}`;
+
 const frontmatter: Frontmatter = {
   layout: 'src/layouts/Default.astro',
-  title: 'Articles',
+  title: pageTitle,
   keywords: `articles`,
   description: `${SITE.title} articles.`,
   pubDate: pubDate
 };
-
-// Language
-const _ = Lang(lang);
 
 // Logic
 export async function getData() {
@@ -61,7 +64,6 @@ const pageLinks = accelerator.paging.links(SITE.pageLinks, page.lastPage, page.c
 stats.stop();
 ---
 <Default frontmatter={ frontmatter } headings={ headings }>
-  <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()) }</h2>
   <ArticleList lang={ lang } posts={ page.data } />
   <PagingLinks lang={ lang } page={ page } pageLinks={ pageLinks } />
 </Default>

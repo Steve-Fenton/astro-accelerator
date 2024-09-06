@@ -87,6 +87,9 @@
         }
     },
     "articles": {
+        "articles_title": {
+            "en": "Articles"
+        },
         "archive_title": {
             "en": "Archive - {name}"
         },
