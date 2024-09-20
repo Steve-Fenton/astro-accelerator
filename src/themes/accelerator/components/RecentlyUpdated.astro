@@ -19,7 +19,7 @@ const { lang, count } = Astro.props satisfies Props;
 const allPages = accelerator.posts.all();
 const pageCount = allPages.length;
 const pages = allPages
-  .filter(PostFiltering.hasModDate)
+  .filter(PostFiltering.hasDate)
   .filter(PostFiltering.isListable)
   .sort(PostOrdering.sortByModDateDesc)
   .slice(0, Math.min(count, pageCount));
@@ -30,7 +30,7 @@ stats.stop();
   {pages.map((post) => (
   <li data-destination={ accelerator.urlFormatter.formatAddress(post.url) }>
     <a href={ accelerator.urlFormatter.formatAddress(post.url) }>{ accelerator.markdown.getTextFrom(post.frontmatter.title) }</a>
-    <time datetime={ post.frontmatter.modDate.toString() }>
+    <time datetime={ (post.frontmatter.modDate || post.frontmatter.pubDate).toString() }>
       { accelerator.dateFormatter.formatDate(post.frontmatter.modDate, lang) }
     </time>
   </li>

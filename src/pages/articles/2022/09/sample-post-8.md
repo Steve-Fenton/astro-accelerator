@@ -2,6 +2,7 @@
 title: Sample Post 8
 navMenu: false
 pubDate: 2022-09-08
+modDate: 2024-09-20
 keywords: sample,post
 description: A sample post
 bannerImage:
@@ -13,6 +14,8 @@ categories:
     - Example
     - Sample
 ---
+
+<!-- @format -->
 
 This is an example post with more of the front matter set up, such as except and images.
 
