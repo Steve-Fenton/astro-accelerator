@@ -17,8 +17,8 @@ dependencies:
     specifier: ^4.15.9
     version: 4.15.9(typescript@5.6.2)
   astro-accelerator-utils:
-    specifier: ^0.3.22
-    version: 0.3.22
+    specifier: ^0.3.23
+    version: 0.3.23
   cspell:
     specifier: ^8.14.4
     version: 8.14.4
@@ -1562,8 +1562,8 @@ packages:
     hasBin: true
     dev: false
 
-  /astro-accelerator-utils@0.3.22:
-    resolution: {integrity: sha512-DekkIxxmqTM8ggW00xh9n3a1cW43K+VezJbNuD6owj5u7i9gb6bqPLNWsVIyrzDxYHL+UnfkTOoa+cUe1L4r9Q==}
+  /astro-accelerator-utils@0.3.23:
+    resolution: {integrity: sha512-DiX4aGVRNHmOeLzke14H0DELytEDUsm3v2vG33MIC+VjvwuBy9eAvOqkavvmiIp4PPmR1ES6RioK39d7YnAPTw==}
     dev: false
 
   /astro@4.15.9(typescript@5.6.2):
