@@ -29,7 +29,7 @@ stats.stop();
 <ul class="recent-updates">
   {pages.map((post) => (
   <li data-destination={ accelerator.urlFormatter.formatAddress(post.url) }>
-    <a href={ accelerator.urlFormatter.formatAddress(post.url) }>{ accelerator.markdown.getTextFrom(post.frontmatter.title) }</a>
+    <a href={ accelerator.urlFormatter.formatAddress(post.url) }>{ accelerator.markdown.getTextFrom(post.frontmatter?.title) }</a>
     <time datetime={ (post.frontmatter.modDate || post.frontmatter.pubDate).toString() }>
       { accelerator.dateFormatter.formatDate((post.frontmatter.modDate || post.frontmatter.pubDate), lang) }
     </time>

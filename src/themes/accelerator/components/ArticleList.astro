@@ -43,7 +43,7 @@ const articles: Article[] = [];
 for (let p of posts) {
   const item = {
     url: p.url ?? '',
-    title: await accelerator.markdown.getTextFrom(p.frontmatter.title),
+    title: await accelerator.markdown.getTextFrom(p.frontmatter?.title),
     frontmatter: p.frontmatter,
     img: p.frontmatter.bannerImage
       ? getImageInfo(p.frontmatter.bannerImage.src, '', SITE.images.listerSize)
