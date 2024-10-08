@@ -34,9 +34,16 @@ stats.stop();
       }{authorList.contributors.map((writer) => (
         <span>, </span><span>{ writer.frontmatter.title }</span>
       ))}<br />
+      {frontmatter.modDate == null && 
       <time datetime={ frontmatter.pubDate.toString() }>
       { accelerator.dateFormatter.formatDate(frontmatter.pubDate, lang) }
       </time>
+      }
+      {frontmatter.modDate != null &&
+      <time datetime={ frontmatter.modDate.toString() }>
+      { accelerator.dateFormatter.formatDate(frontmatter.modDate, lang) }
+      </time>
+      }
     </span>
   </div>
 </div>
