@@ -4,7 +4,11 @@
 
 // Generates an ATOM feed of recent posts
 import { SITE } from '@config';
-import { Accelerator, PostFiltering } from 'astro-accelerator-utils';
+import {
+    Accelerator,
+    PostFiltering,
+    PostOrdering,
+} from 'astro-accelerator-utils';
 
 async function getData() {
     //@ts-ignore
@@ -31,9 +35,7 @@ async function getData() {
         }
     }
 
-    articles = articles.sort((a, b) =>
-        b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate)
-    );
+    articles = articles.sort(PostOrdering.sortByModDateDesc);
 
     const limit = SITE.rssLimit ?? 20;
     const items = articles.slice(0, limit).map(
@@ -57,7 +59,7 @@ async function getData() {
   <subtitle>${SITE.description}</subtitle>
   <link href="${SITE.url}/atom.xml" rel="self" />
   <link href="${SITE.url}" />
-  <id>${SITE.url}/atom.xml</id>
+  <id>${SITE.url}/articles/feed.xml</id>
   <updated>${articles[0].frontmatter.pubDate}</updated>
 ${items.join('')}
 </feed>`,
