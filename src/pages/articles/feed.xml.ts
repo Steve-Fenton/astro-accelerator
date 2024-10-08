@@ -45,7 +45,7 @@ async function getData() {
       <link href="${SITE.url + a.url}" />
       <id>${SITE.url + accelerator.urlFormatter.formatAddress(a.url)}</id>
       <published>${a.frontmatter.pubDate}</published>
-      <updated>${a.frontmatter.pubDate ?? a.frontmatter.pubDate}</updated>
+      <updated>${a.frontmatter.modDate ?? a.frontmatter.pubDate}</updated>
       <summary>${a.frontmatter.description ?? ''}</summary>
     </entry>`
     );
@@ -59,7 +59,7 @@ async function getData() {
   <subtitle>${SITE.description}</subtitle>
   <link href="${SITE.url}/atom.xml" rel="self" />
   <link href="${SITE.url}" />
-  <id>${SITE.url}/articles/feed.xml</id>
+  <id>${SITE.url}${SITE.feedUrl}</id>
   <updated>${articles[0].frontmatter.pubDate}</updated>
 ${items.join('')}
 </feed>`,
