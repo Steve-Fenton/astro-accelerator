@@ -1,5 +1,5 @@
 {
-    "version": "4.1.4",
+    "version": "4.1.5",
     "author": "Steve Fenton",
     "name": "astro-accelerator",
     "description": "A super-lightweight, accessible, SEO-friendly starter project for Astro",
@@ -32,9 +32,9 @@
     },
     "dependencies": {
         "@astrojs/mdx": "^2.3.1",
-        "astro": "^4.15.9",
-        "astro-accelerator-utils": "^0.3.24",
-        "cspell": "^8.14.4",
+        "astro": "^4.16.6",
+        "astro-accelerator-utils": "^0.3.25",
+        "cspell": "^8.15.4",
         "csv": "^6.3.10",
         "glob": "^11.0.0",
         "hast-util-from-selector": "^3.0.0",
@@ -45,7 +45,7 @@
         "sharp": "^0.33.5"
     },
     "devDependencies": {
-        "@playwright/test": "^1.47.2"
+        "@playwright/test": "^1.48.1"
     },
     "files": [
         ".npmrc",
