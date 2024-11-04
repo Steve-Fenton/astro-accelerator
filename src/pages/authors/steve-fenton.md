@@ -6,6 +6,9 @@ navOrder: 1000
 pubDate: 2022-09-17
 keywords: steve fenton
 description: Steve Fenton's profile on Astro Accelerator
+meta:
+    - name: 'fediverse:creator'
+      content: '@stevefenton@mastodon.social'
 bannerImage:
     src: /i/400/authors/steve-fenton.webp
     alt: Dummy image
