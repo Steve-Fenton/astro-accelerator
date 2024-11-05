@@ -72,6 +72,7 @@ function initializeSearch() {
     var currentQuery = '';
     var dataUrl = siteSearchElement.dataset.sourcedata;
 
+    // Legacy scoring
     var scoring = {
         depth: 5,
         phraseTitle: 60,
@@ -82,6 +83,14 @@ function initializeSearch() {
         termDescription: 15,
         termTags: 15,
         termKeywords: 15,
+    };
+
+    // Found word scoring
+    const scores = {
+        titleExact: 20,
+        titleContains: 15,
+        headingContains: 10,
+        contentContains: 1,
     };
 
     var ready = false;
@@ -321,12 +330,12 @@ function initializeSearch() {
 
                 // Title
                 if (item.safeTitle === currentQuery) {
-                    item.foundWords += 2;
+                    item.foundWords += scores.titleExact;
                 }
 
                 if (contains(item.safeTitle, currentQuery)) {
                     item.score = item.score + scoring.phraseTitle;
-                    item.foundWords += 2;
+                    item.foundWords += scores.titleContains;
                 }
 
                 // Headings
@@ -334,14 +343,14 @@ function initializeSearch() {
                     if (contains(c.safeText, currentQuery)) {
                         item.score = item.score + scoring.phraseHeading;
                         item.matchedHeadings.push(c);
-                        item.foundWords++;
+                        item.foundWords += scores.headingContains;
                     }
                 });
 
                 // Description
                 if (contains(item.description, currentQuery)) {
                     item.score = item.score + scoring.phraseDescription;
-                    item.foundWords++;
+                    item.foundWords += scores.contentContains;
                 }
 
                 // Part 2 - Term Matches, i.e. "Kitchen" or "Sink"
