@@ -27,6 +27,17 @@ function enabled(settings, option) {
 }
 
 /**
+ *
+ * @param {any} value
+ * @param {number} index
+ * @param {any[]} array
+ * @returns
+ */
+function unique(value, index, array) {
+    return array.indexOf(value) === index;
+}
+
+/**
 @typedef {
     {
         text: string;
@@ -38,6 +49,7 @@ function enabled(settings, option) {
 @typedef {
     {
         foundWords: number;
+        foundTerms: string[];
         score: number;
         depth: number;
         title: string;
@@ -272,7 +284,6 @@ function initializeSearch() {
             }
         }
 
-        console.log('Post-synonym', queryTerms);
         return queryTerms.filter((qt) => qt != null);
     }
 
@@ -321,6 +332,7 @@ function initializeSearch() {
         cleanQuery.length > 0 &&
             haystack.forEach((item) => {
                 item.foundWords = 0;
+                item.foundTerms = [];
                 item.score = 0;
                 item.matchedHeadings = [];
 
@@ -356,6 +368,8 @@ function initializeSearch() {
                 // Part 2 - Term Matches, i.e. "Kitchen" or "Sink"
 
                 let foundWords = 0;
+                /** @type{string[]} */
+                let foundTerms = [];
 
                 allTerms.forEach((term) => {
                     let isTermFound = false;
@@ -404,10 +418,14 @@ function initializeSearch() {
 
                     if (isTermFound) {
                         foundWords++;
+                        foundTerms.push(term);
                     }
                 });
 
                 item.foundWords += foundWords;
+                item.foundTerms = item.foundTerms
+                    .concat(foundTerms)
+                    .filter(unique);
 
                 if (item.score > 0) {
                     needles.push(item);
@@ -429,11 +447,15 @@ function initializeSearch() {
         });
 
         needles.sort(function (a, b) {
-            if (b.foundWords === a.foundWords) {
-                return b.score - a.score;
+            if (b.foundTerms.length === a.foundTerms.length) {
+                if (b.foundWords === a.foundWords) {
+                    return b.score - a.score;
+                }
+
+                return b.foundWords - a.foundWords;
             }
 
-            return b.foundWords - a.foundWords;
+            return b.foundTerms.length - a.foundTerms.length;
         });
 
         const total = needles.reduce(function (accumulator, needle) {
