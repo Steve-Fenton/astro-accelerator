@@ -306,7 +306,7 @@ function initializeSearch() {
         }
 
         /** @type {SearchEntry[]} */
-        const needles = [];
+        let needles = [];
 
         // Clean the input
         const cleanQuery = sanitise(s);
@@ -377,6 +377,7 @@ function initializeSearch() {
                     // Title
                     if (contains(item.safeTitle, term)) {
                         item.score = item.score + scoring.termTitle;
+                        item.foundWords += scores.titleContains / 2;
                         isTermFound = true;
                     }
 
@@ -384,6 +385,7 @@ function initializeSearch() {
                     item.headings.forEach((c) => {
                         if (contains(c.safeText, term)) {
                             item.score = item.score + scoring.termHeading;
+                            item.foundWords += scores.headingContains / 2;
                             isTermFound = true;
 
                             if (
@@ -446,7 +448,7 @@ function initializeSearch() {
             }
         });
 
-        needles.sort(function (a, b) {
+        needles = needles.sort(function (a, b) {
             if (b.foundTerms.length === a.foundTerms.length) {
                 if (b.foundWords === a.foundWords) {
                     return b.score - a.score;
