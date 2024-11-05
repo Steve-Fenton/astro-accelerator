@@ -1,6 +1,7 @@
 /**
  * This javascript file comes from Astro Accelerator
  * Edits will be overwritten if you change the file locally
+ * THIS IS THE PREVIOUS SEARCH VERSION
  *
  * @format
  */
@@ -246,7 +247,6 @@ function initializeSearch() {
     /**
      * Replaces synonyms
      * @param {string[]} queryTerms
-     * @returns {Promise<string[]>}
      */
     async function replaceSynonyms(queryTerms) {
         const synonyms = await getSynonyms();
@@ -254,17 +254,11 @@ function initializeSearch() {
         for (let i = 0; i < queryTerms.length; i++) {
             const term = queryTerms[i];
             if (synonyms[term] != null) {
-                if (synonyms[term].length === 0) {
-                    // @ts-ignore
-                    queryTerms[i] = null;
-                } else {
-                    queryTerms.push(synonyms[term]);
-                }
+                queryTerms.push(synonyms[term]);
             }
         }
 
-        console.log('Post-synonym', queryTerms);
-        return queryTerms.filter((qt) => qt != null);
+        return queryTerms;
     }
 
     /**

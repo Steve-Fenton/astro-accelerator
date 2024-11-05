@@ -40,7 +40,7 @@ const SITE: Site = {
         youTubeLinks: ['embed'],
         headers: ['link'],
         details: ['tabs'],
-        search: [],
+        search: ['headings'],
     },
     images: {
         // Generated using https://ausi.github.io/respimagelint/
