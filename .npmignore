@@ -1,0 +1,5 @@
+# Expose Astro dependencies for `pnpm` users
+shamefully-hoist=true
+
+# This file is customized by users, so exclude from the package
+public/js/synonyms.js
