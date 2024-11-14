@@ -9,6 +9,8 @@ bannerImage:
     alt: Dummy image
 ---
 
+<!-- @format -->
+
 Astro Accelerator intends to be kind to search engines.
 
 A big thank you to the SEO community, especially Petr Vinklarek, for their knowledge.
@@ -54,3 +56,23 @@ The above examples is in `/pages/feed.md` and redirects requests from `www.examp
 The content of this file is optional, as browsers typically respect the meta tag redirect and immediately send the user to the correct location.
 
 You might implement a strategy where instead of renaming a page, you move the content to the new page and turn the existing page into a redirect, to avoid trapping users on a 404 page if they have the old address or follow an old back link.
+
+## Custom meta tags
+
+You can add custom meta tags to authors and pages using the [meta frontmatter](/about/frontmatter/#meta).
+
+For example, you can add author verification using the `fediverse:creator` meta tag:
+
+```yaml
+meta:
+    - name: 'fediverse:creator'
+      content: '@stevefenton@mastodon.social'
+```
+
+Or add a canonical link to a page if you want to override the automatic canonical link, which points to the Astro URL for the current page.
+
+```yaml
+meta:
+    - name: canonical
+      content: https://example.com/your-canonical-url
+```
