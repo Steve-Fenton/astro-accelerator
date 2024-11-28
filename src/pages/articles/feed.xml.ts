@@ -57,7 +57,7 @@ async function getData() {
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>${SITE.title}</title>
   <subtitle>${SITE.description}</subtitle>
-  <link href="${SITE.url}/atom.xml" rel="self" />
+  <link href="${SITE.url}${SITE.feedUrl}" rel="self" />
   <link href="${SITE.url}" />
   <id>${SITE.url}${SITE.feedUrl}</id>
   <updated>${articles[0].frontmatter.pubDate}</updated>
