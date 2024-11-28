@@ -28,7 +28,6 @@ export const SITE = {
 
 Dates are output according to the [language and locale settings](#language-and-locale-settings) but you can also control the display of dates in `src/config.ts`.
 
-
 ```typescript
 export const SITE = {
   //...
@@ -49,29 +48,29 @@ To add translations or specify additional language strings. A before and after e
 
 **Before:**
 
-```
+```json
 "articles": {
-	"previous": {
-		"en": "Prev"
-	},
-	"next": {
-		"en": "Next"
-	}
+  "previous": {
+    "en": "Prev"
+  },
+  "next": {
+    "en": "Next"
+  }
 }
 ```
 
 **After:**
 
-```
+```json
 "articles": {
-	"previous": {
-		"en": "Prev",
-		"fr": "Précédent"
-	},
-	"next": {
-		"en": "Next"
-		"fr": "Suivant"
-	}
+  "previous": {
+    "en": "Prev",
+    "fr": "Précédent"
+  },
+  "next": {
+    "en": "Next"
+    "fr": "Suivant"
+  }
 }
 ```
 

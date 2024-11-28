@@ -37,8 +37,8 @@ export const menu: (MenuItem | 'auto')[] = [
 
 ```typescript
 export const menu: (MenuItem | 'categories' | 'tags')[] = [
-	'categories',
-	'tags'
+    'categories',
+    'tags'
 ];
 
 ```

@@ -54,4 +54,3 @@ If the folder matches the page, they become linked. Simple.
 You decide how you want articles to appear in your web addresses. As long as they can be found in the folder named after your articles page, for example `/pages/articles/` you can organize them however you like.
 
 For example, you could arrange them into folder using the year and month of publication:
-

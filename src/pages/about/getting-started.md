@@ -18,7 +18,7 @@ Put the two setup files in an empty folder:
 
 Run these three commands:
 
-```
+```bash
 npm install
 
 node .\accelerator.js
@@ -28,7 +28,7 @@ npm run img
 
 Start up your empty site:
 
-```
+```bash
 npm run dev
 ```
 
@@ -36,15 +36,15 @@ Once you're up and running you can adjust the `accelerator.js` script to update 
 
 ## Things to Update
 
-In `/astro.config.mjs` change the value for `site:`: 
+In `/astro.config.mjs` change the value for `site:`:
 
-```
+```bash
 https://astro.stevefenton.co.uk
 ```
 
 In `/public/robots.txt` change the `Sitemap:` address:
 
-```
+```bash
 https://astro.stevefenton.co.uk/sitemap.xml
 ```
 
@@ -71,8 +71,8 @@ In **src/config.ts** set `useTrailingUrlSlash` to `true` or `false`.
 
 ```typescript
 const SITE: Site = {
-	url: '...',
-	useTrailingUrlSlash: true,
+    url: '...',
+    useTrailingUrlSlash: true,
 }
 ```
 
@@ -82,24 +82,24 @@ In `/src/config.ts` add any analytics or validation tags to `HEADER_SCRIPTS`.
 
 Some use cases run the site in a sub-folder, in order to front-door the site as a microsite that is part of a larger site. For example:
 
- - www.example.com - operated by the marketing team, maybe using a big platform
- - www.example.com/dev-blog/ - operated by the development team, running Astro
+- `www.example.com` - operated by the marketing team, maybe using a big platform
+- `www.example.com/dev-blog/` - operated by the development team, running Astro
 
 ```javascript
 export const SITE = {
     url: 'https://example.com',
-	subfolder: '/dev-blog',
+    subfolder: '/dev-blog',
 ```
 
 Place pages in the folder:
 
-```
+```bash
 src/pages/dev-blog/...
 ```
 
 Place assets in the folder
 
-```
+```bash
 public/dev-blog/...
 ```
 
@@ -142,12 +142,12 @@ Replace
 
 Using your trusty find and replace tools, you can fix up the front-matter.
 
-```
+```yaml
 \ndate:
 \npubDate:
 ```
 
-```
+```yaml
 \nlayout: post
 \nlayout: src/layouts/Default.astro
 ```

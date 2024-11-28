@@ -47,4 +47,4 @@ You can optionally add the following items. In cases where they aren't set, the 
 
 ## Styling share items
 
-As a minimum, you should ensure the sharable elements appear clickable.
+As a minimum, you should ensure the shareable elements appear clickable.

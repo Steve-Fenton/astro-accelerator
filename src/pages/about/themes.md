@@ -47,7 +47,7 @@ You can use the available shared `@util/*` files in your theme.
 
 ## Multiple / Child Themes
 
-You can install many themes side-by-side and use components from them to create layouts and components of your own. Use the top-level layours and components folders to coordinate this and reference the appropriate theme files to use them.
+You can install many themes side-by-side and use components from them to create layouts and components of your own. Use the top-level layouts and components folders to coordinate this and reference the appropriate theme files to use them.
 
 ## Theme Styles
 

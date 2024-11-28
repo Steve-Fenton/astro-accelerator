@@ -4,5 +4,11 @@
     "prettier.useEditorConfig": false,
     "prettier.bracketSameLine": true,
     "prettier.insertPragma": true,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "markdownlint.run": "onSave",
+    "markdownlint.config": {
+        "emphasis": { "style": "asterisk" },
+        "no-inline-html": false,
+        "ul-style": { "style": "dash" }
+    }
 }

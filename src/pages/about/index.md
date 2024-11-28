@@ -58,7 +58,7 @@ const records = (await processFile(false))
 
 Output:
 
-```
+```bash
 Performance: For "accelerator/components/HtmlHead.astro", 75 calls took 4022ms (an average of 53.6267ms)
 Performance: For "accelerator/components/ArticleList.astro", 34 calls took 1537ms (an average of 45.2059ms)
 ```

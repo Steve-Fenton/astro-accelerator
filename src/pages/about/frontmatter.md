@@ -119,30 +119,30 @@ meta:
 
 Note: Use the shorthand frontmatter entries, not the `meta` entry, to specify:
 
--   [robots](#robots)
--   [title](#title)
--   [description](#description)
--   [keywords](#keywords)
+- [robots](#robots)
+- [title](#title)
+- [description](#description)
+- [keywords](#keywords)
 
 #### Overriding automatic meta tags
 
 If you use one of the meta tags that is usually automated, it will be replaced with the meta tag defined on the page:
 
--   `canonical`: Usually the current page URL
--   `format-detection`: Usually `telephone=no`
--   `theme-color`: Usually the value in global `themeColor` in `config.ts`
--   `viewport`: Usually `width=device-width, initial-scale=1, minimum-scale=1`
+- `canonical`: Usually the current page URL
+- `format-detection`: Usually `telephone=no`
+- `theme-color`: Usually the value in global `themeColor` in `config.ts`
+- `viewport`: Usually `width=device-width, initial-scale=1, minimum-scale=1`
 
 #### Non-overridable meta tags
 
--   The `meta charset` tag is always `utf-8`
--   Open graph tags shouldn't be changed using `meta` frontmatter
+- The `meta charset` tag is always `utf-8`
+- Open graph tags shouldn't be changed using `meta` frontmatter
 
 ### id
 
 String. Needed for author profiles. Must be unique.
 
-```
+```yaml
 id: steve-fenton
 ```
 

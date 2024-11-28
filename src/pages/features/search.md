@@ -75,7 +75,7 @@ If the file is empty or does not exist, no action will be taken.
 
 In the event of JavaScript being disabled or a transient error, the search falls back to a search engine. This is configurable in `config.ts`.
 
-```
+```javascript
 search: {
   fallbackUrl: 'https://www.google.com/search',
   fallbackSite: 'q',
@@ -85,9 +85,10 @@ search: {
 
 For example, the search will fallback to Google with the query:
 
-```
+```javascript
 site:https://astro.stevefenton.co.uk/ image
 ```
+
 ## Trying out different scoring systems
 
 The scoring system is currently part of the search script:
@@ -110,4 +111,4 @@ This is likely to be made customizable in the future.
 
 You can test out different scoring weights by overriding entries with a query string.
 
-For example, to overide the `depth` score (currently `5` points per level bonus to shallower paths) you can pass the querystring `?s_depth=10`. You can pass any of the `scoring` items, by prefixing them with `s_`, such as `s_depth`, `s_phraseTitle`, or `s_termTags`.
+For example, to override the `depth` score (currently `5` points per level bonus to shallower paths) you can pass the querystring `?s_depth=10`. You can pass any of the `scoring` items, by prefixing them with `s_`, such as `s_depth`, `s_phraseTitle`, or `s_termTags`.

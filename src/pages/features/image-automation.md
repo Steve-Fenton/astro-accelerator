@@ -58,6 +58,7 @@ The responsive source sets will load an optimal WEBP image based on the user's d
 ```
 
 Notes:
+
 - It is optional but best practice to specify a **width** and **height**
 - It is optional but best practice to add meaningful **alt**-text
 

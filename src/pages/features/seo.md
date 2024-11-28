@@ -35,7 +35,7 @@ Open Graph tags are included for social sharing.
 
 You can create a redirect by adding a markdown file with the following content:
 
-```
+```astro
 ---
 layout: src/layouts/Redirect.astro
 title: Redirect

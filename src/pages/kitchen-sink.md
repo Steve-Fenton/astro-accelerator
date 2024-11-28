@@ -211,11 +211,7 @@ const elem = document.querySelector('.elem');
 
 Result:
 
-Inline `code` and a code block.
-
-    const elem = document.querySelector('.elem');
-
-A code block with a language set.
+Inline `code` and a code block with a language set.
 
 ```javascript
 const elem = document.querySelector('.elem');
