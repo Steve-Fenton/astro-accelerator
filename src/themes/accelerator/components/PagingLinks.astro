@@ -30,7 +30,7 @@ stats.stop();
     ? <a href={ accelerator.urlFormatter.formatAddress(page.url.prev) }>{ _(Translations.articles.previous) }</a>
     : <span>{ _(Translations.articles.previous) }</span>}
   {pageLinks.map((link) => (
-      <a href={ accelerator.urlFormatter.formatAddress(link.url) } aria-current={ link.ariaCurrent } class={ link.class }>{ link.title }</a>
+      <a href={ accelerator.urlFormatter.formatAddress(link.url) } aria-current={ link.ariaCurrent ? link.ariaCurrent : null } class={ link.class }>{ link.title }</a>
   ))}
   {page.url.next
     ? <a href={ accelerator.urlFormatter.formatAddress(page.url.next) }>{ _(Translations.articles.next) }</a>
