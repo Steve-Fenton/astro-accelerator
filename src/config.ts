@@ -10,6 +10,7 @@ const SITE: Site = {
     feedUrl: '/articles/feed.xml',
     title: 'Astro Accelerator',
     description: 'An Astro quick start project.',
+    startYear: '2022',
     themeColor: '#222255',
     subfolder: '',
     defaultLanguage: 'en',
