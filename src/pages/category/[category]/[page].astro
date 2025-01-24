@@ -50,8 +50,7 @@ type CategoryData = {
 }
 
 export async function getData() {
-  // TODO: Replace with call to Posts.all()
-  const sourcePosts = await Astro.glob(['../../**/*.md*']) as MarkdownInstance[];
+  const sourcePosts = Object.values(import.meta.glob('../../**/*.md*', { eager: true })) satisfies MarkdownInstance[];
   
   const data: CategoryData = { posts: [], categories: []};
 

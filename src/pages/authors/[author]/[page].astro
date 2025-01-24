@@ -59,9 +59,10 @@ type AuthorData = {
 }
 
 export async function getData() {
-  const sourcePosts = await Astro.glob(['../../**/*.md*']) satisfies MarkdownInstance[];
+  const sourcePosts = Object.values(import.meta.glob('../../**/*.md*', { eager: true })) satisfies MarkdownInstance[];
+  
   const data: AuthorData = { posts: [], authors: []};
-
+  
   data.posts = sourcePosts
     .filter(PostFiltering.isListable)
     .sort(PostOrdering.sortByPubDateDesc);

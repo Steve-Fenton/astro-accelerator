@@ -42,7 +42,7 @@ const frontmatter: Frontmatter = {
 
 // Logic
 export async function getData() {
-  const sourcePosts = await Astro.glob('./**/*.md*') as MarkdownInstance[];
+  const sourcePosts = Object.values(import.meta.glob('./**/*.md*', { eager: true })) satisfies MarkdownInstance[];
   const posts = sourcePosts
     .filter(PostFiltering.isListable)
     .sort(PostOrdering.sortByModDateDesc);

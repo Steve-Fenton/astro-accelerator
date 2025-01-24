@@ -16,6 +16,7 @@
         "frontmatter",
         "indexability",
         "itemprop",
+        "Listable",
         "noopener",
         "rehype",
         "resp",
