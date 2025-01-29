@@ -44,10 +44,11 @@ type Props = {
 const { title, page, headings, pubDate } = Astro.props satisfies Props;
 
 const authorFrontmatter = {
-  ...author.frontmatter,
-  titleAdditional: `(${ _(Translations.articles.author) }) ` + _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()),
-  pubDate: pubDate
+  ...author.frontmatter
 } as Frontmatter;
+
+authorFrontmatter.title = `${ authorFrontmatter.title } (${ _(Translations.articles.author) }) - ${ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()) }`;
+authorFrontmatter.pubDate = pubDate;
 
 const text = (author.frontmatter.summary ?? '').replace('\n', '\n\n');
 const authorText = accelerator.markdown.getHtmlFrom(text);
@@ -143,7 +144,6 @@ stats.stop();
       }
     </div>
   </div>
-  <h2>{ _(Translations.articles.page_title).replace('{n}', page.currentPage.toString()) }</h2>
   <ArticleList lang={ lang } posts={ page.data } />
   <PagingLinks lang={ lang } page={ page } pageLinks={ pageLinks } />
 </Default>
