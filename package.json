@@ -32,10 +32,10 @@
         "dts": "tsc ./tests/locate-content.js ./tests/locate-navigation.js ./tests/locate-search.js --allowJs --declaration --emitDeclarationOnly"
     },
     "dependencies": {
-        "@astrojs/mdx": "^4.0.7",
-        "astro": "^5.1.10",
+        "@astrojs/mdx": "^4.0.8",
+        "astro": "^5.2.5",
         "astro-accelerator-utils": "^0.3.36",
-        "cspell": "^8.17.2",
+        "cspell": "^8.17.3",
         "csv": "^6.3.11",
         "glob": "^11.0.1",
         "hast-util-from-selector": "^3.0.1",
@@ -47,7 +47,7 @@
         "sharp": "^0.33.5"
     },
     "devDependencies": {
-        "@playwright/test": "^1.50.0"
+        "@playwright/test": "^1.50.1"
     },
     "files": [
         ".npmrc",
