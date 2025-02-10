@@ -72,6 +72,7 @@ jobs:
 
             - name: Prepare server
               run: pnpm build
+              run: pnpm crawl
 
             - name: Install Playwright Browsers
               run: npx playwright install --with-deps
