@@ -78,7 +78,15 @@ async function recurseFiles(directory) {
                         info.path
                     );
 
-                    if (!fs.existsSync(fullDestination)) {
+                    // Only processes images where there is no json metadata file
+                    const metaPath = path.join(
+                        workingDirectory,
+                        imagePath,
+                        sourcePath + '.json'
+                    );
+
+                    if (!fs.existsSync(metaPath)) {
+                        console.log('Processing:', metaPath);
                         filesToProcess.push(info);
                     }
 
