@@ -1,5 +1,5 @@
 {
-    "version": "5.0.8",
+    "version": "5.0.9",
     "author": "Steve Fenton",
     "name": "astro-accelerator",
     "description": "A super-lightweight, accessible, SEO-friendly starter project for Astro",
@@ -32,9 +32,9 @@
         "dts": "tsc ./tests/locate-content.js ./tests/locate-navigation.js ./tests/locate-search.js --allowJs --declaration --emitDeclarationOnly"
     },
     "dependencies": {
-        "@astrojs/mdx": "^4.1.0",
-        "astro": "^5.4.2",
-        "astro-accelerator-utils": "^0.3.38",
+        "@astrojs/mdx": "^4.2.1",
+        "astro": "^5.5.3",
+        "astro-accelerator-utils": "^0.3.39",
         "cspell": "^8.17.5",
         "csv": "^6.3.11",
         "glob": "^11.0.1",
@@ -43,11 +43,11 @@
         "keyword-extractor": "^0.0.28",
         "linkinator": "^6.1.2",
         "optional": "^0.1.4",
-        "remark-directive": "^3.0.1",
+        "remark-directive": "^4.0.0",
         "sharp": "^0.33.5"
     },
     "devDependencies": {
-        "@playwright/test": "^1.51.0"
+        "@playwright/test": "^1.51.1"
     },
     "files": [
         ".npmrc",
