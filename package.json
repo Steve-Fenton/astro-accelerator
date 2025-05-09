@@ -1,5 +1,5 @@
 {
-    "version": "5.0.11",
+    "version": "5.0.12",
     "author": "Steve Fenton",
     "name": "astro-accelerator",
     "description": "A super-lightweight, accessible, SEO-friendly starter project for Astro",
@@ -20,6 +20,7 @@
         "url": "https://github.com/Steve-Fenton/astro-accelerator"
     },
     "scripts": {
+        "refresh": "pnpm update && pnpm test",
         "img": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs",
         "dev": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs && astro dev",
         "stats": "node --no-experimental-fetch ./src/themes/accelerator/utilities/stats.mjs",
@@ -32,12 +33,12 @@
         "dts": "tsc ./tests/locate-content.js ./tests/locate-navigation.js ./tests/locate-search.js --allowJs --declaration --emitDeclarationOnly"
     },
     "dependencies": {
-        "@astrojs/mdx": "^4.2.5",
-        "astro": "^5.7.5",
-        "astro-accelerator-utils": "^0.3.41",
-        "cspell": "^8.19.2",
+        "@astrojs/mdx": "^4.2.6",
+        "astro": "^5.7.12",
+        "astro-accelerator-utils": "^0.3.42",
+        "cspell": "^8.19.4",
         "csv": "^6.3.11",
-        "glob": "^11.0.1",
+        "glob": "^11.0.2",
         "hast-util-from-selector": "^3.0.1",
         "html-to-text": "^9.0.5",
         "keyword-extractor": "^0.0.28",
