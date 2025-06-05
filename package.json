@@ -20,7 +20,7 @@
         "url": "https://github.com/Steve-Fenton/astro-accelerator"
     },
     "scripts": {
-        "refresh": "pnpm update && pnpm test",
+        "refresh": "pnpm update && pnpm test && npm version patch",
         "img": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs",
         "dev": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs && astro dev",
         "stats": "node --no-experimental-fetch ./src/themes/accelerator/utilities/stats.mjs",
