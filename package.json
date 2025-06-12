@@ -34,8 +34,8 @@
     },
     "dependencies": {
         "@astrojs/mdx": "^4.3.0",
-        "astro": "^5.9.0",
-        "astro-accelerator-utils": "^0.3.43",
+        "astro": "^5.9.2",
+        "astro-accelerator-utils": "^0.3.44",
         "cspell": "^8.19.4",
         "csv": "^6.3.11",
         "glob": "^11.0.2",
@@ -48,7 +48,7 @@
         "sharp": "^0.33.5"
     },
     "devDependencies": {
-        "@playwright/test": "^1.52.0"
+        "@playwright/test": "^1.53.0"
     },
     "files": [
         ".npmrc",
