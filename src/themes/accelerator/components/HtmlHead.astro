@@ -43,46 +43,46 @@ stats.stop();
 <head>
   <meta charset="utf-8" />
   <title>{ title }</title>
-  <meta name="robots" content={ 'max-image-preview:large, ' + robots } />
-  <meta name="keywords" content={ frontmatter.keywords } />
-  <meta name="description" content={ frontmatter.description } />
-  <link rel="stylesheet" href={ SITE.subfolder + '/css/vars.css' } />
-  <link rel="stylesheet" href={ SITE.subfolder + '/css/main.css' } />
+  <meta name="robots" content={ 'max-image-preview:large, ' + robots }>
+  <meta name="keywords" content={ frontmatter.keywords }>
+  <meta name="description" content={ frontmatter.description }>
+  <link rel="stylesheet" href={ SITE.subfolder + '/css/vars.css' }>
+  <link rel="stylesheet" href={ SITE.subfolder + '/css/main.css' }>
   {autoMeta('viewport') &&
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   }
   {autoMeta('format-detection') &&
-  <meta name="format-detection" content="telephone=no" />
+  <meta name="format-detection" content="telephone=no">
   }
   {autoMeta('theme-color') &&
-  <meta name="theme-color" content={ SITE.themeColor } />
+  <meta name="theme-color" content={ SITE.themeColor }>
   }
   {autoMeta('canonical') &&
-  <link rel="canonical" href={ canonicalURL } />
+  <link rel="canonical" href={ canonicalURL }>
   }
   {SITE.feedUrl &&
-  <link rel="alternate" type="application/atom+xml" title={ SITE.title } href={ SITE.feedUrl } />
+  <link rel="alternate" type="application/atom+xml" title={ SITE.title } href={ SITE.feedUrl }>
   }
-  <link rel="alternate" href={ SITE.subfolder + '/sitemap.xml' } type="application/rss+xml" />
-  <link rel="shortcut icon" href={ SITE.subfolder + '/icons/favicon.ico' } type="image/x-icon" />
-  <link rel="apple-touch-icon" href={ SITE.subfolder + '/icons/apple-touch-icon.png' } />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={ canonicalURL } />
-  <meta property="og:title" content={ socialTitle } />
-  <meta property="og:description" content={ frontmatter.description } />
-  <meta property="og:image" content={ canonicalImageSrc } />
-  <meta property="og:image:alt" content={ imageAlt } />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={ socialTitle } />
-  <meta name="twitter:description" content={ frontmatter.description } />
-  <meta name="twitter:image" content={ canonicalImageSrc } />
-  <meta name="twitter:image:alt" content={ imageAlt } />
-  <meta name="view-transition" content="same-origin" />
+  <link rel="alternate" href={ SITE.subfolder + '/sitemap.xml' } type="application/rss+xml">
+  <link rel="shortcut icon" href={ SITE.subfolder + '/icons/favicon.ico' } type="image/x-icon">
+  <link rel="apple-touch-icon" href={ SITE.subfolder + '/icons/apple-touch-icon.png' }>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={ canonicalURL }>
+  <meta property="og:title" content={ socialTitle }>
+  <meta property="og:description" content={ frontmatter.description }>
+  <meta property="og:image" content={ canonicalImageSrc }>
+  <meta property="og:image:alt" content={ imageAlt }>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={ socialTitle }>
+  <meta name="twitter:description" content={ frontmatter.description }>
+  <meta name="twitter:image" content={ canonicalImageSrc }>
+  <meta name="twitter:image:alt" content={ imageAlt }>
+  <meta name="view-transition" content="same-origin">
   {pageMeta.map(m =>
-    <meta name={ m.name } content={ m.content } />
+    <meta name={ m.name } content={ m.content }>
   )}
   {authorMeta.map(m =>
-    <meta name={ m.name } content={ m.content } />
+    <meta name={ m.name } content={ m.content }>
   )}
   <Fragment set:html={ HEADER_SCRIPTS }></Fragment>
 </head>

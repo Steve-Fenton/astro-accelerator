@@ -1,8 +1,13 @@
+/** @format */
+
 import mdx from '@astrojs/mdx';
 import remarkDirective from 'remark-directive';
 import { defineConfig } from 'astro/config';
 import { defaultLayout } from '/src/themes/accelerator/utilities/default-layout.mjs';
-import { attributeMarkdown, wrapTables } from '/src/themes/accelerator/utilities/custom-markdown.mjs';
+import {
+    attributeMarkdown,
+    wrapTables,
+} from '/src/themes/accelerator/utilities/custom-markdown.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,10 +18,11 @@ export default defineConfig({
             defaultLayout,
             remarkDirective,
             attributeMarkdown,
-            wrapTables
+            wrapTables,
         ],
+        closeSelfClosing: false,
         extendDefaultPlugins: true,
         trailingSlash: 'always',
     },
-    server: { port: 3000, host: true},
+    server: { port: 3000, host: true },
 });

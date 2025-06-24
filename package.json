@@ -34,11 +34,11 @@
     },
     "dependencies": {
         "@astrojs/mdx": "^4.3.0",
-        "astro": "^5.9.2",
-        "astro-accelerator-utils": "^0.3.44",
+        "astro": "^5.10.1",
+        "astro-accelerator-utils": "^0.3.45",
         "cspell": "^8.19.4",
         "csv": "^6.3.11",
-        "glob": "^11.0.2",
+        "glob": "^11.0.3",
         "hast-util-from-selector": "^3.0.1",
         "html-to-text": "^9.0.5",
         "keyword-extractor": "^0.0.28",
@@ -48,7 +48,7 @@
         "sharp": "^0.33.5"
     },
     "devDependencies": {
-        "@playwright/test": "^1.53.0"
+        "@playwright/test": "^1.53.1"
     },
     "files": [
         ".npmrc",
