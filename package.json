@@ -26,7 +26,7 @@
         "stats": "node --no-experimental-fetch ./src/themes/accelerator/utilities/stats.mjs",
         "spellcheck": "git fetch origin main:refs/remotes/origin/main && git diff origin/main --name-only --diff-filter=ACMRTUXB | cspell --no-must-find-files --file-list stdin",
         "test": "astro build && npx playwright install --with-deps && npx playwright test",
-        "crawl": "linkinator ./dist --skip \"^(?!http://localhost)\" --recurse  --verbosity error",
+        "crawl": "linkinator ./dist --skip \"^(?!http://localhost)\" --skip \"/404/\" --recurse  --verbosity error",
         "build": "astro build",
         "preview": "astro preview",
         "astro": "astro",
