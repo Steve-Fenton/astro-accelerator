@@ -15,14 +15,14 @@ Astro Accelerator is designed for re-use. That means we have to be careful to en
 
 To make this possible...
 
--   Consider whether a change should be accompanied by a feature flag
--   Make sure SVG icons can be styled in CSS (stroke and fill shouldn't be hard-coded to a colour)
--   For drastic changes to a component, consider creating an alternate component instead
--   Update the documentation files with changes to help folks out
+- Consider whether a change should be accompanied by a feature flag
+- Make sure SVG icons can be styled in CSS (stroke and fill shouldn't be hard-coded to a colour)
+- For drastic changes to a component, consider creating an alternate component instead
+- Update the documentation files with changes to help folks out
 
 ## Image optimization on Linux
 
-Currently, to run the image optimization on Linux, you need to force a compatible version of Sharp to be installed. Any suggestions for a better approach would be appreciated:
+Currently, to run the image optimization on Linux, you need to force a compatible version of Sharp to be installed. Any suggestions for a better approach would be appreciated. This is not needed on Windows or Mac.
 
 ```bash
 pnpm install --include=optional sharp
@@ -37,4 +37,4 @@ The NPM token expires periodically and must be updated in GitHub settings -> Sec
 
 ## Upgrades
 
--   [Upgrading from v3 to v4 of Astro and Astro Accelerator.](https://www.stevefenton.co.uk/blog/2023/12/upgrade-astro-v4/)
+- [Upgrading from v3 to v4 of Astro and Astro Accelerator.](https://www.stevefenton.co.uk/blog/2023/12/upgrade-astro-v4/)
