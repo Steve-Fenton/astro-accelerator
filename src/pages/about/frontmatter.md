@@ -1,7 +1,7 @@
 ---
 title: Frontmatter
 navOrder: 3000
-pubDate: 2022-10-24
+pubDate: 2025-07-01
 keywords: astro accelerator,front matter,frontmatter
 description: An overview of frontmatter in Astro Accelerator.
 ---
@@ -213,7 +213,17 @@ Bool. Signals that pages will be generated, which means navigation links will be
 paged: true
 ```
 
-### navSearch
+### Page visibility
+
+#### listable
+
+Bool. Makes the page not visible anywhere, setting search, sitemap, and menu off in one flag.
+
+```yaml
+listable: false
+```
+
+#### navSearch
 
 Bool. Can be used to remove the page from the site search.
 
@@ -221,7 +231,7 @@ Bool. Can be used to remove the page from the site search.
 navSearch: false
 ```
 
-### navSitemap
+#### navSitemap
 
 Bool. Can be used to remove the page from the site map.
 
@@ -229,7 +239,7 @@ Bool. Can be used to remove the page from the site map.
 navSitemap: false
 ```
 
-### navMenu
+#### navMenu
 
 Bool. Can be used to remove the page from the menu.
 

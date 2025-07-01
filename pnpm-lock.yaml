@@ -17,8 +17,8 @@ dependencies:
     specifier: ^5.10.1
     version: 5.10.1(typescript@5.8.3)
   astro-accelerator-utils:
-    specifier: ^0.3.46
-    version: 0.3.46
+    specifier: ^0.3.47
+    version: 0.3.47
   cspell:
     specifier: ^8.19.4
     version: 8.19.4
@@ -52,8 +52,8 @@ dependencies:
 
 devDependencies:
   '@playwright/test':
-    specifier: ^1.53.1
-    version: 1.53.1
+    specifier: ^1.53.2
+    version: 1.53.2
 
 packages:
 
@@ -974,8 +974,8 @@ packages:
       wrap-ansi-cjs: /wrap-ansi@7.0.0
     dev: false
 
-  /@jridgewell/sourcemap-codec@1.5.2:
-    resolution: {integrity: sha512-gKYheCylLIedI+CSZoDtGkFV9YEBxRRVcfCH7OfAqh4TyUyRjEE6WVE/aXDXX0p8BIe/QgLcaAoI0220KRRFgg==}
+  /@jridgewell/sourcemap-codec@1.5.3:
+    resolution: {integrity: sha512-AiR5uKpFxP3PjO4R19kQGIMwxyRyPuXmKEEy301V1C0+1rVjS94EZQXf1QKZYN8Q0YM+estSPhmx5JwNftv6nw==}
     dev: false
 
   /@mdx-js/mdx@3.1.0(acorn@8.15.0):
@@ -1021,12 +1021,12 @@ packages:
     dev: false
     optional: true
 
-  /@playwright/test@1.53.1:
-    resolution: {integrity: sha512-Z4c23LHV0muZ8hfv4jw6HngPJkbbtZxTkxPNIg7cJcTc9C28N/p2q7g3JZS2SiKBBHJ3uM1dgDye66bB7LEk5w==}
+  /@playwright/test@1.53.2:
+    resolution: {integrity: sha512-tEB2U5z74ebBeyfGNZ3Jfg29AnW+5HlWhvHtb/Mqco9pFdZU1ZLNdVb2UtB5CvmiilNr2ZfVH/qMmAROG/XTzw==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
-      playwright: 1.53.1
+      playwright: 1.53.2
     dev: true
 
   /@rollup/pluginutils@5.2.0:
@@ -1282,7 +1282,7 @@ packages:
   /@types/fontkit@2.0.8:
     resolution: {integrity: sha512-wN+8bYxIpJf+5oZdrdtaX04qUuWHcKxcDEgRS9Qm9ZClSHjzEn13SxUC+5eRM+4yXIeTYk8mTzLAWGF64847ew==}
     dependencies:
-      '@types/node': 24.0.7
+      '@types/node': 24.0.8
     dev: false
 
   /@types/hast@3.0.4:
@@ -1311,8 +1311,8 @@ packages:
       '@types/unist': 3.0.3
     dev: false
 
-  /@types/node@24.0.7:
-    resolution: {integrity: sha512-YIEUUr4yf8q8oQoXPpSlnvKNVKDQlPMWrmOcgzoduo7kvA2UF0/BwJ/eMKFTiTtkNL17I0M6Xe2tvwFU7be6iw==}
+  /@types/node@24.0.8:
+    resolution: {integrity: sha512-WytNrFSgWO/esSH9NbpWUfTMGQwCGIKfCmNlmFDNiI5gGhgMmEA+V1AEvKLeBNvvtBnailJtkrEa2OIISwrVAA==}
     dependencies:
       undici-types: 7.8.0
     dev: false
@@ -1406,8 +1406,8 @@ packages:
     hasBin: true
     dev: false
 
-  /astro-accelerator-utils@0.3.46:
-    resolution: {integrity: sha512-JfZCMyzflkHAOOhrOZETLOoH5Mub8mj6HcpqdZO7T6n6Jf6M21bMNh1cryDk5vYyJstsLpCvMbFlGvXy8shPPA==}
+  /astro-accelerator-utils@0.3.47:
+    resolution: {integrity: sha512-cAgh7fVPwRrh//vnt5/uiON+EbT76qc5r/2iNbWEJ2EH3mAxrXgnlKSNwiqb0wgRexdp/BsZGYU2D9gzHS6a9g==}
     dev: false
 
   /astro@5.10.1(typescript@5.8.3):
@@ -2711,7 +2711,7 @@ packages:
   /magic-string@0.30.17:
     resolution: {integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==}
     dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.2
+      '@jridgewell/sourcemap-codec': 1.5.3
     dev: false
 
   /magicast@0.3.5:
@@ -3536,18 +3536,18 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /playwright-core@1.53.1:
-    resolution: {integrity: sha512-Z46Oq7tLAyT0lGoFx4DOuB1IA9D1TPj0QkYxpPVUnGDqHHvDpCftu1J2hM2PiWsNMoZh8+LQaarAWcDfPBc6zg==}
+  /playwright-core@1.53.2:
+    resolution: {integrity: sha512-ox/OytMy+2w1jcYEYlOo1Hhp8hZkLCximMTUTMBXjGUA1KoFfiSZ+DU+3a739jsPY0yoKH2TFy9S2fsJas8yAw==}
     engines: {node: '>=18'}
     hasBin: true
     dev: true
 
-  /playwright@1.53.1:
-    resolution: {integrity: sha512-LJ13YLr/ocweuwxyGf1XNFWIU4M2zUSo149Qbp+A4cpwDjsxRPj7k6H25LBrEHiEwxvRbD8HdwvQmRMSvquhYw==}
+  /playwright@1.53.2:
+    resolution: {integrity: sha512-6K/qQxVFuVQhRQhFsVZ9fGeatxirtrpPgxzBYWyZLEXJzqYwuL4fuNmfOfD5et1tJE4GScKyPNeLhZeRwuTU3A==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
-      playwright-core: 1.53.1
+      playwright-core: 1.53.2
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
