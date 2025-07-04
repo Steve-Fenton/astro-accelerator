@@ -1,0 +1,50 @@
+---
+import { Accelerator, PostOrdering } from 'astro-accelerator-utils';
+import { SITE } from '@config';
+
+// Logic
+const accelerator = new Accelerator(SITE);
+
+const allPages = accelerator.posts.all();
+let futurePosts = allPages.filter(
+  (p) =>
+    p.frontmatter.pubDate != null &&
+    Date.parse(p.frontmatter.pubDate) > Date.now()
+);
+futurePosts = futurePosts.sort(PostOrdering.sortByPubDate);
+
+const pageCount = futurePosts.length;
+const pages = futurePosts.slice(0, Math.min(50, pageCount));
+---
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Publishing calendar</title>
+    <link rel="stylesheet" href="/css/report.css" />
+  </head>
+  <body>
+    <h2>Report: Publishing calendar</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Publishing on</th>
+        </tr>
+      </thead>
+      {
+        pages.map((p) => (
+          <tr>
+            <td>
+              <a href={accelerator.urlFormatter.formatAddress(p.url)}>
+                {p.frontmatter.title}
+              </a>
+            </td>
+            <td>{p.frontmatter.pubDate}</td>
+          </tr>
+        ))
+      }
+    </table>
+  </body>
+</html>
