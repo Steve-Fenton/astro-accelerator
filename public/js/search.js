@@ -72,17 +72,23 @@ function unique(value, index, array) {
  */
 
 function initializeSearch() {
-    const siteSearchWrapper = qs('.site-search-wrapper');
-    const siteSearchElement = qs('.site-search-wrapper > form');
-    /** @type {HTMLInputElement} */
-    const siteSearchInput = qs('.site-search-query');
-    const siteSearchResults = qs('.site-search-results');
-    const removeSearchButton = qs('.site-search-remove');
+    const siteSearchInput = /** @type {HTMLInputElement} */ (
+        qs('.site-search-query')
+    );
+    const siteSearchWrapper = /** @type {HTMLElement} */ (
+        qs('.site-search-wrapper')
+    );
+    const siteSearchElement = /** @type {HTMLFormElement} */ (
+        qs('.site-search-wrapper > form')
+    );
+    const siteSearchResults = /** @type {HTMLElement} */ (
+        qs('.site-search-results')
+    );
 
     /** @type {SearchEntry[]} */
     var haystack = [];
     var currentQuery = '';
-    var dataUrl = siteSearchElement.dataset.sourcedata;
+    var dataUrl = /** @type {string} */ (siteSearchElement.dataset.sourcedata);
 
     // Legacy scoring
     var scoring = {
@@ -106,41 +112,6 @@ function initializeSearch() {
     };
 
     var ready = false;
-    var scrolled = false;
-
-    function deactivate(e) {
-        if (
-            !siteSearchElement.contains(e.target) &&
-            !siteSearchResults.contains(e.target)
-        ) {
-            const duration = getComputedStyle(
-                siteSearchWrapper
-            ).getPropertyValue('--search-dropdown-duration');
-
-            // Convert duration to milliseconds for setTimeout
-            const durationMs =
-                parseFloat(duration) * (duration.endsWith('ms') ? 1 : 1000);
-        }
-    }
-
-    // Close the dropdown upon activity outside the search
-    document.addEventListener('click', deactivate);
-    document.addEventListener('keydown', deactivate);
-
-    function removeSearch() {
-        clearInput();
-        debounceSearch();
-        siteSearchInput.focus();
-    }
-
-    // Clear the search input
-    removeSearchButton.addEventListener('click', () => {
-        removeSearch();
-    });
-
-    function clearInput() {
-        siteSearchInput.value = '';
-    }
 
     /** @type{Synonyms | null} */
     var _synonyms = null;
@@ -358,7 +329,7 @@ function initializeSearch() {
         const results = siteSearchResults;
 
         const ul = document.createElement('ul');
-        ul.className = 'site-search-results__list';
+        ul.className = 'site-search-results-list';
 
         const limit = Math.min(needles.length, numberOfResults);
 
@@ -479,7 +450,7 @@ function initializeSearch() {
             await search(s, newTotal);
             window.setTimeout(function () {
                 const previousPosition = qs(
-                    `.site-search-results__list li:nth-child(${oldTotal}) > a`
+                    `.site-search-results-list li:nth-child(${oldTotal}) > a`
                 );
                 console.log(previousPosition.outerHTML);
                 previousPosition.focus();
@@ -569,10 +540,6 @@ function initializeSearch() {
 
             siteSearchQuery.addEventListener('keyup', function (e) {
                 e.preventDefault();
-                if (!scrolled) {
-                    scrolled = true;
-                    this.scrollIntoView(true);
-                }
                 debounceSearch();
                 return false;
             });

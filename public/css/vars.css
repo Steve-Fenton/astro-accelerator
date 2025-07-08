@@ -29,8 +29,6 @@
     --aft-block: #f3f5ff;
     --icon-block: #4d71ff;
 
-    --aft-mark: #eef;
-
     --fore-table-head: #fdfdfe;
     --aft-table-head: #2f3141;
     --fore-table-row-odd: #333;
@@ -60,16 +58,6 @@
 
     /* Calculate the mobile width by removing l/r columns and grid gap */
     --content-width-mobile: calc(100vw - (1rem * 2));
-
-    /* Search variables */
-    --white: #fff;
-    --search-height: 3rem;
-    --search-border-radius: calc(var(--search-height) / 2);
-    --search-results-padding: 1rem;
-    --search-border: 0.0625rem solid #76a1c2;
-    --search-dropdown-height: 65vh;
-    --search-dropdown-duration: 0.3s;
-    --search-item-border-color: #dae2e9;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -102,10 +90,5 @@
         --aft-table-row-odd: #333;
         --fore-table-row-even: #ccc;
         --aft-table-row-even: #444;
-
-        /* Search variables */
-        --white: var(--aft);
-        --search-border: 0.0625rem solid var(--link-alt-head);
-        --search-item-border-color: var(--link-head);
     }
 }
