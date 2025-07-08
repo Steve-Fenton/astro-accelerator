@@ -9,7 +9,6 @@
 
 import { qs } from './modules/query.js';
 import { raiseEvent } from './modules/events.js';
-import { removeScroll, resetScroll } from './modules/scrollbar.js';
 import { contains, sanitise, explode, highlight } from './modules/string.js';
 import { stemmer } from './modules/stemmer.js';
 
@@ -158,7 +157,6 @@ function initializeSearch() {
             return;
         }
         siteSearchWrapper.classList.add('is-active');
-        removeScroll();
         openDropdown();
     }
 
@@ -167,7 +165,6 @@ function initializeSearch() {
             return;
         }
         siteSearchWrapper.classList.remove('is-active');
-        resetScroll();
     }
 
     function openDropdown() {
