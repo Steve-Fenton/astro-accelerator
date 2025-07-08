@@ -867,6 +867,7 @@ header .result-wrapper {
 }
 
 .site-search-results .show-more {
+    margin-block-start: 1rem;
     display: inline-block;
     font-size: 1.2rem;
     border-radius: 100px;

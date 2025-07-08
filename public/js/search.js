@@ -169,36 +169,6 @@ function initializeSearch() {
 
     function openDropdown() {
         siteSearchElement.classList.add('is-active');
-
-        requestAnimationFrame(() => {
-            const dropdownHeightPercentage = parseFloat(
-                getComputedStyle(siteSearchWrapper).getPropertyValue(
-                    '--search-dropdown-height'
-                )
-            );
-            // Convert vh to pixels
-            const dropdownHeight =
-                window.innerHeight * (dropdownHeightPercentage / 100) + 32;
-            const siteSearchElementRect =
-                siteSearchElement.getBoundingClientRect();
-            const offsetFromBottomToElement =
-                window.innerHeight - siteSearchElementRect.bottom;
-
-            if (offsetFromBottomToElement < dropdownHeight) {
-                document.body.style.overflow = '';
-
-                // Scroll to the siteSearchElement
-                siteSearchElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start',
-                });
-
-                // Delay the overflow to allow for smooth scrolling
-                setTimeout(() => {
-                    document.body.style.overflow = 'hidden';
-                }, 300);
-            }
-        });
     }
 
     function closeDropdown() {
