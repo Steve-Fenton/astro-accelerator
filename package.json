@@ -21,9 +21,9 @@
     },
     "scripts": {
         "refresh": "npm version patch && pnpm update && pnpm test",
-        "img": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs",
-        "dev": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs && astro dev",
-        "stats": "node --no-experimental-fetch ./src/themes/accelerator/utilities/stats.mjs",
+        "img": "node ./src/themes/accelerator/utilities/img.mjs",
+        "dev": "node ./src/themes/accelerator/utilities/img.mjs && astro dev",
+        "stats": "node ./src/themes/accelerator/utilities/stats.mjs",
         "spellcheck": "git fetch origin main:refs/remotes/origin/main && git diff origin/main --name-only --diff-filter=ACMRTUXB | cspell --no-must-find-files --file-list stdin",
         "test": "astro build && npx playwright install --with-deps && npx playwright test",
         "crawl": "linkinator ./dist --skip \"^(?!http://localhost)\" --skip \"/404/\" --recurse  --verbosity error",

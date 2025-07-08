@@ -17,6 +17,7 @@
 
     --fore-head: #333;
     --aft-head: #e6e8f1;
+    --icon-head: #2d4295;
 
     --fore-breadcrumb: #333;
     --aft-breadcrumb: #f3f5ff;
@@ -83,6 +84,7 @@
 
         --fore-head: #ccc;
         --aft-head: #222;
+        --icon-head: #abb9ef;
 
         --fore-breadcrumb: #ccc;
         --aft-breadcrumb: #2c2c2c;

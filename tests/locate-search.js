@@ -1,3 +1,5 @@
+/** @format */
+
 // @ts-check
 
 /**
@@ -7,20 +9,18 @@
 
 export class Model {
     /**
-     * @param {Page} page 
+     * @param {Page} page
      */
     constructor(page) {
         this.page = page;
-     }
+    }
 
     /**
      * Gets the search box
      * @returns {Locator}
      */
     searchBox() {
-        return this.page.locator(
-            'input.site-search-query'
-        );
+        return this.page.locator('input.site-search-query');
     }
 
     /**
@@ -28,10 +28,9 @@ export class Model {
      * @returns {Locator}
      */
     searchResultsTitle() {
-        return this.page.locator(
-            '[data-site-search-results] h2',
-            { hasText: 'Results' }
-        );
+        return this.page.locator('.site-search-results h2', {
+            hasText: 'Results',
+        });
     }
 
     /**
@@ -39,8 +38,6 @@ export class Model {
      * @returns {Locator}
      */
     searchResults() {
-        return this.page.locator(
-            'a.result-wrapper'
-        );
+        return this.page.locator('a.result-wrapper');
     }
 }
