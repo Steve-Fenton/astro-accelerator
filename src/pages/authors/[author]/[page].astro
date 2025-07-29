@@ -79,6 +79,12 @@ export async function getData() {
       }
     });
   });
+
+  sourcePosts.filter(PostFiltering.isAuthor).forEach((p) => {
+    if (!data.authors.includes(p.frontmatter.id)) {
+      data.authors.push(p.frontmatter.id);
+    }
+  });
     
   return data;
 }
@@ -93,7 +99,7 @@ export async function getStaticPaths({ paginate }: any) {
     });
     return paginate(filtered, { 
         params: { author: a.toLowerCase() },
-        props: { pubDate: filtered[0].frontmatter.pubDate },
+        props: { pubDate: filtered[0]?.frontmatter.pubDate ?? new Date() },
         pageSize: SITE.pageSize 
     });
   }).flat();
