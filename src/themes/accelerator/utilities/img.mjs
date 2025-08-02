@@ -88,6 +88,16 @@ async function recurseFiles(directory) {
                     if (!fs.existsSync(metaPath)) {
                         console.log('Processing:', metaPath);
                         filesToProcess.push(info);
+                    } else {
+                        const data = fs.readFileSync(metaPath, 'utf8');
+                        const jsonData = JSON.parse(data);
+                        const date90DaysAgo = new Date(Date.now() - (90 * 24 * 60 * 60 * 1000));
+
+
+                        if (!jsonData.updated || new Date(jsonData.updated) < date90DaysAgo) {
+console.log('Processing:', metaPath);
+                        filesToProcess.push(info);
+                        }
                     }
 
                     // The code below uses modified dates (and will update more images than the above)
