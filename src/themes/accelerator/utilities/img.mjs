@@ -141,6 +141,7 @@ for (const file of filesToProcess) {
         width: info.width,
         height: info.height,
         sizeInBytes: info.size,
+        updated: (new Date().toISOString()),
     };
 
     const metaFile = source + '.json';
