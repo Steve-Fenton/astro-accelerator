@@ -91,26 +91,19 @@ async function recurseFiles(directory) {
                     } else {
                         const data = fs.readFileSync(metaPath, 'utf8');
                         const jsonData = JSON.parse(data);
-                        const date90DaysAgo = new Date(Date.now() - (90 * 24 * 60 * 60 * 1000));
+                        const date90DaysAgo = new Date(
+                            Date.now() - 90 * 24 * 60 * 60 * 1000
+                        );
 
-
-                        if (!jsonData.updated || new Date(jsonData.updated) < date90DaysAgo) {
-console.log('Processing:', metaPath);
-                        filesToProcess.push(info);
+                        if (
+                            !jsonData.updated ||
+                            new Date(jsonData.updated) < date90DaysAgo
+                        ) {
+                            console.log('Processing:', metaPath);
+                            filesToProcess.push(info);
                         }
                     }
 
-                    // The code below uses modified dates (and will update more images than the above)
-                    // const fullPath = path.join(imageDirectory, info.path);
-                    // const modified = fs.statSync(fullPath).mtime;
-
-                    // const destinationModified = fs.existsSync(fullDestination)
-                    //     ? fs.statSync(fullDestination).mtime
-                    //     : new Date(0);
-
-                    // if (destinationModified < modified) {
-                    //     filesToProcess.push(info);
-                    // }
                     break;
             }
         }
@@ -151,7 +144,7 @@ for (const file of filesToProcess) {
         width: info.width,
         height: info.height,
         sizeInBytes: info.size,
-        updated: (new Date().toISOString()),
+        updated: new Date().toISOString(),
     };
 
     const metaFile = source + '.json';
