@@ -34,8 +34,8 @@
     },
     "dependencies": {
         "@astrojs/mdx": "^4.3.3",
-        "astro": "^5.12.8",
-        "astro-accelerator-utils": "^0.3.49",
+        "astro": "^5.12.9",
+        "astro-accelerator-utils": "^0.3.50",
         "cspell": "^8.19.4",
         "csv": "^6.4.1",
         "glob": "^11.0.3",
