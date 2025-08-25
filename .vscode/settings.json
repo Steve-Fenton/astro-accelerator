@@ -10,5 +10,8 @@
         "emphasis": { "style": "asterisk" },
         "no-inline-html": false,
         "ul-style": { "style": "dash" }
+    },
+    "[astro]": {
+        "editor.defaultFormatter": "astro-build.astro-vscode"
     }
 }
