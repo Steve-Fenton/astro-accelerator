@@ -23,27 +23,27 @@
 }
 
 :root {
-    --fore: #1a3a2e;
-    --aft: #e8f5f0;
-    --aft-image: #e8f5f0;
+    --fore: #233;
+    --aft: #DFF;
+    --aft-image: #DFF;
 
-    --fore-link: #2d5a47;
-    --fore-link-alt: #4a7c59;
-    --aft-link-alt: #edf7f1;
+    --fore-link: #355;
+    --fore-link-alt: #699;
+    --aft-link-alt: #e6e6eC;
     
     --fore-input: var(--fore);
     --aft-input: var(--aft);
 
-    --fore-block: #234d3e;
-    --aft-block: #d4f0e0;
-    --icon-block: #16a085;
+    --fore-block: #333;
+    --aft-block: #BEE;
+    --icon-block: #FF0;
 
-    --fore-table-head: #e8f5f0;
-    --aft-table-head: #1a3a2e;
-    --fore-table-row-odd: #234d3e;
-    --aft-table-row-odd: #e8f5f0;
-    --fore-table-row-even: #234d3e;
-    --aft-table-row-even: #d4f0e0;
+    --fore-table-head: #DFF;
+    --aft-table-head: #233;
+    --fore-table-row-odd: #333;
+    --aft-table-row-odd: #DFF;
+    --fore-table-row-even: #333;
+    --aft-table-row-even: #CFF;
 
     --heading-font: 'hyper-bold', sans-serif;
     --content-font: 'hyper-reg', Verdana, Geneva, sans-serif;
@@ -88,26 +88,26 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --fore: #a8e6cf;
-        --aft: #0a1d14;
-        --aft-image: #a5e0c8;
+        --fore: #DFF;
+        --aft: #233;
+        --aft-image: #DDD;
     
-        --fore-link: #52c996;
-        --fore-link-alt: #7dd9b8;
-        --aft-link-alt: #1a3a2e;
+        --fore-link: #AFF;
+        --fore-link-alt: #FF0;
+        --aft-link-alt: #232323;
 
-        --fore-input: var(--fore);
+        --fore-input: #var(--fore);
         --aft-input: var(--aft);
 
-        --fore-block: #a8e6cf;
-        --aft-block: #0f2419;
-        --icon-block: #1dd1a1;
+        --fore-block: #DFF;
+        --aft-block: #011;
+        --icon-block: #FF0;
 
-        --fore-table-head: #a8e6cf;
-        --aft-table-head: #1a3a2e; 
-        --fore-table-row-odd: #a8e6cf;
-        --aft-table-row-odd: #1f3d32;
-        --fore-table-row-even: #a8e6cf;
-        --aft-table-row-even: #2d5a47;
+        --fore-table-head: #DFF;
+        --aft-table-head: #244; 
+        --fore-table-row-odd: #DFF;
+        --aft-table-row-odd: #355;
+        --fore-table-row-even: #DFF;
+        --aft-table-row-even: #466;
     }
 }
