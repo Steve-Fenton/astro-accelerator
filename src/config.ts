@@ -50,8 +50,7 @@ const SITE: Site = {
     },
     images: {
         // Generated using https://ausi.github.io/respimagelint/
-        contentSize:
-            '(min-width: 1280px) 668px, (min-width: 880px) calc(72.11vw - 241px), calc(100vw - 64px)',
+        contentSize: '(min-width: 1280px) 668px, (min-width: 880px) calc(72.11vw - 241px), calc(100vw - 64px)',
         listerSize:
             '(min-width: 1300px) 350px, (min-width: 880px) calc(34.25vw - 88px), (min-width: 700px) 50vw, calc(100vw - 32px)',
         authorSize: '50px',
@@ -67,7 +66,9 @@ const OPEN_GRAPH = {
 };
 
 const HEADER_SCRIPTS = `
-<!-- HEADER SCRIPTS -->
+<meta name="copyright" content="Steve Fenton">
+<link rel="preload" href="/css/AtkinsonHyperlegibleNext-Bold.otf" as="font" crossorigin>
+<link rel="preload" href="/css/AtkinsonHyperlegibleNext-Regular.otf" as="font" crossorigin>
 `.trim();
 
 export { SITE, OPEN_GRAPH, HEADER_SCRIPTS };

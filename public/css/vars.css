@@ -1,94 +1,113 @@
-/**
- * Recommended Tools
- *     Check accessibility for colour combinations
- *     https://toolness.github.io/accessible-color-matrix/
- *
- * @format
- */
+@font-face {
+    font-family: "hyper-reg";
+    font-weight: normal;
+    font-style: normal;
+    src: url("AtkinsonHyperlegibleNext-Regular.otf");
+    font-display: block;
+}
+
+@font-face {
+    font-family: "hyper-bold";
+    font-weight: bold;
+    font-style: normal;
+    src: url("AtkinsonHyperlegibleNext-Bold.otf");
+    font-display: block;
+}
+
+@font-face {
+    font-family: "hyper-mono";
+    font-weight: bold;
+    font-style: normal;
+    src: url("AtkinsonHyperlegibleMono-Regular.otf");
+    font-display: block;
+}
 
 :root {
-    --fore: #333;
-    --fore-headings: #225;
-    --aft: #fbfbfc;
+    --fore: #223;
+    --aft: #DDF;
+    --aft-image: #DDF;
 
-    --fore-link: #2d4295;
-    --fore-link-alt: #4d71ff;
-    --aft-link-alt: #f3f5ff;
-
-    --fore-head: #333;
-    --aft-head: #e6e8f1;
-    --icon-head: #2d4295;
-
-    --fore-breadcrumb: #333;
-    --aft-breadcrumb: #f3f5ff;
-
-    --link-head: #2d4295;
-    --link-alt-head: #2a4dd8;
+    --fore-link: #335;
+    --fore-link-alt: #669;
+    --aft-link-alt: #e6e6eC;
+    
+    --fore-input: var(--fore);
+    --aft-input: var(--aft);
 
     --fore-block: #333;
-    --aft-block: #f3f5ff;
-    --icon-block: #4d71ff;
+    --aft-block: #CCF;
+    --icon-block: #fe117D;
 
-    --fore-table-head: #fdfdfe;
-    --aft-table-head: #2f3141;
+    --fore-table-head: #DDF;
+    --aft-table-head: #223;
     --fore-table-row-odd: #333;
-    --aft-table-row-odd: #fdfdfe;
+    --aft-table-row-odd: #DDF;
     --fore-table-row-even: #333;
-    --aft-table-row-even: #f3f5ff;
+    --aft-table-row-even: #CCF;
 
-    --heading-font: Georgia, 'Times New Roman', Times, serif;
-    --content-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --code-font: Consolas, 'Courier New', Courier, monospace;
-    --unicode-font: 'Segoe UI Symbol', 'Arial Unicode MS', sans-serif;
+    --heading-font: 'hyper-bold', sans-serif;
+    --content-font: 'hyper-reg', Verdana, Geneva, sans-serif;
+    --code-font: 'hyper-mono', Consolas, 'Courier New', Courier, monospace;
+    --unicode-font: font-family: "Segoe UI Symbol", "Arial Unicode MS", "DejaVu Sans", "Meiryo UI", "MS UI Gothic", "Everson Mono Unicode", Meiryo, "MS Gothic", "MS Mincho", "MS PGothic", "MS PMincho", "Meslo LG L", "Meslo LG L DZ", "Meslo M L", "Meslo M L DZ", "Meslo S L", "Meslo S L DZ", "Symbola", "DejaVu Sans Condensed", "DejaVu Sans Mono", Code2000, "Everson Mono", Quivira, sans-serif;
 
+    --font-size-meta: 0.9rem;
+    --font-size-h1: 3rem;
+    --font-size-h2: 2.3rem;
+    --font-size-h3: 2rem;
+    --font-size-h4: 1.7rem;
+    --font-size-h5: 1.7rem;
+    --font-size-h6: 1.7rem;
+
+    --paragraph-margin: 1.2rem;
     --block-gap: 2rem;
+    --block-gap-l: 3rem;
     --block-radius: 0.3rem;
+    --block-radius-round: 20px;
 
     --marker-size: 1.2rem;
-    --paragraph-margin: 1.2rem;
 
-    --box-shadow: 0 12px 24px -12px rgb(0 0 0 / 80%);
+    --box-shadow: 0 12px 24px -12px rgb(0 0 0 / 50%);
     --box-shadow-slight: 0 6px 12px -6px rgb(0 0 0 / 40%);
 
-    --content-width: 78vw;
-    --navigation-width: 260px;
-    --grid-gap: 1.5rem;
-    --grid-max-width: 60rem;
-    --grid-width: 90vw;
+    --box-shadow-unselected: rgb(0 0 0 / 6%) 0px 2px 4px, rgb(0 0 0 / 5%) 0px 0.5px 1px;
+    --transform-selected: translate3d(0px, -1px, 0px);
 
-    /* Calculate the mobile width by removing l/r columns and grid gap */
-    --content-width-mobile: calc(100vw - (1rem * 2));
+    --content-width: 50rem;
+    --navigation-width: 300px;
+    --grid-gap: 1rem;
+    --grid-gap-s: 0.4rem;
+
+    /* Calculate the mobile width by removing l/r columns */
+    --content-width-mobile: calc(100vw - 1rem);
+
+    /* Search variables */
+    --search-height: 2rem;
+    --search-dropdown-height: 65vh;
+    --search-dropdown-duration: 0.2s;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --fore: #ccc;
-        --fore-headings: #cce;
-        --aft: #333;
-
-        --fore-link: #abb9ef;
-        --fore-link-alt: #abb9ef;
+        --fore: #DDF;
+        --aft: #223;
+        --aft-image: #DDD;
+    
+        --fore-link: #AAF;
+        --fore-link-alt: #CCF;
         --aft-link-alt: #232323;
 
-        --fore-head: #ccc;
-        --aft-head: #222;
-        --icon-head: #abb9ef;
+        --fore-input: #var(--fore);
+        --aft-input: var(--aft);
 
-        --fore-breadcrumb: #ccc;
-        --aft-breadcrumb: #2c2c2c;
+        --fore-block: #DDF;
+        --aft-block: #001;
+        --icon-block: #FE117D;
 
-        --link-head: #abb9ef;
-        --link-alt-head: #6580ed;
-
-        --fore-block: #ccc;
-        --aft-block: #111;
-        --icon-block: #abb9ef;
-
-        --fore-table-head: #ccc;
-        --aft-table-head: #222;
-        --fore-table-row-odd: #ccc;
-        --aft-table-row-odd: #333;
-        --fore-table-row-even: #ccc;
-        --aft-table-row-even: #444;
+        --fore-table-head: #DDF;
+        --aft-table-head: #224; 
+        --fore-table-row-odd: #DDF;
+        --aft-table-row-odd: #335;
+        --fore-table-row-even: #DDF;
+        --aft-table-row-even: #446;
     }
 }
