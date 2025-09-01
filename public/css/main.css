@@ -1020,7 +1020,7 @@ a.navigation-icon:focus {
     display: flex;
     flex-wrap: wrap;
     gap: var(--grid-gap-s);
-    justify-content: space-between;
+    justify-content: center;
     list-style: none;
     margin: var(--paragraph-margin) 0;
     width: 100%;
