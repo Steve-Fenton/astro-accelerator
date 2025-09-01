@@ -3,6 +3,7 @@
 import mdx from '@astrojs/mdx';
 import remarkDirective from 'remark-directive';
 import { defineConfig } from 'astro/config';
+import { readingTime } from '/src/themes/accelerator/utilities/reading-time.mjs';
 import { defaultLayout } from '/src/themes/accelerator/utilities/default-layout.mjs';
 import {
     attributeMarkdown,
@@ -19,6 +20,7 @@ export default defineConfig({
             remarkDirective,
             attributeMarkdown,
             wrapTables,
+            readingTime,
         ],
         closeSelfClosing: false,
         extendDefaultPlugins: true,

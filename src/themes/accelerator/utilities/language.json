@@ -62,6 +62,12 @@
         },
         "last_modified": {
             "en": "Revised"
+        },
+        "reading_time_one_minute": {
+            "en": "{n} min read"
+        },
+        "reading_time_many_minutes": {
+            "en": "{n} min read"
         }
     },
     "author": {
