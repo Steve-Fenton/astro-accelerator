@@ -89,7 +89,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --fore: #a8e6cf;
-        --aft: #0f2419;
+        --aft: #0a1d14;
         --aft-image: #a5e0c8;
     
         --fore-link: #52c996;
@@ -100,7 +100,7 @@
         --aft-input: var(--aft);
 
         --fore-block: #a8e6cf;
-        --aft-block: #0a1d14;
+        --aft-block: #0f2419;
         --icon-block: #1dd1a1;
 
         --fore-table-head: #a8e6cf;

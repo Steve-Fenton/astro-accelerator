@@ -1034,7 +1034,7 @@ a.navigation-icon:focus {
     display: inline-block;
     color: var(--fore-link);
     background-color: var(--aft);
-    padding: 0.1em 0.7em;
+    padding: 0.3em 0.7em 0.1em 0.7em;
     text-decoration: none;
     font-size: var(--font-size-meta);
 }
