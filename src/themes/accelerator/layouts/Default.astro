@@ -14,6 +14,7 @@ import Breadcrumbs from '@components/Breadcrumbs.astro';
 import Navigation from '@components/Navigation.astro';
 import TableOfContents from '@components/TableOfContents.astro';
 import Authors from '@components/Authors.astro';
+import AuthorsMini from '@components/AuthorsMini.astro';
 import Taxonomy from '@components/Taxonomy.astro';
 import Related from '@components/Related.astro';
 
@@ -90,6 +91,7 @@ stats.stop();
                     <div
                         class="page-content anim-show-parent"
                         itemprop="articleBody">
+                        <AuthorsMini frontmatter={frontmatter} lang={lang} />
                         <TableOfContents
                             frontmatter={frontmatter}
                             headings={headings}

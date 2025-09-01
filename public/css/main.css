@@ -821,7 +821,20 @@ nav.site-nav h2 {
 
 .post-meta > .author-info {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+}
+
+.post-meta.mini > .author-info > *:nth-child(n + 3)::before {
+    content: '|';
+    padding: 0 0.3rem;
+    opacity: 0.5;
+}
+
+.post-meta.mini > .author-info > .author-image {
+    height: 1rem;
+    width: 1rem;
+    margin: 0 0.3rem 0 0;
 }
 
 .post-meta time[itemprop='datePublished'] {

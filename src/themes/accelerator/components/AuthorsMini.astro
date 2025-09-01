@@ -5,6 +5,7 @@ import { Accelerator } from 'astro-accelerator-utils';
 import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
 import { SITE } from '@config';
 import { Translations, Lang } from '@util/Languages';
+import { getImageInfo } from '@util/custom-markdown.mjs';
 import ReadingTime from '@components/ReadingTime.astro';
 
 const accelerator = new Accelerator(SITE);
@@ -28,21 +29,54 @@ const authorList = accelerator.authors.forPost(frontmatter);
 const dateToShow =
     frontmatter.modDate == null ? frontmatter.pubDate : frontmatter.modDate;
 
+// Get image info
+const authorImage = authorList?.image?.src
+    ? getImageInfo(authorList.image.src, 'author-image', SITE.images.authorSize)
+    : null;
+
 stats.stop();
 ---
 
 {
     authorList.writers.length > 0 && (
-        <div class="post-meta">
+        <div class="post-meta mini">
             <div class="author-info">
-                <span
-                    class="author-name"
-                    set:html={authorList.mainAuthor.frontmatter.title}
-                />
+                {authorImage && (
+                    <img
+                        srcset={authorImage.srcset}
+                        sizes={authorImage.sizes}
+                        src={authorImage.src}
+                        alt={authorList?.image?.alt}
+                        class={authorImage.class}
+                        width={authorImage.metadata?.width}
+                        height={authorImage.metadata?.height}
+                    />
+                )}
+                {authorList.mainAuthor && (
+                    <a
+                        href={
+                            accelerator.urlFormatter.formatAddress(
+                                authorList.mainAuthor.url
+                            ) + '1/'
+                        }
+                        class="author-name">
+                        {authorList.mainAuthor.frontmatter.title}
+                    </a>
+                )}
+                {authorList.contributors.map((writer) => (
+                    <a
+                        href={
+                            accelerator.urlFormatter.formatAddress(writer.url) +
+                            '1/'
+                        }
+                        class="contributor-name">
+                        {writer.frontmatter.title}
+                    </a>
+                ))}
                 <time
                     class="post-date"
                     datetime={dateToShow.toString()}
-                    set:html={accelerator.dateFormatter.formatDate(
+                    set:html={accelerator.dateFormatter.formatShortDate(
                         dateToShow,
                         lang
                     )}
