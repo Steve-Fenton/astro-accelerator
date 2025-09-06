@@ -1,18 +1,18 @@
 {
-  "version": "0.0.1",
-  "author": "Steve Fenton",
-  "name": "your-project",
-  "type": "module",
-  "scripts": {
-    "img": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs",
-    "dev": "node --no-experimental-fetch ./src/themes/accelerator/utilities/img.mjs && astro dev",
-    "test": "astro build && npx playwright test",
-    "build": "astro build",
-    "preview": "astro preview",
-    "theme": "npm install --save astro-accelerator@latest && node ./accelerator.js"
-  },
-  "dependencies": {
-    "astro": "^1.8.0",
-    "astro-accelerator": "^0.0.53"
-  }
+    "version": "0.0.1",
+    "author": "Steve Fenton",
+    "name": "your-project",
+    "type": "module",
+    "scripts": {
+        "img": "node ./src/themes/accelerator/utilities/img.mjs",
+        "dev": "node ./src/themes/accelerator/utilities/img.mjs && astro dev",
+        "test": "astro build && npx playwright test",
+        "build": "astro build",
+        "preview": "astro preview",
+        "theme": "npm install --save astro-accelerator@latest && node ./accelerator.js"
+    },
+    "dependencies": {
+        "astro": "^1.8.0",
+        "astro-accelerator": "^0.0.53"
+    }
 }

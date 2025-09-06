@@ -527,7 +527,10 @@ a.navigation-icon:focus {
 }
 
 .content-group header p {
-    font-size: 2em;
+    font-size: 1.6em;
+    line-height: 1.2;
+    margin: calc(var(--block-gap) * -1) 0 0 0;
+    text-wrap: balance;
 }
 
 .content-group > nav {
@@ -1194,8 +1197,7 @@ figure:focus .magnify-icon {
     position: relative;
     box-shadow: var(--box-shadow);
     border-radius: var(--block-radius);
-    margin: var(--block-gap) auto;
-    width: 66%;
+    margin: var(--block-gap) 0;
 }
 
 .simple-grid {
