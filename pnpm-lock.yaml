@@ -1679,7 +1679,7 @@ packages:
       mrmime: 2.0.1
       neotraverse: 0.6.18
       p-limit: 6.2.0
-      p-queue: 8.1.0
+      p-queue: 8.1.1
       package-manager-detector: 1.3.0
       picomatch: 4.0.3
       prompts: 2.4.2
@@ -3629,8 +3629,8 @@ packages:
       yocto-queue: 1.2.1
     dev: false
 
-  /p-queue@8.1.0:
-    resolution: {integrity: sha512-mxLDbbGIBEXTJL0zEx8JIylaj3xQ7Z/7eEVjcF9fJX4DBiH9oqe+oahYnlKKxm0Ci9TlWTyhSHgygxMxjIB2jw==}
+  /p-queue@8.1.1:
+    resolution: {integrity: sha512-aNZ+VfjobsWryoiPnEApGGmf5WmNsCo9xu8dfaYamG5qaLP7ClhLN6NgsFe6SwJ2UbLEBK5dv9x8Mn5+RVhMWQ==}
     engines: {node: '>=18'}
     dependencies:
       eventemitter3: 5.0.1
