@@ -990,7 +990,7 @@ a.navigation-icon:focus {
 .footer-columns {
     display: grid;
     gap: var(--block-gap);
-    grid-template-columns: repeat(auto-fit, minmax(18rem, 40rem));
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
         'cat tag'
         'quick quick';
