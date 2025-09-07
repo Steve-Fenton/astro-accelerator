@@ -75,8 +75,10 @@ jobs:
                   pnpm build
                   pnpm crawl
 
-            - name: Install Playwright Browsers
-              run: npx playwright install --with-deps
+            - name: Install Playwright
+              uses: microsoft/playwright-github-action@v1
+              with:
+                  browsers: chromium
 
             - name: Run Playwright tests
               run: npx playwright test
