@@ -34,7 +34,15 @@ const getData = async () => {
         let counted: { word: string; count: number }[] = [];
 
         if (content) {
-            const text = convert(content, { wordwrap: false });
+            const options = {
+                wordwrap: false,
+                selectors: [
+                    { selector: 'a', options: { ignoreHref: true } },
+                    { selector: 'img', format: 'skip' },
+                    { selector: 'h1', options: { uppercase: false } },
+                ],
+            };
+            const text = convert(content, options);
 
             const words = keywordExtractor.extract(text, {
                 language: 'english',
