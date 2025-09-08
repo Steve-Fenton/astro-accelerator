@@ -38,7 +38,7 @@ function addIntersectionObserver(listItemQuery) {
 
     const observer = new IntersectionObserver(handleIntersection, options);
 
-    qsa(listItemQuery).forEach((elem) => observer.observe(elem));
+    qsa(listItemQuery).forEach(elem => observer.observe(elem));
 }
 
 /**
@@ -58,7 +58,7 @@ function addListImageIntersectionObserver(imgItemQuery) {
     function handleIntersection(entries, observer) {
         for (let entry of entries) {
             const value = entry.isIntersecting ? 1 : 0;
-            entry.target.style.setProperty('--imgshown', value);
+            entry.target.style.setProperty('--img-shown', value);
         }
     }
 
@@ -70,7 +70,7 @@ function addListImageIntersectionObserver(imgItemQuery) {
 
     const observer = new IntersectionObserver(handleIntersection, options);
 
-    qsa(imgItemQuery).forEach((elem) => observer.observe(elem));
+    qsa(imgItemQuery).forEach(elem => observer.observe(elem));
 }
 
 export { addIntersectionObserver, addListImageIntersectionObserver };
