@@ -9,11 +9,7 @@
 
 import { qs, qsa } from './query.js';
 import { removeScroll, resetScroll } from './scrollbar.js';
-import {
-    getFocusableElement,
-    trapFocusForward,
-    trapReverseFocus,
-} from './focus.js';
+import { getFocusableElement, trapFocusForward, trapReverseFocus } from './focus.js';
 
 /**
  * Provides an overlay with the navigation for mobile users.
@@ -28,7 +24,7 @@ import {
  * @param {string} resizedEventName
  */
 function addMobileNav(resizedEventName) {
-    const icons = qsa('[data-navigationid]');
+    const icons = qsa('[data-navigation-id]');
     for (let icon of icons) {
         addMobileNavigation(icon, resizedEventName);
     }
@@ -48,11 +44,8 @@ function addMobileNav(resizedEventName) {
  * @param {string} resizedEventName
  */
 function addMobileNavigation(icon, resizedEventName) {
-    const navigationSelector = icon.dataset.navigationid || '';
-    const iconType =
-        icon.firstElementChild && icon.firstElementChild.tagName == 'svg'
-            ? 'svg'
-            : 'element';
+    const navigationSelector = icon.getAttribute('data-navigation-id') || '';
+    const iconType = icon.firstElementChild && icon.firstElementChild.tagName == 'svg' ? 'svg' : 'element';
 
     const originalIcon = icon.innerHTML;
     const overlay = document.createElement('div');
@@ -98,7 +91,7 @@ function addMobileNavigation(icon, resizedEventName) {
         overlay.style.display = 'block';
         menuElement.style.display = 'none';
 
-        qsa('[id]', overlay).forEach((elem) => {
+        qsa('[id]', overlay).forEach(elem => {
             elem.id = 'overlay__' + elem.id;
         });
 
@@ -119,13 +112,21 @@ function addMobileNavigation(icon, resizedEventName) {
         });
 
         if (iconType === 'svg') {
-            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" 
-                width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" 
-                fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>`;
+            icon.innerHTML = `
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                >
+                <path d="M18 6l-12 12" />
+                <path d="M6 6l12 12" />
+                </svg>
+`;
         }
 
         document.body.appendChild(overlay);
@@ -156,14 +157,11 @@ function addMobileNavigation(icon, resizedEventName) {
         return false;
     });
 
-    document.addEventListener(
-        resizedEventName,
-        function (/** @type {any} */ e) {
-            if (e.detail.change.width > 0) {
-                closeMobileMenu();
-            }
+    document.addEventListener(resizedEventName, function (/** @type {any} */ e) {
+        if (e.detail.change.width > 0) {
+            closeMobileMenu();
         }
-    );
+    });
 }
 
 export { addMobileNav };

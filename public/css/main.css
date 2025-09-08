@@ -429,12 +429,16 @@ a.navigation-icon:focus {
     height: var(--icon-width);
 }
 
+.site-header .header-icon {
+    text-decoration: none;
+}
+
 .site-header .header-icon:hover,
 .site-header .header-icon:focus {
     stroke: var(--fore-link-alt);
 }
 
-.site-header .header-icon[data-navigationid='site-nav'] {
+.site-header .header-icon[data-navigation-id='site-nav'] {
     position: relative;
     z-index: 100;
 }
