@@ -1005,6 +1005,8 @@ details.sub-nav details {
         'quick quick';
     justify-content: center;
     margin-block-end: var(--block-gap-l);
+    max-width: 1000px;
+    margin-inline: auto;
 
     @media (max-width: 680px) {
         display: block;
