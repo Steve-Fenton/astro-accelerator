@@ -118,20 +118,9 @@ This page contains the most common content components.
 ---
 
 <article itemscope="" itemtype="https://schema.org/Article">
-   <header>
-      <h1 itemprop="name headline">Search</h1>
-   </header>
-   <div class="page-content anim-show-parent" itemprop="articleBody">
-      <p>Search the site below.</p>
-      <form method="GET" action="" role="search" id="site-search" class="site-search note" autocomplete="off" data-sourcedata="/search.json">
-         <fieldset>
-               <div>
-                  <label for="site-search-query">Search for</label>
-                  <input type="text" name="q" id="site-search-query" spellcheck="true" autocomplete="off">
-                  <button id="site-search-button" type="submit">Go</button>
-               </div>
-         </fieldset>
-      </form>
+<div class="site-search-wrapper"> <form method="GET" action="https://www.google.com/search" role="search" autocomplete="off" data-sourcedata="/search.json"> <fieldset> <input type="hidden" name="q" value="site:https://astro.stevefenton.co.uk/"> <input type="text" name="q" class="site-search-query" placeholder="Search for" spellcheck="true" autocomplete="off" autofocus="autofocus"> <button type="submit">Go</button> </fieldset> </form>
+  <div class="site-search-results" data-title="Results" data-emptytitle="No Results"></div>
+  <script src="/js/search.js" type="module" async=""></script> </div>
 </article>
 
 ---
@@ -140,26 +129,7 @@ This page contains the most common content components.
 
 ---
 
-<footer class="site-footer" id="site-footer">
-  <div class="taxonomy">
-    <div>
-      <h2>Categories</h2>
-      <ul>
-      <li><a href="/category/example/1/">Example</a></li><li><a href="/category/sample/1/">Sample</a></li>
-      </ul>
-    </div>
-    <div>
-      <h2>Tags</h2>
-      <ul>
-      <li><a href="/tag/other/1/">Other</a></li><li><a href="/tag/technology/1/">Technology</a></li>
-      </ul>
-    </div>
-  </div>
-  <p>Copyright © 2022 Steve Fenton</p>
-  <nav aria-label="Skip Back">
-    <a href="#site-top">Back to top</a>
-  </nav>
-</footer>
+(Scroll to bottom of page)
 
 ---
 

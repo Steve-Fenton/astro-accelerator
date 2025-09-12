@@ -127,26 +127,28 @@ blockquote {
     background-color: var(--aft-block);
     font-size: 1.3rem;
     font-style: italic;
-    padding: 0.1px 1.2em;
+    padding: var(--paragraph-margin);
     position: relative;
     box-shadow: var(--box-shadow);
     margin: var(--paragraph-margin) 0;
     border-radius: var(--block-radius);
 }
 
-blockquote::after {
+blockquote > *:first-child:before {
     content: '“';
     color: var(--icon-block);
-    font-size: 5em;
-    position: absolute;
+    display: inline;
     font-family: var(--heading-font);
-    transform: translate(-50%, -50%);
-    top: 3.4rem;
+    font-size: 5em;
+    line-height: 1rem;
+    position: relative;
+    top: 0.4em;
+    right: 0.2em;
 }
 
 blockquote > *,
 blockquote > p {
-    margin-inline-start: 2em;
+    margin-inline: var(--paragraph-margin);
 }
 
 blockquote cite {
