@@ -548,6 +548,11 @@ details.sub-nav details {
     padding: var(--block-gap) 0;
 }
 
+.page-content {
+    justify-content: justify;
+    hyphens: auto;
+}
+
 .page-content > h2:nth-child(1) {
     margin-top: 0;
 }
