@@ -737,6 +737,7 @@ details.sub-nav details {
 
 .post-list {
     margin: 0;
+    text-align: left;
 }
 
 .post-list .list-item {
