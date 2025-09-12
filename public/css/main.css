@@ -94,10 +94,10 @@ textarea {
 button {
     background-color: var(--icon-block);
     border-radius: var(--block-radius);
-    color: var(--fore);
+    color: var(--aft);
     cursor: pointer;
     font-size: 1.3rem;
-    padding: 0.6rem;
+    padding: 0.5rem;
 }
 
 summary {
@@ -1143,6 +1143,8 @@ pre.astro-code code {
     text-align: right;
     position: relative;
     z-index: 1;
+    top: 0.6rem;
+    left: 0.4rem;
 }
 
 .copy-button {
@@ -1162,48 +1164,34 @@ pre.astro-code code {
     max-height: 0px;
     margin: 0;
     width: 100%;
-    text-align: end;
+    text-align: right;
+    position: relative;
     z-index: 1;
-    position: relative;
-    top: -1rem;
+    top: -1.3rem;
+    left: 1.1rem;
 }
 
-.magnify-icon {
-    opacity: 0;
+.magnify-button {
     border-radius: 0.2rem;
-    border: 1px solid var(--fore-link);
-    color: var(--fore-link);
-    line-height: 1;
-    width: 2rem;
-    height: 2rem;
-    overflow: hidden;
-    display: inline-block;
-    cursor: pointer;
+    fill: var(--aft);
+    stroke: var(--fore-link-alt);
+    background-color: transparent;
+    opacity: 0;
 }
 
-.input-touch .magnify-icon {
-    opacity: 1;
-}
-
-.magnify-icon:before {
-    content: '↗';
-    font-family: var(--unicode-font);
-    font-size: 2rem;
-    line-height: 2rem;
-    top: 0.04em;
-    position: relative;
-}
-
-figure:hover .magnify-icon,
-figure:focus .magnify-icon {
-    opacity: 1;
-}
-
-.magnify-icon:hover,
-.magnify-icon:focus,
-.magnify-icon:focus-within {
+.magnify-button:hover,
+.magnify-button:focus {
     stroke: var(--fore-link);
     transform: rotate(4deg);
+    opacity: 1;
+}
+
+.input-touch .magnify-button {
+    opacity: 1;
+}
+
+figure:hover .magnify-button,
+figure:focus .magnify-button {
     opacity: 1;
 }
 
