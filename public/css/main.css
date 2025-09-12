@@ -549,7 +549,7 @@ details.sub-nav details {
 }
 
 .page-content {
-    justify-content: justify;
+    text-align: justify;
     hyphens: auto;
 }
 
