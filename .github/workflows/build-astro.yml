@@ -101,3 +101,11 @@ jobs:
             - name: Deploy to GitHub Pages
               id: deployment
               uses: actions/deploy-pages@v4
+    clean:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - uses: yanovation/delete-old-actions@v1
+              with:
+                  token: ${{ secrets.CLEAN_ACTIONS_TOKEN }}
+                  days-ago: 30
