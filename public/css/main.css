@@ -392,7 +392,7 @@ nav.skip-links a:focus {
     padding-block: 2rem;
     width: var(--content-width);
     margin-inline: auto;
-    max-width: calc(100vw - 1rem);
+    max-width: calc(100vw - 2rem);
     stroke: var(--fore);
 }
 
@@ -516,7 +516,7 @@ details.sub-nav details {
 /* Main content group */
 
 .content-group {
-    margin-inline: 0.5rem;
+    margin-inline: 1rem;
     display: grid;
     gap: var(--grid-gap);
     justify-content: center;
@@ -553,6 +553,12 @@ details.sub-nav details {
 .page-content {
     text-align: justify;
     hyphens: auto;
+}
+
+.page-content {
+    h2, h3, h4, h5, h6 {
+        text-align: left;
+    }
 }
 
 .page-content > h2:nth-child(1) {
