@@ -30,7 +30,7 @@ body {
     background-color: var(--aft);
     color: var(--fore);
     font-size: 20px;
-    line-height: 1.8;
+    line-height: 1.7;
     letter-spacing: 0.016em;
     font-family: var(--content-font);
 }
@@ -556,7 +556,11 @@ details.sub-nav details {
 }
 
 .page-content {
-    h2, h3, h4, h5, h6 {
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         text-align: left;
     }
 }
