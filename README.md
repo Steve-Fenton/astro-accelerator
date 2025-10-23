@@ -29,9 +29,13 @@ pnpm install --include=optional sharp
 pnpm install --force @img/sharp-linux-x64
 ```
 
-## Publish to NPM
+## Publish to N
 
-Update the `package.json` with the new version number, and commit the change.
+Run the command:
+
+    pnpm refresh
+
+This updates dependencies, increments the version number, and runs tests. On commit to main, the build will upload the new package to NPM.
 
 The NPM token expires periodically and must be updated in GitHub settings -> Secrets -> Actions.
 
