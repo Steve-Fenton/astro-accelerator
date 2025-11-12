@@ -13,9 +13,9 @@ stats.start();
 
 // Properties
 type Props = {
-  lang: string;
-  page: Page<MarkdownInstance<Record<string, any>>>,
-  pageLinks: Link[],
+    lang: string;
+    page: Page<MarkdownInstance<Record<string, any>>>;
+    pageLinks: Link[];
 };
 const { lang, page, pageLinks } = Astro.props satisfies Props;
 
@@ -25,14 +25,28 @@ const _ = Lang(lang);
 // Logic
 stats.stop();
 ---
-<nav class="post-paging" aria-label={ _(Translations.aria.paging) }>
-  {page.url.prev
-    ? <a href={ accelerator.urlFormatter.formatAddress(page.url.prev) }>{ _(Translations.articles.previous) }</a>
-    : <span>{ _(Translations.articles.previous) }</span>}
-  {pageLinks.map((link) => (
-      <a href={ accelerator.urlFormatter.formatAddress(link.url) } aria-current={ link.ariaCurrent ? link.ariaCurrent : null } class={ link.class }>{ link.title }</a>
-  ))}
-  {page.url.next
-    ? <a href={ accelerator.urlFormatter.formatAddress(page.url.next) }>{ _(Translations.articles.next) }</a>
-    : <span>{ _(Translations.articles.next) }</span>}
-  </nav>
+
+{
+    page.lastPage > 1 && (
+        <nav class="post-paging" aria-label={_(Translations.aria.paging)}>
+            {page.url.prev ? (
+                <a href={accelerator.urlFormatter.formatAddress(page.url.prev)}>{_(Translations.articles.previous)}</a>
+            ) : (
+                <span>{_(Translations.articles.previous)}</span>
+            )}
+            {pageLinks.map(link => (
+                <a
+                    href={accelerator.urlFormatter.formatAddress(link.url)}
+                    aria-current={link.ariaCurrent ? link.ariaCurrent : null}
+                    class={link.class}>
+                    {link.title}
+                </a>
+            ))}
+            {page.url.next ? (
+                <a href={accelerator.urlFormatter.formatAddress(page.url.next)}>{_(Translations.articles.next)}</a>
+            ) : (
+                <span>{_(Translations.articles.next)}</span>
+            )}
+        </nav>
+    )
+}
