@@ -21,7 +21,7 @@
     },
     "scripts": {
         "refresh": "npm version patch && pnpm update --latest && pnpm test",
-        "update-node": "nvm install --lts && npm install -g pnpm",
+        "update-node": "bash -c 'source $NVM_DIR/nvm.sh && nvm install --lts && npm install -g pnpm'",
         "img": "node ./src/themes/accelerator/utilities/img.mjs",
         "dev": "node ./src/themes/accelerator/utilities/img.mjs && astro dev",
         "stats": "node ./src/themes/accelerator/utilities/stats.mjs",
