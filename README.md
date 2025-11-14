@@ -29,11 +29,13 @@ pnpm install --include=optional sharp
 pnpm install --force @img/sharp-linux-x64
 ```
 
-## Publish to N
+## Publish
 
 Run the command:
 
+```bash
     pnpm refresh
+```
 
 This updates dependencies, increments the version number, and runs tests. On commit to main, the build will upload the new package to NPM.
 
