@@ -8,10 +8,10 @@
         "themes"
     ],
     "type": "module",
-    "packageManager": "pnpm@8.7.0",
+    "packageManager": "pnpm@10.22.0",
     "engines": {
-        "node": ">=18.14.1",
-        "pnpm": ">=8.6.12"
+        "node": ">=24",
+        "pnpm": ">=10"
     },
     "homepage": "https://astro.stevefenton.co.uk/",
     "bugs": "https://github.com/Steve-Fenton/astro-accelerator/issues",
@@ -21,6 +21,7 @@
     },
     "scripts": {
         "refresh": "npm version patch && pnpm update --latest && pnpm test",
+        "update-node": "nvm install --lts && npm install -g pnpm",
         "img": "node ./src/themes/accelerator/utilities/img.mjs",
         "dev": "node ./src/themes/accelerator/utilities/img.mjs && astro dev",
         "stats": "node ./src/themes/accelerator/utilities/stats.mjs",

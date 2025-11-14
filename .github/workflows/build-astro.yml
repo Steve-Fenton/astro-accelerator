@@ -16,6 +16,10 @@ permissions:
     pages: write
     id-token: write
 
+env:
+    NODE_VERSION: 24
+    PNPM_VERSION: 10.22.0
+
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -26,7 +30,7 @@ jobs:
             - name: Setup Node
               uses: actions/setup-node@v4
               with:
-                  node-version: 20
+                  node-version: ${{ env.NODE_VERSION }}
 
             - name: Check Licenses
               run: npx license-checker --out ./public/downloads/licenses.csv --csv --onlyAllow "0BSD;BSD-2-Clause;BSD-3-Clause;CC-BY-4.0;ISC;MIT;Apache-2.0;UNLICENSED"
@@ -34,7 +38,7 @@ jobs:
             - name: Astro Build
               uses: withastro/action@v2
               with:
-                  package-manager: pnpm@8.7.0
+                  package-manager: pnpm@${{ env.PNPM_VERSION }}
 
     test:
         timeout-minutes: 20
@@ -46,12 +50,12 @@ jobs:
             - name: Setup Node
               uses: actions/setup-node@v4
               with:
-                  node-version: 18
+                  node-version: ${{ env.NODE_VERSION }}
 
             - name: Install pnpm
               uses: pnpm/action-setup@v4
               with:
-                  version: 8.7.0
+                  version: ${{ env.PNPM_VERSION }}
                   run_install: false
 
             - name: Get pnpm store directory
