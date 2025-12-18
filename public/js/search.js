@@ -150,7 +150,10 @@ function initializeSearch() {
                     // @ts-ignore
                     queryTerms[i] = null;
                 } else {
-                    queryTerms.push(synonyms[term]);
+                  const synonym = synonyms[term].split(' ');
+                  for (let s of synonym) {
+                    queryTerms.push(s);
+                  }
                 }
             }
         }
