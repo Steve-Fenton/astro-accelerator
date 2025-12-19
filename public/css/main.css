@@ -118,8 +118,8 @@ nav summary:focus {
     color: var(--fore-link-alt);
 }
 
-.input-keyboard :focus {
-    outline: 2px dashed var(--fore-link-alt);
+:focus-visible {
+    outline: 2px dashed var(--icon-block);
     border-radius: 5px;
 }
 
