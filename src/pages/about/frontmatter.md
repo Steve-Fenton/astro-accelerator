@@ -146,7 +146,7 @@ String. Needed for author profiles. Must be unique.
 id: steve-fenton
 ```
 
-###
+### authors
 
 String list. The authors of the content. Uses author ids.
 
@@ -154,6 +154,16 @@ String list. The authors of the content. Uses author ids.
 authors:
     - steve-fenton
 ```
+
+### crumbTitle
+
+String. A short title to be used in breadcrumbs. Only needed where the menu should use different text to `title` or `navTitle`.
+
+```yaml
+crumbTitle: Short title
+```
+
+Note: In breadcrumbs, the `crumbTitle` is used first, if it doesn't exist then `navTitle` is used, and finally `title`.
 
 ### navTitle
 
