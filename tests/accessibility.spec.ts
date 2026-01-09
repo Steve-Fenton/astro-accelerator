@@ -20,7 +20,7 @@ test('Current page is home', async ({ page }) => {
 
   // Ensure first breadcrumb is present with aria-current attribute
   
-  const firstBreadcrumb = find.breadcrumb('Home')
+  const firstBreadcrumb = find.breadcrumb('Accelerator')
   await expect(firstBreadcrumb).toHaveAttribute('href', '/');
   await expect(firstBreadcrumb).toHaveAttribute('aria-current', 'page');
 });
@@ -45,7 +45,7 @@ test('Current page is articles', async ({ page }) => {
 
   // Ensure first breadcrumb is present without aria-current attribute
   
-  const firstBreadcrumb = find.breadcrumb('Home');
+  const firstBreadcrumb = find.breadcrumb('Accelerator');
   await expect(firstBreadcrumb).toHaveAttribute('href', '/');
   expect(await firstBreadcrumb.getAttribute('aria-current')).toBeNull();
   

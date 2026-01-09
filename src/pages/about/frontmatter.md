@@ -163,7 +163,7 @@ String. A short title to be used in breadcrumbs. Only needed where the menu shou
 crumbTitle: Short title
 ```
 
-Note: In breadcrumbs, the `crumbTitle` is used first, if it doesn't exist then `navTitle` is used, and finally `title`.
+Note: In breadcrumbs, the `crumbTitle` is used first, if it doesn't exist then `navTitle` is used, and finally `title`.pn
 
 ### navTitle
 
