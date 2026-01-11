@@ -55,7 +55,7 @@ export async function getData() {
   const data: CategoryData = { posts: [], categories: []};
 
   data.posts = sourcePosts
-    .filter(PostFiltering.isListable)
+    .filter(PostFiltering.forTaxonomy)
     .sort(PostOrdering.sortByPubDateDesc);
 
     data.posts.forEach(p => {
