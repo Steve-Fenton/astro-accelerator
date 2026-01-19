@@ -401,7 +401,7 @@ line breaks.
 
   <div class="timeline-details">
     <p>Join industry leaders for a day of insights on platform engineering, developer experience, and organizational transformation.</p>
-    <a href="/register/summit-2025" class="button">Register Now</a>
+    <a href="#" class="button">Register Now</a>
   </div>
 </button>
 :::
@@ -413,7 +413,7 @@ line breaks.
   <span class="timeline-location">Austin, TX</span>
   <div class="timeline-details">
     <p>Hands-on workshop covering GitOps, CI/CD best practices, and deployment automation strategies.</p>
-    <a href="/register/workshop-feb" class="button">Register Now</a>
+    <a href="#" class="button">Register Now</a>
   </div>
 </button>
 :::
@@ -425,7 +425,7 @@ line breaks.
   <span class="timeline-location">Austin, TX</span>
   <div class="timeline-details">
     <p>Hands-on workshop covering GitOps, CI/CD best practices, and deployment automation strategies.</p>
-    <a href="/register/workshop-feb" class="button">Register Now</a>
+    <a href="#" class="button">Register Now</a>
   </div>
 </button>
 :::
