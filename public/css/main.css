@@ -1323,6 +1323,119 @@ figure:focus .magnify-button {
     margin: 0;
 }
 
+/* Events timeline */
+
+.timeline {
+  position: relative;
+}
+
+.timeline h2,
+.timeline h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: var(--font-size-h4)
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 2rem;
+  top: 0;
+  bottom: 0;
+  width: 0.4rem;
+  background-color: var(--icon-block);
+}
+
+.timeline-event {
+  position: relative;
+  margin-bottom: 1rem;
+  padding-left: 4rem;
+  transition: margin-bottom 0.3s ease;
+}
+
+.timeline-event::before {
+  content: '';
+  position: absolute;
+  left: 1.5rem;
+  top: 1.5rem;
+  width: 1rem;
+  height: 1rem;
+  background: var(--aft);
+  border: 3px solid var(--icon-block);
+  border-radius: 50%;
+  box-shadow: var(--box-shadow-unselected);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.timeline-event:focus-within {
+  margin-bottom: 2rem;
+}
+
+.timeline-event:focus-within::before {
+  background: var(--icon-block);
+  box-shadow: var(--box-shadow);
+  transform: scale(1.2);
+}
+
+.timeline-event > button {
+  width: 100%;
+  text-align: left;
+  background: var(--aft-block);
+  color: var(--fore-block);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--box-shadow-unselected);
+}
+
+.timeline-event.event-past > button {
+  opacity: 0.8;
+  background: var(--aft);
+  color: var(--fore);
+  box-shadow: none;
+}
+
+
+.timeline-event > button:hover,
+.timeline-event > button:focus {
+  outline: none;
+  box-shadow: var(--box-shadow);
+  transform: translateX(4px);
+}
+
+.timeline time {
+  display: block;
+  font-size: var(--font-size-meta);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-location {
+  display: block;
+  font-size: var(--font-size-meta);
+}
+
+.timeline-location::before {
+  content: '📍 ';
+}
+
+.timeline-details {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  font-size: var(--font-size-meta);
+  transition: max-height 0.2s ease, opacity 0.2s ease;
+}
+
+.timeline-event:focus-within .timeline-details {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.timeline-event.event-past::before {
+  box-shadow: var(--box-shadow-unselected);
+}
+
 /* Animation */
 
 @media (prefers-reduced-motion: no-preference) {

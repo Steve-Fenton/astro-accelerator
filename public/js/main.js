@@ -19,6 +19,7 @@ import { setExternalLinkAttributes } from './modules/external-links.js';
 import { monitorInputType } from './modules/input-type.js';
 import { enableSharing } from './modules/share.js';
 import { highlightCurrentHeading } from './modules/toc.js';
+import { setTimelineEvents } from './modules/event-timeline.js';
 
 const resizedEventName = addResizedEvent();
 
@@ -36,6 +37,7 @@ addListImageIntersectionObserver('.post-list img');
 monitorInputType();
 enableSharing();
 highlightCurrentHeading('.page-toc a');
+setTimelineEvents();
 
 // @ts-ignore
 const f = site_features ?? {};

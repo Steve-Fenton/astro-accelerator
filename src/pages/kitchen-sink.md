@@ -389,6 +389,49 @@ Result:
 Text can use _emphasis_ or **strong**. You can create\
 line breaks.
 
+## Events timeline
+
+<div class="timeline" data-timeline>
+
+:::div{.timeline-event}
+<button aria-expanded="false">
+  <time datetime="2025-01-15">Jan 15, 2025</time>
+  <h3>Platform Engineering Summit</h3>
+  <span class="timeline-location">San Francisco, CA</span>
+
+  <div class="timeline-details">
+    <p>Join industry leaders for a day of insights on platform engineering, developer experience, and organizational transformation.</p>
+    <a href="/register/summit-2025" class="button">Register Now</a>
+  </div>
+</button>
+:::
+
+:::div{.timeline-event}
+<button aria-expanded="false">
+  <time datetime="2025-02-20">Feb 20, 2025</time>
+  <h3>DevOps Workshop</h3>
+  <span class="timeline-location">Austin, TX</span>
+  <div class="timeline-details">
+    <p>Hands-on workshop covering GitOps, CI/CD best practices, and deployment automation strategies.</p>
+    <a href="/register/workshop-feb" class="button">Register Now</a>
+  </div>
+</button>
+:::
+
+:::div{.timeline-event}
+<button aria-expanded="false">
+  <time datetime="2150-02-20">Feb 20, 2150</time>
+  <h3>DevOps Workshop</h3>
+  <span class="timeline-location">Austin, TX</span>
+  <div class="timeline-details">
+    <p>Hands-on workshop covering GitOps, CI/CD best practices, and deployment automation strategies.</p>
+    <a href="/register/workshop-feb" class="button">Register Now</a>
+  </div>
+</button>
+:::
+
+</div>
+
 # Headings
 
 This section has all headings, from level 1 (above) to level 6.
@@ -412,3 +455,4 @@ Example text.
 ###### Heading 6
 
 Example text.
+
