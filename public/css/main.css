@@ -1389,13 +1389,17 @@ figure:focus .magnify-button {
   box-shadow: var(--box-shadow-unselected);
 }
 
+.timeline-event.event-today > button {
+  border: 1px solid var(--icon-block);
+  background: var(--aft);
+}
+
 .timeline-event.event-past > button {
   opacity: 0.8;
   background: var(--aft);
   color: var(--fore);
   box-shadow: none;
 }
-
 
 .timeline-event > button:hover,
 .timeline-event > button:focus {

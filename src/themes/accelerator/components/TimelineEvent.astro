@@ -1,0 +1,39 @@
+---
+import { SITE } from "@config";
+
+interface Props {
+    date: string;
+    title: string;
+    location: string;
+    description: string;
+    linkHref: string;
+    linkText: string;
+}
+
+const { date, title, location, description, linkHref, linkText } = Astro.props;
+
+const dateObj = new Date(date);
+const displayDate = dateObj.toLocaleDateString(
+    SITE.default.locale,
+    SITE.dateOptions as any,
+);
+---
+
+<div class="timeline-event">
+    <button aria-expanded="false">
+        <time datetime={date}>{displayDate}</time>
+        <h3>{title}</h3>
+        <span class="timeline-location">{location}</span>
+
+        <div class="timeline-details">
+            <p>{description}</p>
+            {
+                linkHref && (
+                    <a href={linkHref} class="button">
+                        {linkText}
+                    </a>
+                )
+            }
+        </div>
+    </button>
+</div>

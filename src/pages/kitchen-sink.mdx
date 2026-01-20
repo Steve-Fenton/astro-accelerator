@@ -9,7 +9,7 @@ bannerImage:
     alt: Dummy image
 ---
 
-<!-- @format -->
+import TimelineEvent from '@components/TimelineEvent.astro';
 
 This page contains the most common content components.
 
@@ -20,13 +20,13 @@ This page contains the most common content components.
 <nav class="site-breadcrumbs" aria-label="Demo of breadcrumbs">
   <ol vocab="http://schema.org/" typeof="BreadcrumbList">
     <li property="itemListElement" typeof="ListItem">
-      <meta property="position" content="0">
+      <meta property="position" content="0" />
       <a property="item" typeof="WebPage" href="#"><span property="name">Home</span></a>
     </li><li property="itemListElement" typeof="ListItem">
-      <meta property="position" content="1">
+      <meta property="position" content="1" />
       <a property="item" typeof="WebPage" href="#"><span property="name">About</span></a>
     </li><li property="itemListElement" typeof="ListItem">
-      <meta property="position" content="2">
+      <meta property="position" content="2" />
       <a property="item" typeof="WebPage" href="#" aria-current="page"><span property="name">Getting Started</span></a>
     </li>
   </ol>
@@ -113,18 +113,6 @@ This page contains the most common content components.
 
 ---
 
-## Search Page
-
----
-
-<article itemscope="" itemtype="https://schema.org/Article">
-<div class="site-search-wrapper"> <form method="GET" action="https://www.google.com/search" role="search" autocomplete="off" data-sourcedata="/search.json"> <fieldset> <input type="hidden" name="q" value="site:https://astro.stevefenton.co.uk/"> <input type="text" name="q" class="site-search-query" placeholder="Search for" spellcheck="true" autocomplete="off" autofocus="autofocus"> <button type="submit">Go</button> </fieldset> </form>
-  <div class="site-search-results" data-title="Results" data-emptytitle="No Results"></div>
-  <script src="/js/search.js" type="module" async=""></script> </div>
-</article>
-
----
-
 ## Footer
 
 ---
@@ -201,7 +189,7 @@ This is a custom div element with the class `note`
 
 Result:
 
-:::div{.note}
+:::div\{.note}
 This is a custom div element with the class `note`
 :::
 
@@ -219,7 +207,7 @@ Markdown:
 
 Result:
 
-:::figure{.simple-grid}
+:::figure\{.simple-grid}
 :img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
 
 :img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
@@ -342,7 +330,7 @@ Markdown:
 
 Result:
 
-<https://astro.stevefenton.co.uk/kitchen-sink/>
+[https://astro.stevefenton.co.uk/kitchen-sink/](https://astro.stevefenton.co.uk/kitchen-sink/)
 
 [Astro Accelerator](https://astro.stevefenton.co.uk/ 'The Astro Accelerator Site')
 
@@ -393,42 +381,30 @@ line breaks.
 
 <div class="timeline" data-timeline>
 
-:::div{.timeline-event}
-<button aria-expanded="false">
-  <time datetime="2025-01-15">Jan 15, 2025</time>
-  <h3>Platform Engineering Summit</h3>
-  <span class="timeline-location">San Francisco, CA</span>
+<TimelineEvent
+  date="2025-01-15"
+  title="Platform Engineering Summit"
+  location="San Francisco, CA"
+  description="Join industry leaders for a day of insights on platform engineering, developer experience, and organizational transformation."
+  linkHref="#"
+  linkText="Register Now"
+/>
 
-  <div class="timeline-details">
-    <p>Join industry leaders for a day of insights on platform engineering, developer experience, and organizational transformation.</p>
-    <a href="#" class="button">Register Now</a>
-  </div>
-</button>
-:::
+<TimelineEvent
+  date="2026-01-20"
+  title="DevOps Workshop"
+  location="Austin, TX"
+  description="Hands-on workshop covering GitOps, CI/CD best practices, and deployment automation strategies."
+  linkHref="#"
+  linkText="Register Now"
+/>
 
-:::div{.timeline-event}
-<button aria-expanded="false">
-  <time datetime="2025-02-20">Feb 20, 2025</time>
-  <h3>DevOps Workshop</h3>
-  <span class="timeline-location">Austin, TX</span>
-  <div class="timeline-details">
-    <p>Hands-on workshop covering GitOps, CI/CD best practices, and deployment automation strategies.</p>
-    <a href="#" class="button">Register Now</a>
-  </div>
-</button>
-:::
-
-:::div{.timeline-event}
-<button aria-expanded="false">
-  <time datetime="2150-02-20">Feb 20, 2150</time>
-  <h3>DevOps Workshop</h3>
-  <span class="timeline-location">Austin, TX</span>
-  <div class="timeline-details">
-    <p>Hands-on workshop covering GitOps, CI/CD best practices, and deployment automation strategies.</p>
-    <a href="#" class="button">Register Now</a>
-  </div>
-</button>
-:::
+<TimelineEvent
+  date="2150-02-20"
+  title="DevOps Workshop"
+  location="Austin, TX"
+  description="Hands-on workshop covering GitOps, CI/CD best practices, and deployment automation strategies."
+/>
 
 </div>
 
