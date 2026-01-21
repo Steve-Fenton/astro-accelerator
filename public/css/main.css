@@ -1409,7 +1409,7 @@ figure:focus .magnify-button {
 }
 
 .timeline time {
-  display: block;
+  display: inline-block;
   font-size: var(--font-size-meta);
   margin-bottom: 0.5rem;
 }

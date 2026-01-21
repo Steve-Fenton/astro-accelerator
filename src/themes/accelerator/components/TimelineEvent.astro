@@ -1,8 +1,10 @@
 ---
 import { SITE } from "@config";
+import { Accelerator } from "astro-accelerator-utils";
 
 interface Props {
     date: string;
+    endDate?: string;
     title: string;
     location: string;
     description: string;
@@ -10,18 +12,31 @@ interface Props {
     linkText: string;
 }
 
-const { date, title, location, description, linkHref, linkText } = Astro.props;
+const { date, endDate, title, location, description, linkHref, linkText } =
+    Astro.props;
 
-const dateObj = new Date(date);
-const displayDate = dateObj.toLocaleDateString(
-    SITE.default.locale,
-    SITE.dateOptions as any,
-);
+const accelerator = new Accelerator(SITE);
 ---
 
 <div class="timeline-event">
     <button aria-expanded="false">
-        <time datetime={date}>{displayDate}</time>
+        <time datetime={date}
+            >{
+                accelerator.dateFormatter.formatDate(date, SITE.default.locale)
+            }</time
+        >{
+            endDate && (
+                <Fragment>
+                    &dash;
+                    <time datetime={endDate}>
+                        {accelerator.dateFormatter.formatDate(
+                            endDate,
+                            SITE.default.locale,
+                        )}
+                    </time>
+                </Fragment>
+            )
+        }
         <h3>{title}</h3>
         <span class="timeline-location">{location}</span>
 
