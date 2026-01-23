@@ -1232,6 +1232,24 @@ figure:focus .magnify-button {
     width: 100%;
 }
 
+.simple-grid.l-s {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+
+    @media (max-width: 680px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.simple-grid.s-l {
+    grid-template-columns: 1fr 2fr;
+    align-items: start;
+
+    @media (max-width: 680px) {
+        grid-template-columns: 1fr;
+    }
+}
+
 .inset {
     margin: var(--block-gap) auto;
     width: 66%;
