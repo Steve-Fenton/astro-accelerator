@@ -1367,7 +1367,10 @@ figure:focus .magnify-button {
   position: relative;
   margin-bottom: 1rem;
   padding-left: 4rem;
-  transition: margin-bottom 0.3s ease;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: margin-bottom 0.3s ease;
+  }
 }
 
 .timeline-event::before {
@@ -1381,8 +1384,11 @@ figure:focus .magnify-button {
   border: 3px solid var(--icon-block);
   border-radius: 50%;
   box-shadow: var(--box-shadow-unselected);
-  transition: all 0.3s ease;
   z-index: 1;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: all 0.3s ease;
+  }
 }
 
 .timeline-event:focus-within {
@@ -1403,8 +1409,11 @@ figure:focus .magnify-button {
   border-radius: 0.5rem;
   padding: 1.5rem;
   cursor: pointer;
-  transition: all 0.3s ease;
   box-shadow: var(--box-shadow-unselected);
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: all 0.3s ease;
+  }
 }
 
 .timeline-event.event-today > button {
@@ -1446,7 +1455,10 @@ figure:focus .magnify-button {
   overflow: hidden;
   opacity: 0;
   font-size: var(--font-size-meta);
-  transition: max-height 0.2s ease, opacity 0.2s ease;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: max-height 0.2s ease, opacity 0.2s ease;
+  }
 }
 
 .timeline-event:focus-within .timeline-details {
