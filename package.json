@@ -36,9 +36,9 @@
     "dependencies": {
         "@astrojs/mdx": "^4.3.13",
         "@img/sharp-linux-x64": "^0.34.5",
-        "astro": "^5.16.11",
-        "astro-accelerator-utils": "^0.3.67",
-        "cspell": "^9.6.0",
+        "astro": "^5.16.15",
+        "astro-accelerator-utils": "^0.3.68",
+        "cspell": "^9.6.1",
         "csv": "^6.4.1",
         "glob": "^13.0.0",
         "hast-util-from-selector": "^3.0.1",
@@ -50,7 +50,7 @@
         "sharp": "^0.34.5"
     },
     "devDependencies": {
-        "@playwright/test": "^1.57.0"
+        "@playwright/test": "^1.58.0"
     },
     "files": [
         ".npmrc",
