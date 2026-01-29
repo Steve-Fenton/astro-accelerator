@@ -24,10 +24,7 @@ threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
 const isOld = eventDate < threeMonthsAgo;
 
 const displayDate = isOld
-    ? eventDate.toLocaleDateString(SITE.default.locale, {
-          month: "long",
-          year: "numeric",
-      })
+    ? accelerator.dateFormatter.formatDateWithoutDay(date, SITE.default.locale)
     : accelerator.dateFormatter.formatShortDate(date, SITE.default.locale);
 ---
 
