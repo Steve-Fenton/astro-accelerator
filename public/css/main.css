@@ -93,20 +93,20 @@ textarea {
 }
 
 button, .button {
-    background-color: var(--aft);
-    border: 1px solid var(--icon-block);
+    background-color: transparent;
+    border: 1px solid var(--fore);
     border-radius: var(--block-radius);
-    color: var(--icon-block);
+    color: var(--fore);
     cursor: pointer;
     display: inline-block;
     font-size: 1.3rem;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     text-decoration: none;
 }
 
 button:hover, .button:hover,
 button:focus, .button:focus {
-    background-color: var(--icon-block);
+    background-color: var(--fore);
     color: var(--aft);
 }
 
