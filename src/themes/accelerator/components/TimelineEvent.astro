@@ -19,7 +19,7 @@ const accelerator = new Accelerator(SITE);
 ---
 
 <div class="timeline-event">
-    <button aria-expanded="false">
+    <div>
         <time datetime={date}
             >{
                 accelerator.dateFormatter.formatShortDate(
@@ -43,7 +43,8 @@ const accelerator = new Accelerator(SITE);
         <h3>{title}</h3>
         <span class="timeline-location">{location}</span>
 
-        <div class="timeline-details">
+        <details class="timeline-details">
+            <summary>Details</summary>
             <p>{description}</p>
             {
                 linkHref && (
@@ -52,6 +53,6 @@ const accelerator = new Accelerator(SITE);
                     </a>
                 )
             }
-        </div>
-    </button>
+        </details>
+    </div>
 </div>

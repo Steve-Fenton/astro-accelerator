@@ -1377,7 +1377,7 @@ figure:focus .magnify-button {
   content: '';
   position: absolute;
   left: 1.5rem;
-  top: 2.9em;
+  top: 1.5em;
   width: 1rem;
   height: 1rem;
   background: var(--aft);
@@ -1391,17 +1391,13 @@ figure:focus .magnify-button {
   }
 }
 
-.timeline-event:focus-within {
-  margin-bottom: 2rem;
-}
-
 .timeline-event:focus-within::before {
   background: var(--icon-block);
   box-shadow: var(--box-shadow);
   transform: scale(1.2);
 }
 
-.timeline-event > button {
+.timeline-event > div {
   width: 100%;
   text-align: left;
   background: var(--aft-block);
@@ -1410,59 +1406,32 @@ figure:focus .magnify-button {
   padding: 1.5rem;
   cursor: pointer;
   box-shadow: var(--box-shadow-unselected);
-
-  @media (prefers-reduced-motion: no-preference) {
-    transition: all 0.3s ease;
-  }
 }
 
-.timeline-event.event-today > button {
+.timeline-event.event-today > div {
   border: 1px solid var(--icon-block);
   background: var(--aft);
 }
 
-.timeline-event.event-past > button {
+.timeline-event.event-past > div {
   opacity: 0.8;
   background: var(--aft);
   color: var(--fore);
   box-shadow: none;
 }
 
-.timeline-event > button:hover,
-.timeline-event > button:focus {
-  outline: none;
-  box-shadow: var(--box-shadow);
-  transform: translateX(4px);
+.timeline-details {
+    font-size: var(--font-size-meta);
 }
 
 .timeline time {
   display: inline-block;
-  margin-bottom: 0.5rem;
+  margin-block-end: var(--grid-gap);
 }
 
 .timeline-location {
   display: block;
   font-size: var(--font-size-meta);
-}
-
-.timeline-location::before {
-  content: '📍 ';
-}
-
-.timeline-details {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  font-size: var(--font-size-meta);
-
-  @media (prefers-reduced-motion: no-preference) {
-    transition: max-height 0.2s ease, opacity 0.2s ease;
-  }
-}
-
-.timeline-event:focus-within .timeline-details {
-  max-height: 500px;
-  opacity: 1;
 }
 
 .timeline-event.event-past::before {
