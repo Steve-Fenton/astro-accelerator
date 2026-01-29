@@ -92,13 +92,21 @@ textarea {
     font-family: var(--code-font);
 }
 
-button {
+button, .button {
+    display: inline-block;
     background-color: var(--icon-block);
+    border: 1px solid var(--icon-block);
     border-radius: var(--block-radius);
     color: var(--aft);
     cursor: pointer;
     font-size: 1.3rem;
     padding: 0.5rem;
+}
+
+button:hover, .button:hover,
+button:focus, .button:focus {
+    background-color: var(--aft);
+    color: var(--icon-block);
 }
 
 summary {
