@@ -16,19 +16,25 @@ const { date, endDate, title, location, description, linkHref, linkText } =
     Astro.props;
 
 const accelerator = new Accelerator(SITE);
+
+const eventDate = new Date(date);
+const threeMonthsAgo = new Date();
+threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
+
+const isOld = eventDate < threeMonthsAgo;
+
+const displayDate = isOld
+    ? eventDate.toLocaleDateString(SITE.default.locale, {
+          month: "long",
+          year: "numeric",
+      })
+    : accelerator.dateFormatter.formatShortDate(date, SITE.default.locale);
 ---
 
 <div class="timeline-event">
     <div>
-        <time datetime={date}
-            >{
-                accelerator.dateFormatter.formatShortDate(
-                    date,
-                    SITE.default.locale,
-                )
-            }</time
-        >{
-            endDate && (
+        <time datetime={date}>{displayDate}</time>{
+            !isOld && endDate && (
                 <Fragment>
                     &dash;
                     <time datetime={endDate}>
