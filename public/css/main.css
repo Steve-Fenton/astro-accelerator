@@ -93,20 +93,21 @@ textarea {
 }
 
 button, .button {
-    display: inline-block;
-    background-color: var(--icon-block);
+    background-color: var(--aft);
     border: 1px solid var(--icon-block);
     border-radius: var(--block-radius);
-    color: var(--aft);
+    color: var(--icon-block);
     cursor: pointer;
+    display: inline-block;
     font-size: 1.3rem;
     padding: 0.5rem;
+    text-decoration: none;
 }
 
 button:hover, .button:hover,
 button:focus, .button:focus {
-    background-color: var(--aft);
-    color: var(--icon-block);
+    background-color: var(--icon-block);
+    color: var(--aft);
 }
 
 summary {
@@ -1362,70 +1363,54 @@ figure:focus .magnify-button {
 }
 
 .timeline::before {
-  content: '';
-  position: absolute;
-  left: 2rem;
-  top: calc(var(--block-gap) * -1);
-  bottom: 0;
-  width: 0.4rem;
-  background-color: var(--icon-block);
+    background-color: var(--icon-block);
+    bottom: 0;
+    content: '';
+    left: 2rem;
+    position: absolute;
+    top: calc(var(--block-gap) * -1);
+    width: 0.4rem;
 }
 
 .timeline-event {
-  position: relative;
-  margin-bottom: 1rem;
-  padding-left: 4rem;
-
-  @media (prefers-reduced-motion: no-preference) {
-    transition: margin-bottom 0.3s ease;
-  }
+    padding-inline-start: 4rem;
+    position: relative;
+    margin-block-end: var(--block-gap);
 }
 
 .timeline-event::before {
-  content: '';
-  position: absolute;
-  left: 1.5rem;
-  top: 1.5em;
-  width: 1rem;
-  height: 1rem;
-  background: var(--aft);
-  border: 3px solid var(--icon-block);
-  border-radius: 50%;
-  box-shadow: var(--box-shadow-unselected);
-  z-index: 1;
-
-  @media (prefers-reduced-motion: no-preference) {
-    transition: all 0.3s ease;
-  }
-}
-
-.timeline-event:focus-within::before {
-  background: var(--icon-block);
-  box-shadow: var(--box-shadow);
-  transform: scale(1.2);
+    background: var(--aft);
+    border: 3px solid var(--icon-block);
+    border-radius: 50%;
+    box-shadow: var(--box-shadow-unselected);
+    content: '';
+    height: 1rem;
+    left: 1.5rem;
+    position: absolute;
+    top: 1.5em;
+    width: 1rem;
+    z-index: 1;
 }
 
 .timeline-event > div {
-  width: 100%;
-  text-align: left;
-  background: var(--aft-block);
-  color: var(--fore-block);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  cursor: pointer;
-  box-shadow: var(--box-shadow-unselected);
+    background: var(--aft-block);
+    border-radius: var(--block-radius);
+    box-shadow: var(--box-shadow-unselected);
+    color: var(--fore-block);
+    padding: 1.5rem;
+    text-align: left;
+    width: 100%;
 }
 
 .timeline-event.event-today > div {
-  border: 1px solid var(--icon-block);
-  background: var(--aft);
+    box-shadow: var(--box-glow);
 }
 
 .timeline-event.event-past > div {
-  opacity: 0.8;
-  background: var(--aft);
-  color: var(--fore);
-  box-shadow: none;
+    background: var(--aft);
+    box-shadow: none;
+    color: var(--fore);
+    opacity: 0.8;
 }
 
 .timeline-details {
@@ -1433,17 +1418,17 @@ figure:focus .magnify-button {
 }
 
 .timeline time {
-  display: inline-block;
-  margin-block-end: var(--grid-gap);
+    display: inline-block;
+    margin-block-end: var(--grid-gap);
 }
 
 .timeline-location {
-  display: block;
-  font-size: var(--font-size-meta);
+    display: block;
+    font-size: var(--font-size-meta);
 }
 
 .timeline-event.event-past::before {
-  box-shadow: var(--box-shadow-unselected);
+    box-shadow: var(--box-shadow-unselected);
 }
 
 /* Animation */

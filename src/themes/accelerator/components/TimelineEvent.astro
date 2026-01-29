@@ -42,17 +42,13 @@ const accelerator = new Accelerator(SITE);
         }
         <h3>{title}</h3>
         <span class="timeline-location">{location}</span>
-
-        <details class="timeline-details">
-            <summary>Details</summary>
-            <p>{description}</p>
-            {
-                linkHref && (
-                    <a href={linkHref} class="button">
-                        {linkText}
-                    </a>
-                )
-            }
-        </details>
+        <p>{description}</p>
+        {
+            linkHref && (
+                <a href={linkHref} class="button">
+                    {linkText}
+                </a>
+            )
+        }
     </div>
 </div>

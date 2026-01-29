@@ -37,6 +37,7 @@
     --fore-block: #333;
     --aft-block: #BEE;
     --icon-block: #FF0;
+    --icon-block-alpha: rgba(from var(--icon-block) r g b / 0.4);
 
     --fore-table-head: #DFF;
     --aft-table-head: #233;
@@ -68,6 +69,7 @@
 
     --box-shadow: 0 12px 24px -12px rgb(0 0 0 / 50%);
     --box-shadow-slight: 0 6px 12px -6px rgb(0 0 0 / 40%);
+    --box-glow: 0 0 12px 0 var(--icon-block-alpha);
 
     --box-shadow-unselected: rgb(0 0 0 / 6%) 0px 2px 4px, rgb(0 0 0 / 5%) 0px 0.5px 1px;
     --transform-selected: translate3d(0px, -1px, 0px);
