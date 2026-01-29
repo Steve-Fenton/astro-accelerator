@@ -22,14 +22,17 @@ const accelerator = new Accelerator(SITE);
     <button aria-expanded="false">
         <time datetime={date}
             >{
-                accelerator.dateFormatter.formatDate(date, SITE.default.locale)
+                accelerator.dateFormatter.formatShortDate(
+                    date,
+                    SITE.default.locale,
+                )
             }</time
         >{
             endDate && (
                 <Fragment>
                     &dash;
                     <time datetime={endDate}>
-                        {accelerator.dateFormatter.formatDate(
+                        {accelerator.dateFormatter.formatShortDate(
                             endDate,
                             SITE.default.locale,
                         )}

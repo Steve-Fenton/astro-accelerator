@@ -1357,7 +1357,7 @@ figure:focus .magnify-button {
   content: '';
   position: absolute;
   left: 2rem;
-  top: 0;
+  top: calc(var(--block-gap) * -1);
   bottom: 0;
   width: 0.4rem;
   background-color: var(--icon-block);
@@ -1377,7 +1377,7 @@ figure:focus .magnify-button {
   content: '';
   position: absolute;
   left: 1.5rem;
-  top: 1.5rem;
+  top: 2.9em;
   width: 1rem;
   height: 1rem;
   background: var(--aft);
@@ -1437,7 +1437,6 @@ figure:focus .magnify-button {
 
 .timeline time {
   display: inline-block;
-  font-size: var(--font-size-meta);
   margin-bottom: 0.5rem;
 }
 
