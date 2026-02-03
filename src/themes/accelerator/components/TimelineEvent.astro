@@ -7,7 +7,7 @@ interface Props {
     endDate?: string;
     title: string;
     location: string;
-    description: string;
+    description?: string;
     linkHref: string;
     linkText: string;
 }
@@ -45,7 +45,8 @@ const displayDate = isOld
         }
         <h3>{title}</h3>
         <span class="timeline-location">{location}</span>
-        <p>{description}</p>
+        {description && <p>{description}</p>}
+        <slot />
         {
             linkHref && (
                 <a href={linkHref} class="button">
