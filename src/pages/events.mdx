@@ -1,0 +1,40 @@
+---
+title: Events
+navOrder: 200001
+pubDate: 2026-02-13
+keywords: events, timeline
+description: Upcoming events and workshops.
+---
+
+import { getCollection, render } from 'astro:content';
+import TimelineEvent from '@components/TimelineEvent.astro';
+
+export const events = await getCollection('events', ({ data }) => {
+  return data.pubDate >= new Date();
+});
+
+events.sort((a, b) => a.data.pubDate.getTime() - b.data.pubDate.getTime());
+
+## Upcoming events
+
+<div class="timeline" data-timeline>
+
+{events.map(async (event) => {
+  const { Content } = await render(event);
+  return (
+    <TimelineEvent
+      date={event.data.pubDate}
+      endDate={event.data.modDate}
+      title={event.data.title}
+      location={event.data.location}
+      linkHref={event.data.linkHref}
+      linkText={event.data.linkText}
+    >
+      <Content />
+    </TimelineEvent>
+  );
+})}
+
+</div>
+
+[View the events archive](/events-archive/)
