@@ -1,6 +1,6 @@
 ---
 title: "DevOps Workshop"
-pubDate: 2026-02-03
+startDate: 2026-02-03
 location: "Austin, TX"
 linkHref: "#"
 linkText: "Register Now"

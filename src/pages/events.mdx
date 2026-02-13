@@ -9,22 +9,23 @@ description: Upcoming events and workshops.
 import { getCollection, render } from 'astro:content';
 import TimelineEvent from '@components/TimelineEvent.astro';
 
-export const events = await getCollection('events', ({ data }) => {
-  return data.pubDate >= new Date();
-});
-
-events.sort((a, b) => a.data.pubDate.getTime() - b.data.pubDate.getTime());
+export const events = await (async () => {
+  const collection = await getCollection('events', ({ data }) => {
+    return data.startDate >= new Date();
+  });
+  return collection.sort((a, b) => a.data.startDate.getTime() - b.data.startDate.getTime());
+})();
 
 ## Upcoming events
 
 <div class="timeline" data-timeline>
 
-{events.map(async (event) => {
+{await Promise.all(events.map(async (event) => {
   const { Content } = await render(event);
   return (
     <TimelineEvent
-      date={event.data.pubDate}
-      endDate={event.data.modDate}
+      date={event.data.startDate}
+      endDate={event.data.endDate}
       title={event.data.title}
       location={event.data.location}
       linkHref={event.data.linkHref}
@@ -33,7 +34,7 @@ events.sort((a, b) => a.data.pubDate.getTime() - b.data.pubDate.getTime());
       <Content />
     </TimelineEvent>
   );
-})}
+}))}
 
 </div>
 

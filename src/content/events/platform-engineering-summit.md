@@ -1,6 +1,6 @@
 ---
 title: "Platform Engineering Summit"
-pubDate: 2025-01-15
+startDate: 2025-01-15
 location: "San Francisco, CA"
 linkHref: "#"
 linkText: "Register Now"
