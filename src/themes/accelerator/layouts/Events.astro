@@ -15,7 +15,8 @@ const { frontmatter, headings } = Astro.props;
 const isArchive = frontmatter.isArchive === true;
 
 const events = await (async () => {
-    const today = new Date();
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const collection = await getCollection("events", ({ data }) => {
         return isArchive ? data.startDate < today : data.startDate >= today;
     });
