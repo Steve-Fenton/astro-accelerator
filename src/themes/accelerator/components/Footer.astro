@@ -1,22 +1,22 @@
 ---
 // warning: This file is overwritten by Astro Accelerator
 
-import { Accelerator } from 'astro-accelerator-utils';
-import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
-import { SITE } from '@config';
-import { Translations, Lang } from '@util/Languages';
-import { menu } from 'src/data/footer';
-import FooterItem from '@components/FooterItem.astro';
+import { Accelerator } from "astro-accelerator-utils";
+import type { Frontmatter } from "astro-accelerator-utils/types/Frontmatter";
+import { SITE } from "@config";
+import { Translations, Lang } from "@util/Languages";
+import { menu } from "src/data/footer";
+import FooterItem from "@components/FooterItem.astro";
 
 const accelerator = new Accelerator(SITE);
-const stats = new accelerator.statistics('accelerator/components/Footer.astro');
+const stats = new accelerator.statistics("accelerator/components/Footer.astro");
 stats.start();
 
 // Properties
 type Props = {
   lang: string;
-  frontmatter: Frontmatter
-  headings: { depth: number; slug: string; text: string; }[];
+  frontmatter: Frontmatter;
+  headings: { depth: number; slug: string; text: string }[];
 };
 const { lang } = Astro.props satisfies Props;
 
@@ -25,15 +25,89 @@ const _ = Lang(lang);
 
 // Logic
 const currentUrl = new URL(Astro.request.url);
-const pages = accelerator.navigation.footer(currentUrl, _, Translations, SITE.subfolder, menu);
+const pages = accelerator.navigation.footer(
+  currentUrl,
+  _,
+  Translations,
+  SITE.subfolder,
+  menu,
+);
 
 stats.stop();
 ---
+
 <footer class="site-footer" id="site-footer">
   <div class="footer-columns">
-  {pages.map((page) => (
-    <FooterItem lang={ lang } page={ page } />
-  ))}
+    {pages.map((page) => <FooterItem lang={lang} page={page} />)}
   </div>
   <slot />
 </footer>
+
+<style is:global>
+  .footer-columns {
+    display: grid;
+    gap: var(--block-gap);
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "cat tag"
+      "quick quick";
+    justify-content: center;
+    margin-block-end: var(--block-gap-l);
+    max-width: 1000px;
+    margin-inline: auto;
+
+    @media (max-width: 680px) {
+      display: block;
+      margin-inline: 0.5rem;
+    }
+  }
+
+  .footer-column:nth-child(1) {
+    grid-area: cat;
+  }
+
+  .footer-column:nth-child(2) {
+    grid-area: tag;
+  }
+
+  .footer-column:nth-child(3) {
+    grid-area: quick;
+  }
+
+  .footer-columns h2 {
+    margin: var(--paragraph-margin) auto;
+  }
+
+  .footer-columns ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--grid-gap-s);
+    justify-content: center;
+    list-style: none;
+    margin: var(--paragraph-margin) 0;
+    width: 100%;
+  }
+
+  .footer-columns li {
+    flex: 0 0 auto;
+  }
+
+  .footer-columns a {
+    display: inline-block;
+    color: var(--fore-link);
+    background-color: var(--aft);
+    padding: 0.3em 0.7em 0.1em 0.7em;
+    text-decoration: none;
+    font-size: var(--font-size-meta);
+  }
+
+  .footer-columns a:hover,
+  .footer-columns a:focus {
+    background-color: var(--fore-link-alt);
+    color: var(--aft);
+  }
+
+  .site-footer nav {
+    margin-block: var(--block-gap);
+  }
+</style>

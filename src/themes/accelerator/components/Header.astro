@@ -1,13 +1,13 @@
 ---
 // warning: This file is overwritten by Astro Accelerator
 
-import { Accelerator, PostFiltering } from 'astro-accelerator-utils';
-import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
-import { SITE } from '@config';
-import { Translations, Lang } from '@util/Languages';
+import { Accelerator, PostFiltering } from "astro-accelerator-utils";
+import type { Frontmatter } from "astro-accelerator-utils/types/Frontmatter";
+import { SITE } from "@config";
+import { Translations, Lang } from "@util/Languages";
 
 const accelerator = new Accelerator(SITE);
-const stats = new accelerator.statistics('accelerator/components/Header.astro');
+const stats = new accelerator.statistics("accelerator/components/Header.astro");
 stats.start();
 
 // Properties
@@ -22,15 +22,72 @@ const { lang, showSearch } = Astro.props satisfies Props;
 // Language
 const _ = Lang(lang);
 
-const search = accelerator.posts.all().filter(PostFiltering.isSearch).shift() ?? null;
-const searchUrl = (search && accelerator.urlFormatter.formatAddress(search.url)) || SITE.search.fallbackUrl;
+const search =
+    accelerator.posts.all().filter(PostFiltering.isSearch).shift() ?? null;
+const searchUrl =
+    (search && accelerator.urlFormatter.formatAddress(search.url)) ||
+    SITE.search.fallbackUrl;
 
 stats.stop();
 ---
 
+<style is:global>
+    .site-header {
+        text-align: center;
+        font-size: 2rem;
+        gap: 2rem;
+        display: grid;
+        grid-template-columns: auto 40px 40px;
+        align-items: center;
+        padding-block: 2rem;
+        width: var(--content-width);
+        margin-inline: auto;
+        max-width: calc(100vw - 2rem);
+        stroke: var(--fore);
+    }
+
+    .site-header .site-title {
+        text-align: left;
+        text-decoration: none;
+        letter-spacing: -0.03em;
+        font-family: var(--heading-font);
+        line-height: 1.3;
+        flex-shrink: 0;
+    }
+
+    .site-header .site-title:hover,
+    .site-header .site-title:focus {
+        color: var(--fore-link-alt);
+        background-color: unset;
+    }
+
+    .site-header .header-icon {
+        --icon-width: 40px;
+        stroke: var(--fore-link);
+        width: var(--icon-width);
+        height: var(--icon-width);
+        text-decoration: none;
+    }
+
+    .site-header .header-icon:hover,
+    .site-header .header-icon:focus {
+        stroke: var(--fore-link-alt);
+    }
+
+    .site-header .header-icon[data-navigation-id="site-nav"] {
+        position: relative;
+        z-index: 100;
+    }
+</style>
+
 <header class="site-header">
-    <a href={(SITE.subfolder ?? '') + '/'} class="site-title" translate="no">{SITE.title}</a>
-    <a href={searchUrl} class="header-icon" title={_(Translations.header.toggle_search)}>
+    <a href={(SITE.subfolder ?? "") + "/"} class="site-title" translate="no"
+        >{SITE.title}</a
+    >
+    <a
+        href={searchUrl}
+        class="header-icon"
+        title={_(Translations.header.toggle_search)}>
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
@@ -44,7 +101,11 @@ stats.stop();
             <path d="M21 21l-6 -6"></path>
         </svg>
     </a>
-    <a href="#site-nav" data-navigation-id="site-nav" class="header-icon" title={_(Translations.header.toggle_menu)}>
+    <a
+        href="#site-nav"
+        data-navigation-id="site-nav"
+        class="header-icon"
+        title={_(Translations.header.toggle_menu)}>
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"

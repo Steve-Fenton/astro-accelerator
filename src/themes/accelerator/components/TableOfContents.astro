@@ -1,53 +1,103 @@
 ---
 // warning: This file is overwritten by Astro Accelerator
 
-import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
-import { SITE } from '@config';
-import { Translations, Lang } from '@util/Languages';
-import { Accelerator } from 'astro-accelerator-utils';
+import type { Frontmatter } from "astro-accelerator-utils/types/Frontmatter";
+import { SITE } from "@config";
+import { Translations, Lang } from "@util/Languages";
+import { Accelerator } from "astro-accelerator-utils";
 
 const accelerator = new Accelerator(SITE);
-const stats = new accelerator.statistics('accelerator/components/TableOfContents.astro');
+const stats = new accelerator.statistics(
+  "accelerator/components/TableOfContents.astro",
+);
 stats.start();
 
 // Properties
 type Props = {
   lang: string;
   frontmatter: Frontmatter;
-  headings: { depth: number; slug: string; text: string; }[];
+  headings: { depth: number; slug: string; text: string }[];
   maxLevel?: number;
   expanded?: boolean | number;
 };
-let { lang, frontmatter, headings, maxLevel, expanded } = Astro.props satisfies Props;
+let { lang, frontmatter, headings, maxLevel, expanded } =
+  Astro.props satisfies Props;
 
 // Language
 const _ = Lang(lang);
 
 // Logic
-let openAttribute = null; 
+let openAttribute = null;
 let openInteraction = null;
 
-if (maxLevel == null){
+if (maxLevel == null) {
   maxLevel = 3;
 }
 
-if (typeof expanded === 'number') {
+if (typeof expanded === "number") {
   openInteraction = expanded;
 } else if (expanded === true) {
-  openAttribute = 'open';
+  openAttribute = "open";
 }
 
 stats.stop();
 ---
-{headings?.length > 0 &&
-<nav class="page-toc" aria-label={ _(Translations.aria.toc) }>
-  <details open={ openAttribute } data-openon={ openInteraction }>
-    <summary>{ _(Translations.toc.title) }</summary>
-    <ol>
-      {headings.filter(h => h.depth <= maxLevel).map((heading) =>(
-        <li class={ 'toc-lev-' + heading.depth }><a href={ '#' + heading.slug }>{ heading.text }</a></li>
-      ))}
-    </ol>
-  </details>
-</nav>
+
+{
+  headings?.length > 0 && (
+    <nav class="page-toc" aria-label={_(Translations.aria.toc)}>
+      <details open={openAttribute} data-openon={openInteraction}>
+        <summary>{_(Translations.toc.title)}</summary>
+        <ol>
+          {headings
+            .filter((h) => h.depth <= maxLevel)
+            .map((heading) => (
+              <li class={"toc-lev-" + heading.depth}>
+                <a href={"#" + heading.slug}>{heading.text}</a>
+              </li>
+            ))}
+        </ol>
+      </details>
+    </nav>
+  )
 }
+
+<style is:global>
+  .page-toc {
+    margin: 0 0 var(--paragraph-margin) 0;
+    font-size: var(--font-size-meta);
+  }
+
+  .page-toc ol {
+    list-style: none;
+  }
+
+  .page-toc li a {
+    display: block;
+    padding: 0.5rem 1rem;
+  }
+
+  .page-toc li.toc-lev-2 {
+    margin-left: 0rem;
+  }
+
+  .page-toc li.toc-lev-3 a {
+    margin-left: 1rem;
+  }
+
+  .page-toc li.toc-lev-4 a {
+    margin-left: 2rem;
+  }
+
+  .page-toc li.toc-lev-5 a {
+    margin-left: 3rem;
+  }
+
+  .page-toc li.toc-lev-6 a {
+    margin-left: 4rem;
+  }
+
+  .page-toc summary {
+    cursor: pointer;
+  }
+</style>

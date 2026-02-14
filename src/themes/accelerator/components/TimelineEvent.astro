@@ -64,3 +64,63 @@ const displayDate = formatDate(date);
         }
     </div>
 </div>
+
+<style is:global>
+    .timeline-event {
+        padding-inline-start: calc(var(--timeline-gap) * 2.5);
+        position: relative;
+        margin-block-end: var(--block-gap);
+    }
+
+    .timeline-event::before {
+        background: var(--aft);
+        border: 3px solid var(--icon-block);
+        border-radius: 50%;
+        box-shadow: var(--box-shadow-unselected);
+        content: "";
+        height: 1rem;
+        left: calc(var(--timeline-gap) - 0.5rem);
+        position: absolute;
+        top: 1.4em;
+        width: 1rem;
+        z-index: 1;
+    }
+
+    .timeline-event > div {
+        background: var(--aft-block);
+        border-radius: var(--block-radius);
+        box-shadow: var(--box-shadow-unselected);
+        color: var(--fore-block);
+        padding: 1.5rem;
+        text-align: left;
+    }
+
+    .timeline-event.event-today > div {
+        box-shadow: var(--box-glow);
+    }
+
+    .timeline-event.event-past > div {
+        background: var(--aft);
+        box-shadow: none;
+        color: var(--fore);
+        opacity: 0.8;
+    }
+
+    .timeline-event.event-past::before {
+        box-shadow: var(--box-shadow-unselected);
+    }
+
+    .timeline-details {
+        font-size: var(--font-size-meta);
+    }
+
+    time {
+        display: inline-block;
+        margin-block-end: var(--grid-gap);
+    }
+
+    .timeline-location {
+        display: block;
+        font-size: var(--font-size-meta);
+    }
+</style>

@@ -187,7 +187,7 @@ This is a custom div element with the class `note`
 
 Result:
 
-:::div\{.note}
+:::div{.note}
 This is a custom div element with the class `note`
 :::
 
@@ -205,7 +205,7 @@ Markdown:
 
 Result:
 
-:::figure\{.simple-grid}
+:::figure{.simple-grid}
 :img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }
 
 :img{ src="/img/frankenstein.png" alt="Book cover" loading="lazy" }

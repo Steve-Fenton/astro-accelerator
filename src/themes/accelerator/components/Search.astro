@@ -34,3 +34,98 @@ const accelerator = new Accelerator(SITE);
   <script src={SITE.subfolder + "/js/search.js"} type="module" async></script>
 }
 </div>
+
+<style is:global>
+    .site-search-wrapper fieldset {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0;
+    }
+
+    .site-search-wrapper input {
+        background-color: var(--aft-block);
+        border-radius: var(--block-radius);
+        color: var(--fore);
+        font-size: 1.3rem;
+        padding: 0.5em;
+    }
+
+    .site-search-wrapper input {
+        width: calc(100% - 110px);
+    }
+
+    .site-search-wrapper button {
+        width: 80px;
+    }
+
+    .site-search-results ul.site-search-results-list {
+        list-style-type: none;
+        margin-block: 1rem;
+        margin-inline: 0;
+    }
+
+    .site-search-results li.site-search-results-item {
+        list-style-type: none;
+        margin: var(--block-gap-l) 0 var(--block-gap-l) 0;
+    }
+
+    .site-search-results-item a {
+        text-decoration: none;
+    }
+
+    .site-search-results .show-more {
+        margin-block-start: 1rem;
+        display: inline-block;
+        font-size: 1.2rem;
+        border-radius: 100px;
+        text-decoration: none;
+        text-align: center;
+        padding: 0.2em 0.6em 0.3em 0.6em;
+        color: var(--aft-link-alt);
+        background-color: var(--fore-link);
+        cursor: pointer;
+        width: auto;
+    }
+
+    .result-wrapper mark,
+    .result-headings mark {
+        color: unset;
+        background-color: unset;
+        text-decoration: underline;
+    }
+
+    .result-path {
+        display: none;
+    }
+
+    .result-path-icon {
+        stroke: var(--fore);
+    }
+
+    .result-path-segment:last-child {
+        color: var(--fore-link);
+    }
+
+    .result-title {
+        color: var(--fore-link);
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .result-description {
+        color: var(--fore-block);
+        font-size: 1rem;
+        font-weight: 400;
+        margin: 0;
+    }
+
+    .result-headings {
+        list-style: none;
+        font-size: 1rem;
+    }
+
+    .result-headings li:not(:last-child) {
+        text-align: left;
+    }
+</style>

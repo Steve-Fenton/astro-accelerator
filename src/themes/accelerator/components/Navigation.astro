@@ -1,14 +1,16 @@
 ---
 // warning: This file is overwritten by Astro Accelerator
 
-import { Accelerator } from 'astro-accelerator-utils';
-import { Translations, Lang } from '@util/Languages';
-import NavigationItem from '@components/NavigationItem.astro';
-import { SITE } from '@config';
-import { menu } from '@data/navigation';
+import { Accelerator } from "astro-accelerator-utils";
+import { Translations, Lang } from "@util/Languages";
+import NavigationItem from "@components/NavigationItem.astro";
+import { SITE } from "@config";
+import { menu } from "@data/navigation";
 
 const accelerator = new Accelerator(SITE);
-const stats = new accelerator.statistics('accelerator/components/Navigation.astro');
+const stats = new accelerator.statistics(
+  "accelerator/components/Navigation.astro",
+);
 stats.start();
 
 // Properties
@@ -26,11 +28,77 @@ const pages = accelerator.navigation.menu(currentUrl, SITE.subfolder, menu);
 
 stats.stop();
 ---
-<nav class="site-nav" id="site-nav" aria-label={ _(Translations.aria.site_navigation) }>
-  <h2 class="site-nav-title">{ _(Translations.navigation.title) }</h2>
+
+<nav
+  class="site-nav"
+  id="site-nav"
+  aria-label={_(Translations.aria.site_navigation)}>
+  <h2 class="site-nav-title">{_(Translations.navigation.title)}</h2>
   <ul>
-    {pages.sort((a, b) => a.order - b.order).map((page) => (
-      <NavigationItem lang={ lang } page={ page } />
-    ))}
+    {
+      pages
+        .sort((a, b) => a.order - b.order)
+        .map((page) => <NavigationItem lang={lang} page={page} />)
+    }
   </ul>
 </nav>
+
+<style is:global>
+  .site-nav {
+    --site-nav-indent: 0.5rem;
+    font-size: var(--font-size-meta);
+  }
+
+  .site-nav > ul {
+    border-bottom: 1px solid var(--fore-link);
+  }
+
+  .site-nav li {
+    list-style: none;
+  }
+
+  .site-nav > ul > li {
+    border-top: 1px solid var(--fore-link);
+  }
+
+  .site-nav > ul > li li {
+    border-top: 1px solid color-mix(in srgb, var(--fore-link) 50%, transparent);
+  }
+
+  .site-nav a {
+    text-indent: var(--marker-size);
+    width: calc(100% - 2.07rem);
+    display: inline-block;
+    padding: 1rem var(--site-nav-indent);
+    text-decoration: none;
+  }
+
+  .site-nav a[aria-current] {
+    font-weight: bold;
+  }
+
+  .site-nav details summary {
+    cursor: pointer;
+  }
+
+  .site-nav details summary::-webkit-details-marker,
+  .site-nav details summary::marker {
+    font-size: var(--marker-size);
+    width: 1em;
+  }
+
+  .site-nav li.has-children summary span {
+    text-indent: 0;
+    display: inline-block;
+    padding: 1rem var(--site-nav-indent);
+    text-decoration: none;
+  }
+
+  details.sub-nav {
+    padding: 0rem !important;
+  }
+
+  details.sub-nav details {
+    margin-inline-start: calc(var(--marker-size) + var(--site-nav-indent));
+  }
+</style>

@@ -82,3 +82,27 @@ const renderedYears = await (async () => {
         ))
     }
 </DefaultLayout>
+
+<style is:global>
+    /* Events timeline */
+    .timeline {
+        --timeline-gap: 1rem;
+        position: relative;
+    }
+
+    .timeline h2,
+    .timeline h3 {
+        margin: 0 0 0.5rem 0;
+        font-size: var(--font-size-h4);
+    }
+
+    .timeline::before {
+        background-color: var(--icon-block);
+        bottom: 0;
+        content: "";
+        left: var(--timeline-gap);
+        position: absolute;
+        top: calc((var(--block-gap) + 1px) * -1);
+        width: 0.4rem;
+    }
+</style>
