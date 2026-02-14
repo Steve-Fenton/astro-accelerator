@@ -1,0 +1,14 @@
+---
+import type { Frontmatter } from "astro-accelerator-utils/types/Frontmatter";
+import EventDetailLayout from "@layouts/EventDetail.astro";
+
+type Props = {
+    frontmatter: Frontmatter;
+    headings: { depth: number; slug: string; text: string }[];
+};
+const { frontmatter, headings } = Astro.props satisfies Props;
+---
+
+<EventDetailLayout frontmatter={frontmatter} headings={headings}>
+    <slot />
+</EventDetailLayout>

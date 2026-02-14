@@ -1,0 +1,82 @@
+---
+import { SITE } from "@config";
+import { Accelerator } from "astro-accelerator-utils";
+import DefaultLayout from "./Default.astro";
+
+type Props = {
+    frontmatter: any;
+    headings: { depth: number; slug: string; text: string }[];
+};
+
+const { frontmatter, headings } = Astro.props;
+
+const accelerator = new Accelerator(SITE);
+
+const eventDate = new Date(frontmatter.startDate);
+const threeMonthsAgo = new Date();
+threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
+
+const isOld = eventDate < threeMonthsAgo;
+
+const formatDate = (d: Date | string) => {
+    try {
+        return isOld
+            ? accelerator.dateFormatter.formatDateWithoutDay(
+                  d,
+                  SITE.default.locale,
+              )
+            : accelerator.dateFormatter.formatShortDate(d, SITE.default.locale);
+    } catch (e) {
+        return new Date(d).toLocaleDateString(SITE.default.locale);
+    }
+};
+
+const displayDate = formatDate(frontmatter.startDate);
+---
+
+<DefaultLayout frontmatter={frontmatter} headings={headings}>
+    <div class="event-detail">
+        <div class="event-meta">
+            <time datetime={frontmatter.startDate.toString()}
+                >{displayDate}</time
+            >{
+                !isOld && frontmatter.endDate && (
+                    <Fragment>
+                        &dash;
+                        <time datetime={frontmatter.endDate.toString()}>
+                            {formatDate(frontmatter.endDate)}
+                        </time>
+                    </Fragment>
+                )
+            }
+            <span class="timeline-location">{frontmatter.location}</span>
+        </div>
+
+        <slot />
+
+        {
+            frontmatter.linkHref && (
+                <div class="event-cta">
+                    <a href={frontmatter.linkHref} class="button">
+                        {frontmatter.linkText || "Register / More Info"}
+                    </a>
+                </div>
+            )
+        }
+    </div>
+</DefaultLayout>
+
+<style is:global>
+    .event-meta {
+        margin-block-end: var(--block-gap);
+    }
+
+    .timeline-location {
+        display: block;
+        font-size: var(--font-size-meta);
+    }
+
+    .event-cta {
+        margin-block-start: var(--block-gap-l);
+    }
+</style>

@@ -7,3 +7,4 @@ keywords: events, timeline
 description: Upcoming events and workshops.
 ---
 
+You can also view the [events archive](/events/archive).

@@ -69,6 +69,7 @@
         "src/pages/authors/**/*.astro",
         "src/pages/category/**/*.astro",
         "src/pages/category/**/*.astro",
+        "src/pages/events/**/*.astro",
         "src/pages/tag/**/*.astro",
         "src/pages/tag/**/*.astro",
         "src/pages/search.json.ts",

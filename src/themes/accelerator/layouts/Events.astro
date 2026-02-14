@@ -2,6 +2,7 @@
 // warning: This file is overwritten by Astro Accelerator
 
 import { getCollection, render } from "astro:content";
+import { SITE } from "@config";
 import type { Frontmatter } from "astro-accelerator-utils/types/Frontmatter";
 import TimelineEvent from "@components/TimelineEvent.astro";
 import DefaultLayout from "./Default.astro";
@@ -45,17 +46,19 @@ const renderedYears = await (async () => {
 
     return Promise.all(
         years.map(async (year) => {
-            const yearEvents = await Promise.all(
-                groupedEvents[year].map(async (event) => {
-                    const { Content } = await render(event);
-                    return { event, Content };
-                }),
-            );
+            const yearEvents = groupedEvents[year].map((event) => {
+                return { event };
+            });
 
             return { year, events: yearEvents };
         }),
     );
 })();
+
+const currentPath = Astro.url.pathname;
+const basePath = isArchive
+    ? currentPath.replace(/\/archive\/?$/, "")
+    : currentPath.replace(/\/$/, "");
 ---
 
 <DefaultLayout frontmatter={frontmatter} headings={headings}>
@@ -66,16 +69,17 @@ const renderedYears = await (async () => {
             <Fragment>
                 <h2>{year}</h2>
                 <div class="timeline" data-timeline>
-                    {events.map(({ event, Content }) => (
+                    {events.map(({ event }) => (
                         <TimelineEvent
                             date={event.data.startDate}
                             endDate={event.data.endDate}
                             title={event.data.title}
                             location={event.data.location}
+                            description={event.data.description}
                             linkHref={event.data.linkHref}
-                            linkText={event.data.linkText}>
-                            <Content />
-                        </TimelineEvent>
+                            linkText={event.data.linkText}
+                            detailsHref={basePath + "/" + event.slug + "/"}
+                        />
                     ))}
                 </div>
             </Fragment>

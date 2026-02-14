@@ -8,12 +8,21 @@ interface Props {
     title: string;
     location: string;
     description?: string;
-    linkHref: string;
-    linkText: string;
+    linkHref?: string;
+    linkText?: string;
+    detailsHref?: string;
 }
 
-const { date, endDate, title, location, description, linkHref, linkText } =
-    Astro.props;
+const {
+    date,
+    endDate,
+    title,
+    location,
+    description,
+    linkHref,
+    linkText,
+    detailsHref,
+} = Astro.props;
 
 const accelerator = new Accelerator(SITE);
 
@@ -35,7 +44,6 @@ const formatDate = (d: Date | string) => {
         return new Date(d).toLocaleDateString(SITE.default.locale);
     }
 };
-
 const displayDate = formatDate(date);
 ---
 
@@ -55,13 +63,22 @@ const displayDate = formatDate(date);
         <span class="timeline-location">{location}</span>
         {description && <p>{description}</p>}
         <slot />
-        {
-            linkHref && (
-                <a href={linkHref} class="button">
-                    {linkText || "Link"}
-                </a>
-            )
-        }
+        <div class="timeline-links">
+            {
+                linkHref && (
+                    <a href={linkHref} class="button">
+                        {linkText || "Link"}
+                    </a>
+                )
+            }
+            {
+                detailsHref && (
+                    <a href={detailsHref} class="button button-alternate">
+                        More Details
+                    </a>
+                )
+            }
+        </div>
     </div>
 </div>
 
@@ -108,6 +125,17 @@ const displayDate = formatDate(date);
 
     .timeline-event.event-past::before {
         box-shadow: var(--box-shadow-unselected);
+    }
+
+    .timeline-links {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-block-start: 1rem;
+    }
+
+    .button-alternate {
+        filter: saturate(0.5);
     }
 
     .timeline-details {

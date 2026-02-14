@@ -3,6 +3,7 @@ import { defineCollection, z } from 'astro:content';
 const events = defineCollection({
     schema: z.object({
         title: z.string(),
+        description: z.string(),
         startDate: z.coerce.date(),
         endDate: z.coerce.date().optional(),
         location: z.string(),
