@@ -12,8 +12,19 @@ export async function getStaticPaths() {
 
 const { event } = Astro.props;
 const { Content, headings } = await render(event);
+
+const breadcrumbs = [
+    {
+        url: Astro.url.pathname,
+        title: event.data.title,
+        ariaCurrent: "page",
+    },
+];
 ---
 
-<EventDetail frontmatter={event.data as any} headings={headings}>
+<EventDetail
+    frontmatter={event.data as any}
+    headings={headings}
+    breadcrumbs={breadcrumbs}>
     <Content />
 </EventDetail>

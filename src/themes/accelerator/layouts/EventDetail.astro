@@ -6,9 +6,10 @@ import DefaultLayout from "./Default.astro";
 type Props = {
     frontmatter: any;
     headings: { depth: number; slug: string; text: string }[];
+    breadcrumbs?: { url: string; title: string; ariaCurrent?: string }[] | null;
 };
 
-const { frontmatter, headings } = Astro.props;
+const { frontmatter, headings, breadcrumbs } = Astro.props;
 
 const accelerator = new Accelerator(SITE);
 
@@ -34,7 +35,10 @@ const formatDate = (d: Date | string) => {
 const displayDate = formatDate(frontmatter.startDate);
 ---
 
-<DefaultLayout frontmatter={frontmatter} headings={headings}>
+<DefaultLayout
+    frontmatter={frontmatter}
+    headings={headings}
+    breadcrumbs={breadcrumbs}>
     <div class="event-detail">
         <div class="event-meta">
             <time datetime={frontmatter.startDate.toString()}
