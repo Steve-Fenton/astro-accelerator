@@ -4,7 +4,7 @@
 import { getCollection, render } from "astro:content";
 import type { Frontmatter } from "astro-accelerator-utils/types/Frontmatter";
 import TimelineEvent from "@components/TimelineEvent.astro";
-import Default from "./Default.astro";
+import DefaultLayout from "./Default.astro";
 
 type Props = {
     frontmatter: Frontmatter & { isArchive?: boolean };
@@ -14,30 +14,59 @@ type Props = {
 const { frontmatter, headings } = Astro.props;
 const isArchive = frontmatter.isArchive === true;
 
-const events = await (async () => {
+const renderedYears = await (async () => {
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const collection = await getCollection("events", ({ data }) => {
         return isArchive ? data.startDate < today : data.startDate >= today;
     });
 
-    return collection.sort((a, b) => {
+    const sortedEvents = collection.sort((a, b) => {
         const aTime = a.data.startDate.getTime();
         const bTime = b.data.startDate.getTime();
         return isArchive ? bTime - aTime : aTime - bTime;
     });
+
+    const groupedEvents = sortedEvents.reduce(
+        (acc, event) => {
+            const year = event.data.startDate.getFullYear();
+            if (!acc[year]) {
+                acc[year] = [];
+            }
+            acc[year].push(event);
+            return acc;
+        },
+        {} as Record<number, any[]>,
+    );
+
+    const years = Object.keys(groupedEvents)
+        .map(Number)
+        .sort((a, b) => (isArchive ? b - a : a - b));
+
+    return Promise.all(
+        years.map(async (year) => {
+            const yearEvents = await Promise.all(
+                groupedEvents[year].map(async (event) => {
+                    const { Content } = await render(event);
+                    return { event, Content };
+                }),
+            );
+
+            return { year, events: yearEvents };
+        }),
+    );
 })();
 ---
 
-<Default frontmatter={frontmatter} headings={headings}>
+<DefaultLayout frontmatter={frontmatter} headings={headings}>
     <slot />
 
-    <div class="timeline" data-timeline>
-        {
-            await Promise.all(
-                events.map(async (event) => {
-                    const { Content } = await render(event);
-                    return (
+    {
+        renderedYears.map(({ year, events }) => (
+            <Fragment>
+                <h2>{year}</h2>
+                <div class="timeline" data-timeline>
+                    {events.map(({ event, Content }) => (
                         <TimelineEvent
                             date={event.data.startDate}
                             endDate={event.data.endDate}
@@ -47,11 +76,11 @@ const events = await (async () => {
                             linkText={event.data.linkText}>
                             <Content />
                         </TimelineEvent>
-                    );
-                }),
-            )
-        }
-    </div>
+                    ))}
+                </div>
+            </Fragment>
+        ))
+    }
 
     {
         isArchive ? (
@@ -64,4 +93,4 @@ const events = await (async () => {
             </p>
         )
     }
-</Default>
+</DefaultLayout>

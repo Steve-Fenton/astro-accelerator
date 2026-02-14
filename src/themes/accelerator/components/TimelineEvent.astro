@@ -23,7 +23,7 @@ threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
 
 const isOld = eventDate < threeMonthsAgo;
 
-const formatDate = (d) => {
+const formatDate = (d: Date | string) => {
     try {
         return isOld
             ? accelerator.dateFormatter.formatDateWithoutDay(
@@ -51,7 +51,7 @@ const displayDate = formatDate(date);
                 </Fragment>
             )
         }
-        <h2>{title}</h2>
+        <h3>{title}</h3>
         <span class="timeline-location">{location}</span>
         {description && <p>{description}</p>}
         <slot />
