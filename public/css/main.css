@@ -113,6 +113,10 @@ button:focus,
     color: var(--aft);
 }
 
+.button-alternate {
+    filter: saturate(0.5);
+}
+
 summary {
     padding-inline: 0;
     text-decoration: none;
