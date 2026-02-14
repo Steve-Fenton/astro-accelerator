@@ -14,34 +14,34 @@ html {
 *::before,
 *::after {
     border: 0 none;
-    font-weight: inherit;
     font-family: inherit;
-    font-style: inherit;
     font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
     margin: 0;
     outline: 0;
     padding: 0;
-    vertical-align: baseline;
-    text-decoration-skip-ink: auto;
     scrollbar-gutter: stable;
+    text-decoration-skip-ink: auto;
+    vertical-align: baseline;
 }
 
 body {
     background-color: var(--aft);
     color: var(--fore);
-    font-size: 20px;
-    line-height: 1.7;
-    letter-spacing: 0.016em;
     font-family: var(--content-font);
+    font-size: 20px;
+    letter-spacing: 0.016em;
+    line-height: 1.7;
     scrollbar-gutter: stable;
 }
 
 a,
 summary {
-    color: var(--fore-link);
-    text-decoration: underline;
-    cursor: pointer;
     border-radius: var(--block-radius);
+    color: var(--fore-link);
+    cursor: pointer;
+    text-decoration: underline;
 
     @media (prefers-reduced-motion: no-preference) {
         transition: all 200ms ease-in-out;
@@ -55,9 +55,9 @@ details {
         block-size: 0;
 
         @media (prefers-reduced-motion: no-preference) {
-            transition-property: block-size, content-visibility;
-            transition-duration: 0.3s;
             transition-behavior: allow-discrete;
+            transition-duration: 0.3s;
+            transition-property: block-size, content-visibility;
         }
     }
 
@@ -72,13 +72,13 @@ form {
 
 fieldset {
     border: none;
-    padding: 1rem;
     border-radius: var(--block-radius);
+    padding: 1rem;
 }
 
 input {
-    color: var(--fore-input);
     background-color: var(--aft-input);
+    color: var(--fore-input);
 }
 
 input::placeholder {
@@ -87,9 +87,9 @@ input::placeholder {
 }
 
 textarea {
+    font-family: var(--code-font);
     padding: 0.5rem;
     width: calc(100% - 1rem);
-    font-family: var(--code-font);
 }
 
 button,
@@ -131,31 +131,31 @@ nav summary:focus {
 }
 
 :focus-visible {
-    outline: 2px dashed var(--icon-block);
     border-radius: 5px;
+    outline: 2px dashed var(--icon-block);
 }
 
 blockquote {
-    color: var(--fore-block);
     background-color: var(--aft-block);
+    border-radius: var(--block-radius);
+    box-shadow: var(--box-shadow);
+    color: var(--fore-block);
     font-size: 1.3rem;
     font-style: italic;
+    margin: var(--paragraph-margin) 0;
     padding: var(--paragraph-margin);
     position: relative;
-    box-shadow: var(--box-shadow);
-    margin: var(--paragraph-margin) 0;
-    border-radius: var(--block-radius);
 
     & > *:first-child:before {
-        content: '“';
         color: var(--icon-block);
+        content: '“';
         display: inline;
         font-family: var(--heading-font);
         font-size: 5em;
         line-height: 1rem;
         position: relative;
-        top: 0.4em;
         right: 0.2em;
+        top: 0.4em;
     }
 
     & > *,
@@ -164,9 +164,9 @@ blockquote {
     }
 
     & cite {
+        display: block;
         font-style: initial;
         font-weight: bold;
-        display: block;
         margin-top: var(--block-gap);
         text-align: right;
 
@@ -198,14 +198,14 @@ h4,
 h5,
 h6 {
     font-family: var(--heading-font);
-    margin: var(--block-gap-l) 0 var(--block-gap) 0;
-    line-height: 1;
     letter-spacing: -0.03em;
-    text-wrap: balance;
+    line-height: 1;
+    margin: var(--block-gap-l) 0 var(--block-gap) 0;
     text-decoration: underline;
     text-decoration-color: var(--icon-block);
     text-decoration-thickness: 4px;
     text-underline-offset: 4px;
+    text-wrap: balance;
 }
 
 h1 {
@@ -246,25 +246,25 @@ h6 {
 
 hr {
     border: 0.5px dashed var(--fore);
+    margin: var(--paragraph-margin) auto;
     opacity: 0.5;
     width: 80%;
-    margin: var(--paragraph-margin) auto;
 }
 
 figure {
     background-color: var(--aft-block);
-    padding: 1rem;
-    box-shadow: var(--box-shadow);
     border-radius: var(--block-radius);
+    box-shadow: var(--box-shadow);
+    padding: 1rem;
 
     & > p {
         margin: 0;
     }
 
     & figcaption {
+        font-size: 0.8em;
         font-style: italic;
         text-align: center;
-        font-size: 0.8em;
     }
 
     & img {
@@ -273,13 +273,13 @@ figure {
 }
 
 img {
-    max-width: 100%;
     background-color: var(--aft-image);
+    max-width: 100%;
 }
 
 img.resp-img {
-    width: 100%;
     height: auto;
+    width: 100%;
 }
 
 figure img {
@@ -304,10 +304,10 @@ strong {
 }
 
 table {
-    border-collapse: collapse;
     border: 0.5px solid var(--fore);
-    width: 100%;
+    border-collapse: collapse;
     border-radius: var(--block-radius);
+    width: 100%;
 
     & thead tr {
         background-color: var(--aft-table-head);
@@ -376,18 +376,18 @@ table {
 /* Main content group */
 
 .content-group {
-    margin-inline: 1rem;
     display: grid;
     gap: var(--grid-gap);
-    justify-content: center;
-    max-width: 100vw;
-    padding-top: 0;
-    grid-template-columns: minmax(0, var(--content-width));
-    grid-template-rows: auto auto auto;
     grid-template-areas:
         'toc'
         'content'
         'menu';
+    grid-template-columns: minmax(0, var(--content-width));
+    grid-template-rows: auto auto auto;
+    justify-content: center;
+    margin-inline: 1rem;
+    max-width: 100vw;
+    padding-top: 0;
 
     & header {
         padding-bottom: var(--block-gap);
@@ -411,8 +411,8 @@ table {
 }
 
 .page-content {
-    text-align: justify;
     hyphens: auto;
+    text-align: justify;
 
     & h2,
     & h3,
@@ -446,8 +446,8 @@ table {
 /* Table of Contents (TOC) */
 
 .page-toc {
-    margin: 0 0 var(--paragraph-margin) 0;
     font-size: var(--font-size-meta);
+    margin: 0 0 var(--paragraph-margin) 0;
 
     & ol {
         list-style: none;
@@ -484,11 +484,11 @@ table {
 /* Footer */
 
 .site-footer {
-    text-align: center;
-    padding: 0.5rem 0;
-    width: 100%;
     background-color: var(--aft-block);
     margin-top: 4rem;
+    padding: 0.5rem 0;
+    text-align: center;
+    width: 100%;
 
     & h2 {
         padding-top: 2rem;
@@ -496,9 +496,9 @@ table {
 
     & a {
         color: var(--fore-link);
-        text-decoration: none;
         display: block;
         padding: 0.5rem 1rem;
+        text-decoration: none;
 
         &:hover,
         &:focus {
@@ -510,14 +510,14 @@ table {
 /* Overlay (Mobile Navigation, Search) */
 
 .overlay {
+    background-color: var(--aft);
+    height: calc(100vh - 7rem);
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: 5rem 3rem 2rem 3rem;
     position: fixed;
     top: 0;
     width: calc(100vw - 6rem);
-    height: calc(100vh - 7rem);
-    max-height: 100vh;
-    background-color: var(--aft);
-    padding: 5rem 3rem 2rem 3rem;
-    overflow-y: auto;
     z-index: 1;
 }
 
@@ -553,8 +553,8 @@ table {
 
                 & img {
                     filter: grayscale(0);
-                    transform: rotate(3deg);
                     scale: 1.2;
+                    transform: rotate(3deg);
                 }
             }
         }
@@ -562,14 +562,14 @@ table {
         &[data-image='true'] {
             & > article {
                 display: grid;
-                grid-template-columns: 2fr 1fr;
                 grid-template-areas: 'content img';
+                grid-template-columns: 2fr 1fr;
 
                 @media (max-width: 680px) {
                     /* Special Case - We let it be two-column until later */
                     display: unset;
-                    grid-template-columns: unset;
                     grid-template-areas: unset;
+                    grid-template-columns: unset;
                 }
             }
 
@@ -580,17 +580,17 @@ table {
         }
 
         & .list-item-content {
-            padding: 1rem;
             display: grid;
-            grid-template-rows: auto fit-content(5rem);
-            grid-gap: 1rem;
             grid-area: content;
+            grid-gap: 1rem;
+            grid-template-rows: auto fit-content(5rem);
+            padding: 1rem;
 
             & h2,
             & h3 {
+                font-size: 1.6rem;
                 margin: 0;
                 padding: 0;
-                font-size: 1.6rem;
                 text-decoration: none;
 
                 & a {
@@ -600,16 +600,16 @@ table {
         }
 
         & .list-item-image img {
-            width: 100%;
-            min-height: 100%;
-            max-height: 8em;
-            object-fit: cover;
-            filter: grayscale(1);
-            box-shadow: var(--box-shadow);
-            transform: rotate(-3deg);
-            border-radius: var(--block-radius);
-            grid-area: img;
             border: 3px solid var(--fore-link);
+            border-radius: var(--block-radius);
+            box-shadow: var(--box-shadow);
+            filter: grayscale(1);
+            grid-area: img;
+            max-height: 8em;
+            min-height: 100%;
+            object-fit: cover;
+            transform: rotate(-3deg);
+            width: 100%;
 
             @media (max-width: 680px) {
                 filter: grayscale(calc(1 - var(--img-shown)));
@@ -648,17 +648,17 @@ table {
     }
 
     & a[aria-current] {
-        text-decoration: none;
         color: var(--fore);
+        text-decoration: none;
     }
 
     & span,
     & a {
-        display: inline-block;
-        color: var(--fore-link);
         background-color: var(--aft-block);
-        text-decoration: none;
+        color: var(--fore-link);
+        display: inline-block;
         font-size: 1rem;
+        text-decoration: none;
     }
 
     & a:hover,
@@ -670,15 +670,15 @@ table {
 
 .paging-collapse-before,
 .paging-collapse-after {
-    position: relative;
     color: var(--fore);
     display: inline-block;
+    position: relative;
     text-decoration: none;
 
     &:before,
     &:after {
-        top: 0.2em;
         content: '...';
+        top: 0.2em;
     }
 }
 
@@ -704,11 +704,11 @@ table {
         }
 
         & .author-image {
-            width: 100px;
+            border-radius: 50%;
             height: 100px;
             margin-right: 1rem;
             object-fit: cover;
-            border-radius: 50%;
+            width: 100px;
 
             @media (max-width: 860px) {
                 display: block;
@@ -739,8 +739,8 @@ table {
 
             & > .author-image {
                 height: 1rem;
-                width: 1rem;
                 margin: 0 0.3rem 0 0;
+                width: 1rem;
             }
         }
     }
@@ -750,17 +750,17 @@ table {
     margin: 0 0 var(--block-gap-l) 0;
 
     & h2 {
-        font-size: 1rem;
+        display: inline-block;
         font-family: var(--content-font);
+        font-size: 1rem;
         margin: 0;
         padding: 0 var(--grid-gap) 0 0;
-        display: inline-block;
     }
 
     & ul {
-        margin: 0;
-        list-style: none;
         display: inline-block;
+        list-style: none;
+        margin: 0;
     }
 
     & li {
@@ -769,12 +769,12 @@ table {
     }
 
     & a {
-        display: inline-block;
-        color: var(--fore-link);
         background-color: var(--aft-block);
+        color: var(--fore-link);
+        display: inline-block;
+        font-size: 1rem;
         padding: 0.1em 0.7em;
         text-decoration: none;
-        font-size: 1rem;
 
         &:hover,
         &:focus {
@@ -835,9 +835,9 @@ table {
 }
 
 .yt-iframe {
-    max-width: 100%;
-    margin: 0 auto;
     display: block;
+    margin: 0 auto;
+    max-width: 100%;
 }
 
 a[data-youtube] {
@@ -849,9 +849,9 @@ a[data-youtube] {
 code {
     background-color: var(--aft-block);
     font-family: var(--code-font);
+    font-size: 1rem;
     font-weight: bold;
     overflow-wrap: break-word;
-    font-size: 1rem;
 }
 
 pre.astro-code {
@@ -870,22 +870,22 @@ pre.astro-code code {
 /* Helper icons */
 
 .copy-container {
-    max-height: 0px;
-    margin: 0;
-    width: 100%;
-    text-align: right;
-    position: relative;
-    z-index: 1;
-    top: 0.6rem;
     left: 0.4rem;
+    margin: 0;
+    max-height: 0px;
+    position: relative;
+    text-align: right;
+    top: 0.6rem;
+    width: 100%;
+    z-index: 1;
 }
 
 .copy-button {
-    border-radius: 0.2rem;
-    stroke: var(--aft);
-    fill: var(--fore-link-alt);
     background-color: transparent;
     border: none;
+    border-radius: 0.2rem;
+    fill: var(--fore-link-alt);
+    stroke: var(--aft);
 }
 
 .copy-button:hover,
@@ -895,23 +895,23 @@ pre.astro-code code {
 }
 
 .magnify-container {
-    max-height: 0px;
-    margin: 0;
-    width: 100%;
-    text-align: right;
-    position: relative;
-    z-index: 1;
-    top: -1.3rem;
     left: 1.1rem;
+    margin: 0;
+    max-height: 0px;
+    position: relative;
+    text-align: right;
+    top: -1.3rem;
+    width: 100%;
+    z-index: 1;
 }
 
 .magnify-button {
+    background-color: transparent;
+    border: none;
     border-radius: 0.2rem;
     fill: var(--aft);
-    stroke: var(--fore-link);
-    background-color: transparent;
     opacity: 0;
-    border: none;
+    stroke: var(--fore-link);
 }
 
 .magnify-button:hover,
@@ -933,13 +933,13 @@ figure:focus .magnify-button {
 /* Custom Divisions */
 
 .note {
-    color: var(--fore-block);
     background-color: var(--aft-block);
+    border-radius: var(--block-radius);
+    box-shadow: var(--box-shadow);
+    color: var(--fore-block);
+    margin: var(--block-gap) 0;
     padding: 0.1px 1.2em;
     position: relative;
-    box-shadow: var(--box-shadow);
-    border-radius: var(--block-radius);
-    margin: var(--block-gap) 0;
 }
 
 .simple-grid {
@@ -1012,19 +1012,19 @@ figure:focus .magnify-button {
 .tab-list button,
 .tab-list button:focus,
 .tab-list button:hover {
-    display: inline-block;
-    position: relative;
-    z-index: 2;
-    top: 2px;
-    margin: 0;
-    margin-top: 4px;
+    background: var(--aft-block);
     border: 2px solid var(--aft-block);
     border-radius: var(--block-radius) var(--block-radius) 0 0;
-    background: var(--aft-block);
-    outline: none;
-    font-weight: bold;
-    text-align: left;
     cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    margin: 0;
+    margin-top: 4px;
+    outline: none;
+    position: relative;
+    text-align: left;
+    top: 2px;
+    z-index: 2;
 }
 
 .tab-list button[aria-selected='true'] {
