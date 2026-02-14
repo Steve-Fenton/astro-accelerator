@@ -1,42 +1,10 @@
 ---
+layout: src/layouts/Events.astro
 title: Events Archive
 navOrder: 200002
 pubDate: 2026-02-13
 keywords: events, archive, timeline
 description: Past events and workshops.
 navMenu: false
+isArchive: true
 ---
-
-import { getCollection, render } from 'astro:content';
-import TimelineEvent from '@components/TimelineEvent.astro';
-
-export const events = await (async () => {
-  const collection = await getCollection('events', ({ data }) => {
-    return data.startDate < new Date();
-  });
-  return collection.sort((a, b) => b.data.startDate.getTime() - a.data.startDate.getTime());
-})();
-
-## Past events
-
-<div class="timeline" data-timeline>
-
-{await Promise.all(events.map(async (event) => {
-  const { Content } = await render(event);
-  return (
-    <TimelineEvent
-      date={event.data.startDate}
-      endDate={event.data.endDate}
-      title={event.data.title}
-      location={event.data.location}
-      linkHref={event.data.linkHref}
-      linkText={event.data.linkText}
-    >
-      <Content />
-    </TimelineEvent>
-  );
-}))}
-
-</div>
-
-[Return to upcoming events](/events/)

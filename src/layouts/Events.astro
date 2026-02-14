@@ -1,8 +1,8 @@
 ---
-// warning: This file is overwritten by Astro Accelerator
-
 import type { Frontmatter } from "astro-accelerator-utils/types/Frontmatter";
-import RedirectLayout from "@layouts/Redirect.astro";
+import { SITE } from "@config";
+import { Lang } from "@util/Languages";
+import EventsLayout from "@layouts/Events.astro";
 
 // Properties
 type Props = {
@@ -10,8 +10,12 @@ type Props = {
     headings: { depth: number; slug: string; text: string }[];
 };
 const { frontmatter, headings } = Astro.props satisfies Props;
+const lang = frontmatter.lang ?? SITE.default.lang;
+
+// Language
+const _ = Lang(lang);
 ---
 
-<RedirectLayout frontmatter={frontmatter} headings={headings}>
+<EventsLayout frontmatter={frontmatter} headings={headings}>
     <slot />
-</RedirectLayout>
+</EventsLayout>

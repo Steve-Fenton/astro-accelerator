@@ -1,0 +1,66 @@
+---
+// warning: This file is overwritten by Astro Accelerator
+
+import { getCollection, render } from "astro:content";
+import type { Frontmatter } from "astro-accelerator-utils/types/Frontmatter";
+import TimelineEvent from "@components/TimelineEvent.astro";
+import Default from "./Default.astro";
+
+type Props = {
+    frontmatter: Frontmatter & { isArchive?: boolean };
+    headings: { depth: number; slug: string; text: string }[];
+};
+
+const { frontmatter, headings } = Astro.props;
+const isArchive = frontmatter.isArchive === true;
+
+const events = await (async () => {
+    const today = new Date();
+    const collection = await getCollection("events", ({ data }) => {
+        return isArchive ? data.startDate < today : data.startDate >= today;
+    });
+
+    return collection.sort((a, b) => {
+        const aTime = a.data.startDate.getTime();
+        const bTime = b.data.startDate.getTime();
+        return isArchive ? bTime - aTime : aTime - bTime;
+    });
+})();
+---
+
+<Default frontmatter={frontmatter} headings={headings}>
+    <slot />
+
+    <div class="timeline" data-timeline>
+        {
+            await Promise.all(
+                events.map(async (event) => {
+                    const { Content } = await render(event);
+                    return (
+                        <TimelineEvent
+                            date={event.data.startDate}
+                            endDate={event.data.endDate}
+                            title={event.data.title}
+                            location={event.data.location}
+                            linkHref={event.data.linkHref}
+                            linkText={event.data.linkText}>
+                            <Content />
+                        </TimelineEvent>
+                    );
+                }),
+            )
+        }
+    </div>
+
+    {
+        isArchive ? (
+            <p>
+                <a href="/events/">Return to upcoming events</a>
+            </p>
+        ) : (
+            <p>
+                <a href="/events-archive/">View the events archive</a>
+            </p>
+        )
+    }
+</Default>
