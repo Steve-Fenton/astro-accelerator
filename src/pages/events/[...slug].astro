@@ -5,7 +5,7 @@ import EventDetail from "@layouts/EventDetail.astro";
 export async function getStaticPaths() {
     const events = await getCollection("events");
     return events.map((event) => ({
-        params: { slug: event.slug },
+        params: { slug: event.id },
         props: { event },
     }));
 }
