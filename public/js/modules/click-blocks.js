@@ -33,6 +33,7 @@ function setClickableBlocks() {
 /**
  * Handles the block-level clicks
  *
+ * @this {HTMLElement}
  * @param {Event} e
  * @returns
  */
@@ -40,10 +41,16 @@ function handleClick(e) {
     const location = this.getAttribute(dataAttributeName);
 
     if (location) {
-        e.preventDefault();
-        document.location = location;
-        return false;
+        // Ensure links are same origin
+        const isSafeUrl = location.startsWith('/') || location.startsWith(window.location.origin);
+        
+        if (isSafeUrl) {
+            e.preventDefault();
+            document.location = location;
+            return false;
+        }
     }
 }
+
 
 export { setClickableBlocks };
