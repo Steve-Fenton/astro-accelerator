@@ -41,12 +41,11 @@ function handleClick(e) {
     const location = this.getAttribute(dataAttributeName);
 
     if (location) {
-        // Ensure links are same origin
         const isSafeUrl = location.startsWith('/') || location.startsWith(window.location.origin);
         
         if (isSafeUrl) {
             e.preventDefault();
-            document.location = location;
+            window.location.href = new URL(location, window.location.origin).href;
             return false;
         }
     }
