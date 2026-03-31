@@ -9,6 +9,10 @@ env:
   NODE_VERSION: 24
   PNPM_VERSION: 10.22.0
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   update:
     runs-on: ubuntu-latest
