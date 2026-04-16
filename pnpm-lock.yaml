@@ -23,8 +23,8 @@ importers:
         specifier: ^6.1.5
         version: 6.1.5(@types/node@25.0.3)(rollup@4.60.1)(typescript@5.9.3)(yaml@2.8.3)
       astro-accelerator-utils:
-        specifier: ^0.3.79
-        version: 0.3.79
+        specifier: ^0.3.80
+        version: 0.3.80
       csv:
         specifier: ^6.5.1
         version: 6.5.1
@@ -924,8 +924,8 @@ packages:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
 
-  astro-accelerator-utils@0.3.79:
-    resolution: {integrity: sha512-KjBSjMGp3yibxAA6n+ELFsF2/81Xt6kY8Z8Ox7uNO0lxXWBdwRAIBFwNLOs3vpTIafr9TXytS0KIiwnaP6skFw==}
+  astro-accelerator-utils@0.3.80:
+    resolution: {integrity: sha512-FnU7YvVtqL/1oR0IYhz6Vl74Fl9emuI5ZnR8AeRNb3IRjZsUUORw47k8KUG7vpJRmWe1dqRdNodNZIJQTmg6gA==}
 
   astro@6.1.5:
     resolution: {integrity: sha512-AJVw/JlssxUCBFi3Hp4djL8Pt7wUQqStBBawCd8cNGBBM2lBzp/rXGguzt4OcMfW+86fs0hpFwMyopHM2r6d3g==}
@@ -2871,7 +2871,7 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-accelerator-utils@0.3.79: {}
+  astro-accelerator-utils@0.3.80: {}
 
   astro@6.1.5(@types/node@25.0.3)(rollup@4.60.1)(typescript@5.9.3)(yaml@2.8.3):
     dependencies:
