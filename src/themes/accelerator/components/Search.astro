@@ -65,12 +65,6 @@ const accelerator = new Accelerator(SITE);
         opacity: 0.7;
     }
 
-    .site-search-wrapper input:focus {
-        outline: none;
-        border-color: var(--fore-link-alt);
-        box-shadow: 0 0 0 3px var(--fore-link);
-    }
-
     .site-search-wrapper button {
         width: 100px;
         border-radius: var(--block-radius);
@@ -108,16 +102,17 @@ const accelerator = new Accelerator(SITE);
 
     .site-search-results li.site-search-results-item {
         list-style-type: none;
-        padding: 1.25rem;
+        padding: var(--paragraph-margin);
         background-color: var(--aft-block);
         border-radius: var(--block-radius);
-        border: 1px solid var(--fore-block);
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: var(--box-shadow-slight);
+        color: var(--fore-block);
+        transition: box-shadow 0.2s ease, transform 0.2s ease;
     }
 
     .site-search-results li.site-search-results-item:hover {
-        border-color: var(--fore-link);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--box-shadow);
+        transform: translateY(-2px);
     }
 
     .site-search-results-item a {
