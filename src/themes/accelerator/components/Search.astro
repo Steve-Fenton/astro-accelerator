@@ -193,10 +193,12 @@ const accelerator = new Accelerator(SITE);
         list-style: none;
         font-size: 0.95rem;
         margin-top: 0.5rem;
+        padding-inline-start: 0;
     }
 
-    .result-headings li:not(:last-child) {
-        text-align: left;
+    .result-headings li {
+        padding: 0 0 calc(var(--paragraph-margin) / 2) 0;
+        list-style-type: '➜ ';
     }
 
     @media (max-width: 600px) {
