@@ -1,4 +1,5 @@
 ---
+import { getCollection } from "astro:content";
 import type { Frontmatter } from "astro-accelerator-utils/types/Frontmatter";
 import { SITE } from "@config";
 import { Lang } from "@util/Languages";
@@ -14,8 +15,31 @@ const lang = frontmatter.lang ?? SITE.default.lang;
 
 // Language
 const _ = Lang(lang);
+
+const allEvents = await getCollection("events");
+const years = [
+    ...new Set(allEvents.map((event) => event.data.startDate.getFullYear())),
+].sort((a, b) => b - a);
+
+const isCurrent = Astro.url.pathname.endsWith("/events/") || Astro.url.pathname.endsWith("/events");
 ---
 
 <EventsLayout frontmatter={frontmatter} headings={headings}>
+    <nav class="post-taxonomy">
+        <ul>
+            <li>
+                <a href="/events/" aria-current={isCurrent ? "page" : undefined}
+                    >Current</a
+                >
+            </li>
+            {
+                years.map((y) => (
+                    <li>
+                        <a href={`/events/${y}/`}>{y}</a>
+                    </li>
+                ))
+            }
+        </ul>
+    </nav>
     <slot />
 </EventsLayout>

@@ -1,0 +1,91 @@
+---
+import { getCollection } from "astro:content";
+import { SITE } from "@config";
+import { Lang } from "@util/Languages";
+import DefaultLayout from "src/layouts/Default.astro";
+import TimelineEvent from "@components/TimelineEvent.astro";
+
+export async function getStaticPaths() {
+    const allEvents = await getCollection("events");
+    const years = [
+        ...new Set(
+            allEvents.map((event) => event.data.startDate.getFullYear()),
+        ),
+    ];
+
+    return years.map((year) => ({
+        params: { year: year.toString() },
+        props: { year },
+    }));
+}
+
+const { year } = Astro.props;
+const lang = SITE.default.lang;
+const _ = Lang(lang);
+
+const allEvents = await getCollection("events");
+const years = [
+    ...new Set(allEvents.map((event) => event.data.startDate.getFullYear())),
+].sort((a, b) => b - a);
+
+const events = allEvents.filter(({ data }) => {
+    return data.startDate.getFullYear() === year;
+});
+
+const sortedEvents = events.sort(
+    (a, b) => b.data.startDate.getTime() - a.data.startDate.getTime(),
+);
+
+const frontmatter = {
+    title: `Events in ${year}`,
+    description: `An archive of events from ${year}.`,
+};
+
+const breadcrumbs = [
+    {
+        url: `/events/${year}/`,
+        title: year.toString(),
+        ariaCurrent: "page",
+    },
+];
+---
+
+<DefaultLayout
+    frontmatter={frontmatter as any}
+    headings={[]}
+    breadcrumbs={breadcrumbs}>
+    <nav class="post-taxonomy">
+        <ul>
+            <li><a href="/events/">Current</a></li>
+            {
+                years.map((y) => (
+                    <li>
+                        <a
+                            href={`/events/${y}/`}
+                            aria-current={y === year ? "page" : undefined}
+                            >{y}</a
+                        >
+                    </li>
+                ))
+            }
+        </ul>
+    </nav>
+
+    <h2>{year}</h2>
+    <div class="timeline" data-timeline>
+        {
+            sortedEvents.map((event) => (
+                <TimelineEvent
+                    date={event.data.startDate as any}
+                    endDate={event.data.endDate as any}
+                    title={event.data.title}
+                    location={event.data.location}
+                    description={event.data.description}
+                    linkHref={event.data.linkHref}
+                    linkText={event.data.linkText}
+                    detailsHref={"/events/" + event.id + "/"}
+                />
+            ))
+        }
+    </div>
+</DefaultLayout>

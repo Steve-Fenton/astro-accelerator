@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import { SITE } from "@config";
+import DefaultLayout from "src/layouts/Default.astro";
+
+const allEvents = await getCollection("events");
+const years = [
+    ...new Set(allEvents.map((event) => event.data.startDate.getFullYear())),
+].sort((a, b) => b - a);
+
+const frontmatter = {
+    title: "Events Archive",
+    description: "An archive of my past online and in-person events.",
+};
+
+const breadcrumbs = [
+    {
+        url: "/events/archive/",
+        title: "Archive",
+        ariaCurrent: "page",
+    },
+];
+---
+
+<DefaultLayout
+    frontmatter={frontmatter as any}
+    headings={[]}
+    breadcrumbs={breadcrumbs}>
+    <p>
+        This page captures past events, grouped by year. You can view <a
+            href="/events/">my current event list here</a
+        >.
+    </p>
+
+    <ul>
+        {
+            years.map((year) => (
+                <li>
+                    <a href={`/events/${year}/`}>{year}</a>
+                </li>
+            ))
+        }
+    </ul>
+</DefaultLayout>
