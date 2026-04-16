@@ -36,56 +36,117 @@ const accelerator = new Accelerator(SITE);
 </div>
 
 <style is:global>
+    .site-search-wrapper {
+        width: 100%;
+    }
+
     .site-search-wrapper fieldset {
         height: 100%;
         display: flex;
-        align-items: center;
+        gap: 0.75rem;
+        align-items: stretch;
         padding: 0;
     }
 
     .site-search-wrapper input {
         background-color: var(--aft-block);
         border-radius: var(--block-radius);
+        border: 2px solid var(--fore-link);
         color: var(--fore);
-        font-size: 1.3rem;
-        padding: 0.5em;
+        font-size: 1.1rem;
+        font-family: var(--content-font);
+        padding: 0.75em 1em;
+        flex: 1;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .site-search-wrapper input {
-        width: calc(100% - 110px);
+    .site-search-wrapper input::placeholder {
+        color: var(--fore-block);
+        opacity: 0.7;
+    }
+
+    .site-search-wrapper input:focus {
+        outline: none;
+        border-color: var(--fore-link-alt);
+        box-shadow: 0 0 0 3px var(--fore-link);
     }
 
     .site-search-wrapper button {
-        width: 80px;
+        width: 100px;
+        border-radius: var(--block-radius);
+        background-color: var(--fore-link);
+        color: var(--aft);
+        font-family: var(--content-font);
+        font-size: 1rem;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .site-search-wrapper button:hover {
+        background-color: var(--fore-link-alt);
+    }
+
+    .site-search-wrapper button:active {
+        transform: scale(0.98);
+    }
+
+    .site-search-results {
+        margin-top: 2rem;
     }
 
     .site-search-results ul.site-search-results-list {
         list-style-type: none;
-        margin-block: 1rem;
+        margin-block: 0;
         margin-inline: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
     }
 
     .site-search-results li.site-search-results-item {
         list-style-type: none;
-        margin: var(--block-gap-l) 0 var(--block-gap-l) 0;
+        padding: 1.25rem;
+        background-color: var(--aft-block);
+        border-radius: var(--block-radius);
+        border: 1px solid var(--fore-block);
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .site-search-results li.site-search-results-item:hover {
+        border-color: var(--fore-link);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     .site-search-results-item a {
         text-decoration: none;
+        display: block;
     }
 
     .site-search-results .show-more {
-        margin-block-start: 1rem;
         display: inline-block;
-        font-size: 1.2rem;
+        font-size: 1rem;
+        font-family: var(--content-font);
         border-radius: 100px;
         text-decoration: none;
         text-align: center;
-        padding: 0.2em 0.6em 0.3em 0.6em;
-        color: var(--aft-link-alt);
+        padding: 0.6em 1.5em;
+        margin-top: 1.5rem;
+        color: var(--aft);
         background-color: var(--fore-link);
         cursor: pointer;
         width: auto;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .site-search-results .show-more:hover {
+        background-color: var(--fore-link-alt);
+    }
+
+    .site-search-results .show-more:active {
+        transform: scale(0.98);
     }
 
     .result-wrapper mark,
@@ -109,23 +170,51 @@ const accelerator = new Accelerator(SITE);
 
     .result-title {
         color: var(--fore-link);
-        font-size: 1.5rem;
+        font-size: 1.35rem;
         font-weight: 700;
+        font-family: var(--heading-font);
+        line-height: 1.3;
+        margin-bottom: 0.5rem;
     }
 
     .result-description {
         color: var(--fore-block);
         font-size: 1rem;
         font-weight: 400;
+        font-family: var(--content-font);
         margin: 0;
+        line-height: 1.6;
     }
 
     .result-headings {
         list-style: none;
-        font-size: 1rem;
+        font-size: 0.95rem;
+        margin-top: 0.5rem;
     }
 
     .result-headings li:not(:last-child) {
         text-align: left;
+    }
+
+    @media (max-width: 600px) {
+        .site-search-wrapper fieldset {
+            flex-direction: column;
+        }
+
+        .site-search-wrapper input {
+            width: unset;
+        }
+
+        .site-search-wrapper button {
+            width: 100%;
+        }
+
+        .site-search-results li.site-search-results-item {
+            padding: 1rem;
+        }
+
+        .result-title {
+            font-size: 1.2rem;
+        }
     }
 </style>
