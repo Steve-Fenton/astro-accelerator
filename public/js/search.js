@@ -358,40 +358,42 @@ function initializeSearch() {
 
             const path = document.createElement('div');
             path.className = 'result-path';
+            path.innerText = address.pathname;
 
             // Split the path into segments, filter out empty segments (in case of leading slash)
-            const segments = address.pathname.split('/').filter(Boolean);
+            // const segments = address.pathname.split('/').filter(Boolean);
 
-            segments.forEach((segment, index) => {
-                const words = segment.replace(/-/g, ' ').split(' ');
-                const processedSegment = words
-                    .map((word, index) =>
-                        index === 0
-                            ? word.charAt(0).toUpperCase() +
-                              word.slice(1).toLowerCase()
-                            : word.toLowerCase()
-                    )
-                    .join(' ');
+            // segments.forEach((segment, index) => {
+            //     const words = segment.replace(/-/g, ' ').split(' ');
+            //     const processedSegment = words
+            //         .map((word, index) =>
+            //             index === 0
+            //                 ? word.charAt(0).toUpperCase() +
+            //                   word.slice(1).toLowerCase()
+            //                 : word.toLowerCase()
+            //         )
+            //         .join(' ');
 
-                const segmentSpan = document.createElement('span');
-                segmentSpan.className = 'result-path-segment';
-                segmentSpan.textContent = processedSegment;
-                path.appendChild(segmentSpan);
+            //     const segmentSpan = document.createElement('span');
+            //     segmentSpan.className = 'result-path-segment';
+            //     segmentSpan.textContent = processedSegment;
+            //     path.appendChild(segmentSpan);
 
-                if (index < segments.length - 1) {
-                    const svgIcon = document.createElement('span');
-                    svgIcon.className = 'result-path-icon';
-                    svgIcon.innerHTML = `
-                      <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10">
-                          <path d="M1 9L5 5L1 1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                  `;
-                    path.appendChild(svgIcon);
-                }
-            });
+            //     if (index < segments.length - 1) {
+            //         const svgIcon = document.createElement('span');
+            //         svgIcon.className = 'result-path-icon';
+            //         svgIcon.innerHTML = `
+            //           <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10">
+            //               <path d="M1 9L5 5L1 1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            //           </svg>
+            //       `;
+            //         path.appendChild(svgIcon);
+            //     }
+            // });
 
             const listElementDescription = document.createElement('p');
             listElementDescription.className = 'result-description';
+
             // Only highlight user query terms, not stemmed terms
             listElementDescription.innerHTML = highlight(
                 needle.description,
