@@ -152,13 +152,13 @@ const accelerator = new Accelerator(SITE);
     }
 
     .result-path {
-        display: flex;
-        align-items: center;
-        gap: 0.25em;
         font-size: 0.85rem;
         color: var(--fore-block);
         opacity: 0.7;
         margin-bottom: 0.25rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .result-path-segment:last-child {
