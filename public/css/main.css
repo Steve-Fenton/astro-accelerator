@@ -859,6 +859,7 @@ code {
 }
 
 pre.astro-code {
+    border-radius: var(--block-radius);
     font-family: var(--code-font);
     margin: var(--block-gap) 0;
     overflow: auto;
