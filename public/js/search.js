@@ -60,6 +60,7 @@ function unique(value, index, array) {
         tags: string[];
         url: string;
         date: string;
+        bannerImage: { src: string; alt: string } | null;
         matchedHeadings: Heading[];
     }
 }  SearchEntry

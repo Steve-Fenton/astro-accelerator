@@ -70,6 +70,7 @@ const getData = async () => {
             tags: page.frontmatter.tags ?? [],
             url: SITE.url + accelerator.urlFormatter.formatAddress(url),
             date: page.frontmatter.pubDate ?? '',
+            bannerImage: page.frontmatter.bannerImage ?? null,
         });
     }
 
