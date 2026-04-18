@@ -8,13 +8,14 @@ description: How the serverless search feature works in Astro Accelerator.
 
 The on-site search feature uses titles, headings, descriptions, and taxonomy to provide score-based search results to users.
 
-With JavaScript enabled, the search tool downloads a data file for the search and provides an instant search as users type.
+With JavaScript enabled, the search tool downloads the `search.json` data file and provides an instant search as users type.
 
 The results list shows:
 
 - The title of the result pages
 - The relative path to the page
 - The frontmatter description
+- The banner image (if present)
 - Matching sub-headings for quick navigation to the page section
 
 Matching text is highlighted using the HTML `<mark>` element.
@@ -26,7 +27,7 @@ Matching text is highlighted using the HTML `<mark>` element.
 
 ## Search page
 
-You should have a page on your site that uses the search layout:
+You need to have a page on your site that uses the search layout:
 
 ```yaml
 layout: src/layouts/Search.astro
@@ -36,25 +37,11 @@ This page will be found and linked from the search icon.
 
 You can place markdown content in your search page that will appear above the search form.
 
-## Search dialog
-
-You can enable a search dialog, which will open a modal dialog to perform the search without leaving the page.
-
-This is enabled with the [search feature flag](/features/flags/#search).
-
-When enabled, the search can be opened by clicking on the element with the class "search-icon" or using `CTRL` + `SPACE`.
-
-## Search data
-
-The search URLs in `search.json` are fully qualified, which means you can ingest the data into an alternative search technology.
-
-For example, you could read this file into elastic search or a similar technology.
-
 ## Synonyms
 
 You can catch typos, alternate spellings, initialisms, differences between British and American English using the synonyms file.
 
-Add a JavaScript file called `/public/js/synonyms.js` (next to the `search.js` file) to switch search terms where necessary. For example, to change "licence" to "license", or "cod" to "call of duty".
+Add a JavaScript file called `/public/js/synonyms.js` (next to the `search.js` file) to switch search terms where necessary. For example, to change "licence" to "license", or "BDD" to "behaviour driven development".
 
 The file uses a simple dictionary:
 
