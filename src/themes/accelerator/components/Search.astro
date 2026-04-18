@@ -117,7 +117,22 @@ const accelerator = new Accelerator(SITE);
 
     .site-search-results-item a {
         text-decoration: none;
-        display: block;
+        display: flex;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+
+    .result-image {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: var(--block-radius);
+        flex-shrink: 0;
+    }
+
+    .result-content {
+        flex: 1;
+        min-width: 0;
     }
 
     .site-search-results .show-more {
@@ -208,6 +223,17 @@ const accelerator = new Accelerator(SITE);
 
         .site-search-wrapper input {
             width: unset;
+        }
+
+        .result-wrapper {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .result-image {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
         }
 
         .site-search-wrapper button {

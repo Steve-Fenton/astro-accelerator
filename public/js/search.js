@@ -376,9 +376,22 @@ function initializeSearch() {
             li.dataset.score = (
                 Math.round((needle.score / total) * 1000) / 1000
             ).toString();
-            listElementWrapper.appendChild(path);
-            listElementWrapper.appendChild(listElementTitle);
-            listElementWrapper.appendChild(listElementDescription);
+            const resultContent = document.createElement('div');
+            resultContent.className = 'result-content';
+            resultContent.appendChild(path);
+            resultContent.appendChild(listElementTitle);
+            resultContent.appendChild(listElementDescription);
+
+            if (needle.bannerImage) {
+                const resultImage = document.createElement('img');
+                resultImage.src = needle.bannerImage.src;
+                resultImage.alt = needle.bannerImage.alt;
+                resultImage.className = 'result-image';
+                resultImage.loading = 'lazy';
+                listElementWrapper.appendChild(resultImage);
+            }
+
+            listElementWrapper.appendChild(resultContent);
             li.appendChild(listElementWrapper);
 
             if (
