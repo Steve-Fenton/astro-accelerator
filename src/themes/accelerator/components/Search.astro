@@ -117,9 +117,12 @@ const accelerator = new Accelerator(SITE);
 
     .site-search-results-item a {
         text-decoration: none;
+    }
+
+    .site-search-results-item > a {
+        align-items: flex-start;
         display: flex;
         gap: 1.5rem;
-        align-items: flex-start;
     }
 
     .result-image {
