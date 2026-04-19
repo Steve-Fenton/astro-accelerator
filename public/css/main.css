@@ -735,6 +735,7 @@ table {
         margin: 0 0 var(--paragraph-margin) 0;
 
         & > .author-info {
+
             & > *:nth-child(n + 3)::before {
                 content: '|';
                 padding: 0 0.3rem;
@@ -742,6 +743,7 @@ table {
             }
 
             & > .author-image {
+                border-radius: 50%;
                 height: 1rem;
                 margin: 0 0.3rem 0 0;
                 width: 1rem;
