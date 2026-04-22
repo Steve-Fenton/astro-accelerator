@@ -1,0 +1,6 @@
+ignoreScripts: true
+minimumReleaseAge: 10080
+minimumReleaseAgeExclude:
+  - astro-accelerator-utils
+trustPolicy: no-downgrade
+blockExoticSubdeps: true
