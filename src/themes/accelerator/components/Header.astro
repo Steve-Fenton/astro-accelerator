@@ -56,6 +56,23 @@ stats.stop();
         flex-shrink: 0;
     }
 
+    @media (max-width: 680px) {
+        .site-header {
+            justify-content: space-between;
+            padding-block: 1rem;
+            gap: 1rem;
+        }
+        .site-header .site-title {
+            flex-basis: 100%;
+            text-align: center;
+            margin-inline-end: 0;
+            order: 2;
+        }
+        .site-header .header-icon {
+            order: 1;
+        }
+    }
+
     .site-header .site-title:hover,
     .site-header .site-title:focus {
         color: var(--fore-link-alt);
