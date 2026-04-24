@@ -86,6 +86,28 @@ stats.stop();
         >{SITE.title}</a
     >
     <a
+        href="#"
+        class="header-icon theme-toggle"
+        title="Toggle Theme"
+        aria-label="Toggle Theme"
+        style="display: none;">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M12 3v18"></path>
+            <path d="M12 14l7 -7"></path>
+            <path d="M12 19l8.5 -8.5"></path>
+            <path d="M12 9l4.5 -4.5"></path>
+        </svg>
+    </a>
+    <a
         href={searchUrl}
         class="header-icon"
         title={_(Translations.header.toggle_search)}>
@@ -121,32 +143,14 @@ stats.stop();
             <path d="M4 18l16 0"></path>
         </svg>
     </a>
-    <button
-        class="header-icon theme-toggle"
-        title="Toggle Theme"
-        aria-label="Toggle Theme"
-        style="display: none; background: none; border: none; cursor: pointer; padding: 0;">
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke-width="1"
-            stroke-linecap="round"
-            stroke-linejoin="round">
-            <circle cx="12" cy="12" r="4"></circle>
-            <path
-                d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"
-            ></path>
-        </svg>
-    </button>
 </header>
 
 <script is:inline>
     const themeToggle = document.querySelector(".theme-toggle");
     if (themeToggle) {
-        themeToggle.style.display = "block";
+        themeToggle.style.display = "inline-flex";
+        themeToggle.style.alignItems = "center";
+        themeToggle.style.justifyContent = "center";
 
         const applyTheme = (theme) => {
             if (theme === "dark") {
@@ -168,7 +172,8 @@ stats.stop();
                 : "light";
         };
 
-        const toggleTheme = () => {
+        const toggleTheme = (e) => {
+            if (e) e.preventDefault();
             const currentTheme = document.body.classList.contains("mode-dark")
                 ? "dark"
                 : document.body.classList.contains("mode-light")
