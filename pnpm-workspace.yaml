@@ -1,3 +1,4 @@
+shamefullyHoist: true
 ignoreScripts: true
 minimumReleaseAge: 10080
 minimumReleaseAgeExclude:
