@@ -35,10 +35,13 @@
     },
     "header": {
         "toggle_menu": {
-            "en": "Toggle menu"
+            "en": "View menu"
         },
         "toggle_search": {
-            "en": "Toggle site search"
+            "en": "Site search"
+        },
+        "toggle_theme": {
+            "en": "Toggle theme"
         }
     },
     "navigation": {
