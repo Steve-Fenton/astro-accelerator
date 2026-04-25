@@ -31,6 +31,14 @@ When a user clicks on the menu icon, the navigation is overlaid on the page (or 
 
 There are mechanisms to manage keyboard focus on the mobile navigation overlay.
 
+## Light/dark mode toggle
+
+The site has a built-in light/dark mode toggle. This allows users to switch between light and dark mode.
+
+:::figure
+:img{ src="/img/screens/light-dark-mode.png" alt="The light/dark mode toggle" loading="lazy" }
+:::
+
 ## Search icon
 
 The search icon is shown in the header as long as there is a page with `layout: src/layouts/Search.astro`. The search layout automatically adds the search feature to the search page, so the icon is only shown where a page is available to show the search.

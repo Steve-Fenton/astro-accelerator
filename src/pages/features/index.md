@@ -78,6 +78,7 @@ The [Astro Accelerator header](/features/header/) is small but powerful, providi
 
 - Skiplinks
 - Mobile navigation
+- Light/dark mode toggle
 - Search icon
 - Breadcrumbs
 
