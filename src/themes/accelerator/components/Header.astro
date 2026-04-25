@@ -96,6 +96,19 @@ stats.stop();
         position: relative;
         z-index: 100;
     }
+
+    .site-header .theme-toggle .sun-icon,
+    .site-header .theme-toggle .moon-icon {
+        display: none;
+    }
+
+    body.mode-dark .site-header .theme-toggle .sun-icon {
+        display: block;
+    }
+
+    body.mode-light .site-header .theme-toggle .moon-icon {
+        display: block;
+    }
 </style>
 
 <header class="site-header">
@@ -115,14 +128,29 @@ stats.stop();
             fill="none"
             stroke-width="1"
             stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M12 2v2"></path>
-            <path d="M12 20v2"></path>
-            <path d="M2 12h2"></path>
-            <path d="M4.93 4.93l1.41 1.41"></path>
-            <path d="M4.93 19.07l1.41 -1.41"></path>
-            <path d="M12 6 A 6 6 0 0 0 12 18 A 6 6 0 0 0 12 6 A 8 8 0 0 1 12 18"
-            ></path>
+            stroke-linejoin="round"
+            class="sun-icon">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.07" x2="5.64" y2="17.66"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="moon-icon">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
     </a>
     <a
