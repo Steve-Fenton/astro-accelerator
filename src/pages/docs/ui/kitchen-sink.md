@@ -9,127 +9,17 @@ bannerImage:
     alt: Dummy image
 ---
 
-This page contains the most common content components.
-
-## Breadcrumbs
-
----
-
-<nav class="site-breadcrumbs" aria-label="Demo of breadcrumbs">
-  <ol vocab="http://schema.org/" typeof="BreadcrumbList">
-    <li property="itemListElement" typeof="ListItem">
-      <meta property="position" content="0" />
-      <a property="item" typeof="WebPage" href="#"><span property="name">Home</span></a>
-    </li><li property="itemListElement" typeof="ListItem">
-      <meta property="position" content="1" />
-      <a property="item" typeof="WebPage" href="#"><span property="name">About</span></a>
-    </li><li property="itemListElement" typeof="ListItem">
-      <meta property="position" content="2" />
-      <a property="item" typeof="WebPage" href="#" aria-current="page"><span property="name">Getting Started</span></a>
-    </li>
-  </ol>
-</nav>
-
----
-
-## Mobile menu
-
----
-
-<div class="overlay-menu">
-   <nav class="site-nav" aria-label="Demo site">
-   <h2 class="site-nav-title" id="modal-title" tabindex="-1">Navigation</h2>
-   <ul>
-      <li>
-         <a href="#" aria-current="page">Home</a>
-      </li>
-      <li class="has-children">
-      <details class="sub-nav">
-         <summary><span>About</span></summary>
-         <ul>
-            <li>
-            <a href="#">About</a>
-            </li>
-            <li>
-            <a href="#">Getting Started</a>
-            </li>
-         </ul>
-      </details>
-      </li>
-      <li class="has-children">
-      <details class="sub-nav">
-         <summary><span>Features</span></summary>
-         <ul>
-            <li>
-            <a href="#">Features</a>
-            </li>
-            <li>
-            <a href="#">Markdown</a>
-            </li>
-            <li>
-            <a href="#">Images</a>
-            </li>
-            <li>
-            <a href="#">Header</a>
-            </li>
-            <li>
-            <a href="#">Navigation</a>
-            </li>
-            <li>
-            <a href="#">Posts</a>
-            </li>
-            <li>
-            <a href="#">Feeds</a>
-            </li>
-            <li>
-            <a href="#">I18n</a>
-            </li>
-            <li>
-            <a href="#">Search</a>
-            </li>
-            <li>
-            <a href="#">Accessibility</a>
-            </li>
-            <li>
-            <a href="#">SEO</a>
-            </li>
-         </ul>
-      </details>
-      </li>
-      <li>
-      <a href="#">Writing</a>
-      </li>
-      <li>
-      <a href="#">Articles</a>
-      </li>
-      <li>
-      <a href="#">Kitchen Sink</a>
-      </li>
-   </ul>
-   </nav>
-</div>
-
----
-
-## Footer
-
----
-
-(Scroll to bottom of page)
-
----
+This page contains examples of Astro Accelerator components. You can use this to review the visual appearance of the components, or as an example of how to use them.
 
 ## Page links
 
----
+Added automatically to list pages.
 
 <nav class="post-paging" aria-label="Paging">
   <a href="#">Prev</a>
   <a href="#" class="paging-collapse-after">1</a><a href="#" class="">3</a><a href="#" aria-current="page" class="">4</a><a href="#" class="">5</a><a href="#" class="paging-collapse-before">7</a>
   <a href="#">Next</a>
 </nav>
-
----
 
 ## Block quote
 
@@ -174,6 +64,8 @@ const elem = document.querySelector('.elem');
 ```
 
 ## Custom elements
+
+The custom elements use the `:` syntax. `:::` is a block element and `:` is an inline element. If you next block elements, you can increase the number of colons, for example `::::`, which can wrap around block elements that use `:::`. Or you can switch to HTML.
 
 ### Note
 
@@ -280,7 +172,7 @@ You can also wrap images in figures and optionally add a caption:
 
 [A YT video alone will auto-embed behind a click](https://www.youtube.com/watch?v=FjPO1k0Y-xA)
 
-When a [YT video](https://www.youtube.com/watch?v=FjPO1k0Y-xA) is within a paragraph, it doesn't auto-embed.
+You can link [YT video](https://www.youtube.com/watch?v=FjPO1k0Y-xA) inline and it won't be converted to an embed. Like the one at the start of this paragraph.
 
 ## Lists
 
@@ -337,20 +229,20 @@ Result:
 Markdown:
 
 ```markdown
-| Item                         | One | Two | Three |
-| :--------------------------- | :-: | :-: | :---: |
-| Some description of the item |  1  |  2  |   3   |
-| Some description of the item |  2  |  3  |   4   |
-| Some description of the item |  3  |  4  |   5   |
+| Item                         |  One  |  Two  | Three |
+| :--------------------------- | :---: | :---: | :---: |
+| Some description of the item |   1   |   2   |   3   |
+| Some description of the item |   2   |   3   |   4   |
+| Some description of the item |   3   |   4   |   5   |
 ```
 
 Result:
 
-| Item                         | One | Two | Three |
-| :--------------------------- | :-: | :-: | :---: |
-| Some description of the item |  1  |  2  |   3   |
-| Some description of the item |  2  |  3  |   4   |
-| Some description of the item |  3  |  4  |   5   |
+| Item                         |  One  |  Two  | Three |
+| :--------------------------- | :---: | :---: | :---: |
+| Some description of the item |   1   |   2   |   3   |
+| Some description of the item |   2   |   3   |   4   |
+| Some description of the item |   3   |   4   |   5   |
 
 A large table:
 
