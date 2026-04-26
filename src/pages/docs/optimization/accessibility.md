@@ -1,7 +1,6 @@
 ---
 title: Accessibility
-navSection: Documentation
-navOrder: 510
+navOrder: 520
 pubDate: 2023-11-13
 modDate: 2026-04-26
 keywords: astro accelerator,accessibility

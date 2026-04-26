@@ -1,8 +1,7 @@
 ---
-title: Image Automation
+title: Image automation
 navTitle: Images
-navSection: Documentation
-navOrder: 320
+navOrder: 330
 pubDate: 2025-02-12
 modDate: 2026-04-26
 keywords: astro accelerator,image,automation,conversion,resizing,responsive

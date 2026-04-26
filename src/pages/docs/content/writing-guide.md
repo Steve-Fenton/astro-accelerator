@@ -1,6 +1,5 @@
 ---
 title: Writing Guide
-navSection: Documentation
 navOrder: 310
 pubDate: 2026-04-26
 keywords: astro,accelerator,writing

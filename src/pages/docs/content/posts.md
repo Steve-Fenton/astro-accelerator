@@ -1,7 +1,6 @@
 ---
-title: Posts & Articles
-navSection: Documentation
-navOrder: 340
+title: Posts & articles
+navOrder: 350
 pubDate: 2026-04-26
 keywords: astro accelerator,articles,posts,list
 description: How articles and authors work in Astro Accelerator.

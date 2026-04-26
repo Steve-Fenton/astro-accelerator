@@ -1,7 +1,6 @@
 ---
 title: Frontmatter
-navSection: Documentation
-navOrder: 200
+navOrder: 210
 pubDate: 2026-04-26
 keywords: astro accelerator,front matter,frontmatter
 description: An overview of frontmatter in Astro Accelerator.

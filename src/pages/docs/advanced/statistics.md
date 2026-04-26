@@ -1,8 +1,7 @@
 ---
 title: Statistics
 navTitle: Statistics
-navSection: Documentation
-navOrder: 910
+navOrder: 920
 pubDate: 2026-04-26
 keywords: about,astro,accelerator
 description: Astro accelerator is an opinionated Astro site with features to jump start your use.

@@ -1,7 +1,8 @@
 ---
 title: Documentation
-navSection: Documentation
+crumbTitle: Documentation
 navTitle: Overview
+navSection: Documentation
 navOrder: 100
 pubDate: 2026-04-26
 keywords: documentation,astro,accelerator
@@ -59,3 +60,4 @@ Make your site fast, accessible, and search-engine friendly.
 Deep dives into advanced configuration and deployment.
 
 - [GitHub Pages](/docs/advanced/github-pages/)
+- [Statistics](/docs/advanced/statistics/)

@@ -1,7 +1,6 @@
 ---
 title: SEO
-navSection: Documentation
-navOrder: 520
+navOrder: 530
 pubDate: 2026-04-26
 keywords: astro accelerator,seo
 description: Astro Accelerator SEO features.

@@ -1,6 +1,5 @@
 ---
 title: Getting started
-navSection: Documentation
 navOrder: 110
 pubDate: 2026-04-26
 keywords: astro accelerator,getting started

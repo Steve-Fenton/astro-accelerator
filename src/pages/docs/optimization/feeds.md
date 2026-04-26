@@ -1,7 +1,6 @@
 ---
 title: Feeds
-navSection: Documentation
-navOrder: 500
+navOrder: 510
 pubDate: 2026-04-26
 keywords: astro accelerator,feeds,sitemap,atom,rss
 description: How feeds work in Astro Accelerator.

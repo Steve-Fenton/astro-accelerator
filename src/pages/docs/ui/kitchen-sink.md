@@ -1,7 +1,6 @@
 ---
 title: Kitchen Sink
-navSection: Documentation
-navOrder: 430
+navOrder: 440
 pubDate: 2026-04-26
 keywords: astro,accelerator,site generator
 description: An accelerator for a very clean version of Astro.

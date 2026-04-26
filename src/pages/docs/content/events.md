@@ -1,7 +1,6 @@
 ---
 title: Events
-navSection: Documentation
-navOrder: 350
+navOrder: 360
 pubDate: 2026-04-26
 keywords: astro accelerator,events,timeline
 description: How to use the events content collection to show a chronological timeline of upcoming and past events.

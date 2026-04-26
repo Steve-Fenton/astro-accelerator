@@ -1,7 +1,6 @@
 ---
 title: Markdown
-navSection: Documentation
-navOrder: 300
+navOrder: 320
 pubDate: 2026-04-26
 keywords: astro accelerator,markdown,custom markdown
 description: How markdown extensions work in Astro Accelerator.

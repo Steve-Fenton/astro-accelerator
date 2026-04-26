@@ -1,8 +1,7 @@
 ---
 title: Navigation in Astro Accelerator
 navTitle: Overview
-navSection: Documentation
-navOrder: 410
+navOrder: 420
 pubDate: 2022-11-04
 modDate: 2026-04-26
 keywords: astro accelerator,navigation,menu

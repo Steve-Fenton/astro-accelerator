@@ -1,7 +1,6 @@
 ---
 title: Tabs
-navSection: Documentation
-navOrder: 420
+navOrder: 430
 pubDate: 2026-04-26
 keywords: astro accelerator,tabs
 description: Astro Accelerator tabbed UI features.

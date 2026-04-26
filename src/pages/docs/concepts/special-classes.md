@@ -1,8 +1,7 @@
 ---
 title: Special Classes
-navSection: Documentation
 navTitle: Input & JS Classes
-navOrder: 230
+navOrder: 240
 pubDate: 2026-04-26
 keywords: astro accelerator,css,input,javascript,classes
 description: Special classes added to the document body for input methods and JavaScript detection.

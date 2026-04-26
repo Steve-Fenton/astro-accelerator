@@ -1,8 +1,7 @@
 ---
 title: Host Astro on GitHub Pages
 navTitle: GitHub Pages
-navSection: Documentation
-navOrder: 900
+navOrder: 910
 pubDate: 2026-04-26
 keywords: astro accelerator,github pages,github action
 description: How to get the most from Astro Accelerator and GitHub Pages.

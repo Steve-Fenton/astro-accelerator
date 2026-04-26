@@ -1,7 +1,6 @@
 ---
 title: Header
-navSection: Documentation
-navOrder: 400
+navOrder: 410
 pubDate: 2026-04-26
 keywords: astro accelerator,header,skiplinks,mobile navigation,breadcrumbs
 description: How header features work in Astro Accelerator.
