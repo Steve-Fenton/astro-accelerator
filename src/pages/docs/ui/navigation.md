@@ -1,10 +1,10 @@
 ---
 title: Navigation in Astro Accelerator
 navTitle: Overview
-navSection: Navigation
-navOrder: 3000
-pubDate: 2022-09-23
-modDate: 2022-11-04
+navSection: Documentation
+navOrder: 410
+pubDate: 2022-11-04
+modDate: 2026-04-26
 keywords: astro accelerator,navigation,menu
 description: How the navigation menu works in Astro Accelerator.
 bannerImage:

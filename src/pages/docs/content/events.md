@@ -1,7 +1,8 @@
 ---
 title: Events
-navOrder: 600
-pubDate: 2026-02-14
+navSection: Documentation
+navOrder: 350
+pubDate: 2026-04-26
 keywords: astro accelerator,events,timeline
 description: How to use the events content collection to show a chronological timeline of upcoming and past events.
 ---
@@ -16,15 +17,15 @@ Events are stored as markdown files in `src/content/events/`.
 
 The schema for events is defined in `src/content/config.ts`:
 
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| `title` | `string` | The name of the event. |
-| `description` | `string` | A short summary shown on the events list page. |
-| `startDate` | `date` | When the event starts. |
-| `endDate` | `date` (optional) | When the event ends. |
-| `location` | `string` | Where the event is held (e.g., a city or "Remote"). |
-| `linkHref` | `string` (optional) | An external link, such as for registration. |
-| `linkText` | `string` (optional) | The text for the external link. |
+| Property      | Type                | Description                                         |
+| :------------ | :------------------ | :-------------------------------------------------- |
+| `title`       | `string`            | The name of the event.                              |
+| `description` | `string`            | A short summary shown on the events list page.      |
+| `startDate`   | `date`              | When the event starts.                              |
+| `endDate`     | `date` (optional)   | When the event ends.                                |
+| `location`    | `string`            | Where the event is held (e.g., a city or "Remote"). |
+| `linkHref`    | `string` (optional) | An external link, such as for registration.         |
+| `linkText`    | `string` (optional) | The text for the external link.                     |
 
 ## Layouts
 

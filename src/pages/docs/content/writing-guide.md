@@ -1,7 +1,8 @@
 ---
-title: Writing
-navOrder: 5000
-pubDate:  2022-09-17
+title: Writing Guide
+navSection: Documentation
+navOrder: 310
+pubDate: 2026-04-26
 keywords: astro,accelerator,writing
 description: How to write in Astro.
 bannerImage:
@@ -21,8 +22,7 @@ title: Example
 navOrder: 9000
 ---
 
-Hello world! 
-
+Hello world!
 ```
 
 The page will be automatically added to the menu and you can click on it to see your content.
@@ -32,7 +32,7 @@ The page will be automatically added to the menu and you can click on it to see 
 ::figcaption[The output of the example markdown]
 :::
 
-You can learn how to use markdown on the [CommonMark tutorial](https://commonmark.org/help/tutorial/). There are also some custom [markdown extensions](/features/markdown/) that give you some markdown super-powers.
+You can learn how to use markdown on the [CommonMark tutorial](https://commonmark.org/help/tutorial/). There are also some custom [markdown extensions](/docs/content/markdown/) that give you some markdown super-powers.
 
 ## Child Items
 

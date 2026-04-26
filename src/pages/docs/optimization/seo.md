@@ -1,7 +1,8 @@
 ---
 title: SEO
-navOrder: 6000
-pubDate: 2022-09-23
+navSection: Documentation
+navOrder: 520
+pubDate: 2026-04-26
 keywords: astro accelerator,seo
 description: Astro Accelerator SEO features.
 bannerImage:
@@ -59,7 +60,7 @@ You might implement a strategy where instead of renaming a page, you move the co
 
 ## Custom meta tags
 
-You can add custom meta tags to authors and pages using the [meta frontmatter](/about/frontmatter/#meta).
+You can add custom meta tags to authors and pages using the [meta frontmatter](/docs/concepts/frontmatter/#meta).
 
 For example, you can add author verification using the `fediverse:creator` meta tag:
 

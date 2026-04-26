@@ -1,9 +1,10 @@
 ---
 title: Image Automation
 navTitle: Images
-navOrder: 1500
-pubDate: 2022-09-28
-modDate: 2025-02-12
+navSection: Documentation
+navOrder: 320
+pubDate: 2025-02-12
+modDate: 2026-04-26
 keywords: astro accelerator,image,automation,conversion,resizing,responsive
 description: How image automation helps with conversion, resizing, and responsive images.
 bannerImage:
@@ -26,7 +27,7 @@ You can run this manually using `npm run img`. Only changed images will be proce
 By default, this is part of the `npm run dev` script in `package.json` for Astro Accelerator:
 
 ```json
-"dev": "node ./src/img.mjs && astro dev",
+"dev": "node ./src/themes/accelerator/utilities/img.mjs && astro dev",
 ```
 
 As part of the conversion, a set of sizes will be created to use with responsive images. For example, if you have an image named `/public/img/example.png` the following images will be generated:

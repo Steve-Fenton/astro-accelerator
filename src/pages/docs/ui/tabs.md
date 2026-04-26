@@ -1,6 +1,8 @@
 ---
 title: Tabs
-pubDate: 2023-06-07
+navSection: Documentation
+navOrder: 420
+pubDate: 2026-04-26
 keywords: astro accelerator,tabs
 description: Astro Accelerator tabbed UI features.
 bannerImage:
@@ -14,7 +16,7 @@ The `<summary>` text is used for the tab and the rest of the contents is placed 
 
 If JavaScript doesn't work, the details elements still provide a mechanism for users to expand different tabs.
 
-You need to [enable the tabs feature](/features/flags/#details) in your `config.ts` file.
+You need to [enable the tabs feature](/docs/concepts/feature-flags/#details) in your `config.ts` file.
 
 ## Tabs demo
 

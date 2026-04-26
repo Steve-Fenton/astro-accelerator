@@ -1,7 +1,8 @@
 ---
-title: Getting Started
-navOrder: 1000
-pubDate: 2022-09-17
+title: Getting started
+navSection: Documentation
+navOrder: 110
+pubDate: 2026-04-26
 keywords: astro accelerator,getting started
 description: There are just a couple of tasks to turn the Astro Accelerator into your own working website.
 bannerImage:
@@ -21,7 +22,7 @@ Run these three commands:
 ```bash
 npm install
 
-node .\accelerator.js
+node accelerator.js
 
 npm run img
 ```
@@ -48,7 +49,7 @@ In `/public/robots.txt` change the `Sitemap:` address:
 https://astro.stevefenton.co.uk/sitemap.xml
 ```
 
-In `/src/config.ts` change the sitewide defaults in the `SITE` variable.
+In `/src/config.ts` change the site wide defaults in the `SITE` variable.
 
 ## Trailing slashes
 

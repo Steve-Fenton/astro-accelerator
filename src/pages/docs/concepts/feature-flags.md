@@ -1,7 +1,8 @@
 ---
-title: Flags
-navOrder: 500
-pubDate: 2022-10-31
+title: Feature Flags
+navSection: Documentation
+navOrder: 220
+pubDate: 2026-04-26
 keywords: astro accelerator,feature flags
 description: How to use the Astro Accelerator feature flags to control site enhancements like code blocks, images, and video
 ---

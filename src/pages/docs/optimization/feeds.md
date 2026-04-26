@@ -1,7 +1,8 @@
 ---
 title: Feeds
-navOrder: 5000
-pubDate: 2022-09-23
+navSection: Documentation
+navOrder: 500
+pubDate: 2026-04-26
 keywords: astro accelerator,feeds,sitemap,atom,rss
 description: How feeds work in Astro Accelerator.
 bannerImage:
@@ -41,7 +42,7 @@ const allArticles = import.meta.glob('./**/*.md');
 
 For example, you could place a site-wide feed that looks for markdown files in several collection folders.
 
-See [the articles naming instructions](/features/posts/#using-different-article-names) for more on customization requirements.
+See [the articles naming instructions](/docs/content/posts/#using-different-article-names) for more on customization requirements.
 
 ## Site Search Feed
 

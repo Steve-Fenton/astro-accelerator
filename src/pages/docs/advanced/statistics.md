@@ -1,9 +1,9 @@
 ---
-title: About Astro Accelerator
-navTitle: Overview
-navSection: About
-navOrder: 1000
-pubDate:  2022-09-17
+title: Statistics
+navTitle: Statistics
+navSection: Documentation
+navOrder: 910
+pubDate: 2026-04-26
 keywords: about,astro,accelerator
 description: Astro accelerator is an opinionated Astro site with features to jump start your use.
 bannerImage:
@@ -15,13 +15,13 @@ Astro Accelerator contains layouts, components, and extensions that provide esse
 
 The CSS in the default theme been kept separate to the components to make it easier to replace entirely. The HTML is semantic, so applying drastically different styles and layouts should be easy enough.
 
-You can publish Astro sites to [GitHub pages](/about/github-pages/). Alternatively, you can run `npm run build` and push the `/dist/` folder to your preferred hosting infrastructure.
+You can publish Astro sites to [GitHub pages](/docs/advanced/github-pages/). Alternatively, you can run `npm run build` and push the `/dist/` folder to your preferred hosting infrastructure.
 
 Where Next?
 
-- Find out how to [get started](/about/getting-started/)
-- Read more about [themes](/about/themes/)
-- See how to [run on GitHub pages](/about/github-pages/)
+- Find out how to [get started](/docs/getting-started/)
+- Read more about [themes](/docs/concepts/themes/)
+- See how to [run on GitHub pages](/docs/advanced/github-pages/)
 
 ## Statistic and performance
 
@@ -39,7 +39,7 @@ The statistics process writes a CSV to `.log/statistics.csv` with information ab
 You can summarize the statistics using:
 
 ```bash
-node .\src\themes\accelerator\utilities\stats.mjs
+node ./src/themes/accelerator/utilities/stats.mjs
 ```
 
 The results can be adjusted as follows:

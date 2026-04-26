@@ -1,7 +1,8 @@
 ---
 title: Header
-navOrder: 2000
-pubDate: 2022-09-23
+navSection: Documentation
+navOrder: 400
+pubDate: 2026-04-26
 keywords: astro accelerator,header,skiplinks,mobile navigation,breadcrumbs
 description: How header features work in Astro Accelerator.
 bannerImage:
@@ -17,7 +18,7 @@ The site has built-in skiplinks. Skiplinks allow keyboard users to quickly move 
 :img{ src="/img/screens/skiplinks.png" alt="Skiplinks are visible on tab" }
 :::
 
-You can provide [translations](/features/internationalization/#language-translations) for these.
+You can provide [translations](/docs/content/i18n/#language-translations) for these.
 
 ## Mobile navigation
 

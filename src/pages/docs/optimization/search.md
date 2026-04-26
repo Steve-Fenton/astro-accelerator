@@ -1,7 +1,8 @@
 ---
 title: Search
-navOrder: 5000
-pubDate: 2022-09-23
+navSection: Documentation
+navOrder: 530
+pubDate: 2026-04-26
 keywords: astro accelerator,search,site search
 description: How the serverless search feature works in Astro Accelerator.
 ---

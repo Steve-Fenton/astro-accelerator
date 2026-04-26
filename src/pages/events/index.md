@@ -1,6 +1,6 @@
 ---
 layout: src/layouts/Events.astro
-title: Events
+title: Sample Events
 navOrder: 2000
 pubDate: 2022-10-02
 modDate: 2026-04-16

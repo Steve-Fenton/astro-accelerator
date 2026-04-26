@@ -1,7 +1,8 @@
 ---
 title: Themes
-navOrder: 2000
-pubDate: 2022-09-17
+navSection: Documentation
+navOrder: 210
+pubDate: 2026-04-26
 keywords: astro accelerator,github pages,github action
 description: How to apply a theme in Astro Accelerator
 bannerImage:
