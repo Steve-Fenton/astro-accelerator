@@ -1,6 +1,6 @@
 ---
-title: Special Classes
-navTitle: Input & JS Classes
+title: Special classes
+navTitle: Input & JS classes
 navOrder: 240
 pubDate: 2026-04-26
 keywords: astro accelerator,css,input,javascript,classes
@@ -31,7 +31,7 @@ This allows you to adjust styles to suit different input types, for example addi
 }
 ```
 
-## JavaScript Detection
+## JavaScript detection
 
 You may want to conditionally style elements based on whether the JavaScript modules are loaded. This allows fallback mechanisms to remain visible until it's certain the JavaScript enhancements are working.
 

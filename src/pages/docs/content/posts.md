@@ -58,7 +58,7 @@ authors:
 
 The author, or authors, in the frontmatter are matched to author profiles by the id.
 
-## Using Different Article Names
+## Using different article names
 
 You can use a different name for articles, or even have multiple collections with different names.
 

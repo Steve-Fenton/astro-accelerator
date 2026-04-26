@@ -21,7 +21,7 @@ The sitemap is XML and is located at `/sitemap.xml`.
 
 [View an example sitemap](/sitemap.xml).
 
-## Atom Feed
+## Atom feed
 
 The Atom feed is XML and should be added to any post collection folders, for example: `/pages/articles/feed.xml.ts`. This allows a feed for each collection, for example, for blogs, news, events, and so on.
 
@@ -43,7 +43,7 @@ For example, you could place a site-wide feed that looks for markdown files in s
 
 See [the articles naming instructions](/docs/content/posts/#using-different-article-names) for more on customization requirements.
 
-## Site Search Feed
+## Site search feed
 
 The site search feed is JSON and is located at `/search.json`. This file is used to power the site search feature.
 

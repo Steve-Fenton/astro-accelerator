@@ -19,7 +19,7 @@ The menu can:
 - Be manually controlled from a data file
 - Use a combination of the automatic pages plus additional manual items
 
-## Automatic Menu Items
+## Automatic menu items
 
 By default, the menu uses automatic discovery. You can see the configuration for this in `src/data/navigation.ts` for the main navigation and in `src/data/footer.ts` for the footer columns.
 
@@ -68,7 +68,7 @@ and
 - /pages/articles.md
 - /pages/articles/
 
-### Additional Manual Menu Items
+### Additional manual menu items
 
 To add menu items to the automatic navigation, add the items to `src/navigation.ts`.
 
@@ -115,7 +115,7 @@ export const menu: (MenuItem | 'auto')[] = [
 ];
 ```
 
-## Remove Automatic Menu Items
+## Remove automatic menu items
 
 To remove all automatic menu items, remove the following line:
 
@@ -125,7 +125,7 @@ To remove all automatic menu items, remove the following line:
 
 Without this line, only the manual menu items will be shown.
 
-## Automatic Table of Contents
+## Automatic table of contents
 
 Where there are sub-headings on a page, an automatic table of contents will be shown. This allows users to skip down the page to the content they are most interested in.
 

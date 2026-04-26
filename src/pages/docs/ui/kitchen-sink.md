@@ -1,5 +1,5 @@
 ---
-title: Kitchen Sink
+title: Kitchen sink
 navOrder: 440
 pubDate: 2026-04-26
 keywords: astro,accelerator,site generator
@@ -32,7 +32,7 @@ This page contains the most common content components.
 
 ---
 
-## Mobile Menu
+## Mobile menu
 
 ---
 
@@ -119,7 +119,7 @@ This page contains the most common content components.
 
 ---
 
-## Page Links
+## Page links
 
 ---
 
@@ -131,7 +131,7 @@ This page contains the most common content components.
 
 ---
 
-## Block Quote
+## Block quote
 
 Markdown:
 
@@ -173,7 +173,7 @@ Inline `code` and a code block with a language set.
 const elem = document.querySelector('.elem');
 ```
 
-## Custom Elements
+## Custom elements
 
 ### Note
 
@@ -191,7 +191,7 @@ Result:
 This is a custom div element with the class `note`
 :::
 
-### Simple Grid
+### Simple grid
 
 Markdown:
 
@@ -304,7 +304,7 @@ Result:
 
     Item additional paragraph.
 
-## Horizontal Rule
+## Horizontal rule
 
 Markdown:
 

@@ -1,5 +1,5 @@
 ---
-title: Writing Guide
+title: Writing guide
 navOrder: 310
 pubDate: 2026-04-26
 keywords: astro,accelerator,writing
@@ -33,7 +33,7 @@ The page will be automatically added to the menu and you can click on it to see 
 
 You can learn how to use markdown on the [CommonMark tutorial](https://commonmark.org/help/tutorial/). There are also some custom [markdown extensions](/docs/content/markdown/) that give you some markdown super-powers.
 
-## Child Items
+## Child items
 
 You can add child pages and articles by naming folders after their parent page. The folders that you create form part of the address of the page or post.
 

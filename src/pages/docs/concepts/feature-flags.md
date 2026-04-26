@@ -1,5 +1,5 @@
 ---
-title: Feature Flags
+title: Feature flags
 navOrder: 230
 pubDate: 2026-04-26
 keywords: astro accelerator,feature flags
@@ -28,7 +28,7 @@ featureFlags: {
 
 When you remove a feature, the associated JavaScript file is not loaded.
 
-## Code Blocks
+## Code blocks
 
 - 'copy': adds a "copy" icon to code blocks to help users copy the examples.
 
@@ -49,6 +49,6 @@ When you remove a feature, the associated JavaScript file is not loaded.
 - 'dialog': enables the on-page search dialog, rather than navigating to the search page (you still need an active search page on the site).
 - 'headings': shows quick links to matching headings in the search results.
 
-## YouTube Links
+## YouTube links
 
 - 'embed': transforms YouTube links into embedded videos, lazy loaded when the user clicks

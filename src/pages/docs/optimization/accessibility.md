@@ -16,13 +16,13 @@ Quite a lot of effort has gone into making the out-of-the-box Astro Accelerator 
 
 A huge thank you to the accessibility community, especially Kev Bonett, for sharing their crucial knowledge.
 
-## Keyboard Users
+## Keyboard users
 
 We have skip links as the first tab-targets on all pages. Keyboard users can skip quickly to the part of the page they need. There's also a final link on the page to get you back to the top.
 
 All interactive page items are keyboard-navigable.
 
-## Aria Attributes
+## Aria attributes
 
 Where necessary, we have add aria attributes to ensure things like navigation are identifiable.
 
@@ -31,7 +31,7 @@ Where necessary, we have add aria attributes to ensure things like navigation ar
 - aria-modal
 - aria-labelledby
 
-## Reduced Motion
+## Reduced motion
 
 For users with a preference for reduced motion, there are no animations or smoothing applied.
 

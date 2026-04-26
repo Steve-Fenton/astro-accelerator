@@ -14,11 +14,11 @@ bannerImage:
 
 Welcome to the Astro Accelerator documentation. Here you can find everything you need to get started, understand the core concepts, and optimize your site.
 
-## [Getting Started](/docs/getting-started/)
+## [Getting started](/docs/getting-started/)
 
 If you're new to Astro Accelerator, start here to get your site up and running in minutes.
 
-## Core Concepts
+## Core concepts
 
 Understand the fundamental building blocks of Astro Accelerator.
 
@@ -26,7 +26,7 @@ Understand the fundamental building blocks of Astro Accelerator.
 - [Themes](/docs/concepts/themes/)
 - [Feature Flags](/docs/concepts/feature-flags/)
 
-## Content & Writing
+## Content & writing
 
 Learn how to write and manage content effectively.
 
@@ -37,7 +37,7 @@ Learn how to write and manage content effectively.
 - [Posts & Articles](/docs/content/posts/)
 - [Events](/docs/content/events/)
 
-## UI Components
+## UI components
 
 Explore the built-in components that make your site interactive and accessible.
 

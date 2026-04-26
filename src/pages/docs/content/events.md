@@ -8,7 +8,7 @@ description: How to use the events content collection to show a chronological ti
 
 The events feature allows you to manage a chronological list of events using an Astro content collection.
 
-## Events Collection
+## Events collection
 
 Events are stored as markdown files in `src/content/events/`.
 

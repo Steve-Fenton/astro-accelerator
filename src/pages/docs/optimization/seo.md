@@ -19,11 +19,11 @@ A big thank you to the SEO community, especially Petr Vinklarek, for their knowl
 
 We hint the canonical URL for pages to search engines using the `<link rel="canonical" ../>` tag.
 
-## Address Normalization
+## Address normalization
 
 All component and layout links are passed through URL normalization, to ensure the trailing `/` is included.
 
-## Structured Data
+## Structured data
 
 Breadcrumbs contain structured data.
 

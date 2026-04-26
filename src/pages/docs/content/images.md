@@ -15,7 +15,7 @@ When authoring images, use JPEG (`.jpg`) or PNG (`.png`) formats and place image
 
 These will be used to create a set of images to use on your site.
 
-## Conversion and Resizing
+## Conversion and resizing
 
 JPEG and PNG images in the `/public/img/` folder will be re-saved with compression to `/public/i/x/`.
 
