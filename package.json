@@ -53,7 +53,7 @@
         "linkinator": "^7.6.1"
     },
     "files": [
-        ".npmrc",
+        "pnpm-workspace.yaml",
         "env.d.ts",
         "tsconfig.json",
         "astro.config.mjs",
