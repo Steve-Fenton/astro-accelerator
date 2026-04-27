@@ -29,10 +29,7 @@ export class Model {
       * @returns {Locator}
       */
     menuItem(text) {
-        return this.page.locator(
-            '#site-nav a',
-            { hasText: text }
-        );
+        return this.page.locator('#site-nav a', { hasText: text });
     }
 
     /**

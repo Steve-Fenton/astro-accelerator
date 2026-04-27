@@ -4,7 +4,7 @@ import { test, expect } from '@playwright/test';
 import { Model } from './locate-navigation.js';
 
 test('Layout', async ({ page }) => {
-    await page.goto('/features/');
+    await page.goto('/docs/content/markdown/');
 
     const find = new Model(page);
 

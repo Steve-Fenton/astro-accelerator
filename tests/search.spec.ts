@@ -12,5 +12,5 @@ test('Search', async ({ page }) => {
   const results = find.searchResults();
 
   const firstResult = results.first();
-  await expect(firstResult).toHaveAttribute('href', '/features/image-automation/');
+  await expect(firstResult).toHaveAttribute('href', '/docs/content/images/');
 });

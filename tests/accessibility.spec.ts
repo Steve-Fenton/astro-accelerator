@@ -14,7 +14,7 @@ test('Current page is home', async ({ page }) => {
 
   // Check a different item doesn't have aria-attribute
 
-  const articles = find.menuItem('Articles');
+  const articles = find.menuItem('Sample articles');
   await expect(articles).toHaveAttribute('href', '/articles/1/');
   expect(await articles.getAttribute('aria-current')).toBeNull();
 
@@ -33,7 +33,7 @@ test('Current page is articles', async ({ page }) => {
 
   // Ensure navigation has aria-attributes
 
-  const articles = find.menuItem('Articles');
+  const articles = find.menuItem('Sample articles');
   await expect(articles).toHaveAttribute('href', '/articles/1/');
   await expect(articles).toHaveAttribute('aria-current', 'page');
 

@@ -1,7 +1,7 @@
 ---
 layout: src/layouts/Redirect.astro
 title: Redirect
-redirect: /writing
+redirect: /docs/content/writing-guide/
 pubDate: 2023-01-01
 navSearch: false
 navSitemap: false

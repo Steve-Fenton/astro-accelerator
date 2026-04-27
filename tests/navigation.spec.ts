@@ -11,43 +11,27 @@ type Dictionary = { [key: string]: string };
 // the same name, which is undesirable for
 // accessibility and usability!
 const expectedLinks: Dictionary = {
-    'Getting Started': '/about/getting-started/',
-    Themes: '/about/themes/',
-    'GitHub Pages': '/about/github-pages/',
-    Markdown: '/features/markdown/',
-    Images: '/features/image-automation/',
-    Header: '/features/header/',
-    Posts: '/features/posts/',
-    Feeds: '/features/feeds/',
-    I18n: '/features/internationalization/',
-    Accessibility: '/features/accessibility/',
-    SEO: '/features/seo/',
-    Writing: '/writing/',
-    Articles: '/articles/1/',
-    'Kitchen Sink': '/kitchen-sink/',
+    'Getting started': '/docs/getting-started/',
+    Themes: '/docs/concepts/themes/',
+    'GitHub Pages': '/docs/advanced/github-pages/',
+    Markdown: '/docs/content/markdown/',
+    Images: '/docs/content/images/',
+    Header: '/docs/ui/header/',
+    'Posts & articles': '/docs/content/posts/',
+    Feeds: '/docs/optimization/feeds/',
+    I18n: '/docs/content/i18n/',
+    Accessibility: '/docs/optimization/accessibility/',
+    SEO: '/docs/optimization/seo/',
+    'Writing guide': '/docs/content/writing-guide/',
+    'Sample articles': '/articles/1/',
+    'Kitchen Sink': '/docs/ui/kitchen-sink/',
 };
 
-test.describe.configure({ mode: 'serial' });
-
-let page: Page;
-let find: any;
-
-test.beforeAll(async ({ browser }) => {
-    page = await browser.newPage();
-});
-
-test.afterAll(async () => {
-    await page.close();
-});
-
-test('Navigate once', async () => {
+test('Menu has expected links', async ({ page }) => {
     await page.goto('/');
-    find = new Model(page);
-});
-
-Object.keys(expectedLinks).forEach(async (key) => {
-    test(`Menu has ${key}`, async () => {
+    const find = new Model(page);
+    for (const [key, expectedHref] of Object.entries(expectedLinks)) {
         const link = find.menuItem(key);
-        await expect(link).toHaveAttribute('href', expectedLinks[key]);
-    });
+        await expect(link).toHaveAttribute('href', expectedHref);
+    }
 });
