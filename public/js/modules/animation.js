@@ -12,8 +12,7 @@ import { qsa } from './query.js';
 /**
  * Assists animation by setting "--shown" CSS property
  *
- * When an item is visible in the viewport, it will have --shown: 1
- * Otherwise it will be --shown: 0
+ * As an item enters/exits the viewport, --shown moves from 0..1
  * This allows CSS transitions and calculated properties to animate elements
  *
  * Example
@@ -25,15 +24,16 @@ import { qsa } from './query.js';
 function addIntersectionObserver(listItemQuery) {
     function handleIntersection(entries, observer) {
         for (let entry of entries) {
-            const value = entry.isIntersecting ? 1 : 0;
+            const value = entry.isIntersecting ? entry.intersectionRatio : 0;
             entry.target.style.setProperty('--shown', value);
         }
     }
 
+    const thresholds = Array.from({ length: 21 }, (_, i) => i / 20);
     const options = {
         root: null,
         rootMargin: '0px',
-        threshold: 0,
+        threshold: thresholds,
     };
 
     const observer = new IntersectionObserver(handleIntersection, options);
@@ -44,8 +44,7 @@ function addIntersectionObserver(listItemQuery) {
 /**
  * Assists animation by setting "--shown" CSS property
  *
- * When an item is visible in the viewport, it will have --shown: 1
- * Otherwise it will be --shown: 0
+ * As an item enters/exits the viewport, --img-shown moves from 0..1
  * This allows CSS transitions and calculated properties to animate elements
  *
  * Example
@@ -57,15 +56,16 @@ function addIntersectionObserver(listItemQuery) {
 function addListImageIntersectionObserver(imgItemQuery) {
     function handleIntersection(entries, observer) {
         for (let entry of entries) {
-            const value = entry.isIntersecting ? 1 : 0;
+            const value = entry.isIntersecting ? entry.intersectionRatio : 0;
             entry.target.style.setProperty('--img-shown', value);
         }
     }
 
+    const thresholds = Array.from({ length: 21 }, (_, i) => i / 20);
     const options = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.5,
+        threshold: thresholds,
     };
 
     const observer = new IntersectionObserver(handleIntersection, options);

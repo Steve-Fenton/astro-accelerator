@@ -1078,10 +1078,19 @@ figure:focus .magnify-button {
 @media (prefers-reduced-motion: no-preference) {
 
     .magnify-icon,
-    .copy-button,
-    .anim-show-parent .list-item img,
-    .anim-show-parent .list-item {
+    .copy-button {
         transition: all 0.2s ease-in;
+    }
+
+    .anim-show-parent .list-item img {
+        transition: all 0.2s ease-in;
+    }
+
+    
+    .anim-show-parent .list-item {
+        transition-duration: 0.2s;
+        transition-timing-function: ease-in;
+        transition-property: transform, filter, box-shadow, background-color, color, opacity;
         scale: calc(0.75 + (var(--shown, 1) * 0.25));
     }
 }
