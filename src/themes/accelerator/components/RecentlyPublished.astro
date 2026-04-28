@@ -1,0 +1,38 @@
+---
+// warning: This file is overwritten by Astro Accelerator
+
+import { PostOrdering, PostFiltering, Accelerator } from 'astro-accelerator-utils';
+import { SITE } from '@config';
+import ArticleList from '@components/ArticleList.astro';
+
+const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('accelerator/components/RecentlyPublished.astro');
+stats.start();
+
+// Properties
+type Props = {
+  lang?: string;
+  count: number;
+  path?: string;
+};
+const { lang = SITE.default.lang, count, path } = Astro.props satisfies Props;
+
+// Logic
+const allPages = accelerator.posts.all();
+const normalizedPath = path
+  ? `/${path.replace(/^\/+/, '').replace(/\/+$/, '')}`
+  : null;
+const pages = allPages
+  .filter(PostFiltering.hasDate)
+  .filter(PostFiltering.isListable)
+  .filter((post) => {
+    if (!normalizedPath) return true;
+    const postUrl = post.url || '';
+    return postUrl === normalizedPath || postUrl.startsWith(`${normalizedPath}/`);
+  })
+  .sort(PostOrdering.sortByPubDateDesc)
+  .slice(0, count);
+
+stats.stop();
+---
+<ArticleList lang={lang} posts={pages} />
