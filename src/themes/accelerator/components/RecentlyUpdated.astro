@@ -3,6 +3,7 @@
 
 import { PostOrdering, PostFiltering, Accelerator } from 'astro-accelerator-utils';
 import { SITE } from '@config';
+import ArticleList from '@components/ArticleList.astro';
 
 const accelerator = new Accelerator(SITE);
 const stats = new accelerator.statistics('accelerator/components/RecentlyUpdated.astro');
@@ -10,10 +11,10 @@ stats.start();
 
 // Properties
 type Props = {
-  lang: string;
+  lang?: string;
   count: number;
 };
-const { lang, count } = Astro.props satisfies Props;
+const { lang = SITE.default.lang, count } = Astro.props satisfies Props;
 
 // Logic
 const allPages = accelerator.posts.all();
@@ -26,13 +27,4 @@ const pages = allPages
 
 stats.stop();
 ---
-<ul class="recent-updates">
-  {pages.map((post) => (
-  <li data-destination={ accelerator.urlFormatter.formatAddress(post.url) }>
-    <a href={ accelerator.urlFormatter.formatAddress(post.url) }>{ accelerator.markdown.getTextFrom(post.frontmatter?.title) }</a>
-    <time datetime={ (post.frontmatter.modDate || post.frontmatter.pubDate).toString() }>
-      { accelerator.dateFormatter.formatDate((post.frontmatter.modDate || post.frontmatter.pubDate), lang) }
-    </time>
-  </li>
-  ))}
-</ul>
+<ArticleList lang={lang} posts={pages} />
