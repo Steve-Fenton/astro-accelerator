@@ -13,17 +13,25 @@ stats.start();
 type Props = {
   lang?: string;
   count: number;
+  path?: string;
 };
-const { lang = SITE.default.lang, count } = Astro.props satisfies Props;
+const { lang = SITE.default.lang, count, path } = Astro.props satisfies Props;
 
 // Logic
 const allPages = accelerator.posts.all();
-const pageCount = allPages.length;
+const normalizedPath = path
+  ? `/${path.replace(/^\/+/, '').replace(/\/+$/, '')}`
+  : null;
 const pages = allPages
   .filter(PostFiltering.hasDate)
   .filter(PostFiltering.isListable)
+  .filter((post) => {
+    if (!normalizedPath) return true;
+    const postUrl = post.url || '';
+    return postUrl === normalizedPath || postUrl.startsWith(`${normalizedPath}/`);
+  })
   .sort(PostOrdering.sortByModDateDesc)
-  .slice(0, Math.min(count, pageCount));
+  .slice(0, count);
 
 stats.stop();
 ---
