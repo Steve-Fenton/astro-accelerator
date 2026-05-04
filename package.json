@@ -34,10 +34,10 @@
         "dts": "tsc ./tests/locate-content.js ./tests/locate-navigation.js ./tests/locate-search.js --allowJs --declaration --emitDeclarationOnly"
     },
     "dependencies": {
-        "@astrojs/mdx": "^5.0.3",
+        "@astrojs/mdx": "^5.0.4",
         "@img/sharp-linux-x64": "^0.34.5",
-        "astro": "^6.1.7",
-        "astro-accelerator-utils": "^0.3.82",
+        "astro": "^6.1.9",
+        "astro-accelerator-utils": "^0.3.83",
         "csv": "^6.5.1",
         "hast-util-from-selector": "^3.0.1",
         "html-to-text": "^9.0.5",
