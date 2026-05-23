@@ -790,6 +790,11 @@ table {
     }
 }
 
+.post-taxonomy.events ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .author-page {
     display: flex;
     gap: var(--grid-gap);

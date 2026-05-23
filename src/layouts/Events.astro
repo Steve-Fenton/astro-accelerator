@@ -25,7 +25,7 @@ const isCurrent = Astro.url.pathname.endsWith("/events/") || Astro.url.pathname.
 ---
 
 <EventsLayout frontmatter={frontmatter} headings={headings}>
-    <nav class="post-taxonomy">
+    <nav class="post-taxonomy events">
         <ul>
             <li>
                 <a href="/events/" aria-current={isCurrent ? "page" : undefined}
