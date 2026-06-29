@@ -1,5 +1,5 @@
 {
-    "version": "6.1.12",
+    "version": "7.0.0",
     "author": "Steve Fenton",
     "name": "astro-accelerator",
     "description": "A super-lightweight, accessible, SEO-friendly starter project for Astro",
@@ -34,10 +34,10 @@
         "dts": "tsc ./tests/locate-content.js ./tests/locate-navigation.js ./tests/locate-search.js --allowJs --declaration --emitDeclarationOnly"
     },
     "dependencies": {
-        "@astrojs/mdx": "^6.0.3",
+        "@astrojs/mdx": "^7.0.0",
         "@img/sharp-linux-x64": "^0.35.2",
-        "astro": "^6.4.8",
-        "astro-accelerator-utils": "^0.3.92",
+        "astro": "^7.0.0",
+        "astro-accelerator-utils": "^0.3.93",
         "csv": "^6.6.0",
         "hast-util-from-selector": "^3.0.1",
         "html-to-text": "^10.0.0",
