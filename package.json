@@ -36,7 +36,7 @@
     "dependencies": {
         "@astrojs/mdx": "^7.0.0",
         "@img/sharp-linux-x64": "^0.35.2",
-        "astro": "^7.0.0",
+        "astro": "^7.0.3",
         "astro-accelerator-utils": "^0.3.93",
         "csv": "^6.6.0",
         "hast-util-from-selector": "^3.0.1",
@@ -47,7 +47,7 @@
         "sharp": "^0.35.2"
     },
     "devDependencies": {
-        "@playwright/test": "^1.61.0",
+        "@playwright/test": "^1.61.1",
         "cspell": "^10.0.1",
         "glob": "^13.0.6",
         "linkinator": "^7.6.1"
