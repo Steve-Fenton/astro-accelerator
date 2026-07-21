@@ -3,6 +3,7 @@ ignoreScripts: true
 minimumReleaseAge: 10080
 minimumReleaseAgeExclude:
   - astro-accelerator-utils
+  - astro@7.1.3
 trustPolicy: no-downgrade
 trustPolicyExclude:
   - 'tinyclip@0.1.13'
