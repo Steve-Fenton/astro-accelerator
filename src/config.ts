@@ -38,7 +38,6 @@ const SITE: Site = {
         month: 'short',
         day: 'numeric',
     },
-    cacheMaxAge: 200,
     featureFlags: {
         stickyNav: { top: 100 },
         codeBlocks: ['copy'],
