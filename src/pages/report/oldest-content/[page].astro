@@ -3,11 +3,12 @@ import {
   PostOrdering,
   PostFiltering,
   Accelerator,
-} from 'astro-accelerator-utils';
-import type { MarkdownInstance } from 'astro-accelerator-utils/types/Astro';
-import type { Page } from 'astro';
-import { SITE } from '@config';
-import PagingLinks from '@components/PagingLinks.astro';
+} from "astro-accelerator-utils";
+import type { MarkdownInstance } from "astro-accelerator-utils/types/Astro";
+import type { Page } from "astro";
+import { SITE } from "@config";
+import PagingLinks from "@components/PagingLinks.astro";
+import pkg from "package.json" with { type: "json" };
 
 // Props
 type Props = {
@@ -21,9 +22,7 @@ const lang = SITE.default.lang;
 
 // Logic
 const accelerator = new Accelerator(SITE);
-const stats = new accelerator.statistics(
-  'report/oldest-content/[page].astro'
-);
+const stats = new accelerator.statistics("report/oldest-content/[page].astro");
 stats.start();
 
 export async function getData() {
@@ -50,7 +49,7 @@ const pageLinks = accelerator.paging.links(
   SITE.pageLinks,
   page.lastPage,
   page.currentPage,
-  page.url.current
+  page.url.current,
 );
 
 stats.stop();
@@ -61,10 +60,16 @@ stats.stop();
   <head>
     <meta charset="utf-8" />
     <title>Oldest content</title>
-    <link rel="stylesheet" href="/css/report.css" />
+    <link
+      rel="stylesheet"
+      href={SITE.subfolder + `/css/report.css?v=${pkg.version ?? Date.now()}`}
+    />
   </head>
   <body>
-    <h2>Report: Oldest content (Page <Fragment content={page.currentPage} />)</h2>
+    <h2>
+      Report: Oldest content (Page <Fragment content={page.currentPage}
+      ></Fragment>)
+    </h2>
     <table>
       <thead>
         <tr>
