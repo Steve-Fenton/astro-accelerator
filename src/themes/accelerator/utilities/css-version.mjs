@@ -34,10 +34,16 @@ if (!version) {
     process.exit(1);
 }
 
-const cssDir = path.join(workingDirectory, 'public', 'css');
+const configSource = await fs.promises.readFile(
+    path.join(workingDirectory, 'src', 'config.ts'),
+    'utf8'
+);
+const subfolder = configSource.match(/subfolder:\s*'([^']*)'/)?.[1] ?? '';
+
+const cssDir = path.join(workingDirectory, 'public', subfolder, 'css');
 const previousVersionLimit = 5;
-const linkRegex = /<link\b[\s\S]*?\bdata-versioned\b[\s\S]*?\/>/g;
-const hrefCssRegex = /`(\/css\/[^`]+)`/;
+const linkRegex = /<link\b[^>]*?\bdata-versioned\b[^>]*?\/>/g;
+const hrefCssRegex = /(['"`])(\/css\/[^'"`]+)\1/;
 
 /**
  * Derive the unversioned base filename from a CSS path in an href.
@@ -115,7 +121,10 @@ async function copyVersionedCss(baseName) {
 }
 
 function rewriteLinkHref(linkTag, versionedName) {
-    return linkTag.replace(hrefCssRegex, `\`/css/${versionedName}\``);
+    return linkTag.replace(
+        hrefCssRegex,
+        (_match, quote) => `${quote}/css/${versionedName}${quote}`
+    );
 }
 
 let content = await fs.promises.readFile(htmlHeadPath, 'utf8');
@@ -142,9 +151,9 @@ for (const match of links) {
         process.exit(1);
     }
 
-    const baseName = getBaseCssName(hrefMatch[1]);
+    const baseName = getBaseCssName(hrefMatch[2]);
     if (!baseName) {
-        console.error(`Could not derive base CSS name from ${hrefMatch[1]}`);
+        console.error(`Could not derive base CSS name from ${hrefMatch[2]}`);
         process.exit(1);
     }
 
