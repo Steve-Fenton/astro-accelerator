@@ -20,15 +20,16 @@
         "url": "https://github.com/Steve-Fenton/astro-accelerator"
     },
     "scripts": {
-        "refresh": "npm version patch && pnpm update --latest && pnpm test",
+        "refresh": "npm version patch && pnpm css-version && pnpm update --latest && pnpm test",
         "update-node": "bash -c 'source $NVM_DIR/nvm.sh && nvm install --lts && npm install -g pnpm'",
         "img": "node ./src/themes/accelerator/utilities/img.mjs",
-        "dev": "node ./src/themes/accelerator/utilities/img.mjs && astro dev",
+        "css-version": "node ./src/themes/accelerator/utilities/css-version.mjs",
+        "dev": "pnpm css-version && node ./src/themes/accelerator/utilities/img.mjs && astro dev",
         "stats": "node ./src/themes/accelerator/utilities/stats.mjs",
         "spellcheck": "git fetch origin main:refs/remotes/origin/main && git diff origin/main --name-only --diff-filter=ACMRTUXB | cspell --no-must-find-files --file-list stdin",
         "test": "astro build && npx playwright install chromium --with-deps && npx playwright test",
         "crawl": "linkinator ./dist --skip \"^(?!http://localhost)\" --skip \"/404/\" --recurse  --verbosity error",
-        "build": "astro build",
+        "build": "pnpm css-version && astro build",
         "preview": "astro preview",
         "astro": "astro",
         "dts": "tsc ./tests/locate-content.js ./tests/locate-navigation.js ./tests/locate-search.js --allowJs --declaration --emitDeclarationOnly"

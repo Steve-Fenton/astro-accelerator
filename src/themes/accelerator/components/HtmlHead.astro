@@ -4,7 +4,6 @@
 import { Accelerator } from "astro-accelerator-utils";
 import type { Frontmatter } from "astro-accelerator-utils/types/Frontmatter";
 import { SITE, OPEN_GRAPH, HEADER_SCRIPTS } from "@config";
-import pkg from "package.json" with { type: "json" };
 
 const accelerator = new Accelerator(SITE);
 const stats = new accelerator.statistics(
@@ -55,11 +54,13 @@ stats.stop();
   <meta name="description" content={frontmatter.description} />
   <link
     rel="stylesheet"
-    href={SITE.subfolder + `/css/vars.css?v=${pkg.version ?? Date.now()}`}
+    href={SITE.subfolder + `/css/vars.7.1.11.css`}
+    data-versioned
   />
   <link
     rel="stylesheet"
-    href={SITE.subfolder + `/css/main.css?v=${pkg.version ?? Date.now()}`}
+    href={SITE.subfolder + `/css/main.7.1.11.css`}
+    data-versioned
   />
   {
     autoMeta("viewport") && (
