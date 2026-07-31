@@ -51,7 +51,7 @@
         "@playwright/test": "^1.61.1",
         "cspell": "^10.0.1",
         "glob": "^13.0.6",
-        "linkinator": "^8.0.0"
+        "linkinator": "^8.0.2"
     },
     "files": [
         "pnpm-workspace.yaml",
