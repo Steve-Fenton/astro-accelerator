@@ -19,6 +19,7 @@ const imageModule = await import(
 );
 const size = imageSize.size;
 const imagePaths = imageModule.imagePaths;
+const supportedImageExtensions = imageModule.supportedImageExtensions;
 
 const imagePath = path.join('public', imagePaths.src);
 const outputPath = path.join('public', imagePaths.dest);
@@ -53,58 +54,52 @@ async function recurseFiles(directory) {
             const nextDirectory = path.join(directory, file.name);
             await recurseFiles(nextDirectory);
         } else {
-            const ext = path.parse(file.name).ext;
+            const ext = path.parse(file.name).ext.toLowerCase();
 
-            switch (ext) {
-                case '.jpg':
-                case '.jpeg':
-                case '.png':
-                case '.webp':
-                    const sourcePath = path.join(directory, file.name);
+            if (supportedImageExtensions.includes(ext)) {
+                const sourcePath = path.join(directory, file.name);
 
-                    const webP = sourcePath.replace(
-                        /.jpg$|.jpeg$|.png$/,
-                        '.webp'
+                const webP = sourcePath.replace(
+                    /.jpg$|.jpeg$|.png$/i,
+                    '.webp'
+                );
+                const info = {
+                    path: sourcePath,
+                    webP: webP,
+                };
+
+                const fullDestination = path.join(
+                    workingDirectory,
+                    outputPath,
+                    'x',
+                    info.path
+                );
+
+                // Only processes images where there is no json metadata file
+                const metaPath = path.join(
+                    workingDirectory,
+                    imagePath,
+                    sourcePath + '.json'
+                );
+
+                if (!fs.existsSync(metaPath)) {
+                    console.log('Processing:', metaPath);
+                    filesToProcess.push(info);
+                } else {
+                    const data = fs.readFileSync(metaPath, 'utf8');
+                    const jsonData = JSON.parse(data);
+                    const date90DaysAgo = new Date(
+                        Date.now() - 90 * 24 * 60 * 60 * 1000
                     );
-                    const info = {
-                        path: sourcePath,
-                        webP: webP,
-                    };
 
-                    const fullDestination = path.join(
-                        workingDirectory,
-                        outputPath,
-                        'x',
-                        info.path
-                    );
-
-                    // Only processes images where there is no json metadata file
-                    const metaPath = path.join(
-                        workingDirectory,
-                        imagePath,
-                        sourcePath + '.json'
-                    );
-
-                    if (!fs.existsSync(metaPath)) {
+                    if (
+                        !jsonData.updated ||
+                        new Date(jsonData.updated) < date90DaysAgo
+                    ) {
                         console.log('Processing:', metaPath);
                         filesToProcess.push(info);
-                    } else {
-                        const data = fs.readFileSync(metaPath, 'utf8');
-                        const jsonData = JSON.parse(data);
-                        const date90DaysAgo = new Date(
-                            Date.now() - 90 * 24 * 60 * 60 * 1000
-                        );
-
-                        if (
-                            !jsonData.updated ||
-                            new Date(jsonData.updated) < date90DaysAgo
-                        ) {
-                            console.log('Processing:', metaPath);
-                            filesToProcess.push(info);
-                        }
                     }
-
-                    break;
+                }
             }
         }
     }

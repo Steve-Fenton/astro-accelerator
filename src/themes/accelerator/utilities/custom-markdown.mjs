@@ -7,6 +7,7 @@
 
 import { SITE } from '/src/config';
 import { size } from '/src/data/image-size.mjs';
+import { supportedImageExtensions } from '/src/data/images.mjs';
 import { h } from 'hastscript';
 import { visit } from 'unist-util-visit';
 import { fromSelector } from 'hast-util-from-selector';
@@ -48,9 +49,19 @@ export function getDestination(uri, s) {
 
 export function getImageInfo(src, className, sizes) {
     const info = {};
+    const ext = path.parse(src).ext.toLowerCase();
+    info.class = (className ?? '' + ' resp-img').trim();
+    info.metadata = null;
+
+    if (!supportedImageExtensions.includes(ext)) {
+        info.src = src;
+        info.srcset = null;
+        info.sizes = null;
+        return info;
+    }
 
     let uri = src;
-    uri = uri.replace(/.jpg|.jpeg|.png/, '.webp');
+    uri = uri.replace(/.jpg|.jpeg|.png/i, '.webp');
 
     const imgFallback = getDestination(src, 'x');
 
@@ -59,7 +70,6 @@ export function getImageInfo(src, className, sizes) {
     const imgLarge = getDestination(uri, size.large);
 
     let nativeSize = size.large;
-    info.metadata = null;
 
     try {
         let metaAddress = path.join(workingDirectory, 'public', src + '.json');
@@ -86,7 +96,6 @@ export function getImageInfo(src, className, sizes) {
 
     info.srcset = srcset;
     info.sizes = sizes;
-    info.class = (className ?? '' + ' resp-img').trim();
 
     if ([imgSmall, imgMedium, imgLarge].includes(src)) {
         info.srcset = null;
