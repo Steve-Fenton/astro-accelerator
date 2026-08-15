@@ -1,6 +1,9 @@
 ---
 // warning: This file is overwritten by Astro Accelerator
 
+import fs from "node:fs";
+import path from "node:path";
+
 import { Accelerator } from "astro-accelerator-utils";
 import type { Frontmatter } from "astro-accelerator-utils/types/Frontmatter";
 import { SITE, OPEN_GRAPH, HEADER_SCRIPTS } from "@config";
@@ -43,6 +46,22 @@ const autoMeta = (name: string) => {
   return pageMeta.filter((m) => m.name.toLowerCase() === name).length === 0;
 };
 
+const pkg = JSON.parse(
+  fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"),
+);
+const cssDir = path.join(process.cwd(), "public", SITE.subfolder, "css");
+
+const cssHref = (baseName: string) => {
+  const baseWithoutExt = baseName.slice(0, -".css".length);
+  const versionedName = `${baseWithoutExt}.${pkg.version}.css`;
+  const versionedPath = path.join(cssDir, versionedName);
+  const fileName = fs.existsSync(versionedPath) ? versionedName : baseName;
+  return SITE.subfolder + `/css/${fileName}`;
+};
+
+const varsCss = cssHref("vars.css");
+const mainCss = cssHref("main.css");
+
 stats.stop();
 ---
 
@@ -52,16 +71,8 @@ stats.stop();
   <meta name="robots" content={"max-image-preview:large, " + robots} />
   <meta name="keywords" content={frontmatter.keywords} />
   <meta name="description" content={frontmatter.description} />
-  <link
-    rel="stylesheet"
-    href={SITE.subfolder + `/css/vars.7.1.14.css`}
-    data-versioned
-  />
-  <link
-    rel="stylesheet"
-    href={SITE.subfolder + `/css/main.7.1.14.css`}
-    data-versioned
-  />
+  <link rel="stylesheet" href={varsCss} />
+  <link rel="stylesheet" href={mainCss} />
   {
     autoMeta("viewport") && (
       <meta
