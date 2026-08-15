@@ -13,6 +13,15 @@ import type { MarkdownInstance } from 'astro-accelerator-utils/types/Astro';
 
 type Frontmatter = MarkdownInstance['frontmatter'];
 
+function escapeXml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
 async function getData() {
   //@ts-ignore
   const allArticles = import.meta.glob(['./**/*.md', './**/*.mdx']);
@@ -75,14 +84,14 @@ async function getData() {
     .map(
       (a) => `
     <entry>
-      <title>${a.frontmatter.title ?? ''}</title>
+      <title>${escapeXml(a.frontmatter.title ?? '')}</title>
       <link href="${SITE.url + a.url}" />
       <id>${SITE.url + accelerator.urlFormatter.formatAddress(a.url)}</id>
       <published>${a.frontmatter.pubDate}</published>
       <updated>${a.frontmatter.modDate ?? a.frontmatter.pubDate}</updated>
-      <summary>${a.frontmatter.description ?? ''}</summary>
+      <summary>${escapeXml(a.frontmatter.description ?? '')}</summary>
       <author>
-        <name>${getAuthorName(a.frontmatter)}</name>
+        <name>${escapeXml(getAuthorName(a.frontmatter))}</name>
       </author>
       <content type="html"><![CDATA[${contentItems[a.url] ?? ''}]]></content>
     </entry>`
@@ -93,8 +102,8 @@ async function getData() {
   return new Response(
     `<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>${SITE.title}</title>
-  <subtitle>${SITE.description}</subtitle>
+  <title>${escapeXml(SITE.title)}</title>
+  <subtitle>${escapeXml(SITE.description)}</subtitle>
   <link href="${SITE.url}${SITE.feedUrl}" rel="self" />
   <link href="${SITE.url}" />
   <id>${SITE.url}${SITE.feedUrl}</id>

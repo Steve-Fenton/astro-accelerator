@@ -7,7 +7,7 @@ const SITE: Site = {
     url: 'https://astro.stevefenton.co.uk',
     useTrailingUrlSlash: true,
     captureStatistics: true,
-    feedUrl: '/articles/feed.xml',
+    feedUrl: '/rss.xml',
     title: 'Astro Accelerator',
     description: 'An Astro quick start project.',
     startYear: '2022',
