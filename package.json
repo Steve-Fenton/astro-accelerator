@@ -1,5 +1,5 @@
 {
-    "version": "7.1.16",
+    "version": "7.1.17",
     "author": "Steve Fenton",
     "name": "astro-accelerator",
     "description": "A super-lightweight, accessible, SEO-friendly starter project for Astro",
@@ -38,7 +38,7 @@
         "@astrojs/markdown-remark": "^7.2.4",
         "@astrojs/mdx": "^7.0.8",
         "@img/sharp-linux-x64": "^0.35.4",
-        "astro": "^7.2.7",
+        "astro": "^7.2.9",
         "astro-accelerator-utils": "^0.3.107",
         "csv": "^6.6.3",
         "hast-util-from-selector": "^3.0.1",
@@ -52,7 +52,7 @@
         "@playwright/test": "^1.62.1",
         "cspell": "^10.1.1",
         "glob": "^13.0.6",
-        "linkinator": "^8.0.4"
+        "linkinator": "^8.1.0"
     },
     "files": [
         "pnpm-workspace.yaml",
