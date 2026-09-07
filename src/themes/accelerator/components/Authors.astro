@@ -29,6 +29,11 @@ const authorImage = authorList?.image?.src
   ? getImageInfo(authorList.image.src, 'author-image', SITE.images.authorSize)
   : null;
 
+const canonical = frontmatter.meta?.find(
+  (meta) => meta.name.toLowerCase() === 'canonical',
+)?.content;
+const canonicalDomain = canonical ? new URL(canonical).hostname : undefined;
+
 stats.stop();
 ---
 {authorList.writers.length > 0 && 
@@ -58,7 +63,11 @@ stats.stop();
       <br /><time datetime={ frontmatter.modDate.toString() } itemprop="dateModified">
         { _(Translations.post.last_modified) + ' ' + accelerator.dateFormatter.formatDate(frontmatter.modDate, lang) }
       </time>
-      }{authorList.mainAuthor &&
+      }
+      {canonical && 
+        <br /><span set:html={ _(Translations.post.originally_published).replace('{link}', `<a href="${canonical}">${canonicalDomain}</a>`) }></span>
+      }
+      {authorList.mainAuthor &&
         <p>{ authorList.mainAuthor.frontmatter.description }</p>
       }
     </div>

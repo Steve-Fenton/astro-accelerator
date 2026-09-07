@@ -63,6 +63,9 @@
         "written_by": {
             "en": "Written by"
         },
+        "originally_published": {
+            "en": "Originally published at {link}"
+        },
         "last_modified": {
             "en": "Revised"
         },

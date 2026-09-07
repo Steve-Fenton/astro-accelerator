@@ -13,6 +13,9 @@ categories:
   - Test Category
 tags:
   - Test Tag
+meta:
+    - name: canonical
+      content: https://example.com/your-canonical-url
 ---
 
 This is an example post with more of the front matter set up, such as except and images.

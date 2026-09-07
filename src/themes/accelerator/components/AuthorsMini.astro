@@ -1,16 +1,16 @@
 ---
 // warning: This file is overwritten by Astro Accelerator
 
-import { Accelerator } from 'astro-accelerator-utils';
-import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
-import { SITE } from '@config';
-import { Translations, Lang } from '@util/Languages';
-import { getImageInfo } from '@util/custom-markdown.mjs';
-import ReadingTime from '@components/ReadingTime.astro';
+import { Accelerator } from "astro-accelerator-utils";
+import type { Frontmatter } from "astro-accelerator-utils/types/Frontmatter";
+import { SITE } from "@config";
+import { Translations, Lang } from "@util/Languages";
+import { getImageInfo } from "@util/custom-markdown.mjs";
+import ReadingTime from "@components/ReadingTime.astro";
 
 const accelerator = new Accelerator(SITE);
 const stats = new accelerator.statistics(
-    'accelerator/components/AuthorsMini.astro'
+    "accelerator/components/AuthorsMini.astro",
 );
 stats.start();
 
@@ -31,8 +31,13 @@ const dateToShow =
 
 // Get image info
 const authorImage = authorList?.image?.src
-    ? getImageInfo(authorList.image.src, 'author-image', SITE.images.authorSize)
+    ? getImageInfo(authorList.image.src, "author-image", SITE.images.authorSize)
     : null;
+
+const canonical = frontmatter.meta?.find(
+    (meta) => meta.name.toLowerCase() === "canonical",
+)?.content;
+const canonicalDomain = canonical ? new URL(canonical).hostname : undefined;
 
 stats.stop();
 ---
@@ -56,8 +61,8 @@ stats.stop();
                     <a
                         href={
                             accelerator.urlFormatter.formatAddress(
-                                authorList.mainAuthor.url
-                            ) + '1/'
+                                authorList.mainAuthor.url,
+                            ) + "1/"
                         }
                         class="author-name">
                         {authorList.mainAuthor.frontmatter.title}
@@ -67,7 +72,7 @@ stats.stop();
                     <a
                         href={
                             accelerator.urlFormatter.formatAddress(writer.url) +
-                            '1/'
+                            "1/"
                         }
                         class="contributor-name">
                         {writer.frontmatter.title}
@@ -78,10 +83,21 @@ stats.stop();
                     datetime={dateToShow.toString()}
                     set:html={accelerator.dateFormatter.formatShortDate(
                         dateToShow,
-                        lang
+                        lang,
                     )}
                 />
                 <ReadingTime lang={lang} frontmatter={frontmatter} />
+                {canonical && (
+                    <span
+                        class="originally-published"
+                        set:html={_(
+                            Translations.post.originally_published,
+                        ).replace(
+                            "{link}",
+                            `<a href="${canonical}">${canonicalDomain}</a>`,
+                        )}
+                    />
+                )}
             </div>
         </div>
     )
