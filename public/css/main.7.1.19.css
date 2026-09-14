@@ -734,10 +734,14 @@ table {
         font-size: var(--font-size-meta);
         margin: 0 0 var(--paragraph-margin) 0;
 
+        a {
+            text-decoration: none;
+        }
+
         & > .author-info {
 
-            & > *:nth-child(n + 3)::before {
-                content: '|';
+            & > *:nth-child(n + 2):not(:last-child)::after {
+                content: '•';
                 padding: 0 0.3rem;
                 opacity: 0.5;
             }
@@ -747,6 +751,13 @@ table {
                 height: 1rem;
                 margin: 0 0.3rem 0 0;
                 width: 1rem;
+                transform: translateY(-0.1em);
+            }
+        }
+
+        & .originally-published {
+            @media (max-width: 860px) {
+                display: block;
             }
         }
     }
