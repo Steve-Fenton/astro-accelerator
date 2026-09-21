@@ -819,6 +819,7 @@ table {
 .author-page>img {
     align-self: self-start;
     width: 100%;
+    height: auto;
 
     @media (max-width: 860px) {
         display: block;
