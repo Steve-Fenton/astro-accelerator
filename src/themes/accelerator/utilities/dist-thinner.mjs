@@ -32,8 +32,8 @@ function getDestinationFilePathless(source, s) {
         s.toString(),
         source
     );
-    destination = destination.replace(path.parse(destination).ext, '');
-    return destination;
+    const parsed = path.parse(destination);
+    return path.join(parsed.dir, parsed.name);
 }
 
 async function recurseFiles(directory) {
@@ -57,7 +57,7 @@ async function recurseFiles(directory) {
                     const sourcePath = path.join(directory, file.name);
 
                     const avif = sourcePath.replace(
-                        /.jpg$|.jpeg$|.png$|.webp$/,
+                        /\.(jpg|jpeg|png|webp)$/i,
                         '.avif'
                     );
                     const info = {
