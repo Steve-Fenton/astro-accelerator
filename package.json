@@ -39,8 +39,8 @@
         "@astrojs/markdown-remark": "^7.3.1",
         "@astrojs/mdx": "^8.0.1",
         "@img/sharp-linux-x64": "^0.35.4",
-        "astro": "^7.3.2",
-        "astro-accelerator-utils": "^0.3.109",
+        "astro": "^7.3.3",
+        "astro-accelerator-utils": "^0.3.110",
         "csv": "^6.6.3",
         "hast-util-from-selector": "^3.0.1",
         "html-to-text": "^10.0.1",
@@ -51,7 +51,7 @@
     },
     "devDependencies": {
         "@playwright/test": "^1.63.0",
-        "cspell": "^10.3.1",
+        "cspell": "^10.3.3",
         "glob": "^13.0.6",
         "linkinator": "^8.1.0",
         "rimraf": "^6.1.3"
