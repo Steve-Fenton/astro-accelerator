@@ -23,6 +23,7 @@
         "refresh": "npm version patch && pnpm css-version && pnpm update --latest && pnpm test",
         "update-node": "bash -c 'source $NVM_DIR/nvm.sh && nvm install --lts && npm install -g pnpm'",
         "img": "node ./src/themes/accelerator/utilities/img.mjs",
+        "img:reset": "rimraf --glob 'public/img/**/*.json'",
         "css-version": "node ./src/themes/accelerator/utilities/css-version.mjs",
         "dev": "pnpm css-version && node ./src/themes/accelerator/utilities/img.mjs && astro dev",
         "stats": "node ./src/themes/accelerator/utilities/stats.mjs",
@@ -52,7 +53,8 @@
         "@playwright/test": "^1.63.0",
         "cspell": "^10.3.1",
         "glob": "^13.0.6",
-        "linkinator": "^8.1.0"
+        "linkinator": "^8.1.0",
+        "rimraf": "^6.1.3"
     },
     "files": [
         "pnpm-workspace.yaml",
