@@ -13,7 +13,7 @@ test('Article meta', async ({ page }) => {
   const cats = find.categories();
   const tags = find.tags();
 
-  await expect(image).toHaveAttribute('src', '/i/400/authors/steve-fenton.webp');
+  await expect(image).toHaveAttribute('src', '/i/400/authors/steve-fenton.avif');
   await expect(name).toHaveAttribute('href', '/authors/steve-fenton/1/');
 
   await expect(published).toHaveAttribute('datetime', '2022-09-05T00:00:00.000Z')

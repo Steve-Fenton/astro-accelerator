@@ -145,9 +145,9 @@ This creates the following HTML (or similar):
     alt="Book cover"
     loading="lazy"
     srcset="
-        /i/400/frankenstein.webp  400w,
-        /i/700/frankenstein.webp  700w,
-        /i/1000/frankenstein.webp,
+        /i/400/frankenstein.avif  400w,
+        /i/700/frankenstein.avif  700w,
+        /i/1000/frankenstein.avif,
         1000w
     "
     sizes="(max-width: 860px) 100vw, 66vw"

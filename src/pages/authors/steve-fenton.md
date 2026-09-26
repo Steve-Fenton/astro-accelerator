@@ -10,7 +10,7 @@ meta:
     - name: 'fediverse:creator'
       content: '@stevefenton@mastodon.social'
 bannerImage:
-    src: /i/400/authors/steve-fenton.webp
+    src: /i/400/authors/steve-fenton.avif
     alt: Dummy image
 summary: >-
     Steve Fenton's profile is a block of markdown.

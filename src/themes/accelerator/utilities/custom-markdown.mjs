@@ -61,7 +61,7 @@ export function getImageInfo(src, className, sizes) {
     }
 
     let uri = src;
-    uri = uri.replace(/.jpg|.jpeg|.png/i, '.webp');
+    uri = uri.replace(/.jpg|.jpeg|.png|.webp/i, '.avif');
 
     const imgFallback = getDestination(src, 'x');
 

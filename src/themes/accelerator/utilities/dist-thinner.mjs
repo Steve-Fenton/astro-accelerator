@@ -53,15 +53,16 @@ async function recurseFiles(directory) {
                 case '.jpeg':
                 case '.png':
                 case '.webp':
+                case '.avif':
                     const sourcePath = path.join(directory, file.name);
 
-                    const webP = sourcePath.replace(
-                        /.jpg$|.jpeg$|.png$/,
-                        '.webp'
+                    const avif = sourcePath.replace(
+                        /.jpg$|.jpeg$|.png$|.webp$/,
+                        '.avif'
                     );
                     const info = {
                         path: sourcePath,
-                        webP: webP,
+                        avif: avif,
                     };
 
                     // Only processes images where there is no json metadata file
@@ -116,6 +117,9 @@ for (const file of filesToProcess) {
         case '.webp':
             fs.unlinkSync(destination + '.webp');
             break;
+        case '.avif':
+            fs.unlinkSync(destination + '.avif');
+            break;
     }
 
     const metaFile = source + '.json';
@@ -130,6 +134,6 @@ for (const file of filesToProcess) {
             size[key]
         );
 
-        fs.unlinkSync(resizeDestination + '.webp');
+        fs.unlinkSync(resizeDestination + '.avif');
     }
 }

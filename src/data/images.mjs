@@ -6,4 +6,4 @@ export const imagePaths = {
 };
 
 /** Image formats that can be resized and served via srcset */
-export const supportedImageExtensions = ['.jpg', '.jpeg', '.png', '.webp'];
+export const supportedImageExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.avif'];

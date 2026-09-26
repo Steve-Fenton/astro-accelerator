@@ -19,7 +19,7 @@ These will be used to create a set of images to use on your site.
 
 JPEG and PNG images in the `/public/img/` folder will be re-saved with compression to `/public/i/x/`.
 
-They will also have WEBP alternatives created at different sizes, for use in automatic responsive image sets.
+They will also have AVIF alternatives created at different sizes, for use in automatic responsive image sets.
 
 You can run this manually using `npm run img`. Only changed images will be processed.
 
@@ -32,9 +32,9 @@ By default, this is part of the `npm run dev` script in `package.json` for Astro
 As part of the conversion, a set of sizes will be created to use with responsive images. For example, if you have an image named `/public/img/example.png` the following images will be generated:
 
 - `/public/i/x/example.png` (smaller file size)
-- `/public/i/400/example.webp` (400px wide WEBP)
-- `/public/i/700/example.webp` (700px wide WEBP)
-- `/public/i/1000/example.webp` (1000px wide WEBP)
+- `/public/i/400/example.avif` (400px wide AVIF)
+- `/public/i/700/example.avif` (700px wide AVIF)
+- `/public/i/1000/example.avif` (1000px wide AVIF)
 
 A metadata file will be placed next to the image, named `example.png.json`.
 
@@ -56,7 +56,7 @@ If you update an image, delete the metadata file to update all the resized versi
 
 If you use the markdown extension for images, responsive source sets and sizes will be added for you.
 
-The responsive source sets will load an optimal WEBP image based on the user's device size.
+The responsive source sets will load an optimal AVIF image based on the user's device size.
 
 ```markdown
 :img{
@@ -79,7 +79,7 @@ When this tag is processed, it will create HTML *similar* to the following (the 
     width="1000"
     height="663"
     alt="A diagram showing web requests routed to different web servers"
-    srcset="/i/400/example.webp 400w, /i/600/example.webp 600w, /i/1000/example.webp, 1000w"
+    srcset="/i/400/example.avif 400w, /i/600/example.avif 600w, /i/1000/example.avif, 1000w"
     sizes="(max-width: 860px) 100vw, 66vw"
     class="resp-img">
 ```

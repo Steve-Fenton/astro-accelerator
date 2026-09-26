@@ -59,13 +59,13 @@ async function recurseFiles(directory) {
             if (supportedImageExtensions.includes(ext)) {
                 const sourcePath = path.join(directory, file.name);
 
-                const webP = sourcePath.replace(
-                    /.jpg$|.jpeg$|.png$/i,
-                    '.webp'
+                const avif = sourcePath.replace(
+                    /.jpg$|.jpeg$|.png$|.webp$/i,
+                    '.avif'
                 );
                 const info = {
                     path: sourcePath,
-                    webP: webP,
+                    avif: avif,
                 };
 
                 const fullDestination = path.join(
@@ -131,6 +131,11 @@ for (const file of filesToProcess) {
                 .webp({ quality: 80 })
                 .toFile(destination + '.webp');
             break;
+        case '.avif':
+            sharp(source)
+                .avif({ quality: 80 })
+                .toFile(destination + '.avif');
+            break;
     }
 
     const info = await sharp(source).metadata();
@@ -159,13 +164,13 @@ for (const file of filesToProcess) {
             // Only resize if the image is larger than the target size
             sharp(source)
                 .resize(size[key], null)
-                .webp({ quality: 90 })
-                .toFile(resizeDestination + '.webp');
+                .avif({ quality: 90 })
+                .toFile(resizeDestination + '.avif');
         } else {
             // Don't resize as it's smaller than target size
             sharp(source)
-                .webp({ quality: 90 })
-                .toFile(resizeDestination + '.webp');
+                .avif({ quality: 90 })
+                .toFile(resizeDestination + '.avif');
         }
     }
 }
