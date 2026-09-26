@@ -159,17 +159,18 @@ for (const file of filesToProcess) {
         await createDestinationFolder(resizeDestination);
 
         const metadata = await sharp(source).metadata();
+        const avifQuality = 80;
 
         if (metadata.width > size[key]) {
             // Only resize if the image is larger than the target size
             sharp(source)
                 .resize(size[key], null)
-                .avif({ quality: 90 })
+                .avif({ quality: avifQuality })
                 .toFile(resizeDestination + '.avif');
         } else {
             // Don't resize as it's smaller than target size
             sharp(source)
-                .avif({ quality: 90 })
+                .avif({ quality: avifQuality })
                 .toFile(resizeDestination + '.avif');
         }
     }
