@@ -22,6 +22,18 @@ function escapeXml(text: string): string {
     .replace(/'/g, '&apos;');
 }
 
+function getAbsoluteImageUrl(src: unknown): string | undefined {
+  if (typeof src !== 'string' || src.length === 0) {
+    return undefined;
+  }
+
+  try {
+    return new URL(src, SITE.url).href;
+  } catch {
+    return undefined;
+  }
+}
+
 async function getData() {
   //@ts-ignore
   const allArticles = import.meta.glob(['./**/*.md', './**/*.mdx']);
@@ -82,7 +94,9 @@ async function getData() {
     .sort(PostOrdering.sortByModDateDesc)
     .slice(0, limit)
     .map(
-      (a) => `
+      (a) => {
+        const imageUrl = getAbsoluteImageUrl(a.frontmatter.bannerImage?.src);
+        return `
     <entry>
       <title>${escapeXml(a.frontmatter.title ?? '')}</title>
       <link href="${SITE.url + a.url}" />
@@ -90,11 +104,13 @@ async function getData() {
       <published>${a.frontmatter.pubDate}</published>
       <updated>${a.frontmatter.modDate ?? a.frontmatter.pubDate}</updated>
       <summary>${escapeXml(a.frontmatter.description ?? '')}</summary>
+      ${imageUrl ? `<link rel="enclosure" href="${escapeXml(imageUrl)}" type="image/*" />` : ''}
       <author>
         <name>${escapeXml(getAuthorName(a.frontmatter))}</name>
       </author>
-      <content type="html"><![CDATA[${contentItems[a.url] ?? ''}]]></content>
-    </entry>`
+      <content type="html"><![CDATA[${(a.url && contentItems[a.url]) ?? ''}]]></content>
+    </entry>`;
+      }
     );
 
   stats.stop();
