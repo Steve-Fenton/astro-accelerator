@@ -22,18 +22,6 @@ function escapeXml(text: string): string {
     .replace(/'/g, '&apos;');
 }
 
-function getAbsoluteImageUrl(src: unknown): string | undefined {
-  if (typeof src !== 'string' || src.length === 0) {
-    return undefined;
-  }
-
-  try {
-    return new URL(src, SITE.url).href;
-  } catch {
-    return undefined;
-  }
-}
-
 async function getData() {
   //@ts-ignore
   const allArticles = import.meta.glob(['./**/*.md', './**/*.mdx']);
@@ -95,7 +83,6 @@ async function getData() {
     .slice(0, limit)
     .map(
       (a) => {
-        const imageUrl = getAbsoluteImageUrl(a.frontmatter.bannerImage?.src);
         return `
     <entry>
       <title>${escapeXml(a.frontmatter.title ?? '')}</title>
@@ -104,7 +91,9 @@ async function getData() {
       <published>${a.frontmatter.pubDate}</published>
       <updated>${a.frontmatter.modDate ?? a.frontmatter.pubDate}</updated>
       <summary>${escapeXml(a.frontmatter.description ?? '')}</summary>
-      ${imageUrl ? `<link rel="enclosure" href="${escapeXml(imageUrl)}" type="image/*" />` : ''}
+      ${a.frontmatter.bannerImage?.src
+        ? `<link rel="enclosure" href="${SITE.url + a.frontmatter.bannerImage?.src}" type="image/*" />`
+        : ''}
       <author>
         <name>${escapeXml(getAuthorName(a.frontmatter))}</name>
       </author>
