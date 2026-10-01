@@ -116,7 +116,8 @@ jobs:
         needs: build
         runs-on: ubuntu-latest
         steps:
-            - uses: yanovation/delete-old-actions@v1
-              with:
-                  token: ${{ secrets.CLEAN_ACTIONS_TOKEN }}
-                  days-ago: 30
+          - uses: actions/checkout@v7
+          - uses: yanovian/prune-old-actions@v1
+            with:
+              token: ${{ secrets.CLEAN_ACTIONS_TOKEN }}
+              days-ago: 30
