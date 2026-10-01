@@ -9,6 +9,8 @@ import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
 
+const quality = 70;
+
 const workingDirectory = process.cwd();
 
 const imageSize = await import(
@@ -128,12 +130,12 @@ for (const file of filesToProcess) {
             break;
         case '.webp':
             sharp(source)
-                .webp({ quality: 80 })
+                .webp({ quality: quality })
                 .toFile(destination + '.webp');
             break;
         case '.avif':
             sharp(source)
-                .avif({ quality: 80 })
+                .avif({ quality: quality })
                 .toFile(destination + '.avif');
             break;
     }
@@ -159,18 +161,17 @@ for (const file of filesToProcess) {
         await createDestinationFolder(resizeDestination);
 
         const metadata = await sharp(source).metadata();
-        const avifQuality = 80;
 
         if (metadata.width > size[key]) {
             // Only resize if the image is larger than the target size
             sharp(source)
                 .resize(size[key], null)
-                .avif({ quality: avifQuality })
+                .avif({ quality: quality })
                 .toFile(resizeDestination + '.avif');
         } else {
             // Don't resize as it's smaller than target size
             sharp(source)
-                .avif({ quality: avifQuality })
+                .avif({ quality: quality })
                 .toFile(resizeDestination + '.avif');
         }
     }

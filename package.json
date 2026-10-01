@@ -1,5 +1,5 @@
 {
-    "version": "7.1.28",
+    "version": "7.1.29",
     "author": "Steve Fenton",
     "name": "astro-accelerator",
     "description": "A super-lightweight, accessible, SEO-friendly starter project for Astro",
@@ -8,7 +8,6 @@
         "themes"
     ],
     "type": "module",
-    "packageManager": "pnpm@12.6.0",
     "engines": {
         "node": ">=24",
         "pnpm": ">=10"
