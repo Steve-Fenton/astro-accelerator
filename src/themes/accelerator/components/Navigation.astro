@@ -36,7 +36,7 @@ stats.stop();
   <h2 class="site-nav-title">{_(Translations.navigation.title)}</h2>
   <ul>
     {
-      pages
+      [...pages]
         .sort((a, b) => a.order - b.order)
         .map((page) => <NavigationItem lang={lang} page={page} />)
     }

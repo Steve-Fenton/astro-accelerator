@@ -38,6 +38,7 @@ type Article = {
   title: string;
   frontmatter: Record<string, any>;
   img: ImageInfo | null;
+  imageAlt: string;
 };
 
 const articles: Article[] = [];
@@ -47,9 +48,10 @@ for (let p of posts.filter(PostFiltering.isListable)) {
     url: p.url ?? "",
     title: await accelerator.markdown.getTextFrom(p.frontmatter?.title),
     frontmatter: p.frontmatter,
-    img: p.frontmatter.bannerImage
+    img: p.frontmatter.bannerImage?.src
       ? getImageInfo(p.frontmatter.bannerImage.src, "", SITE.images.listerSize)
       : null,
+    imageAlt: p.frontmatter.bannerImage?.alt ?? "",
   };
 
   articles.push(item);
@@ -70,7 +72,7 @@ stats.stop();
       <li
         class="list-item"
         data-destination={accelerator.urlFormatter.formatAddress(post.url)}
-        data-image={(post.frontmatter.bannerImage?.src.length > 0).toString()}>
+        data-image={Boolean(post.img).toString()}>
         <article>
           <div class="list-item-image">
             {post.img && (
@@ -78,7 +80,7 @@ stats.stop();
                 srcset={post.img.srcset}
                 sizes={post.img.sizes}
                 src={post.img.src}
-                alt={post.frontmatter.bannerImage.alt}
+                alt={post.imageAlt}
                 class={post.img.class}
                 width={post.img.metadata?.width}
                 height={post.img.metadata?.height}

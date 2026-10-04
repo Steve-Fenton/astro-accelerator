@@ -26,7 +26,7 @@ const _ = Lang(lang);
 const currentUrl = new URL(Astro.request.url);
 const navPages = accelerator.navigation.breadcrumbs(currentUrl, SITE.subfolder, breadcrumbs?.length ?? 0);
 
-let metaIndex = navPages.length;
+let metaIndex = navPages.length + 1;
 
 stats.stop();
 ---
@@ -36,7 +36,7 @@ stats.stop();
         {
             navPages.map((page, index) => (
       <li property="itemListElement" typeof="ListItem">
-          <meta property="position" content={index.toString()} />
+          <meta property="position" content={(index + 1).toString()} />
           <a property="item" typeof="WebPage" href={accelerator.urlFormatter.formatAddress(page.url)} aria-current={page.ariaCurrent ? page.ariaCurrent : null} rel={page.rel}>
               <span property="name">{page.title}</span></a>
       </li>

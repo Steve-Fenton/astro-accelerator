@@ -37,7 +37,12 @@ const authorImage = authorList?.image?.src
 const canonical = frontmatter.meta?.find(
     (meta) => meta.name.toLowerCase() === "canonical",
 )?.content;
-const canonicalDomain = canonical ? new URL(canonical).hostname : undefined;
+let canonicalDomain: string | undefined;
+try {
+    canonicalDomain = canonical ? new URL(canonical).hostname : undefined;
+} catch {
+    canonicalDomain = undefined;
+}
 
 stats.stop();
 ---
@@ -87,7 +92,7 @@ stats.stop();
                     )}
                 />
                 <ReadingTime lang={lang} frontmatter={frontmatter} />
-                {canonical && (
+                {canonicalDomain && (
                     <span
                         class="originally-published"
                         set:html={_(

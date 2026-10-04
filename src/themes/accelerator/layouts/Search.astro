@@ -39,13 +39,12 @@ stats.stop();
         autocomplete="off"
         data-sourcedata={SITE.subfolder + '/search.json'}>
         <fieldset>
-            <input type="hidden" name={SITE.search.fallbackSite ?? 'q'} value={'site:' + siteUrl} />
+            <input type="hidden" name={SITE.search.fallbackQuery ?? 'q'} value={'site:' + siteUrl} />
             <div>
                 <label for="site-search-query">{_(Translations.search.search_for)}</label>
                 <input
-                    autofocus="autofocus"
                     type="text"
-                    name={SITE.search.fallbackSite ?? 'q'}
+                    name={SITE.search.fallbackQuery ?? 'q'}
                     id="site-search-query"
                     spellcheck="true"
                     autocomplete="off"

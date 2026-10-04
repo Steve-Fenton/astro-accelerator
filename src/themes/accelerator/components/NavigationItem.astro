@@ -33,7 +33,7 @@ stats.stop();
   <details class="sub-nav" open={ page.isOpen }>
     <summary><span>{ page.section }</span></summary>
     <ul>
-      { page.children.sort((a, b) => a.order - b.order).map((page) => (
+      { [...page.children].sort((a, b) => a.order - b.order).map((page) => (
           <Astro.self lang={ lang } page={ page } />
       ))}
     </ul>

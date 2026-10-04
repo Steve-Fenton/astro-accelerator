@@ -25,20 +25,25 @@ const _ = Lang(lang);
 const authorList = accelerator.authors.forPost(frontmatter);
 
 // Get image info
-const authorImage = authorList?.image?.src 
+const authorImage = authorList?.image?.src
   ? getImageInfo(authorList.image.src, 'author-image', SITE.images.authorSize)
   : null;
 
 const canonical = frontmatter.meta?.find(
   (meta) => meta.name.toLowerCase() === 'canonical',
 )?.content;
-const canonicalDomain = canonical ? new URL(canonical).hostname : undefined;
+let canonicalDomain: string | undefined;
+try {
+  canonicalDomain = canonical ? new URL(canonical).hostname : undefined;
+} catch {
+  canonicalDomain = undefined;
+}
 
 stats.stop();
 ---
-{authorList.writers.length > 0 && 
+{authorList.writers.length > 0 &&
 <div class="post-meta">
-  {authorImage && 
+  {authorImage &&
   <img
     srcset={ authorImage.srcset }
     sizes={ authorImage.sizes }
@@ -64,7 +69,7 @@ stats.stop();
         { _(Translations.post.last_modified) + ' ' + accelerator.dateFormatter.formatDate(frontmatter.modDate, lang) }
       </time>
       }
-      {canonical && 
+      {canonicalDomain &&
         <br /><span set:html={ _(Translations.post.originally_published).replace('{link}', `<a href="${canonical}">${canonicalDomain}</a>`) }></span>
       }
       {authorList.mainAuthor &&

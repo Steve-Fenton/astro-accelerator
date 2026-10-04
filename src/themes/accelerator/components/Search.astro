@@ -24,8 +24,9 @@ const accelerator = new Accelerator(SITE);
 {showSearch &&
   <form method="GET" action={SITE.search.fallbackUrl ?? "https://www.google.com/search"} role="search" autocomplete="off" data-sourcedata={SITE.subfolder + "/search.json"}>
     <fieldset>
-      <input type="hidden" name={SITE.search.fallbackSite ?? "q"} value={"site:" + siteUrl} />
-      <input type="text" name={SITE.search.fallbackSite ?? "q"} class="site-search-query" placeholder={_(Translations.search.search_for)} spellcheck="true" autocomplete="off" autofocus="autofocus" />
+      <input type="hidden" name={SITE.search.fallbackQuery ?? "q"} value={"site:" + siteUrl} />
+      <label class="visually-hidden" for="site-search-query">{_(Translations.search.search_for)}</label>
+      <input id="site-search-query" type="text" name={SITE.search.fallbackQuery ?? "q"} class="site-search-query" placeholder={_(Translations.search.search_for)} spellcheck="true" autocomplete="off" />
       <button type="submit" set:html={_(Translations.search.submit)}></button>
     </fieldset>
   </form>
