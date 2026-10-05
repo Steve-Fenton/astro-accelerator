@@ -223,40 +223,6 @@ Bool. Signals that pages will be generated, which means navigation links will be
 paged: true
 ```
 
-### Page visibility
-
-#### listable
-
-Bool. Makes the page not visible anywhere, setting search, sitemap, and menu off in one flag.
-
-```yaml
-listable: false
-```
-
-#### navSearch
-
-Bool. Can be used to remove the page from the site search.
-
-```yaml
-navSearch: false
-```
-
-#### navSitemap
-
-Bool. Can be used to remove the page from the site map.
-
-```yaml
-navSitemap: false
-```
-
-#### navMenu
-
-Bool. Can be used to remove the page from the menu.
-
-```yaml
-navMenu: false
-```
-
 ### redirect
 
 String. When used with a redirection layout (for example `src/layouts/Redirect.astro`) this specifies the relative or fully qualified address to redirect the user to.
@@ -271,6 +237,40 @@ String. Allows control over indexability. By default `index, follow` is used, so
 
 ```yaml
 robots: noindex, follow
+```
+
+## Page visibility
+
+### listable
+
+Bool. Makes the page not visible anywhere, setting search, sitemap, and menu off in one flag.
+
+```yaml
+listable: false
+```
+
+### navSearch
+
+Bool. Can be used to remove the page from the site search.
+
+```yaml
+navSearch: false
+```
+
+### navSitemap
+
+Bool. Can be used to remove the page from the site map.
+
+```yaml
+navSitemap: false
+```
+
+### navMenu
+
+Bool. Can be used to remove the page from the menu.
+
+```yaml
+navMenu: false
 ```
 
 ## Limited Markdown

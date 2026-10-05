@@ -42,6 +42,7 @@ summary {
     color: var(--fore-link);
     cursor: pointer;
     text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 30%, transparent);
 
     @media (prefers-reduced-motion: no-preference) {
         transition: all 200ms ease-in-out;
@@ -462,6 +463,32 @@ table {
         & a {
             display: block;
             padding: 0.5rem 1rem;
+            font-size: 1rem;
+        }
+
+        & ol {
+            display: flex;
+            flex-wrap: wrap;
+
+            & li {
+                text-align: left;
+                hyphens: none;
+
+                & a {
+                    border-radius: var(--block-radius);
+                    background-color: var(--aft-block);
+                    color: var(--fore-link);
+                    display: inline-block;
+                    margin-inline: 0 0.3rem;
+                    margin-block: 0 0.3rem;
+                    font-size: var(--font-size-meta);
+                }
+
+                & a:hover, a:focus {
+                    background-color: var(--fore-link-alt);
+                    color: var(--aft);
+                }
+            }
         }
     }
 }
