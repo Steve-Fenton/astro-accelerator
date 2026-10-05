@@ -418,7 +418,7 @@ table {
     }
 }
 
-/* Overlay (Mobile Navigation, Search) */
+/* Overlay (Mobile Navigation) */
 
 .overlay {
     background-color: var(--aft);
@@ -599,6 +599,8 @@ table {
     padding-left: 0.6rem;
 }
 
+/* Post meta */
+
 .post-meta {
     &:not(.mini) {
         border-top: 1px solid var(--icon-block);
@@ -731,8 +733,6 @@ table {
         margin-inline: auto;
     }
 }
-
-/* Taxonomy */
 
 /* Video */
 
