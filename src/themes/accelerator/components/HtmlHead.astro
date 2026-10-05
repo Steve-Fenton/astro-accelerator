@@ -52,6 +52,10 @@ const pkg = JSON.parse(
 const cssDir = path.join(process.cwd(), "public", SITE.subfolder, "css");
 
 const cssHref = (baseName: string) => {
+  if (!import.meta.env.PROD) {
+    return SITE.subfolder + `/css/${baseName}`;
+  }
+
   const baseWithoutExt = baseName.slice(0, -".css".length);
   const versionedName = `${baseWithoutExt}.${pkg.version}.css`;
   const versionedPath = path.join(cssDir, versionedName);

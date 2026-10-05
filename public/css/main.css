@@ -455,32 +455,13 @@ table {
 
     & ol {
         list-style: none;
+        margin-block: 0;
     }
 
     & li {
         & a {
             display: block;
             padding: 0.5rem 1rem;
-        }
-
-        &.toc-lev-2 {
-            margin-left: 0rem;
-        }
-
-        &.toc-lev-3 a {
-            margin-left: 1rem;
-        }
-
-        &.toc-lev-4 a {
-            margin-left: 2rem;
-        }
-
-        &.toc-lev-5 a {
-            margin-left: 3rem;
-        }
-
-        &.toc-lev-6 a {
-            margin-left: 4rem;
         }
     }
 }

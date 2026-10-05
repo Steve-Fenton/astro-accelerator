@@ -34,6 +34,22 @@ if (maxLevel == null) {
   maxLevel = 3;
 }
 
+const tocItems: {
+  heading: (typeof headings)[number];
+  children: (typeof headings)[number][];
+}[] = [];
+let currentParent: (typeof tocItems)[number] | undefined;
+
+for (const heading of (headings ?? []).filter((h) => h.depth <= maxLevel)) {
+  if (heading.depth === 3 && currentParent) {
+    currentParent.children.push(heading);
+  } else {
+    const item = { heading, children: [] };
+    tocItems.push(item);
+    currentParent = heading.depth === 2 ? item : undefined;
+  }
+}
+
 if (typeof expanded === "number") {
   openInteraction = expanded;
 } else if (expanded === true) {
@@ -49,13 +65,20 @@ stats.stop();
       <details open={openAttribute} data-openon={openInteraction}>
         <summary>{_(Translations.toc.title)}</summary>
         <ol>
-          {headings
-            .filter((h) => h.depth <= maxLevel)
-            .map((heading) => (
-              <li class={"toc-lev-" + heading.depth}>
-                <a href={"#" + heading.slug}>{heading.text}</a>
-              </li>
-            ))}
+          {tocItems.map(({ heading, children }) => (
+            <li class={"toc-lev-" + heading.depth}>
+              <a href={"#" + heading.slug}>{heading.text}</a>
+              {children.length > 0 && (
+                <ol>
+                  {children.map((child) => (
+                    <li class={"toc-lev-" + child.depth}>
+                      <a href={"#" + child.slug}>{child.text}</a>
+                    </li>
+                  ))}
+                </ol>
+              )}
+            </li>
+          ))}
         </ol>
       </details>
     </nav>
@@ -83,6 +106,10 @@ stats.stop();
 
   .page-toc li.toc-lev-3 a {
     margin-left: 1rem;
+  }
+
+  .page-toc ol ol li.toc-lev-3 a {
+    margin-left: 0;
   }
 
   .page-toc li.toc-lev-4 a {
