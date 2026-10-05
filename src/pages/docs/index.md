@@ -1,8 +1,8 @@
 ---
-title: Documentations
-crumbTitle: Documentations
+title: Documentation
+crumbTitle: Documentation
 navTitle: Overview
-navSection: Documentations
+navSection: Documentation
 navOrder: 100
 pubDate: 2026-04-26
 keywords: documentation,astro,accelerator

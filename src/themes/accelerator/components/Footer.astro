@@ -44,6 +44,30 @@ stats.stop();
 </footer>
 
 <style is:global>
+  .site-footer {
+    background-color: var(--aft-block);
+    margin-top: 4rem;
+    padding: 0.5rem 0;
+    text-align: center;
+    width: 100%;
+
+    & h2 {
+      padding-top: 2rem;
+    }
+
+    & a {
+      color: var(--fore-link);
+      display: block;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        color: var(--fore-link-alt);
+      }
+    }
+  }
+
   .footer-columns {
     display: grid;
     gap: var(--block-gap);

@@ -1,13 +1,15 @@
 ---
 // warning: This file is overwritten by Astro Accelerator
 
-import { Accelerator } from 'astro-accelerator-utils';
-import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
-import { SITE } from '@config';
-import { Translations, Lang } from '@util/Languages';
+import { Accelerator } from "astro-accelerator-utils";
+import type { Frontmatter } from "astro-accelerator-utils/types/Frontmatter";
+import { SITE } from "@config";
+import { Translations, Lang } from "@util/Languages";
 
 const accelerator = new Accelerator(SITE);
-const stats = new accelerator.statistics('accelerator/components/Breadcrumbs.astro');
+const stats = new accelerator.statistics(
+    "accelerator/components/Breadcrumbs.astro",
+);
 stats.start();
 
 // Properties
@@ -24,7 +26,11 @@ const _ = Lang(lang);
 
 // Logic
 const currentUrl = new URL(Astro.request.url);
-const navPages = accelerator.navigation.breadcrumbs(currentUrl, SITE.subfolder, breadcrumbs?.length ?? 0);
+const navPages = accelerator.navigation.breadcrumbs(
+    currentUrl,
+    SITE.subfolder,
+    breadcrumbs?.length ?? 0,
+);
 
 let metaIndex = navPages.length + 1;
 
@@ -35,22 +41,77 @@ stats.stop();
     <ol vocab="http://schema.org/" typeof="BreadcrumbList">
         {
             navPages.map((page, index) => (
-      <li property="itemListElement" typeof="ListItem">
-          <meta property="position" content={(index + 1).toString()} />
-          <a property="item" typeof="WebPage" href={accelerator.urlFormatter.formatAddress(page.url)} aria-current={page.ariaCurrent ? page.ariaCurrent : null} rel={page.rel}>
-              <span property="name">{page.title}</span></a>
-      </li>
+                <li property="itemListElement" typeof="ListItem">
+                    <meta
+                        property="position"
+                        content={(index + 1).toString()}
+                    />
+                    <a
+                        property="item"
+                        typeof="WebPage"
+                        href={accelerator.urlFormatter.formatAddress(page.url)}
+                        aria-current={
+                            page.ariaCurrent ? page.ariaCurrent : null
+                        }
+                        rel={page.rel}>
+                        <span property="name">{page.title}</span>
+                    </a>
+                </li>
             ))
         }
         {
             breadcrumbs &&
-                breadcrumbs.map(crumb => (
-      <li property="itemListElement" typeof="ListItem">
-          <meta property="position" content={(metaIndex++).toString()} />
-          <a property="item" typeof="WebPage" href={accelerator.urlFormatter.formatAddress(crumb.url)} aria-current={crumb.ariaCurrent ? crumb.ariaCurrent : null}>
-              <span property="name">{crumb.title}</span></a>
-      </li>
+                breadcrumbs.map((crumb) => (
+                    <li property="itemListElement" typeof="ListItem">
+                        <meta
+                            property="position"
+                            content={(metaIndex++).toString()}
+                        />
+                        <a
+                            property="item"
+                            typeof="WebPage"
+                            href={accelerator.urlFormatter.formatAddress(
+                                crumb.url,
+                            )}
+                            aria-current={
+                                crumb.ariaCurrent ? crumb.ariaCurrent : null
+                            }>
+                            <span property="name">{crumb.title}</span>
+                        </a>
+                    </li>
                 ))
         }
     </ol>
 </nav>
+
+<style is:global>
+    /* Breadcrumbs */
+
+    .site-breadcrumbs {
+        & ol {
+            font-size: 0.8rem;
+            padding: 0.1em 1em;
+            text-align: center;
+        }
+
+        & li {
+            display: inline;
+            padding: 0.2em;
+
+            &::before {
+                content: ">";
+                margin-inline-end: 0.3rem;
+            }
+
+            &:first-child::before {
+                content: "";
+                margin-inline-end: 0;
+            }
+        }
+
+        & a[aria-current] {
+            color: var(--fore);
+            text-decoration: none;
+        }
+    }
+</style>

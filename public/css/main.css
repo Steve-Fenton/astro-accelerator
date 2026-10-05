@@ -336,36 +336,6 @@ table {
     }
 }
 
-/* Breadcrumbs */
-
-.site-breadcrumbs {
-    & ol {
-        font-size: 0.8rem;
-        padding: 0.1em 1em;
-        text-align: center;
-    }
-
-    & li {
-        display: inline;
-        padding: 0.2em;
-
-        &::before {
-            content: '>';
-            margin-inline-end: 0.3rem;
-        }
-
-        &:first-child::before {
-            content: '';
-            margin-inline-end: 0;
-        }
-    }
-
-    & a[aria-current] {
-        color: var(--fore);
-        text-decoration: none;
-    }
-}
-
 /* Navigation */
 
 .overlay-menu {
@@ -448,77 +418,6 @@ table {
     }
 }
 
-/* Table of Contents (TOC) */
-
-.page-toc {
-    font-size: var(--font-size-meta);
-    margin: 0 0 var(--paragraph-margin) 0;
-
-    & ol {
-        list-style: none;
-        margin-block: 0;
-    }
-
-    & li {
-        & a {
-            display: block;
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-        }
-
-        & ol {
-            display: flex;
-            flex-wrap: wrap;
-
-            & li {
-                text-align: left;
-                hyphens: none;
-
-                & a {
-                    border-radius: var(--block-radius);
-                    background-color: var(--aft-block);
-                    color: var(--fore-link);
-                    display: inline-block;
-                    margin-inline: 0 0.3rem;
-                    margin-block: 0 0.3rem;
-                    font-size: var(--font-size-meta);
-                }
-
-                & a:hover, a:focus {
-                    background-color: var(--fore-link-alt);
-                    color: var(--aft);
-                }
-            }
-        }
-    }
-}
-
-/* Footer */
-
-.site-footer {
-    background-color: var(--aft-block);
-    margin-top: 4rem;
-    padding: 0.5rem 0;
-    text-align: center;
-    width: 100%;
-
-    & h2 {
-        padding-top: 2rem;
-    }
-
-    & a {
-        color: var(--fore-link);
-        display: block;
-        padding: 0.5rem 1rem;
-        text-decoration: none;
-
-        &:hover,
-        &:focus {
-            color: var(--fore-link-alt);
-        }
-    }
-}
-
 /* Overlay (Mobile Navigation, Search) */
 
 .overlay {
@@ -537,8 +436,6 @@ table {
     max-width: 40rem;
     margin: 0 auto;
 }
-
-/* Site Search */
 
 /* Articles */
 
