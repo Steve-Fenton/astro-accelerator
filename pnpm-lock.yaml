@@ -21,8 +21,8 @@ importers:
         specifier: ^7.4.2
         version: 7.4.2(@astrojs/markdown-remark@7.3.4)(yaml@2.9.1)
       astro-accelerator-utils:
-        specifier: ^0.3.115
-        version: 0.3.115
+        specifier: ^0.3.116
+        version: 0.3.116
       csv:
         specifier: ^6.6.4
         version: 6.6.4
@@ -885,8 +885,8 @@ packages:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
 
-  astro-accelerator-utils@0.3.115:
-    resolution: {integrity: sha512-ymv/hw0pxhalRPmIr6m5O+8Vmosdtrhd6Dvz2OwNoaCM8aziUm9VWRAenySdyjKNO3Ym1ixrdAeg9ntezQfiJA==}
+  astro-accelerator-utils@0.3.116:
+    resolution: {integrity: sha512-CE9K7WV3wXjgjS8YIxwW9Wd1beYKDCHUDhMNESU78mXWP70Iap5/dXeOoVhTo1wlmlnHEF26cOQYen6Rcd53Uw==}
 
   astro@7.4.2:
     resolution: {integrity: sha512-FAH4cdDlFaVnQGjazLTEIC5vJqGlo5XANc1wIbzQHIqAjJTll/RWTUs+SPNW1JdezG4YGxMZllaE5A41T2kzhA==}
@@ -1483,8 +1483,8 @@ packages:
     peerDependencies:
       marked: '>=13 <19'
 
-  marked@18.1.1:
-    resolution: {integrity: sha512-zEGgrtUG8crk+TrMacJSVABU4DYDDkS8uqgU3ohrn/2fW9C2AEfUrO3m6IhpIpQpl7YcVpiXXC9cSMWDANT3dg==}
+  marked@18.1.2:
+    resolution: {integrity: sha512-DfOnvLAQ6WYeWxWO1u4RyFOeqyHup6dks5PPqnoFiooU7ipRvidO/2j8plhAHIiZg574E9ZlzSjUiPMLAzFkgg==}
     engines: {node: '>= 20'}
     hasBin: true
 
@@ -2951,7 +2951,7 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-accelerator-utils@0.3.115: {}
+  astro-accelerator-utils@0.3.116: {}
 
   astro@7.4.2(@astrojs/markdown-remark@7.3.4)(yaml@2.9.1):
     dependencies:
@@ -3674,8 +3674,8 @@ snapshots:
       escape-html: 1.0.3
       glob: 13.0.6
       htmlparser2: 12.0.0
-      marked: 18.1.1
-      marked-gfm-heading-id: 4.1.4(marked@18.1.1)
+      marked: 18.1.2
+      marked-gfm-heading-id: 4.1.4(marked@18.1.2)
       meow: 14.1.0
       mime: 4.1.1
       saxes: 6.0.0
@@ -3700,12 +3700,12 @@ snapshots:
 
   markdown-table@3.0.4: {}
 
-  marked-gfm-heading-id@4.1.4(marked@18.1.1):
+  marked-gfm-heading-id@4.1.4(marked@18.1.2):
     dependencies:
       github-slugger: 2.0.0
-      marked: 18.1.1
+      marked: 18.1.2
 
-  marked@18.1.1: {}
+  marked@18.1.2: {}
 
   mdast-util-definitions@6.0.0:
     dependencies:
