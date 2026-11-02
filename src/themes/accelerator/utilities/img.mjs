@@ -9,7 +9,15 @@ import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
 
+// Used for non-avif formats
 const quality = 70;
+
+// For avif
+const avifOptions = {
+    quality: 50,
+    effort: 4,
+    chromaSubsampling: '4:4:4',
+};
 
 const workingDirectory = process.cwd();
 
@@ -135,7 +143,7 @@ for (const file of filesToProcess) {
             break;
         case '.avif':
             sharp(source)
-                .avif({ quality: quality })
+                .avif(avifOptions)
                 .toFile(destination + '.avif');
             break;
     }
@@ -166,12 +174,12 @@ for (const file of filesToProcess) {
             // Only resize if the image is larger than the target size
             sharp(source)
                 .resize(size[key], null)
-                .avif({ quality: quality })
+                .avif(avifOptions)
                 .toFile(resizeDestination + '.avif');
         } else {
             // Don't resize as it's smaller than target size
             sharp(source)
-                .avif({ quality: quality })
+                .avif(avifOptions)
                 .toFile(resizeDestination + '.avif');
         }
     }
