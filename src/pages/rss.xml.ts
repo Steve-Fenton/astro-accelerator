@@ -70,11 +70,11 @@ async function getData() {
       )[0];
 
       if (author?.frontmatter?.title) {
-        return author.frontmatter.title + ', Octopus Deploy';
+        return author.frontmatter.title;
       }
     }
 
-    return 'Octopus Deploy';
+    return '';
   }
 
   const limit = SITE.rssLimit ?? 20;
