@@ -46,7 +46,6 @@ const SITE: Site = {
         headers: ['link'],
         details: ['tabs'],
         search: ['headings'],
-        article: ['bannerImage'],
     },
     images: {
         // Generated using https://ausi.github.io/respimagelint/

@@ -1,0 +1,21 @@
+---
+// warning: This file is overwritten by Astro Accelerator
+
+import type { Frontmatter } from "astro-accelerator-utils/types/Frontmatter";
+import ArticleLayout from "@layouts/Article.astro";
+
+// Properties
+type Props = {
+    frontmatter: Frontmatter;
+    headings: { depth: number; slug: string; text: string }[];
+    breadcrumbs?: { url: string; title: string; ariaCurrent?: string }[] | null;
+};
+const { frontmatter, headings, breadcrumbs } = Astro.props satisfies Props;
+---
+
+<ArticleLayout
+    frontmatter={frontmatter}
+    headings={headings}
+    breadcrumbs={breadcrumbs}>
+    <slot />
+</ArticleLayout>

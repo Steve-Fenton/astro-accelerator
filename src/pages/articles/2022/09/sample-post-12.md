@@ -1,4 +1,5 @@
 ---
+layout: src/layouts/Article.astro
 title: Sample Post 12
 navMenu: false
 pubDate: 2022-09-12

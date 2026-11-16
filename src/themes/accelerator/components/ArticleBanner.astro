@@ -1,0 +1,49 @@
+---
+// warning: This file is overwritten by Astro Accelerator
+
+import { Accelerator } from 'astro-accelerator-utils';
+import type { Frontmatter } from 'astro-accelerator-utils/types/Frontmatter';
+import { SITE } from '@config';
+import { getImageInfo } from '@util/custom-markdown.mjs';
+
+const accelerator = new Accelerator(SITE);
+const stats = new accelerator.statistics('accelerator/components/ArticleBanner.astro');
+stats.start();
+
+// Properties
+type Props = {
+    frontmatter: Frontmatter;
+};
+const { frontmatter } = Astro.props satisfies Props;
+
+// Logic
+// The flag is optional in most site configurations, and may be a single value or a list
+const articleFlags = ([] as string[]).concat(
+    (SITE.featureFlags as { article?: string | string[] }).article ?? []
+);
+
+const img = frontmatter.bannerImage?.src
+        ? getImageInfo(frontmatter.bannerImage.src, 'article-banner-image', SITE.images.contentSize)
+        : null;
+const imageAlt = frontmatter.bannerImage?.alt ?? '';
+
+stats.stop();
+---
+
+{
+    img && (
+        <div class="article-banner">
+            <img
+                srcset={img.srcset}
+                sizes={img.sizes}
+                src={img.src}
+                alt={imageAlt}
+                class={img.class}
+                width={img.metadata?.width}
+                height={img.metadata?.height}
+                loading="eager"
+                fetchpriority="high"
+            />
+        </div>
+    )
+}
