@@ -442,7 +442,7 @@ table {
 .article-banner {
     background-color: var(--fore-link);
     border-radius: var(--block-radius);
-    margin-bottom: var(--block-gap);
+    margin-bottom: var(--paragraph-margin);
     padding: 1.5rem;
 
     & img {
