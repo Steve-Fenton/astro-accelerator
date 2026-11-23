@@ -437,6 +437,26 @@ table {
     margin: 0 auto;
 }
 
+/* Article Banner (matches the list item image style) */
+
+.article-banner {
+    background-color: var(--fore-link);
+    border-radius: var(--block-radius);
+    margin-bottom: var(--paragraph-margin);
+    padding: 1.5rem;
+
+    & img {
+        border: 3px solid var(--fore-link);
+        border-radius: var(--block-radius);
+        box-shadow: var(--box-shadow);
+        display: block;
+        max-height: 20rem;
+        object-fit: cover;
+        transform: rotate(-1deg);
+        width: 100%;
+    }
+}
+
 /* Articles */
 
 .post-list {
